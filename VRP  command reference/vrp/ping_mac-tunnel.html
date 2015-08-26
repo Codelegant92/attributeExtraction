@@ -1,0 +1,143 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ping mac-tunnel">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_enable_mac_tunnel_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ping_mac-tunnel">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ping mac-tunnel</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ping_mac-tunnel"></a><a name="ping_mac-tunnel"></a>
+
+
+<h1 class="topictitle1">ping mac-tunnel</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ping mac-tunnel</strong>命令用来检测当前MAC tunnel的连通性，这种检测称为MAC tunnel Ping。</p>
+<p>MAC tunnel Ping由MAC tunnel的一端发起，目的地是该MAC tunnel的另一端。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ping mac-tunnel</strong> [ <strong>-c</strong> <em>count</em> |<strong>-s</strong> <em>packetsize</em> | <strong>-t</strong> <em>timeout</em> ] *</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>-c</strong> <em>count</em>：指定Ping的次数。<em>count</em>表示Ping的次数，整数形式，取值范围是1～4294967295，缺省值是5。</p>
+<p><strong>-s</strong> <em>packetsize</em>：指定发送的Ping报文的大小。<em>packetsize</em>表示Ping报文的大小，整数形式，取值范围是95～1500，单位是字节，缺省值是95字节。该大小是指去掉二层报文头后的报文大小。</p>
+<p><strong>-t</strong> <em>timeout</em>：指定等待应答报文的超时时间。<em>timeout</em>表示等待应答报文的超时时间，整数形式，取值范围是1～65535，单位是ms，缺省值是2000ms。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MAC Tunnel视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>0：参观级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当需要检测MAC tunnel的连通性时可使用本命令。</p>
+<p>使用本命令时，被检测的MAC tunnel必须已使用<a href="cfm_enable_mac_tunnel_view.html">cfm enable（MAC Tunnel视图）</a>命令使能了CFM功能。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ping_mac-tunnel__d106056e91"></a><a name="d106056e91"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 检测名称为MacCustomer的MAC tunnel的连通性，Ping两次，Ping报文的大小为112字节。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> mac-tunnel tunnel-name MacCustomer</strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-MacCustomer]<strong> <strong>cfm enable</strong></strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-MacCustomer]<strong> <strong>ping mac-tunnel -c 2 -s 112</strong></strong></pre>
+<pre class="screen">Reply from 0001-0300-0204: byte = 112 time = 9ms</pre>
+<pre class="screen">Reply from 0001-0300-0204: byte = 112 time = 11ms</pre>
+<pre class="screen">Packets：Sent = 2，Received = 2，Lost = 0 (0% Lost)</pre>
+<pre class="screen">Minimum = 11ms, Maximum = 9ms, Average = 10ms</pre>
+
+<div class="tablenoborder"><a name="ping_mac-tunnel__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="ping_mac-tunnel__tb_01" frame="border" border="1" rules="all"><caption>表1 ping mac-tunnel命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.93801965230537%" id="d106056e137"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.06198034769464%" id="d106056e141"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d106056e137 "><p>Reply from 0001-0300-0204: byte = 112 time = 9ms</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d106056e141 "><p>目的设备回复的应答报文的大小和响应时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d106056e137 "><p>Packets：Sent = 2，Received = 2，Lost = 0  &lt;0% Lost &gt;</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d106056e141 "><p>发送Ping报文的数量；接收应答报文的数量；丢弃报文的数量和百分比。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d106056e137 "><p>Minimum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d106056e141 "><p>最小往返响应时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d106056e137 "><p>Maximum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d106056e141 "><p>最大往返响应时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d106056e137 "><p>Average</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d106056e141 "><p>平均往返响应时间。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_enable_mac_tunnel_view.html">cfm enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

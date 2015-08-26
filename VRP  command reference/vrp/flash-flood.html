@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="flash-flood">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="flash-flood">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>flash-flood</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="flash-flood"></a><a name="flash-flood"></a>
+
+
+<h1 class="topictitle1">flash-flood</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>flash-flood</strong>命令用来使能LSP快速扩散特性，以便加快IS-IS网络的收敛速度。</p>
+<p><strong>undo flash-flood</strong>命令用来取消此特性。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>flash-flood</strong> [ <em>lsp-count</em> ] [ <strong>max-timer-interval</strong> <em>interval</em> ] [ <strong>level-1</strong> | <strong>level-2</strong> ]</p>
+<p><strong>undo
+flash-flood</strong> [ <strong>level-1</strong> | <strong>level-2</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>lsp-count</em>：每个接口一次扩散LSP的最大数量。整数形式，取值范围是1～15。缺省值是5。</p>
+<p><strong>max-timer-interval</strong> <em>interval</em>：指定LSP扩散的最大间隔时间<em>interval</em>。整数形式，取值范围是10～50000，单位是毫秒。缺省值是10毫秒。</p>
+<p><strong>level-1</strong>：在Level-1
+中使能此特性。</p>
+<p><strong>level-2</strong>：在Level-2 中使能此特性。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>用户可以指定每次扩散的LSP数量，这个数量是针对所有接口的。如果需要发送的LSP的数量大于这个数，则就发送<em>lsp-count</em>个LSP。如果配置了定时器，在路由计算之前如果这个定时器未超时，则立即扩散；否则在该定时器超时时发送。</p>
+<p>如果命令中没有指定级别，则缺省同时在Level-1和Level-2中使能此功能。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="flash-flood__d76727e92"></a><a name="d76727e92"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置快速扩散特性，每个接口最大发送6个LSP，最大发送间隔为100毫秒。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>isis 1</strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>flash-flood 6 max-timer-interval 100</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,63 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qos max-bandwidth">
+<meta name="DC.Relation" scheme="URI" content="../vrp/congestion_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="qos_lr_virtual-template_interface_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qos_max-bandwidth">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qos max-bandwidth</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qos_max-bandwidth"></a><a name="qos_max-bandwidth"></a>
+
+<h1 class="topictitle1">qos max-bandwidth</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qos max-bandwidth</strong>命令用来指定用于QoS带宽计算的接口的实际物理带宽。<strong>undo qos max-bandwidth</strong>命令用来取消带宽配置。</p>
+<p>缺省情况下，对于物理接口取值为实际物理带宽，对于虚拟接口模板（Virtual Template）取值为64Kbit/s，对于MP-group，取值为0Kbit/s。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qos max-bandwidth</strong><em> bandwidth</em></p>
+<p><strong>undo qos max-bandwidth</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>bandwidth</em>：接口的可用带宽，单位Kbit/s，范围是1～1000000。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>POS接口视图、串行接口视图、虚拟接口模板视图、MP-Group接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>qos max-bandwidth</strong>命令用来指定用于QoS带宽计算的接口的实际物理带宽。由于物理接口缺省情况下QoS最大带宽就是接口的实际物理带宽，可以不用配置，但逻辑接口MP-Group、VT必须经过配置指定。建议配置接口的实际可用带宽。例如：对于MP的虚拟接口模板（Virtual Template），建议配置实际绑定的MP链路带宽；对于串口，配置与DCE协商的波特率。</p>
+<p>当接口的实际物理带宽发生改变时，接口下已经配置的qos max-bandwidth不会随之改变。建议在改变实际物理带宽的同时，根据实际物理带宽对qos max-bandwidth重新进行配置。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>更改qos max-bandwidth配置后，新的配置立即生效，不需要对接口和路由器进行重启。</p>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qos_max-bandwidth__d109597e49"></a><a name="d109597e49"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 下面命令把Virtual-Template 1的带宽设置为128kbit/s。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface Virtual-Templatel 1</strong></strong></pre>
+<pre class="screen">[Quidway-Virtual-Template1]<strong> qos max-bandwidth 128</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/congestion_management_configuration_commands.html">拥塞管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="qos_lr_virtual-template_interface_view.html">qos lr（虚拟接口模板视图）</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

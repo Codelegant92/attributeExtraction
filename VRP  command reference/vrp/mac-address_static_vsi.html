@@ -1,0 +1,127 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mac-address static vsi">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mac_address_table_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-address.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mac-address_static_vsi">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mac-address static vsi</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mac-address_static_vsi"></a><a name="mac-address_static_vsi"></a>
+
+
+<h1 class="topictitle1">mac-address static vsi</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mac-address static vsi</strong>命令用来配置静态MAC地址表项。该表项中的出接口已经与指定的VSI绑定。</p>
+<p><strong>undo mac-address</strong>命令用来删除MAC地址表项。</p>
+<p>缺省情况下，系统没有配置任何静态MAC地址表项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mac-address</strong> <strong>static</strong> <em>mac-address interface-type interface-number</em> <strong>vsi</strong> <em>vsi-name</em> [ <strong>pe-vid</strong> <em>pe-vid</em> [ <strong>ce-vid</strong> <em>ce-vid</em> ] ]</p>
+<p><strong>undo mac-address</strong> <em>mac-address</em> <strong>vsi</strong> <em>vsi-name</em></p>
+<p><strong>undo</strong> <strong>mac-address</strong> { <strong>all</strong> | <strong>dynamic</strong> | <strong>static</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>static</strong>：静态表项，不被老化。当收到指定地址的帧后，直接通过出接口转发。配置并保存后，系统复位或接口板热插拔表项不丢失。</p>
+<p><em>mac-address</em>：单播MAC地址，格式为H-H-H。其中H为4位的十六进制数，可以输入1～4位，如00e0、fc01。当输入不足4位时，表示前面的几位为0，如：输入e0，等同于00e0。MAC地址不可设置为FFFF-FFFF-FFFF。</p>
+<p><em>interface-type interface-number</em>：接口类型及编号，可以是Ethernet接口、Ethernet子接口、GE接口、GE子接口、Eth-Trunk接口或Eth-Trunk子接口。本命令中的接口是三层接口，并且已经绑定到VSI。</p>
+<p><strong>vsi</strong> <em>vsi-name</em>：指定的VSI实例的名称。字符串形式，不支持空格，区分大小写，取值范围是1～31。</p>
+<p><strong>pe-vid</strong> <em>pe-vid</em>：用户外层VLAN的Tag值。十进制整数形式，取值范围是1～4094。</p>
+<p><strong>ce-vid</strong> <em>ce-vid</em>：用户内层VLAN的Tag值。十进制整数形式，取值范围是1～4094。</p>
+<p><strong>dynamic</strong>：动态表项，可以被老化，系统复位或接口板热插拔后丢失。</p>
+<p><strong>all</strong>：所有表项。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>Ethernet接口视图、Ethernet子接口视图、GE接口视图、GE子接口视图、Eth-Trunk接口视图、Eth-Trunk子接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用命令<strong>mac-address</strong> <strong>static</strong> <em>mac-address</em> <em>interface-type interface-number </em><strong>vsi</strong> <em>vsi-name</em>时，命令中接口必须是三层接口，并且该三层接口已经和VSI绑定。</p>
+<p><strong>undo</strong> <strong>mac-address</strong> { <strong>all</strong> | <strong>dynamic</strong> | <strong>static</strong> }命令仅可以在系统视图下执行。</p>
+<p>使用命令<strong>mac-address</strong> <strong>static</strong> <em>mac-address</em> <em>interface-type interface-number </em><strong>vsi</strong> <em>vsi-name </em><strong>pe-vid</strong> <em>pe-vid</em>时，命令中接口必须是子接口，并且该子接口配置了dot1q终结和绑定了VSI。</p>
+<p>使用命令<strong>mac-address</strong> <strong>static</strong> <em>mac-address</em> <em>interface-type interface-number </em><strong>vsi</strong> <em>vsi-name </em><strong>pe-vid</strong> <em>pe-vid </em><strong>ce-vid</strong> <em>ce-vid</em>时，命令中接口必须是子接口，并且该子接口配置了QinQ终结和绑定了VSI。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mac-address_static_vsi__d91469e223"></a><a name="d91469e223"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 为名称为abc的VSI添加一个静态MAC地址表项，当收到目的MAC为0011-2233-4455的帧时，在名称为abc的VSI中转发。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vsi abc static</strong></pre>
+<pre class="screen">[Quidway-vsi-abc]<strong> pwsignal ldp</strong></pre>
+<pre class="screen">[Quidway-vsi-abc-ldq]<strong> vsi-id 1</strong></pre>
+<pre class="screen">[Quidway-vsi-abc-ldq]<strong> quit</strong></pre>
+<pre class="screen">[Quidway-vsi-abc]<strong> quit</strong> </pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> l2 binding vsi abc</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address static 0011-2233-4455 gigabitethernet 1/0/0 vsi abc</strong></pre>
+<p># 接口GE1/0/0.1配置了dot1q终结子接口接入VPLS。在该子接口上配置静态MAC地址表项，当收到目的MAC为0011-2233-4455且属于VLAN10的帧时，去掉该帧的Tag后，在名称为abc的VSI中转发该帧。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vsi abc static</strong></pre>
+<pre class="screen">[Quidway-vsi-abc]<strong> pwsignal ldp</strong></pre>
+<pre class="screen">[Quidway-vsi-abc-ldq]<strong> vsi-id 1</strong></pre>
+<pre class="screen">[Quidway-vsi-abc-ldq]<strong> quit</strong></pre>
+<pre class="screen">[Quidway-vsi-abc]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong> </pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mode user-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong> </pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0.1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> control-vid 1 dot1q-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> dot1q termination vid 10</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> l2 binding vsi abc</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address static 0011-2233-4455 gigabitethernet 1/0/0.1 vsi abc pe-vid 10</strong></pre>
+<p># 接口GE1/0/0.1配置了QinQ终结子接口接入VPLS。在该子接口上配置静态MAC地址表项，当收到目的MAC为0011-2233-4455且带有两层Tag（外层Tag为10，内层Tag为100）的帧时，去掉该帧的两层Tag后，在名称为abc的VSI中转发该帧。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vsi abc static</strong></pre>
+<pre class="screen">[Quidway-vsi-abc]<strong> pwsignal ldp</strong></pre>
+<pre class="screen">[Quidway-vsi-abc-ldq]<strong> vsi-id 1</strong></pre>
+<pre class="screen">[Quidway-vsi-abc-ldq]<strong> quit</strong></pre>
+<pre class="screen">[Quidway-vsi-abc]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mode user-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong> </pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0.1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> control-vid 1 qinq-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> qinq termination pe-vid 10 ce-vid 100 to 200</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> l2 binding vsi abc</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address static 0011-2233-4455 gigabitethernet 1/0/0.1 vsi abc pe-vid 10 ce-vid 100</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mac_address_table_configuration_commands.html">MAC地址表配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mac-address.html">display mac-address</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

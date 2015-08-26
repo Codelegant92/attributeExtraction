@@ -1,0 +1,133 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="group mask">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4_multicast_cac_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="multicast-channel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="group_mask">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>group mask</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="group_mask"></a><a name="group_mask"></a>
+
+
+
+<h1 class="topictitle1">group mask</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>group mask</strong>命令用来定义一个节目组下的组播组或者源组的范围以及带宽。</p>
+<p><strong>undo group mask</strong>命令用来删除一个节目组下的组或者源组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>group </strong><em>group-address</em> <strong>mask </strong>{<em> group-mask-length</em> | <em>group-mask</em> } [ <strong>source</strong> <em>source-address</em> <strong>mask</strong> { <em>source-mask-length</em> | <em>source-mask </em>} ] [ <strong>per-bandwidth</strong> <em>traffic-rate</em> ]</p>
+<p><strong>undo group</strong> <em>group-address</em><strong> mask </strong>{ <em>group-mask-length</em> | <em>group-mask</em> } [ <strong>source</strong> <em>source-address</em> <strong>mask</strong> { <em>source-mask-length</em> | <em>source-mask</em> } ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>group-address</em>：组播组地址。</p>
+<p><em>group-mask-length</em>：组地址掩码长度，取值范围是4～32。</p>
+<p><em>group-mask</em>：组地址掩码。点分十进制形式。</p>
+<p><strong>source</strong>：指定组播源地址。</p>
+<p><em>source-address</em>：组播源地址。</p>
+<p><em>source-mask-length</em>：组播源地址掩码长度，取值范围是8～32。</p>
+<p><em>source-mask</em>：组播源地址掩码。点分十进制形式。</p>
+<p><strong>per-bandwidth</strong>：指定预留给各组播组的带宽。</p>
+<p><em>traffic-rate</em>：预留给各组播组的带宽。单位是kbit/s，取值范围是1～1048576。缺省值是2048，即缺省带宽是2Mbit/s。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例channel视图、VPN实例channel视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用该命令，有以下注意事项：</p>
+<ul>
+<li><p>该命令的组地址和掩码确定的是组地址范围，表示指定范围的组播组都属于该节目组。</p>
+</li>
+<li><p>任何一个ASM模型的节目组至少要配置一个组播组，且不能配置源组。</p>
+</li>
+<li><p>任何一个SSM模型的节目组至少要配置一个源组，不能配置任意源组播组。</p>
+</li>
+<li><p>各节目组管辖的组播组不能有重复，即一个组播组只能属于一个节目组。</p>
+<ul>
+<li><p>当一个节目组配置了G1/Mask，则本节目组以及其他节目组不允许再配置与G1/Mask范围有交叉的G2/Mask；其他节目组也不允许再配置（G1/Mask, S/Mask）以及与G1/Mask有交叉的（G2/Mask, S/Mask）。</p>
+</li>
+<li><p>当节目组配置了（G1/Mask, S1/Mask），则本节目组以及其他节目组不允许再配置(G2/Mask, S2/Mask)，其中G2/Mask与G1/Mask有交叉且S2/Mask与S1/Mask有交叉；其他节目组也不允许再配置G1/Mask以及与G1/Mask有交叉的(G2/Mask)。</p>
+</li>
+</ul>
+</li>
+<li><p>每个节目组可以定义16条G/Mask或者16条（G/Mask, S/Mask）。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="group_mask__d78873e170"></a><a name="d78873e170"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置节目组SDTV包含的组播组范围是224.1.1.0/24，每个组播组的预留带宽是4000kbit/s。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> multicast routing-enable</strong>
+[Quidway]<strong> multicast-channel</strong>
+[Quidway-multicast-channel]<strong> channel SDTV type asm</strong>
+[Quidway-multicast-channel-SDTV]<strong> group 224.1.1.0 mask 24 per-bandwidth 4000</strong>
+</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="group_mask__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="group_mask__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d78873e202"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d78873e206"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d78873e202 "><p>VRPV500R006C01B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d78873e206 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv4_multicast_cac_configuration_commands.html">IPv4组播CAC配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="multicast-channel.html">multicast-channel</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,96 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls switch-l2vc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_switch-l2vc.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_l2vpn.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_switch-l2vc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls switch-l2vc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_switch-l2vc"></a><a name="mpls_switch-l2vc"></a>
+
+<h1 class="topictitle1">mpls switch-l2vc</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls</strong> <strong>switch-l2vc</strong>命令用于在S-PE上配置PW交换，实现PW的多跳（Multi-Hop）。</p>
+<p><strong>undo</strong> <strong>mpls switch-l2vc</strong>命令用来删除交换PW。</p>
+<p>PW交换采用缺省的策略。缺省策略指定顺序LSP和负载分担个数为1。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls switch-l2vc</strong> <em>ip-address vc-id</em> <strong>between</strong> <em>ip-address vc-id</em> <strong>encapsulation</strong> <em>encapsulation-type</em></p>
+<p><strong>mpls</strong> <strong>switch-l2vc</strong> <em>ip-address vc-id</em> <strong>trans</strong> <em>trans-label</em> <strong>recv</strong> <em>received-label</em> <strong>between</strong> <em>ip-address vc-id</em> <strong>trans</strong> <em>trans-label</em> <strong>recv</strong> <em>received-label</em> <strong>encapsulation</strong> <em>encapsulation-type</em> [ <strong>control-word</strong> [ <strong>cc</strong> { <strong>alert</strong> | <strong>cw</strong> } * <strong>cv</strong> <strong>lsp-ping</strong> ] | [ <strong>no-control-word</strong> ] [ <strong>cc</strong> <strong>alert</strong> <strong>cv</strong> <strong>lsp-ping</strong> ] ]</p>
+<p><strong>mpls switch-l2vc</strong> <em>ip-address vc-id</em> <strong>between</strong> <em>ip-address vc-id</em> <strong>trans</strong> <em>trans-label</em> <strong>recv</strong> <em>received-label</em> <strong>encapsulation</strong> <em>encapsulation-type</em> [ <strong>mtu</strong> <em>mtu-value</em> ] [ <strong>control-word</strong> [ <strong>cc</strong> { <strong>alert</strong> | <strong>cw</strong> } * <strong>cv</strong> <strong>lsp-ping</strong> ] | [ <strong>no-control-word</strong> ] [ <strong>cc</strong> <strong>alert</strong> <strong>cv</strong> <strong>lsp-ping</strong> ] ]</p>
+<p><strong>undo mpls switch-l2vc</strong> { <em>ip-address vc-id</em> <strong>encapsulation</strong> <em>encapsulation-type</em> | <strong>all</strong> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：PW对端设备的LSR-ID。</p>
+<p><em>vc-id</em>：L2VC ID，十进制整数形式，取值范围是1～4294967295。</p>
+<p><strong>trans</strong><em> trans-label</em>：用于报文发送的静态标签的值。十进制整数形式，取值范围是16～1023。</p>
+<p><strong>recv</strong><em> rcv-label</em>：用于报文接收的静态标签的值。十进制整数形式，取值范围是16～1023。</p>
+<p><strong>encapsulation</strong><em> encapsulation-type</em>：静态PW的封装类型。PW交换支持的封装类型有：<strong>atm-1to1-vcc</strong>、<strong>atm-1to1-vpc</strong>、<strong>atm-aal5-pdu</strong>、<strong>atm-aal5-sdu</strong>、<strong>atm-nto1-vcc</strong>、<strong>atm-nto1-vpc</strong>、<strong>atm-trans-cell</strong>、<strong>ethernet</strong>、<strong>fr</strong>、<strong>hdlc</strong>、<strong>ip-interworking</strong>、<strong>ip-layer2</strong>、<strong>ppp</strong>、<strong>vlan</strong>。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>配置动态交换PW或静动交换PW时，如果是和其他设备制造商的设备进行异种介质互通，需要选择参数<strong>ip-layer2</strong>；如果是和华为设备进行异种介质互通，选择参数<strong>ip-interworking</strong>。</p>
+</div></div>
+<p><strong>mtu</strong> <em>mtu-value</em>：在动态PW信令协商时指定MTU值。十进制整数形式，取值范围是46～9600。对于固网产品，没有接口模式，在配置静动混合的交换PW时，需要手工配置MTU参数，否则动态侧的信令协商会失败。</p>
+<p><strong>control-word</strong>：使能控制字（Control Word）特性。缺省情况下，只有使用ATM和Frame Relay封装形式的L2VPN使能控制字特性。其它封装类型的L2VPN只有在显式指定之后才使能控制字特性。</p>
+<p><strong>no-control-word</strong>：禁止控制字（Control Word）特性。</p>
+<p><strong>cw</strong>：使能控制字方式。</p>
+<p><strong>alert</strong>：用于VCCV-PING的Label Alert通道。</p>
+<p><strong>all</strong>：删除所有的交换PW。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>交换PW有三种形式：纯动态，纯静态，静动混合。不同的交换形式使用不同的命令配置：</p>
+<ul><li><p>配置纯动态PW多跳交换：使用<strong>mpls</strong> <strong>switch-l2vc</strong><em> ip-address vc-id </em><strong>between</strong> <em>ip-address vc-id</em> <strong>encapsulation</strong> <em>encapsulation-type</em>命令</p>
+</li><li><p>配置纯静态PW多跳交换：使用<strong>mpls</strong> <strong>switch-l2vc</strong> <em>ip-address vc-id</em> <strong>trans</strong> <em>trans-label</em> <strong>recv</strong> <em>received-label</em> <strong>between</strong> <em>ip-address vc-id</em> <strong>trans</strong> <em>trans-label</em> <strong>recv</strong> <em>received-label</em> <strong>encapsulation</strong> <em>encapsulation-type</em>命令</p>
+</li><li><p>配置静动混合PW多跳交换：使用<strong>mpls</strong> <strong>switch-l2vc</strong> <em>ip-address vc-id</em> <strong>between</strong> <em>ip-address vc-id</em> <strong>trans</strong> <em>trans-label</em> <strong>recv</strong> <em>received-label</em> <strong>encapsulation</strong> <em>encapsulation-type</em>命令</p>
+</li></ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>当配置静动混合交换PW时，注意命令中的关键字<strong>between</strong>前面是动态PW的<em>ip-address vc-id</em>，<strong>between</strong>后面是静态PW的<em>ip-address vc-id</em>，两者不可互换。</p>
+</div></div>
+<p>纯动态交换PW的配置比较简单。远端标签会通过信令从两个相邻的端点（U-PE或者S-PE）发送到该S-PE节点，控制字和VCCV能力会通过信令从两个U-PE节点发送到该S-PE节点。</p>
+<p>纯静态PW交换及静动混合PW交换，静态PW侧需要配置PW标签。</p>
+<p>用于交换的两个PW的VC-ID可以不同。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>需要注意，在同一个节点上PW ID和PW Type的组合必须唯一，但交换PW的两侧PW ID可以相同。</p>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_switch-l2vc__d95380e453"></a><a name="d95380e453"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置纯动态交换PW。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>mpls switch-l2vc 1.1.1.9 100 between 3.3.3.9 100 encapsulation vlan</strong></strong></pre>
+<p># 配置纯静态交换PW。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>mpls switch-l2vc 1.1.1.9 100 trans 100 recv 100 between 3.3.3.9 100 trans 200 recv 200 encapsulation vlan</strong></strong></pre>
+<p># 配置静动混合PW。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> mpls switch-l2vc 1.1.1.9 100 between 3.3.3.9 100 trans 200 recv 200 encapsulation vlan mtu 1500</strong></pre>
+<p># 删除交换PW。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> undo mpls switch-l2vc 1.1.1.9 100 encapsulation vlan</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pwe3_configuration_commands.html">PWE3配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_switch-l2vc.html">display mpls switch-l2vc</a></div>
+<div><a href="mpls_l2vpn.html">mpls l2vpn</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

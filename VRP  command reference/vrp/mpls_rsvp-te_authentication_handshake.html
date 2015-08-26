@@ -1,0 +1,73 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls rsvp-te authentication handshake">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_rsvp-te_authentication_handshake">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls rsvp-te authentication handshake</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_rsvp-te_authentication_handshake"></a><a name="mpls_rsvp-te_authentication_handshake"></a>
+
+
+<h1 class="topictitle1">mpls rsvp-te authentication handshake</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls rsvp-te authentication handshake</strong>命令用来配置RSVP-TE握手机制并设置本地密码。</p>
+<p><strong>undo
+mpls rsvp-te authentication handshake</strong>命令用来删除RSVP-TE握手机制的配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls rsvp-te authentication handshake</strong> <em>local-secret</em></p>
+<p><strong>undo
+mpls rsvp-te authentication handshake</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>local-secret</em>：本地密码，字符串形式，不支持空格，长度范围是8～40，无缺省值。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行该命令前，应先在接口启动验证功能。</p>
+<p>local-secret只是本地有效，不需要与邻居配置的local-secret一致。</p>
+<p>在本端配置handshake功能后，如果本端收到一个没有与自己建立RSVP认证关系的邻居所发送的RSVP消息，则本端会发送携带local-secret参数的Challenge消息给该邻居，邻居收到Challenge消息后回应一个Response消息。Response消息中携带了收到的Challenge消息的local-secret。本端收到邻居发来的Response消息，如果其中携带的local-secret与本端配置的一致，就确定可以与该邻居建立RSVP认证关系。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_rsvp-te_authentication_handshake__d94689e53"></a><a name="d94689e53"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p>#配置RSVP握手机制并设置本地密码为12345678。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>mpls rsvp-te authentication cipher quidway100</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>mpls rsvp-te authentication handshake 12345678</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

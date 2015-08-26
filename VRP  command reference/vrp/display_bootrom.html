@@ -1,0 +1,245 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display bootrom">
+<meta name="DC.Relation" scheme="URI" content="../vrp/update_and_maintenance.html">
+<meta name="DC.Relation" scheme="URI" content="set_bootrom_ethernet.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_bootrom">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display bootrom</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_bootrom"></a><a name="display_bootrom"></a>
+
+
+<h1 class="topictitle1">display bootrom</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display bootrom</strong>命令用来显示串行接口或以太接口的参数信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display bootrom</strong> { <span><strong>serial</strong> |</span><strong> ethernet </strong>} [ <strong>slave</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>serial</strong>：显示串行接口的参数信息。</p>
+<p><strong>ethernet</strong>：显示以太接口的参数信息。</p>
+<p><strong>slave</strong>：显示备用主控板串行接口或以太接口的参数信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display bootrom</strong> { <span><strong>serial</strong> |</span><strong> ethernet </strong>}命令可以用来查看主用主控板的接口参数信息。加上slave关键字后，可以查看备用主控板的接口参数信息。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>目前此命令仅在NE40E、NE80E、NE5000E上可用。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_bootrom__d18209e70"></a><a name="d18209e70"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看主用主控板串行接口的参数信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bootrom serial</strong></pre>
+<pre class="screen"> Baudrate: 9600</pre>
+<p># 查看主用主控板的以太接口的参数信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bootrom ethernet</strong></pre>
+<pre class="screen">boot device      : mgi</pre>
+<pre class="screen">host name        : host</pre>
+<pre class="screen">file name        : paf.txt</pre>
+<pre class="screen">inet on ethernet : 192.168.0.55</pre>
+<pre class="screen">inet on backplane:</pre>
+<pre class="screen">host inet        : 192.168.0.3</pre>
+<pre class="screen">gateway inet     :</pre>
+<pre class="screen">user             : huawei</pre>
+<pre class="screen">ftp password     : huawei</pre>
+<pre class="screen">flags            : 0</pre>
+<pre class="screen">target name      : GE2</pre>
+<pre class="screen">startup script   :     </pre>
+
+<div class="tablenoborder"><a name="display_bootrom__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bootrom__tb_01" frame="border" border="1" rules="all"><caption>表1 <strong>display bootrom</strong>命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d18209e124"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d18209e128"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>boot device</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>设备名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>host name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>提供资源文件的服务器的名字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>file name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>要下载的资源文件名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>inet on ethernet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>设备的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>inet on backplane</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>操作系统的CPU背板的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>host inet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>提供资源文件的服务器的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>gateway inet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>网关的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>user</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>登录服务器的用户名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>ftp password</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>登录服务器的密码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>选择用FTP或TFTP方式的标志位。0表示用户以FTP方式登录；1表示用户以TFTP方式登录。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>target name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>将下载的资源文件重命名为该域所描述的文件名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d18209e124 "><p>startup script</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d18209e128 "><p>启动文件描述信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_bootrom__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bootrom__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d18209e282"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d18209e286"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d18209e282 "><p>VRPV500R005C02B071</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d18209e286 "><p>原只有用户视图下支持此命令，修改为在所有视图下支持此命令。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/update_and_maintenance.html">升级维护</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="set_bootrom_ethernet.html">set bootrom ethernet</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

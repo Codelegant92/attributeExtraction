@@ -1,0 +1,174 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display efm session">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="efm_enable.html">
+<meta name="DC.Relation" scheme="URI" content="efm_loopback.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_efm_session">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display efm session</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_efm_session"></a><a name="display_efm_session"></a>
+
+
+<h1 class="topictitle1">display efm session</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display efm session</strong>命令用来查看指定接口和对端的EFM OAM会话信息，包括该接口的：</p>
+<ul>
+<li><p>EFM状态</p>
+</li>
+<li><p>环回测试超时时间</p>
+</li>
+</ul>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display efm session</strong> { <strong>all</strong> | <strong>interface</strong> <em>interface-type</em> <em>interface-number</em> }<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：显示所有配置了EFM OAM功能的接口和对端的EFM OAM会话信息。</p>
+<p><strong>interface</strong> <em>interface-type</em> <em>interface-number</em>：显示指定接口和对端的EFM
+OAM会话信息。<em>interface-type</em>表示接口类型，取值包括：<strong>ethernet</strong>和<strong>gigabitethernet</strong><em>。interface-number</em>表示接口编号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<a href="efm_enable.html">efm enable</a>命令全局使能EFM OAM功能后才能使用本命令。</p>
+<p>使用本命令只显示配置了EFM
+OAM功能的接口和对端的EFM OAM会话信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_efm_session__d23504e134"></a><a name="d23504e134"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有接口和对端的EFM OAM会话信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>efm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>display efm session all</strong></strong></pre>
+<pre class="screen">  Interface                 EFM State                   Loopback Timeout
+  ----------------------------------------------------------------------
+  GigabitEthernet2/0/2      discovery                   --
+</pre>
+
+<div class="tablenoborder"><a name="display_efm_session__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_efm_session__tb_01" frame="border" border="1" rules="all"><caption>表1 display efm session命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.93801965230537%" id="d23504e168"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.06198034769464%" id="d23504e172"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d23504e168 "><p>EFM State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d23504e172 "><div class="p">接口的EFM OAM协议状态。<ul>
+<li><p>disabled：接口处于EFM OAM协议禁止状态。</p>
+</li>
+<li><p>discovery：接口处于对端发现状态。</p>
+</li>
+<li><p>detect：接口处于握手状态。</p>
+</li>
+<li><p>loopback(control)：接口处于远端环回状态，丢弃返回的报文，且是远端环回的发起方。</p>
+</li>
+<li><p>loopback(control,forward)：接口处于远端环回状态，转发返回的报文，且是远端环回的发起方。</p>
+</li>
+<li><p>loopback (be controlled)：接口处于远端环回状态，且是远端环回的响应方。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d23504e168 "><p>LoopBack Timeout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d23504e172 "><p>接口的环回测试超时时间。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_efm_session__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_efm_session__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="37%" id="d23504e242"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63%" id="d23504e246"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="37%" headers="d23504e242 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63%" headers="d23504e246 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="efm_enable.html">efm enable</a></div>
+<div><a href="efm_loopback.html">efm loopback</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

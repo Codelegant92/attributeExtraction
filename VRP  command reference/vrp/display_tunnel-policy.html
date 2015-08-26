@@ -1,0 +1,281 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display tunnel-policy">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_tunnel_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel-policy_system_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_tunnel-policy">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display tunnel-policy</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_tunnel-policy"></a><a name="display_tunnel-policy"></a>
+
+
+<h1 class="topictitle1">display tunnel-policy</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display tunnel-policy</strong>命令用来查看隧道策略的配置情况。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display tunnel-policy</strong> [ <em>tunnel-policy-name</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>tunnel-policy-name</em>：隧道策略名。如果指定<em>tunnel-policy-name</em>，则显示指定名称的隧道策略信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置完隧道策略后，可以用<strong>display tunnel-policy</strong>命令确认配置结果是否正确。在应用隧道策略前，可以用<strong>display tunnel-policy</strong>命令查看该隧道策略的相关信息。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_tunnel-policy__d70629e111"></a><a name="d70629e111"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有的隧道策略信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display tunnel-policy</strong>
+Total   tunnel policy num:              2
+Sel-Seq tunnel policy num:              1
+Binding tunnel policy num:              1
+Invalid tunnel policy num:              0
+
+Tunnel Policy Name  Select-Seq                        Load balance No
+---------------------------------------------------------------------
+po2                  CR-LSP LSP                       2
+
+Tunnel Policy Name  Destination          Tunnel Intf        Down switch
+------------------------------------------------------------------------
+po1                 1.1.1.1              Tunnel1/0/2        Disable
+</pre>
+
+<div class="tablenoborder"><a name="display_tunnel-policy__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_tunnel-policy__tb_01" frame="border" border="1" rules="all"><caption>表1 display tunnel-policy命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.049886621315196%" id="d70629e132"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.9501133786848%" id="d70629e136"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.049886621315196%" headers="d70629e132 "><p>Total tunnel policy num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.9501133786848%" headers="d70629e136 "><p>隧道策略总个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.049886621315196%" headers="d70629e132 "><p>Select-Seq tunnel policy num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.9501133786848%" headers="d70629e136 "><p>隧道优先级策略个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.049886621315196%" headers="d70629e132 "><p>Binding tunnel policy num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.9501133786848%" headers="d70629e136 "><p>绑定策略个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.049886621315196%" headers="d70629e132 "><p>Invalid tunnel policy num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.9501133786848%" headers="d70629e136 "><p>无效策略个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.049886621315196%" headers="d70629e132 "><p>Tunnel Policy Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.9501133786848%" headers="d70629e136 "><p>隧道策略的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.049886621315196%" headers="d70629e132 "><p>Select-Seq</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.9501133786848%" headers="d70629e136 "><p>隧道类型的优先级顺序，放在前面的类型的隧道的优先级比放在后面的高。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.049886621315196%" headers="d70629e132 "><p>Load balance No</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.9501133786848%" headers="d70629e136 "><p>允许进行负载分担的隧道条数，缺省值为1。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.049886621315196%" headers="d70629e132 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.9501133786848%" headers="d70629e136 "><p>被绑定的隧道的目的地址，即对端实际接收报文的接口地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.049886621315196%" headers="d70629e132 "><p>Tunnel Intf</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.9501133786848%" headers="d70629e136 "><p>被绑定的隧道的本端Tunnel接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.049886621315196%" headers="d70629e132 "><p>Down Switch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.9501133786848%" headers="d70629e136 "><div class="p">隧道切换功能状态。<ul>
+<li>Enable表示使能该功能。</li>
+<li>Disable表示未使能该功能。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示隧道策略的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display tunnel-policy p1</strong>
+The number of binding : 5
+Tunnel Policy Name  Destination                     Tunnel Intf      Down Switch
+---------------------------------------------------------------------------------
+p1                  1.1.1.1                        Tunnel1/0/0       Disable
+                    2.2.2.2                        Tunnel2/0/0       Disable
+                    4.4.4.4                        Tunnel4/0/0       Disable
+                    3.3.3.3                        Tunnel3/0/0       Disable
+                    5.5.5.5                        Tunnel5/0/0       Disable
+</pre>
+
+<div class="tablenoborder"><a name="display_tunnel-policy__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_tunnel-policy__tb_03" frame="border" border="1" rules="all"><caption>表2 display tunnel-policy tunnel-policy-name命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.049886621315196%" id="d70629e284"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.9501133786848%" id="d70629e288"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.049886621315196%" headers="d70629e284 "><p>The number of binding</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.9501133786848%" headers="d70629e288 "><p>绑定目的地址的个数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_tunnel-policy__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_tunnel-policy__tb_04" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.000000000000004%" id="d70629e321"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="72%" id="d70629e325"><p>修订记录</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.000000000000004%" headers="d70629e321 "><p>VRPV500R005C02B151</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="72%" headers="d70629e325 "><p>删除参数all。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.000000000000004%" headers="d70629e321 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="72%" headers="d70629e325 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpn_tunnel_management_configuration_commands.html">VPN隧道管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="tunnel-policy_system_view.html">tunnel-policy（系统视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

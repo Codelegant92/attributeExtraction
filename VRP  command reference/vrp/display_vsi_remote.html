@@ -1,0 +1,320 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display vsi remote">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_vsi.html">
+<meta name="DC.Relation" scheme="URI" content="vsi.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_vsi_remote">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display vsi remote</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_vsi_remote"></a><a name="display_vsi_remote"></a>
+
+
+
+<h1 class="topictitle1">display vsi remote</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display vsi remote</strong>命令用于显示远程的VSI实例的信息。</p>
+<p>缺省情况下，显示所有LDP/BGP信令方式的远程VSI实例信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display vsi remote</strong> <strong>ldp</strong> [  <strong>router-id</strong> <em>ip-address</em> ] [ <strong>pw-id</strong> <em>pw-id </em>]<span> [<strong> | count</strong> ] </span><span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display vsi remote bgp</strong> [ <strong>nexthop</strong> <em>nexthop-address</em> [ <strong>export-vpn-target</strong> <em>vpn-target</em> ] | <strong>route-distinguisher</strong> <em>route-distinguisher</em> ]<span> [<strong> | count</strong> ] </span><span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ldp</strong>：用于显示LDP信令方式的各种远程VSI实例的信息。</p>
+<p><strong>bgp</strong>：用于显示BGP信令方式的各种远程VSI实例的信息。</p>
+<p><strong>route-id</strong> <em>ip-address</em>：只显示指定对等体的远程VSI实例信息。<em>ip-address</em>是对等体的IPv4地址。</p>
+<p><strong>pw-id</strong> <em>pw-id</em>：只显示指定PW的远程VSI实例信息。<em>pw-id</em>是虚电路号，唯一标志一条虚电路，十进制整数形式，取值范围是1～4294967295。</p>
+<p><strong>nexthop </strong><em>nexthop</em>-<em>address</em>：根据标签块的下一跳地址，显示远端发布过来的标签块。</p>
+<p><strong>export-vpn-target</strong> <em>vpn-target</em>：根据标签块的下一跳地址和出方向的路由属性，显示从远端发布过来的标签块。</p>
+<p><strong>route-distinguisher</strong> <em>route-distinguisher</em>：根据路由标志符显示从远端发布过来的标签块。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display vsi remote</strong>命令后，可以通过在命令行中指定关键字来显示特定信令方式的远程VSI实例信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_vsi_remote__d73230e197"></a><a name="d73230e197"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示LDP信令方式的远端VSI实例的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display vsi remote ldp</strong></pre>
+<pre class="screen">Vsi      Peer                VC      Group   Vsi          MTU      Vsi</pre>
+<pre class="screen">ID       RouterID            Label   ID      Type         Value    Index</pre>
+<pre class="screen">123      3.3.3.9            17408   0       vlan         1500     1</pre>
+
+<div class="tablenoborder"><a name="display_vsi_remote__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vsi_remote__tb_01" frame="border" border="1" rules="all"><caption>表1 display vsi remote ldp命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.81859410430839%" id="d73230e223"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.18140589569161%" id="d73230e227"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d73230e223 "><p>Vsi ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d73230e227 "><p>Vsi的ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d73230e223 "><p>Peer RouterID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d73230e227 "><p>对等体IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d73230e223 "><p>VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d73230e227 "><p>VC标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d73230e223 "><p>Group ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d73230e227 "><p>组ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d73230e223 "><p>Vsi Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d73230e227 "><p>PW封装类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d73230e223 "><p>MTU Value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d73230e227 "><p>最大转发单元值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d73230e223 "><p>Vsi Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d73230e227 "><p>Vsi的索引</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示BGP信令方式的远端VSI实例的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display vsi remote bgp</strong></pre>
+<pre class="screen">Total Number     : 1</pre>
+<pre class="screen">  **BGP RD             : 1.1.1.9:1                  Number    : 1</pre>
+<pre class="screen">    NextHop            : 1.1.1.9</pre>
+<pre class="screen">    EncapType          : vlan</pre>
+<pre class="screen">    MTU                : 1500</pre>
+<pre class="screen">    Export vpn target  : 100:1,</pre>
+<pre class="screen">    SiteID             : 2</pre>
+<pre class="screen">    Remote Label Block : 21504/5/0,   </pre>
+
+<div class="tablenoborder"><a name="display_vsi_remote__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vsi_remote__tb_02" frame="border" border="1" rules="all"><caption>表2 display vsi remote bgp命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.80599647266314%" id="d73230e349"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.19400352733686%" id="d73230e353"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d73230e349 "><p>Total Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d73230e353 "><p>BGP信令方式的远端VSI实例的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d73230e349 "><p>BGP RD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d73230e353 "><p>本端VSI的Route-Distinguisher</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d73230e349 "><p>Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d73230e353 "><p>远端VSI实例信息的编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d73230e349 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d73230e353 "><p>下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d73230e349 "><p>EncapType</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d73230e353 "><p>封装类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d73230e349 "><p>MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d73230e353 "><p>最大传输单元</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d73230e349 "><p>Export vpn target</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d73230e353 "><p>出方向RT</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d73230e349 "><p>SiteID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d73230e353 "><p>远端VSI实例的Site ID值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d73230e349 "><p>Remote Label Block</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d73230e353 "><p>远端标签块</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_vsi_remote__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vsi_remote__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.0047871000252%" id="d73230e474"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.99521289997481%" id="d73230e478"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d73230e474 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d73230e478 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d73230e474 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d73230e478 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_vsi.html">display vsi</a></div>
+<div><a href="vsi.html">vsi</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

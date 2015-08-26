@@ -1,0 +1,101 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="stp tc-protection threshold">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mstp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="stp_tc-protection.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="stp_tc-protection_threshold">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>stp tc-protection threshold</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="stp_tc-protection_threshold"></a><a name="stp_tc-protection_threshold"></a>
+
+
+<h1 class="topictitle1">stp tc-protection threshold</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>stp tc-protection threshold</strong>命令用来配置MSTP进程在收到TC类型BPDU报文后，单位时间内，处理TC类型BPDU报文并立即刷新转发表项的阈值。</p>
+<p><strong>undo stp tc-protection threshold</strong>命令用来恢复MSTP进程在收到TC类型BPDU报文后，单位时间内，处理TC类型BPDU报文并立即刷新转发表项的缺省值。</p>
+<p>缺省情况下，MSTP进程在收到TC类型BPDU报文后，单位时间内，处理TC类型BPDU报文并立即刷新转发表项的缺省值是3。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>stp</strong> <strong>tc-protection</strong> <strong>threshold</strong> <em>threshold</em></p>
+<p><strong>undo</strong> <strong>stp</strong> <strong>tc-protection</strong> <strong>threshold</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>threshold</strong> <em>threshold</em>：MSTP进程在收到TC类型BPDU报文后，单位时间内，处理TC类型BPDU报文并立即刷新转发表项的阈值。十进制整数形式，取值范围是1~255。缺省值为3。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图、MSTP进程视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置<strong>stp tc-protection</strong>命令后，在单位时间内，MSTP进程处理TC类型BPDU报文的次数，由<strong>stp tc-protection threshold</strong>命令指定。缺省的单位时间是2秒，缺省的处理次数是3次。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>单位时间的取值与MSTP的Hello Time一致，可以通过命令<a href="stp_timer_hello.html">stp timer hello</a>配置。</p>
+</div></div>
+<p>如果在单位时间内，MSTP进程在收到TC类型BPDU报文数量大于<strong>stp tc-protection threshold</strong>命令中指定的阈值，那么MSTP进程只会处理阈值指定的次数。对于其他超出阈值的TC类型BPDU报文，定时器到期后，MSTP进程只对其统一处理一次。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="stp_tc-protection_threshold__d122122e86"></a><a name="d122122e86"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置MSTP进程0和MSTP进程1处理TC类型BPDU报文并立即刷新转发表项的阈值为5。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>stp tc-protection threshold 5</strong>
+[Quidway] <strong>stp process 1</strong>
+[Quidway-stp-process-1] <strong>stp tc-protection threshold 5</strong>
+</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="stp_tc-protection_threshold__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="stp_tc-protection_threshold__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d122122e115"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d122122e119"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mstp_configuration_commands.html">MSTP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="stp_tc-protection.html">stp tc-protection</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

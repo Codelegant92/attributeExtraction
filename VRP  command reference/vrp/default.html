@@ -1,0 +1,125 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="default">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="apply_cost.html">
+<meta name="DC.Relation" scheme="URI" content="import-route_ospf.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="default">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>default</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="default"></a><a name="default"></a>
+
+
+<h1 class="topictitle1">default</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>default</strong>命令用来配置引入外部路由时的缺省参数，包括OSPF引入外部路由的开销、类型（Type1或Type2）、标记、路由数量。</p>
+<p><strong>undo default</strong>命令用来恢复各项的缺省值。</p>
+<p>缺省情况下，OSPF引入外部路由的缺省度量值为1，一次可引入外部路由数量的上限为2147483647，引入的外部路由类型为Type2，设置缺省标记值为1。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>default </strong>{ <strong>cost</strong> { <em>cost</em> | <strong>inherit-metric</strong> } | <strong>limit</strong> <em>limit</em> | <strong>tag</strong> <em>tag</em> | <strong>type </strong><em>type</em> } <sup>*</sup></p>
+<p><strong>undo default</strong> { <strong>cost</strong> | <strong>limit</strong> | <strong>tag</strong> | <strong>type</strong> } <sup>*</sup></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>cost</strong><em> cost</em>：指定OSPF引入的外部路由的缺省度量值。整数形式，取值范围是0～16777214。</p>
+<p><strong>inherit-metric</strong>：引入路由的开销值为路由自带的cost值。如果没有指定开销值，则使用<strong>default</strong>命令设置的缺省开销值。</p>
+<p><strong>limit</strong><em> limit</em>：指定单位时间内引入外部路由上限的缺省值。整数形式，取值范围是1～2147483647。</p>
+<p><strong>tag</strong><em> tag</em>：指定外部路由的标记。整数形式，取值范围是0～4294967295。</p>
+<p><strong>type</strong><em> type</em>：指定外部路由类型，取值为1或2。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>OSPF视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>路由标记可以用来标识协议相关的信息，如OSPF接收BGP时用来区分自治系统的编号。</p>
+<p>可以通过以下三条命令设置引入路由的开销值，其优先级依次递减：</p>
+<ul>
+<li>通过<strong>apply cost</strong>命令设置路由的开销值。</li>
+<li>通过<strong>import-route</strong>（OSPF）命令设置引入路由的开销值。</li>
+<li>通过<strong>default</strong>命令设置引入路由的缺省开销值。</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="default__d9541e141"></a><a name="d9541e141"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置路由开销、类型、标记和数量上限的缺省值。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ospf 100</strong></pre>
+<pre class="screen">[Quidway-ospf-100]<strong> default cost 10 limit 20000 tag 100 type 2</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="default__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="default__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d9541e168"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d9541e172"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d9541e168 "><p>VRPV500R003C07B200</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d9541e172 "><p>修改<strong>cost</strong> <em>cost</em>参数的取值范围。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d9541e168 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d9541e172 "><p>新增可选关键字&#8220;<strong>inherit-metric</strong>&#8221;。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="apply_cost.html">apply cost</a></div>
+<div><a href="import-route_ospf.html">import-route (OSPF)</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

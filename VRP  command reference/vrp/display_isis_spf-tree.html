@@ -1,0 +1,657 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis spf-tree">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_spf-tree">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis spf-tree</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_spf-tree"></a><a name="display_isis_spf-tree"></a>
+
+
+<h1 class="topictitle1">display isis spf-tree</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis spf-tree</strong>命令用来查看SPF树的拓扑信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis spf-tree</strong> [ <strong>systemid</strong> <em>systemid</em> | <strong>dname</strong> <em>dname</em> ] [ [ <strong>level-1</strong> | <strong>level-2</strong> ] | <strong>ipv6</strong> | <strong>verbose</strong> ] <sup>*</sup> [ <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display isis</strong> [ <em>process-id</em> ] <strong>spf-tree statistics</strong> [ [ <strong>level-1</strong> | <strong>level-2</strong> ] | <strong>ipv6</strong> ] <sup>*</sup> [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>systemid</strong> <em>systemid</em>：某个系统ID或伪节点ID路由器的SPF树。格式为XXXX.XXXX.XXXX[.XX]。</p>
+<p><strong>dname</strong> <em>dname</em>：某个动态名称路由器的SPF树。</p>
+<p><strong>level-1</strong>：Level-1的SPF树。</p>
+<p><strong>level-2</strong>：Level-2的SPF树。</p>
+<p><strong>ipv6</strong>：IPv6拓扑的SPF树。</p>
+<p><strong>verbose</strong>：SPF树的详细信息。</p>
+<p><em>process-id</em>：某个IS-IS进程的SPF树。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定IPv4 VPN的IS-IS多实例进程。<em>vpn-instance-name</em>为IPv4 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn-instance default</strong>：除IPv4 VPN实例外的所有IS-IS进程，即所有的IPv6 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：指定IPv6 VPN的IS-IS多实例进程。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn6-instance default</strong>：除IPv6 VPN实例外的所有IS-IS进程，即所有的IPv4 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>statistics</strong>：SPF树当前状态的统计信息，包括SPF树上的节点信息和链路信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>statistics</strong>参数可以查看SPF树的当前状态。只有当SPF的状态为Completed时，I-SPF计算完成，生成的SPF树才能作为路由计算的依据。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_spf-tree__d36691e277"></a><a name="d36691e277"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示SPF树的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis spf-tree</strong></pre>
+<pre class="screen">                         Shortest Path Tree for ISIS(1)
+                         ------------------------------
+
+         Flags:   T-System is on SPF TREE  R-System is directly reachable
+                  O-System is Overload     D-System or Link is to be deleted
+                  C-Neighbor is child      P-Neighbor is parent
+                  G-Cost gets greater      L-Cost gets lower
+                  H-Nexthop is changed     U-Protocol usage is changed
+                  V-Link is involved       N-Link is a new path
+                  S-Link is IGP Shortcut   *-Relative cost
+                       ISIS(1) Level-1 Shortest Path Tree
+                       ----------------------------------
+
+ SpfNode           NodeFlags  NeighbourNode     LinkCost   LinkFlags
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+ 0000.0000.0001.00 T/-/-/-   &gt;0000.0000.0002.01       10   P/-/-/-/-/-/-
+&gt;0000.0000.0002.00 T/-/-/-    0000.0000.0003.01       10   C/-/-/-/-/-/-
+                                   &gt;0000.0000.0002.01       10   C/-/-/-/-/-/-
+                                    0000.0000.0004.00      -10*  C/-/-/-/S/-/-
+&gt;0000.0000.0002.01 T/R/-/-    0000.0000.0001.00        0   C/-/-/-/-/-/-
+                                    &gt;0000.0000.0002.00        0   P/-/-/-/-/-/-
+ 0000.0000.0003.00 T/-/-/-    0000.0000.0004.02       10   C/-/-/-/-/-/-
+                                    0000.0000.0003.01       10   P/-/-/-/-/-/-
+ 0000.0000.0003.01 T/R/-/-    0000.0000.0003.00        0   C/-/-/-/-/-/-
+                                    &gt;0000.0000.0002.00        0   P/-/-/-/-/-/-
+ 0000.0000.0004.00 T/-/-/-    0000.0000.0004.02       10   P/-/-/-/-/-/-
+                                    0000.0000.0004.01       10   C/-/-/-/-/-/-
+ 0000.0000.0004.01 T/-/-/-    0000.0000.0004.00        0   P/-/-/-/-/-/-
+                                    0000.0000.0005.00        0   C/-/-/-/-/-/-
+ 0000.0000.0004.02 T/-/-/-    0000.0000.0004.00        0   C/-/-/-/-/-/-
+                                    0000.0000.0003.00        0   P/-/-/-/-/-/-
+ 0000.0000.0005.00 T/-/-/-    0000.0000.0004.01       10   P/-/-/-/-/-/-
+                       ISIS(1) Level-2 Shortest Path Tree
+                       ----------------------------------
+
+ SpfNode           NodeFlags  NeighbourNode     LinkCost   LinkFlags
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+ 0000.0000.0001.00 T/-/-/-   &gt;0000.0000.0002.01       10   P/-/-/-/-/-/-
+&gt;0000.0000.0002.00 T/-/-/-    0000.0000.0003.01       10   C/-/-/-/-/-/-
+                                   &gt;0000.0000.0002.01       10   C/-/-/-/-/-/-
+                                    0000.0000.0004.00      -10*  C/-/-/-/S/-/-
+&gt;0000.0000.0002.01 T/R/-/-    0000.0000.0001.00        0   C/-/-/-/-/-/-
+                                    &gt;0000.0000.0002.00        0   P/-/-/-/-/-/-
+ 0000.0000.0003.00 T/-/-/-    0000.0000.0004.02       10   C/-/-/-/-/-/-
+                                    0000.0000.0003.01       10   P/-/-/-/-/-/-
+ 0000.0000.0003.01 T/R/-/-    0000.0000.0003.00        0   C/-/-/-/-/-/-
+                                    &gt;0000.0000.0002.00        0   P/-/-/-/-/-/-
+ 0000.0000.0004.00 T/-/-/-    0000.0000.0004.02       10   P/-/-/-/-/-/-
+                                    0000.0000.0004.01       10   C/-/-/-/-/-/-
+ 0000.0000.0004.01 T/-/-/-    0000.0000.0004.00        0   P/-/-/-/-/-/-
+                                    0000.0000.0005.00        0   C/-/-/-/-/-/-
+ 0000.0000.0004.02 T/-/-/-    0000.0000.0004.00        0   C/-/-/-/-/-/-
+                                    0000.0000.0003.00        0   P/-/-/-/-/-/-
+ 0000.0000.0005.00 T/-/-/-    0000.0000.0004.01       10   P/-/-/-/-/-/-
+</pre>
+
+<div class="tablenoborder"><a name="display_isis_spf-tree__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_spf-tree__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis spf-tree命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.62484252960443%" id="d36691e299"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.37515747039556%" id="d36691e303"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e299 "><p>SpfNode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e303 "><p>网络拓扑中的节点ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e299 "><p>NodeFlags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e303 "><p>标记节点ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e299 "><p>NeighbourNode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e303 "><p>邻居节点ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e299 "><p>LinkCost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e303 "><p>链路开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e299 "><p>LinkFlags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e303 "><p>链路标记</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示SPF树的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis spf-tree verbose</strong></pre>
+<pre class="screen">                         Shortest Path Tree for ISIS(1)
+                         ------------------------------
+
+                       ISIS(1) Level-2 Shortest Path Tree
+                       ----------------------------------
+ 0000.0000.0001.00
+   Distance            : 10
+   Distance-URT        : 10
+   Flags               : SPT/V6_Islt
+   IPv4 Nexthops-URT   : 1
+             (1) 10.0.0.1         IF:GE1/0/0  NBR:0000.0000.0001
+   IPv4 Nexthops-MIGP  : 0
+   IPv6 Nexthops       : 0
+   Neighbors: 1 (Children:0 Parents:1 Others:0)
+             (1)  &gt;0000.0000.0002.01
+                     Cost  : 10
+                     Flags : Parent
+
+&gt;0000.0000.0002.00
+   Distance            : 0
+   Distance-URT        : 0
+   Flags               : SPT
+   IPv4 Nexthops-URT   : 0
+   IPv4 Nexthops-MIGP  : 0
+   IPv6 Nexthops       : 0
+   Neighbors: 3 (Children:3 Parents:0 Others:0)
+             (1)   0000.0000.0003.01
+                     Cost  : 10
+                     Flags : Child
+
+             (2)  &gt;0000.0000.0002.01
+                     Cost  : 10
+                     Flags : Child
+
+             (3)   0000.0000.0004.00
+                     Cost  : -10(Relative)
+                             C:-10 I:Tunnel1/0/0
+                     Flags : Adj/Child/Shortcut
+&gt;0000.0000.0002.01
+   Distance            : 10
+   Distance-URT        : 10
+   Flags               : SPT/Direct/Isolate/V6_Islt
+   IPv4 Nexthops-URT   : 0
+   IPv4 Nexthops-MIGP  : 0
+   IPv6 Nexthops       : 0
+   Neighbors: 2 (Children:1 Parents:1 Others:0)
+             (1)   0000.0000.0001.00
+                     Cost  : 0
+                             C:0 I:GigabitEthernet1/0/0
+                     Flags : Adj/Child
+
+             (2)  &gt;0000.0000.0002.00
+                     Cost  : 0
+                     Flags : Parent
+
+ 0000.0000.0003.00
+   Distance            : 10
+   Distance-URT        : 10
+   Flags               : SPT/V6_Islt
+   IPv4 Nexthops-URT   : 1
+             (1) 10.0.1.1         IF:GE2/0/0  NBR:0000.0000.0003
+   IPv4 Nexthops-MIGP  : 0
+   IPv6 Nexthops       : 0
+   Neighbors: 2 (Children:1 Parents:1 Others:0)
+             (1)   0000.0000.0004.02
+                     Cost  : 10
+                     Flags : Child
+
+             (2)   0000.0000.0003.01
+                     Cost  : 10
+                     Flags : Parent
+
+ 0000.0000.0003.01
+   Distance            : 10
+   Distance-URT        : 10
+   Flags               : SPT/Direct/Isolate/V6_Islt
+   IPv4 Nexthops-URT   : 0
+   IPv4 Nexthops-MIGP  : 0
+   IPv6 Nexthops       : 0
+   Neighbors: 2 (Children:1 Parents:1 Others:0)
+             (1)   0000.0000.0003.00
+                     Cost  : 0
+                             C:0 I:GigabitEthernet2/0/0
+                     Flags : Adj/Child
+
+             (2)  &gt;0000.0000.0002.00
+                     Cost  : 0
+                     Flags : Parent
+
+ 0000.0000.0004.00
+   Distance            : 20
+   Distance-URT        : 10
+   Flags               : SPT/Shortcut/V6_Islt
+   IPv4 Nexthops-URT   : 1
+             (1) 2.2.2.2          IF:Tun1/0/0  NBR:0000.0000.0004
+   IPv4 Nexthops-MIGP  : 1
+             (1) 10.0.1.1         IF:GE2/0/0  NBR:0000.0000.0003
+   IPv6 Nexthops       : 0
+   Neighbors: 2 (Children:1 Parents:1 Others:0)
+             (1)   0000.0000.0004.02
+                     Cost  : 10
+                     Flags : Parent
+
+             (2)   0000.0000.0004.01
+                     Cost  : 10
+                     Flags : Child
+
+ 0000.0000.0004.01
+   Distance            : 30
+   Distance-URT        : 20
+   Flags               : SPT/Shortcut/V6_Islt
+   IPv4 Nexthops-URT   : 1
+             (1) 2.2.2.2          IF:Tun1/0/0  NBR:0000.0000.0004
+   IPv4 Nexthops-MIGP  : 1
+             (1) 10.0.1.1         IF:GE2/0/0  NBR:0000.0000.0003
+   IPv6 Nexthops       : 0
+   Neighbors: 2 (Children:1 Parents:1 Others:0)
+             (1)   0000.0000.0004.00
+                     Cost  : 0
+                     Flags : Parent
+
+             (2)   0000.0000.0005.00
+                     Cost  : 0
+                     Flags : Child
+
+ 0000.0000.0004.02
+   Distance            : 20
+   Distance-URT        : 20
+   Flags               : SPT/V6_Islt
+   IPv4 Nexthops-URT   : 1
+             (1) 10.0.1.1         IF:GE2/0/0  NBR:0000.0000.0003
+   IPv4 Nexthops-MIGP  : 0
+   IPv6 Nexthops       : 0
+   Neighbors: 2 (Children:1 Parents:1 Others:0)
+             (1)   0000.0000.0004.00
+                     Cost  : 0
+                     Flags : Child
+
+             (2)   0000.0000.0003.00
+                     Cost  : 0
+                     Flags : Parent
+
+ 0000.0000.0005.00
+   Distance            : 30
+   Distance-URT        : 20
+   Flags               : SPT/Shortcut/V6_Islt
+   IPv4 Nexthops-URT   : 1
+             (1) 2.2.2.2          IF:Tun1/0/0  NBR:0000.0000.0004
+   IPv4 Nexthops-MIGP  : 1
+             (1) 10.0.1.1         IF:GE2/0/0  NBR:0000.0000.0003
+   IPv6 Nexthops       : 0
+   Neighbors: 1 (Children:0 Parents:1 Others:0)
+             (1)   0000.0000.0004.01
+                     Cost  : 10
+                     Flags : Parent
+</pre>
+
+<div class="tablenoborder"><a name="display_isis_spf-tree__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_spf-tree__tb_02" frame="border" border="1" rules="all"><caption>表2 display isis spf-tree verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.62484252960443%" id="d36691e389"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.37515747039556%" id="d36691e393"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e389 "><p>Distance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e393 "><p>从根节点到目的节点的最短路径的开销值，不包含TE-Tunnel链路在内</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e389 "><p>Distance-URT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e393 "><p>从根节点到目的节点的最短路径的开销值，包含TE-Tunnel链路在内</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e389 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e393 "><div class="p"><ul>
+<li><p>SPT/V6_Islt：节点不在IPV6树上</p>
+</li>
+<li><p>SPT/V4_Islt：节点不在IPV4树上</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e389 "><p>IPv4 Nexthops-URT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e393 "><p>该节点在单播路由表中的IPv4下一跳信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e389 "><p>IPv4 Nexthops-MIGP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e393 "><p>该节点在MIGP（Multicast IGP）表中的IPv4下一跳信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e389 "><p>IPv6 Nexthops</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e393 "><p>该节点在单播路由表中的IPv6下一跳信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e389 "><p>Neighbors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e393 "><p>包括该节点的所有邻居信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e389 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e393 "><p>从根节点到该节点的链路开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e389 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e393 "><div class="p">邻居和自身的关系<ul>
+<li><p>Parent：邻居是父节点</p>
+</li>
+<li><p>Child：邻居是子节点</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示SPF树当前状态的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis spf-tree statistics</strong>
+Statistics information of SPT for ISIS(1)
+			Level-2 Statistics
+----------------------------------------------------
+Nodes information:
+         Total:                               3605
+         Count of nodes in SPT:               3605
+         Count of isolate nodes in SPT:       1
+         Count of IPv6 isolate nodes in SPT:  3604
+         Max Distance of nodes in SPT:        1220
+Links information:
+         Total:                               14172
+         Count of links from Parent to Son:   7085
+         Count of links from Son to Parent:   7085
+         Count of links that just changed:    0
+Status of SPF:                                Completed</pre>
+
+<div class="tablenoborder"><a name="display_isis_spf-tree__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_spf-tree__tb_03" frame="border" border="1" rules="all"><caption>表3 display isis spf-tree statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.62484252960443%" id="d36691e541"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.37515747039556%" id="d36691e545"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e541 "><p>Total（Nodes information）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e545 "><p>节点总数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e541 "><p>Count of nodes in SPT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e545 "><p>SPF树中的节点数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e541 "><p>Count of isolate nodes in SPT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e545 "><p>网络拓扑中孤立的节点数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e541 "><p>Count of IPv6 isolate nodes in SPT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e545 "><p>网络拓扑中孤立的IPv6节点数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e541 "><p>Max Distance of nodes in SPT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e545 "><p>根节点到叶子节点间的最大距离值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e541 "><p>Total（Links information）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e545 "><p>链路总数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e541 "><p>Count of links from Parent to Son</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e545 "><p>从父节点指向子节点的链路数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e541 "><p>Count of links from Son to Parent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e545 "><p>从子节点指向父节点的链路数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e541 "><p>Count of links that just changed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e545 "><p>刚刚变化的链路数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d36691e541 "><p>Status of SPF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d36691e545 "><div class="p">SPF计算的状态。具体情况如下：<ul>
+<li><p>Completed：完成</p>
+</li>
+<li><p>Scheduled：准备进入</p>
+</li>
+<li><p>Running：正在运行</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_spf-tree__tb_05"></a><a name="tb_05"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_spf-tree__tb_05" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d36691e691"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d36691e695"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36691e691 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36691e695 "><p>增加参数<strong>ipv6</strong>，<strong>vpn-instance default</strong>，<strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> }。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36691e691 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36691e695 "><p>增加参数<strong>statistics</strong>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36691e691 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36691e695 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

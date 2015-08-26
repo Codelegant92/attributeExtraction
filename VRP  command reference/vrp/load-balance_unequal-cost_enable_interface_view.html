@@ -1,0 +1,114 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="load-balance unequal-cost enable（接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_performance_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="load-balance_system_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="load-balance_unequal-cost_enable_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>load-balance unequal-cost enable（接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="load-balance_unequal-cost_enable_interface_view"></a><a name="load-balance_unequal-cost_enable_interface_view"></a>
+
+
+<h1 class="topictitle1">load-balance unequal-cost enable（接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>load-balance</strong> <strong>unequal-cost</strong> <strong>enable</strong>命令用来使能当前接口非等价负载分担功能。</p>
+<p><strong>undo</strong> <strong>load-balance</strong> <strong>unequal-cost</strong> <strong>enable</strong> 命令用来去使能当前接口非等价负载分担功能。</p>
+<p>缺省情况下，不使能当前接口非等价负载分担功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>load-balance</strong> <strong>unequal-cost</strong> <strong>enable</strong></p>
+<p><strong>undo</strong> <strong>load-balance</strong> <strong>unequal-cost</strong> <strong>enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>非等价负载分担UCMP（Unequal Cost Multiple Path），是指如果到达目的地有多条带宽不同的等价物理链路，则流量会根据带宽按比例分担到每条物理链路上。这样所有链路可根据带宽不同而分担不同比例的流量，使负载分担更合理。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li>该命令只支持基于物理接口的配置，不支持基于逻辑接口的配置。</li>
+<li>只有当本设备中到达同一目标地址的所有接口上都使能了UCMP功能，且触发了FIB表项重新下刷，各链路才在该设备上进行非等价负载分担。如果其中任一接口没有使能UCMP功能，即使触发了FIB表项重新下刷，各链路仍进行等价负载分担。</li>
+</ul>
+</div></div>
+<p>当需要在带宽不同的几条等价链路上实现非等价负载分担时，可以在各接口上配置该功能。通过执行命令<a href="load-balance_system_view.html">load-balance（系统视图）</a>可以配置负载分担的方式，现在只支持通过流方式进行非等价负载分担。</p>
+<p>通过命令行在物理接口上使能/去使能UCMP功能，并不立即触发路由重新计算或FIB重新下刷。可通过重启本设备中已经改变了非等价负载分担配置（使能/去使能）的任一接口来触发FIB表项重新下刷，从而使能UCMP。</p>
+<p>非等价负载分担只是针对等价路由，也就是说与路由协议层面无关，不区分IGP还是BGP。</p>
+<p>在各条非等价负载分担路径中，任一条链路的带宽不能小于总带宽的1/16。否则该链路不参与非等价负载分担。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="load-balance_unequal-cost_enable_interface_view__d89659e96"></a><a name="d89659e96"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口GigabitEthernet1/0/0上使能非等价负载分担功能。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>load-balance unequal-cost enable</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="load-balance_unequal-cost_enable_interface_view__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="load-balance_unequal-cost_enable_interface_view__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="38%" id="d89659e123"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="62%" id="d89659e127"><p>修订记录</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d89659e123 "><p>VRPV500R005C02B180</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d89659e127 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_performance_configuration_commands.html">IP性能配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="load-balance_system_view.html">load-balance（系统视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

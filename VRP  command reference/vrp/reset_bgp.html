@@ -1,0 +1,85 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset bgp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_bgp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset bgp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_bgp"></a><a name="reset_bgp"></a>
+
+
+<h1 class="topictitle1">reset bgp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset bgp</strong>命令用来复位指定的BGP连接。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset bgp</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>vpnv4</strong> ] { <strong>all</strong> | <em>as-number</em> | <em>ipv4-address</em> | <strong>group</strong> <em>group-name</em> | <strong>external</strong> | <strong>internal</strong> }</p>
+<p><strong>reset bgp ipv4 all</strong></p>
+<p><strong>reset bgp l2vpn</strong> { <strong>all</strong> | <em>as-number</em> | <em>ipv4-address</em> | <strong>external</strong> | <strong>internal</strong> }</p>
+<p><strong>reset bgp ipv6</strong> { <strong>all</strong> | <em>as-number</em> | <strong>group</strong> <em>group-name</em> | <em>ipv6-address</em> | <em>ipv4-address</em> | <strong>external</strong> | <strong>internal</strong> }</p>
+<p><strong>reset bgp</strong> <strong>vpnv6</strong> { <strong>all</strong> | <em>as-number</em> | <em>ipv4-address</em> | <strong>group</strong> <em>group-name</em> | <strong>external</strong> | <strong>internal</strong> }</p>
+<p><strong>reset bgp</strong> <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> { <strong>all</strong> | <em>as-number</em> | <em>ipv6-address</em> | <strong>group</strong> <em>group-name</em> | <strong>external</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：复位指定VPN实例的BGP连接。</p>
+<p><strong>vpnv4</strong>：复位VPNv4相关的BGP连接。</p>
+<p><strong>all</strong>：复位所有BGP连接。</p>
+<p><em>as-number</em>：复位与指定自治系统号的BGP邻居的BGP会话。</p>
+<p><em>ipv4-address</em>：复位与指定BGP对等体的连接。</p>
+<p><strong>group</strong> <em>group-name</em>：复位与指定BGP对等体组的连接。</p>
+<p><strong>external</strong>：复位所有EBGP连接。</p>
+<p><strong>internal</strong>：复位所有IBGP连接。</p>
+<p><strong>l2vpn</strong>：复位L2VPN相关的BGP连接。</p>
+<p><em>ipv6-address</em>：复位与指定BGP4+对等体的TCP连接，通过此连接学到的所有路由也同时被删除。</p>
+<p><strong>vpnv6</strong>：复位VPNv6相关的BGP连接。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：复位指定IPv6 VPN实例的BGP连接。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>使用该命令后将导致BGP建立的TCP连接复位，并重新建立对等体间的邻居关系。请务必谨慎使用。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_bgp__d111502e230"></a><a name="d111502e230"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 复位所有BGP连接。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset bgp all</strong></pre>
+<p># 复位与对等体2345:ABCD::9的BGP会话连接。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset bgp ipv6 2345:ABCD::9</strong></pre>
+<p># 复位所有BGP VPNv6连接。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset bgp vpnv6 all</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

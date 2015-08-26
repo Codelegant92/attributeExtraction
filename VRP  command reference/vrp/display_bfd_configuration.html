@@ -1,0 +1,453 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display bfd configuration">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_bfd_configuration">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display bfd configuration</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_bfd_configuration"></a><a name="display_bfd_configuration"></a>
+
+
+<h1 class="topictitle1">display bfd configuration</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display bfd configuration</strong>命令用来查看BFD会话配置信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display bfd configuration</strong> { <strong>all</strong> | <strong>static</strong> [ <span><strong>for-vsi-pw</strong> |</span> <strong>for-ip</strong> | <strong>for-lsp</strong> | <strong>for-pw</strong> | <strong>for-te</strong> <span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span> ] <span>| <strong>vsi-pw vsi</strong> <em>vsi-name</em> <strong>peer</strong> <em>peer-address</em> [ <strong>vc-id</strong> <em>vc-id</em> ] </span>| <strong>passive-dynamic</strong> [ <strong>peer-ip</strong> <em>peer-ip</em> <strong>remote-discriminator</strong> <em>discriminator</em> ] } [ <strong>verbose</strong> ]</p>
+<p><strong>display bfd configuration</strong> { <strong>static</strong> [ <strong>name</strong> <em>cfg-name</em> ] | <strong>discriminator</strong> <em>local-discr-value</em> | <strong>dynamic</strong> | <strong>peer-ip</strong> <em>peer-ip</em> [ <strong>vpn-instance</strong> <em>vpn-name</em> | <strong>static-auto</strong> ] } [ <strong>verbose</strong> ]</p>
+<p><strong>display bfd configuration</strong> { <strong>ldp-lsp</strong> <strong>peer-ip</strong> <em>peer-ip</em> [ <strong>interface</strong> <em>interface-type</em> <em>interface-number</em> ] | <strong>static-lsp</strong> <em>lsp-name</em> | <strong>mpls-te</strong> <strong>interface</strong> {<em>interface-type</em> <em>interface-number</em> } [ <strong>te-lsp</strong> ] | <strong>pw interface</strong> <em>interface-type</em> <em>interface-number</em> [ <strong>secondary</strong> ] } [ <strong>verbose</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：显示所有BFD配置的信息。</p>
+<p><strong>static</strong>：显示静态BFD配置信息。</p>
+<p><strong>name</strong> <em>cfg-name</em>：显示指定名称的静态BFD配置信息。</p>
+<p><strong>for-ip</strong>：显示检测IP链路的BFD配置信息。</p>
+<p><strong>for-lsp</strong>：显示检测LSP链路的BFD配置信息。</p>
+<p><strong>for-pw</strong>：显示检测PW链路的BFD配置信息。</p>
+<p><strong>for-vsi-pw</strong>:显示检测   VSI PW 的BFD配置信息。</p>
+<p><strong>for&#8211;te</strong>：显示检测TE隧道的BFD配置信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+<p><em>vsi-name</em>：VSI实例的名称，不区分大小写，字符串类型，长度范围是1～31。</p>
+<p><strong>peer</strong> <em>peer-address</em>：VSI PW
+对端的IPv4地址，点分十进制。</p>
+<p><strong>vc-id</strong> <em>vc-id</em>：虚电路的唯一标识，一般用于两端VSI ID不同但要求互通的情况。参数<em>vc-id</em>不能与本端其他VSI配置的VSI ID相同，也不能与本端其他<strong>negotiate-vc-id</strong>指定的VSI ID相同，即<em>vc-id</em>是没有被用过的虚电路号，十进制整数形式，取值范围为1～4294967295。</p>
+<p><strong>remote-discriminator</strong> <em>discriminator</em>：主动发起BFD会话的源端<span class="keyword">路由器</span>的BFD本地标识符，取值范围是8192～16383。</p>
+<p><strong>verbose</strong>：显示详细的BFD配置信息。</p>
+<p><strong>dynamic</strong>：显示动态BFD配置信息。</p>
+<p><strong>static-auto</strong>：显示静态自协商BFD配置信息。</p>
+<p><strong>discriminator</strong> <em>local-discr-value</em>：显示指定本地标识符的BFD配置信息，标识符取值范围1～16383。</p>
+<p><strong>peer-ip</strong> <em>peer-ip</em>：显示与指定的IP地址绑定的BFD配置信息。</p>
+<p><strong>vpn-instance</strong> <em>vpn-name</em>：显示与指定的VPN实例绑定的BFD配置信息。</p>
+<p><strong>ldp-lsp</strong>：显示检测LDP LSP的BFD配置信息。</p>
+<p><strong>static-lsp</strong>：显示检测静态LSP的BFD配置信息。</p>
+<p><em>lsp-name</em>：静态LSP的名称。</p>
+<p><strong>mpls-te</strong>：显示检测MPLS TE的BFD配置信息。</p>
+<p><strong>te-lsp</strong>：显示检测与TE绑定的主LSP的配置信息。</p>
+<p><strong>pw</strong>：显示检测PW的BFD配置信息。</p>
+<p><strong>secondary</strong>：显示检测备PW的BFD配置信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当BFD会话比较多时，可以通过参数选择只查看指定类型、名称或对端IP的BFD会话信息。</p>
+<p>如果静态自协商会话和动态会话共用时，根据BFD配置类型（静态、动态）进行查询时，共用会话配置既属于静态会话配置，也属于动态会话配置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_bfd_configuration__d13924e378"></a><a name="d13924e378"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有BFD会话的配置信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bfd configuration all</strong>
+--------------------------------------------------------------------------------
+CFG Name        CFG Type       LocalDiscr MIndex    SessNum  Commit   AdminDown
+--------------------------------------------------------------------------------
+3               S_IP_IF        10         16384     0        True     False
+4               S_IP_IF        61         16385     1        True     False
+eth63           S_IP_IF        106        16386     1        True     False
+eth63forip      S_IP_IF        1511       16387     1        True     False
+g1/0/6          S_IP_IF        101        16388     1        True     False
+g7/0/22         S_IP_IF        103        16389     1        True     False
+dyn_8200        Dynamic        8200       16398     1        True     False
+dyn_8201        Dynamic        8201       16399     1        True     False
+--------------------------------------------------------------------------------
+     Total Commit/Uncommit CFG Number : 8/0                                     </pre>
+
+<div class="tablenoborder"><a name="display_bfd_configuration__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bfd_configuration__tb_01" frame="border" border="1" rules="all"><caption>表1 display bfd configuration命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.095742000503904%" id="d13924e399"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.9042579994961%" id="d13924e403"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.095742000503904%" headers="d13924e399 "><p>CFG Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.9042579994961%" headers="d13924e403 "><p>BFD会话的名字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.095742000503904%" headers="d13924e399 "><p>CFG Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.9042579994961%" headers="d13924e403 "><div class="p">BFD会话的建立类型：<ul>
+<li><p>S_IP_IF：静态建立的绑定接口的单跳BFD会话</p>
+</li>
+<li><p>S_IP_PEER：静态建立的多跳BFD会话</p>
+</li>
+<li><p>S_STA_LSP：静态建立的BFD检测LSP会话</p>
+</li>
+<li><p>S_LDP_LSP：静态建立的BFD检测LDP LSP会话</p>
+</li>
+<li><p>S_TE_LSP：静态建立的BFD检测TE LSP会话</p>
+</li>
+<li><p>S_TE_TNL：静态建立的BFD检测TE Tunnel会话</p>
+</li>
+<li><p>S_PW：静态建立的BFD检测PW会话</p>
+</li>
+<li><p>S_VSI_PW：静态建立的BFD检测VSI PW会话</p>
+</li>
+<li><p>Dynamic：动态建立的BFD会话</p>
+</li>
+<li><p>Entire_Dynamic：完全动态建立的BFD会话</p>
+</li>
+<li><p>S_AUTO_IF：单跳静态标识符自协商BFD会话</p>
+</li>
+<li><p>S_AUTO_PEER：多跳静态标识符自协商BFD会话</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.095742000503904%" headers="d13924e399 "><p>LocalDiscr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.9042579994961%" headers="d13924e403 "><p>BFD会话的本地标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.095742000503904%" headers="d13924e399 "><p>MIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.9042579994961%" headers="d13924e403 "><p>BFD会话的配置表项索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.095742000503904%" headers="d13924e399 "><p>SessNum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.9042579994961%" headers="d13924e403 "><p>配置表项下的BFD会话数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.095742000503904%" headers="d13924e399 "><p>Commit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.9042579994961%" headers="d13924e403 "><p>会话配置的使能标识</p>
+<p>当已经在BFD会话视图下执行<a href="commit.html">commit</a>命令提交配置后，该标识将显示为&#8220;True&#8221;，否则显示&#8220;False&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.095742000503904%" headers="d13924e399 "><p>AdminDown</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.9042579994961%" headers="d13924e403 "><p>会话配置的管理状态标识</p>
+<p>如果在BFD会话视图下执行<a href="shutdown_bfd_session_view.html">shutdown（BFD会话视图）</a>命令关闭了本地会话，该标识将显示为&#8220;True&#8221;，否则显示&#8220;False&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.095742000503904%" headers="d13924e399 "><p>Total Commit/Uncommit CFG Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.9042579994961%" headers="d13924e403 "><p>已经在BFD会话视图下执行<a href="commit.html">commit</a>命令提交的BFD配置总数和未提交的BFD配置总数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看所有BFD会话的详细配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bfd configuration all verbose</strong></pre>
+<pre class="screen">--------------------------------------------------------------------------------
+  BFD Session Configuration Name : dyn_8196
+--------------------------------------------------------------------------------
+  Local Discriminator    : 8196             Remote Discriminator   : 8199
+  BFD Bind Type          : LDP_LSP
+  Bind Session Type      : Dynamic
+  Bind Peer IP Address   : 2.2.2.2
+  Next Hop Ip Address    : 192.168.1.2
+  Bind Interface         : GigabitEthernet3/0/2
+  TOS-EXP                : 6                Local Detect Multi     : 3
+  Min Tx Interval (ms)   : 10               Min Rx Interval (ms)   : 10
+  WTR Interval (ms)      : -                Process PST            : Enable
+  Proc Interface Status  : Disable
+  Bind Application       : LSPM | L2VPN | OAM_MANAGER
+  Session Description    : -
+--------------------------------------------------------------------------------
+
+     Total Commit/Uncommit CFG Number : 2/1 </pre>
+
+<div class="tablenoborder"><a name="display_bfd_configuration__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bfd_configuration__tb_02" frame="border" border="1" rules="all"><caption>表2 display bfd configuration verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.993701184177375%" id="d13924e585"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.00629881582263%" id="d13924e589"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>BFD Session Configuration Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>BFD会话的名字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Local Discriminator</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>本地标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Remote Discriminator</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>远端标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>BFD Bind Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><div class="p">会话的绑定类型<ul>
+<li><p>Peer Ip Address，IP链路多跳检测</p>
+</li>
+<li><p>Interface，IP链路单跳检测</p>
+</li>
+<li><p>STATIC_LSP，检测静态LSP</p>
+</li>
+<li><p>LDP_LSP，检测LDP LSP</p>
+</li>
+<li><p>TE_LSP，检测与TE绑定的LSP</p>
+</li>
+<li><p>TE_TUNNEL：检测TE隧道</p>
+</li>
+<li><p>PW，检测PW链路</p>
+</li>
+<li><p>VSI_PW，检测VSI PW链路</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Bind Session Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><div class="p">BFD会话的建立类型<ul>
+<li><p>Static：静态配置建立的BFD会话</p>
+</li>
+<li><p>Dynamic：动态触发建立的BFD会话</p>
+</li>
+<li><p>Entire_Dynamic：完全动态触发建立的BFD会话</p>
+</li>
+<li><p>Static_Auto：静态建立的标识符自协商BFD会话</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Bind Peer Ip Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>会话对端的IP地址或绑定的组播地址</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Bind Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>会话绑定的本端接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>TOS-EXP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>BFD报文的优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Local Detect Multi</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>配置的本地检测倍数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Min Tx Interval (ms)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>配置的最小发送间隔，单位是毫秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Min Rx Interval (ms)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>配置的最小接收间隔，单位是毫秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>WTR Interval (ms)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>等待恢复时间，单位是毫秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Process PST</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>处理端口状态表标识。如果配置了<a href="process-pst.html">process-pst</a>命令，该字段将显示Enable，否则显示为Disable</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Proc interface status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>BFD与接口状态联动标识。如果配置了<a href="process-interface-status.html">process-interface-status</a>命令，该字段将显示Enable；如果配置了<a href="process-interface-status.html">process-interface-status sub-if</a>，则该字段将显示Enable(Sub-If)；否则显示为Disable</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Bind Application</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>绑定的应用</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Session Description</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>BFD会话的描述信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.993701184177375%" headers="d13924e585 "><p>Total Commit/Uncommit CFG Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00629881582263%" headers="d13924e589 "><p>已经在BFD会话视图下执行<a href="commit.html">commit</a>命令提交的BFD配置总数和未提交的BFD配置总数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bfd_configuration_commands.html">BFD配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

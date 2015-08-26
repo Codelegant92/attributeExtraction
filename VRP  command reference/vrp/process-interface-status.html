@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="process-interface-status">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="bfd_bind_peer-ip_default-ip.html">
+<meta name="DC.Relation" scheme="URI" content="bfd_cfg-name.html">
+<meta name="DC.Relation" scheme="URI" content="display_bfd_session.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="process-interface-status">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>process-interface-status</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="process-interface-status"></a><a name="process-interface-status"></a>
+
+
+
+<h1 class="topictitle1">process-interface-status</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>process-interface-status</strong>命令用来配置当前BFD会话与其绑定的接口进行状态联动。</p>
+<p><strong>undo
+process-interface-status</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，BFD会话不与绑定的接口进行状态联动，即BFD会话状态的变化不修改接口管理模块中的接口状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>process-interface-status</strong> [ <strong>sub-if</strong> ]</p>
+<p><strong>undo
+process-interface-status</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>sub-if</strong>：设置BFD会话的状态关联子接口的状态，即对于绑定主接口的BFD会话，其状态改变会影响IFNET中主接口和子接口的状态。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BFD会话视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>设置了<strong>process-interface-status</strong>后，应用程序可以通过查询IFNET的接口状态获得BFD的会话状态变化。</p>
+<p>只能对采用缺省组播IP地址检测的单跳BFD会话配置<strong>process-interface-status</strong>命令，支持BFD会话绑定主接口或子接口。</p>
+<p>VE接口不支持与组播BFD会话进行接口状态联动。</p>
+<p>如果有多个BFD会话绑定到同一个接口，只能在一个会话中使能<strong>process-interface-status</strong>。即，只能有一个会话的状态改变绑定接口的BFD状态。</p>
+<p>配置BFD状态与接口状态联动后，当BFD会话检测到故障进入Down状态时，相应的接口状态变为BFD_Down。在这种状态下，该接口的直连路由在控制平面被取消，但转发平面不受影响。</p>
+<p>用命令行配置<strong>process-interface-status</strong>命令后，在<strong>commit</strong>时BFD会话不会立即将BFD状态上报给接口（在<strong>commit</strong>时BFD会话可能还没有建立或者还没有协商UP），以免把错误的状态信息上报给接口，导致接口状态错误。在<strong>commit</strong>之后，如果BFD的状态发生变化，就会通告接口。以保证BFD的状态与接口状态联动。</p>
+<p>当配置文件中存在<strong>process-interface-status</strong>命令时，在整机重启后，考虑到接口的初始状态一定是Down的，所以配置了<strong>process-interface-status</strong>命令的BFD会上报一个Down状态给接口。</p>
+<p>使用接口状态联动必须保证两台<span class="keyword">路由器</span>之间的BFD配置是正确和对称的。如果发现本端接口的BFD状态是Down的，需要检查一下对端BFD配置是否正确，是否被<strong>shutdown</strong>。</p>
+<p>如果组网中有需要BFD立即同步状态给接口，可以在保证两端<span class="keyword">路由器</span>配置正确的情况下，<strong>shutdown</strong>和<strong>undo shutdown</strong> BFD会话。BFD在<strong>undo shutdown</strong>的时候会启动一个检测定时器，如果在定时器超时之前能够协商UP，则上报UP给接口，否则认为链路有故障，因而在定时器超时后上报检测Down给接口。这样可以实现BFD与接口状态的实时同步。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="process-interface-status__d108267e113"></a><a name="d108267e113"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 禁止BFD会话修改端口状态表。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>bfd test</strong></strong></pre>
+<pre class="screen">[Quidway-bfd-session-test]<strong> undo process-interface-status</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bfd_configuration_commands.html">BFD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="bfd_bind_peer-ip_default-ip.html">bfd bind peer-ip default-ip</a></div>
+<div><a href="bfd_cfg-name.html">bfd cfg-name</a></div>
+<div><a href="display_bfd_session.html">display bfd session</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

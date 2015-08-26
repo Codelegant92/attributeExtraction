@@ -1,0 +1,475 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls l2vpn">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_l2vpn_l2vpn-name.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_l2vpn">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls l2vpn</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_l2vpn"></a><a name="display_mpls_l2vpn"></a>
+
+
+<h1 class="topictitle1">display mpls l2vpn</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls l2vpn</strong>命令用来查看PE上的L2VPN信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls l2vpn</strong> [ <em>l2vpn-name </em>[ <strong>local-ce</strong> | <strong>remote-ce </strong>] ]<span> [<strong> | count</strong> ] </span><span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>l2vpn-name</em>：用于显示的L2VPN名称。字符串格式，不支持空格，区分大小写，长度范围是1～31。如果不指定，将显示所有L2VPN信息。</p>
+<p><strong>local-ce</strong>：查看指定VPN上所有本地CE的配置情况和状态。</p>
+<p><strong>remote-ce</strong>：查看从其它PE学习到的远端CE的配置情况和状态。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display mpls l2vpn</strong>命令后，如果指定参数，则只显示和参数相关的信息；如果不指定参数，则显示全部信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_l2vpn__d42565e106"></a><a name="d42565e106"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看PE上配置的所有VPN。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls l2vpn</strong></pre>
+<pre class="screen">VPN number: 1</pre>
+<pre class="screen">vpn-name        encap-type   route-distinguisher     mtu   ce(L)  ce(R)</pre>
+<pre class="screen">vpn1            <span>ppp</span>          100:1                   128   1      1</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vpn__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls l2vpn命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.831191735953645%" id="d42565e135"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.16880826404636%" id="d42565e139"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d42565e135 "><p>VPN number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d42565e139 "><p>已创建的L2VPN实例的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d42565e135 "><p>vpn-name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d42565e139 "><p>已创建的VPN实例的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d42565e135 "><p>encap-type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d42565e139 "><p>L2VPN的封装类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d42565e135 "><p>route-distinguisher</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d42565e139 "><p>L2VPN的路由标志符RD。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d42565e135 "><p>mtu</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d42565e139 "><p>L2VPN的MTU。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d42565e135 "><p>ce(L)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d42565e139 "><p>本地CE连接的数量，&#8220;L&#8221;表示&#8220;local&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d42565e135 "><p>ce(R)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d42565e139 "><p>远程CE连接的数量，&#8220;R&#8221;表示&#8220;remote&#8221;。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看名为vpn1的L2VPN信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls l2vpn vpn1</strong></pre>
+<pre class="screen">VPN name: vpn1, encap type: interworking, local ce number(s): 1, remote ce number(s): 1</pre>
+<pre class="screen">route distinguisher: 100:1, MTU: 128</pre>
+<pre class="screen">import vpn target: 1:1,</pre>
+<pre class="screen">export vpn target: 1:1,</pre>
+<pre class="screen"> </pre>
+<pre class="screen">remote vpn site(s) :</pre>
+<pre class="screen">no.  remote-pe-id    route-distinguisher</pre>
+<pre class="screen">1    3.3.3.9         100:1</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vpn__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls l2vpn vpn-instance-name命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.843789367598895%" id="d42565e261"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.15621063240111%" id="d42565e265"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>VPN number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>已创建的L2VPN实例的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>encap-type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>L2VPN的封装类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>local ce number(s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>本地CE连接的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>remote ce number(s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>远程CE连接的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>route-distinguisher</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>L2VPN的路由标志。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>该L2VPN关联的接口的最大传输单元。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>import vpn target</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>接收的VPN路由属性。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>export vpn target</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>对发送的VPN路由配置的属性。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>remote vpn site(s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>表示以下显示信息为远端站点的相关信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>no.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>远端对等体的序号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>remote-pe-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>远端PE对等体的ID，一般为MPLS LSR-ID或BGP对等体的会话地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e261 "><p>route-distinguisher</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e265 "><p>路由标志符，相关命令请参见<a href="vpn-target_mpls-l2vpn_instance_view.html">vpn-target（MPLS-L2VPN实例视图）</a>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看名为vpn1的L2VPN上本地CE的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls l2vpn vpn1 local-ce</strong></pre>
+<pre class="screen">ce-name              ce-id   range   conn-num  LBBase/Offset/Range</pre>
+<pre class="screen">ce1                  1       10      1         21504/0/10</pre>
+<pre class="screen">ce2                  2       10      1         21514/0/10</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vpn__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn__tb_03" frame="border" border="1" rules="all"><caption>表3 display mpls l2vpn vpn-name local-ce命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.74300831443688%" id="d42565e435"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.25699168556312%" id="d42565e439"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.74300831443688%" headers="d42565e435 "><p>ce-name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.25699168556312%" headers="d42565e439 "><p>定义的CE名字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.74300831443688%" headers="d42565e435 "><p>ce-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.25699168556312%" headers="d42565e439 "><p>定义的CE标志符，唯一标志一个CE。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.74300831443688%" headers="d42565e435 "><p>range</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.25699168556312%" headers="d42565e439 "><p>指定本地CE的范围（CE range），表明这个本地CE能与多少个CE建立连接</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.74300831443688%" headers="d42565e435 "><p>conn-num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.25699168556312%" headers="d42565e439 "><p>为本CE创建的本地连接数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.74300831443688%" headers="d42565e435 "><p>LBBase/Offset/Range</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.25699168556312%" headers="d42565e439 "><p>本端为与之建立连接的CE分配的标签块。21504/0/10表示标签块的起始值/初始CE偏差/标签的个数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看名为vpn1的L2VPN上远端CE的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls l2vpn vpn1 remote-ce</strong></pre>
+<pre class="screen">no.  ce-id peer-id         route-distinguisher     LBBase/Offset/Range</pre>
+<pre class="screen">1    2     3.3.3.9         100:1                   19456/0/10</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vpn__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn__tb_04" frame="border" border="1" rules="all"><caption>表4 display mpls l2vpn vpn-name remote-ce命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.843789367598895%" id="d42565e527"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.15621063240111%" id="d42565e531"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e527 "><p>no.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e531 "><p>连接的序列号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e527 "><p>ce-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e531 "><p>远端的CE-ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e527 "><p>peer-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e531 "><p>远端的IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e527 "><p>route-distinguisher</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e531 "><p>远端的路由标志符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42565e527 "><p>LBBase/Offset/Range</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42565e531 "><p>远端标签块。19456/0/10表示远端标签块起始值/远端的初始CE偏差/远端标签个数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_l2vpn__tb_05"></a><a name="tb_05"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn__tb_05" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.0047871000252%" id="d42565e608"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.99521289997481%" id="d42565e612"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d42565e608 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d42565e612 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d42565e608 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d42565e612 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_l2vpn_l2vpn-name.html">mpls l2vpn l2vpn-name</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,90 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls l2vc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_l2vc.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_l2vpn_forwarding-info.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_l2vc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls l2vc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_l2vc"></a><a name="mpls_l2vc"></a>
+
+<h1 class="topictitle1">mpls l2vc</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls l2vc</strong>命令用来创建动态VLL连接。</p>
+<p><strong>undo mpls l2vc</strong>命令用来删除CE接口上动态VLL连接。</p>
+<p>缺省情况下，系统没有创建动态VLL连接。<span>只有使用ATM和Frame Relay封装形式的VLL才使能控制字特性。</span></p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls</strong> <strong>l2vc</strong> { <em> ip-address</em> | <strong>pw-template</strong> <em>pw-template-name</em> } * <em>vc-id</em> [ [ <span>[ <strong>group-id</strong> <em>group-id</em> ] </span> ] | [ <strong>tunnel-policy</strong> <em>policy-name </em> ] | [ { <strong>control-word</strong> | <strong>no-control-word</strong> } ] | [<strong> ip-interworking</strong> | <strong>ip-layer2</strong> | { <strong>raw</strong> | <strong>tagged</strong> } ] <span>| [ <strong>secondary</strong> ]</span> ] *</p>
+<p><strong>undo mpls l2vc</strong> <span>[ <strong>secondary</strong> ]</span></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ip-address</strong>：PW对端设备的LSR-ID。</p>
+<p><strong>pw-template</strong> <em>pw-template-name</em>：指定的PW模板名称。字符串形式，不支持空格，区分大小写，长度范围是1～19。</p>
+<p><strong>vc-id</strong>：L2VC ID，十进制整数形式，取值范围是1～4294967295。</p>
+<p><strong>group-id</strong> <em>group-id</em>：组号，十进制整数形式，取值范围是1～4294967295。组号用于表示对一组VC进行相同的操作，以便减少PE之间报文交互的数量。只有属性相同的VC才能配置相同的Group-ID，否则可能引起误拆除PW。</p>
+<p><strong>tunnel-policy</strong> <em>policy-name</em>：指定的隧道策略名。字符串形式，不支持空格，区分大小写，长度范围是1～19。</p>
+<p><strong>control-word</strong>：使能控制字（Control Word）特性。</p>
+<p><strong>no-control-word</strong>：禁止控制字（Control Word）特性。</p>
+<p><strong>raw</strong>：指定封装类型为不带VLAN tag。</p>
+<p><strong>tagged</strong>：指定封装类型为带VLAN tag。</p>
+<p><strong>ip-interworking</strong>：使能LDP-PW方式的IP异种介质互通功能。如果是和华为设备进行异种介质互通，则选择参数<strong>ip-interworking</strong>。</p>
+<p><strong>ip-layer2</strong>：如果是和其他厂商设备进行异种互通，需要选择参数<strong>ip-layer2</strong>。</p>
+<p><strong>secondary</strong>：配置该VC为备份VC。如果不指定该关键字，新创建的VC为主VC。只有本地存在主VC才能配置备份VC；如果本地没有主VC则不能配置备份VC。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>同一个接口不能既作为L2VPN的AC（Attachment Circuit）接口又作为L3VPN的AC接口。当某个接口绑定L2VPN后，该接口上配置的IP地址、路由协议等三层特性会全部变为无效。如果一个接口同时绑定L2VPN和L3VPN，只有L2VPN可用。删除该L2VPN后，绑定的L3VPN会重新变得可用。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul><li><p>当子接口配置了与VLL的绑定关系时，必须先删除子接口和VLL的绑定关系，才能删除子接口。</p>
+</li><li><p>当子接口配置了与VLL的绑定关系时，不允许改变主接口的封装协议类型。</p>
+</li></ul>
+</div></div>
+<p>PW两端的PE设备均需创建动态VC连接。其中，目的地址是对端PE设备的IP地址。</p>
+<p>可以通过在PW模板上配置模板属性，如远端Peer、隧道策略、控制字和VCCV能力。配置LDP-PW时可以直接引用该PW模板，不用显式指定PW的属性信息。PW模板属性信息指定后可以随时更新，通过命令<a href="reset_pw.html">reset pw</a>才能使其生效。</p>
+<p>如果在<strong>mpls l2vc</strong>命令行中指定了PW属性，则PW模板中的相应PW属性不起作用。</p>
+<p>如果未指定隧道策略名，采用缺省的隧道策略。缺省策略指定优先选择LSP隧道，且负载分担个数为1。如果隧道策略名已指定，但未配置策略，仍采用缺省策略。</p>
+<p>使能控制字特性通常用在ATM和Frame Relay封装形式的VLL上，此外还可以用来进行VC的连接性检测，具体使用方法请参见<a href="vccv.html">vccv</a>命令。</p>
+<p>只有在以太网类型的链路上，该命令中才会出现参数<strong>raw</strong>和<strong>tagged</strong>。</p>
+<p>配置备份PW之前必须先配置对应的主PW。删除主PW必须先删除备份PW。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_l2vc__d93863e198"></a><a name="d93863e198"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建Martini方式的连接。主用VLL连接的对端地址为2.2.2.9，VC ID为100<span>；备用VLL连接的对端地址为3.3.3.9，VC ID为200</span>。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0] <strong>mpls l2vc 2.2.2.9 100</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0] <strong>mpls l2vc 3.3.3.9 200 secondary</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_l2vc.html">display mpls l2vc</a></div>
+<div><a href="display_mpls_l2vpn_forwarding-info.html">display mpls l2vpn forwarding-info</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

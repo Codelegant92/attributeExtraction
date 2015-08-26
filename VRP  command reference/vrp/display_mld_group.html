@@ -1,0 +1,332 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mld group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mld_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_mld_group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mld_group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mld group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mld_group"></a><a name="display_mld_group"></a>
+
+
+
+<h1 class="topictitle1">display mld group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mld group</strong>命令用来查看组播组信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mld group</strong> [<em> ipv6-group-address</em> | <strong>interface</strong> <em>interface-type interface-number</em> ] * [ <strong>static</strong> | <strong>verbose</strong> ] <span>[<strong> | count</strong> ] </span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ipv6-group-address</em>：指定IPv6组播组地址。十六进制形式，可输入的地址格式是FFxA:xxxx:xxxx::xxxx，其中x的取值范围是0～F，A的取值范围是0和3～F</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：指定要查询的接口类型和编号。指定此参数，将显示此接口上的MLD组播组信息。</p>
+<p><strong>static</strong>：显示静态加入的组播组信息。</p>
+<p><strong>verbose</strong>：显示运行MLD的接口动态加入的组播组的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有指定<strong>static</strong>，才会显示静态加入的组信息摘要。否则，将显示所有运行MLD的接口上所有其他组播组信息摘要。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mld_group__d41098e129"></a><a name="d41098e129"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示静态加入的组播组信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mld group static</strong>
+Static join group information
+ Total 2 entries
+  (*, FF56::1)
+  Interface:GE6/0/2
+  Expires:Never
+
+  (1111::1, FF56::1)
+  Interface:GE6/0/2
+  Expires:Never</pre>
+
+<div class="tablenoborder"><a name="display_mld_group__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mld_group__tb_01" frame="border" border="1" rules="all"><caption>表1 display mld group static命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="48.53873896281557%" id="d41098e150"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="51.46126103718443%" id="d41098e154"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e150 "><p>Static join group information </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e154 "><p>静态加入的组播组信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e150 "><p>Total 2 entries</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e154 "><p>本<span class="keyword">路由器</span>上配置的静态组播组总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e150 "><p>(*, FF56::1)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e154 "><p>(*,G)。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e150 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e154 "><p>组播组所在的接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e150 "><p>Expires</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e154 "><p>组播组超时时间。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示所有MLD接口动态加入的组播组的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mld group verbose</strong></pre>
+<pre class="screen">Total entry on this router: 1</pre>
+<pre class="screen">Interface group report information of VPN-Instance: public net</pre>
+<pre class="screen"> GigabitEthernet6/0/2(FE80::2E0:49FF:FE29:1103):</pre>
+<pre class="screen">  Total entry on this interface: 1</pre>
+<pre class="screen">  Total 1 MLD Group reported</pre>
+<pre class="screen">   Group: FF05::2</pre>
+<pre class="screen">     Uptime: 00:01:07</pre>
+<pre class="screen">     Expires: 00:03:45</pre>
+<pre class="screen">     Last reporter: FE80::215:E9FF:FEAC:7666</pre>
+<pre class="screen">     Last-listener-query-counter: 0</pre>
+<pre class="screen">     Last-listener-query-timer-expiry: off</pre>
+<pre class="screen">     Version1-host-present-timer-expiry: 00:03:45</pre>
+
+<div class="tablenoborder"><a name="display_mld_group__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mld_group__tb_02" frame="border" border="1" rules="all"><caption>表2 display mld group verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="48.53873896281557%" id="d41098e265"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="51.46126103718443%" id="d41098e269"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>Total entry on this router</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><p><span class="keyword">路由器</span>上MLD动态加入的组播组个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>Interface group report information of VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><p>接口收到的组报告信息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>GigabitEthernet6/0/2(FE80::2E0:49FF:FE29:1103)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><p>接口名称和IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>Total entry on this interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><p>接口上MLD动态加入的组播组个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>Total 1 MLD Group reported</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><p>接口上收到1个MLD报告消息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>Group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><p>IPv6组播组地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>Uptime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><div class="p">发现组播组的运行时间。时间格式是：<ul>
+<li><p>小于等于24小时：&#8220;时：分：秒&#8221;</p>
+</li>
+<li><p>大于24小时但小于等于一周：&#8220;天：时&#8221;</p>
+</li>
+<li><p>大于一周：&#8220;周：天&#8221;</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>Expires</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><p>从MLD组列表删除记录的预期时间间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>Last Reporter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><p>报告组成员关系的最后主机的链路本地地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>Last-listener-query-counter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><p>发送最后侦听者查询消息的次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>Last-listener-query-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><p>发送最后侦听者查询消息的时间间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.53873896281557%" headers="d41098e265 "><p>Version1-host-present-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.46126103718443%" headers="d41098e269 "><p>MLDv1主机的超时时间。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mld_group__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mld_group__tb_04" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d41098e439"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d41098e443"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d41098e439 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d41098e443 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mld_configuration_commands.html">MLD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_mld_group.html">reset mld group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="lacp priority">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_eth-trunk.html">
+<meta name="DC.Relation" scheme="URI" content="max_active-linknumber.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="lacp_priority">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>lacp priority</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="lacp_priority"></a><a name="lacp_priority"></a>
+
+
+<h1 class="topictitle1">lacp priority</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>lacp priority</strong>命令用来设置系统LACP优先级或接口LACP优先级。</p>
+<p><strong>undo lacp priority</strong>命令用来恢复系统LACP优先级或接口LACP优先级为缺省值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>lacp priority</strong><em> priority</em></p>
+<p><strong>undo lacp priority</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>priority</em>：LACP优先级值，取值范围是0～65535。缺省值是32768。取值越小LACP优先级越高。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图、Ethernet接口视图、GE接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行该命令前需首先保证Eth-Trunk工作模式为静态LACP模式。</p>
+<p>配置系统优先级是为了区别本端设备与对端设备优先级的高低，系统优先级高的将被选作链路聚合组的主动端，按照主动端设备的接口来选择活动接口。</p>
+<p>配置接口优先级是为了区别同一设备不同接口的优先级，接口优先级高的将被选作活动接口。</p>
+<p>如果Eth-Trunk两端设备都没有配置系统优先级，两端系统优先级都是缺省值32768，此时需要按照系统ID来选择主动端，系统ID小的优先。</p>
+<p>如果在静态LACP模式下执行<a href="max_active-linknumber.html"><strong>max active-linknumber</strong></a>命令配置了活动接口数目上限阈值，当手工加入链路组的接口数超过了该阈值的限制，就需要选择哪些接口为活动接口，而设置接口LACP优先级即可保证在静态LACP模式下高优先级的接口成为活动接口。</p>
+<p>没有执行<a href="max_active-linknumber.html"><strong>max active-linknumber</strong></a>命令，活动接口上限阈值为最大值16。只要手工加入的成员接口数值小于16，就不需要选择活动接口，所有的接口都处于活动状态。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="lacp_priority__d88889e66"></a><a name="d88889e66"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置LACP系统优先级为1。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>lacp priority 1</strong></pre>
+<p># 设置GigabitEthernet 1/0/1接口的LACP接口优先级为1。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> lacp priority 1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_eth-trunk.html">display eth-trunk</a></div>
+<div><a href="max_active-linknumber.html">max active-linknumber</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

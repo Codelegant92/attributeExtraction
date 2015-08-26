@@ -1,0 +1,62 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te reverse-lsp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="tnl-policy_vsi_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_reverse-lsp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te reverse-lsp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_reverse-lsp"></a><a name="mpls_te_reverse-lsp"></a>
+
+<h1 class="topictitle1">mpls te reverse-lsp</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te reverse-lsp</strong>命令用来在指定的Tunnel接口下设置该Tunnel的反向LSP。此反向LSP和Tunnel接口下的正向LSP组成双向LSP。</p>
+<p><strong>undo mpls te reverse-lsp</strong>命令用来取消在指定接口下的该Tunnel的反向LSP。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te reverse-lsp</strong> <strong>lsp-name</strong> <em>lsp-name</em></p>
+<p><strong>undo mpls te reverse-lsp</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>lsp-name</strong><em> lsp-name</em>：指定Tunnel接口下的反向LSP的名称，字符串形式，不支持空格，长度范围是1～15。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令在Tunnel接口下配置的反向LSP的入接口，要求和该Tunnel接口下配置的正向LSP的物理出接口相同。如果不是同一接口则属于用户配置错误。</p>
+<p>上述命令配置完成后，必须使用命令<strong>mpls te commit</strong>提交，配置才能生效。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_reverse-lsp__d96969e50"></a><a name="d96969e50"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置Tunnel1/0/0的反向LSP为lsp1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface tunnel 1/0/0</strong></strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te reverse-lsp lsp-name lsp1</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> <strong>mpls te commit</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_oam_configuration_commands.html">MPLS OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="tnl-policy_vsi_view.html">tnl-policy（VSI视图）</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,271 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display multicast routing-table static">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_policy_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ip_rpf-route-static.html">
+<meta name="DC.Relation" scheme="URI" content="reset_multicast_routing-table.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_multicast_routing-table_static">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display multicast routing-table static</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_multicast_routing-table_static"></a><a name="display_multicast_routing-table_static"></a>
+
+
+<h1 class="topictitle1">display multicast routing-table static</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display multicast routing-table static</strong>命令用来查看组播静态路由信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display
+multicast routing-table</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>static</strong> [ <strong>config</strong> ] [ <em>source-address</em> { <em>mask-length</em> | <em>mask</em> } ]<span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>config</strong>：显示组播静态路由的配置信息。</p>
+<p><em>source-address</em>：表示组播源地址。点分十进制形式。</p>
+<p><em>mask</em>：表示组播源地址的掩码。点分十进制形式。</p>
+<p><em>mask-length</em>：表示组播源地址的掩码长度。整数形式，取值范围是0～32。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display multicast routing-table static</strong>命令：</p>
+<ul>
+<li><p>如果不指定<strong>vpn-instance</strong>，则显示公网实例的组播静态路由表。</p>
+</li>
+<li><p>如果指定<strong>config</strong>，则显示所有组播静态路由的配置信息，包括激活的和未激活的。</p>
+</li>
+<li><p>如果指定<em>source-address</em>，则仅显示指定组播源的组播静态路由。</p>
+</li>
+<li><p>如果本地<span class="keyword">路由器</span>上未配置组播静态路由则无显示信息。使用<strong>ip rpf-route-static</strong>命令配置组播静态路由。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_multicast_routing-table_static__d52271e177"></a><a name="d52271e177"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示公网实例的全部组播静态路由。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display multicast routing-table static</strong>
+Multicast Routing Table
+Routes : 1
+
+ Mroute 11.1.0.0/24
+          Interafce = GigabitEthernet6/0/0       RPF Neighbor = 11.1.2.2
+          Matched routing protocol = ospf, process-id = 100, Route-policy = none
+          Preference = 1, Order = 1
+ Running Configuration = ip rpf-route-static 11.1.0.0 24 ospf 100 11.1.2.2 order 1
+</pre>
+<p># 显示公网实例中到达组播源10.10.0.0/16的全部组播静态路由。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display multicast routing-tale static 10.10.0.0 255.255.0.0</strong>
+Multicast Routing Table
+Routes : 1
+
+ Mroute 11.1.0.0/24
+          Interafce = GigabitEthernet6/0/0       RPF Neighbor = 11.1.2.2
+          Matched routing protocol = ospf, process-id = 100, Route-policy = none
+          Preference = 1, Order = 1
+ Running Configuration = ip rpf-route-static 11.1.0.0 24 ospf 100 11.1.2.2 order 1
+</pre>
+<p># 显示组播路由表的静态路由配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display multicast routing-table static config</strong>
+Multicast Routing Table
+Routes : 1
+
+ Mroute 11.1.0.0/24,     RPF neighbor = 11.1.2.2
+ Matched routing protocol = ospf, process-id = 100, Route-policy = none
+ Preference = 1, Order = 1
+</pre>
+
+<div class="tablenoborder"><a name="display_multicast_routing-table_static__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_multicast_routing-table_static__tb_01" frame="border" border="1" rules="all"><caption>表1 display multicast routing-table vpn-instance static命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.36507936507936%" id="d52271e212"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.63492063492063%" id="d52271e216"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.36507936507936%" headers="d52271e212 "><p>Multicast Routing Table</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.63492063492063%" headers="d52271e216 "><p>组播路由表。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.36507936507936%" headers="d52271e212 "><p>Routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.63492063492063%" headers="d52271e216 "><p>路由条数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.36507936507936%" headers="d52271e212 "><p>Mroute</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.63492063492063%" headers="d52271e216 "><p>组播路由源地址/掩码长度。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.36507936507936%" headers="d52271e212 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.63492063492063%" headers="d52271e216 "><p>可达组播源的出接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.36507936507936%" headers="d52271e212 "><p>RPF-neighbor</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.63492063492063%" headers="d52271e216 "><p>可达组播源的RPF邻居IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.36507936507936%" headers="d52271e212 "><p>Matched routing protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.63492063492063%" headers="d52271e216 "><p>匹配的单播路由类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.36507936507936%" headers="d52271e212 "><p>process-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.63492063492063%" headers="d52271e216 "><p>路由协议的进程号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.36507936507936%" headers="d52271e212 "><p>Route-policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.63492063492063%" headers="d52271e216 "><p>路由策略。路由的组播源地址应当匹配路由策略。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.36507936507936%" headers="d52271e212 "><p>Preference</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.63492063492063%" headers="d52271e216 "><p>路由优先级。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.36507936507936%" headers="d52271e212 "><p>Order</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.63492063492063%" headers="d52271e216 "><p>路由序号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.36507936507936%" headers="d52271e212 "><p>Running Configuration</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.63492063492063%" headers="d52271e216 "><p>配置该静态路由的命令行。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_multicast_routing-table_static__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_multicast_routing-table_static__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d52271e359"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d52271e363"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d52271e359 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d52271e363 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_policy_configuration_commands.html">IPv4组播路由管理命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ip_rpf-route-static.html">ip rpf-route-static</a></div>
+<div><a href="reset_multicast_routing-table.html">reset multicast routing-table</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

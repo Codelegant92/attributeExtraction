@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="map">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ma.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="map">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>map</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="map"></a><a name="map"></a>
+
+
+<h1 class="topictitle1">map</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>map</strong>命令用来配置当前MA关联的VLAN<span>或VSI</span>。</p>
+<p><strong>undo map</strong>命令用来删除当前MA和VLAN<span>或VSI</span>的关联关系。</p>
+<p>缺省情况下，MA未和任何VLAN<span>或VSI</span>建立关联关系。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>map</strong><span> { <strong>vlan</strong> <em>vlan-id</em> | <strong>vsi</strong> <em>vsi-name</em> }</span>}</p>
+<p><strong>undo map</strong> { <strong>vlan</strong> | <strong><span>vsi</span></strong>  }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vlan-id</em>：指定VLAN的ID。整数形式，取值范围是1～4094。</p>
+<p><em>vsi-name</em>：VSI实例名称。字符串形式，长度为1～31个字符。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>以太网CFM对每个MA分别进行连通性故障检测。配置某个MA和1个VLAN<span>或VSI</span>关联，可实现对该VLAN<span>或VSI</span>内的网络的连通性故障检测。</p>
+<p>如果某MA用于两直连设备之间的连通性故障检测，则该MA可以不关联VLAN<span>或VSI</span>，否则该MA应关联VLAN<span>或VSI</span>。</p>
+<p>一个MA只能关联一个VLAN<span>或VSI</span>。</p>
+<div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>只有当在本设备上，某MA内既未创建MEP也未配置RMEP时，才能成功执行本命令建立或删除该MA和VLAN<span>或VSI</span>的关联关系。</p>
+</div></div>
+<p>如果要改变当前MA关联的VLAN<span>或VSI</span>，首先需要使用<strong>undo map</strong>命令删除该MA和原VLAN<span>或VSI</span>的关联关系，然后再执行<strong>map</strong>命令将MA和另一个VLAN<span>或VSI</span>关联。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="map__d91926e126"></a><a name="d91926e126"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置MA和VLAN10关联。配置前该MA未关联VLAN。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm md md1</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1]<strong> <strong>ma ma1</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1-ma-ma1]<strong> map vlan 10</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ma.html">ma</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

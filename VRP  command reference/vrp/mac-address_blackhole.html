@@ -1,0 +1,85 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mac-address blackhole">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mac_address_table_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-address.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mac-address_blackhole">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mac-address blackhole</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mac-address_blackhole"></a><a name="mac-address_blackhole"></a>
+
+
+<h1 class="topictitle1">mac-address blackhole</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mac-address blackhole</strong>命令用来配置黑洞MAC地址表项。</p>
+<p><strong>undo mac-address blackhole</strong>命令用来删除黑洞MAC地址表项。</p>
+<p>缺省情况下，系统没有配置任何黑洞MAC地址表项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mac-address</strong> <strong>blackhole</strong> <em>mac-address</em> { <strong>vlan</strong> <em>vlan-id</em> [ <strong>ce-vlan</strong> <em>ce-vlan</em> ] | <strong>vsi</strong> <em>vsi-name</em> [ <strong>pe-vid</strong> <em>pe-vid</em> [ <strong>ce-vid</strong> <em>ce-vid</em> ] ] }</p>
+<p><strong>undo</strong> <strong>mac-address</strong> <strong>blackhole</strong> [ <strong>vlan</strong> <em>vlan-id</em> | <strong>vsi</strong> <em>vsi-name</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>blackhole</strong>：黑洞表项，不被老化。当收到指定地址的帧后，直接丢弃。配置并保存后，系统复位或接口板热插拔表项不丢失。</p>
+<p><em>mac-address</em>：单播MAC地址，格式为H-H-H。其中H为4位的十六进制数，可以输入1～4位，如00e0、fc01。当输入不足4位时，表示前面的几位为0，如：输入e0，等同于00e0。MAC地址不可设置为FFFF-FFFF-FFFF。</p>
+<p><strong>vlan</strong><em> vlan-id</em>：VLAN
+ID。十进制整数形式，取值范围是1～4094。</p>
+<p><strong>ce-vlan</strong> <em>ce-vlan</em>：配置VLAN Mapping时，映射后的VLAN ID。十进制整数形式，取值范围是1～4094。</p>
+<p><strong>vsi</strong> <em>vsi-name</em>：指定的VSI实例的名称。字符串形式，不支持空格，区分大小写，取值范围是1～31。</p>
+<p><strong>pe-vid</strong> <em>pe-vid</em>：用户外层VLAN的Tag值，十进制整数形式，取值范围是1～4094。</p>
+<p><strong>ce-vid</strong> <em>ce-vid</em>：用户内层VLAN的Tag值，十进制整数形式，取值范围是1～4094。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>与配置静态MAC表项不同，配置黑洞MAC表项时，不需要指定出接口。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mac-address_blackhole__d91138e144"></a><a name="d91138e144"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在VLAN10上添加一个MAC地址为0011-2233-4455的黑洞表项。当收到目的MAC为0011-2233-4455且属于VLAN10的帧时，直接丢弃。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 10</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address blackhole 0011-2233-4455 vlan 10</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mac_address_table_configuration_commands.html">MAC地址表配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mac-address.html">display mac-address</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

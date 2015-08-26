@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="vrrp vrid preempt-mode timer delay">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vrrp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="vrrp_vrid_preempt-mode_disable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="vrrp_vrid_preempt-mode_timer_delay">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>vrrp vrid preempt-mode timer delay</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="vrrp_vrid_preempt-mode_timer_delay"></a><a name="vrrp_vrid_preempt-mode_timer_delay"></a>
+
+
+<h1 class="topictitle1">vrrp vrid preempt-mode timer delay</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>vrrp vrid preempt-mode timer delay</strong>命令用来设置备份组中<span class="keyword">路由器</span>的抢占延迟时间。</p>
+<p><strong>undo vrrp vrid preempt-mode timer delay</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，抢占延时为0，即立即抢占。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>vrrp vrid </strong><em>virtual-router-id </em><strong>preempt-mode</strong><em> </em><strong>timer delay</strong><em> delay-value</em></p>
+<p><strong>undo</strong> <strong>vrrp vrid </strong><em>virtual-router-id </em><strong>preempt-mode</strong> <strong>timer delay</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vrid</strong> <em>virtual-router-id</em>：VRRP备份组号，备份组号范围1～255。</p>
+<p><strong>delay</strong> <em>delay-value</em>：延迟时间，单位为秒，取值范围0～255，缺省值为0秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果设置了抢占延迟，可以使Backup延迟一段时间成为Master。</p>
+<p>其目的在于：在不稳定的网络中，如果Backup没有按时收到来自Master的报文，Backup就会成为Master。但即使Master能正常工作，网络堵塞也可能成为导致Backup不能按时收到来自Master的报文的重要原因。因此，根据网络实际情况合理设置延迟时间，可以避免频繁的状态转换。</p>
+<p>当IP地址拥有者故障恢复后，不会等待延时抢占，会立即切换到Master。而延时抢占功能是指backup切换到Master的等待时间，所以，IP地址拥有者和延时抢占功能不相关。对于需要支持延时抢占功能的备份组，不能把VRRP备份组的主用设备配置成IP地址拥有者。</p>
+<p>在配置VRRP备份组内各<span class="keyword">路由器</span>的延迟方式时，建议将Backup配置为立即抢占，即不延迟（延迟时间为0），而将Master配置为抢占，并且配置一定的延迟时间。这样配置的目的是为了在网络环境不稳定时，为上下行链路的状态恢复一致性等待一定时间，以免出现双Master或由于双方频繁抢占导致用户设备学习到错误的Master设备地址。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="vrrp_vrid_preempt-mode_timer_delay__d129039e90"></a><a name="d129039e90"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置备份组1的抢占延迟时间为5秒。</p>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> vrrp vrid 1 preempt-mode timer delay 5</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vrrp_configuration_commands.html">VRRP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="vrrp_vrid_preempt-mode_disable.html">vrrp vrid preempt-mode disable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,301 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="NQA配置命令">
+<meta name="DC.Relation" scheme="URI" content="../vrp/system_management_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/agetime.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/adv-factor.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/alarm.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/clear-records.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/datafill.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/datasize.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/description_nqa_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/destination-address.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/destination-port.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/discovery-pmtu-max.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_nqa_event.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_nqa_history.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_nqa_results.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_nqa_support-server-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_nqa_support-test-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_nqa-agent.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_nqa-ftp-record_configuration.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_nqa-server.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dns-server.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/fail-percent.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/free-groupmembers.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frequency.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ftp-filename.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ftp-filesize.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ftp-operation.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ftp-password.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ftp-username.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/group-testperiod.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hardware-based_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/http-operation.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/http-url.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/icmp-jitter-mode.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/interval.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/jitter-codec.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/jitter-packetnum.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-pw-id.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-pw-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/label-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/join.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lsp-exp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lsp-replymode.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lsp-tetunnel.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lsp-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mtrace-source-address.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mtrace-last-hop-address.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mtrace-group-address.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mtrace-response-address.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mtrace-query-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa_event.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-ftp-record_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-ftp-record_filename.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-ftp-record_ip-address.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-ftp-record_item-num.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-ftp-record_password.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-ftp-record_time.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-ftp-record_trap-enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-ftp-record_username.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-ftp-record_vpn-instance.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-jitter_tag-version.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-server_icmp-server.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-server_tcpconnect.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa-server_udpecho.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/probe-count.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/probe-failtimes.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/records.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/remote-pw-id.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/restart_nqa_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/sendpacket_passroute.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/send-trap.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/set-df.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/source-address.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/source-interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/source-port.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/start.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/step_nqa_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/stop.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/switch-to_group.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/test-failtimes.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/test-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/threshold.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/timeout.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/tos.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/tracert-hopfailtimes.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/tracert-livetime.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ttl.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vc-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn-instance.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="nqa_configuration_commands">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>NQA配置命令</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="nqa_configuration_commands"></a><a name="nqa_configuration_commands"></a>
+
+
+<h1 class="topictitle1">NQA配置命令</h1>
+
+<div></div>
+
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="../vrp/agetime.html">agetime</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/adv-factor.html">adv-factor</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/alarm.html">alarm</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/clear-records.html">clear-records</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/datafill.html">datafill</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/datasize.html">datasize</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/description_nqa_view.html">description（NQA视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/destination-address.html">destination-address</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/destination-port.html">destination-port</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/discovery-pmtu-max.html">discovery-pmtu-max</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_nqa_event.html">display nqa event</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_nqa_history.html">display nqa history</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_nqa_results.html">display nqa results</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_nqa_support-server-type.html">display nqa support-server-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_nqa_support-test-type.html">display nqa support-test-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_nqa-agent.html">display nqa-agent</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_nqa-ftp-record_configuration.html">display nqa-ftp-record configuration</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_nqa-server.html">display nqa-server</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/dns-server.html">dns-server</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/fail-percent.html">fail-percent</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/free-groupmembers.html">free-groupmembers</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/frequency.html">frequency</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ftp-filename.html">ftp-filename</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ftp-filesize.html">ftp-filesize</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ftp-operation.html">ftp-operation</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ftp-password.html">ftp-password</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ftp-username.html">ftp-username</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/group-testperiod.html">group-testperiod</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hardware-based_enable.html">hardware-based enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/http-operation.html">http-operation</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/http-url.html">http-url</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/icmp-jitter-mode.html">icmp-jitter-mode</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/interval.html">interval</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/jitter-codec.html">jitter-codec</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/jitter-packetnum.html">jitter-packetnum</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-pw-id.html">local-pw-id</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-pw-type.html">local-pw-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/label-type.html">label-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/join.html">join</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/lsp-exp.html">lsp-exp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/lsp-replymode.html">lsp-replymode</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/lsp-tetunnel.html">lsp-tetunnel</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/lsp-type.html">lsp-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mtrace-source-address.html">mtrace-source-address</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mtrace-last-hop-address.html">mtrace-last-hop-address</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mtrace-group-address.html">mtrace-group-address</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mtrace-response-address.html">mtrace-response-address</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mtrace-query-type.html">mtrace-query-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa.html">nqa</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa_event.html">nqa event</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-ftp-record_enable.html">nqa-ftp-record enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-ftp-record_filename.html">nqa-ftp-record filename</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-ftp-record_ip-address.html">nqa-ftp-record ip-address</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-ftp-record_item-num.html">nqa-ftp-record item-num</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-ftp-record_password.html">nqa-ftp-record password</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-ftp-record_time.html">nqa-ftp-record time</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-ftp-record_trap-enable.html">nqa-ftp-record trap-enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-ftp-record_username.html">nqa-ftp-record username</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-ftp-record_vpn-instance.html">nqa-ftp-record vpn-instance</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-jitter_tag-version.html">nqa-jitter tag-version</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-server_icmp-server.html">nqa-server icmp-server</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-server_tcpconnect.html">nqa-server tcpconnect</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nqa-server_udpecho.html">nqa-server udpecho</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/probe-count.html">probe-count</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/probe-failtimes.html">probe-failtimes</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/records.html">records</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/remote-pw-id.html">remote-pw-id</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/restart_nqa_view.html">restart（NQA视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/sendpacket_passroute.html">sendpacket passroute</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/send-trap.html">send-trap</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/set-df.html">set-df</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/source-address.html">source-address</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/source-interface.html">source-interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/source-port.html">source-port</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/start.html">start</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/step_nqa_view.html">step（NQA视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/stop.html">stop</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/switch-to_group.html">switch-to group</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/test-failtimes.html">test-failtimes</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/test-type.html">test-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/threshold.html">threshold</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/timeout.html">timeout</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/tos.html">tos</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/tracert-hopfailtimes.html">tracert-hopfailtimes</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/tracert-livetime.html">tracert-livetime</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ttl.html">ttl</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/vc-type.html">vc-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/vpn-instance.html">vpn-instance</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/system_management_commands.html">系统管理命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,267 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mld explicit-tracking">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mld_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_mld_explicit-tracking.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mld_explicit-tracking">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mld explicit-tracking</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mld_explicit-tracking"></a><a name="display_mld_explicit-tracking"></a>
+
+
+<h1 class="topictitle1">display mld explicit-tracking</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mld explicit-tracking</strong>命令用来查看使用Include模式加入特定源组的MLDv2主机成员的精确信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mld explicit-tracking</strong> [ <strong>interface</strong> <em>interface-type interface-number</em> [ <strong>host-address</strong> <em>ipv6-host-address</em> ] ]<span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface</strong> <em>interface-type interface-number</em>：指定要查询接口的类型和编号。</p>
+<p><strong>host-address</strong> <em>ipv6-host-address</em>：指定主机的链路本地地址。十六进制形式，取值范围是FE80::～FE80:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令对Exclude模式加入组或特定源组的主机成员和MLDv1主机成员都无效。</p>
+<p>使用<strong>display mld explicit-tracking</strong>命令时：</p>
+<ul>
+<li><p>若指定了<strong>interface</strong>参数则仅显示在该接口上MLD主机成员的精确信息。如果该接口未使能MLD，或接口状态为Down，则出现提示信息。</p>
+</li>
+<li><p>若指定了<strong>host-address</strong>，则显示该指定MLD主机成员的信息。</p>
+</li>
+<li><p>如果同时指定<strong>interface</strong>和<strong>host-address</strong>，该命令将显示此接口上指定MLD主机成员的信息。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mld_explicit-tracking__d40980e151"></a><a name="d40980e151"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有接口上的MLD主机成员信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mld explicit-tracking </strong></pre>
+<pre class="screen">Explicit-tracking information</pre>
+<pre class="screen"> Total 2 hosts, 4 entries</pre>
+
+<pre class="screen"> GigabitEthernet3/2/0(FE80::2:4)</pre>
+<pre class="screen">  0001.Host: FE80::224</pre>
+<pre class="screen">        Uptime: 00:02:47</pre>
+<pre class="screen">        Expires: 00:01:33</pre>
+<pre class="screen">        (S, G) List:</pre>
+<pre class="screen">          Group: FF44::1</pre>
+<pre class="screen">              Source: 2222::1</pre>
+<pre class="screen">                Uptime: 00:02:47</pre>
+<pre class="screen">                Time since last refresh: 00:02:47</pre>
+<pre class="screen">              Source: 2222::3</pre>
+<pre class="screen">                Uptime: 00:02:47</pre>
+<pre class="screen">                Time since last refresh: 00:02:47</pre>
+<pre class="screen">  0002.Host: FE80::225</pre>
+<pre class="screen">        Uptime: 00:01:59</pre>
+<pre class="screen">        Expires: 00:02:21</pre>
+<pre class="screen">        (S, G) List:</pre>
+<pre class="screen">          Group: FF44::1</pre>
+<pre class="screen">              Source: 2222::1</pre>
+<pre class="screen">                Uptime: 00:01:59</pre>
+<pre class="screen">                Time since last refresh: 00:01:59</pre>
+<pre class="screen">              Source: 2222::3</pre>
+<pre class="screen">                Uptime: 00:01:59</pre>
+<pre class="screen">                Time since last refresh: 00:01:59</pre>
+
+<div class="tablenoborder"><a name="display_mld_explicit-tracking__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mld_explicit-tracking__tb_01" frame="border" border="1" rules="all"><caption>表1 display mld explicit-tracking命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="36.9336143308746%" id="d40980e222"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63.06638566912539%" id="d40980e226"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36.9336143308746%" headers="d40980e222 "><p>Explicit-tracking information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.06638566912539%" headers="d40980e226 "><p>精确跟踪信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.9336143308746%" headers="d40980e222 "><p>Total 2 hosts, 4 entries</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.06638566912539%" headers="d40980e226 "><p>总计主机2台，(S, G)表项4个</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.9336143308746%" headers="d40980e222 "><p>Host</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.06638566912539%" headers="d40980e226 "><p>IPv6主机地址(IPv6链路本地地址)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.9336143308746%" headers="d40980e222 "><p>Uptime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.06638566912539%" headers="d40980e226 "><div class="p">主机加入后的运行时间，时间格式是：<ul>
+<li><p>小于等于24小时：&#8220;时：分：秒&#8221;</p>
+</li>
+<li><p>大于24小时但小于等于一周：&#8220;天：时&#8221;</p>
+</li>
+<li><p>大于一周：&#8220;周：天&#8221;</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.9336143308746%" headers="d40980e222 "><p>Expires</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.06638566912539%" headers="d40980e226 "><div class="p">主机超时的预测时间，超时后从MLD主机成员列表里删除。时间格式是：<ul>
+<li><p>小于等于24小时：&#8220;时：分：秒&#8221;</p>
+</li>
+<li><p>大于24小时但小于等于一周：&#8220;天：时&#8221;</p>
+</li>
+<li><p>大于一周：&#8220;周：天&#8221;</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.9336143308746%" headers="d40980e222 "><p>(S, G) List</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.06638566912539%" headers="d40980e226 "><p>主机加入的组播源和组播组列表</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.9336143308746%" headers="d40980e222 "><p>Group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.06638566912539%" headers="d40980e226 "><p>IPv6组播组地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.9336143308746%" headers="d40980e222 "><p>Source</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.06638566912539%" headers="d40980e226 "><p>组播源的IPv6单播地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.9336143308746%" headers="d40980e222 "><p>Time since last refresh</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.06638566912539%" headers="d40980e226 "><div class="p">距主机上一次加入的时间间隔。时间格式是：<ul>
+<li><p>小于等于24小时：&#8220;时：分：秒&#8221;</p>
+</li>
+<li><p>大于24小时但小于等于一周：&#8220;天：时&#8221;</p>
+</li>
+<li><p>大于一周：&#8220;周：天&#8221;</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mld_explicit-tracking__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mld_explicit-tracking__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d40980e389"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d40980e393"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d40980e389 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d40980e393 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mld_configuration_commands.html">MLD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_mld_explicit-tracking.html">reset mld explicit-tracking</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

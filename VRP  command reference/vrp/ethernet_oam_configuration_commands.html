@@ -1,0 +1,298 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="以太网OAM配置命令">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reliability_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/active_time.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/alarm_finish_time.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/alarm_occur_time.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ccm-interval.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cfm_bind.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cfm_default_md.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cfm_enable_mac_tunnel_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cfm_enable_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cfm_mac-tunnel_mip_trace_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cfm_md.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cfm_trigger_if-down.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cfm_trigger_clear-arp_vlan.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cfm_trigger_vlan_mac-renew.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cfm_version.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_cfm_default_md.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_cfm_error-info.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_cfm_error-packet_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_cfm_ma.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_cfm_mac-tunnel_status.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_cfm_md.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_cfm_mep.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_cfm_mip.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_cfm_mp-info.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_cfm_remote-mep.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_efm.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_efm_session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mip_create-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_oam_global_configuration.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_test-packet_result.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_bind_service-instance.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_error-code_notification_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_error-code_period.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_error-code_threshold.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_error-frame_notification_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_error-frame_period.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_error-frame_threshold.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_error-frame-second_notification_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_error-frame-second_period.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_error-frame-second_threshold.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_loopback.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_loopback_action.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_mode.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_packet_max-size.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_trigger_clear-arp_vlan.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_trigger_if-down.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/efm_trigger_mac-renew.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ma.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/map.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mep_mep-id.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mep_ccm-send_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mip_create-type_md_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mip_create-type_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_cfm_md_ma_bfd-session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_cfm_md_ma_cfm_md_ma.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_cfm_md_ma_efm_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_efm_interface_bfd-session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_ingress_bfd-session_egress_cfm_md_ma.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_ingress_bfd-session_egress_efm_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_ingress_cfm_md_ma_egress_bfd-session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_ingress_cfm_md_ma_egress_cfm_md_ma.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_ingress_cfm_md_ma_egress_efm_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_ingress_cfm_md_ma_egress_mpls_oam_tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_ingress_efm_interface_egress_bfd-session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_ingress_efm_interface_egress_cfm_md_ma.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_ingress_efm_interface_egress_mpls_oam_tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_ingress_mpls_oam_egress_cfm_md_ma.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-bind_ingress_mpls_oam_egress_efm_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam-mgr.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/packet-priority.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ping_mac.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ping_mac_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ping_mac-8021ag.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ping_mac-tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/remote-mep.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/remote-mep_ccm-receive_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_cfm_error-packet_receive_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/senderid-tlv-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/test-packet_start.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/trace_mac.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/trace_mac_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/trace_mac-8021ag.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/trace_mac-tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/transport_trace_vlan.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vlan_default_md_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ethernet_oam_configuration_commands">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>以太网OAM配置命令</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ethernet_oam_configuration_commands"></a><a name="ethernet_oam_configuration_commands"></a>
+
+
+<h1 class="topictitle1">以太网OAM配置命令</h1>
+
+<div>
+<div class="section"><h4 class="sectiontitle">功能描述</h4><p>主要介绍以太网OAM配置命令。</p>
+</div>
+
+<div class="section"><h4 class="sectiontitle">相关链接</h4></div>
+
+</div>
+
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="../vrp/active_time.html">active time</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/alarm_finish_time.html">alarm finish time</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/alarm_occur_time.html">alarm occur time</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ccm-interval.html">ccm-interval</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cfm_bind.html">cfm bind</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cfm_default_md.html">cfm default md</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cfm_enable_mac_tunnel_view.html">cfm enable（MAC Tunnel视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cfm_enable_system_view.html">cfm enable（系统视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cfm_mac-tunnel_mip_trace_enable.html">cfm mac-tunnel mip trace enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cfm_md.html">cfm md</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cfm_trigger_if-down.html">cfm trigger if-down</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cfm_trigger_clear-arp_vlan.html">cfm trigger clear-arp vlan</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cfm_trigger_vlan_mac-renew.html">cfm trigger vlan mac-renew</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cfm_version.html">cfm version</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_cfm_default_md.html">display cfm default md</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_cfm_error-info.html">display cfm error-info</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_cfm_error-packet_statistics.html">display cfm error-packet statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_cfm_ma.html">display cfm ma</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_cfm_mac-tunnel_status.html">display cfm mac-tunnel status</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_cfm_md.html">display cfm md</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_cfm_mep.html">display cfm mep</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_cfm_mip.html">display cfm mip</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_cfm_mp-info.html">display cfm mp-info</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_cfm_remote-mep.html">display cfm remote-mep</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_efm.html">display efm</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_efm_session.html">display efm session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mip_create-type.html">display mip create-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_oam_global_configuration.html">display oam global configuration</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_test-packet_result.html">display test-packet result</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_bind_service-instance.html">efm bind service-instance</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_enable.html">efm enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_error-code_notification_enable.html">efm error-code notification enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_error-code_period.html">efm error-code period</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_error-code_threshold.html">efm error-code threshold</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_error-frame_notification_enable.html">efm error-frame notification enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_error-frame_period.html">efm error-frame period</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_error-frame_threshold.html">efm error-frame threshold</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_error-frame-second_notification_enable.html">efm error-frame-second notification enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_error-frame-second_period.html">efm error-frame-second period</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_error-frame-second_threshold.html">efm error-frame-second threshold</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_loopback.html">efm loopback</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_loopback_action.html">efm loopback action</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_mode.html">efm mode</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_packet_max-size.html">efm packet max-size</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_trigger_clear-arp_vlan.html">efm trigger clear-arp vlan</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_trigger_if-down.html">efm trigger if-down</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/efm_trigger_mac-renew.html">efm trigger mac-renew</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ma.html">ma</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/map.html">map</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mep_mep-id.html">mep mep-id</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mep_ccm-send_enable.html">mep ccm-send enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mip_create-type_md_view.html">mip create-type（MD视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mip_create-type_system_view.html">mip create-type（系统视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_cfm_md_ma_bfd-session.html">oam-bind cfm md ma bfd-session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_cfm_md_ma_cfm_md_ma.html">oam-bind cfm md ma cfm md ma</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_cfm_md_ma_efm_interface.html">oam-bind cfm md ma efm interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_efm_interface_bfd-session.html">oam-bind efm interface bfd-session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_ingress_bfd-session_egress_cfm_md_ma.html">oam-bind ingress bfd-session egress cfm md ma</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_ingress_bfd-session_egress_efm_interface.html">oam-bind ingress bfd-session egress efm interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_ingress_cfm_md_ma_egress_bfd-session.html">oam-bind ingress cfm md ma egress bfd-session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_ingress_cfm_md_ma_egress_cfm_md_ma.html">oam-bind ingress cfm md ma egress cfm md ma</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_ingress_cfm_md_ma_egress_efm_interface.html">oam-bind ingress cfm md ma egress efm interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_ingress_cfm_md_ma_egress_mpls_oam_tunnel.html">oam-bind ingress cfm md ma egress mpls oam tunnel</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_ingress_efm_interface_egress_bfd-session.html">oam-bind ingress efm interface egress bfd-session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_ingress_efm_interface_egress_cfm_md_ma.html">oam-bind ingress efm interface egress cfm md ma</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_ingress_efm_interface_egress_mpls_oam_tunnel.html">oam-bind ingress efm interface egress mpls oam tunnel</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_ingress_mpls_oam_egress_cfm_md_ma.html">oam-bind ingress mpls oam egress cfm md ma</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-bind_ingress_mpls_oam_egress_efm_interface.html">oam-bind ingress mpls oam egress efm interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam-mgr.html">oam-mgr</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/packet-priority.html">packet-priority</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ping_mac.html">ping mac</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ping_mac_enable.html">ping mac enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ping_mac-8021ag.html">ping mac-8021ag</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ping_mac-tunnel.html">ping mac-tunnel</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/remote-mep.html">remote-mep</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/remote-mep_ccm-receive_enable.html">remote-mep ccm-receive enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_cfm_error-packet_receive_statistics.html">reset cfm error-packet receive statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/senderid-tlv-type.html">senderid-tlv-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/test-packet_start.html">test-packet start</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/trace_mac.html">trace mac</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/trace_mac_enable.html">trace mac enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/trace_mac-8021ag.html">trace mac-8021ag</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/trace_mac-tunnel.html">trace mac-tunnel</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/transport_trace_vlan.html">transport trace vlan</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/vlan_default_md_view.html">vlan（默认MD视图）</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/reliability_commands.html">可靠性命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

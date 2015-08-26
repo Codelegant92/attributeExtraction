@@ -1,0 +1,125 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ip relay giaddr（接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ip_relay_address_interface_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ip_relay_giaddr_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ip relay giaddr（接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ip_relay_giaddr_interface_view"></a><a name="ip_relay_giaddr_interface_view"></a>
+
+
+<h1 class="topictitle1">ip relay giaddr（接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ip relay giaddr</strong>命令用来在接口视图下配置DHCP option与中继代理地址的关联，从而实现DHCP服务器根据不同的客户端分配不同网段的IP地址。</p>
+<p><strong>undo ip relay giaddr</strong>命令用来删除配置的中继代理地址。</p>
+<p>缺省情况下，中继代理地址是该接口的主IP地址。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ip relay giaddr</strong><em> ip-address </em>[ <strong>dhcp-option</strong> { <strong>60</strong> [ <em>option-text </em>] | <em>code </em>} ]</p>
+<p><strong>undo ip relay giaddr all</strong> </p>
+<p><strong>undo ip relay giaddr</strong><em> ip-address </em>[ <strong>dhcp-option</strong> { <strong>60</strong> [<em> option-text </em>] | <em>code </em>} | <strong>all</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：指定中继代理地址。</p>
+<p><strong>60</strong>：表示DHCP option的编号为60。option 60是一个特殊的DHCP option。当配置option 60时，可以同时配置厂商标识字符串，用以识别不同的客户端。最多可配置100个携带不同厂商标识字符串的option 60与DHCP服务器相关联。厂商标识字符串的具体内容是通过与客户端协商来配置的。</p>
+<p><em>option-text</em>：指定option60厂商标识字符串的内容。字符串形式，长度范围是1～128。</p>
+<p><em>code</em>：指定DHCP option的编号。范围是1～254。</p>
+<p><strong>all</strong>：<strong>undo ip relay giaddr all</strong>中的<strong>all</strong>表示删除该接口下所有的中继代理地址配置。</p>
+<p><strong>all</strong>：<strong>undo ip relay giaddr</strong><em> ip-address </em>[ <strong>dhcp-option</strong> { <strong>60</strong> [<em> option-text </em>] | <em>code </em>} | <strong>all</strong> ]中的<strong>all</strong>：表示删除某一中继代理地址的所有配置信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令用来配置DHCP option与中继代理地址的关联。与接口视图下<strong>ip relay address</strong>命令配合使用，实现DHCP服务器根据为不同类型的客户端分配不同网段的IP地址。</p>
+<p>中继代理收到DHCP请求报文后，根据所配置的DHCP option与中继代理地址的关联，将不同的中继代理地址填充到报文的giaddr字段。DHCP服务器根据该字段的中继代理地址，给客户端分配不同网段的地址。</p>
+<p>中继代理地址可以是使能DHCP中继代理功能的接口的主IP地址，也可以是接口的从IP地址。接口最多可配置31个从地址，所以中继代理地址最多可以有32个。当接口没有配置中继代理地址的关联时，默认选择接口的主IP地址作为中继代理地址。</p>
+<p>DHCP option与中继代理地址是多对一的关系，即同一个中继代理地址可以与多个option关联，但同一个option只能与一个中继代理地址关联。</p>
+<p>中继代理处理报文时，根据DHCP协议报文解析出的DHCP option编号查找配置，如果有多个DHCP option的匹配配置，则选择编号最大的DHCP option配置转发报文。如果选定的DHCP option编号为60，则优先根据字符串内容查找匹配配置，若没有匹配配置则选用不带字符串内容的option 60配置。若中继代理上没有DHCP
+option的配置，则根据没有DHCP option的配置转发报文。如果没有配置中继代理所代理的DHCP服务器地址，中继代理则丢弃协议报文；如果没有配置中继代理地址，则默认以接口主IP地址为中继代理地址。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ip_relay_giaddr_interface_view__d84496e145"></a><a name="d84496e145"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置接口GE 1/0/0的IP地址1.1.1.1为中继服务器地址。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>ip relay giaddr 1.1.1.1</strong></pre>
+<p>#
+配置option 12与IP地址为1.1.1.1的中继代理地址的关联。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>ip relay giaddr 1.1.1.1 dhcp-option 12</strong></pre>
+<p>#
+配置option 60 abc与IP地址为1.1.1.1的中继代理地址的关联。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>ip relay giaddr 1.1.1.1 dhcp-option 60 abc</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50.5%" id="d84496e200"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="49.5%" id="d84496e204"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50.5%" headers="d84496e200 "><p>VRPV500R006C02</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.5%" headers="d84496e204 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_configuration_commands.html">DHCP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ip_relay_address_interface_view.html">ip relay address（接口视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,186 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mac-address service-instance">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mac-address_service-instance.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mac-address_service-instance">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mac-address service-instance</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mac-address_service-instance"></a><a name="display_mac-address_service-instance"></a>
+
+
+<h1 class="topictitle1">display mac-address service-instance</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mac-address</strong>命令用来查看指定业务实例下MAC地址表中的静态、黑洞或具体MAC地址对应的表项信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mac-address</strong> { <strong>blackhole</strong> | <strong>static</strong> | <em>mac-address</em> } <strong>service-instance</strong><em> service-instance-name</em><span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>static</strong>：静态表项，不被老化，系统复位或接口板热插拔后不丢失。</p>
+<p><strong>blackhole</strong>：黑洞表项，不被老化，系统复位或接口板热插拔后不丢失。</p>
+<p><em>mac-address</em>：指定待查看的MAC地址。格式为H-H-H。其中H为4位的十六进制数，可以输入1～4位，如00e0、fc01。当输入不足4位时，表示前面的几位为0，如：输入e0，等同于00e0。</p>
+<p><strong>service-instance</strong><em> service-instance-name</em>：指定业务实例名字。该业务实例必须为多点到多点的业务实例。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong> exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>由于多点到多点业务实例支持基于静态MAC地址的转发功能，也可以配置MAC地址表项为黑洞表项。使用<strong>display mac-address</strong>命令可以查看MAC地址表中的静态、黑洞表项。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mac-address_service-instance__d39117e116"></a><a name="d39117e116"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看业务实例的静态转发表信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mac-address static service-instance si1</strong></pre>
+<pre class="screen">MAC Address       VLAN    PEVLAN   CEVLAN    Port   Type    Lsp/      </pre>
+<pre class="screen">                  VSI/SI                                    Mac-tunnel</pre>
+<pre class="screen">----------------------------------------------------------------------</pre>
+<pre class="screen">0000-0000-0003    si1     -        -         -      static  tu1       </pre>
+<pre class="screen">Total matching items displayed = 1</pre>
+
+<div class="tablenoborder"><a name="display_mac-address_service-instance__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mac-address_service-instance__tb_01" frame="border" border="1" rules="all"><caption>表1 display mac-address命令的输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.37288989669942%" id="d39117e146"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.62711010330058%" id="d39117e150"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39117e146 "><p>Mac-address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39117e150 "><p>用户MAC地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39117e146 "><p>VLAN/VSI/SI</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39117e150 "><p>出接口所在的VLAN或者所属的VSI。SI表示服务实例名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39117e146 "><p>CEVLAN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39117e150 "><p>用户内层VLAN的Tag值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39117e146 "><p>Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39117e150 "><p>接口名称和编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39117e146 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39117e150 "><p>MAC地址表项类型，包括静态表项、动态表项和黑洞表项</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39117e146 "><p>Mac-tunnnel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39117e150 "><p>Mac Tunnel名称</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mac-address_service-instance__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mac-address_service-instance__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d39117e238"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d39117e242"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d39117e238 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d39117e242 "><p>命令增加通配符： [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mac-address_service-instance.html">mac-address service-instance</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

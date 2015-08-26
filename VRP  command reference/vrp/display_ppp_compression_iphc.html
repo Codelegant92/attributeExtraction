@@ -1,0 +1,162 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ppp compression iphc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ppp_and_mp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ppp_compression_iphc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ppp_compression_iphc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ppp compression iphc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ppp_compression_iphc"></a><a name="display_ppp_compression_iphc"></a>
+
+<h1 class="topictitle1">display ppp compression iphc</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ppp compression iphc</strong>命令用来查看PPP链路上对IP报文进行头压缩的统计信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ppp compression iphc </strong>{ <strong>rtp</strong> | <strong>tcp</strong> } [ <em>interface-type</em> <em>interface-number </em>]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>rtp</strong>：显示对RTP报文进行头压缩的统计信息。</p>
+<p><strong>tcp</strong>：显示对TCP报文进行头压缩的统计信息。</p>
+<p><em>interface-type interface-number</em>：进行压缩的链路所对应的接口类型和接口编号。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>关于此命令的详细解释请参见《<span class="keyword">VRP</span><span class="keyword">  </span>配置指南 QoS》的链路效率机制部分。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ppp_compression_iphc__d60540e56"></a><a name="d60540e56"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看PPP链路上对RTP报文进行头压缩的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ppp compression iphc rtp</strong></pre>
+<pre class="screen">IPHC: RTP/UDP/IP header compression</pre>
+<pre class="screen">  Interface: Serial3/0/2:0</pre>
+<pre class="screen">    Received:</pre>
+<pre class="screen">      Compress/Error/Discard/Total: 1349855/283223/283223/1508113 (Packets)</pre>
+<pre class="screen">    Sent:</pre>
+<pre class="screen">      Compress/Total: 1861185/2058124 (Packets)</pre>
+<pre class="screen">      Send/Save/Total: 63053029/68666907/131719936 (Bytes)</pre>
+<pre class="screen">      Compression Ratio(Total/Send): 2.08</pre>
+<pre class="screen">    Connect:</pre>
+<pre class="screen">      Rx/Tx: 16/16</pre>
+<pre class="screen">      Long-search/Miss: 0/6</pre>
+<pre class="screen">      Hit-Ratio: 90%</pre>
+<pre class="screen">      Five-Minute-Miss-Ratio: 3 (Misses/5Mins)</pre>
+<pre class="screen">      Max-Miss-Ratio: 3</pre>
+
+<div class="tablenoborder"><a name="display_ppp_compression_iphc__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ppp_compression_iphc__tb_01" frame="border" border="1" rules="all"><caption>表1 display ppp compression iphc rtp命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="40.27462836986647%" id="d60540e99"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="59.72537163013354%" id="d60540e102"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>IPHC</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>IP报文头压缩。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Interface:</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>报文头压缩应用的接口。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Received:</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>接收到的报文情况统计。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Compress/Error/Discard/Total:</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>压缩报文数/错误报文数/丢弃报文数/报文总数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Sent:</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>发送的报文统计情况。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Compress/Total</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>压缩报文数/报文总数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Send/Save/Total</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>发送字节数/保存字节数/字节总数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Compression Ratio(Total/Send)</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>压缩效率。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Connect:</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>连接数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Rx</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>作为接收方,可解压缩的数据流的最大数目。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Tx</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>作为发送方,可压缩的数据流的最大数目。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Long-search</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>查找压缩表项的次数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Miss</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>查找压缩表项的失败次数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Hit-Ratio</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>查找压缩表项的成功命中次数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Five-Minute-Miss-Ratio:</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>按5分钟计算的未压缩报文的比率。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d60540e99 "><p>Max-Miss-Ratio:</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d60540e102 "><p>最大未压缩报文比率。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ppp_and_mp_configuration_commands.html">PPP和MP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ppp_compression_iphc.html">ppp compression iphc</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

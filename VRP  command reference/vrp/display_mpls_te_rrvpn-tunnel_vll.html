@@ -1,0 +1,180 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te rrvpn-tunnel（VLL）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_rrvpn-tunnel_vll">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te rrvpn-tunnel（VLL）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_rrvpn-tunnel_vll"></a><a name="display_mpls_te_rrvpn-tunnel_vll"></a>
+
+
+<h1 class="topictitle1">display mpls te rrvpn-tunnel（VLL）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls te rrvpn-tunnel</strong>命令用来查看为L2VPN分配资源的情况。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te rrvpn-tunnel</strong> [ <strong>tunnel</strong> <em>interface-number | </em><strong>auto</strong>-<strong>bypass</strong>-<strong>tunnel</strong> <em>tunnel-name</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>tunnel</strong><em> interface-number</em>：指定隧道接口。如果指定隧道接口，只显示使用该隧道的VPN占用资源的情况。</p>
+<p><strong>auto-bypass-tunnel </strong><em>tunnel-name</em>：显示某一条指定的自动生成的Bypass tunnel信息。隧道名称为字符串形式，不支持空格，长度范围是1～63。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置资源隔离VPN（包括L3VPN和VLL）后，可使用<strong>display mpls te rrvpn-tunnel</strong>命令验证配置结果。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_rrvpn-tunnel_vll__d49336e68"></a><a name="d49336e68"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在设备上查看指定隧道的资源被VPN占用的情况。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display mpls te rrvpn-tunnel</strong></strong></pre>
+<pre class="screen">Tunnel Name       Interface Id  Status Bandwidth L3V Count VLL Count</pre>
+<pre class="screen">Tunnel1/0/0       0x4000585     up     400       0         2</pre>
+<pre class="screen">---------------------------------------------------------------------</pre>
+<pre class="screen">*********VLL VPN*********</pre>
+
+<pre class="screen">Vpn Instance        :Ethernet1/0/0</pre>
+<pre class="screen">Tunnel Id           :0xc10100ba</pre>
+<pre class="screen">Qos Policy          :Qos Local Id</pre>
+<pre class="screen">Policy Value        :1</pre>
+<pre class="screen">Bandwidth           :20</pre>
+<pre class="screen">Status              :up</pre>
+
+<pre class="screen">Vpn Instance        :Ethernet11/0/1</pre>
+<pre class="screen">Tunnel Id           :0xc10100bb</pre>
+<pre class="screen">Qos Policy          :Qos Local Id</pre>
+<pre class="screen">Policy Value        :2</pre>
+<pre class="screen">Bandwidth           :20</pre>
+<pre class="screen">Status              :up</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_rrvpn-tunnel_vll__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_rrvpn-tunnel_vll__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te rrvpn-tunnel命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.96875787351978%" id="d49336e124"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.031242126480215%" id="d49336e128"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d49336e124 "><p>Tunnel Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d49336e128 "><p>VPN资源隔离所使用的隧道接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d49336e124 "><p>Interface Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d49336e128 "><p>该隧道接口的ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d49336e124 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d49336e128 "><div class="p">第一个&#8220;Staus&#8221;表示主隧道的接口状态，其他的&#8220;Status&#8221;表示子隧道接口的接口状态。<ul>
+<li><p>up：表示该隧道可用。</p>
+</li>
+<li><p>down：表示该隧道不可用。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d49336e124 "><p>Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d49336e128 "><p>带宽值。主隧道的带宽值大于或等于子隧道带宽值的总和。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d49336e124 "><p>L3V Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d49336e128 "><p>使用该隧道的L3VPN的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d49336e124 "><p>VLL Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d49336e128 "><p>使用该隧道的VLL的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d49336e124 "><p>Vpn Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d49336e128 "><p>绑定该VLL的接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d49336e124 "><p>Qos Policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d49336e128 "><p>为该VLL配置的QoS策略。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

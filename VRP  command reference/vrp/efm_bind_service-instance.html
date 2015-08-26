@@ -1,0 +1,100 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="efm bind service-instance">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_bind.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_enable_mac_tunnel_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="efm_bind_service-instance">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>efm bind service-instance</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="efm_bind_service-instance"></a><a name="efm_bind_service-instance"></a>
+
+
+<h1 class="topictitle1">efm bind service-instance</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>efm bind</strong>命令用来将EFM OAM和MAC tunnel的业务实例绑定，即建立联动关系。</p>
+<p><strong>undo
+efm bind</strong>命令用来解除EFM OAM和MAC tunnel业务实例的绑定关系。</p>
+<p>缺省情况下，EFM OAM不和MAC tunnel的业务实例绑定。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>efm bind service-instance</strong><em> instance-name</em></p>
+<p><strong>undo
+efm bind service-instance</strong> <em>instance-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>service-instance</strong> <em>instance-name</em>：指定和EFM OAM建立绑定关系的MAC
+tunnel业务实例。<em>instance-name</em>表示业务实例的名称，字符串形式，不支持空格，长度范围是1～31。该业务实例必须是点到点类型的。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MAC Tunnel视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当将EFM OAM和MAC tunnel的业务实例绑定后，MAC tunnel的业务实例的接入接口如果通过EFM OAM检测到链路故障，则通过该MAC
+tunnel业务实例将故障消息传递到MAC tunnel的另一端。</p>
+<p>当MAC tunnel的两端都有业务实例绑定了EFM OAM后，如果一端的业务实例的接入接口通过EFM
+OAM检测到链路故障，故障消息可以通过MAC tunnel传递到另一端，再通过另一端绑定了EFM OAM的业务实例的接入接口传递给该接口的对端设备。</p>
+<p>本功能主要用于同一用户的两个网络通过运营商的MAC
+tunnel相连，CE设备和PE设备之间运行EFM OAM的场景。配置此功能后，两端的CE设备可以互相获知对端网络中CE设备和PE设备之间的连通性故障。</p>
+<p>配置此功能时，要求：</p>
+<ul>
+<li><p>已使用<a href="cfm_enable_mac_tunnel_view.html">cfm enable（MAC Tunnel视图）</a>命令使能了MAC tunnel的以太网CFM功能。</p>
+</li>
+<li><p><em>instance-name</em>参数指定的业务实例必须是P2P类型的，且必须以Port方式接入MAC tunnel。</p>
+</li>
+<li><p><em>instance-name</em>参数指定的业务实例必须已和MAC tunnel绑定。</p>
+</li>
+<li><p><em>instance-name</em>参数指定的业务实例的接入点对应的接口必须已使能EFM功能。</p>
+</li>
+</ul>
+<p>配置了MAC tunnel的业务实例和EFM OAM绑定后，不允许禁止该MAC tunnel的CFM功能。</p>
+<p>一个业务实例只能和一个MA建立绑定关系，或者和EFM
+OAM建立绑定关系。整个<span class="keyword">VRP</span>设备最多只支持在256个MAC
+tunnel上建立这两种绑定关系。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="efm_bind_service-instance__d74842e99"></a><a name="d74842e99"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将EFM OAM和MAC tunnel的业务实例si1绑定。该MAC tunnel的名称为tu1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>efm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> mac-tunnel tunnel-name tu1</strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-tu1]<strong> <strong>cfm enable</strong></strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-tu1]<strong> <strong>efm bind service-instance si1</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_bind.html">cfm bind</a></div>
+<div><a href="cfm_enable_mac_tunnel_view.html">cfm enable（MAC Tunnel视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,268 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display virtual-access">
+<meta name="DC.Relation" scheme="URI" content="../vrp/virtual_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_interface_virtual-template.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_virtual-access">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display virtual-access</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_virtual-access"></a><a name="display_virtual-access"></a>
+
+
+<h1 class="topictitle1">display virtual-access</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display virtual-access</strong>命令用来查看虚拟访问接口的状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display virtual-access</strong> [ <strong>slot</strong> <em>slot-number</em> | <strong>vt</strong> <em>vt-number</em> | <strong>user</strong> <em>user-name</em> | <strong>peer</strong> <em>peer-address</em> | <em>va-number</em> ] *</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>slot-number</em>：虚拟访问接口所在的槽号。</p>
+<p><em>vt-number</em>：虚拟访问接口所属的虚拟接口模板号。</p>
+<p><em>user-name</em>：虚拟访问接口的登录用户名。字符串形式，长度为1～64。</p>
+<p><em>peer-address</em>：虚拟访问接口的对端地址。</p>
+<p><em>va-number</em>：虚拟访问接口的顺序号。整数形式，取值范围是0～1023。</p>
+<p>不指定任何参数时，将显示所有虚拟访问接口的状态信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_virtual-access__d71096e85"></a><a name="d71096e85"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有虚拟访问接口的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display virtual-access</strong></pre>
+<pre class="screen">----------------Slot 1----------------</pre>
+<pre class="screen">Virtual-Template1:0 current state : UP</pre>
+<pre class="screen">Line protocol current state : UP</pre>
+<pre class="screen">Last line protocol up time: 2007-11-04, 14:19:59</pre>
+<pre class="screen"><span>Description:HUAWEI, Quidway Series, Virtual-Template1:0 Interface
+</span><span>Route Port,The Maximum Transmit Unit is 1500</span>
+</pre>
+<pre class="screen">Link layer protocol is PPP</pre>
+<pre class="screen">LCP opened, MP opened, IPCP opened</pre>
+<pre class="screen">Physical is MP</pre>
+<pre class="screen">QoS max-bandwidth : 64 Kbps</pre>
+<pre class="screen">Output queue : (Urgent queue : Size/Length/Discards)  0/50/0</pre>
+<pre class="screen">Output queue : (Protocol queue : Size/Length/Discards) 0/1000/0</pre>
+<pre class="screen">Output queue : (FIFO queue : Size/Length/Discards)  0/256/0</pre>
+<pre class="screen">Statistics last cleared: never</pre>
+<pre class="screen">    Last 300 seconds input rate 0 bits/sec, 0 packets/sec
+    Last 300 seconds output rate 0 bits/sec, 0 packets/sec
+    Input: 7 packets,458 bytes,
+           0 unicast,0 broadcast,0 multicast
+           0 errors,0 drops,0 unknownprotocol
+    Output:7 packets,458 bytes,
+           0 unicast,0 broadcast,0 multicast
+           0 errors,0 drops
+</pre>
+
+<div class="tablenoborder"><a name="display_virtual-access__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_virtual-access__tb_01" frame="border" border="1" rules="all"><caption>表1 display Virtual-access命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.037540942302847%" id="d71096e137"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.96245905769715%" id="d71096e141"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d71096e137 "><p>Slot 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.96245905769715%" headers="d71096e141 "><p>虚拟访问接口所在的槽号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d71096e137 "><p>Virtual-Template1:0 current state :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.96245905769715%" headers="d71096e141 "><div class="p">Virtual-Template接口当前的物理状态。<ul>
+<li><p>UP：物理状态正常启动。</p>
+</li>
+<li><p>DOWN：物理连接不正常。</p>
+</li>
+<li><p>Administratively down：如果网络管理员在该接口执行<strong>shutdown</strong>命令，将显示状态为Administratively down。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d71096e137 "><p>Line protocol current state : </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.96245905769715%" headers="d71096e141 "><div class="p">显示该接口的链路协议状态。<ul>
+<li><p>UP：接口的链路协议处于正常的启动状态。</p>
+</li>
+<li><p>DOWN：接口的链路协议不正常，或者没有在此接口配置IP地址。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d71096e137 "><p>Last line protocol up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.96245905769715%" headers="d71096e141 "><p>接口的协议状态最近一次变为Up的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d71096e137 "><p>Description : </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.96245905769715%" headers="d71096e141 "><p>对接口的说明，支持空格，区分大小写，最多可输入242个字符。该说明信息便于用户了解该接口的作用。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d71096e137 "><p>The Maximum Transmit Unit is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.96245905769715%" headers="d71096e141 "><p>接口的最大传输单元（MTU）。例如串口缺省值是1500字节。长度大于MTU的报文，将会被分片后再发送。如果设置了不准分片，会被丢弃。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d71096e137 "><p>Link layer protocol is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.96245905769715%" headers="d71096e141 "><p>链路连接协议。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d71096e137 "><p>LCP, MP, IPCP </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.96245905769715%" headers="d71096e141 "><div class="p">LCP、MP、IPCP等的状态。<ul>
+<li><p>opened：正常启动。</p>
+</li>
+<li><p>initial：正在建立。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d71096e137 "><p>Physical is MP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.96245905769715%" headers="d71096e141 "><p>物理连接是MP。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d71096e137 "><p>Statistics last cleared:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.96245905769715%" headers="d71096e141 "><p>上次清除本接口统计信息的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d71096e137 "><p>Last 300 seconds input rate </p>
+<p>Last 300 seconds output rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.96245905769715%" headers="d71096e141 "><p>这一字段显示了在前300秒内通过接口接收和发送的字节速率和报文速率。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_virtual-access__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_virtual-access__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d71096e323"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d71096e327"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d71096e323 "><p>VRPV500R005C02B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d71096e327 "><p>除在链路协议状态处显示具有spoofing特性的接口和Trunk成员接口外，所有协议是Up状态的三层接口都增加显示接口的协议状态最近一次变为Up的时间。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/virtual_interface_configuration_commands.html">逻辑接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_interface_virtual-template.html">display interface virtual-template</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

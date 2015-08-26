@@ -1,0 +1,126 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="bfd bind mpls-te">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="bfd_bind_mpls-te">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>bfd bind mpls-te</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="bfd_bind_mpls-te"></a><a name="bfd_bind_mpls-te"></a>
+
+
+<h1 class="topictitle1">bfd bind mpls-te</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>bfd bind</strong> <strong>mpls-te</strong>命令用来配置BFD检测TE隧道或与TE隧道绑定的主用或备用LSP。</p>
+<p><strong>undo bfd</strong> <em>cfg-name</em>命令用来删除指定的BFD会话。</p>
+<p>缺省情况下，Tunnel隧道没有使用BFD检测。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>bfd</strong> <em>cfg-name</em> <strong>bind</strong> <strong>mpls-te</strong> <strong>interface</strong> <strong>tunnel</strong> <em>tunnel-number</em> [ <strong>te-lsp </strong>[ <strong>backup</strong> ] ]</p>
+<p><strong>undo bfd</strong> <em>cfg-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>cfg-name</em>：BFD配置名。字符串形式，不支持空格，长度范围是1～15。</p>
+<p><em>tunnel-number</em>：BFD会话绑定的Tunnel接口名称。</p>
+<p><strong>te-lsp</strong>：BFD检测与Tunnel隧道绑定的主LSP。</p>
+<p><strong>backup</strong>：BFD检测与Tunnel隧道绑定的备用LSP。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置BFD检测TE隧道之前，必须配置Tunnel接口。</p>
+<p>目前BFD只能够检测信令类型为CR-Static或RSVP-TE的TE隧道。</p>
+<p>BFD可以检测TE隧道，也可以检测与TE隧道绑定的主用或备用LSP。</p>
+<p>BFD检测与Tunnel绑定的主用或备用LSP时，如果LSP的状态为Down，则不能建立BFD会话。</p>
+<p>BFD检测TE隧道时，如果TE隧道的状态为Down，则能够创建BFD会话，但BFD会话不能Up。</p>
+<p>一个Tunnel可能有多个LSP，当BFD检测Tunnel时，只有全部LSP都出现故障时，BFD会话的状态才为Down。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>对于同一个TE隧道或同一条LSP，不能同时配置MPLS OAM和BFD检测。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="bfd_bind_mpls-te__d4166e109"></a><a name="d4166e109"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建BFD会话检测Tunnel隧道，Tunnel接口是Tunnel 1/0/10。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bfd 1to4tunnel bind mpls-te interface Tunnel 1/0/10</strong></pre>
+<pre class="screen">[Quidway-bfd-lsp-session-1to4tunnel]</pre>
+<p># 创建BFD会话检测与Tunnel绑定的主用LSP。</p>
+<pre class="screen">[Quidway]<strong> bfd 1to4rsvp bind mpls-te interface Tunnel 1/0/10 te-lsp </strong></pre>
+<pre class="screen">[Quidway-bfd-lsp-session-1to4rsvp]</pre>
+<p>#
+创建BFD会话检测与Tunnel绑定的备用LSP。</p>
+<pre class="screen">[Qudiway]<strong> bfd 1to4backup bind mpls-te interface Tunnel 1/0/10 te-lsp backup</strong></pre>
+<pre class="screen">[Quidway-bfd-lsp-session-1to4backup]</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="bfd_bind_mpls-te__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="bfd_bind_mpls-te__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d4166e151"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d4166e155"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d4166e151 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d4166e155 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d4166e151 "><p>VRPV500R005C02B050</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d4166e155 "><p>添加参数<strong>backup</strong></p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

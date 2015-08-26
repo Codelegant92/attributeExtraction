@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="vlan-mapping modulo">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mstp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="check_region-configuration.html">
+<meta name="DC.Relation" scheme="URI" content="display_stp_region-configuration.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="vlan-mapping_modulo">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>vlan-mapping modulo</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="vlan-mapping_modulo"></a><a name="vlan-mapping_modulo"></a>
+
+
+<h1 class="topictitle1">vlan-mapping modulo</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>vlan-mapping modulo</strong>命令用来将所有VLAN映射到指定的生成树实例上。</p>
+<p><strong>undo vlan-mapping modulo</strong>命令用来将所有VLAN和生成树实例的映射关系恢复为缺省状态。</p>
+<p>缺省情况下，所有VLAN均映射到CIST，即实例0上。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>vlan-mapping modulo</strong><em> modulo</em></p>
+<p><strong>undo vlan-mapping modulo</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>modulo</em>：模值，取值范围是1～48。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MST域视图<span>、MST进程域视图</span></p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>MSTP采用VLAN映射表来描述VLAN与生成树实例的映射关系。使用<strong>vlan-mapping modulo</strong>命令可以快速配置VLAN映射表，使每个VLAN按照配置被映射到不同的生成树实例上。</p>
+<p><strong>vlan-mapping modulo</strong>命令将VLAN映射到编号为(VLAN ID-1)％<em>modulo</em>+1的生成树实例上。其中(VLAN ID-1)％<em>modulo</em>为对(VLAN ID-1)进行求模运算，如模值为16，则VLAN1映射到MSTI1、VLAN2映射到MSTI2&#8230;&#8230;VLAN16映射到MSTI16、VLAN17映射到MSTI1，依次类推。</p>
+<p>不能将同一个VLAN映射到多个不同的生成树实例上。如果将一个已经和生成树实例建立映射关系的VLAN又映射到另一个生成树实例上，原来的映射关系将被取消。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="vlan-mapping_modulo__d127877e67"></a><a name="d127877e67"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将所有VLAN按照模16映射到生成树实例上。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> stp region-configuration</strong></pre>
+<pre class="screen">[Quidway-mst-region]<strong> vlan-mapping modulo 16</strong></pre>
+<p>#
+在MSPT进程10中将所有VLAN按照模16映射到生成树实例上。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>stp process 10</strong></pre>
+<pre class="screen">[Quidway-mst-process-10] <strong>stp region-configuration</strong></pre>
+<pre class="screen">[Quidway-mst-process-10-region] <strong>revision-level 5</strong></pre>
+<pre class="screen">[Quidway-mst-process-10-region]<strong> vlan-mapping modulo 16</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mstp_configuration_commands.html">MSTP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="check_region-configuration.html">check region-configuration</a></div>
+<div><a href="display_stp_region-configuration.html">display stp region-configuration</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

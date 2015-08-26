@@ -1,0 +1,231 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display pw-template">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pw-template.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_pw-template">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display pw-template</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_pw-template"></a><a name="display_pw-template"></a>
+
+
+<h1 class="topictitle1">display pw-template</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display pw</strong>-<strong>template</strong>命令用来查看指定的或者所有的PW模板信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display pw-template</strong> [ <em>pw-template-name</em> ]<span> [<strong> | count</strong> ] </span><span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>pw-template-name</em>：用于显示的PW模板名称。字符串形式，不支持空格，区分大小写，长度范围是1～19。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display pw</strong>-<strong>template</strong>命令后，如果没有指定参数<em>pw-template-name</em>，则显示所有PW模板的信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_pw-template__d61008e101"></a><a name="d61008e101"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>以下的显示信息中，显示了两个PW模板信息。第1个模板预先配置了一些属性。第2个模板的属性是默认属性，即只配置了模板名称，没有配置任何属性。</p>
+</div></div>
+<p># 查看<span class="keyword">路由器</span>上配置的所有PW模板的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display pw-template</strong></pre>
+<pre class="screen">Total PW template number : 2</pre>
+<pre class="screen"> </pre>
+<pre class="screen"> *PW Template Name : PWT</pre>
+<pre class="screen">  PeerIP           : 2.2.2.2</pre>
+<pre class="screen">  Tnl Policy Name  : gre</pre>
+<pre class="screen">  CtrlWord         : Enable</pre>
+<pre class="screen">  VCCV Capability  : cw alert lsp-ping</pre>
+<pre class="screen">  Behavior Name    : --</pre>
+<pre class="screen">  Total PW         : 0, Static PW : 0, LDP PW : 0</pre>
+<pre class="screen"> *PW Template Name : pwt</pre>
+<pre class="screen">  PeerIP           : --</pre>
+<pre class="screen">  Tnl Policy Name  : --</pre>
+<pre class="screen">  CtrlWord         : Disable</pre>
+<pre class="screen">  MaxAtmCells      : 1</pre>
+<pre class="screen">  VCCV Capability  : Disable</pre>
+<pre class="screen">  Behavior Name    : --</pre>
+<pre class="screen">  Total PW         : 0, Static PW : 0, LDP PW : 0</pre>
+
+<div class="tablenoborder"><a name="display_pw-template__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pw-template__tb_01" frame="border" border="1" rules="all"><caption>表1 display pw-template命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.86898463088939%" id="d61008e161"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.1310153691106%" id="d61008e165"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d61008e161 "><p>PeerIP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d61008e165 "><p>PW远端IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d61008e161 "><p>PW Template Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d61008e165 "><p>PW模板名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d61008e161 "><p>Tnl Policy Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d61008e165 "><p>应用于PW的公网隧道策略名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d61008e161 "><p>CtrlWord</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d61008e165 "><div class="p">表示该PW模板是否使能控制字：<ul>
+<li><p>Disable：没有使能控制字。</p>
+</li>
+<li><p>Enable：使能控制字。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d61008e161 "><p>MaxAtmCells</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d61008e165 "><p>ATM的最大传输信元个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d61008e161 "><p>VCCV Capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d61008e165 "><p>VC连接检测能力，VC连接检测有两种通道：控制字和Label Alert。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d61008e161 "><p>Behavior Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d61008e165 "><p>该PW模板上配置的QoS行为策略名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d61008e161 "><p>Total PW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d61008e165 "><p>使用该PW模板的总PW个数，即静态和动态PW的个数总和。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_pw-template__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pw-template__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.0047871000252%" id="d61008e285"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.99521289997481%" id="d61008e289"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d61008e285 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d61008e289 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d61008e285 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d61008e289 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pwe3_configuration_commands.html">PWE3配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pw-template.html">pw-template</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="active region-configuration">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mstp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="check_region-configuration.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="active_region-configuration">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>active region-configuration</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="active_region-configuration"></a><a name="active_region-configuration"></a>
+
+
+<h1 class="topictitle1">active region-configuration</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>active region-configuration</strong>命令用来激活MST域配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>active region-configuration</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MST域视图<span>、MST进程域视图</span></p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置MST域的相关参数，特别是配置VLAN映射表时，很容易引起网络拓扑振荡。为了减少网络振荡，新配置的MST域参数并不会马上生效，而是在使用本命令手动激活后，或者启用MSTP协议后才会真正生效。</p>
+<p>执行本命令前，建议先使用<a href="check_region-configuration.html">check region-configuration</a>命令查看尚未生效的域配置是否正确。证实未生效的域配置完全正确后，再执行本命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="active_region-configuration__d486e44"></a><a name="d486e44"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将VLAN5映射到生成树实例2上，并手动激活该项配置。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> stp region-configuration</strong></pre>
+<pre class="screen">[Quidway-mst-region]<strong> instance 2 vlan 5</strong></pre>
+<pre class="screen">[Quidway-mst-region]<strong> active region-configuration</strong></pre>
+<p># 在MSTP进程10中，将VLAN5映射到生成树实例2上，并手动激活该项配置。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>stp process 10</strong></pre>
+<pre class="screen">[Quidway-mst-process-10] <strong>stp region-configuration</strong></pre>
+<pre class="screen">[Quidway-mst-process-10-region] <strong>instance 2 vlan 5</strong></pre>
+<pre class="screen">[Quidway-mst-process-10-region] <strong>active region-configuration</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mstp_configuration_commands.html">MSTP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="check_region-configuration.html">check region-configuration</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

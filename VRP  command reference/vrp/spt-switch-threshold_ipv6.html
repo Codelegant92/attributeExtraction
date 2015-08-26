@@ -1,0 +1,82 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="spt-switch-threshold（IPv6）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_pim_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="spt-switch-threshold_ipv6">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>spt-switch-threshold（IPv6）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="spt-switch-threshold_ipv6"></a><a name="spt-switch-threshold_ipv6"></a>
+
+
+<h1 class="topictitle1">spt-switch-threshold（IPv6）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>spt-switch-threshold</strong>命令用来设置组成员端DR加入SPT的组播报文速率阈值。</p>
+<p><strong>undo spt-switch-threshold</strong>命令用来恢复参数缺省值。</p>
+<p>缺省情况下，从RPT收到第一个组播数据包后立即进行SPT切换。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>spt-switch-threshold </strong>{ <em>traffic-rate</em> | <strong>infinity</strong> } [ <strong>group-policy</strong> <em>basic-acl6-number</em> [ <strong>order</strong> <em>order-value </em>] ]</p>
+<p><strong>undo spt-switch-threshold</strong> [ <strong>group-policy</strong> <em>basic-acl6-number </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>traffic-rate</em>：表示RPT切换到SPT的速率阈值。整数形式，取值范围是1～4194304，单位是kbit/s。</p>
+<p><strong>infinity</strong>：表示永远不发起SPT切换。</p>
+<p><strong>group-policy</strong> <em>basic-acl6-number</em>：指定访问控制列表，与指定<strong>group-policy</strong> <em>basic-acl6-number</em>匹配的组播组将启用该阈值。如果未配置该参数，则该阈值将应用于所有组播组。<em>basic-acl6-number</em>表示基本访问控制列表号，定义一个组播组范围。取值范围是2000～2999。</p>
+<p><strong>order</strong> <em>order-value</em>：调整ACL在group-policy列表中的序号，在一个组匹配多个ACL的情况下，阈值的选择按<em>order-value</em>来排序。<em>order-value</em>表示序号的更新值。整数形式，取值范围是当前group-policy列表序号中非原序号的所有值。如果未配置该参数，则不改变列表序号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IPv6 PIM视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>如果配置了多条该命令对同一组播组适用，则该组播组按顺序匹配到的第一个命令生效。</p>
+</div></div>
+<p>请参见IPv4 PIM配置命令中的<a href="spt-switch-threshold_ipv4.html">spt-switch-threshold（IPv4）</a>。</p>
+<p><strong>spt-switch-threshold</strong>命令与<strong>acl</strong>命令配合使用。在ACL6视图下，通过<strong>rule</strong>命令的<strong>source</strong>参数定义应用组播报文速率阈值的IPv6组播组。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="spt-switch-threshold_ipv6__d119903e126"></a><a name="d119903e126"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中，设置阈值为4kbit/s，从源到组播组的传输速率高于阈值时，<span class="keyword">路由器</span>就转换到指向源的最短路径树。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> pim-ipv6</strong></pre>
+<pre class="screen">[Quidway-pim6]<strong> spt-switch-threshold 4</strong></pre>
+<p># 在公网实例中，配置新增加一个<strong>group-policy</strong>，该组策略的ACL号为2010，阈值为100 kbit/s，并且插在第一位。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> acl ipv6 2010</strong>
+[Quidway-acl6-basic-2010]<strong> rule permit source ff02:: 96</strong>
+[Quidway-acl6-basic-2010] <strong>quit</strong>
+[Quidway]<strong> pim-ipv6</strong>
+[Quidway-pim6]<strong> spt-switch-threshold 100 group-policy 2010 order 1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_pim_configuration_commands.html">IPv6 PIM配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer（VSI-LDP视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="peer_static-upe.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer（VSI-LDP视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer"></a><a name="peer"></a>
+
+
+<h1 class="topictitle1">peer（VSI-LDP视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer</strong>命令用于配置VSI的对等体。</p>
+<p>缺省情况下，VSI实例没有对等体。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> <em>peer-address</em> [ <strong>negotiation-vc-id</strong> <em>vc-id</em> ] [ <strong>tnl-policy</strong> <em>policy-name</em> ] [ <strong>upe</strong> ]</p>
+<p><strong>undo</strong> <strong>peer</strong> <em>peer-address</em> [ <strong>negotiation-vc-id</strong> <em>vc-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>peer-address</em>：对等体的IPv4地址，通常指定为对端的Loopback地址。</p>
+<p><strong>negotiation-vc-id</strong><em> vc-id</em>：虚电路的唯一标识，一般用于两端VSI ID不同但要求互通的情况。参数<em>vc-id</em>不能与本端其他VSI配置的VSI ID相同，也不能与本端其他<strong>negotiate-vc-id</strong>指定的VSI ID相同，即<em>vc-id</em>是没有被用过的虚电路号，十进制整数形式，取值范围是1～4294967295。</p>
+<p><strong>tnl-policy</strong><em> policy-name</em>：用于该对等体的隧道策略名称。</p>
+<p><strong>upe</strong>：用于标识该对等体是否是用户端的PE，该参数适用于HVPLS（Hierarchical Virtual
+Private LAN Service）。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VSI-LDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置VSI的对等体之前，需要先配置VSI-ID。</p>
+<p>在<strong>peer</strong>命令中，如果选择关键字<strong>upe</strong>，则表明对等体属于用户端，而不在水平分割的范围内。</p>
+<p>如果配置VSI的对等体时使用了参数<strong>negotiation-vc-id </strong><em>vc-id</em>，并且指定的<em>vc-id</em>与使用<a href="vsi-id.html">vsi-id</a>命令配置的<em>vsi-id</em>不同，那么使用命令<strong>undo</strong> <strong>peer</strong>删除该VSI的对等体时，仍需携带参数<strong>negotiation-vc-id </strong><em>vc-id</em>，否则将无法正常删除该VSI的对等体。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer__d102995e136"></a><a name="d102995e136"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置当前VSI实例的对等体。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> vsi company1</strong></pre>
+<pre class="screen">[Quidway-vsi-company1]<strong> <strong>pwsignal ldp</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company1-ldp]<strong> peer 3.3.3.3 negotiation-vc-id 10 upe</strong></pre>
+<p># 删除VSI实例的对等体。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> vsi company1</strong></pre>
+<pre class="screen">[Quidway-vsi-company1]<strong> <strong>pwsignal ldp</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company1-ldp]<strong> <strong>undo peer 3.3.3.3</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="peer_static-upe.html">peer static-upe</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

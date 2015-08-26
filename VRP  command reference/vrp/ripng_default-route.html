@@ -1,0 +1,72 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ripng default-route">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ripng_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ripng_default-route">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ripng default-route</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ripng_default-route"></a><a name="ripng_default-route"></a>
+
+
+<h1 class="topictitle1">ripng default-route</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ripng default-route</strong>命令用来生成一条缺省路由到RIPng路由域中。</p>
+<p><strong>undo ripng default-route</strong>命令用来禁止发布RIPng缺省路由和转发IPv6缺省路由。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ripng default-route</strong> { <strong>only</strong> | <strong>originate</strong> } [ <strong>cost</strong> <em>cost </em>] </p>
+<p><strong>undo default-route</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>only</strong>：只发布IPv6缺省路由（::/0），抑制其它路由的发布。</p>
+<p><strong>originate</strong>：发布IPv6缺省路由（::/0），但不影响其它路由的发布。</p>
+<p><strong>cost</strong> <em>cost </em>：指定缺省路由的开销。整数形式，取值范围是1～15。缺省值是1。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>生成的RIPng缺省路由将强制通过指定接口的路由更新报文发布出去。该路由的发布不考虑其是否已经存在于IPv6路由表中。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ripng_default-route__d114398e70"></a><a name="d114398e70"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 只将缺省路由以更新报文的形式从接口发布。</p>
+<pre class="screen">[Quidway]<strong> interface GigabitEthernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> ripng default-route only</strong></pre>
+<p># 将缺省路由同其它路由一起以更新报文的形式从接口发布。</p>
+<pre class="screen">[Quidway]<strong> interface GigabitEthernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> ripng default-route originate</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ripng_configuration_commands.html">RIPng配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,122 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ike peer">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ike_peer">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ike peer</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ike_peer"></a><a name="display_ike_peer"></a>
+
+<h1 class="topictitle1">display ike peer</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>ike</strong> <strong>peer</strong>命令用来查看IKE对等体的配置情况。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>ike</strong> <strong>peer</strong> [ <strong>name</strong>  <em>peer-name</em> ] </p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>peer-name</em>：IKE对等体的名称，字符串形式，长度范围是1～15。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display</strong> <strong>ike</strong> <strong>peer</strong>命令能够观察到的IKE对等体配置情况包括：</p>
+<ul><li><p>IKE Peer的名称</p>
+</li><li><p>协商的模式</p>
+</li><li><p>身份认证字</p>
+</li><li><p>IKE提议</p>
+</li><li><p>Local id的形式</p>
+</li><li><p>对端的IP地址</p>
+</li><li><p>IKE Peer对端的名字</p>
+</li><li><p>是否使能NAT穿越</p>
+</li></ul>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ike_peer__d27067e82"></a><a name="d27067e82"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 下面是配置了一特定对端的认证字后显示的例子。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ike peer</strong></pre>
+<pre class="screen">---------------------------</pre>
+<pre class="screen"> IKE Peer: aggressive</pre>
+<pre class="screen">   exchange mode: aggressive on phase 1</pre>
+<pre class="screen">   pre-shared-key: huawei</pre>
+<pre class="screen">   proposal:</pre>
+<pre class="screen">   local id type: ip</pre>
+<pre class="screen">   peer ip address:</pre>
+<pre class="screen">   peer name: ne16e</pre>
+<pre class="screen">   nat traversal: enable</pre>
+<p>---------------------------       </p>
+
+<div class="tablenoborder"><a name="display_ike_peer__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ike_peer__tb_01" frame="border" border="1" rules="all"><caption>表1 display ike peer命令显示信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="24.363819601914845%" id="d27067e117"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="75.63618039808516%" id="d27067e120"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="24.363819601914845%" headers="d27067e117 "><p>IKE Peer</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.63618039808516%" headers="d27067e120 "><p>Peer名称</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.363819601914845%" headers="d27067e117 "><p>exchange mode</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.63618039808516%" headers="d27067e120 "><p>协商模式</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.363819601914845%" headers="d27067e117 "><p>Preshared-key</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.63618039808516%" headers="d27067e120 "><p>配置的身份认证字</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.363819601914845%" headers="d27067e117 "><p>proposal</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.63618039808516%" headers="d27067e120 "><p>Ike提议</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.363819601914845%" headers="d27067e117 "><p>peer id type</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.63618039808516%" headers="d27067e120 "><p>ID类型：名称或IP方式</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.363819601914845%" headers="d27067e117 "><p>peer ip address</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.63618039808516%" headers="d27067e120 "><p>对端IP地址</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.363819601914845%" headers="d27067e117 "><p>peer name</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.63618039808516%" headers="d27067e120 "><p>对端名称</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.363819601914845%" headers="d27067e117 "><p>nat traversal</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.63618039808516%" headers="d27067e120 "><p>NAT穿越使能</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

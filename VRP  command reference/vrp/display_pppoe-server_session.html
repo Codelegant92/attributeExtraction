@@ -1,0 +1,298 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display pppoe-server session">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pppoe_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pppoe-server_bind_virtual-template.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_pppoe-server_session">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display pppoe-server session</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_pppoe-server_session"></a><a name="display_pppoe-server_session"></a>
+
+
+<h1 class="topictitle1">display pppoe-server session</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display pppoe-server</strong> <strong>session</strong>命令用来查看PPPoE会话状态或统计数据。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display pppoe-server</strong> <strong>session </strong>{
+{ <strong>all</strong> | <strong>packet</strong> }<span>[ <strong>| count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ] | <strong>statistic</strong> <strong>interface</strong> <em>interface-type interface-number</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：查看所有PPPoE会话信息。</p>
+<p><strong>packet</strong>：查看PPPoE会话报文统计信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+<p><strong>statistic</strong>：按接口查看PPPoE会话统计信息。</p>
+<p><em>interface-type interface-number</em>：接口类型及接口编号。只能是以太类的接口，如Ethernet、GigabitEthernet。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_pppoe-server_session__d60905e118"></a><a name="d60905e118"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有PPPoE的会话信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display pppoe-server session all</strong></pre>
+<pre class="screen">SID Intf             State OIntf          RemMAC         LocMAC</pre>
+<pre class="screen">1   Virtual-Template50:0  UP    Eth10/2/0      00e0.fc04.9dc5 00e0.fc07.4f72</pre>
+<pre class="screen">2   Virtual-Template50:1  UP    Eth10/2/0      00e0.fc04.9dc5 00e0.fc07.4f72</pre>
+<pre class="screen">3   Virtual-Template50:2  UP    Eth10/2/0      00e0.fc04.9dc5 00e0.fc07.4f72</pre>
+<pre class="screen">4   Virtual-Template50:3  UP    Eth10/2/0      00e0.fc04.9dc5 00e0.fc07.4f72</pre>
+<pre class="screen">5   Virtual-Template50:4  UP    Eth10/2/0      00e0.fc04.9dc5 00e0.fc07.4f72</pre>
+<pre class="screen">1   Virtual-Template500:0 UP    Eth15/2/0      00e0.fc00.0100 00e0.fc12.ffdf</pre>
+
+<div class="tablenoborder"><a name="display_pppoe-server_session__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pppoe-server_session__tb_01" frame="border" border="1" rules="all"><caption>表1 display pppoe-server session all命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.50844041320232%" id="d60905e152"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.49155958679768%" id="d60905e156"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e152 "><p>SID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e156 "><p>Session Identifier。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e152 "><p>Intf</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e156 "><p>对应的虚拟接口模板。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e152 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e156 "><p>会话的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e152 "><p>OIntf</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e156 "><p>对应的以太网口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e152 "><p>RemMAC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e156 "><p>Remote MAC，对端MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e152 "><p>LocMAC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e156 "><p>Local MAC，本端MAC地址。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看PPPoE会话统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display pppoe-server session packet</strong></pre>
+<pre class="screen">SID     RemMAC      LocMAC        InP     InO   InD     OutP    OutO  OutD</pre>
+<pre class="screen">1    00e0fc049dc5 00e0fc074f72  18385   183890  0   18385   183890     0</pre>
+<pre class="screen">2    00e0fc049dc5 00e0fc074f72  18385   183890  0   18385   183890     0</pre>
+<pre class="screen">3    00e0fc049dc5 00e0fc074f72  18385   183890  0   18385   183890     0</pre>
+<pre class="screen">4    00e0fc049dc5 00e0fc074f72  18385   183890   0   18384   183878     0</pre>
+<pre class="screen">5    00e0fc049dc5 00e0fc074f72  18384  183878   0   18384   183878    0</pre>
+<pre class="screen">1    00e0fc000100 00e0fc12ffdf  18379  183823   0  18378   183842   0</pre>
+
+<div class="tablenoborder"><a name="display_pppoe-server_session__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pppoe-server_session__tb_02" frame="border" border="1" rules="all"><caption>表2 display pppoe-server session packet命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.50844041320232%" id="d60905e265"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.49155958679768%" id="d60905e269"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e265 "><p>SID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e269 "><p>Session Identifier</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e265 "><p>RemMAC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e269 "><p>Remote MAC，对端MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e265 "><p>LocMAC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e269 "><p>Local MAC，本端MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e265 "><p>InP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e269 "><p>In Packets，接收报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e265 "><p>InO</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e269 "><p>In Octets，接收字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e265 "><p>InD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e269 "><p>In Discards，入方向丢弃的报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e265 "><p>OutP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e269 "><p>Out Packets，发送报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e265 "><p>OutO</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e269 "><p>Out Octets，发送字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d60905e265 "><p>OutD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d60905e269 "><p>Out Discard，出方向丢弃的报文数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_pppoe-server_session__tb_02_1"></a><a name="tb_02_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pppoe-server_session__tb_02_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d60905e390"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d60905e394"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d60905e390 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d60905e394 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pppoe_configuration_commands.html">PPPoE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pppoe-server_bind_virtual-template.html">pppoe-server bind virtual-template</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

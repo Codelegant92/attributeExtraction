@@ -1,0 +1,115 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display dhcp server conflict">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_dhcp_server_conflict.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_dhcp_server_conflict">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display dhcp server conflict</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_dhcp_server_conflict"></a><a name="display_dhcp_server_conflict"></a>
+
+
+<h1 class="topictitle1">display dhcp server conflict</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display dhcp server conflict</strong>命令用来查看DHCP的地址冲突的统计信息，包括冲突IP地址、冲突检测类型、地址冲突发生的时间等。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display dhcp server conflict</strong> { <strong>all</strong> |<strong> ip</strong> <em>ip-address </em>}</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：表示查看所有冲突的IP地址统计信息。</p>
+<p><strong>ip</strong> <em>ip-address</em>：查看指定IP地址的冲突统计信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当发生地址冲突时，可以使用<strong>display dhcp server conflict</strong>命令用来查看DHCP的地址冲突的统计信息，如果不指定任何可选参数，命令的显示情况与当前所处的视图有关：</p>
+<ul>
+<li><p>在以太网接口视图下，范围为当前接口的地址池。</p>
+</li>
+<li><p>在其他视图下，范围为所有地址池。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_dhcp_server_conflict__d22180e69"></a><a name="d22180e69"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看DHCP的地址冲突的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display dhcp server conflict all</strong></pre>
+<pre class="screen">Address            Discover Time</pre>
+<pre class="screen">10.110.1.2         Jan 11 2003 11:57: 7 PM</pre>
+<p>该显示信息主要内容解释如下表：</p>
+
+<div class="tablenoborder"><a name="display_dhcp_server_conflict__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_dhcp_server_conflict__tb_01" frame="border" border="1" rules="all"><caption>表1 display dhcp server conflict命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d22180e95"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d22180e99"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22180e95 "><p>Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22180e99 "><p>发生冲突的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22180e95 "><p>Discover Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22180e99 "><p>检测到发生冲突时的时间</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_configuration_commands.html">DHCP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_dhcp_server_conflict.html">reset dhcp server conflict</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="stub (OSPF)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="default-cost_ospf.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="stub_ospf">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>stub (OSPF)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="stub_ospf"></a><a name="stub_ospf"></a>
+
+
+<h1 class="topictitle1">stub (OSPF)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>stub</strong>命令用来将一个区域设置为Stub区域。</p>
+<p><strong>undo stub</strong>命令用来取消这种设置。</p>
+<p>缺省情况下，没有区域被设置为Stub区域。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>stub</strong> [ <strong>no-summary</strong> ]</p>
+<p><strong>undo stub</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>no-summary</strong>：禁止ABR向Stub区域内发送Summary LSA。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>OSPF区域视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>Stub区域有两个配置命令：<strong>stub</strong>和<strong>default-cost</strong>。要想使一个区域为stub区域，则该区域内的所有路由器都要配置<strong>stub</strong>命令。<strong>default-cost</strong>命令只有在ABR上配置才起作用，用于指定ABR发送到Stub区域的Summary类型的缺省路由开销。</p>
+<p>此外，在ABR上，还可以通过配置<strong>stub</strong>命令的<strong>no-summary</strong>选项来禁止Type-3 LSA进入该ABR连接的Stub区域。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="stub_ospf__d122306e74"></a><a name="d122306e74"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将OSPF区域1设置为Stub区域。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ospf 100</strong></pre>
+<pre class="screen">[Quidway-ospf-100]<strong> area 1</strong></pre>
+<pre class="screen">[Quidway-ospf-100-area-0.0.0.1]<strong> stub</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="default-cost_ospf.html">default-cost (OSPF)</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

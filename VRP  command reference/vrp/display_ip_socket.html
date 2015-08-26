@@ -1,0 +1,516 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ip socket">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_performance_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_ip_socket_monitor.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ip_socket">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ip socket</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ip_socket"></a><a name="display_ip_socket"></a>
+
+
+<h1 class="topictitle1">display ip socket</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ip socket</strong>命令用来显示已创建的IPv4 Socket信息。如果不指定可选参数，该命令显示所有类型的Socket信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ip socket</strong> [ <strong>monitor</strong> ] [ <strong>task-id </strong><em>task-id</em><strong> socket-id </strong><em>socket-id</em> | <strong>sock-type </strong><em>socket-type</em> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>monitor</strong>：指定需要显示Socket Monitor中的信息，即在显示Socket信息的同时，还需要显示Socket Monitor中的信息。</p>
+<p><strong>task-id</strong><em> task-id</em>：指定任务ID，显示此任务ID的Socket信息。整数形式，取值范围是1～200。</p>
+<p><strong>socket-id</strong> <em>socket-id</em>：指定Socket ID号，显示此Socket ID的Socket信息。整数形式，取值范围是1～14848。</p>
+<p><strong>sock-type </strong><em>socket-type</em>：指定Socket类型，显示该类型的Socket信息。整数形式，取值范围如下表所示。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+
+<div class="tablenoborder"><a name="display_ip_socket__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_socket__tb_01" frame="border" border="1" rules="all"><caption>表1 参数<strong>sock-type </strong><em>socket-type</em>的取值</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.772990677752585%" id="d32527e127"><p>取值</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.22700932224741%" id="d32527e131"><p>含义</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d32527e127 "><p>1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d32527e131 "><p>TCP流式性质的Socket</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d32527e127 "><p>2</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d32527e131 "><p>UDP报文性质的Socket</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d32527e127 "><p>3</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d32527e131 "><p>RAWIP性质的Socket</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d32527e127 "><p>4</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d32527e131 "><p>RAWLINK性质的Socket</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>Socket Monitor是针对每一个连接的监控记录体（RAWLink还分出接口监控），Socket Monitor根据各协议的区别，在运行过程中，记录指定关注的事件。并在适当的时候，将其中的信息以log形式记录到磁盘空间。</p>
+<p>Socket Monitor相当于系统的黑匣子，在系统运行期间记录指定关注的事件。在系统出现故障时，可以通过Socket Monitor中的信息来定位故障原因。</p>
+<p>通过设置过滤条件（Task ID、Socket ID、Socket的类型），只有满足过滤条件的信息会被显示出来。这样可以减少显示信息输出的数量，提高信息的有用性，提高问题定位的精确度和效率。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ip_socket__d32527e202"></a><a name="d32527e202"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示IP Socket的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ip socket monitor</strong></pre>
+<pre class="screen">SOCK_STREAM: </pre>
+<pre class="screen">Task = VTYD(30), socketid = 1, Proto = 6, </pre>
+<pre class="screen">LA = 0.0.0.0:23, FA = 0.0.0.0:0, </pre>
+<pre class="screen">sndbuf = 8192, rcvbuf = 8192, sb_cc = 0, rb_cc = 0, </pre>
+<pre class="screen">socket option = SO_ACCEPTCONN SO_KEEPALIVE SO_REUSEPORT SO_SENDVPNID(14849) SO_S</pre>
+<pre class="screen">ETKEEPALIVE, </pre>
+<pre class="screen">socket state = SS_PRIV SS_ASYNC </pre>
+<pre class="screen">Socket Monitor:  </pre>
+<pre class="screen">Asyn Que status:  </pre>
+<pre class="screen"> read = 0, write = 0, connect = 0, close = 0, </pre>
+<pre class="screen"> peerclose = 0, accept = 0, keepalivedown = 0, </pre>
+<pre class="screen"> cram time = 00H00M00S, lost msg= 0, msg type=0x00000000; </pre>
+<pre class="screen">Nothing else has been captured! </pre>
+
+<pre class="screen">SOCK_DGRAM: </pre>
+<pre class="screen">Task = DHCP(54), socketid = 2, Proto = 17, </pre>
+<pre class="screen">LA = 0.0.0.0:67, FA = 0.0.0.0:0, </pre>
+<pre class="screen">sndbuf = 9216, rcvbuf = 41600, sb_cc = 0, rb_cc = 0, </pre>
+<pre class="screen">socket option = SO_BROADCAST SO_REUSEPORT SO_UDPCHECKSUM SO_SENDVPNID(14849), </pre>
+<pre class="screen">socket state = SS_PRIV </pre>
+<pre class="screen">Socket Monitor: </pre>
+<pre class="screen">Statistics: </pre>
+<pre class="screen"> Input packets = 6,Recv packets = 6,Output packets = 0; </pre>
+<pre class="screen">Rcvbuf status: </pre>
+<pre class="screen"> Cram time = 00H00M00S: full times = 0,dropped packets = 0; </pre>
+<pre class="screen">Asyn Que status: </pre>
+<pre class="screen"> read = 0, write = 0, connect = 0, close = 0, </pre>
+<pre class="screen"> peerclose = 0, accept = 0, keepalivedown = 0, </pre>
+<pre class="screen"> cram time = 00H00M00S, lost msg = 0, msg type = 0x00000000;</pre>
+
+<p># 显示Task ID为23，Sock ID为1的IP Socket的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ip socket monitor task-id 23 socket-id 1</strong></pre>
+<pre class="screen">Task = RSVP(23), socketid = 1, Proto = 46,</pre>
+<pre class="screen">LA = 0.0.0.0, FA = 0.0.0.0,</pre>
+<pre class="screen">sndbuf = 4194304, rcvbuf = 4194304, sb_cc = 0, rb_cc = 0,</pre>
+<pre class="screen">socket option = 0,</pre>
+<pre class="screen">socket state = SS_PRIV SS_NBIO SS_ASYNC</pre>
+<pre class="screen">                          Socket Monitor:</pre>
+<pre class="screen">Statistics:</pre>
+<pre class="screen"> Input packets = 0,Recv packets = 0,Output packets = 0;</pre>
+<pre class="screen">Rcvbuf status:</pre>
+<pre class="screen"> Cram time = 00H00M00S: full times = 0,dropped packets = 0;</pre>
+<pre class="screen">Asyn Que status:</pre>
+<pre class="screen"> read = 0, write = 0, connect = 0, close = 0,</pre>
+<pre class="screen"> peerclose = 0, accept = 0, keepalivedown = 0,</pre>
+<pre class="screen"> cram time = 00H00M00S, lost msg = 0, msg type = 0x00000000;</pre>
+
+<p># 显示Socket类型为TCP协议的IP Socket的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ip socket monitor sock-type 1</strong></pre>
+<pre class="screen">SOCK_STREAM:</pre>
+<pre class="screen">Task = VTYD(30), socketid = 1, Proto = 6,</pre>
+<pre class="screen">LA = 0.0.0.0:23, FA = 0.0.0.0:0,</pre>
+<pre class="screen">sndbuf = 8192, rcvbuf = 8192, sb_cc = 0, rb_cc = 0,</pre>
+<pre class="screen">socket option = SO_ACCEPTCONN SO_KEEPALIVE SO_REUSEPORT SO_SENDVPNID(14849) SO_S</pre>
+<pre class="screen">ETKEEPALIVE,</pre>
+<pre class="screen">socket state = SS_PRIV SS_ASYNC</pre>
+<pre class="screen">Socket Monitor:</pre>
+<pre class="screen">Asyn Que status:</pre>
+<pre class="screen"> read = 0, write = 0, connect = 0, close = 0,</pre>
+<pre class="screen"> peerclose = 0, accept = 0, keepalivedown = 0,</pre>
+<pre class="screen"> cram time = 00H00M00S, lost msg= 0, msg type=0x00000000;</pre>
+<pre class="screen">Nothing else has been captured!</pre>
+
+
+<div class="tablenoborder"><a name="display_ip_socket__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_socket__tb_02" frame="border" border="1" rules="all"><caption>表2 display ip socket命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.24288233812043%" id="d32527e348"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.757117661879576%" id="d32527e352"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>SOCK_STREAM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><div class="p">Socket类型：<ul>
+<li><p>SOCK_STREAM</p>
+</li>
+<li><p>SOCK_DGRAM</p>
+</li>
+<li><p>SOCK_RAW</p>
+</li>
+<li><p>SOCK_RAWLINK</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>Task = VTYD(30)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>调用Socket的任务类型和任务ID。如任务VTYD调用了Socket，该任务的ID是30</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>socketid = 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>Socket ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>Proto = 6</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>协议号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>LA = 0.0.0.0:23, FA = 0.0.0.0:0,</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><div class="p"><ul>
+<li><p>LA：本地IP端口（Local Address）</p>
+</li>
+<li><p>FA：远端IP端口（Foreign Address）</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>sndbuf = 8192, rcvbuf = 8192, sb_cc = 0, rb_cc = 0,</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><div class="p"><ul>
+<li><p>sndbuf：发送缓存的上限</p>
+</li>
+<li><p>rcvbuf：接收缓存的上限</p>
+</li>
+<li><p>sb_cc：实际发送的数据量，只有TCP会缓存数据，这个值才有用</p>
+</li>
+<li><p>rb_cc：实际接收的数据量</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>socket option = SO_ACCEPTCONN SO_KEEPALIVE SO_REUSEPORT SO_SENDVPNID(14849) SO_SETKEEPALIVE,</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><div class="p">显示当前已被置位的Socket选项：<ul>
+<li><p>SO_DEBUG：debugging开关</p>
+</li>
+<li><p>SO_ACCEPTON：当前置位该标志的Socket为服务器端，负责监听</p>
+</li>
+<li><p>SO_REUSEADDR：地址重用，设置了该标志后，可以在本端绑定多个相同的地址</p>
+</li>
+<li><p>SO_KEEPALIVE：TCP连接的保活选项，如设置，TCP连接成功后将启动保活定时器</p>
+</li>
+<li><p>SO_DONTROUTE：置位后，Socket在连接时不可以选择非直连的路由到达目的地</p>
+</li>
+<li><p>SO_BROADCAST：置位后，可以在接口发送广播报文</p>
+</li>
+<li><p>SO_REUSEPORT：端口重用，置位后，可以在本端绑定多个相同地端口，大多对服务端适用</p>
+</li>
+<li><p>SO_UDPCHECKSUM：置位后，Socket将计算UDP报文地校验和</p>
+</li>
+<li><p>SO_SENDVPNID：Socket专门对VPN设置的选项</p>
+</li>
+<li><p>SO_USELOOPBACK：Socket可以利用Loopback接口进行收发数据</p>
+</li>
+<li><p>SO_LINGER：该表示设置后，TCP在关闭的时候将视设置的时间而进行相应的处理，如果设置的时间非0，那么它在关闭前等待一段时间（设置的时间），如果设置的时间为0，那么TCP会迅速断掉连接，而不会按照次序走完TCP的状态机</p>
+</li>
+<li><p>SO_OOBINLINE：对应于带外数据的标志，设置后，Socket在接收数据中，将优先处理带外数据</p>
+</li>
+<li><p>SO_SENDDATAIF：设置该标志后，Socket允许通过指定的接口进行收发数据的处理</p>
+</li>
+<li><p>SO_SENDDATAIF_DONTSETTTL：设置该标志后，Socket允许通过指定的接口进行收发数据的处理，但是不设置TTL（报文最大生存时间）</p>
+</li>
+<li><p>SO_SETSRCADDR：设置该标志后，Socket将设置发送报文的源端地址</p>
+</li>
+<li><p>SO_SENDBY_IF_NEXTHOP：设置该标志后，Socket将设置发送报文的出接口以及下一跳地址</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>VPNID(14849)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>VPN的ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>socket state = SS_PRIV SS_ASYNC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><div class="p">Socket的状态：<ul>
+<li><p>SS_NOFDREF：socketid结构体已经被删除</p>
+</li>
+<li><p>SS_ISCONNECTED：TCP连接已经成功</p>
+</li>
+<li><p>SS_ISCONNECTING：TCP正在连接中</p>
+</li>
+<li><p>SS_ISDISCONNECTING：TCP正在断连中</p>
+</li>
+<li><p>SS_CANTSENDMORE：Socket无法再发送数据</p>
+</li>
+<li><p>SS_CANTRCVMORE：Socket无法再接收数据</p>
+</li>
+<li><p>SS_RCVMARK：Socket在接收报文中设置了接收标志</p>
+</li>
+<li><p>SS_NBIO：Socket当前的类型是非阻塞性质的</p>
+</li>
+<li><p>SS_ISCONFIRMING：上层即将处理已经完成的连接</p>
+</li>
+<li><p>SS_BLOCKING：当前在报文收发过程中存在阻塞</p>
+</li>
+<li><p>SS_RECALL属于异步socket设置的消息通知方式</p>
+</li>
+<li><p>SS_PRIV：Unix中移植过来的标志位，在当前的Socket层中无意义</p>
+</li>
+<li><p>SS_ASYNC：异步Socket的状态标志</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>Asyn Que status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>当前异步队列状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>read=0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>当前异步队列read消息的个数为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>write=0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>当前异步队列write消息的个数为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>connect=0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>当前异步队列connect消息的个数为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>close=0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>当前异步队列close消息的个数为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>peerclose=0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>当前异步队列peerclose消息的个数为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>accept=0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>当前异步队列accept消息的个数为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>keepalivedown=0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>当前异步队列keepalivedown消息的个数为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>cram time=00H00M00S</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>当前异步队列被填满的时间为0时0分0秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>lost msg=0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>当前异步队列丢失异步消息的个数为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d32527e348 "><p>msg type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d32527e352 "><p>当前异步消息的类型</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ip_socket__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_socket__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d32527e758"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d32527e762"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d32527e758 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d32527e762 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_performance_configuration_commands.html">IP性能配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_ip_socket_monitor.html">reset ip socket monitor</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

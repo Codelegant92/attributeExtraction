@@ -1,0 +1,278 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te hot-standby state">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_hot-standby_state">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te hot-standby state</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_hot-standby_state"></a><a name="display_mpls_te_hot-standby_state"></a>
+
+
+<h1 class="topictitle1">display mpls te hot-standby state</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls te hot-standby state</strong>用来显示全部或者某个热备份隧道的热备份状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te hot-standby state</strong> { <strong>all</strong> [ <strong>verbose</strong> ]
+| <strong>interface tunnel</strong> <em>interface-name</em> }<span> [<strong> |
+count</strong> ] [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：查看所有热备份隧道的热备份状态。</p>
+<p><strong>verbose</strong>：查看详细信息。</p>
+<p><strong>interface
+tunnel</strong> <em>interface-name</em>：查看指定隧道的热备份状态。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>需要把隧道类型配置为TE隧道且使能热备份。如果Tunnel接口被删除或者切换成其他模式，则此命令无效。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_hot-standby_state__d48674e107"></a><a name="d48674e107"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看Tunnel1/0/0的热备份状态。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te hot-standby state interface Tunnel 1/0/0</strong></pre>
+<pre class="screen">----------------------------------------------------------------</pre>
+<pre class="screen">Verbose information about the Tunnel1/0/0 hot-standby state</pre>
+<pre class="screen">----------------------------------------------------------------</pre>
+<pre class="screen">tunnel name                               : Tunnel1/0/0</pre>
+<pre class="screen">session id                                : 100</pre>
+<pre class="screen">main LSP token                            : 0x100201a</pre>
+<pre class="screen">hot-standby LSP token                     : 0x100201b</pre>
+<pre class="screen">HSB switch result                         : Best-Effort LSP</pre>
+<pre class="screen">WTR                                       : 15s</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_hot-standby_state__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_hot-standby_state__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te hot-standby state命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50.88183421516755%" id="d48674e145"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="49.11816578483245%" id="d48674e149"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48674e145 "><p>tunnel name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48674e149 "><p>隧道名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48674e145 "><p>session id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48674e149 "><p>会话标识符，即配置的Tunnel ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48674e145 "><p>main LSP token</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48674e149 "><p>主CR-LSP的索引值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48674e145 "><p>hot-standby LSP token</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48674e149 "><p>备份CR-LSP的索引值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48674e145 "><p>HSB switch result</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48674e149 "><p>隧道切换结果：</p>
+<ul>
+<li>main LSP：数据切换到主CR-LSP</li>
+<li>hot-standby LSP：数据切换到备份CR-LSP</li>
+<li>Best-Effort LSP：数据切换到逃生路径上</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48674e145 "><p>WTR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48674e149 "><p>表示回切时间间隔。主隧道故障恢复时，系统等待一段时间后再将数据从备份CR-LSP或逃生路径回切到主CR-LSP，这段时间称为回切时间间隔</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看所有热备份隧道的热备份状态。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te hot-standby state all</strong>
+------------------------------------------------------------------------
+No.   tunnel name    session id      switch result
+------------------------------------------------------------------------
+1  Tunnel1/0/1095    1095            Best-Effort LSP
+2  Tunnel1/0/1096    1000            main LSP</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_hot-standby_state__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_hot-standby_state__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d48674e253"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d48674e257"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d48674e253 "><p>No.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d48674e257 "><p>顺序号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d48674e253 "><p>tunnel name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d48674e257 "><p>隧道名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d48674e253 "><p>session id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d48674e257 "><p>会话标识符，即配置的Tunnel ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d48674e253 "><p>switch result</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d48674e257 "><p>隧道切换结果：</p>
+<ul>
+<li>main LSP：数据切换到主CR-LSP</li>
+<li>hot-standby LSP：数据切换到备份CR-LSP</li>
+<li>Best-Effort LSP：数据切换到逃生路径上</li>
+</ul>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_te_hot-standby_state__tb_02_1"></a><a name="tb_02_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_hot-standby_state__tb_02_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d48674e334"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d48674e338"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d48674e334 "><p>VRPV500R005C01B101</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d48674e338 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d48674e334 "><p>VRPV500R005C02B191</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d48674e338 "><p>修改回显信息，区分数据流被切换到主CR-LSP还是逃生路径</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d48674e334 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d48674e338 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

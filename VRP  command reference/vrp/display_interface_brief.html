@@ -1,0 +1,286 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface brief">
+<meta name="DC.Relation" scheme="URI" content="../vrp/interface_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_interface.html">
+<meta name="DC.Relation" scheme="URI" content="reset_counters_interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface_brief">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface brief</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface_brief"></a><a name="display_interface_brief"></a>
+
+
+<h1 class="topictitle1">display interface brief</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display interface brief</strong>命令用来显示设备上当前所有接口的简要信息，包括接口的物理状态、协议状态、接收方向最近一段时间的带宽利用率、发送方向最近一段时间的带宽利用率、接收的错误报文数和发送的错误报文数。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display interface brief</strong><span> [ <strong>main</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>main</strong>：显示主接口简要信息。</p>
+<p><strong>|</strong>：使用正则表达式过滤输出的显示信息。</p>
+<p><strong>begin</strong>：显示以包含指定正则表达式的行开始的配置信息。</p>
+<p><strong>exclude</strong>：显示不包含指定正则表达式的行的配置信息。</p>
+<p><strong>include</strong>：显示包含指定正则表达式的行的配置信息。</p>
+<p><em>regular-expression</em>：正则表达式。字符串形式，支持空格，区分大小写。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>可以使用命令<a href="reset_counters_interface.html">reset counters interface</a>命令清除使用该命令查看到的接口的统计信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface_brief__d28247e83"></a><a name="d28247e83"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示当前设备上所有接口的简要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display interface brief</strong></pre>
+<pre class="screen">PHY: Physical
+*down: administratively down</pre>
+<pre class="screen">^down: standby</pre>
+<pre class="screen">(l)：loopback</pre>
+<pre class="screen">(s)：spoofing</pre>
+<pre class="screen">(b): BFD down</pre>
+<pre class="screen">(d)：Dampening Suppressed</pre>
+<pre class="screen">InUti/OutUti: input utility/output utility</pre>
+<pre class="screen">Interface                PHY  Protocol  InUti  OutUti  inErrors    outErrors</pre>
+<pre class="screen">Atm3/0/0                 up   down         0%      0%         0            0</pre>
+<pre class="screen">Aux0/0/1                 down down         0%      0%         0            0</pre>
+<pre class="screen">Eth-Trunk0               down down         3%      7%        12            0</pre>
+<pre class="screen">  GigabitEthernet3/0/0   up   up          50%     60%        23          125</pre>
+<pre class="screen">  GigabitEthernet3/0/3  *down down        40%     30%         0            0</pre>
+<pre class="screen">Eth-Trunk1              down  down         0%      0%         0            0</pre>
+<pre class="screen">  GigabitEthernet6/1/0   up(l) up           0%      0%         0            0</pre>
+<pre class="screen">  GigabitEthernet6/1/1   up(l) up           0%      0%         0            0</pre>
+<pre class="screen">GigabitEthernet3/0/1    down  down         0%      0%         0            0</pre>
+<pre class="screen">GigabitEthernet3/0/2.1  down  down         0%      0%         0            0</pre>
+<pre class="screen">Ip-Trunk1               down  down         0%      0%         0            0</pre>
+<pre class="screen">Serial6/0/0             down  down         0%      0%         0            0</pre>
+<pre class="screen">NULL0                   up    up           0%      0%         0            0</pre>
+<pre class="screen">Tunnel1/0/0             up    down         --      --         0            0</pre>
+<pre class="screen">Vlanif2                 down  down         --      --         0            0</pre>
+<p># 显示当前设备上所有主接口的简要信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display interface brief main</strong>
+PHY: Physical
+*down: administratively down
+^down: standby
+(l)：loopback
+(s)：spoofing
+(b): BFD down
+(d)：Dampening Suppressed
+InUti/OutUti: input utility/output utility
+Interface                         PHY      Protocol  InUti  OutUti  inErrors   outErrors
+Atm3/0/0                          down     down      0%     0%      0          0
+Aux0/0/1                          down     down      0%     0%      0          0
+Eth-Trunk0                        down     down      7%     12%     0          0
+  GigabitEthernet3/0/0            up       up        50%    60%     23         125
+  GigabitEthernet3/0/3            *down    down      40%    30%     0          0
+Eth-Trunk1                        down     down      0%     0%      0          0
+  Ethernet6/1/0                   up(l)    up        0%     0%      0          0
+  Ethernet6/1/1                   up(l)    up        0%     0%      0          0
+GigabitEthernet3/0/1              down     down      0%     0%      0          0
+Ip-Trunk1                         down     down      0%     0%      0          0
+Serial6/0/0                       down     down      0%     0%      0          0
+NULL0                             up       up        0%     0%      0          0
+Tunnel1/0/0                       up       down      --     --      0          0
+Vlanif2                           down     down      --     --      0          0</pre>
+
+<div class="tablenoborder"><a name="display_interface_brief__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_brief__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="13.311483675784693%" id="d28247e153"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="86.6885163242153%" id="d28247e157"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="13.311483675784693%" headers="d28247e153 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="86.6885163242153%" headers="d28247e157 "><div class="p">接口名称和接口编号。所有接口按字典序显示。如果<span>Eth-Trunk、IP-Trunk、MFR、MP-Group、IMA-Group或Ring-If等</span>逻辑接口下有成员接口，则其成员接口在该逻辑接口下按字典序显示，并且每行首字符缩进两个空格。可显示的接口类型与<strong>display interface</strong>命令中可显示的接口类型一致，包括但不限于：<ul>
+<li><p>ATM</p>
+</li>
+
+<li><p>AUX</p>
+</li>
+<li><p>BRI</p>
+</li>
+<li><p>Dialer</p>
+</li>
+<li><p>Ethernet</p>
+</li>
+
+<li><p>Eth-Trunk</p>
+</li>
+<li><p>GigabitEthernet</p>
+</li>
+<li><p>IMA-Group</p>
+</li>
+<li><p>IP-Trunk</p>
+</li>
+<li><p>Logic-Channel</p>
+</li>
+
+<li><p>Loopback</p>
+</li>
+<li><p>MFR</p>
+</li>
+
+<li><p>MP-Group</p>
+</li>
+<li><p>NULL</p>
+</li>
+<li><p>POS</p>
+</li>
+<li><p>Ring-If</p>
+</li>
+
+<li><p>RPR</p>
+</li>
+
+<li><p>Serial</p>
+</li>
+
+<li><p>Virtual-Ethernet</p>
+</li>
+
+<li><p>Virtual-Template</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="13.311483675784693%" headers="d28247e153 "><p>PHY</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="86.6885163242153%" headers="d28247e157 "><div class="p">接口的物理状态。可能的物理状态有：<ul>
+<li><p>up：表示该接口物理层处于正常启动的状态。</p>
+</li>
+<li><p>down：表示该接口物理层出现故障。</p>
+</li>
+<li><p>*down：Administratively down，管理员在该接口执行了<a href="shutdown_interface_view.html">shutdown（接口视图）</a>命令。</p>
+</li>
+<li><p>^down：standby，表示该接口是备份接口。</p>
+</li>
+<li><p>(l)：loopback，表示该接口启用环回功能。</p>
+</li>
+<li><p>(b)：BFD down，表示该接口物理层处于BFD Down状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="13.311483675784693%" headers="d28247e153 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="86.6885163242153%" headers="d28247e157 "><div class="p">接口的链路协议状态。可能的链路协议状态有：<ul>
+<li><p>up：表示该接口的数据链路层处于正常启动状态。</p>
+</li>
+<li><p>down：表示该接口链路协议出现故障。</p>
+</li>
+<li><p>(l)：loopback，表示该接口启用环回功能。</p>
+</li>
+<li><p>(s)：spoofing，表示该接口启用spoofing功能。</p>
+</li>
+<li><p>(b)：BFD down，表示该接口数据链路层处于BFD Down状态。</p>
+</li>
+<li><p>(d)：dampening suppressed，表示该接口处于协议模块抑制状态。</p>
+</li>
+<li><p>空白：接口无链路协议状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="13.311483675784693%" headers="d28247e153 "><p>InUti</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="86.6885163242153%" headers="d28247e157 "><p>接口接收方向最近300秒内的平均带宽利用率。接口接收方向最近300秒内的平均带宽利用率=接口接收方向最近300秒内平均速率/接口带宽。不足0.01%且有流量时显示0.01%。当接口带宽变小后（例如以太网接口通过<strong>speed</strong>命令调整接口带宽，或IP-Trunk等接口的成员接口状态变为Down或解除绑定），由于通信流量没有即时调整，可能会出现带宽利用率为100%。&#8220;--&#8221;表示该类型的接口不支持带宽利用率的显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="13.311483675784693%" headers="d28247e153 "><p>OutUti</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="86.6885163242153%" headers="d28247e157 "><p>接口发送方向最近300秒内的平均带宽利用率。接口发送方向最近300秒内的平均带宽利用率=接口发送方向最近300秒内平均速率/接口带宽。不足0.01%且有流量时显示0.01%。当接口带宽变小后（例如以太网接口通过<strong>speed</strong>命令调整接口带宽，或IP-Trunk等接口的成员接口状态变为Down或解除绑定），由于通信流量没有即时调整，可能会出现带宽利用率为100%。&#8220;--&#8221;表示该类型的接口不支持带宽利用率的显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="13.311483675784693%" headers="d28247e153 "><p>InErrors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="86.6885163242153%" headers="d28247e157 "><p>接口接收的错误报文数。在用户视图下执行<a href="reset_counters_interface.html">reset counters interface</a>命令或计数达到最大值0xFFFFFFFF后，相应接口的该计数被置为零。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="13.311483675784693%" headers="d28247e153 "><p>OutErrors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="86.6885163242153%" headers="d28247e157 "><p>接口发送的错误报文数。在用户视图下执行<a href="reset_counters_interface.html">reset counters interface</a>命令或计数达到最大值0xFFFFFFFF后，相应接口的该计数被置为零。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/interface_management_configuration_commands.html">接口基础配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_interface.html">display interface</a></div>
+<div><a href="reset_counters_interface.html">reset counters interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

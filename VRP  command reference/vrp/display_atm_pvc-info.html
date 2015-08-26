@@ -1,0 +1,258 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display atm pvc-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/atm_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pvc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_atm_pvc-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display atm pvc-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_atm_pvc-info"></a><a name="display_atm_pvc-info"></a>
+
+
+<h1 class="topictitle1">display atm pvc-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display atm pvc-info</strong>命令用来显示PVC的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display atm pvc-info</strong> [<strong> interface</strong> <strong>atm</strong><em> interface-number</em> [<strong> pvc</strong> { <em>pvc-name</em> [ <em>vpi/vci</em> ] | <em>vpi/vci</em> } ] ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-number</em>：接口编号。</p>
+<p><em>pvc-name</em>：PVC名，字符串形式，长度为1～16。如果不指定PVC名且不指定VPI/VCI值对，则缺省显示指定ATM接口范围内所有PVC的信息。</p>
+<p><em>vpi/vci</em>：VPI/VCI值对。详见<a href="pvc.html">pvc</a>命令中的参数说明。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_atm_pvc-info__d13652e71"></a><a name="d13652e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示设备中所有ATM接口下的PVC的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display atm pvc-info</strong></pre>
+<pre class="screen">VPI/VCI |STATE|PVC-NAME        |INDEX   |ENCAP|PROT |INTERFACE</pre>
+<pre class="screen">--------|-----|----------------|--------|-----|-----|-------------------</pre>
+<pre class="screen">  0/40  |UP   |                |1       |SNAP  |IP   |Atm1/0/0 (UP)</pre>
+<pre class="screen">  0/60  |UP   |to_adsl_a       |2       |SNAP  |ETH  |Atm1/0/0.1 (UP)</pre>
+<pre class="screen">  0/61  |UP   |to_adsl_b       |3       |SNAP  |PPP  |Atm1/0/0.1 (UP)</pre>
+<pre class="screen">VPI/VCI |STATE|PVC-NAME        |INDEX   |ENCAP|PROT |INTERFACE</pre>
+<pre class="screen">--------|-----|----------------|--------|-----|-----|-------------------</pre>
+<pre class="screen">  1/10  |UP   |                |2       |SNAP |None |Atm2/0/0.10 (UP)</pre>
+<pre class="screen">  1/100 |UP   |                |1       |SNAP |IP   |Atm2/0/0 (UP)</pre>
+
+<div class="tablenoborder"><a name="display_atm_pvc-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_atm_pvc-info__tb_01" frame="border" border="1" rules="all"><caption>表1 display atm pvc-info命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="24.943310657596374%" id="d13652e109"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="75.05668934240363%" id="d13652e113"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e109 "><p>VPI/VCI</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e113 "><p>VPI/VCI值对。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e109 "><p>STATE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e113 "><p>PVC的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e109 "><p>PVC-NAME</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e113 "><p>PVC名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e109 "><p>INDEX</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e113 "><p>PVC的索引号。根据PVC建立的先后，系统自动为其分配索引号。索引编号从0开始还是从1开始和产品有关。当前一个索引编号被删除时，后一个索引编号会自动减1，来填充前一个编号。索引编号的取值范围是0～64K。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e109 "><p>ENCAP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e113 "><p>AAL的封装类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e109 "><p>PROT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e113 "><div class="p">应用方式。<ul>
+<li><p>IP表示IPoA。</p>
+</li>
+<li><p>ETH表示PPPoEoA或IPoEoA。</p>
+</li>
+<li><p>PPP表示PPPoA。</p>
+</li>
+
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e109 "><p>INTERFACE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e113 "><p>所在的ATM接口。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示指定接口下PVC的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display atm pvc-info interface atm 2/0/0 pvc 1/100</strong></pre>
+<pre class="screen">Atm2/0/0, VPI: 1, VCI: 100, INDEX: 1</pre>
+<pre class="screen">  AAL5 Encaps: SNAP, Protocol: IP</pre>
+<pre class="screen">  Service-type:UBR</pre>
+<pre class="screen">  OAM interval: 3 sec, OAM retry interval: 3 sec</pre>
+<pre class="screen">  OAM retry count (up/down): 0/3</pre>
+<pre class="screen">  input pkts: 0, input bytes: 0, input pkt errors: 0</pre>
+<pre class="screen">  output pkts: 8959, output bytes: 215016, output pkt errors: 0</pre>
+<pre class="screen">  Interface State: UP, OAM State: UP, PVC State: UP</pre>
+<pre class="screen">  Output queue : (Urgent queue : Size/Length/Discards)  0/50/0</pre>
+<pre class="screen">  Output queue : (Protocol queue : Size/Length/Discards) 0/1000/0</pre>
+<pre class="screen">  Output queue : (FIFO queuing : Size/Length/Discards)  0/75/0</pre>
+
+<div class="tablenoborder"><a name="display_atm_pvc-info__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_atm_pvc-info__tb_02" frame="border" border="1" rules="all"><caption>表2 display atm pvc-info命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="24.943310657596374%" id="d13652e255"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="75.05668934240363%" id="d13652e259"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e255 "><p>VPI: VCI:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e259 "><p>VPI/VCI值对中的VPI和VCI值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e255 "><p>INDEX</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e259 "><p>PVC的索引号。</p>
+<p>根据PVC建立的先后，系统自动为其分配索引号。索引编号从0开始还是从1开始和产品有关。当前一个索引编号被删除时，后一个索引编号会自动减1，来填充前一个编号。索引编号的取值范围是0～64K。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e255 "><p>AAL5 Encaps:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e259 "><p>AAL5封装的协议。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e255 "><p>Protocol:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e259 "><p>网络层协议类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d13652e255 "><p>Service-type:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d13652e259 "><div class="p">业务类型。主要的业务类型有：<ul>
+<li><p>CBR：Constant Bit Rate，确定速率。</p>
+</li>
+<li><p>UBR：Unspecified Bit Rate，非确定速率。</p>
+</li>
+<li><p>VBR-NRT：Variable Bit Rate-Non Real Time，非实时可变速率。</p>
+</li>
+<li><p>VBR-RT：Variable Bit Rate-Real Time，实时可变速率。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/atm_configuration_commands.html">ATM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pvc.html">pvc</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

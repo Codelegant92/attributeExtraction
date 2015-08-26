@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="tunnel select-seq">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_tunnel_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_binding.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel-policy_system_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="tunnel_select-seq">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>tunnel select-seq</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="tunnel_select-seq"></a><a name="tunnel_select-seq"></a>
+
+
+<h1 class="topictitle1">tunnel select-seq</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>tunnel select-seq</strong>命令用于配置参与负载分担的隧道的优先级顺序。</p>
+<p><strong>undo tunnel</strong> <strong>select-seq</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，只有LDP LSP或者静态LSP被选中，不进行负载分担。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>tunnel select-seq</strong> { <strong>gre</strong> | <strong>lsp</strong> | <strong>cr-lsp</strong> }<sup>*</sup> <strong>load-balance-number</strong> <em>load-balance-number</em></p>
+<p><strong>undo tunnel</strong> <strong>select-seq</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>gre</strong>：GRE隧道。</p>
+<p><strong>lsp</strong>：LDP LSP或者静态LSP。</p>
+<p><strong>cr-lsp</strong>：CR-LSP隧道。</p>
+<p><em>load-balance-number</em>：负载分担的隧道条数。取值范围由License控制，取值范围是1～6，在使用默认的License时，取值为1。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>隧道策略视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置参与负载分担的隧道优先级顺序时，隧道类型越靠近关键字<strong>select-seq</strong>的，其优先级越高。并且，只有<strong>tunnel select-seq</strong>命令中列举的隧道类型可以被使用。负载分担数是指一个应用可以使用的隧道条数。在使用多个不同类型的隧道进行负载分担时，流量将优先选用优先级高的隧道。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="tunnel_select-seq__d126593e90"></a><a name="d126593e90"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 定义隧道策略为只能使用LDP LSP或者静态LSP，负载分担条数为2。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> tunnel-policy l2</strong></pre>
+<pre class="screen">[Quidway-tunnel-policy-l2]<strong> tunnel select-seq lsp load-balance-number 2</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpn_tunnel_management_configuration_commands.html">VPN隧道管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="tunnel_binding.html">tunnel binding</a></div>
+<div><a href="tunnel-policy_system_view.html">tunnel-policy（系统视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

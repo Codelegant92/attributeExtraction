@@ -1,0 +1,437 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface serial（X25）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="link-protocol_lapb.html">
+<meta name="DC.Relation" scheme="URI" content="link-protocol_x25.html">
+<meta name="DC.Relation" scheme="URI" content="default_interface-description_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface_serial_x25">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface serial（X25）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface_serial_x25"></a><a name="display_interface_serial_x25"></a>
+
+
+<h1 class="topictitle1">display interface serial（X25）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>interface</strong>命令用来显示X.25接口的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>interface serial</strong> [ <em>interface-number</em> ]<span>[ <strong>| count</strong> ]</span><span> [ <strong>| </strong>{ <strong>begin | include | exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-number</em>：串口编号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。字符串格式，支持空格，区分大小写。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置了X.25的PVC后，使用此命令，您可以方便地获得一个接口上的状态信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface_serial_x25__d29838e89"></a><a name="d29838e89"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 下述命令序列将接口Serial1/0/0封装为X.25协议，并且查看封装后的接口信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0] <strong>link-protocol X25 dce ietf</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0] <strong>display interface serial 1/0/0</strong></pre>
+<pre class="screen">Serial1/0/0 current state : UP</pre>
+<pre class="screen">Line protocol current state : DOWN</pre>
+<pre class="screen">Route Port,The Maximum Transmit Unit is 1500, Holder timer is 10(sec)</pre>
+<pre class="screen">Internet protocol processing : disabled</pre>
+<pre class="screen">Link-protocol is X.25 DCE Ietf, address is none, state R1, modulo 8</pre>
+<pre class="screen">  window sizes input:7 output:7, packet sizes input:256 output:256   </pre>
+<pre class="screen">    Channels: Incoming-only 10-20, Two-way 30-40, Outgoing-only 50-60</pre>
+<pre class="screen">    Timers: T10 60, T11 180, T12 60, T13 60, Idle_Timer 0 (seconds)</pre>
+<pre class="screen">    New configuration(will be effective after restart): modulo 8</pre>
+<pre class="screen">      window sizes input:7 output:7, packet sizes input:256 output:256</pre>
+<pre class="screen">      Channels: Incoming-only 10-20, Two-way 30-40, Outgoing-only 50-60</pre>
+<pre class="screen">    Statistic: Restarts 0 (Restart Collisions 0)</pre>
+<pre class="screen">    Refused Incoming Call 0, Failing Outgoing Call 0</pre>
+<pre class="screen">    input/output: RESTART 1/1  CALL 9/2  DIAGNOSE 0/0</pre>
+<pre class="screen">                    DATA 119/121  INTERRUPT 0/0  Bytes 2497/2731</pre>
+<pre class="screen">                    RR 6/113  RNR 0/0  REJ  0/0</pre>
+<pre class="screen">    Invalid Pr: 0  Invalid Ps: 0  Unknown: 0</pre>
+<pre class="screen">Link-protocol is LAPB</pre>
+<pre class="screen">  LAPB DCE, module 8, window-size 7, max-frame 12056, retry 10</pre>
+<pre class="screen">  Timer:  T1 3000,  T2 1500, T3 0  (milliseconds),  X.25-protocol</pre>
+<pre class="screen">  state CONNECT, VS 6, VR 3, Remote VR 6</pre>
+<pre class="screen">  IFRAME 147/254, RR 11/6, RNR 0/0, REJ 0/0</pre>
+<pre class="screen">  FRMR 0/0, SABM 0/1, DM 0/0, UA 1/0</pre>
+<pre class="screen">  DISC 0/0, invalid ns 0, invalid nr 0, link resets 0</pre>
+<pre class="screen">Physical layer is synchronous,</pre>
+<pre class="screen">Output queue : (Urgent queue : Size/Length/Discards)  0/50/0</pre>
+<pre class="screen">Output queue : (Protocol queue : Size/Length/Discards) 0/500/0</pre>
+<pre class="screen">Output queue : (FIFO queuing : Size/Length/Discards)  0/75/0</pre>
+<pre class="screen">Statistics last cleared: never</pre>
+<pre class="screen">    Last 300 seconds input rate 0.01 bits/sec, 0.00 packets/sec </pre>
+<pre class="screen">    Last 300 seconds output rate 0.07 bits/sec, 0.01 packets/sec</pre>
+<pre class="screen">    Input: 159 packets,  3338 bytes</pre>
+<pre class="screen">           0 errors, 0 runts, 0 giants      </pre>
+<pre class="screen">            0 CRC, 0 overruns, 0 aborts</pre>
+<pre class="screen">    Output:261 packets, 4057 bytes    </pre>
+<pre class="screen">          0 errors, 0 underruns</pre>
+
+<div class="tablenoborder"><a name="display_interface_serial_x25__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_serial_x25__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface serial命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.473670949861432%" id="d29838e193"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.52632905013859%" id="d29838e197"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Link-protocol is X.25 DCE Ietf</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口当前封装协议为X.25协议，工作在DCE方式下，数据报封装格式为IETF格式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>address is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的X.121地址；若没有，该域显示为none。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的当前状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Modulo</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口所发送的数据分组和流量控制分组缺省按照模8的方式编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>window sizes input:7 output:7, packet sizes input:256 output:256</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的流量控制参数，包括接收窗口尺寸、发送窗口尺寸、最大接收分组长度（以字节为单位）、最大发送分组长度（以字节为单位）四项内容。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Channels</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的信道范围划分，依次为单向呼入信道区间、双向信道区间、单向呼出信道区间；如果某个区间的两个界定值均为0，表示该区间被禁止使用。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Timers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的各个定时器的时延值，以秒为单位。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>New Configuration</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的将在下一次重新启动后生效的新配置；如果该配置的某些内容错误，它们将被恢复成缺省值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Restarts 0 (Restart Collisions 0)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的统计信息：重新启动的次数（其中包括重新启动碰撞的次数）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Refused Incoming Call</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的统计信息：拒绝收到的呼叫的次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Failing Outgoing Call</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的统计信息：发起呼叫失败的次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>input/output: RESTART 1/1 ... REJ 0/0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的统计信息：接收到的和发送的各种分组的数目，格式为：接收数目/发送数目。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Invalid Pr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的错误统计信息：接收到的携带错误确认编号的数据分组和流量控制分组的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Invalid Ps</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的错误统计信息：接收到的携带错误顺序编号的数据分组的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Unknown</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该X.25接口的错误统计信息：接收到的无法解析的分组的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Link-protocol is LAPB</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口当前封装协议为LAPB协议。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>LAPB DCE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB工作在DCE方式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>modulo 8</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB所发送的信息帧和监控帧按照模8方式编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>window-size 7</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB的窗口尺寸为7。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>max-frame 12056</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB所发送的帧的最大长度为12056比特。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>retry 10</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB信息帧最大重新发送次数为10次。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB的各个定时器的时延值，以毫秒为单位，T3以秒为单位。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB的当前状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>VS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB的发送变量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>VR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB的接收变量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>Remote VR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB收到的对端的最后一次对信息帧的确认。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>IFRAME 147/254 ... DISC 0/0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB所收发各种帧的统计信息，格式为：接收数目/发送数目。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>invalid ns</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB的错误统计：接收的携带错误顺序编号的信息帧的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>invalid nr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB的错误统计：接收的携带错误确认编号的信息帧和监控帧的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.473670949861432%" headers="d29838e193 "><p>link resets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.52632905013859%" headers="d29838e197 "><p>该接口LAPB链路的重新启动次数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="display_interface_serial_x25__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_serial_x25__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.962967628164755%" id="d29838e550"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.037032371835245%" id="d29838e554"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="45.962967628164755%" headers="d29838e550 "><p>VRPV500R005C05B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.037032371835245%" headers="d29838e554 "><p>缺省情况下，系统不显示接口默认描述信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="link-protocol_lapb.html">link-protocol lapb</a></div>
+<div><a href="link-protocol_x25.html">link-protocol x25</a></div>
+<div><a href="default_interface-description_enable.html">default interface-description enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

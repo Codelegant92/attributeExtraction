@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer sa-request-policy">
+<meta name="DC.Relation" scheme="URI" content="../vrp/msdp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_msdp_peer-status.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_sa-request-policy">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer sa-request-policy</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_sa-request-policy"></a><a name="peer_sa-request-policy"></a>
+
+
+<h1 class="topictitle1">peer sa-request-policy</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer sa-request-policy</strong>命令用来配置<span class="keyword">路由器</span>响应由指定MSDP对等体发出的SA请求的策略。一旦SA请求通过过滤，立即回复SA消息。</p>
+<p><strong>undo</strong> <strong>peer sa-request-policy</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，<span class="keyword">路由器</span>响应所有MSDP对等体的所有SA请求。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> <em>peer-address</em> <strong>sa-request-policy</strong> [ <strong>acl</strong> <em>basic-acl-number</em> ]</p>
+<p><strong>undo peer </strong><em>peer-address</em> <strong>sa-request-policy</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>peer-address</em>：表示发出该SA请求消息的MSDP对等体地址。点分十进制形式。</p>
+<p><strong>acl</strong> <em>basic-acl-number</em>：表示基本IP访问控制列表号，描述组播组地址。整数形式，取值范围是2000～2999。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例MSDP视图、VPN实例MSDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果没有指定访问控制列表，则忽略来自该MSDP对等体的所有SA请求。如果指定了访问控制列表，只处理符合该列表的组的SA请求消息，其他的被忽略。</p>
+<p><strong>peer sa-request-policy</strong>命令与<strong>acl</strong>命令配合使用。在ACL视图下，通过<strong>rule</strong>命令的<strong>source</strong>参数定义MSDP对等体转发SA消息的组地址。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_sa-request-policy__d104632e95"></a><a name="d104632e95"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中，配置过滤SA请求消息的访问控制列表，SA消息来自MSDP peer 175.58.6.5，只接收组地址范围是225.1.1.0/24的活动源的SA请求消息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> acl number 2001</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2001]<strong> rule permit source 225.1.1.0 0.0.0.255</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2001]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> msdp</strong></pre>
+<pre class="screen">[Quidway-msdp]<strong> peer 175.58.6.5 sa-request-policy acl 2001</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/msdp_configuration_commands.html">MSDP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_msdp_peer-status.html">display msdp peer-status</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

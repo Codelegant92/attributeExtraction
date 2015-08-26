@@ -1,0 +1,89 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ospf network-type">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="peer_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="ospf_dr-priority.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ospf_network-type">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ospf network-type</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ospf_network-type"></a><a name="ospf_network-type"></a>
+
+
+<h1 class="topictitle1">ospf network-type</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ospf network-type</strong>命令用来设置OSPF接口的网络类型。</p>
+<p><strong>undo ospf network-type</strong>命令用来恢复OSPF接口缺省的网络类型。</p>
+<p>缺省情况下，接口的网络类型根据物理接口而定。以太网接口的网络类型为<strong>broadcast</strong>，串口和POS口（封装PPP协议或HDLC协议时）网络类型为<strong>p2p</strong>，ATM和Frame-relay接口的网络类型为<strong>nbma</strong>。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ospf network-type</strong> { <strong>broadcast</strong> | <strong>nbma</strong> | <strong>p2mp</strong> | <strong>p2p</strong> }</p>
+<p><strong>undo ospf network-type</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>broadcast</strong>：将接口的网络类型更改为广播。</p>
+<p><strong>nbma</strong>：将接口的网络类型更改为NBMA。</p>
+<p><strong>p2mp</strong>：将接口的网络类型更改为点到多点。</p>
+<p><strong>p2p</strong>：将接口的网络类型更改为点到点。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果在广播网络上有不支持组播地址的路由器，可以将接口的网络类型改为NBMA。如果接口的网络类型是NBMA，将接口类型改为广播后，可以不必再配置邻居路由器。</p>
+<p>一个NBMA类型的网络可以改为广播类型的条件是：任意两台路由器之间都有一条虚电路直接可达，或者说，这个网络是全连通的。如果网络不满足这个条件，必须将接口的网络类型改为点到多点。这样，两台不能直接可达的路由器之间可以通过一台与两者都直接可达的路由器来交换路由信息。接口的网络类型改为点到多点后，就不必再配置邻居路由器。</p>
+<p>如果同一网段内只有两台路由器运行OSPF协议，也可以将接口的网络类型改为点到点。</p>
+<p>OSPF协议不支持NULL接口的配置。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>接口的网络类型为NBMA或使用本命令将接口的网络类型手工改为NBMA时，必须使用命令<a href="peer_ospf.html">peer (OSPF)</a>来配置邻接点。</p>
+</li>
+<li><p>一般情况下，链路两端的OSPF接口的网络类型必须一致，否则双方不可以建立起邻居关系。</p>
+<p>当且仅当链路两端的OSPF接口的网络类型一端是广播网而另一端是P2P时，双方仍可以正常的建立起邻居关系，并且网络类型为广播网的接口可以学到正确的OSPF路由信息，但是P2P端学不到对端的OSPF路由信息。</p>
+</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ospf_network-type__d101806e106"></a><a name="d101806e106"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将接口POS 1/0/0设置为NBMA类型。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong> </pre>
+<pre class="screen">[Quidway]<strong> interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0] <strong>ospf network-type nbma</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="peer_ospf.html">peer (OSPF)</a></div>
+<div><a href="ospf_dr-priority.html">ospf dr-priority</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

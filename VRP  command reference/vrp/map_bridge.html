@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="map bridge">
+<meta name="DC.Relation" scheme="URI" content="../vrp/atm_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="map_ip.html">
+<meta name="DC.Relation" scheme="URI" content="map_ppp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="map_bridge">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>map bridge</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="map_bridge"></a><a name="map_bridge"></a>
+
+
+<h1 class="topictitle1">map bridge</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>map bridge</strong>命令用来创建PVC上的IPoEoA映射或者PPPoEoA映射。</p>
+<p><strong>undo map
+bridge</strong>命令用来删除该映射。</p>
+<p>缺省情况下，不配置任何映射。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>map bridge virtual-ethernet</strong><em> interface-number</em></p>
+<p><strong>undo
+map bridge</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-number</em>：VE接口编号，编号为三维形式，包括槽号/卡号/顺序号三部分。顺序号的取值范围是0～1023。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>ATM-PVC视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在使用本命令之前，应该保证该VE已经创建成功。对于分布式设备，还应保证VE的槽号与ATM接口的槽号相同。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>由于VE接口的链路层上层为以太网，下层由AAL5来承载，所以VE接口使用的MAC地址不是实际MAC地址，无法从硬件获取，必须手工配置。用户需要自己配置正确的MAC地址。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="map_bridge__d91964e53"></a><a name="d91964e53"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p>下面这个例子展示了一个完整的IPoEoA配置过程。</p>
+<p># 创建VE接口Virtual-Ethernet2/0/0。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface virtual-ethernet 2/0/0</strong></pre>
+<p># 为该VE接口配置IP地址10.1.1.1/16。</p>
+<pre class="screen">[Quidway-Virtual-Ethernet2/0/0]<strong> ip address 10.1.1.1 255.255.0.0</strong></pre>
+<pre class="screen">[Quidway-Virtual-Ethernet2/0/0]<strong> quit</strong></pre>
+<p>#
+在ATM接口Atm2/0/0下创建PVC 1/102。</p>
+<pre class="screen">[Quidway]<strong> interface atm 2/0/0</strong></pre>
+<pre class="screen">[Quidway-Atm2/0/0]<strong> pvc 1/102</strong></pre>
+<p># 在PVC视图下使用已创建好的VE接口创建IPoE映射。</p>
+<pre class="screen">[Quidway-atm-pvc-Atm2/0/0-1/102]<strong> map bridge virtual-ethernet2/0/0</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/atm_configuration_commands.html">ATM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="map_ip.html">map ip</a></div>
+<div><a href="map_ppp.html">map ppp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

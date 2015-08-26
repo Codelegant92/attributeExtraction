@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qinq protocol">
+<meta name="DC.Relation" scheme="URI" content="../vrp/qinq_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_bpdu-tunnel_interface_config.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qinq_protocol">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qinq protocol</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qinq_protocol"></a><a name="qinq_protocol"></a>
+
+
+<h1 class="topictitle1">qinq protocol</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qinq</strong> <strong>protocol</strong>命令用来配置接口的外层Tag的以太封装类型值。取值范围是0x0600～0xFFFF，缺省值是0x8100。</p>
+<p><strong>undo</strong> <strong>qinq</strong> <strong>protocol</strong>用来恢复接口的外层Tag的缺省以太封装类型值（0x8100）。</p>
+<p>缺省情况下，接口的外层Tag的以太封装类型值为0x8100。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qinq protocol </strong><em>ethertype-value</em></p>
+<p><strong>undo</strong> <strong>qinq</strong> <strong>protocol</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ethertype-value</em>：接口的外层Tag的以太封装类型值。十六进制整数形式，取值范围是0x600～0xFFFF。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet接口视图、GE接口视图、Eth-Trunk接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在QinQ封装中，各个设备厂商的内层TPID的EtherType的值为0x8100，但是对于外层TPID的EtherType，各个厂商所使用的值不相同。</p>
+<p>在IEEE 802.1ad中规定外层TPID的 EType字段的定义为0x88a8。</p>
+<p>为了使不同厂商的设备实现互通，需要实现外层TPID的
+
+EtherType的兼容，通过<strong>qinq</strong> <strong>protocol</strong> <em>ethertype-value</em>命令可以配置外层TPID的
+
+EtherType。</p>
+<p><strong>qinq</strong> <strong>protocol</strong>命令在二层接口和三层接口上都能使用。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qinq_protocol__d109024e85"></a><a name="d109024e85"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置接口的外层Tag的以太封装类型值为0x9100。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> qinq protocol 9100</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/qinq_configuration_commands.html">QinQ配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_bpdu-tunnel_interface_config.html">display
+bpdu-tunnel interface config</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

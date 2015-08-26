@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="rpr fairness weight">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rpr_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_rpr_topoinfo_interface_ring-if.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rpr_fairness_weight">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>rpr fairness weight</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="rpr_fairness_weight"></a><a name="rpr_fairness_weight"></a>
+
+
+<h1 class="topictitle1">rpr fairness weight</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>rpr fairness</strong> <strong>weight</strong>命令用来配置本地节点在某个方向上发送链路的权重。</p>
+<p><strong>undo rpr fairness weight</strong>命令用来恢复缺省值。</p>
+<p>缺省情况下，本地节点发送链路的权重值为1。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>rpr fairness weight</strong><em> value </em>{ <strong>west</strong> | <strong>east</strong> }</p>
+<p><strong>undo rpr fairness weight </strong>{ <strong>west</strong> | <strong>east</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>value</em>：公平算法权重值，取值为2的幂次方：1、2、4、8、16、32、64或128。<span>其中的最大值由具体的产品指定，缺省最大值为128。</span></p>
+<p><strong>west</strong>：本地节点的西向连接。</p>
+<p><strong>east</strong>：本地节点的东向连接。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>RPR逻辑接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>链路的权重会影响公平算法的计算结果，权重值高的链路上帧的流量大。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="rpr_fairness_weight__d115291e79"></a><a name="d115291e79"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置本地节点的西向发送链路的权重值为16。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface ring-if 1</strong></pre>
+<pre class="screen">[Quidway-ring-if1]<strong> rpr fairness weight 16 west</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rpr_configuration_commands.html">RPR配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_rpr_topoinfo_interface_ring-if.html">display rpr topoinfo interface ring-if</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

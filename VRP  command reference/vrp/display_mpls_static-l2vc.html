@@ -1,0 +1,805 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls static-l2vc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_static-l2vc_destination.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_static-l2vc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls static-l2vc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_static-l2vc"></a><a name="display_mpls_static-l2vc"></a>
+
+
+<h1 class="topictitle1">display mpls static-l2vc</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls static-l2vc</strong>命令用来查看<span class="keyword">路由器</span>上配置的静态VC信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls static-l2vc</strong> [ <em>vc-id</em> | <strong>interface</strong> <em>interface-type interface-number</em> | <strong>state</strong> { <strong>down</strong> | <strong>up</strong> } ]<span> [<strong> | count</strong> ]</span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vc-id</em>：二层虚电路的ID。十进制整数形式，取值范围是1～4294967295。</p>
+<p><strong>interface</strong><em> interface-type interface-number</em>：与CE设备相连的接口。<em>interface-type</em>表示接口类型；<em>interface-number</em>表示接口编号。</p>
+<p><strong>state</strong>：对等体之间VC的状态。</p>
+<p><strong>down</strong>：状态为down的VC信息。</p>
+<p><strong>up</strong>：状态为up的VC信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display mpls static-l2vc</strong>命令后，如果指定了接口名称则只显示指定接口（与CE相连的接口）上的静态VC信息。如果没有指定接口则显示所有接口的静态VC信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_static-l2vc__d47214e134"></a><a name="d47214e134"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看<span class="keyword">路由器</span>上配置的静态VC。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls static-l2vc</strong></pre>
+<pre class="screen">Total svc connections:  1,  1 up,  0 down</pre>
+<pre class="screen"> *Client Interface     : GigabitEthernet1/0/1 is up</pre>
+<pre class="screen">  AC Status            : up</pre>
+<pre class="screen">  VC State             : up</pre>
+<pre class="screen">  VC ID                : 0</pre>
+<pre class="screen">  VC Type              : ethernet</pre>
+<pre class="screen">  Destination          : 3.3.3.9</pre>
+<pre class="screen">  Transmit VC Label    : 100</pre>
+<pre class="screen">  Receive VC Label     : 200</pre>
+<pre class="screen">  Control Word         : Disable</pre>
+<pre class="screen">  VCCV Capability      : Disable</pre>
+<pre class="screen">  Tunnel Policy Name   : --</pre>
+<pre class="screen">  Traffic Behavior     : --</pre>
+<pre class="screen">  PW Template Name     : --</pre>
+<pre class="screen">  Main or Secondary    : Main</pre>
+<pre class="screen">  Create time          : 0 days, 0 hours, 1 minutes, 38 seconds</pre>
+<pre class="screen">  UP time              : 0 days, 0 hours, 1 minutes, 11 seconds</pre>
+<pre class="screen">  Last change time     : 0 days, 0 hours, 1 minutes, 11 seconds</pre>
+<pre class="screen">  VC last up time : 2008/07/24 12:31:31
+  VC total up time: 0 days, 2 hours, 12 minutes, 51 seconds
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_static-l2vc__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_static-l2vc__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls static-l2vc命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.81859410430839%" id="d47214e195"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.18140589569161%" id="d47214e199"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>Total svc connections</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>所有已建立的SVC连接的条数以及状态为up的条数和状态为down的条数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>Client Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>用户接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>AC Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>接入线路（Attachment Circuit）的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>VC State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>VC的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>VC ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>VC的标志符，唯一标志了一条VC</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>VC Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>VC的封装类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>VC对端设备的LSR ID值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>Transmit VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>本地VC标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>Receive VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>远程VC的标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>Control Word</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>是否使能控制字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>VCCV Capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>是否使能VC的连通检测</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>Tunnel Policy Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>隧道策略的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>Traffic Behavior</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>流量行为的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>PW Template Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>PW模板的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>Main or Secondary</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>该VC是主用VC还是备用VC。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>Create time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>该VC已经创建了多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>UP time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>该VC保持UP状态多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>Last change time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>该VC最后一次状态变化距现在多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>VC last up time :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>VC最近一次UP的时刻。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e195 "><p>VC total up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e199 "><p>VC累积UP的时间（除去中间DOWN的时间）。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看接口GE1/0/0上配置的静态VC。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls static-l2vc interface gigabitethernet 1/0/1</strong></pre>
+<pre class="screen">*Client Interface   : GigabitEthernet1/0/1 is up</pre>
+<pre class="screen">  AC Status          : up</pre>
+<pre class="screen">  VC State           : up</pre>
+<pre class="screen">  VC ID              : 100</pre>
+<pre class="screen">  VC Type            : PPP</pre>
+<pre class="screen">  Destination        : 3.3.3.9</pre>
+<pre class="screen">  Transmit VC Label  : 100</pre>
+<pre class="screen">  Receive VC Label   : 100</pre>
+<pre class="screen">  Control Word       : Disable</pre>
+<pre class="screen">  VCCV Capability     : Disable</pre>
+<pre class="screen">  Tunnel Policy      : --</pre>
+<pre class="screen">  PW Template Name   : pwt</pre>
+<pre class="screen">  Traffic Behavior   : --</pre>
+<pre class="screen">  Main or Secondary  : Main</pre>
+<pre class="screen">  VC tunnel/token info : 1 tunnels/tokens</pre>
+<pre class="screen">  NO.0  TNL Type : lsp   , TNL ID : 0x2002003</pre>
+<pre class="screen">  Create time          : 0 days, 0 hours, 13 minutes, 7 seconds</pre>
+<pre class="screen">  UP time              : 0 days, 0 hours, 10 minutes, 23 seconds</pre>
+<pre class="screen">  Last change time     : 0 days, 0 hours, 10 minutes, 23 seconds</pre>
+<pre class="screen">  VC last up time : 2008/07/24 12:31:31
+  VC total up time: 0 days, 2 hours, 12 minutes, 51 seconds
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_static-l2vc__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_static-l2vc__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls static-l2vc interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.81859410430839%" id="d47214e488"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.18140589569161%" id="d47214e492"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>Client Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>用户接口及其状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>AC Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>本PE与直连CE之间的链路状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>VC State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>VC的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>VC ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>VC的标志符，唯一标志了一条VC</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>VC Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>VC的封装类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>VC对端设备的LSR ID值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>Transmit VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>本地发送的VC标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>Receive VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>本地接收的VC的标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>Control Word</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>是否使能控制字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>VCCV Capabilty</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>是否使能VC的连通检测</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>Tunnel Policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>隧道策略的名称。&#8220;--&#8221;表示没有为该VC配置隧道策略。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>Traffic Behavior</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>应用于该VC的流量策略名。&#8220;--&#8221;表示没有为该VC配置流量策略。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>PW Template Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>PW模板的名称。&#8220;--&#8221;表示没有为该PW配置PW模板。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>Main or Secondary</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>该VC是主用VC还是备用VC</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>VC tunnel/token info :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>关于该VC所使用的隧道的信息。&#8220;1 tunnels/tokens&#8221;表示该PW使用一个隧道/Token。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>NO.0 TNL Type :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>该VC所使用的隧道的类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>TNL ID :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>该VC所使用的隧道ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>Create time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>该VC已经创建了多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>UP time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>该VC保持UP状态多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>Last change time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>该VC最后一次状态变化距现在多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>VC last up time :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>VC最近一次UP的时刻。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e488 "><p>VC total up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e492 "><p>VC累积UP的时间（除去中间DOWN的时间）。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看对等体之间状态为up的SVC信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls static-l2vc state up</strong></pre>
+<pre class="screen">Total svc connections:  1,  1 up,  0 down</pre>
+
+<pre class="screen"> *Client Interface     : GigabitEthernet1/0/2 is up</pre>
+<pre class="screen">  AC Status            : up</pre>
+<pre class="screen">  VC State             : up</pre>
+<pre class="screen">  VC ID                : 0</pre>
+<pre class="screen">  VC Type              : ethernet</pre>
+<pre class="screen">  Destination          : 1.1.1.1</pre>
+<pre class="screen">  Transmit VC Label    : 200</pre>
+<pre class="screen">  Receive VC Label     : 100</pre>
+<pre class="screen">  Control Word         : Disable</pre>
+<pre class="screen">  VCCV Capability      : Disable</pre>
+<pre class="screen">  Tunnel Policy Name   : --</pre>
+<pre class="screen">  Traffic Behavior     : --</pre>
+<pre class="screen">  PW Template Name     : --</pre>
+<pre class="screen">  Create time          : 0 days, 0 hours, 25 minutes, 50 seconds</pre>
+<pre class="screen">  UP time              : 0 days, 0 hours, 25 minutes, 50 seconds</pre>
+<pre class="screen">  Last change time     : 0 days, 0 hours, 25 minutes, 50 seconds </pre>
+<pre class="screen">  VC last up time : 2008/07/24 12:31:31
+  VC total up time: 0 days, 2 hours, 12 minutes, 51 seconds
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_static-l2vc__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_static-l2vc__tb_03" frame="border" border="1" rules="all"><caption>表3 display mpls static-l2vc命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.81859410430839%" id="d47214e800"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.18140589569161%" id="d47214e804"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>Total svc connections</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>所有已建立的SVC连接的条数以及状态为up的条数和状态为down的条数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>Client Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>用户接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>AC Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>接入线路（Attachment Circuit）的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>VC State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>VC的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>VC ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>VC的标志符，唯一标志了一条VC</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>VC Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>VC的封装类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>VC对端设备的LSR ID值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>Transmit VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>本地VC标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>Receive VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>远程VC的标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>Control Word</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>是否使能控制字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>VCCV Capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>是否使能VC的连通检测</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>Tunnel Policy Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>隧道策略的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>Traffic Behavior</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>流量行为的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>PW Template Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>PW模板的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>Main or Secondary</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>该VC是主用VC还是备用VC</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>Create time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>该VC已经创建了多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>UP time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>该VC保持UP状态多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>Last change time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>该VC最后一次状态变化距现在多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>VC last up time :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>VC最近一次UP的时刻。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d47214e800 "><p>VC total up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d47214e804 "><p>VC累积UP的时间（除去中间DOWN的时间）。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_static-l2vc__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_static-l2vc__tb_04" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.0047871000252%" id="d47214e1046"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.99521289997481%" id="d47214e1050"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d47214e1046 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d47214e1050 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d47214e1046 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d47214e1050 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_static-l2vc_destination.html">mpls static-l2vc destination</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,61 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="sa binding vpn-instance（IKE对等体视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ike_peer.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="sa_binding_vpn-instance_ike_peer_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>sa binding vpn-instance（IKE对等体视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="sa_binding_vpn-instance_ike_peer_view"></a><a name="sa_binding_vpn-instance_ike_peer_view"></a>
+
+<h1 class="topictitle1">sa binding vpn-instance（IKE对等体视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>sa binding vpn-instance</strong>命令指明IPSec隧道绑定的VPN实例。</p>
+<p><strong>undo</strong> <strong>sa binding vpn-instance</strong>命令指明IPSec隧道绑定的VPN实例。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>sa binding vpn-instance </strong><em>vpn-instance-name</em><strong> </strong></p>
+<p><strong>undo</strong> <strong>sa binding vpn-instance</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vpn-instance-name</em>：安全联盟绑定的VPN实例名称,长度范围是1～31。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IKE对等体视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对于一个MPLS VPN网络，若VPN Site比较小，CE和PE之间没有使用专线连接，而是通过公网（Internet）连接，此时，CE内部接入主机要访问其他VPN Site的资源，就必须通过不安全的Internet网，对这部分用户可以提供通过IPSec隧道方式接入MPLS VPN的骨干网。</p>
+<p>IPSec隧道方式接入MPLS VPN的组网需要采用IKE协商方式创建安全策略，在IKE对等体视图下通过<strong>sa binding vpn-instance</strong>命令指明IPSec隧道绑定的VPN实例。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="sa_binding_vpn-instance_ike_peer_view__d116240e52"></a><a name="d116240e52"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置安全联盟绑定的VPN实例vpna。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ike peer huawei</strong></pre>
+<pre class="screen">[Quidway-ike-peer-huawei]<strong> sa binding vpn-instance vpna</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ike_peer.html">display ike peer</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

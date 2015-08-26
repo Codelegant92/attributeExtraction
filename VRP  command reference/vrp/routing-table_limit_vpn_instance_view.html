@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="routing-table limit（VPN实例视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_mpls_ip_vpn_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="routing-table_limit_vpn_instance_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>routing-table limit（VPN实例视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="routing-table_limit_vpn_instance_view"></a><a name="routing-table_limit_vpn_instance_view"></a>
+
+
+<h1 class="topictitle1">routing-table limit（VPN实例视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>routing-table limit</strong>命令用来限制当前VPN实例支持的最多路由数，以避免PE设备引入过多VPN路由。</p>
+<p><strong>undo routing-table limit</strong>用来恢复缺省配置。</p>
+<p>缺省情况下，没有限制VPN实例的最大路由数。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>不同的网络设备所容纳的单播路由数量是不同的，因此VPN实例的最大路由数将受所属产品的规格限制，详情见产品配套的规格描述。所有的私网路由和公网路由的总和不能超过这个限制值，否则路由管理将拒绝添加超出的路由，并产生告警信息。</p>
+</div></div>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>routing-table</strong> <strong>limit</strong> <em>number</em> { <em>alert-percent</em> | <strong>simply-alert </strong>}</p>
+<p><strong>undo routing-table
+limit</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>number</em>：指定一个VPN实例最多可以支持的路由数。取值范围是：最小为1，最大值决定于规格文件中定义的单播路由总数。</p>
+<p><em>alert-percent</em>：指定最大路由数的百分比，整数形式，取值范围是1～100。当加入VPN实例的最大路由数到达（<em>number</em>&times;<em>alert-percent</em>）&divide;100时，系统开始产生警告信息。此时VPN实例的路由表可以继续加入VPN路由。但到达number后，后来的路由将被丢弃。</p>
+<p><strong>simply-alert</strong>：标志当VPN路由数超过<em>number</em>的时候，允许系统将VPN路由继续添加到该VPN实例的路由表中，只是产生告警。但设备的私网路由和公网路由的总数到达规格文件限制的单播路由总数后，后来的VPN路由也将被丢弃。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>VPN实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>建议此命令与BGP-VPN实例视图下的<strong>peer route-limit</strong>命令配合使用。PE从远端PE接收到的VPNv4路由会先保存在本地以RD为索引的VPNv4路由表里，然后再根据vpn-target匹配关系注入到相应的VPN实例的路由表里。配置<strong>routing-table limit</strong>可防止VPN实例的路由表注入过多路由，但不能防止PE从其他PE设备接收过多的路由。</p>
+<p>如果PE和CE之间运行EBGP协议，当VPN实例路由数超出了限制值而导致该EBGP路由不能继续被添加到VPN实例路由表时，EBGP
+peer 会话自动断开，32秒后再重新尝试建立对等体关系。</p>
+<p>当执行<strong>undo routing-table limit</strong>时，系统将重新收集CE发来的路由和VPNv4路由表中属于本VPN实例的路由添加到本VPN路由表中。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="routing-table_limit_vpn_instance_view__d115161e96"></a><a name="d115161e96"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 限制名为vpn1的VPN实例最多可引入1000条路由。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ip vpn-instance vpn1</strong></pre>
+<pre class="screen">[Quidway-vpn-instance-vpn1]<strong> route-distinguisher 100:1</strong></pre>
+<pre class="screen">[Quidway-vpn-instance-vpn1]<strong> routing-table limit 1000 simply-alert</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_mpls_ip_vpn_configuration_commands.html">BGP/MPLS IP VPN配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

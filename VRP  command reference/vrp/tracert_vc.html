@@ -1,0 +1,195 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="tracert vc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="tracert_vc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>tracert vc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="tracert_vc"></a><a name="tracert_vc"></a>
+
+
+<h1 class="topictitle1">tracert vc</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>tracert vc</strong>命令用来检测PW的状态，在PW为Down的情况下，定位PW路径上某个节点的异常情况。</p>
+<p>缺省情况下，使用控制字control-word方式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>tracert vc</strong> { { <em>encapsulation</em> | <strong>ip-interworking</strong> } <em>pw-id</em> [ <strong>-exp</strong> <em>exp-value</em> | <strong>-f</strong> <em>first-ttl</em> | <strong>-m</strong> <em>max-ttl</em> | <strong>-r</strong> <em>reply-mode</em> | <strong>-t</strong> <em>timeout-value</em> ]* <strong>control-word</strong> [ <strong>remote</strong> <em>remote-pw-id</em> ] } [ <strong>full-lsp-path</strong> ]</p>
+<p><strong>tracert vc</strong> { { <em>encapsulation</em> | <strong>ip-interworking</strong> } <em>pw-id</em> [ <strong>-exp</strong> <em>exp-value</em> | <strong>-f</strong> <em>first-ttl</em> | <strong>-m</strong> <em>max-ttl</em> | <strong>-r</strong> <em>reply-mode</em> | <strong>-t</strong> <em>timeout-value</em> ]* <strong>label-alert</strong>[<strong> remote</strong> <em>remote-ip-address</em> ] } [ <strong>full-lsp-path</strong> ]</p>
+<p><strong>tracert vc</strong> { { <em>encapsulation</em> | <strong>ip-interworking</strong> } <em>pw-id</em> [ <strong>-exp</strong> <em>exp-value</em> |<strong> -f</strong> <em>first-ttl</em> | <strong>-m</strong> <em>max-ttl</em> | <strong>-r</strong> <em>reply-mode</em> | <strong>-t</strong> <em>timeout-value</em> ]* <strong>normal</strong> [ <strong>remote</strong> <em>remote-ip-address</em> ] } [ <strong>full-lsp-path</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>encapsulation</em>：同种介质互通时，需要指定PW的封装类型。目前支持的封装类型有<strong>atm-aal5-sdu</strong>、<strong>ethernet</strong>、<strong>fr</strong>、<strong>hdlc</strong>、<strong>ppp</strong>和<strong>vlan</strong>。</p>
+<p><strong>ip-interworking</strong>：PW的封装类型为IP异种介质互通。</p>
+<p><em>pw-id</em>：本地PW ID，十进制整数形式，取值范围是1～4294967295。</p>
+<p><strong>-exp</strong> <em>exp-value</em>：MPLS echo request报文，外层标签的EXP字段值，十进制整数形式，取值范围是0～7。</p>
+<p><strong>-f</strong> <em>first-ttl</em>：指定一个初始的TTL值，十进制整数形式，范围是1～255，并且必须小于<em>max-ttl</em>的值。默认取值是1。</p>
+<p><strong>-m</strong> <em>max-ttl</em>：指定一个最大TTL，十进制整数形式，范围是1～255，并且必须大于<em>first-ttl</em>的值。默认取值是30。</p>
+<p><strong>-r</strong> <em>reply-mode</em>：指定对端回送MPLS echo reply报文的模式，十进制整数形式。取值范围为1～2。1为不应答，2为通过IPv4/IPv6 UDP报文应答，3为通过带Router alert的IPv4/IPv6 UDP报文应答。默认值为2。目前只支持1和2。</p>
+<p><strong>-t</strong> <em>timeout-value</em>：等待MPLS echo reply报文的超时时间。单位为毫秒(ms)，十进制整数形式，取值范围为1～65535。默认取值5。</p>
+<p><strong>control-word</strong>：指定在报文中封装control word控制字信息。</p>
+<p><strong>label-alert</strong>：指定在报文中封装router alert标签。</p>
+<p><strong>normal</strong>：普通方式，MPLS echo request报文不封装control
+word和router alert选项。</p>
+<p><strong>remote</strong>：指定远端的PW信息。</p>
+<p><em>remote-ip-address</em>：指定远端的IP地址。默认情况下，系统会根据本地的PW找到下一跳的IP地址。如果使用label-alert，可以指定任何一个switch节点，或者终结点的IP地址。</p>
+<p><em>remote-pw-id</em>：指定远端PW的ID。默认情况下，使用本地的PW ID。在多跳的时候，如果使用control-word选项，则必须指定终结点的IP地址。</p>
+<p><strong>&#8211;vpn-instance</strong> <em>vpn-name</em>：VPN的名称，字符串格式，不支持空格，区分大小写，长度范围是1～31。</p>
+<p><em>local-ce-id</em>：本端CE的ID，十进制整数形式，取值范围是0～249。</p>
+<p><em>remote-ce-id</em>：远端CE的ID，十进制整数形式，取值范围是0～249。</p>
+<p><strong>full-lsp-path</strong>：显示MPLS echo request报文经过的LSP路径上所有节点回应的信息。如果不配置该参数，则只显示LSP路径上PW节点回应的信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>0：参观级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>命令运行的过程中可用Ctrl+C终止命令的执行。</p>
+<p>收到一个MPLS echo reply报文，在屏幕上回显报文信息。</p>
+<p>封装control word后，多跳的情况下，在switch节点，如果标签的TTL值没有超时，则MPLS echo request报文不会被上送CPU处理。这种方式下，源端获得的PW信息较少，但对设备的性能影响较小，并且源端看不到该switch节点的下游信息。当报文多的时候，推荐采用此方式。</p>
+<p>封装router alert后，多跳的情况下，在switch节点，MPLS
+echo request报文被上送CPU处理。这种方式下，源端获得的PW信息较多，但当报文太多时，对设备的性能影响较大。当报文少的时候，推荐采用此方式。</p>
+<p>remote指定的信息，会最终封装到MPLS echo request报文中，在远端寻找相应的PW。缺省情况下，MPLS echo request报文的信息来自本地的PW信息，这适合于单跳PW的情况。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="tracert_vc__d125110e321"></a><a name="d125110e321"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 对多跳PW进行Tracert测试，封装类型为PPP，本端PW的ID是100，远端PW的ID是200。</p>
+<pre class="screen">&lt;Quidway&gt;<strong><strong> tracert vc ppp 100 control-word remote 200 full-lsp-path</strong></strong></pre>
+<pre class="screen">  TTL   Replier            Time    Type      Downstream</pre>
+<pre class="screen">  0                                   Ingress   10.1.1.2/[1025 ]</pre>
+<pre class="screen">  1     10.1.1.2           230 ms  Transit   20.1.1.2/[3 ]</pre>
+<pre class="screen">  2     20.1.1.2           230 ms  Transit   30.1.1.2/[3 ]</pre>
+<pre class="screen">  3     30.1.1.2           100 ms  Transit   40.1.1.2/[3 ]</pre>
+<pre class="screen">  4     40.1.1.2           150 ms  Egress</pre>
+
+<div class="tablenoborder"><a name="tracert_vc__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="tracert_vc__tb_01" frame="border" border="1" rules="all"><caption>表1 tracert vc命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.627658251461256%" id="d125110e354"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.37234174853874%" id="d125110e358"><p>描述 </p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.627658251461256%" headers="d125110e354 "><p>TTL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.37234174853874%" headers="d125110e358 "><p>MPLS echo request报文的TTL值，通常用来表示报文从源节点到该节点所经过的的跳数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.627658251461256%" headers="d125110e354 "><p>Replier</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.37234174853874%" headers="d125110e358 "><p>回复报文的地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.627658251461256%" headers="d125110e354 "><p>Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.37234174853874%" headers="d125110e358 "><p>报文处理时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.627658251461256%" headers="d125110e354 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.37234174853874%" headers="d125110e358 "><p>各个节点的类型。Ingress：节点是入口节点。Transit：节点是转发节点。Egress：节点是出口节点。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.627658251461256%" headers="d125110e354 "><p>Downstream</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.37234174853874%" headers="d125110e358 "><p>下游设备的地址信息和标签值。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="tracert_vc__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="tracert_vc__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d125110e435"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d125110e439"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d125110e435 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d125110e439 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

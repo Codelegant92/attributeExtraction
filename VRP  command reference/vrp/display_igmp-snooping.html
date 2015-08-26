@@ -1,0 +1,243 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display igmp-snooping">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="igmp-snooping_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_igmp-snooping">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display igmp-snooping</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_igmp-snooping"></a><a name="display_igmp-snooping"></a>
+
+
+<h1 class="topictitle1">display igmp-snooping</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display igmp-snooping</strong> [ <strong>vlan</strong> [ <em>vlan-id </em>] | <strong>vsi </strong>[ <em>vsi-name </em>] ]命令用来查看VLAN/VSI上IGMP Snooping的所有运行参数，包括默认参数和非默认参数，不区分VSI是否绑定了VLAN。</p>
+<p><strong>display igmp-snooping</strong> [ <strong>vlan</strong> [ <em>vlan-id </em>] | <strong>vsi </strong>[ <em>vsi-name </em>] ] [ <strong>configuration</strong> ]命令用来查看VLAN/VSI上IGMP Snooping的配置信息，只包括非默认参数，不区分VSI是否绑定了VLAN。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display igmp-snooping</strong> [ <strong>vlan</strong> [ <em>vlan-id </em>] <strong>| vsi </strong>[ <em>vsi-name</em> ] ] [ <strong>configuration</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vlan</strong><em> vlan-id</em>：显示指定VLAN的IGMP Snooping配置信息。<em>vlan-id</em>表示VLAN编号，取值范围是1～4094。</p>
+<p><strong>vsi </strong><em>vsi-name</em>：VSI实例的名称。字符串形式，不支持空格，区分大小写，长度范围是1～31。</p>
+<p><strong>configuration</strong>：显示VLAN/VSI的IGMP Snooping非缺省的配置信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display igmp-snooping</strong>命令时，</p>
+<ul>
+<li><p><strong>display igmp-snooping</strong>显示所有VLAN和VSI的IGMP Snooping配置信息。</p>
+</li>
+<li><p><strong>display igmp-snooping vlan</strong>如果不配置参数<em>vlan-id</em>，则显示所有VLAN的IGMP Snooping配置信息。</p>
+</li>
+<li><p><strong>display igmp-snooping vsi</strong>如果不配置参数vsi-name，则显示所有VSI的IGMP Snooping配置信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_igmp-snooping__d26177e127"></a><a name="d26177e127"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看IGMP Snooping所有运行参数</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display igmp-snooping </strong>
+  IGMP Snooping Information for VLAN 81
+     IGMP Snooping is Enable
+     IGMP Version is Set to default 2
+     IGMP Query Interval is Set to default 60
+     IGMP Max Response Interval is Set to default 10
+     IGMP Robustness is Set to default 2
+     IGMP Last Member Query Interval is Set to default 1
+     IGMP Router Port Aging Interval is Set to 180s or holdtime in hello
+     IGMP Filter Group-Policy is Set to default : Permit All
+     IGMP Prompt Leave Disable
+     IGMP Router Alert is Not Required
+     IGMP Send Router Alert Enable
+     IGMP Report Suppress Disable
+     IGMP Router Port Learning Enable
+     IGMP Querier Disable
+  IGMP Snooping Information for VSI vsi0
+     IGMP Snooping is Enable
+     IGMP Version is Set to default 2
+     IGMP Query Interval is Set to default 60
+     IGMP Max Response Interval is Set to default 10
+     IGMP Robustness is Set to default 2
+     IGMP Last Member Query Interval is Set to default 1
+     IGMP Router Port Aging Interval is Set to 180s or holdtime in hello
+     IGMP Filter Group-Policy is Set to default : Permit All
+     IGMP Prompt Leave Disable
+     IGMP Router Alert is Not Required
+     IGMP Send Router Alert Enable
+     IGMP Report Suppress Disable
+     IGMP Router Port Learning Enable
+     IGMP Querier Disable   
+</pre>
+<p># 查看IGMP Snooping所有配置信息</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display igmp-snooping configuration</strong>
+IGMP Snooping Configuration for Vlan 2
+    igmp-snooping enable
+    igmp-snooping max-response-time 20
+IGMP Snooping Configuration for Vlan 10
+    igmp-snooping enable
+IGMP Snooping Configuration for Vsi vsi0
+    igmp-snooping enable
+    igmp-snooping robust-count 4
+IGMP Snooping Configuration for Vsi vsi1
+    igmp-snooping enable
+</pre>
+
+<div class="tablenoborder"><a name="display_igmp-snooping__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp-snooping__tb_01" frame="border" border="1" rules="all"><caption>表1 display igmp-snooping命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="31.54446963970774%" id="d26177e155"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="68.45553036029227%" id="d26177e159"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="31.54446963970774%" headers="d26177e155 "><p>IGMP Snooping is Enable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.45553036029227%" headers="d26177e159 "><p>本VLAN/VSI内的IGMP Snooping已使能。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.54446963970774%" headers="d26177e155 "><p>IGMP Version is Set to default 2</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.45553036029227%" headers="d26177e159 "><p>本VLAN/VSI内可以处理的IGMP报文的版本为缺省值，也就是既可以处理IGMPv1的报文，也可以处理IGMPv2的报文。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.54446963970774%" headers="d26177e155 "><p>IGMP Query Interval is Set to default 60</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.45553036029227%" headers="d26177e159 "><p>本VLAN/VSI内的IGMP通用查询消息发送时间间隔为缺省值，即60s。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.54446963970774%" headers="d26177e155 "><p>IGMP Max Response Interval is Set to default 10</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.45553036029227%" headers="d26177e159 "><p>本VLAN/VSI内的IGMP最大响应时间为缺省值，即10s。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.54446963970774%" headers="d26177e155 "><p>IGMP Robustness is Set to default 2</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.45553036029227%" headers="d26177e159 "><p>IGMP健壮系数为缺省值，即2。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.54446963970774%" headers="d26177e155 "><p>IGMP Last Member Query Interval is Set to default 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.45553036029227%" headers="d26177e159 "><p>本VLAN/VSI内的IGMP特定组查询消息的发送时间间隔为缺省值，即1s。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.54446963970774%" headers="d26177e155 "><p>IGMP Router Port Aging Interval is Set to 180s or holdtime in hello</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.45553036029227%" headers="d26177e159 "><p>本VLAN/VSI内的路由端口的老化时间为180s或PIM Hello报文携带的Holdtime值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.54446963970774%" headers="d26177e155 "><p>IGMP Filter Group-Policy is Set to default : Permit All</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.45553036029227%" headers="d26177e159 "><p>本VLAN/VSI的组播组策略为缺省值，即允许本VLAN/.VSI内的主机加入所有组播组。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.54446963970774%" headers="d26177e155 "><p>IGMP Prompt Leave Disable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.45553036029227%" headers="d26177e159 "><p>本VLAN/VSI内端口的快速离开功能处于未使能状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.54446963970774%" headers="d26177e155 "><p>IGMP Router Alert is Not Required</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.45553036029227%" headers="d26177e159 "><p>路由器从本VLAN/VSI内接收的IGMP报文的IP头中不必带有Router Alert。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.54446963970774%" headers="d26177e155 "><p>IGMP Send Router Alert Enable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.45553036029227%" headers="d26177e159 "><p>路由器向本VLAN/VSI内发送的IGMP报文的IP报文头中带有Router Alert。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="igmp-snooping_enable.html">igmp-snooping enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

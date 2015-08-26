@@ -1,0 +1,98 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls ldp frr nexthop">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_ldp_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_ldp_interface_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_ldp_frr_nexthop">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls ldp frr nexthop</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_ldp_frr_nexthop"></a><a name="mpls_ldp_frr_nexthop"></a>
+
+
+<h1 class="topictitle1">mpls ldp frr nexthop</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls ldp frr nexthop</strong>命令用来在接口上使能LDP FRR功能。</p>
+<p><strong>undo mpls ldp frr</strong>命令用来在接口上去使能LDP FRR功能。</p>
+<p>缺省情况下，接口上没有使能LDP FRR功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls ldp frr nexthop</strong> <em>nexthop-address</em> [ <strong>ip-prefix</strong> <em>ip-prefix-name</em> ] [ <strong>priority</strong> <em>priority</em> ]</p>
+<p><strong>undo mpls ldp frr</strong> [ <strong>nexthop</strong> <em>nexthop-address</em> ] [ <strong>ip-prefix</strong><em> ip-prefix-name</em> ] [ <strong>priority</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>nexthop</strong> <em>nexthop-address</em>：指定备份LSP的下一跳IP地址。</p>
+<p><strong>ip-prefix</strong> <em>ip-prefix-name</em>：与指定IP前缀列表名称定义的IP前缀匹配的FEC才能触发生成备份LSP。字符串形式，不支持空格，长度范围是1～169。</p>
+<p><strong>priority </strong><em>priority</em>：指定备份LSP的优先级，优先级的值越大，该备份LSP的优先级越低。整数形式，取值范围是1～65535。缺省值是50。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行此命令配置备份LSP的下一跳IP地址时：</p>
+<ul>
+<li><p>可以在同一接口上配置多个不同的下一跳，即为主LSP配置多个不同出接口的备份LSP。</p>
+</li>
+<li><p>也可以在同一接口下为相同下一跳配置不同的前缀列表。</p>
+<ul>
+<li><p>如果不指定前缀列表，则LDP FRR会试图为本接口的所有LSP在<em>nexthop-address</em>所指定的路径上建立备份LSP。</p>
+</li>
+<li><p>如果指定前缀列表中只有DENY项，则不允许该接口上被DENY的FEC对应的LSP在<em>nexthop-address</em>所指定的路径上建立备份LSP。</p>
+</li>
+<li><p>如果指定前缀列表中只有PERMIT项，则只允许该接口上被PERMIT的FEC对应的LSP在<em>nexthop-address</em>所指定的路径上建立备份LSP。</p>
+</li>
+<li><p>如果指定前缀列表中既有PERMIT项又有DENY项，则只有PERMIT有效，即，只允许该接口上被PERMIT的FEC对应的LSP在<em>nexthop-address</em>所指定的路径上建立备份LSP。</p>
+</li>
+</ul>
+</li>
+<li><p>一个接口最多可以有10项不同优先级的LDP FRR配置，但最终根据优先级只会生成一条备份LSP。</p>
+</li>
+</ul>
+<p>在系统视图或接口视图下执行<strong>undo mpls ldp</strong>命令去使能LDP功能时，接口视图下的LDP FRR配置不会被自动删除，但LDP FRR功能已经失效。在LDP FRR的配置中，备份LSP必须是Liberal状态的LSP，即备份LSP的ingress到egress的路由状态必须是&#8220;Inactive Adv&#8221;。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>LDP GR期间禁止使能和去使能LDP FRR功能。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_ldp_frr_nexthop__d94204e147"></a><a name="d94204e147"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口POS1/0/0上使能LDP FRR，备份LSP的下一跳IP地址为30.1.1.2。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> mpls ldp frr nexthop 30.1.1.2</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_ldp_system_view.html">mpls ldp（系统视图）</a></div>
+<div><a href="mpls_ldp_interface_view.html">mpls ldp（接口视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="efm trigger if-down">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_efm.html">
+<meta name="DC.Relation" scheme="URI" content="efm_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="efm_trigger_if-down">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>efm trigger if-down</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="efm_trigger_if-down"></a><a name="efm_trigger_if-down"></a>
+
+
+<h1 class="topictitle1">efm trigger if-down</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>efm trigger if-down</strong>命令用来配置EFM OAM和当前接口联动。</p>
+<p><strong>undo efm trigger if-down</strong>命令用来取消EFM OAM和当前接口联动的功能。</p>
+<p>缺省情况下，接口不和EFM OAM联动。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>efm trigger if-down</strong></p>
+<p><strong>undo efm trigger if-down</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet接口视图、GE接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果使能了EFM OAM和当前接口联动功能，当EFM OAM检测到链路连通性故障后，相应接口的接口协议状态变为efm
+Down，接口下除EFM协议报文外的所有其他报文都无法被转发，二三层业务将全部被阻塞。因此，一旦启用EFM OAM和当前接口联动功能，将可能对业务产生很大影响。如果当前接口通过EFM OAM检测到链路连通性故障恢复，则恢复该接口的所有转发报文，并通知该接口上的所有二三层业务作相应处理。</p>
+<p>故障恢复后，接口协议状态重新变为Up。</p>
+<p>此外，请务必确保两端EFM OAM协议状态变为detect之后再配置EFM
+OAM和当前接口联动功能。</p>
+<p>如果由于人为误操作导致二三层业务被阻塞，可通过在接口视图下执行命令undo efm trigger if-down恢复业务。</p>
+<p>当前接口必须已使用<a href="efm_enable.html">efm enable</a>命令使能了EFM OAM。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="efm_trigger_if-down__d75223e57"></a><a name="d75223e57"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置EFM OAM和接口GigabitEthernet1/0/1联动。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>efm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> <strong>efm enable</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> <strong>efm trigger if-down</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_efm.html">display efm</a></div>
+<div><a href="efm_enable.html">efm enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

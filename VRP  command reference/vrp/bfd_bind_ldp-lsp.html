@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="bfd bind ldp-lsp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="bfd_bind_ldp-lsp_peer-ip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>bfd bind ldp-lsp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="bfd_bind_ldp-lsp_peer-ip"></a><a name="bfd_bind_ldp-lsp_peer-ip"></a>
+
+
+<h1 class="topictitle1">bfd bind ldp-lsp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>bfd bind ldp-lsp</strong>命令用来创建检测LDP LSP的BFD会话。</p>
+<p><strong>undo bfd</strong> <em>cfg-name</em>命令用来删除创建的BFD会话。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>bfd </strong><em>cfg-name</em><strong> bind ldp-lsp peer-ip</strong> <em>ip-address</em> <strong>nexthop</strong> <em>ip-address</em> [ <strong>interface</strong> <em>interface-type interface-number</em> ]</p>
+<p><strong>undo bfd</strong> <em>cfg-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>cfg-name</em>：BFD配置名。字符串形式，不支持空格，长度范围是1～15。</p>
+<p><strong>ldp-lsp</strong>：BFD检测的LDP LSP。</p>
+<p><strong>peer-ip</strong> <em>ip-address</em>：BFD会话绑定动态LSP的宿端IP地址。</p>
+<p><strong>nexthop</strong> <em>ip-address</em>：被检测LSP的下一跳IP地址。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：BFD绑定的出接口。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令只能在LSP的入节点上执行。</p>
+<p>当被检测的LSP出接口地址是借用的或者是被借用时，必须指定出接口。</p>
+<p>当LDP LSP被删除，但LDP会话没有删除时，与之绑定的BFD会话不会被删除，只是状态变为Down。</p>
+<p>当LDP会话被删除时，系统删除与之绑定的BFD配置和会话。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="bfd_bind_ldp-lsp_peer-ip__d4144e103"></a><a name="d4144e103"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建BFD会话检测LDP LSP，LSP宿端地址是4.4.4.4，下一跳地址是10.1.1.2，出接口是GE1/0/0。</p>
+<pre class="screen">&lt;Quiway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quiway]<strong> bfd 1to4 bind ldp-lsp peer-ip 4.4.4.4 nexthop 10.1.1.2 interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quiway-bfd-session-1to4]</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="x25 alias-policy">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_x25_alias-policy.html">
+<meta name="DC.Relation" scheme="URI" content="x25_x121-address.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="x25_alias-policy">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>x25 alias-policy</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="x25_alias-policy"></a><a name="x25_alias-policy"></a>
+
+<h1 class="topictitle1">x25 alias-policy</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>x25 alias-policy</strong>命令用来配置一个X.121地址的别名。</p>
+<p><strong>undo</strong> <strong>x25 alias-policy</strong>命令用来删除一个X.121地址的别名。</p>
+<p>缺省情况下，X.25接口没有别名。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>x25 alias-policy</strong> <em>match-type alias-string</em></p>
+<p><strong>undo x25 alias-policy</strong> <em>match-type alias-string</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>match-type</em>：该别名的匹配方式，可选择的匹配方式共有9种：</p>
+<ul><li><p>free：自由匹配</p>
+</li><li><p>free-ext：扩展式自由匹配</p>
+</li><li><p>left：左对齐匹配</p>
+</li><li><p>left-ext：扩展式左对齐匹配</p>
+</li><li><p>right：右对齐匹配</p>
+</li><li><p>right-ext：扩展式右对齐匹配</p>
+</li><li><p>strict：严格匹配</p>
+</li><li><p>whole：全匹配</p>
+</li><li><p>whole-ext：扩展式全匹配</p>
+</li></ul>
+<p><em>alias-string</em>：别名串</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当一个X.25呼叫被跨网转发后，不同的X.25网或许会对该呼叫分组所携带的目的地址（即被叫DTE地址）进行某些操作，例如有规律地加上或者去掉前缀、后缀等。此时，需要为<span class="keyword">路由器</span>设置接口的别名来适应这种变化的情况。</p>
+<p>网络是否有这种功能，请向提供商咨询之后决定是否启用别名功能。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="x25_alias-policy__d129442e85"></a><a name="d129442e85"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置接口Serial1/0/0的链路层协议为X.25，为其配置X.121地址20112451，并为其设置两个具有不同匹配方式的别名。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong>link-protocol x25</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong>x25 x121-address 20112451</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong>x25 alias-policy right 20112451$</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong>x25 alias-policy left $20112451</strong></pre>
+<p>经过如上的配置，对于目的地为20112451的呼叫，不论网络是做添加前缀的操作，还是做添加后缀的操作，只要该呼叫能到达本地X.25接口Serial1/0/0，该呼叫均能被接受。</p>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_x25_alias-policy.html">display x25 alias-policy</a></div>
+<div><a href="x25_x121-address.html">x25 x121-address</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

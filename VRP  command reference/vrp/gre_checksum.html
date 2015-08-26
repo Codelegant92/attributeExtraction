@@ -1,0 +1,71 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="gre checksum">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_over_ipv4_tunnel_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/gre_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="interface_tunnel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="gre_checksum">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>gre checksum</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="gre_checksum"></a><a name="gre_checksum"></a>
+
+<h1 class="topictitle1">gre checksum</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>gre checksum</strong>命令用来设置对GRE隧道两端进行端到端校验。</p>
+<p><strong>undo gre checksum</strong>命令用来取消校验。</p>
+<p>缺省情况下，禁止GRE隧道两端进行端到端校验。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>gre checksum</strong></p>
+<p><strong>undo gre checksum</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果本端配置了校验和，则本端将根据GRE头及payload信息计算校验和，并将包含校验和的报文发送给对端。对端对接收到的报文计算校验和，并与报文中的校验和比较，如果一致则对报文进一步处理，否则丢弃报文。</p>
+<p>GRE隧道两端可以根据实际需要选择是否配置校验和，从而决定是否触发校验功能。</p>
+<p>如果本端配置了校验和而对端没有配置，则本端将不对接收到的报文进行校验，但对本端发送的报文计算校验和；如果本端没有配置校验和而对端配置，则本端对从对端发来的报文进行校验和检查，但对本端发送的报文不计算校验和。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="gre_checksum__d78718e41"></a><a name="d78718e41"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># <span class="keyword">路由器</span>Quidway1的Tunnel1/0/0与Quidway2的Tunnel2/0/0之间已建立隧道，在隧道两端设置校验。</p>
+<pre class="screen">&lt;Quidway1&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway1]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway1-Tunnel1/0/0]<strong> gre checksum</strong></pre>
+<pre class="screen"> </pre>
+<pre class="screen">&lt;Quidway2&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway2]<strong> interface tunnel 2/0/0</strong></pre>
+<pre class="screen">[Quidway2-Tunnel2/0/0]<strong> gre checksum</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_over_ipv4_tunnel_configuration_commands.html">IPv6 over IPv4隧道配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="interface_tunnel.html">interface tunnel</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

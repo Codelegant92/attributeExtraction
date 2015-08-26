@@ -1,0 +1,99 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="vlink-peer (OSPF)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ospf_vlink.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="vlink-peer_ospf">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>vlink-peer (OSPF)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="vlink-peer_ospf"></a><a name="vlink-peer_ospf"></a>
+
+<h1 class="topictitle1">vlink-peer (OSPF)</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>vlink-peer</strong>命令用来创建并配置一条虚连接。</p>
+<p><strong>undo vlink-peer</strong>命令用来删除一条已有的虚连接。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>vlink-peer</strong> <em>router-id</em> [ <strong>smart-discover</strong> ] [ <strong>hello</strong> <em>hello-interval</em> | <strong>retransmit</strong> <em>retransmit-interval</em> | <strong>trans-delay</strong> <em>trans-delay-interval</em> | <strong>dead</strong> <em>dead-interval</em> ] <sup>*</sup> [ <strong>simple</strong> [ [ <strong>plain</strong> ] <em>plain-text</em> | <strong>cipher</strong><em> cipher-text</em> ] | { <strong>md5</strong> | <strong>hmac-md5</strong> } [ <em>key-id</em> [ <strong>plain</strong> <em>plain-text</em> | [ <strong>cipher</strong> ] <em>cipher-text</em> ] | <strong>authentication-null</strong> ]</p>
+<p><strong>undo</strong> <strong>vlink-peer</strong> <em>router-id</em> [ <strong>smart-discover</strong> ] [ <strong>hello</strong> | <strong>retransmit</strong> | <strong>trans-delay</strong> | <strong>dead</strong> ] <sup>*</sup> [ <strong>simple</strong> | <strong>md5</strong> | <strong>hmac-md5</strong> | <strong>authentication-null</strong> ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>router-id</em>：虚连接邻居的路由器ID。</p>
+<p><strong>smart-discover</strong>：主动发送Hello报文。</p>
+<p><strong>hello</strong> <em>hello-interval</em>：接口发送Hello报文的时间间隔。整数形式，取值范围是1～65535，单位是秒。该值必须与其建立虚连接路由器上的<em>hello-interval</em>值相等。缺省值是10秒。</p>
+<p><strong>retransmit </strong><em>retransmit-interval</em>：接口重传LSA报文的时间间隔。整数形式，取值范围是1～3600，单位是秒。缺省值是5秒。</p>
+<p><strong>trans-delay </strong><em>trans-delay-interval</em>：接口延迟发送LSA报文的时间间隔。整数形式，取值范围是1～3600，单位是秒。缺省值是1秒。</p>
+<p><strong>dead</strong> <em>dead-interval</em>：失效时间间隔。整数形式，取值范围是1～235926000，单位是秒。缺省值是40秒。该值必须与其建立虚连接路由器的<em>dead-interval</em>值相等并至少为<em>hello-interval</em>值的4倍。</p>
+<p><strong>md5</strong>：md5验证模式。</p>
+<p><strong>hmac-md5</strong>：hmac-md5验证模式。</p>
+<p><strong>simple</strong>：简单验证模式。</p>
+<p><em>key-id</em>：md5/hmac-md5验证字标识符。整数形式，取值范围是1～255。</p>
+<p><strong>plain</strong>：明文口令类型。只能键入明文口令，在查看配置文件时以明文方式显示口令。</p>
+<p><em>plain-text</em>：指定明文验证字。<strong>simple</strong>模式下是1～8字节字符串，不支持空格；<strong>md5、hmac-md5</strong>模式是1～16字节字符串。</p>
+<p><strong>cipher</strong>：密文口令类型。可以键入明文或密文口令，但在查看配置文件时均以密文方式显示口令。</p>
+<p><em>cipher-text</em>：指定密文验证字。<strong>simple</strong>模式下，1～8字节字符串对应明文，24字节对应密文；<strong>md5、hmac-md5</strong>模式下1～16字节字符串对应明文，24字节对应密文。</p>
+<p><strong>authentication-null</strong>：无验证模式。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>OSPF区域视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>OSPF协议规定，它的所有区域必须是和骨干区域（area 0）保持连通的，可以使用<strong>vlink-peer</strong>命令建立逻辑上的连通性。虚连接必须采用Router ID建立。通过Smart-discover功能，使得虚连接的邻居更快达到邻接关系。</p>
+<p><strong>hello</strong>值越小，发现网络变化的速度越快，消耗的网络资源也就越多。</p>
+<p>不能将<strong>retransmit</strong>值设置的太小，否则将会引起不必要的重传。网络速度相对较慢的时候应把该值设的更大一些。</p>
+<p>设置<strong>trans-delay</strong>值时必须考虑接口的发送延迟。</p>
+<p>当配置虚连接验证时，由骨干区域的<strong>authentication-mode</strong>命令来确定使用的验证类型是MD5密文验证、简单验证或是无验证模式。这三种验证方式之间是相互独立的。</p>
+<p>如果没有指定验证口令的类型为<strong>plain</strong>或<strong>cipher</strong>，对于简单验证模式默认是<strong>plain</strong>类型；对于md5/hmac-md5验证模式默认是<strong>cipher</strong>类型。</p>
+<p>验证字中不允许包含空格。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="vlink-peer_ospf__d128098e273"></a><a name="d128098e273"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置虚连接，对端路由器Router ID为1.1.1.1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ospf 100</strong></pre>
+<pre class="screen">[Quidway-ospf-100]<strong> area 2</strong></pre>
+<pre class="screen">[Quidway-ospf-100-area-0.0.0.2]<strong> vlink-peer 1.1.1.1</strong></pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="vlink-peer_ospf__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="vlink-peer_ospf__tb_01" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.34895439657345%" id="d128098e299"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d128098e302"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d128098e299 "><p>VRPV500R006C02B220</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d128098e302 "><div class="p">当选择<strong>simple</strong>、<strong>md5</strong>或<strong>hmac-md5</strong>验证模式时，密码由必选修改为可选，且：<ul><li><strong>simple</strong>模式下，<strong>plain</strong>关键字可省略</li><li><strong>md5</strong>和<strong>hmac-md5</strong>证模式时，<strong>cipher</strong>关键字可省略</li></ul>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ospf_vlink.html">display ospf vlink</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

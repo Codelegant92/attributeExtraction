@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="bestroute med-confederation（MBGP）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mbgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="bestroute_med-confederation_mbgp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>bestroute med-confederation（MBGP）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="bestroute_med-confederation_mbgp"></a><a name="bestroute_med-confederation_mbgp"></a>
+
+
+<h1 class="topictitle1">bestroute med-confederation（MBGP）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>bestroute med-confederation</strong>命令用来配置MBGP在选择最优路由时，在联盟内比较MED值的大小。</p>
+<p><strong>undo
+bestroute med-confederation</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，BGP仅比较来自同一AS的路由的MED属性值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>bestroute med-confederation</strong></p>
+<p><strong>undo bestroute med-confederation</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP-IPv4组播地址族视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>MBGP路由属性AS_Path按一定次序记录了某条路由从本地到目的地址所要经过的所有自治系统编号。只有当AS_Path中不包含外部自治系统（不在联盟范围的内治系统）编号时才比较MED值的大小。如果AS_Path中包含外部自治系统编号，则不进行比较。</p>
+<p>例如：自治系统65000、65001、65002和65004属于同一联盟。四条待选路由如下所示：</p>
+<ul>
+<li><p>path1：AS_Path=65000 65004，med=2</p>
+</li>
+<li><p>path2：AS_Path=65001 65004，med=3</p>
+</li>
+<li><p>path3：AS_Path=65002 65004，med=4</p>
+</li>
+<li><p>path4：AS_Path=65003 1，med=1</p>
+</li>
+</ul>
+<p>在使能<strong>bestroute med-confederation</strong>命令后，MBGP将选择path 1。尽管path 4有较低的MED值，但不进行比较，因为其AS_Path中包含外部自治系统编号。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="bestroute_med-confederation_mbgp__d3949e71"></a><a name="d3949e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置MBGP在选择最优路由时，在联盟内比较MED值的大小。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> ipv4-family multicast</strong></pre>
+<pre class="screen">[Quidway-bgp-af-multicast]<strong> bestroute med-confederation</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mbgp_configuration_commands.html">MBGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

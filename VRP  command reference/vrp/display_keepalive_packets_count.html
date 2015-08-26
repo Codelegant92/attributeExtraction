@@ -1,0 +1,161 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display keepalive packets count">
+<meta name="DC.Relation" scheme="URI" content="../vrp/gre_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="keepalive.html">
+<meta name="DC.Relation" scheme="URI" content="reset_keepalive_packets_count.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_keepalive_packets_count">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display keepalive packets count</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_keepalive_packets_count"></a><a name="display_keepalive_packets_count"></a>
+
+
+<h1 class="topictitle1">display keepalive packets count</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display keepalive packets count</strong>命令用来查看GRE隧道接口发送给对端的Keepalive报文的数量和Keepalive响应报文的数量，以及从对端接收的Keepalive报文的数量和Keepalive响应报文的数量。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display keepalive packets count</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有将Tunnel接口的隧道类型配置为GRE后才能执行此命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_keepalive_packets_count__d37561e37"></a><a name="d37561e37"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看GRE隧道接口Tunnel1/0/0发送给对端的Keepalive报文的数量和Keepalive响应报文的数量，以及从对端接收的Keepalive报文的数量和Keepalive响应报文的数量。</p>
+<pre class="screen">&lt;Quidway1&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway1]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway1-Tunnel1/0/0]<strong> tunnel-protocol gre</strong></pre>
+<pre class="screen">[Quidway1-Tunnel1/0/0]<strong> display keepalive packets count</strong></pre>
+<pre class="screen">Send 34 keepalive packets to peers, Receive 34 keepalive response packets from peers</pre>
+<pre class="screen">Receive <span>34</span> keepalive packets from peers, Send <span>34</span> keepalive response packets to peers</pre>
+
+<div class="tablenoborder"><a name="display_keepalive_packets_count__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_keepalive_packets_count__tb_01" frame="border" border="1" rules="all"><caption>表1 display keepalive packets count命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="51.259763164525076%" id="d37561e79"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="48.74023683547493%" id="d37561e83"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="51.259763164525076%" headers="d37561e79 "><p>Send 34 keepalive packets to peers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.74023683547493%" headers="d37561e83 "><p>向对端发送keepalive报文34个。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.259763164525076%" headers="d37561e79 "><p>Receive 34 keepalive response packets from peers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.74023683547493%" headers="d37561e83 "><p>从对端接收keepalive回应报文34个。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.259763164525076%" headers="d37561e79 "><p>Receive 34 keepalive packets from peers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.74023683547493%" headers="d37561e83 "><p>从对端接收keepalive报文34个。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.259763164525076%" headers="d37561e79 "><p>Send 34 keepalive response packets to peers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.74023683547493%" headers="d37561e83 "><p>向对端发送keepalive回应报文34个。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_keepalive_packets_count__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_keepalive_packets_count__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="31.902153140527457%" id="d37561e149"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="68.09784685947254%" id="d37561e153"><p>修订记录</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="31.902153140527457%" headers="d37561e149 "><p>VRPV500R005C02B040</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.09784685947254%" headers="d37561e153 "><p>该命令取代了原命令<strong>display link-alive packets count</strong>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/gre_configuration_commands.html">GRE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="keepalive.html">keepalive</a></div>
+<div><a href="reset_keepalive_packets_count.html">reset keepalive packets count</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

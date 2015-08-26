@@ -1,0 +1,92 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="spt-switch-threshold（IPv4）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Relation" scheme="URI" content="igmp_group-policy.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="spt-switch-threshold_ipv4">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>spt-switch-threshold（IPv4）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="spt-switch-threshold_ipv4"></a><a name="spt-switch-threshold_ipv4"></a>
+
+
+<h1 class="topictitle1">spt-switch-threshold（IPv4）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>spt-switch-threshold</strong>命令用来设置组成员端DR加入SPT的组播报文速率阈值。</p>
+<p><strong>undo spt-switch-threshold</strong>命令用来恢复参数缺省值。</p>
+<p>缺省情况下，从RPT收到第一个组播数据包后立即进行SPT切换。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>spt-switch-threshold </strong>{ <em>traffic-rate</em> | <strong>infinity</strong> } [<strong> group-policy</strong> <em>basic-acl-number </em>[ <strong>order</strong> <em>order-value </em>] ]</p>
+<p><strong>undo spt-switch-threshold </strong>[<strong> group-policy</strong> <em>basic-acl-number </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>traffic-rate</em>：指定RPT切换到SPT的速率阈值。整数形式，取值范围是1～4194304，单位是kbit/s。</p>
+<p><strong>infinity</strong>：表示永远不发起SPT切换。</p>
+<p><strong>group-policy</strong> <em>basic-acl-number</em>：指定group-policy列表中的一项，与<em>basic-acl-number</em>匹配的组播组将启用该阈值。如果未配置该参数，则该阈值将应用于所有组播组。<em>basic-acl-number</em>表示基本访问控制列表号，定义一个组播组范围。取值范围是2000～2999。</p>
+<p><strong>order</strong> <em>order-value</em>：调整ACL在group-policy列表中的序号，在一个组匹配多个ACL的情况下，阈值的选择按<em>order-value</em>来排序。<em>order-value</em>表示序号的更新值。整数形式，取值范围是当前group-policy列表序号中非原序号的所有值。如果未配置该参数，则不改变列表序号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例PIM视图、VPN实例PIM视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>RP和组成员端DR负责周期性检测流经的组播报文速率。该命令在所有可能充当组成员端DR的<span class="keyword">路由器</span>上配置有效，在RP上配置无效。</p>
+<div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>如果配置了多条该命令对同一组播组适用，则该组播组按顺序匹配到的第一个命令生效。</p>
+</div></div>
+<p>最初，PIM-SM组播报文的传输方式为：源端DR将组播报文封装在注册消息中单播发送至RP，再由RP沿RPT传输到接收者。</p>
+<p>在接收者侧DR上配置了切换阈值后，当组播报文速率超过阈值时，才向源发送Join消息，开始SPT切换。如果配置了参数<strong>infinity</strong>，则<span class="keyword">路由器</span>不会向源发送Join消息，永不创建SPT。组播数据只能沿RPT传输到接收者。</p>
+<p>当需要调整group-policy列表中已有的ACL次序时，可以通过配置参数<strong>group-policy </strong><em>basic-acl-number</em>指定该ACL，设置<strong>order</strong> <em>order-value</em>，将该ACL插入到group-policy列表的<em>order-value</em>位置。group-policy列表中的其他ACL保持排列次序不变。</p>
+<p>当需要启用group-policy列表中没有的ACL时，可以通过配置参数<strong>group-policy </strong><em>basic-acl-number</em>，并指定<strong>order</strong> <em>order-value</em>，将该ACL插入到group-policy列表的<em>order-value</em>位置。此时<em>order-valu</em>取值范围是1～&lt;当前group-policy列表序号最大值+1&gt;。如果不指定<strong>order</strong> <em>order-value</em>，则插入group-policy列表尾部。</p>
+<p>使用<strong>order</strong>参数，用户可根据需要调整group-policy的顺序。系统根据group-policy的顺序来选择SPT切换阈值，更加灵活，而且提高了效率。</p>
+<p><strong>spt-switch-threshold</strong>命令与<strong>acl</strong>命令配合使用。在ACL视图下，通过<strong>rule</strong>命令的<strong>source</strong>参数定义应用组播报文速率阈值的组播组。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="spt-switch-threshold_ipv4__d119872e179"></a><a name="d119872e179"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中，设置阈值为4kbit/s，从源到组播组的传输速率高于阈值时，<span class="keyword">路由器</span>就转换到指向源的最短路径树。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> pim</strong></pre>
+<pre class="screen">[Quidway-pim]<strong> spt-switch-threshold 4</strong></pre>
+<p># 在公网实例中，配置新增加一个<strong>group-policy</strong>，该组策略的ACL号为2010，阈值为100 kbit/s，并且插在第一位。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> acl number 2010</strong>
+[Quidway-acl-basic-2010]<strong> rule permit source ff02:: 96</strong>
+[Quidway-acl-basic-2010] quit
+[Quidway]<strong> pim</strong>
+[Quidway-pim]<strong> spt-switch-threshold 100 group-policy 2010 order 1</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="igmp_group-policy.html">igmp group-policy</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

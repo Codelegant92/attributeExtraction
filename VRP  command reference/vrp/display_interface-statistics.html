@@ -1,0 +1,265 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface-statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/interface_management_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface-statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface-statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface-statistics"></a><a name="display_interface-statistics"></a>
+
+
+<h1 class="topictitle1">display interface-statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display interface-statistics</strong>命令用来查看接口的流量统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display interface-statistics</strong> {<em> interface-type interface-number</em> } &amp;&lt;1-5&gt; [ <strong>interval</strong> <em>interval</em> ] [ <strong>times</strong> <em>times</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type interface-number</em>：显示指定接口的流量统计信息。</p>
+<p><strong>interval</strong> <em>interval</em>：指定显示流量统计信息的时间间隔。整数形式，取值范围是10～600，单位是秒。缺省值是10秒。</p>
+<p><strong>times</strong> <em>times</em>：指定显示流量统计信息的次数。整数形式，取值范围是1～999。缺省值是5。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display interface-statistics</strong>命令用来查询接口的流量统计信息。缺省情况下，执行该命令后，系统每隔10秒钟实时查询并显示一次接口流量统计信息，一共查询并显示5次。若想终止命令的执行，可以使用快捷键Ctrl+C。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface-statistics__d27539e71"></a><a name="d27539e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 以10秒为间隔时间，显示接口GE4/0/0流量统计信息，统计3次。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display interface-statistics gigabitethernet 4/0/0 times 3</strong></pre>
+<pre class="screen">Display statistics of the interface at the interval of 10 secondes for up to 3 
+times. Preess Ctrl + C to stop.                                                  
+                                                                                
+  0 seconds left|                                                               
+times 1                                                                         
+Interface : GigabitEthernet4/0/0                                                
+-------------------------------------------------------------------------       
+Input rate   :                    0 bits/sec,                    0 packets/sec  
+Output rate  :                    0 bits/sec,                    0 packets/sec  
+Input        :                    0 bytes,                       0 packets      
+Output       :                    0 bytes,                       0 packets      
+Input error  :                    0 packets                                     
+Output error :                    0 packets                                     
+Input bandwidth utilization  : 0.00%                                                      
+Output bandwidth utilization : 0.00%                                                      
+                                                                                
+  0 seconds left|                                                               
+times 2                                                                         
+Interface : GigabitEthernet4/0/0                                                
+-------------------------------------------------------------------------       
+Input rate   :                    0 bits/sec,                    0 packets/sec  
+Output rate  :                    0 bits/sec,                    0 packets/sec  
+Input        :                    0 bytes,                       0 packets      
+Output       :                    0 bytes,                       0 packets      
+Input error  :                    0 packets                                     
+Output error :                    0 packets                                     
+Input bandwidth utilization  : 0.00%                                                      
+Output bandwidth utilization : 0.00%                                                      
+                                                                                
+  0 seconds left/                                                               
+times 3                                                                         
+Interface : GigabitEthernet4/0/0                                                
+-------------------------------------------------------------------------       
+Input rate   :                    0 bits/sec,                    0 packets/sec  
+Output rate  :                    0 bits/sec,                    0 packets/sec  
+Input        :                    0 bytes,                       0 packets      
+Output       :                    0 bytes,                       0 packets      
+Input error  :                    0 packets                                     
+Output error :                    0 packets                                     
+Input bandwidth utilization  : 0.00%                                                      
+Output bandwidth utilization : 0.00%                                                      </pre>
+
+<div class="tablenoborder"><a name="display_interface-statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface-statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface-statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d27539e93"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d27539e97"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>Display statistics of the interface at the interval of 10 secondes for up to 3 times. Preess Ctrl + C to stop.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>查询接口的流量统计信息，时间间隔是10秒，重复次数3次。该命令可以通过Ctrl+C终止。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>seconds left</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>距离下一次显示接口流量统计信息的时间。缺省情况下，每隔10秒钟显示一次。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>times 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>查询第一次。每一次的查询开始时，都会有该字段提示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>接口名。表示下面的显示信息是该接口的流量统计信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>Input rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>接收报文的速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>Output rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>发送报文的速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>Input</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>收到报文的字节数和包数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>Output</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>发送报文的字节数和包数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>Input error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>接受到的错误的报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>Output error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>发送出的错误的报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>Input bandwidth utilization</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>接受报文的速率占总带宽的百分比。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d27539e93 "><p>Output bandwidth utilization</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d27539e97 "><p>发送报文的速率占总带宽的百分比。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.5%" id="d27539e251"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.50000000000001%" id="d27539e255"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.5%" headers="d27539e251 "><p>VRPV500R006C02B131</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.50000000000001%" headers="d27539e255 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/interface_management_configuration_commands.html">接口基础配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

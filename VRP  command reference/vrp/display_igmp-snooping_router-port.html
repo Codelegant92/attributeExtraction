@@ -1,0 +1,206 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display igmp-snooping router-port">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="igmp-snooping_static-router-port_vsi_view.html">
+<meta name="DC.Relation" scheme="URI" content="igmp-snooping_static-router-port_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="igmp-snooping_static-router-port.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_igmp-snooping_router-port">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display igmp-snooping router-port</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_igmp-snooping_router-port"></a><a name="display_igmp-snooping_router-port"></a>
+
+
+<h1 class="topictitle1">display igmp-snooping router-port</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display igmp-snooping router-port</strong>命令用来显示路由端口信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display igmp-snooping router-port</strong> { <strong>vlan</strong> <em>vlan-id </em>| <strong>vsi</strong> <em>vsi-name</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vlan</strong> <em>vlan-id</em>：显示指定VLAN的路由端口信息。<em>vlan-id</em> 表示VLAN编号，取值范围是1～4094。</p>
+<p><strong>vsi</strong> <em>vsi-name</em> ：显示指定VSI的路由端口信息。<em>vsi-name</em>：VSI实例的名称。字符串形式，不支持空格，区分大小写，长度范围是1～31。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有当路由端口处于Up状态时，使用本命令时才显示该端口的信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_igmp-snooping_router-port__d26376e68"></a><a name="d26376e68"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示VLAN 10的路由端口表</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display igmp-snooping router-port vlan 10</strong>
+Port Name                         UpTime           Expires         Flags
+ ---------------------------------------------------------------------
+ VLAN 10, 1 router-port(s)
+ GigabitEthernet2/0/1            00:00:17         --            STATIC  </pre>
+
+<div class="tablenoborder"><a name="display_igmp-snooping_router-port__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp-snooping_router-port__tb_01" frame="border" border="1" rules="all"><caption>表1 display igmp-snooping router-port vlan命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.37288989669942%" id="d26376e89"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.62711010330058%" id="d26376e93"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d26376e89 "><p>Port Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d26376e93 "><p>端口类型和编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d26376e89 "><p>UpTime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d26376e93 "><p>端口作为路由端口的存在时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d26376e89 "><p>Expires</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d26376e93 "><p>端口作为路由端口的剩余老化时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d26376e89 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d26376e93 "><div class="p">路由端口的类型，显示为以下两种类型中的一种或它们的组合：<ul>
+<li><p>STATIC：静态路由器端口</p>
+</li>
+<li><p>DYNAMIC：动态路由器端口</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示VSI v123的路由端口表</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display igmp-snooping router-port vsi v123</strong>
+ Port Name                       UpTime        Expires       Flags
+ ---------------------------------------------------------------------
+ VSI v123, 1 router-port(s)
+ PW(1.1.1.1/123)                 00:05:16      --            STATIC  
+</pre>
+
+<div class="tablenoborder"><a name="display_igmp-snooping_router-port__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp-snooping_router-port__tb_02" frame="border" border="1" rules="all"><caption>表2 display igmp-snooping router-port vsi命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.780801209372644%" id="d26376e177"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.21919879062737%" id="d26376e181"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.780801209372644%" headers="d26376e177 "><p>Port Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.21919879062737%" headers="d26376e181 "><p>端口类型和编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.780801209372644%" headers="d26376e177 "><p>UpTime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.21919879062737%" headers="d26376e181 "><p>端口作为路由端口的存在时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.780801209372644%" headers="d26376e177 "><p>Expires</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.21919879062737%" headers="d26376e181 "><p>端口作为路由端口的剩余老化时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.780801209372644%" headers="d26376e177 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.21919879062737%" headers="d26376e181 "><div class="p">路由端口的类型，显示为以下两种类型中的一种或它们的组合：<ul>
+<li><p>STATIC：静态路由器端口</p>
+</li>
+<li><p>DYNAMIC：动态路由器端口</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="igmp-snooping_static-router-port_vsi_view.html">igmp-snooping static-router-port (VSI视图)</a></div>
+<div><a href="igmp-snooping_static-router-port_interface_view.html">igmp-snooping static-router-port(接口视图)</a></div>
+<div><a href="igmp-snooping_static-router-port.html">igmp-snooping static-router-port</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

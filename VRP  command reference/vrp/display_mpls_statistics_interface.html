@@ -1,0 +1,229 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls statistics interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="statistics_interval.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_statistics_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls statistics interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_statistics_interface"></a><a name="display_mpls_statistics_interface"></a>
+
+
+<h1 class="topictitle1">display mpls statistics interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls statistics interface</strong>命令用来查看使能了MPLS的接口的统计信息，包括每个使能了MPLS的接口接收和发送的字节数、报文数、错误数，丢弃报文数。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls statistics</strong> <strong>interface</strong> { <strong>all</strong> | <em>interface-type</em> <em>interface-number</em> }<span> [<strong> | count</strong> ]</span> [<strong> | </strong>{ <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：所有接口。</p>
+<p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口编号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> 			<p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> 			<p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果要查看统计信息，请先使用<a href="statistics_interval.html">statistics
+interval</a>命令设置上报统计信息的时间间隔。缺省的时间间隔为0，即不上报统计信息。这种情况下显示出来的各项统计信息都为0。</p>
+<p>当统计信息中的字节数（Octets）、报文数（Packets）或错误数（Errors）超过显示允许的最大值0xFFFFFFFF时，统计信息将显示为&#8220;剩余数量＋n&times;4294967295&#8221;，其中，&#8220;n&#8221;表示统计信息时最大数量的n倍，&#8220;4294967295&#8221;是0xFFFFFFFF的十进制形式。</p>
+<p>例如，当显示信息为&#8220;Octets: 2954218368 + 1 * 4294967295&#8221;时，表示实际字节数为7249185663。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>目前只提供出方向的LSP统计功能，不提供入方向的LSP统计。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_statistics_interface__d47638e117"></a><a name="d47638e117"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有MPLS接口的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls statistics interface all</strong></pre>
+<pre class="screen">  Statistics for Interface IN :</pre>
+<pre class="screen">  Incoming Interface GigabitEthernet1/0/0</pre>
+<pre class="screen">       Octets                  : 0</pre>
+<pre class="screen">       Packets                 : 0</pre>
+<pre class="screen">       Errors                  : 0</pre>
+<pre class="screen">       Disables                : 0</pre>
+<pre class="screen">       Failed Label Lookup     : 0</pre>
+<pre class="screen">       Start Time              : 0000/00/00  00:00:00</pre>
+<pre class="screen">       End Time                : 0000/00/00  00:00:00</pre>
+<pre class="screen">  Statistics for Interface OUT :</pre>
+<pre class="screen">  Outgoing Interface GigabitEthernet1/0/0</pre>
+<pre class="screen">       Octets                  : 63425</pre>
+<pre class="screen">       Packets                 : 1045</pre>
+<pre class="screen">       Errors                  : 0</pre>
+<pre class="screen">       Disables                : 0</pre>
+<pre class="screen">       Start Time              : 2006/03/22  11:33:19</pre>
+<pre class="screen">       End Time                : 2006/03/22  11:56:14</pre>
+
+<div class="tablenoborder"><a name="display_mpls_statistics_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_statistics_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls statistics interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="51.13378684807256%" id="d47638e171"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="48.86621315192744%" id="d47638e175"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="51.13378684807256%" headers="d47638e171 "><p>Statistics for Interface IN :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.86621315192744%" headers="d47638e175 "><p>接口入方向的报文统计信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.13378684807256%" headers="d47638e171 "><p>Statistics for Interface OUT :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.86621315192744%" headers="d47638e175 "><p>接口出方向的报文统计信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.13378684807256%" headers="d47638e171 "><p>Octets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.86621315192744%" headers="d47638e175 "><p>字节总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.13378684807256%" headers="d47638e171 "><p>Packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.86621315192744%" headers="d47638e175 "><p>报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.13378684807256%" headers="d47638e171 "><p>Errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.86621315192744%" headers="d47638e175 "><p>错误报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.13378684807256%" headers="d47638e171 "><p>Disables</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.86621315192744%" headers="d47638e175 "><p>被禁止的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.13378684807256%" headers="d47638e171 "><p>Failed Label Lookup</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.86621315192744%" headers="d47638e175 "><p>标签查找失败次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.13378684807256%" headers="d47638e171 "><p>Start Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.86621315192744%" headers="d47638e175 "><p>开始统计的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.13378684807256%" headers="d47638e171 "><p>End Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.86621315192744%" headers="d47638e175 "><p>结束统计的时间</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_statistics_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_statistics_interface__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d47638e296"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d47638e300"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d47638e296 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d47638e300 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="statistics_interval.html">statistics interval</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

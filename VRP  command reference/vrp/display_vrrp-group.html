@@ -1,0 +1,547 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display vrrp-group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vrrp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_vrrp-group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display vrrp-group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_vrrp-group"></a><a name="display_vrrp-group"></a>
+
+
+<h1 class="topictitle1">display vrrp-group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display vrrp-group</strong>命令用来显示VRRP管理组信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display vrrp-group</strong> [ <em>vrrp-group-id</em> | <strong>statistics</strong> | <strong>verbose</strong> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vrrp-group-id</em>：VRRP管理组ID，取值范围1～16。</p>
+<p><strong>statistics</strong>：显示VRRP管理组的统计信息。</p>
+<p><strong>verbose</strong>：显示VRRP管理组的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_vrrp-group__d72035e103"></a><a name="d72035e103"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示VRRP管理组统计信息</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display vrrp-group statistics</strong></strong></pre>
+<pre class="screen">total number of vrrp-groups: 1
+
+ vrrp-group 1 packet statistics:
+   hello request(input/output):                           0/0
+   hello acknowledge(input/output):                       0/0
+   master to slave request(input/output):                 0/0
+   master to slave acknowledge(input/output):             0/0
+   master to slave no acknowledge(input/output):          0/0
+   slave to master request(input/output):                 0/0
+   slave to master acknowledge(input/output):             0/0
+   slave to master no acknowledge(input/output):          0/0
+   bad check code discarded(input):                       0
+   error mode and type discarded(input):                  0
+   disable vrrp-group discarded(input):                   0                     </pre>
+
+<div class="tablenoborder"><a name="display_vrrp-group__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vrrp-group__tb_01" frame="border" border="1" rules="all"><caption>表1 display vrrp-group statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.99378186792687%" id="d72035e127"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.00621813207312%" id="d72035e131"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.99378186792687%" headers="d72035e127 "><p>hello request(input/output)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.00621813207312%" headers="d72035e131 "><p>Hello请求报文数量，包括输入和输出</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.99378186792687%" headers="d72035e127 "><p>hello acknowledge(input/output)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.00621813207312%" headers="d72035e131 "><p>Hello应答报文数量，包括输入和输出</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.99378186792687%" headers="d72035e127 "><p>master to slave request(input/output)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.00621813207312%" headers="d72035e131 "><p>从状态Master请求切换到状态Slave的报文数量，包括输入和输出</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.99378186792687%" headers="d72035e127 "><p>master to slave acknowledge(input/output)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.00621813207312%" headers="d72035e131 "><p>从状态Master请求切换到状态Slave的应答报文数量，包括输入和输出</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.99378186792687%" headers="d72035e127 "><p>master to slave no acknowledge(input/output)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.00621813207312%" headers="d72035e131 "><p>从状态Master请求切换到状态Slave的无应答报文数量，包括输入和输出</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.99378186792687%" headers="d72035e127 "><p>slave to master request(input/output)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.00621813207312%" headers="d72035e131 "><p>从状态Slave请求切换到状态Master的报文数量，包括输入和输出</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.99378186792687%" headers="d72035e127 "><p>slave to master acknowledge(input/output)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.00621813207312%" headers="d72035e131 "><p>从状态Slave请求切换到状态Master的应答报文数量，包括输入和输出</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.99378186792687%" headers="d72035e127 "><p>slave to master no acknowledge(input/output)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.00621813207312%" headers="d72035e131 "><p>从状态Slave请求切换到状态Master的无应答报文数量，包括输入和输出</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.99378186792687%" headers="d72035e127 "><p>bad check code discarded(input)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.00621813207312%" headers="d72035e131 "><p>被丢弃的错误校验码报文数量，只包括输入</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.99378186792687%" headers="d72035e127 "><p>error mode and type discarded(input)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.00621813207312%" headers="d72035e131 "><p>被丢弃的错误模式和类型的报文数量，只包括输入</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.99378186792687%" headers="d72035e127 "><p>disable vrrp-group discarded(input)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.00621813207312%" headers="d72035e131 "><p>被丢弃的未使能的VGMP报文数量，只包括输入</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示VRRP管理组详细信息</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vrrp-group verbose</strong></pre>
+<pre class="screen">total number of vrrp-groups: 1
+
+ vrrp-group 1
+                 state: master
+                enable: yes
+       priority config: 100
+   using vrrp priority: no
+increase vrrp priority: 20
+          priority run: 100
+               preempt: no
+                 timer: 1000
+            group-send: no
+           peer status: online
+           create time: 00:00:37
+      last change time: 00:00:37
+           vrrp number: 1
+             interface: GigabitEthernet1/0/0, vrrp id: 1 Up, data             
+             interface: GigabitEthernet2/0/0, vrrp id: 2 Up,
+             track bfd: 1, preempt mode, bfd-session state: up</pre>
+
+<div class="tablenoborder"><a name="display_vrrp-group__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vrrp-group__tb_02" frame="border" border="1" rules="all"><caption>表2 display vrrp-group verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.19760783814735%" id="d72035e283"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.80239216185265%" id="d72035e287"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>Total number of vrrp-groups</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>当前VRRP管理组的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>vrrp-group 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>当前的VRRP管理组ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><div class="p">VRRP管理组的状态，有三种状态：<ul>
+<li><p>Master</p>
+</li>
+<li><p>Slave</p>
+</li>
+<li><p>Initialize</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>enable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>表示VRRP管理组已启用</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>description</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>对VRRP管理组的描述</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>priority config</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>配置的VRRP管理组的优先级，取值范围是1~254</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>using vrrp priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>将加入VRRP管理组的VRRP备份组优先级的平均值作为该管理组的优先级。只有当使用<strong>vrrp-group priority using-vrrp-priority</strong>命令配置时，才显示为&#8220;yes&#8221;，否则显示&#8220;no&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>increase vrrp priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>加入VRRP管理组的VRRP备份组的优先级增加值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>priority run</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>当前工作的VRRP管理组的实际优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>preempt</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>抢占模式，可配置为抢占和非抢占模式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>delay time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>抢占延迟时间，配置为抢占模式时才有效</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>VGMP Hello报文定时间隔，默认值1000，单位毫秒，取值范围200~60000</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>group-send</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>VGMP消息群发功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>peer status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><div class="p">对等<span class="keyword">路由器</span>的联机状况，有两种状况：<ul>
+<li><p>OnLine</p>
+</li>
+<li><p>OffLine</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>vrrp number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>VRRP管理组所管理的VRRP备份组总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>VRRP备份组所在接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>vrrp id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>VRRP备份组ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>up</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><div class="p">VRRP备份组的工作状态，有两种取值：<ul>
+<li><p>Up</p>
+</li>
+<li><p>Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>data</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><div class="p">VRRP备份组加入VRRP管理组有三种方式：<ul>
+<li><p>数据通道data</p>
+</li>
+<li><p>传输通道transfer-only</p>
+</li>
+<li><p>普通业务通道</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>create time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>VRRP管理组已创建时间当已创建的时间小于一天时，显示时间的格式是&#8220;HH：mm：ss&#8221;；当创建的时间大于一天时，显示时间的格式是&#8220;X Day(s)：Y Hour(s)&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>last change time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><div class="p">VRRP管理组最后修改时间，是VRRP管理组最后一次修改的时刻距离当前时刻的差值。<ul>
+<li><p>当最后修改时间距离当前时刻的差值小于一天时，显示时间的格式是&#8220;HH：mm：ss&#8221;</p>
+</li>
+<li><p>当最后修改时间距离当前时刻的差值大于一天时，显示时间的格式是&#8220;X Day(s)：Y Hour(s)&#8221;</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>track bfd</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>VRRP管理组监视的BFD的ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>preempt mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>依靠BFD进行抢占该抢占模式能起作用的前提是，VRRP管理组本身要使能抢占模式，否则此处配置抢占无效</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.19760783814735%" headers="d72035e283 "><p>bfd-session state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.80239216185265%" headers="d72035e287 "><p>BFD的工作状态</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_vrrp-group__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vrrp-group__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d72035e637"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d72035e641"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d72035e637 "><p>VRPV500R005C02B110</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d72035e641 "><div class="p"><ul>
+<li>新增四个字段：enable、description、priority config、increase vrrp priority</li>
+<li>修改一个字段：将priority修改为priority run</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d72035e637 "><p>VRPV500R005C02B130</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d72035e641 "><p>新增using vrrp priority字段</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d72035e637 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d72035e641 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vrrp_configuration_commands.html">VRRP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

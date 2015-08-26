@@ -1,0 +1,71 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="lacp selected">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="lacp_selected">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>lacp selected</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="lacp_selected"></a><a name="lacp_selected"></a>
+
+
+<h1 class="topictitle1">lacp selected</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>lacp selected</strong>命令用来配置静态LACP模式Eth-Trunk选择活动接口的方式。</p>
+<p>缺省情况下，依据接口优先级选择活动接口。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>lacp selected</strong> { <strong>priority</strong> | <strong>speed</strong> } </p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>priority</strong>：依据接口优先级选择活动接口。接口优先级高的接口将被优先选为活动接口。</p>
+<p><strong>speed</strong>：依据接口速率选择活动接口。接口速率高的接口将被优先选为活动接口。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Eth-Trunk接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行该命令前需首先保证Eth-Trunk工作模式为静态LACP模式。</p>
+<p>在一个静态Eth-Trunk中有速率不同的成员口，例如，同时将100M bit/s、1G bit/s的以太口加入同一个静态Eth-Trunk。按照LACP协议，依据接口优先级来选择活动接口，可能会选中速率低的成员口。如果希望选中接口速率高的成员口，可以使用<strong>lacp selected speed</strong>命令配置静态Eth-Trunk依据接口速率选择活动接口。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="lacp_selected__d88915e57"></a><a name="d88915e57"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定Eth-trunk 1工作在静态模式，并且根据端口速率来选择端口。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface eth-trunk 1</strong>
+[Quidway-Eth-Trunk1] <strong>mode lacp-static</strong>
+[Quidway-Eth-Trunk1] <strong>lacp selected speed</strong>
+</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

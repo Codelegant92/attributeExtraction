@@ -1,0 +1,351 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rrpp statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rrpp_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_rrpp_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rrpp_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rrpp statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rrpp_statistics"></a><a name="display_rrpp_statistics"></a>
+
+
+<h1 class="topictitle1">display rrpp statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display rrpp statistics</strong>命令用于显示RRPP报文统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display rrpp statistics domain</strong> <em>domain-id </em>[ <strong>ring</strong> <em>ring-id </em>]<span> [<strong> | count</strong> ] </span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>domain</strong> <em>domain-id</em>：RRPP域的ID。整数形式，取值范围是1～8。</p>
+<p><strong>ring </strong><em>ring-id</em>：RRPP环的ID。整数形式，取值范围是1～64。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用此命令可以查看到各端口的各种报文统计数量，可以用来分析定位网络故障。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rrpp_statistics__d65107e103"></a><a name="d65107e103"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示域ID为1，环ID为1的RRPP环的报文统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rrpp statistics domain 1 ring 1</strong></pre>
+<pre class="screen">RRPP Ring     : 1</pre>
+<pre class="screen">Ring Level    : 0</pre>
+<pre class="screen">Node Mode     : Master</pre>
+<pre class="screen">Is Actived    : Yes</pre>
+<pre class="screen">Primary port  : GigabitEthernet1/0/0</pre>
+<pre class="screen"> Packet          LINK    COMMON    COMPLETE    EDGE    MAJOR    Packet</pre>
+<pre class="screen"> Direct  HEALTH  DOWN    FDB       FDB         HELLO   FAULT    Total</pre>
+
+<pre class="screen"> -------------------------------------------------------------------------------</pre>
+<pre class="screen"> Send    386     0       0         0           0        0        0</pre>
+<pre class="screen"> Rcv     0       0       0         0           0        0        0</pre>
+<pre class="screen">Secondary port: GigabitEthernet1/0/1</pre>
+<pre class="screen"> Packet          LINK    COMMON    COMPLETE    EDGE    MAJOR    Packet</pre>
+<pre class="screen"> Direct  HEALTH  DOWN    FDB       FDB         HELLO   FAULT    Total</pre>
+
+<pre class="screen"> -------------------------------------------------------------------------------</pre>
+<pre class="screen"> Send    0       0       0         0           0       0        0</pre>
+<pre class="screen"> Rcv     0       0       0         0           0       0        0</pre>
+<p># 显示域ID为2，环ID为2的RRPP环的报文统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rrpp statistics domain 2 ring 2</strong></pre>
+<pre class="screen">RRPP Ring     : 2</pre>
+<pre class="screen">Ring Level    : 1</pre>
+<pre class="screen">Node Mode     : Edge</pre>
+<pre class="screen">Is Actived  : No</pre>
+<pre class="screen">Common port   : GigabitEthernet1/0/3</pre>
+<pre class="screen"> Packet          LINK    COMMON    COMPLETE    EDGE    MAJOR    Packet</pre>
+<pre class="screen"> Direct  HEALTH  DOWN    FDB       FDB         HELLO   FAULT    Total</pre>
+
+<pre class="screen"> -------------------------------------------------------------------------------</pre>
+<pre class="screen"> Send    0       0       0         0           0       0        0</pre>
+<pre class="screen"> Rcv     0       0       0         0           0       0        0</pre>
+<pre class="screen">Edge port     : GigabitEthernet1/0/5</pre>
+<pre class="screen"> Packet          LINK    COMMON    COMPLETE    EDGE    MAJOR    Packet</pre>
+<pre class="screen"> Direct  HEALTH  DOWN    FDB       FDB         HELLO   FAULT    Total</pre>
+
+<pre class="screen"> -------------------------------------------------------------------------------</pre>
+<pre class="screen"> Send    0       0       0         0           0       0        0</pre>
+<pre class="screen"> Rcv     0       0       0         0           0       0        0</pre>
+<pre class="screen">MainRing port: GigabitEthernet1/0/1
+ Packet            LINK      COMMON    COMPLETE   EDGE      MAJOR     Packet
+ Direct  HEALTH    DOWN      FDB       FDB        HELLO     FAULT     Total
+
+ -------------------------------------------------------------------------------
+ Send    0         0         0         0          131       0         131
+ Rcv     0         0         0         0          0         0         0</pre>
+<p># 显示域ID为3的RRPP环的报文统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rrpp statistics domain 3</strong></pre>
+<pre class="screen">RRPP Ring     : 3</pre>
+<pre class="screen">Ring Level    : 0</pre>
+<pre class="screen">Node Mode     : Transit</pre>
+<pre class="screen">Is Actived  : Yes</pre>
+<pre class="screen">Primary port  : GigabitEthernet1/0/0</pre>
+<pre class="screen"> Packet          LINK    COMMON    COMPLETE    EDGE    MAJOR    Packet</pre>
+<pre class="screen"> Direct  HEALTH  DOWN    FDB       FDB         HELLO   FAULT    Total</pre>
+
+<pre class="screen"> -------------------------------------------------------------------------------</pre>
+<pre class="screen"> Send    0       0       0         0           0       0        0</pre>
+<pre class="screen"> Rcv     0       0       0         0           0       0        0</pre>
+<pre class="screen">Secondary port: GigabitEthernet0/0/8</pre>
+<pre class="screen"> Packet          LINK    COMMON    COMPLETE    EDGE    MAJOR    Packet</pre>
+<pre class="screen"> Direct  HEALTH  DOWN    FDB       FDB         HELLO   FAULT    Total</pre>
+
+<pre class="screen"> -------------------------------------------------------------------------------</pre>
+<pre class="screen"> Send    0       0       0         0           0       0        0</pre>
+<pre class="screen"> Rcv     0       0       0         0           0       0        0</pre>
+
+<pre class="screen">RRPP Ring     : 4</pre>
+<pre class="screen">Ring Level    : 1</pre>
+<pre class="screen">Node Mode     : Assistant-edge</pre>
+<pre class="screen">Is Actived  : Yes</pre>
+<pre class="screen">Common port   : GigabitEthernet1/0/0</pre>
+<pre class="screen"> Packet          LINK    COMMON    COMPLETE    EDGE    MAJOR    Packet</pre>
+<pre class="screen"> Direct  HEALTH  DOWN    FDB       FDB         HELLO   FAULT    Total</pre>
+
+<pre class="screen"> -------------------------------------------------------------------------------</pre>
+<pre class="screen"> Send    0       0       0         0           0       0        0</pre>
+<pre class="screen"> Rcv     0       0       0         0           0       0        0</pre>
+<pre class="screen">Edge port     : GigabitEthernet1/0/2</pre>
+<pre class="screen"> Packet          LINK    COMMON    COMPLETE    EDGE    MAJOR    Packet</pre>
+<pre class="screen"> Direct  HEALTH  DOWN    FDB       FDB         HELLO   FAULT    Total</pre>
+
+<pre class="screen"> -------------------------------------------------------------------------------</pre>
+<pre class="screen"> Send    0       0       0         0           0       0        0</pre>
+<pre class="screen"> Rcv     0       0       0         0           0       0        0</pre>
+<pre class="screen">MainRing port: GigabitEthernet2/0/0
+ Packet            LINK      COMMON    COMPLETE   EDGE      MAJOR     Packet
+ Direct  HEALTH    DOWN      FDB       FDB        HELLO     FAULT     Total
+
+ -------------------------------------------------------------------------------
+ Send    0         0         0         0          131       0         131
+ Rcv     0         0         0         0          0         0         0</pre>
+
+<div class="tablenoborder"><a name="display_rrpp_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rrpp_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display rrpp statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="26.417233560090704%" id="d65107e276"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="73.5827664399093%" id="d65107e280"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>RRPP Ring</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>RRPP环ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>Ring Level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><div class="p">RRPP环的级别：<ul>
+<li><p>0级代表主环。</p>
+</li>
+<li><p>1级代表子环。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>Node Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><div class="p">为设备配置的RRPP节点模式：<ul>
+<li><p>Master：主节点。</p>
+</li>
+<li><p>Transit：传输节点。</p>
+</li>
+<li><p>Edge：边缘节点。</p>
+</li>
+<li><p>Assistant Edge：辅助边缘节点。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>Is Activated</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>标识RRPP环是否激活。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>Primary Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>RRPP环的主端口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>Secondary Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>RRPP环的副端口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>Common Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>RRPP子环边缘节点或辅助边缘节点的公共端口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>Edge Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>RRPP子环边缘节点或辅助边缘节点的边缘端口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>Packet Direct</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><div class="p">表示RRPP报文的方向：<ul>
+<li><p>Send：发送的报文。</p>
+</li>
+<li><p>Rcv：接收的报文。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>HEALTH</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>健康检测报文。由主节点发起，用于对网络进行环路完整性检测。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>LINK DOWN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>链路Down报文。由传输节点、边缘节点或者辅助边缘节点发起，用于通知主节点环路上有链路状态转为Down，物理环路消失。在主节点上只有接收计数，在其它节点上只有发送计数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>COMMON FDB</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>刷新FDB(Forwarding Database)报文。由主节点发起，用于通知传输节点、边缘节点和者辅助边缘节点更新各自MAC地址转发表和ARP表。在主节点上只有发送计数，在其它节点上只有接收计数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>COMPLETE FDB</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>环网恢复刷新FDB报文。由主节点发起，用于通知传输节点、边缘节点和辅助边缘节点更新各自MAC地址转发表和ARP表，同时通知传输节点放开临时阻塞端口。在主节点上只有发送计数，在其它节点上只有接收计数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>EDGE HELLO</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>主环完整性检查报文。由子环的边缘节点发起，同子环的辅助边缘节点接收。子环通过此报文检查其所在域主环的环路完整性。只有边缘节点上有发送计数，辅助边缘节点上有接收计数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>MAJOR FAULT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>主环故障通知报文，由子环的辅助边缘节点发起。当子环的辅助边缘节点在规定时间内收不到边缘节点发送的EDGE-HELLO报文时，向边缘节点发送此报文，报告子环报文在主环上无法透传。只有边缘节点上有接收计数，辅助边缘节点上有发送计数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.417233560090704%" headers="d65107e276 "><p>Packet Total</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.5827664399093%" headers="d65107e280 "><p>表示发送或者接收的报文总数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rrpp_commands.html">RRPP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_rrpp_statistics.html">reset rrpp statistics</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

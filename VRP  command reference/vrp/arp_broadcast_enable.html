@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="arp broadcast enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/qinq_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mode_user-termination.html">
+<meta name="DC.Relation" scheme="URI" content="control-vid.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="arp_broadcast_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>arp broadcast enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="arp_broadcast_enable"></a><a name="arp_broadcast_enable"></a>
+
+
+<h1 class="topictitle1">arp broadcast enable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>arp broadcast enable</strong>命令用来使能终结子接口的ARP广播功能。</p>
+<p><strong>undo arp broadcast enable</strong>命令用来取消终结子接口的ARP广播功能。</p>
+<p>缺省情况下，终结子接口没有使能ARP广播功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>arp broadcast enable</strong></p>
+<p><strong>undo arp broadcast
+enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet子接口视图、GE子接口视图、Eth-Trunk子接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有配置了<a href="mode_user-termination.html">mode user-termination</a>命令和<a href="control-vid.html">control-vid</a>命令后，才能在对应的子接口上配置<strong>arp broadcast enable</strong>命令。</p>
+<p>当IP报文需要从终结子接口发出，但是没有相应的ARP表项时：</p>
+<ul>
+<li><p>如果终结子接口上没有配置<strong>arp broadcast enable</strong>命令，那么系统会直接把该IP报文丢弃。此时该终结子接口的路由可以看作是黑洞路由。</p>
+</li>
+<li><p>如果终结子接口上配置了<strong>arp broadcast enable</strong>命令，那么系统会构造带Tag的ARP广播报文，然后再从该终结子接口发出。</p>
+</li>
+</ul>
+<p>使能或去使能终结子接口的ARP广播功能，会使该终结子接口的路由状态发生一次先Down再Up的变化，从而可能导致整个网络的路由发生一次震荡，影响正在运行的业务。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="arp_broadcast_enable__d2504e75"></a><a name="d2504e75"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能设备GE1/0/0.1接口的ARP广播功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mode user-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0.1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> control-vid 1 qinq-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> arp broadcast enable</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/qinq_configuration_commands.html">QinQ配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mode_user-termination.html">mode user-termination</a></div>
+<div><a href="control-vid.html">control-vid</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

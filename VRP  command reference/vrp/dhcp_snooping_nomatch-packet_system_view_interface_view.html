@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dhcp snooping nomatch-packet（系统视图、接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_snooping_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_snooping_check.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dhcp_snooping_nomatch-packet_system_view_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dhcp snooping nomatch-packet（系统视图、接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dhcp_snooping_nomatch-packet_system_view_interface_view"></a><a name="dhcp_snooping_nomatch-packet_system_view_interface_view"></a>
+
+
+<h1 class="topictitle1">dhcp snooping nomatch-packet（系统视图、接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dhcp</strong> <strong>snooping</strong> <strong>nomatch-packet</strong>命令用来配置对于在DHCP Snooping绑定表中查不到匹配项的IP、ARP报文的处理方式。</p>
+<p>如果在DHCP Snooping绑定表中查不到与该报文对应的绑定表项，那么就可以根据用户的配置决定是丢弃报文还是转发报文。</p>
+<p>缺省情况下，对于在DHCP Snooping绑定表中查不到匹配项的IP、ARP报文进行转发处理。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dhcp</strong> <strong>snooping</strong> <strong>nomatch-packet</strong> { <strong>arp</strong> | <strong>ip</strong> } <strong>action</strong> { <strong>forward</strong> | <strong>discard</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>arp</strong>：处理arp报文。</p>
+<p><strong>ip</strong>：处理IP报文。</p>
+<p><strong>forward</strong>：转发报文。</p>
+<p><strong>discard</strong>：丢弃报文。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图，以太网接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对于配置接口上的ARP/IP报文检查，如果在没有对应的绑定表项时要丢弃报文，必须配置全局下的转发行为为<strong>discard</strong>，接口下的转发行为也要配置为<strong>discard</strong>；如果全局或者接口下的转发行为有一个配置为<strong>forward</strong>，则表示没有对应的绑定表项时转发该报文。</p>
+<p>如果用户侧网络配置了很多静态IP地址，可以配置这些分配的IP地址的静态绑定表项，防止用户盗用静态IP地址。但是如果静态IP用户比较多可以使用该命令对静态IP用户没有匹配的报文不检查而进行转发，但是这样无法隔离盗用静态IP地址的非法用户。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dhcp_snooping_nomatch-packet_system_view_interface_view__d11429e94"></a><a name="d11429e94"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置丢弃没有匹配的绑定表项的ARP报文。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> dhcp snooping nomatch-packet arp action discard</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_snooping_configuration_commands.html">DHCP Snooping命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="dhcp_snooping_check.html">dhcp snooping check</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

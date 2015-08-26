@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="snmp-agent inform address">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_snmp-agent_inform.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="snmp-agent_inform_address">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>snmp-agent inform address</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="snmp-agent_inform_address"></a><a name="snmp-agent_inform_address"></a>
+
+
+<h1 class="topictitle1">snmp-agent inform address</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>snmp-agent inform address</strong>命令用于配置针对目标主机的Inform方式的相关参数，包括告警确认的超时时间和告警重复发送的次数。</p>
+<p><strong>undo snmp-agent inform address</strong>命令用于恢复缺省值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>snmp-agent inform </strong>{<strong> timeout </strong><em>seconds</em> |<strong> resend-times </strong><em>times</em> } <sup>*</sup> <strong>address udp-domain</strong><em> ip-address </em>[ <strong>vpn-instance </strong><em>vpn-instance-name</em> ] <strong>params securityname </strong><em>security-string</em></p>
+<p><strong>undo snmp-agent inform</strong> { <strong>timeout</strong> | <strong>resend-times</strong> } <sup>*</sup> <strong>address udp-domain</strong><em> ip-address </em>[ <strong>vpn-instance</strong><em> vpn-instance-name</em> ] <strong>params securityname </strong><em>security-string</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>timeout </strong><em>seconds</em>：Inform方式发送的告警等待网管确认的超时时间，取值范围为1～1800，单位是秒。缺省值与配置的全局的<strong>timeout</strong> <em>seconds</em>值相等，默认为15秒。本参数的缺省值和取值范围以各产品实现的规格为准。</p>
+<p><strong>resend-times </strong><em>times</em>：Inform方式发送的告警因没有收到网管确认消息而重复发送的次数，取值范围为0～10。缺省值与配置的全局的<strong>resend-times </strong><em>times</em>值相等，默认为3次。本参数的缺省值和取值范围以各产品实现的规格为准。</p>
+<p><strong>address</strong>：指定SNMP消息传输的目标主机地址。<strong>address</strong>指定的IP地址和<strong>securityname</strong>指定的安全名字符串组成一个二元组，用来标识一个主机。</p>
+<p><strong>udp-domain</strong>：指定目标主机的传输域基于UDP。</p>
+<p><em>ip-address</em>：目标主机的IP地址。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例名，字符串形式，不支持空格，长度范围是1～31。<strong>vpn-instance</strong>可选，如果在VPN中使用，需要<strong>vpn-instance</strong>指定的VPN实例、IP地址和安全名字符串组成一个三元组来标识一个主机。</p>
+<p><strong>params</strong>：指定产生SNMP消息的目标主机信息。</p>
+<p><strong>securityname</strong> <em>security-string</em>：指定在网管侧显示的用户名，字符串形式，不支持空格，长度范围1～32。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果已经配置了全局Inform方式参数，再配置本命令，对于指定的目标主机来说，本命令配置的参数生效。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="snmp-agent_inform_address__d118344e159"></a><a name="d118344e159"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置目标主机（IP:1.1.1.1, securityname: ABC）inform方式告警重复发送次数为10次。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> snmp-agent inform resend-times 10 address udp-domain 1.1.1.1  params securityname ABC</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_snmp-agent_inform.html">display snmp-agent inform</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

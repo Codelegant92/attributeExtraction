@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="destination-mac">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="mac-tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="virtual-mac.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="destination-mac">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>destination-mac</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="destination-mac"></a><a name="destination-mac"></a>
+
+
+<h1 class="topictitle1">destination-mac</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>destination-mac</strong>命令用来配置当前隧道的远端目的MAC地址。</p>
+<p><strong>undo destination-mac</strong>命令用来删除隧道的远端目的MAC地址。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>destination-mac </strong><em>mac-address</em></p>
+<p><strong>undo destination-mac</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>mac-address</em>：隧道的目的MAC地址。格式为H-H-H，其中H为1至4位的十六进制数。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MAC Tunnel视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在创建MAC Tunnel时，需要指定隧道的远端目的MAC地址，即对端设备的虚拟MAC地址。MAC Tunnel由骨干VLAN和MAC Tunnel对端设备的虚拟MAC地址唯一标识。</p>
+<p>如果对端设备的虚拟MAC地址和隧道所在的骨干VLAN已经被其他隧道使用，则此虚拟MAC地址不能再被用来配置本MAC Tunnel的目的MAC地址。</p>
+<p>远端目的MAC地址必须是单播地址，并且与本端设备虚拟MAC地址及中间设备的桥MAC地址不同。</p>
+<p>如果MAC Tunnel被业务实例绑定，不能够修改隧道的远端目的MAC地址。如果需要修改远端目的MAC地址，必须首先在业务实例视图下执行命令<strong>undo mac-tunnel</strong>解除业务实例与MAC Tunnel的绑定关系。</p>
+<p>如果MAC Tunnel已经加入保护组，则该隧道的远端目的MAC地址不能够再被修改。</p>
+<p>执行命令<strong>undo destimation-mac</strong>后，当前隧道的远端目的MAC地址被删除，而且隧道的组合状态将被置为Down。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="destination-mac__d10187e64"></a><a name="d10187e64"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置当前隧道的远端目的MAC地址为0001-0001-0004。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>mac-tunnel tunnel-name mytunnel</strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-mytunnel] <strong>destination-mac 0001-0001-0004</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mac-tunnel.html">display mac-tunnel</a></div>
+<div><a href="mac-tunnel.html">mac-tunnel</a></div>
+<div><a href="virtual-mac.html">virtual-mac</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

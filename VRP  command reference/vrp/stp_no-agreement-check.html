@@ -1,0 +1,120 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="stp no-agreement-check">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mstp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="stp_no-agreement-check">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>stp no-agreement-check</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="stp_no-agreement-check"></a><a name="stp_no-agreement-check"></a>
+
+
+<h1 class="topictitle1">stp no-agreement-check</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>stp</strong> <strong>no-agreement-check</strong>命令用来配置当前接口使用普通的快速迁移机制。</p>
+<p><strong>undo</strong> <strong>stp</strong> <strong>no-agreement-check</strong>命令用来配置当前接口使用增强的快速迁移机制。</p>
+<p>缺省情况下，接口使用增强的快速迁移机制。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>stp</strong> <strong>no-agreement-check</strong></p>
+<p><strong>undo</strong> <strong>stp</strong> <strong>no-agreement-check</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet接口视图、GE接口视图、Eth-Trunk接口视图、VE接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>接口快速迁移机制，即Proposal/Agreement机制，目前<span class="keyword">VRP</span>支持以下两种方式：</p>
+<ul>
+<li>增强方式：当前接口在计算同步标志位时计算根端口。<ul>
+<li><p>上游设备发送Proposal报文，请求进行快速迁移，下游设备接收到后，把与上游设备相连的端口设置为根端口，并阻塞所有非边缘端口。</p>
+</li>
+<li><p>上游设备继续发送Agreement报文，下游设备接收到后，根端口转为Forwarding状态。</p>
+</li>
+<li><p>下游设备回应Agreement报文，上游设备接收到后，把与下游设备相连的端口设置为指定端口，指定端口进入Forwarding状态。</p>
+</li>
+</ul>
+</li>
+<li>普通方式：当前接口在计算同步标志位时忽略根端口。<ul>
+<li><p>上游设备发送Proposal报文，请求进行快速迁移，下游设备接收到后，把与上游设备相连的端口设置为根端口，并阻塞所有非边缘端口，根端口转为Forwarding状态。</p>
+</li>
+<li><p>下游设备回应Agreement报文，上游设备接收到后，把与下游设备相连的端口设置为指定端口，指定端口进入Forwarding状态。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>华为数据通信设备和其他厂商的设备进行互通时，需要根据其他厂商设备的Proposal/Agreement机制，使用<strong>stp</strong> <strong>no-agreement-check</strong>命令来选择接口使用增强的快速迁移机制还是普通的快速迁移机制。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="stp_no-agreement-check__d121839e107"></a><a name="d121839e107"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置接口GE1/0/1使用普通的快速迁移机制。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface</strong> <strong>gigabitethernet</strong> <strong>1/0/1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1] <strong>portswitch</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1] <strong>stp</strong> <strong>no-agreement-check</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="stp_no-agreement-check__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="stp_no-agreement-check__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d121839e147"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d121839e151"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d121839e147 "><p>VRPV500R005C05B005</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d121839e151 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mstp_configuration_commands.html">MSTP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

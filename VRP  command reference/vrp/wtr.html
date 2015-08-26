@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="wtr">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_bfd_session.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="wtr">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>wtr</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="wtr"></a><a name="wtr"></a>
+
+
+<h1 class="topictitle1">wtr</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>wtr</strong>命令用来配置BFD会话的等待恢复时间。</p>
+<p><strong>undo</strong> <strong>wtr</strong>命令用来取消配置的等待恢复时间。</p>
+<p>缺省情况下，WTR值为0，表示不等待。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>wtr</strong> <em>wtr-value</em></p>
+<p><strong>undo wtr</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>wtr-value</em>：BFD会话的等待恢复时间。单位为分钟，取值范围是1～60。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BFD会话视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>WTR主要用于避免BFD会话震荡时，应用程序在主备之间来回切换。</p>
+<p>如果配置了WTR，会话变为Up状态的事件在WTR超时后才上报给应用程序，其它状态变化的事件仍立即上报，不受WTR影响。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>BFD会话是单向的，BFD双向检测通过分别在会话两端配置相对独立的会话实现。因此，如果配置WTR，用户需要手工在两端配置相同的WTR。否则，当一端会话状态变化时，两端的应用程序感知到的BFD会话状态将不一致。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="wtr__d129423e59"></a><a name="d129423e59"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置BFD会话等待恢复时间为10分钟。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>bfd pos0</strong></pre>
+<pre class="screen">[Quidway-bfd-session-pos0] <strong>wtr 10</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bfd_configuration_commands.html">BFD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_bfd_session.html">display bfd session</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

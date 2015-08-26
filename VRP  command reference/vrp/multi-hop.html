@@ -1,0 +1,120 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="multi-hop">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_bfd_session.html">
+<meta name="DC.Relation" scheme="URI" content="display_bfd_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="peer-ip_ttl.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="multi-hop">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>multi-hop</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="multi-hop"></a><a name="multi-hop"></a>
+
+
+<h1 class="topictitle1">multi-hop</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>multi-hop</strong>命令用来配置BFD缺省多跳目的端口号。</p>
+<p>缺省情况下，使用3784作为多跳BFD会话报文的目的端口号。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>multi-hop destination-port</strong> { <strong>3784</strong> | <strong>4784</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>3784</strong>：使用3784作为多跳BFD会话报文的目的端口号。</p>
+<p><strong>4784</strong>：使用4784作为多跳BFD会话报文的目的端口号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BFD视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>BFD草案规定使用4784作为多跳BFD会话报文的目的端口。同以前版本的设备互通时，<span class="keyword">VRP</span>使用3784作为多跳BFD会话报文的目的端口号；同其他厂商的设备互通时，可以使用4784作为多跳BFD会话报文的目的端口号。</p>
+<ul>
+<li><p>如果使用4784作为多跳BFD会话报文的目的端口，则同使用3784作为多跳BFD会话报文的目的端口进行协商时将会失败。</p>
+</li>
+<li><p>如果使用3784作为多跳BFD会话报文的目的端口，则可以和使用4784作为多跳BFD会话报文的目的端口进行互通，同时3784侧可以自动更新此多跳BFD会话的目的端口。</p>
+</li>
+<li><p>如果使用3784作为多跳BFD会话报文的目的端口，同使用3784作为多跳BFD会话报文的目的端口进行互通时，单跳多跳的处理需要结合接收到会话报文的TTL值进行判断。</p>
+</li>
+<li><p>当配置的多跳会话较多时，更新对应的多跳会话目的端口号会比较耗费时间，若多提配置之间的时间间隔太短，系统将会提示当前会话更新正在进行，请稍后配置。</p>
+</li>
+<li><p>更新多跳BFD会话报文的目的端口号时，如果此时会话正处于UP状态，则会转变为DOWN状态，会话将重新协商。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="multi-hop__d98238e77"></a><a name="d98238e77"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置缺省多跳目的端口为4784。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>bfd</strong>
+[Quidway-bfd] <strong>multi-hop destination-port 4784</strong>
+</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="multi-hop__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="multi-hop__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42%" id="d98238e104"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.99999999999999%" id="d98238e108"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42%" headers="d98238e104 "><p>VRPV500R006C02B111</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="d98238e108 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bfd_configuration_commands.html">BFD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_bfd_session.html">display bfd session</a></div>
+<div><a href="display_bfd_statistics.html">display bfd statistics</a></div>
+<div><a href="peer-ip_ttl.html">peer-ip ttl</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

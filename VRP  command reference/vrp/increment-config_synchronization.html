@@ -1,0 +1,116 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="increment-config synchronization">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_increment-synchronization-result.html">
+<meta name="DC.Relation" scheme="URI" content="cluster-plug-play_ip.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="increment-config_synchronization">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>increment-config synchronization</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="increment-config_synchronization"></a><a name="increment-config_synchronization"></a>
+
+
+<h1 class="topictitle1">increment-config synchronization</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>increment-config synchronization</strong>命令用来把成员交换机的配置文件同步到FTP服务器。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>increment-config synchronization</strong> [ <strong>group-by</strong> { <strong>device-type </strong><em>device-type</em> | <strong>ip</strong> {<em>ip-addres</em> [ <strong>to</strong> <em>ip-addres</em> ] } &amp;&lt;1-10&gt; | <strong>member-number</strong> {<em> member-number</em> [ <strong>to</strong> <em>member-number</em> ] } &amp;&lt;1-10&gt; } ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>group-by</strong>：指定成员交换机的分类方式。目前支持三种分类方式：设备类型、IP地址和成员编号。不选择该参数时，默认对所有的成员交换机进行操作。</p>
+<p><strong>device-type</strong> <em>device-type</em>：指定成员交换机的设备类型。字符串形式，不区分大小写，不支持空格，长度范围是1～100。一次只能指定一种设备类型。目前支持的设备类型由NTDP协议收集得到，例如NE40E，CX200B等。</p>
+<p><em>ip-address</em>：指定成员交换机的IPv4地址。可以同时指定一个或者多个成员交换机的地址和地址范围。</p>
+<p><em>member-number</em>：指定成员交换机的成员编号。十进制整数形式，取值范围是1～255。可以同时指定一个或者多个成员交换机的成员编号。</p>
+<p><em>file-name</em>：配置文件、版本文件、PAF文件、License文件或者补丁文件的名称。字符串形式，不区分大小写，长度范围是1～50。</p>
+<p><strong>ip</strong> <em>ftp-ip-address</em>：FTP服务器的IPv4地址，点分十进制形式。</p>
+<p><strong>username</strong><em> user-name</em>：FTP服务器的用户名称。字符串形式，区分大小写，不支持空格，长度范围是1～20。</p>
+<p><strong>password</strong> <em>password</em>：FTP服务器的用户密码。字符串形式，区分大小写，不能输入空格和问号等命令行专用字符，长度范围是1～8。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>集群视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只能在命令交换机上执行。</p>
+<p>同步成员交换机的配置文件的目的是把成员交换机的配置保存到FTP服务器，以便设备更换后，可以根据原有设备的配置来恢复新设备配置，以减少人工再次配置工作量。</p>
+<p>指定成员交换机的成员编号时不能超过集群支持的最大编号。</p>
+<p>成员交换机的配置在FTP服务器上的存储方式是以成员交换机MAC地址命名的配置文件。</p>
+<p>使用本命令时，如果不指定FTP服务器的地址、用户名称和用户密码，则成员交换机将使用命令交换机上配置的默认FTP服务器信息。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>命令交换机上默认的FTP服务器配置用来支持HGMP的即插即用功能。具体配置方法请参考<a href="cluster-plug-play_ip.html">cluster-plug-play ip</a>命令。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="increment-config_synchronization__d82361e125"></a><a name="d82361e125"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定集群中IP地址是10.1.1.1～10.1.1.100的设备同步配置文件至FTP服务器100.1.1.1。FTP服务器的用户名称是user1，密码是1234。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cluster</strong></strong></pre>
+<pre class="screen">[Quidway-cluster]<strong> <strong>increment-config synchronization group-by ip 10.1.1.1 to 10.1.1.100 ip 100.1.1.1 user user1 password 1234</strong></strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="increment-config_synchronization__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="increment-config_synchronization__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d82361e158"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d82361e162"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d82361e158 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d82361e162 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_increment-synchronization-result.html">display increment-synchronization-result</a></div>
+<div><a href="cluster-plug-play_ip.html">cluster-plug-play ip</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

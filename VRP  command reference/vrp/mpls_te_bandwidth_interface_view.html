@@ -1,0 +1,133 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te bandwidth（接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_bandwidth_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te bandwidth（接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_bandwidth_interface_view"></a><a name="mpls_te_bandwidth_interface_view"></a>
+
+
+<h1 class="topictitle1">mpls te bandwidth（接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te bandwidth</strong>命令用来设置或修改链路上BC的带宽。</p>
+<p><strong>undo mpls
+te bandwidth</strong>命令用来恢复系统缺省配置。</p>
+<p>缺省情况下，没有配置链路的BC带宽。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te bandwidth</strong> { <strong>bc0</strong> <em>bc0-bw-value</em> | <strong>bc1</strong> <em>bc1-bw-value</em><span> | <strong>bc2</strong> <em>bc2-bw-value</em> | <strong>bc3</strong> <em>bc3-bw-value</em> | <strong>bc4</strong> <em>bc4-bw-value</em> | <strong>bc5</strong> <em>bc5-bw-value</em> | <strong>bc6</strong> <em>bc6-bw-value</em> | <strong>bc7</strong> <em>bc7-bw-value</em></span> }<sup>*</sup></p>
+<p><strong>undo
+mpls te bandwidth</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>bc0</strong> <em>bc0-bw-value</em>：设置BC0的带宽。整数形式，取值范围是1～32000000，单位是Kbit/s。缺省值是1。</p>
+<p><strong>bc1</strong> <em>bc1-bw-value</em>：设置BC1的带宽。整数形式，取值范围是1～32000000，单位是Kbit/s。缺省值是1。</p>
+<p><strong>bc2</strong> <em>bc2-bw-value</em>：设置BC2的带宽。整数形式，取值范围是1～32000000，单位是Kbit/s。缺省值是1。</p>
+<p><strong>bc3</strong> <em>bc3-bw-value</em>：设置BC3的带宽。整数形式，取值范围是1～32000000，单位是Kbit/s。缺省值是1。</p>
+<p><strong>bc4</strong> <em>bc4-bw-value</em>：设置BC4的带宽。整数形式，取值范围是1～32000000，单位是Kbit/s。缺省值是1。</p>
+<p><strong>bc5</strong> <em>bc5-bw-value</em>：设置BC5的带宽。整数形式，取值范围是1～32000000，单位是Kbit/s。缺省值是1。</p>
+<p><strong>bc6</strong> <em>bc6-bw-value</em>：设置BC6的带宽。整数形式，取值范围是1～32000000，单位是Kbit/s。缺省值是1。</p>
+<p><strong>bc7</strong> <em>bc7-bw-value</em>：设置BC7的带宽。整数形式，取值范围是1～32000000，单位是Kbit/s。缺省值是1。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在实际配置应用中，只要在有带宽要求的TE隧道所经链路接口的出方向配置即可。</p>
+<p>一条命令可同时配置1个或多个BC的带宽值。配置是无序的，但不能重复配置同一BC带宽。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li>非标准（Non-IETF）模式的DS-TE只支持BC0和BC1；标准（IETF）模式的DS-TE支持BC0～BC7。</li>
+<li>当Non-IETF模式向IETF模式切换时，BC0和BC1的带宽值保持不变；当IETF模式向Non-IETF模式切换时，除BC0和BC1保持不变外，其它BC的值被清零。</li>
+</ul>
+</div></div>
+<div class="p">各BC的带宽最大值与链路的可预留带宽（<em>max-reservable-bandwidth</em>）之间的关系如下：<ul>
+<li>RDM模型：<em>bc7-bw-value</em> &#8804; <em>bc6-bw-value</em> &#8804; <em>bc5-bw-value</em> &#8804; <em>bc4-bw-value</em> &#8804; <em>bc3-bw-value</em> &#8804; <em>bc2-bw-value</em> &#8804; <em>bc1-bw-value</em> &#8804; <em>bc0-bw-value</em> &#8804; <em>max-reservable-bandwidth</em></li>
+<li>MAM模型：<em>bc0-bw-value</em>＋<em>bc1-bw-value</em>＋<em>bc2-bw-value</em>＋<em>bc3-bw-value</em>＋<em>bc4-bw-value</em>＋<em>bc5-bw-value</em>＋<em>bc6-bw-value</em>＋<em>bc7-bw-value</em> &#8804; <em>max-reservable-bandwidth</em></li>
+<li>Extend-MAM模型：同MAM模型</li>
+</ul>
+</div>
+<p>如果要修改BC带宽值，可重新配置该命令，最后一次的配置会覆盖之前的配置。</p>
+<p>不允许将BC带宽值修改成小于已经分配给CT的带宽值。例如，BC0已有10Mbit/s的带宽被分配，则BC0的带宽只能修改成大于等于10Mbit/s。</p>
+<p>当在系统视图下配置<strong>undo mpls</strong>命令或在MPLS视图下配置<strong>undo mpls te</strong>命令后，BC带宽值会被删除。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_bandwidth_interface_view__d95773e243"></a><a name="d95773e243"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在IETF模式下，设置BC模型为MAM，链路最大可预留带宽为10000Kbit/s，链路BC0、BC2和BC3带宽值分别为1000Kbit/s、2000Kbit/s、3000Kbit/s。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>mpls lsr-id 1.1.1.1</strong>
+[Quidway] <strong>mpls</strong>
+[Quidway-mpls] <strong>mpls te</strong>
+[Quidway-mpls] <strong>mpls te ds-te mode ietf</strong>
+[Quidway-mpls] <strong>mpls te ds-te bcm mam</strong>
+[Quidway-mpls] <strong>quit</strong>
+[Quidway] <strong>interface gigabitethernet 1/0/0</strong>
+[Quidway-GigabitEthernet1/0/0] <strong>mpls</strong>
+[Quidway-GigabitEthernet1/0/0] <strong>mpls te</strong>
+[Quidway-GigabitEthernet1/0/0] <strong>mpls te bandwidth max-reservable-bandwidth 10000</strong>
+[Quidway-GigabitEthernet1/0/0] <strong>mpls te bandwidth bc0 1000 bc3 3000 bc2 2000</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_te_bandwidth_interface_view__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_te_bandwidth_interface_view__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d95773e295"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d95773e299"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d95773e295 "><p>VRPV500R006C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d95773e299 "><p>增加参数BC2，BC3，BC4，BC5，BC6和BC7。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,313 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="MPLS基本配置命令">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_bind_ldp-lsp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_bind_static-lsp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_isis_ldp-sync.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_bfd_session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_graceful-restart.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_ldp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_ldp_adjacency.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_ldp_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_ldp_lsp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_ldp_peer.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_ldp_remote-peer.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_ldp_session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_ldp_vpn-instance.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_lsp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_lsp_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_route-state.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_stale-interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_static-lsp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_statistics_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_statistics_lsp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_ldp-sync.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_snmp-agent_trap_feature-name_ldp_all.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_snmp-agent_trap_feature-name_mpls_lspm_all.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/du-readvertise.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/fec-list.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/fec-node.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/graceful-restart_mpls-ldp_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/graceful-restart_timer_neighbor-liveness.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/graceful-restart_timer_reconnect.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/graceful-restart_timer_recovery.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/gtsm_peer_valid-ttl-hops.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hops-count.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hops-count_tlv-send_peer-controlled.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/isis_ldp-sync.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/isis_timer_ldp-sync_hold-down.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/isis_timer_ldp-sync_hold-max-cost.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/label_advertise.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/label-distribution.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/label-retention.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/load-balance_flow.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/load-balance_packet.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/load-balance_unequal-cost_enable_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/loop-detect.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lsp-trigger_bgp-label-route.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lsp-trigger.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lsr-id.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/md5-password.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_bfd_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_bfd.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_bfd-trigger.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_ldp_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_ldp_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_ldp_frr_nexthop.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_ldp_frr_timer_protect-time.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_ldp_remote-peer.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_ldp_timer_hello-hold.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_ldp_timer_igp-sync-delay.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_ldp_timer_keepalive-hold.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_ldp_transport-address.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_lsr-id.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_mtu.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls-passive.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_ping_interval.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mtu-signalling.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_ldp-sync.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_timer_ldp-sync_hold-down.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_timer_ldp-sync_hold-max-cost.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/path-vectors.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ping_lsp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/propagate_mapping.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/remote-ip.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/remote-peer_pwe3.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_mpls_ldp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_mpls_stale-interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_mpls_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp-agent_trap_enable_feature-name_ldp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp-agent_trap_enable_feature-name_mpls_lspm.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp-agent_trap_suppress_feature-name_lsp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/static-lsp_egress.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/static-lsp_ingress.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/static-lsp_transit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/statistics_interval.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/tracert_lsp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ttl_expiration_pop.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ttl-mode.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ttl_propagate_public.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ttl_propagate_vpn.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="basic_mpls_configuration_commands">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>MPLS基本配置命令</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="basic_mpls_configuration_commands"></a><a name="basic_mpls_configuration_commands"></a>
+
+
+<h1 class="topictitle1">MPLS基本配置命令</h1>
+
+<div>
+<div class="section"><h4 class="sectiontitle">功能描述</h4><p>介绍MPLS基本的配置、复位和查看命令。</p>
+</div>
+
+<div class="section"><h4 class="sectiontitle">相关链接</h4></div>
+
+</div>
+
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="../vrp/bfd_bind_ldp-lsp.html">bfd bind ldp-lsp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/bfd_bind_static-lsp.html">bfd bind static-lsp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_isis_ldp-sync.html">display isis ldp-sync</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_bfd_session.html">display mpls bfd session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_graceful-restart.html">display mpls graceful-restart</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_interface.html">display mpls interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_ldp.html">display mpls ldp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_ldp_adjacency.html">display mpls ldp adjacency</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_ldp_interface.html">display mpls ldp interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_ldp_lsp.html">display mpls ldp lsp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_ldp_peer.html">display mpls ldp peer</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_ldp_remote-peer.html">display mpls ldp remote-peer</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_ldp_session.html">display mpls ldp session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_ldp_vpn-instance.html">display mpls ldp vpn-instance</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_lsp.html">display mpls lsp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_lsp_statistics.html">display mpls lsp statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_route-state.html">display mpls route-state</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_stale-interface.html">display mpls stale-interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_static-lsp.html">display mpls static-lsp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_statistics_interface.html">display mpls statistics interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_statistics_lsp.html">display mpls statistics lsp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_ldp-sync.html">display ospf ldp-sync</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_snmp-agent_trap_feature-name_ldp_all.html">display snmp-agent trap feature-name ldp all</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_snmp-agent_trap_feature-name_mpls_lspm_all.html">display snmp-agent trap feature-name mpls_lspm all</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/du-readvertise.html">du-readvertise</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/fec-list.html">fec-list</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/fec-node.html">fec-node</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/graceful-restart_mpls-ldp_view.html">graceful-restart（MPLS-LDP视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/graceful-restart_timer_neighbor-liveness.html">graceful-restart timer neighbor-liveness</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/graceful-restart_timer_reconnect.html">graceful-restart timer reconnect</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/graceful-restart_timer_recovery.html">graceful-restart timer recovery</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/gtsm_peer_valid-ttl-hops.html">gtsm peer valid-ttl-hops</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hops-count.html">hops-count</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hops-count_tlv-send_peer-controlled.html">hops-count tlv-send peer-controlled</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/isis_ldp-sync.html">isis ldp-sync</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/isis_timer_ldp-sync_hold-down.html">isis timer ldp-sync hold-down</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/isis_timer_ldp-sync_hold-max-cost.html">isis timer ldp-sync hold-max-cost</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/label_advertise.html">label advertise</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/label-distribution.html">label-distribution</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/label-retention.html">label-retention</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/load-balance_flow.html">load-balance flow</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/load-balance_packet.html">load-balance packet</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/load-balance_unequal-cost_enable_system_view.html">load-balance unequal-cost enable（系统视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/loop-detect.html">loop-detect</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/lsp-trigger_bgp-label-route.html">lsp-trigger bgp-label-route</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/lsp-trigger.html">lsp-trigger</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/lsr-id.html">lsr-id</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/md5-password.html">md5-password</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_system_view.html">mpls（系统视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_interface_view.html">mpls（接口视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_bfd_enable.html">mpls bfd enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_bfd.html">mpls bfd</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_bfd-trigger.html">mpls bfd-trigger</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_ldp_system_view.html">mpls ldp（系统视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_ldp_interface_view.html">mpls ldp（接口视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_ldp_frr_nexthop.html">mpls ldp frr nexthop</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_ldp_frr_timer_protect-time.html">mpls ldp frr timer protect-time</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_ldp_remote-peer.html">mpls ldp remote-peer</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_ldp_timer_hello-hold.html">mpls ldp timer hello-hold</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_ldp_timer_igp-sync-delay.html">mpls ldp timer igp-sync-delay</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_ldp_timer_keepalive-hold.html">mpls ldp timer keepalive-hold</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_ldp_transport-address.html">mpls ldp transport-address</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_lsr-id.html">mpls lsr-id</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_mtu.html">mpls mtu</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls-passive.html">mpls-passive</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_ping_interval.html">mpls ping interval</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mtu-signalling.html">mtu-signalling</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_ldp-sync.html">ospf ldp-sync</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_timer_ldp-sync_hold-down.html">ospf timer ldp-sync hold-down</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_timer_ldp-sync_hold-max-cost.html">ospf timer ldp-sync hold-max-cost</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/path-vectors.html">path-vectors</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ping_lsp.html">ping lsp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/propagate_mapping.html">propagate mapping</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/remote-ip.html">remote-ip</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/remote-peer_pwe3.html">remote-peer pwe3</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_mpls_ldp.html">reset mpls ldp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_mpls_stale-interface.html">reset mpls stale-interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_mpls_statistics.html">reset mpls statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/snmp-agent_trap_enable_feature-name_ldp.html">snmp-agent trap enable feature-name ldp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/snmp-agent_trap_enable_feature-name_mpls_lspm.html">snmp-agent trap enable feature-name mpls_lspm</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/snmp-agent_trap_suppress_feature-name_lsp.html">snmp-agent trap suppress feature-name lsp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/static-lsp_egress.html">static-lsp egress</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/static-lsp_ingress.html">static-lsp ingress</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/static-lsp_transit.html">static-lsp transit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/statistics_interval.html">statistics interval</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/tracert_lsp.html">tracert lsp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ttl_expiration_pop.html">ttl expiration pop</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ttl-mode.html">ttl-mode</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ttl_propagate_public.html">ttl propagate public</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ttl_propagate_vpn.html">ttl propagate vpn</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_commands.html">MPLS命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

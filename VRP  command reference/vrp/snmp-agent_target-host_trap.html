@@ -1,0 +1,91 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="snmp-agent target-host trap">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_trap_enable.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_trap_life.html">
+<meta name="DC.Relation" scheme="URI" content="display_snmp-agent_group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="snmp-agent_target-host_trap">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>snmp-agent target-host trap</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="snmp-agent_target-host_trap"></a><a name="snmp-agent_target-host_trap"></a>
+
+
+<h1 class="topictitle1">snmp-agent target-host trap</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>snmp-agent target-host trap</strong>命令用来设置接收Trap消息的目的地。</p>
+<p><strong>undo snmp-agent target-host</strong>命令用来取消当前设置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>snmp-agent target-host trap</strong> <strong>address</strong> <strong>udp-domain</strong><em> ip-address</em> [ <strong>udp-port</strong> <em>port-number</em> ] [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>params</strong> <strong>securityname</strong> <em>security-string</em> [ <strong>v1</strong> | <strong>v2c</strong> | <strong>v3</strong> [ <strong>authentication</strong> |<strong> privacy</strong> ] ]</p>
+<p><strong>undo snmp-agent target-host</strong> <em>ip-address </em><strong>securityname</strong><em> security-string </em>[ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>address</strong>：指定SNMP消息传输的目标主机地址。</p>
+<p><strong>udp-domain</strong>：指定目标主机的传输域基于UDP。</p>
+<p><em>ip-address</em>：目标主机的IP地址。</p>
+<p><strong>udp-port</strong> <em>port-number</em>：指定接收Trap报文的端口号，取值范围0～65535，缺省情况下为162。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例名，字符串形式，不支持空格，长度范围是1～31。</p>
+<p><strong>params</strong>：指定产生SNMP消息的日志主机信息。</p>
+<p><strong>securityname</strong> <em>security-string</em>：指定在网管侧显示的用户名，字符串形式，不支持空格，长度范围1～32。</p>
+<p><strong>v1</strong> | <strong>v2c</strong> | <strong>v3</strong>：指定Trap消息的版本。缺省情况下为<strong>v1</strong>。</p>
+<p><strong>authentication</strong>：指明对报文进行认证但不加密。</p>
+<p><strong>privacy</strong>：指明对报文进行认证和加密。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>snmp-agent target-host</strong>命令可以指定接受trap信息的目的主机。</p>
+<ul>
+<li><p>使用<strong>snmp-agent trap enable</strong>来设置允许设备发送Trap报文。若要一台主机可以发送通知消息，至少需要在该主机上配置一条<strong>snmp-agent target-host</strong>命令和<a href="snmp-agent_trap_enable.html"><strong>snmp-agent trap enable</strong></a>命令。</p>
+</li>
+<li><p>在SNMP Trap已经使能的情况下，要使SNMPv3正常发送Trap消息，<strong>securityname</strong>中的用户名是已存在的组当中的用户，并且该组中已经设置了通知视图。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="snmp-agent_target-host_trap__d118513e185"></a><a name="d118513e185"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 允许向10.1.1.1发送SNMP Trap报文。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway]<strong> snmp-agent trap enable standard</strong>
+[Quidway]<strong> snmp-agent target-host trap address udp-domain 10.1.1.1 params securityname comaccess</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="snmp-agent_trap_enable.html">snmp-agent trap enable</a></div>
+<div><a href="snmp-agent_trap_life.html">snmp-agent trap life</a></div>
+<div><a href="display_snmp-agent_group.html">display snmp-agent group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

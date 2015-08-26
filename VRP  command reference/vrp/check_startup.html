@@ -1,0 +1,105 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="check startup">
+<meta name="DC.Relation" scheme="URI" content="../vrp/update_and_maintenance.html">
+<meta name="DC.Relation" scheme="URI" content="startup_paf.html">
+<meta name="DC.Relation" scheme="URI" content="startup_license.html">
+<meta name="DC.Relation" scheme="URI" content="startup_patch.html">
+<meta name="DC.Relation" scheme="URI" content="startup_system-software.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="check_startup">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>check startup</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="check_startup"></a><a name="check_startup"></a>
+
+
+<h1 class="topictitle1">check startup</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>check startup</strong>命令用来检查各种资源文件（PAF文件、License文件、补丁包、启动软件、配置文件）是否正确。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>check startup</strong> [ <strong>crc</strong> ] [ <strong>next</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>crc</strong>：对资源文件进行CRC校验。</p>
+<p><strong>next</strong>：检查下一次启动的各种资源文件。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>一般配置完下次启动的资源文件后，用此命令检查一下配置的资源文件是否完整，格式和版本是否正确。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>目前此命令仅在NE40E、NE80E、NE5000E上可用。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="check_startup__d6523e53"></a><a name="d6523e53"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 检查资源文件是否正确。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> check startup</strong></pre>
+<pre class="screen">MainBoard:</pre>
+<pre class="screen">Check startup software.......ok</pre>
+<pre class="screen">Check configuration file.....ok</pre>
+<pre class="screen">Check paf....................ok</pre>
+<pre class="screen">Check License................ok</pre>
+<pre class="screen">Check Patch..................ok</pre>
+<pre class="screen">Paf is fitted with startup software</pre>
+<pre class="screen">License is fitted with startup software</pre>
+<pre class="screen">Patch is fitted with startup software</pre>
+<pre class="screen">SlaveBoard:</pre>
+<pre class="screen">Check startup software.....ok</pre>
+<pre class="screen">Check configuration file...ok</pre>
+<pre class="screen">Check paf..................ok</pre>
+<pre class="screen">Check License..............ok</pre>
+<pre class="screen">Check patch................ok</pre>
+<pre class="screen">Paf is fitted with startup software</pre>
+<pre class="screen">License is fitted with startup software</pre>
+<pre class="screen">Patch is fitted with startup software</pre>
+<pre class="screen">Startup software in slave board is fitted with mainboard</pre>
+<p># 对资源文件进行CRC校验。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>check startup crc</strong></strong></pre>
+<pre class="screen">Warning: This operation will take serval minutes! Continue?[Y/N]<strong>:y</strong></pre>
+<pre class="screen">Check startup software CRC</pre>
+<pre class="screen">................................................................................</pre>
+<pre class="screen">Check startup software CRC...failed</pre>
+<pre class="screen">Check startup software CRC in slaveboard</pre>
+<pre class="screen">.......................................................................</pre>
+<pre class="screen">Check startup software CRC...failed</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/update_and_maintenance.html">升级维护</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="startup_paf.html">startup paf</a></div>
+<div><a href="startup_license.html">startup license</a></div>
+<div><a href="startup_patch.html">startup patch</a></div>
+<div><a href="startup_system-software.html">startup system-software</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

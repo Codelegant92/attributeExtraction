@@ -1,0 +1,67 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="fr lmi n392dte">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frame_relay_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="fr_interface-type.html">
+<meta name="DC.Relation" scheme="URI" content="fr_lmi_n393dte.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="fr_lmi_n392dte">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>fr lmi n392dte</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="fr_lmi_n392dte"></a><a name="fr_lmi_n392dte"></a>
+
+<h1 class="topictitle1">fr lmi n392dte</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>fr lmi n392dte</strong>命令用来配置DTE侧N392。</p>
+<p><strong>undo fr lmi n392dte</strong>命令用来恢复缺省值。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>fr lmi n392dte</strong><em> n392-value</em></p>
+<p><strong>undo</strong> <strong>fr lmi n392dte</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>n392-value</em>：错误阈值。整数形式，取值范围是1～10。缺省值是3。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>帧中继接口视图、MFR接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>DTE设备每隔一定的时间要发送一个状态请求报文（Status-Enquiry报文）查询链路状态，DCE设备收到该报文后立即发送状态报文。如果DTE设备在规定的时间内没有收到响应，就记录该错误，且错误次数加1。如果错误次数超过门限，DTE设备就认为物理通路不可用，所有的虚电路都不可用。</p>
+<p>N392和N393两个参数一起定义了&#8220;错误门限&#8221;。其中N393表示被观察的事件总数，N392表示在被观察的事件总数中发生的错误门限。</p>
+<p>DTE侧的N392应小于DTE侧的N393。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="fr_lmi_n392dte__d77355e46"></a><a name="d77355e46"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置帧中继接口Serial1/0/0:0工作在DTE方式，并配置N392和N393为5和6。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface Serial1/0/0:0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> link-protocol fr</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> fr interface-type dte</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> fr lmi n392dte 5</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> fr lmi n393dte 6</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/frame_relay_configuration_commands.html">帧中继配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="fr_interface-type.html">fr interface-type</a></div>
+<div><a href="fr_lmi_n393dte.html">fr lmi n393dte</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

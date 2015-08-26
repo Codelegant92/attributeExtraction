@@ -1,0 +1,441 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display service-instance">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="description_si_view.html">
+<meta name="DC.Relation" scheme="URI" content="mapping-type.html">
+<meta name="DC.Relation" scheme="URI" content="priority_ingress.html">
+<meta name="DC.Relation" scheme="URI" content="service-id.html">
+<meta name="DC.Relation" scheme="URI" content="service-instance_instance-name.html">
+<meta name="DC.Relation" scheme="URI" content="shutdown_si_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_service-instance">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display service-instance</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_service-instance"></a><a name="display_service-instance"></a>
+
+
+<h1 class="topictitle1">display service-instance</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display service-instance</strong>命令用来查看指定的业务实例信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display service-instance</strong> [<strong> instance-name</strong> <em>service-instance-name </em>] [ <strong>verbose</strong> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>instance-name </strong><em>service-instance-name</em>：指定业务实例的名字。长度范围是1～31个字符。</p>
+<p><strong>verbose</strong>：查看业务实例的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong> exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>根据选择参数的不同，可以查看到对应当业务实例信息：</p>
+<ul>
+<li><p>如果不输入业务实例名字，则显示所有的业务实例。</p>
+</li>
+<li><p>如果不输入<strong>verbose</strong>参数，则只显示指定业务实例的名字、业务类型和service-ID值。</p>
+</li>
+<li><div class="p">如果输入<strong>verbose</strong>参数，需要区分业务类型进行显示：<ul>
+<li><p>如果业务实例为<strong>mp2mp</strong>类型时，显示业务实例的名称、业务类型、接口类型、业务实例ID、优先级、隔离标记、二层控制报文处理方法、映射的用户信息、绑定的MAC Tunnel信息、Up/Down状态、MAC地址学习限制、MAC地址学习是否关闭、MAC地址学习到达上限后的处理方式、未知单播报文处理方式、未知组播报文处理方式、广播报文处理方式。</p>
+</li>
+<li><p>如果业务实例为<strong>p2p</strong>类型时，显示业务实例的名称、业务类型、接口类型、I-TAG、优先级、二层控制报文处理方法、映射的用户信息、绑定的MAC Tunnel信息、Up/Down状态、MAC地址学习是否关闭、未知单播报文处理方式、未知组播报文处理方式、广播报文处理方式。</p>
+</li>
+<li><p>其中，业务实例Up/Down状态的显示，如果业务实例配置了<strong>shutdown</strong>命令，则显示内容为&#8220;Administratively DOWN&#8221;；如果业务实例没有配置<strong>shutdown</strong>命令，则根据实际的业务实例状态显示为Up或Down状态。</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_service-instance__d65686e147"></a><a name="d65686e147"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有业务实例的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display service-instance</strong> 
+Service-instance name                   Service-type   Service-ID 
+-------------------------------------------------------------------------------------------- 
+SI1                                     P2P            1 
+SI2                                     MP2MP          N/A  
+
+Total number of service-instances: 2 
+Number of service-instances with status being Up: 1</pre>
+<p># 查看业务实例mysi3的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display service-instance instance-name mysi3</strong></pre>
+<pre class="screen">Service-instance name     Service-type   Service-ID</pre>
+<pre class="screen">-----------------------------------------------------------------</pre>
+<pre class="screen">mysi3                     mp2mp          1</pre>
+<p># 查看mp2mp业务实例mysi3的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display service-instance instance-name mysi3 verbose</strong></pre>
+<pre class="screen">Service-instance name  :mysi3 </pre>
+<pre class="screen">Service-instance description : This is an Instance for testing    </pre>
+<pre class="screen">Service-type     :MP2MP              Interface-type    :Bundling </pre>
+<pre class="screen">Service-ID       :45                 Priority          :Trust 8021p</pre>
+<pre class="screen">TrustTunnelPriority egress:no        <span>DEI ingress       :trust</span></pre>
+<pre class="screen">TrustTunnelDEI egress     :no</pre>
+<pre class="screen"><span>TrustTunnelDEI egress     :no        </span><span>IsolateAllFlag    :no</span></pre>
+<pre class="screen">Status           :UP                 Mac-learning      :Enable </pre>
+<pre class="screen">Unknown-unicast  :Forward            Unknown-multicast :Forward </pre>
+<pre class="screen">Broadcast        :Forward            Mac-limit maximum :No limit </pre>
+<pre class="screen">Mac-limit action :Forward            <span>Mac-limit alarm   :Disable</span></pre>
+<pre class="screen">Control-protocol</pre>
+<pre class="screen"> Forwardgarp      :stplldp</pre>
+<pre class="screen"> Discardlacp      :802.3ah 802.1ag</pre>
+<pre class="screen">Mapping-user: </pre>
+<pre class="screen"> GigabitEthernet1/0/1  vlan 111 prioriry 3</pre>
+<pre class="screen"> GigabitEthernet1/0/2  vlan 112 priority 4</pre>
+<pre class="screen">Mapping-user:                                      IsolateFlag</pre>
+<pre class="screen"> GigabitEthernet1/0/1  vlan 111 prioriry 3         no</pre>
+<pre class="screen"> GigabitEthernet1/0/2  vlan 112 priority 4         no</pre>
+<pre class="screen"> Total of User: 2</pre>
+<pre class="screen">Mac-tunnel:</pre>
+<pre class="screen"> tunnel1</pre>
+<pre class="screen"> tunnel2</pre>
+<pre class="screen"> tunnel3</pre>
+<pre class="screen"> Total of Mac-tunnel: 3</pre>
+<p># 查看p2p业务实例mysi4的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display service-instance instance-name mysi4 verbose</strong></pre>
+<pre class="screen">Service-instance name: mysi4</pre>
+<pre class="screen">Service-instance description: This is an Instance for testing</pre>
+<pre class="screen">Service-type       :P2P                 Interface-type     :Bundling</pre>
+<pre class="screen">Service-ID         :4                   Priority           :0</pre>
+<pre class="screen">TrustTunnelPriority egress:no           <span>DEI ingress        :trust</span></pre>
+<pre class="screen">TrustTunnelDEI egress     :no</pre>
+<pre class="screen"><span>TrustTunnelDEI egress     :no        </span><span>IsolateAllFlag  :no</span></pre>
+<pre class="screen">Status             :UP</pre>
+<pre class="screen">Control-protocol  </pre>
+<pre class="screen">Forward         :stp802.1ag</pre>
+<pre class="screen">Discard         :  </pre>
+<pre class="screen">Mapping-user: </pre>
+<pre class="screen">GigabitEthernet1/0/3  vlan 113</pre>
+<pre class="screen">Total of User: 1</pre>
+<pre class="screen">Mac-tunnel:</pre>
+<pre class="screen">tunnel4</pre>
+<pre class="screen">Total of Mac-tunnel: 1</pre>
+
+<div class="tablenoborder"><a name="display_service-instance__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_service-instance__tb_01" frame="border" border="1" rules="all"><caption>表1 display service-instance命令的输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.494708994708997%" id="d65686e290"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.505291005291%" id="d65686e294"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Service-instance name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><p>业务实例的名字。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Service-type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><p>业务类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Interface-type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><p>业务接口类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Total number of service-instances</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><p>业务实例的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Number of service-instances with status being Up</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><p>状态为Up的业务实例数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Service-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><p>业务实例ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><p>业务实例优先级，分为0～7共8个级别。缺省情况下为信任用户业务<strong>8021p</strong>的优先级。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>TrustTunnelPriority egress</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><div class="p">业务实例宿端是否信任隧道优先级：<ul>
+<li><p>yes：宿端信任隧道优先级。</p>
+</li>
+<li><p>no：宿端不信任隧道优先级。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><div class="p">业务实例状态：<ul>
+<li><p>UP：激活</p>
+</li>
+<li><p>DOWN：关闭</p>
+</li>
+<li><p>Administratively DOWN：业务实例配置shutdown命令</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Mac-limit maximum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><p>MAC地址学习的最大限制数量，如果无限制，则显示为No limit（只有多点到多点业务实例存在该显示信息）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Mac-limit action</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><div class="p">业务实例的MAC地址学习达到最大数量限制后对报文的处理方法（只有多点到多点业务实例存在该显示信息）：<ul>
+<li><p>Forward：转发</p>
+</li>
+<li><p>Discard：丢弃</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Mac-learning</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><div class="p">MAC地址学习功能的状态（只有多点到多点业务实例存在该显示信息）：<ul>
+<li><p>Enable：使能MAC地址学习功能</p>
+</li>
+<li><p>Disable：关闭MAC地址学习功能</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Unknown-unicast</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><div class="p">业务实例对未知单播报文的处理方法（只有多点到多点业务实例存在该显示信息）：<ul>
+<li><p>Forward：转发未知单播报文</p>
+</li>
+<li><p>Discard:：丢弃未知单播报文</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Unknown-multicast</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><div class="p">业务实例对未知组播报文的处理方法（只有多点到多点业务实例存在该显示信息）：<ul>
+<li><p>Forward：转发未知组播报文</p>
+</li>
+<li><p>Discard:：丢弃未知组播报文</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Broadcast</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><div class="p">广播报文的处理状态（只有多点到多点业务实例存在该显示信息）：<ul>
+<li><p>Forward：转发广播报文</p>
+</li>
+<li><p>Discard:：丢弃广播报文</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Control-protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><div class="p">协议报文的操作：<ul>
+<li><p>Forward：转发协议报文</p>
+</li>
+<li><p>Discard：丢弃协议报文</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Mapping-user</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><p>映射的用户。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>IsolateFlag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><div class="p">用户隔离标记。<ul>
+<li><p>yes：该用户配置了隔离。</p>
+</li>
+<li><p>no：该用户没有配置隔离。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.494708994708997%" headers="d65686e290 "><p>Mac-tunnel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.505291005291%" headers="d65686e294 "><p>绑定的MAC Tunnel名称。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_service-instance__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_service-instance__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d65686e622"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d65686e626"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d65686e622 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d65686e626 "><p>命令增加通配符： [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="description_si_view.html">description（业务实例视图）</a></div>
+<div><a href="mapping-type.html">mapping-type</a></div>
+<div><a href="priority_ingress.html">priority ingress</a></div>
+<div><a href="service-id.html">service-id</a></div>
+<div><a href="service-instance_instance-name.html">service-instance instance-name</a></div>
+<div><a href="shutdown_si_view.html">shutdown（业务实例视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

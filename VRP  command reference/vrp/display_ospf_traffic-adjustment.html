@@ -1,0 +1,208 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ospf traffic-adjustment">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="enable_traffic-adjustment.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_igp_shortcut.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ospf_traffic-adjustment">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ospf traffic-adjustment</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ospf_traffic-adjustment"></a><a name="display_ospf_traffic-adjustment"></a>
+
+
+<h1 class="topictitle1">display ospf traffic-adjustment</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ospf traffic-adjustment</strong>命令用来查看与流量调节（IGP
+shortcut及转发邻接）相关的、OSPF进程的隧道信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ospf</strong> [ <em>process-id</em> ] <strong>traffic-adjustment</strong><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：OSPF的进程号，取值范围是1～65535。如果不指定进程号，则显示所有进程的相关信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ospf_traffic-adjustment__d56924e100"></a><a name="d56924e100"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看OSPF100进程与流量调节相关的隧道信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf 100 traffic-adjustment</strong></pre>
+<pre class="screen">
+          OSPF Process 1 with Router ID 20.1.1.1
+                  Traffic adjustment
+
+ Interface: 1.1.1.9 (Tunnel6/0/0)
+ Type: IGP Shortcut
+ Neighbor ID: 4.4.4.4   Cost: 1
+ Configuration:
+  Neighbor ip address: 2.2.2.9
+  Cost     :0
+  Cost Type: Relative
+  Hold Time: 0</pre>
+
+<div class="tablenoborder"><a name="display_ospf_traffic-adjustment__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_traffic-adjustment__tb_01" frame="border" border="1" rules="all"><caption>表1 display ospf traffic-adjustment命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.75686570924666%" id="d56924e122"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.24313429075333%" id="d56924e126"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.75686570924666%" headers="d56924e122 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.24313429075333%" headers="d56924e126 "><p>隧道类型接口的地址和名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.75686570924666%" headers="d56924e122 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.24313429075333%" headers="d56924e126 "><p>该隧道是否用于IGP Shortcut或Forwarding Adjacency</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.75686570924666%" headers="d56924e122 "><p>Neighbor ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.24313429075333%" headers="d56924e126 "><p>隧道对端邻居的Router ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.75686570924666%" headers="d56924e122 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.24313429075333%" headers="d56924e126 "><p>开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.75686570924666%" headers="d56924e122 "><p>Neighbor ip address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.24313429075333%" headers="d56924e126 "><p>邻居的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.75686570924666%" headers="d56924e122 "><p>Cost Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.24313429075333%" headers="d56924e126 "><div class="p">开销类型：<ul>
+<li><p>相对</p>
+</li>
+<li><p>绝对</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.75686570924666%" headers="d56924e122 "><p>Hold time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.24313429075333%" headers="d56924e126 "><p>保持时间</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ospf_traffic-adjustment__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_traffic-adjustment__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d56924e235"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d56924e239"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d56924e235 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d56924e239 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="enable_traffic-adjustment.html">enable traffic-adjustment</a></div>
+<div><a href="mpls_te_igp_shortcut.html">mpls te igp shortcut</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

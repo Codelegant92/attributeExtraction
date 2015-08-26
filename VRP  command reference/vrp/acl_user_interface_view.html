@@ -1,0 +1,82 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="acl（用户界面视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/user_management_commands.html">
+<meta name="DC.Relation" scheme="URI" content="user-interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="acl_user_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>acl（用户界面视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="acl_user_interface_view"></a><a name="acl_user_interface_view"></a>
+
+
+<h1 class="topictitle1">acl（用户界面视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>acl</strong>命令用来通过引用访问控制列表，对提供各种终端服务的用户界面设置呼入呼出权限限制。</p>
+<p><strong>undo acl</strong>命令用来取消用户界面的呼入呼出权限限制。</p>
+<p>缺省情况下，不对用户界面的呼入呼出进行限制。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>acl </strong>[<strong> ipv6 </strong>] <em>acl-number</em> { <strong>inbound</strong> | <strong>outbound</strong> }</p>
+<p><strong>undo acl</strong> [<strong> ipv6 </strong>] { <strong>inbound</strong> | <strong>outbound</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>acl-number</em>：地址访问控制列表号，取值范围是2000～3999。</p>
+<p><strong>inbound</strong>：表示对用户界面的呼入进行限制，即限制某个地址或地址段的用户登录到<span class="keyword">路由器</span>。</p>
+<p><strong>outbound</strong>：表示对用户界面的呼出进行限制，即限制已经登录的用户登录到其他<span class="keyword">路由器</span>。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户界面视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在执行该命令前，需要先执行<a href="acl_system_view.html">acl</a>命令和<a href="rule_acl_view.html">rule</a>命令配置完毕访问控制列表。</p>
+<p>一个用户界面只能配置一个同类的ACL，不会冲突。即IPv4的inbound和outbound，IPv6的inbound和outbound，共4类，每类最多只能配一个。</p>
+<p>如果ACL编号是2000～2999，则表示使用基本访问控制列表限制源地址；如果ACL编号是3000～3999，则表示使用高级访问控制列表同时限制源地址和目的地址。</p>
+<p>配置生效后，该用户界面的所有用户均受此ACL限制。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="acl_user_interface_view__d438e97"></a><a name="d438e97"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在VTY0用户界面上，限制Telnet呼出。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>user-interface vty 0</strong></strong></pre>
+<pre class="screen">[Quidway-ui-vty0]<strong> acl 2000 outbound</strong></pre>
+<p># 在VTY0用户界面上，取消对Telnet呼出的限制。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>user-interface vty 0</strong></strong></pre>
+<pre class="screen">[Quidway-ui-vty0]<strong> undo acl outbound</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/user_management_commands.html">用户管理命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="user-interface.html">user-interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,332 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface pos">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pos_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="link-protocol_pos_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="default_interface-description_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface_pos">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface pos</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface_pos"></a><a name="display_interface_pos"></a>
+
+
+<h1 class="topictitle1">display interface pos</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display interface pos</strong>命令用来查看POS接口的配置和状态信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display interface pos </strong>[ <em>interface-number </em>]<span>[ <strong>| count</strong> ]</span><span> [ <strong>| </strong>{ <strong>begin | include | exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-number</em>：接口编号。如果不指定接口编号，将显示所有POS接口的配置及状态信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。字符串格式，支持空格，区分大小写。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface_pos__d29579e83"></a><a name="d29579e83"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看POS接口1/0/0的配置及状态信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display interface pos 1/0/0</strong></pre>
+<pre class="screen">Pos1/0/0 current state : DOWN</pre>
+<pre class="screen">Line protocol current state : DOWN</pre>
+<pre class="screen">Route Port,The Maximum Transmit Unit is 4470, Hold timer is 10(sec)</pre>
+<pre class="screen">Internet protocol processing : disabled</pre>
+<pre class="screen">Link layer protocol is PPP</pre>
+<pre class="screen">LCP initial</pre>
+<pre class="screen">Physical layer is POS over STM-1</pre>
+<pre class="screen">Scramble enabled, crc 32, clock slave, loopback not set</pre>
+<pre class="screen">Port 0 :</pre>
+<pre class="screen"> Hardware is POS155</pre>
+<pre class="screen"> VendorName    : AGILENT</pre>
+<pre class="screen"> Compliance    : OC3-SM-INTER REACH</pre>
+<pre class="screen"> PartNumber    : HFCT-5760T</pre>
+<pre class="screen"> Mode          : SingleMode</pre>
+<pre class="screen"> LaserwaveLen  : 1310</pre>
+<pre class="screen"> Length for 9/125um :    15000m</pre>
+<pre class="screen">Output queue : (Urgent queue : Size/Length/Discards)  0/50/0</pre>
+<pre class="screen">Output queue : (Protocol queue : Size/Length/Discards) 0/1000/0</pre>
+<pre class="screen">Output queue : (FIFO queuing : Size/Length/Discards)  0/256/0</pre>
+<pre class="screen">    SDH alarm:</pre>
+<pre class="screen">        section layer:  none</pre>
+<pre class="screen">        line    layer:  none</pre>
+<pre class="screen">        path    layer:  none</pre>
+<pre class="screen">        C2(Rx): 0x16  C2(Tx): 0x16</pre>
+<pre class="screen">        J0(Rx): 0x00  J0(Tx): 0x00</pre>
+<pre class="screen">        J1(Rx): 0x00  J1(Tx):0x00</pre>
+<pre class="screen">    SDH error:</pre>
+<pre class="screen">        section layer:  B1 0</pre>
+<pre class="screen">        line    layer:  B2 0  REI 0</pre>
+<pre class="screen">        path    layer:  B3 0  </pre>
+<pre class="screen">Statistics last cleared: never</pre>
+<pre class="screen">    Last 300 seconds input rate 6 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Last 300 seconds output rate 17 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Input: 2247 packets, 143808 bytes</pre>
+<pre class="screen">           0 errors, 0 CRC, 0 packets too long</pre>
+<pre class="screen">    Output:5637 packets, 360768 bytes, 0 underruns</pre>
+<pre class="screen">           0 CRC, 0 aborted sequences, 0 packets too long </pre>
+
+<div class="tablenoborder"><a name="display_interface_pos__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_pos__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface pos命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="37.66691861929957%" id="d29579e177"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="62.33308138070043%" id="d29579e181"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>Pos1/0/0 current state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><div class="p">出接口的物理链路状态。<ul>
+<li><p>UP：接口处于正常启动的状态。</p>
+</li>
+<li><p>DOWN：接口在物理上出现故障。</p>
+</li>
+<li><p>Administratively down：如果网络管理员在该接口执行<strong>shutdown</strong>命令，将显示状态为Administratively down。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>Line protocol current state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><div class="p">链路层协议状态。<ul>
+<li><p>UP：接口的链路协议处于正常的启动状态。</p>
+</li>
+<li><p>DOWN：接口的链路协议不正常，或者没有在此接口配置IP地址。其中damping表示接口因为频繁震荡而被抑制。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>The Maximum Transmit Unit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>接口的MTU值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>Internet Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>POS 接口的网络地址，即IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>Hold timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>接口的轮询时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>Link layer protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>链路层运行的协议：PPP或HDLC。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>LCP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>LCP协商状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>Physical layer is POS over STM-1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>传输封装类型：SONET或SDH。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>Scramble</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>是否使能加扰：disabled或enabled。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>CRC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>CRC校验字长度。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>clock</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>时钟工作模式：slave或master。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>loopback</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>环回功能模式：内部自环、外部环回或不使能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>Hardware</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>POS接口的类型。有155M、2.5G和10G等类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>section layer:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><div class="p">段。<ul>
+<li><p>B1表示进行比特间插奇偶校验后错误的报文，其检测时对整个STM-N帧信号进行传输误码检测</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>line    layer:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><div class="p">复用。<ul>
+<li><p>B2表示比特间插奇偶校验N&times;24位的（BIP-N&times;24）字节，其检测是对STM-N帧中的每一个STM-1帧的传输误码情况进行监测。</p>
+</li>
+<li><p>REI（Remote Error Indication）表示线路远端错误指示。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d29579e177 "><p>path    layer:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d29579e181 "><p>通道。B3：通道BIP-8，B3字节负责监测VC4在STM-N帧中传输的误码性能，也就是监测140Mbit/s的信号在STM&#8212;N帧中传输的误码性能。监测机理与B1、B2相类似，不过B3是对VC4帧进行BIP-8校验</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_interface_pos__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_pos__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d29579e422"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d29579e426"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d29579e422 "><p>VRPV500R005C05B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d29579e426 "><p>缺省情况下，系统不显示接口默认描述信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pos_interface_configuration_commands.html">POS接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="link-protocol_pos_interface_view.html">link-protocol（POS接口视图）</a></div>
+<div><a href="default_interface-description_enable.html">default interface-description enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

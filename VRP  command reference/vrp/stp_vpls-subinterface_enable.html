@@ -1,0 +1,72 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="stp vpls-subinterface enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mstp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="stp_vpls-subinterface_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>stp vpls-subinterface enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="stp_vpls-subinterface_enable"></a><a name="stp_vpls-subinterface_enable"></a>
+
+
+<h1 class="topictitle1">stp vpls-subinterface enable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>stp vpls-subinterface enable</strong>命令用来使能主接口在收到TC报文后通告其绑定了VSI的子接口的功能。</p>
+<p><strong>undo stp vpls-subinterface enable</strong>命令用来禁止主接口在收到TC报文后通告其绑定了VSI的子接口的功能。</p>
+<p>缺省情况下，禁止主接口在收到TC报文后通告其绑定了VSI的子接口。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>stp vpls-subinterface enable</strong></p>
+<p><strong>undo</strong> <strong>stp vpls-subinterface enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet接口视图、GE接口视图、Eth-Trunk接口视图、VE接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果配置了MSTP功能的接口存在子接口，并且在子接口上配置了其他业务，此时，可以使用<strong>stp vpls-subinterface enable</strong>命令，当主接口在收到TC报文后，能够通告其子接口及时刷新MAC表项和ARP表项，从而保证用户业务不中断。此外，使用<strong>stp vpls-subinterface enable</strong>命令后，当主接口是discarding状态时，可以使得绑定了VSI的子接口变为flowdown状态。从而防止CE双归接入PE时，VPLS网络行成环路。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="stp_vpls-subinterface_enable__d122260e55"></a><a name="d122260e55"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能接口GE1/0/1在收到TC报文后通告其绑定了VSI的子接口的功能。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>interface gigabitethernet 1/0/1</strong>
+[Quidway-GigabitEthernet1/0/1] <strong>portswitch</strong>
+[Quidway-GigabitEthernet1/0/1] <strong>stp vpls-subinterface enable</strong>
+</pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mstp_configuration_commands.html">MSTP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

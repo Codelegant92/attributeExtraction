@@ -1,0 +1,100 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te bandwidth（Tunnel接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_bandwidth_tunnel_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te bandwidth（Tunnel接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_bandwidth_tunnel_interface_view"></a><a name="mpls_te_bandwidth_tunnel_interface_view"></a>
+
+<h1 class="topictitle1">mpls te bandwidth（Tunnel接口视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te bandwidth</strong>命令用来配置MPLS TE隧道所需的带宽。</p>
+<p><strong>undo mpls te bandwidth</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，没有配置隧道带宽。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te bandwidth</strong> { <span><strong>ct0</strong> <em>ct0-bw-value</em></span> | <span><strong>ct1</strong> <em>ct1-bw-value</em></span> } [ <strong>flow-queue</strong> <em>flow-queue</em> ]</p>
+<p><strong>mpls te bandwidth</strong> { { <strong>ct0</strong> <em>ct0-bw-value</em> | <strong>ct1</strong> <em>ct1-bw-value</em> | <strong>ct2</strong> <em>ct2-bw-value</em> | <strong>ct3</strong> <em>ct3-bw-value</em> | <strong>ct4</strong> <em>ct4-bw-value</em> | <strong>ct5</strong> <em>ct5-bw-value</em> | <strong>ct6</strong> <em>ct6-bw-value</em> | <strong>ct7</strong> <em>ct7-bw-value</em> } <sup>*</sup></p>
+<p><strong>undo mpls te bandwidth</strong> { <strong>all</strong> | { <strong>ct0</strong> | <strong>ct1</strong><span> | <strong>ct2</strong> | <strong>ct3</strong> | <strong>ct4</strong> | <strong>ct5</strong> | <strong>ct6</strong> | <strong>ct7</strong></span> } <sup>*</sup> }</p>
+<p><strong>undo mpls te bandwidth</strong> { <strong>all</strong> | { <strong>ct0</strong> | <strong>ct1</strong><span> | <strong>ct2</strong> | <strong>ct3</strong> | <strong>ct4</strong> | <strong>ct5</strong> | <strong>ct6</strong> | <strong>ct7</strong></span> } <sup>*</sup> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ct0</strong><em>ct0-bw-value</em>：为CT0预留带宽。<em>ct0-bw-value</em>为整数形式，取值范围是1～32000000，单位是Kbit/s。</p>
+<p><strong>ct1</strong><em>ct1-bw-value</em>：为CT1预留带宽。<em>ct1-bw-value</em>为整数形式，取值范围是1～32000000，单位是Kbit/s。</p>
+<p><strong>flow-queue</strong> <em>flow-queue</em>：指定流量队列模板。<span>只有配置单CT0和单CT1时才能配置该参数。</span><em>flow-queue</em>是流量模板名字，字符串形式，区分大小写，长度范围是1～31个字符。</p>
+<p><strong>ct2</strong><em>ct2-bw-value</em>：为CT2预留带宽。<em>ct2-bw-value</em>为整数形式，取值范围是1～32000000，单位是Kbit/s。</p>
+<p><strong>ct3</strong><em>ct3-bw-value</em>：为CT3预留带宽。<em>ct3-bw-value</em>为整数形式，取值范围是1～32000000，单位是Kbit/s。</p>
+<p><strong>ct4</strong><em>ct4-bw-value</em>：为CT4预留带宽。<em>ct4-bw-value</em>为整数形式，取值范围是1～32000000，单位是Kbit/s。</p>
+<p><strong>ct5</strong><em>ct5-bw-value</em>：为CT5预留带宽。<em>ct5-bw-value</em>为整数形式，取值范围是1～32000000，单位是Kbit/s。</p>
+<p><strong>ct6</strong><em>ct6-bw-value</em>：为CT6预留带宽。<em>ct6-bw-value</em>为整数形式，取值范围是1～32000000，单位是Kbit/s。</p>
+<p><strong>ct7</strong><em>ct7-bw-value</em>：为CT7预留带宽。<em>ct7-bw-value</em>为整数形式，取值范围是1～32000000，单位是Kbit/s。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在Non-IETF模式和IETF模式下都可以配置CT带宽。Non-IETF模式只可以配置CT0和CT1，而IETF模式下可以配置一个或多个CT，且同时需要配置优先级。配置CT和优先级组合需要先配置相应的TE-CLASS。</p>
+<p>静态TE隧道不支持多CT。</p>
+<p>同一个TE隧道接口下，多CT带宽配置与如下特性互斥：</p>
+<ul><li>自动带宽调整</li><li>CSPF仲裁（Tie-Breaking）</li><li>资源隔离VPN</li><li>旁路隧道属性</li></ul>
+<p>TE的单CT配置没有以上限制。</p>
+<p><strong>undo mpls te bandwidth</strong>命令用来恢复缺省设置。分三种情况：</p>
+<ul><li><strong>undo mpls te bandwidth all</strong>表示将所有带宽配置全部清除。</li><li><strong>undo mpls te bandwidth</strong> { <strong>ct0</strong> | <strong>ct1</strong> | <strong>ct2</strong> | <strong>ct3</strong> | <strong>ct4</strong> | <strong>ct5</strong> | <strong>ct6</strong> | <strong>ct7</strong> }<sup>*</sup>表示删除当前TE隧道已经配置的一个或多个CT的带宽。</li></ul>
+<p>当系统从VRPV500R005及之前的版本升级到VRPV500R006版本后，系统当前配置信息中，Tunnel接口下的原有带宽配置命令<strong>mpls te bandwidth bc0</strong> <em>bw-value</em>和<strong>mpls te bandwidth bc1</strong> <em>bw-value</em>将分别被替换为<strong>mpls te bandwidth ct0</strong> <em>bw-value</em>和<strong>mpls te bandwidth ct1</strong> <em>bw-value</em>，命令的作用不变。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_bandwidth_tunnel_interface_view__d95842e342"></a><a name="d95842e342"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在Tunnel1/0/0接口下配置对应TE隧道所需的带宽。<span>CT0</span>带宽为2Mbit/s<span>；CT1带宽为2Mbit/s；CT2带宽为1Mbit/s</span>。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>mpls lsr-id 1.1.1.1</strong></pre>
+<pre class="screen">[Quidway] <strong>mpls</strong></pre>
+<pre class="screen">[Quidway-mpls] <strong>mpls te</strong></pre>
+<pre class="screen">[Quidway-mpls] <strong>quit</strong></pre>
+<pre class="screen">[Quidway] <strong>interface tunnel1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>tunnel-protocol mpls te</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>destination 2.2.2.2</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>mpls te tunnel-id 100</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>mpls te bandwidth <span>ct0 2000 ct1 2000 ct2 1000</span></strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>mpls te commit</strong></pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_te_bandwidth_tunnel_interface_view__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_te_bandwidth_tunnel_interface_view__tb_01" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="50%" id="d95842e404"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="50%" id="d95842e407"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%" headers="d95842e404 "><p>VRPV500R006C02B010</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="d95842e407 "><p>将参数BC0和BC1改为CT0、CT1、CT2、CT3、CT4、CT5、CT6和CT7。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,626 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls oam egress">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_oam_egress.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_oam_egress">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls oam egress</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_oam_egress"></a><a name="display_mpls_oam_egress"></a>
+
+
+<h1 class="topictitle1">display mpls oam egress</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>mpls</strong> <strong>oam</strong> <strong>egress</strong>命令用来在OAM宿端查看配置了OAM功能的LSP当前状态与配置信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>mpls</strong> <strong>oam</strong> <strong>egress</strong> { <strong>all</strong> | <strong>lsp-name</strong> <em>lsp-name</em> | <strong>lsr-id</strong> <em>ingress-lsr-id</em> <strong>tunnel-id</strong> <em>tunnel-id</em> } [ <strong>slot</strong> <em>slot-id</em> | <strong>verbose</strong> ]<span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：查看宿端所有启用OAM功能的LSP的报文信息与缺陷状态。</p>
+<p><strong>lsp-name</strong> <em>lsp-name</em>：被检测的LSP名称，字符串形式，不支持空格，长度范围是1～19。</p>
+<p><strong>lsr-id</strong> <em>ingress-lsr-id</em>：隧道入节点的LSR ID。</p>
+<p><strong>tunnel-id</strong> <em>tunnel-id</em>：Tunnel的ID号，整数形式<span>，取值范围取决于产品的许可证文件</span>。</p>
+<p><strong>slot</strong> <em>slot-id</em>：槽位号。显示指定槽位接口板的全部OAM信息。使用此参数可以看到OAM实例的报文统计信息。</p>
+<p><strong>verbose</strong>：显示全部信息。</p>
+<p>|：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果执行此命令时不指定接口板槽号，将显示主控板的OAM信息。主控板的OAM信息不包括OAM实例的报文统计信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_oam_egress__d44647e158"></a><a name="d44647e158"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在出节点查询LSR ID为1.1.1.1、Tunnel ID为100的LSP的OAM信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls oam egress lsr-id 1.1.1.1 tunnel-id 100</strong>
+--------------------------------------------------------------------------
+No. Lsp-name          Ttsi                  Type    Frequency  Status
+--------------------------------------------------------------------------
+1   --                1.1.1.1 : 100         CV        1 s      Start/No-defect
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_oam_egress__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_oam_egress__tb_01" frame="border" border="1" rules="all"><caption>表1 display oam egress命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="15.545477450239357%" id="d44647e179"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="84.45452254976064%" id="d44647e183"><p>描述.</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="15.545477450239357%" headers="d44647e179 "><p>Lsp name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="84.45452254976064%" headers="d44647e183 "><p>被检测的静态LSP名称。如果被检测的是动态LSP，此处显示&#8220;--&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="15.545477450239357%" headers="d44647e179 "><p>Ttsi</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="84.45452254976064%" headers="d44647e183 "><p>TTSI，包括LSR ID和Tunnel ID两部分。冒号左侧是LSR ID，冒号右侧是Tunnel
+ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="15.545477450239357%" headers="d44647e179 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="84.45452254976064%" headers="d44647e183 "><p>OAM报文检测类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="15.545477450239357%" headers="d44647e179 "><p>Frequency</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="84.45452254976064%" headers="d44647e183 "><p>OAM检测频率</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="15.545477450239357%" headers="d44647e179 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="84.45452254976064%" headers="d44647e183 "><div class="p">检查状态和缺陷状态，包括：<ul>
+<li><p>Start/No-defect：检测到没有故障</p>
+</li>
+<li><p>Start/In-defect：检测到处于故障状态</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 在宿端查看LSR ID为1.1.1.1、Tunnel ID为100的LSP的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls oam egress lsr-id 1.1.1.1 tunnel-id 100 verbose</strong>
+--------------------------------------------------------------------------
+Verbose information about the NO.1 oam at the egress
+--------------------------------------------------------------------------
+
+lsp basic information:                    oam basic information:
+---------------------------------------   --------------------------------
+Lsp name             : --                 Oam-Index           : 256
+Lsp signal status   : Up                  Oam select board    : 1
+Lsp establish type  : Rsvp lsp            Enable-state        : --
+Lsp incoming Label  : 3                   Auto-protocol       : Enable
+Lsp ingress lsr-id  : 1.1.1.1             Auto-overtime (s)   : 300
+Lsp tunnel-id/lsp-id: 100/2               Ttsi/lsr-id         : 1.1.1.1
+Lsp Incoming-int    :  Pos1/0/0           Ttsi/tunnel-id      : 100
+
+oam detect information:                   oam backward information:
+---------------------------------------   -------------------------------
+Type                : CV                  Tunnel name        : --
+Frequency           : 1 s                 Share attribute    : --
+Detect-state        : Start               Lsp signal status  : --
+Defect-state        : No-defect           Bdi-frequency      : --
+Available-state     : Available
+Unavailable time (s): 0
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_oam_egress__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_oam_egress__tb_02" frame="border" border="1" rules="all"><caption>表2 display oam egress verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="51.272360796170325%" id="d44647e278"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="48.72763920382969%" id="d44647e282"><p>描述.</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>lsp basic information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>LSP基本信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Lsp name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>LSP的名字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Lsp signal status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>LSP信令协议的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Lsp establish type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>LSP类型，例如：Rsvp lsp、Static lsp</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Lsp incoming Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>LSP入标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Lsp ingress lsr-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>LSP入节点LSR ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Lsp tunnel-id/lsp-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>LSP绑定隧道ID/LSP ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Lsp Incoming-int</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>LSP的入接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>oam basic information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>OAM基本信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Oam-Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>OAM索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Oam select board</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>主处理板板号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Enable-state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>启动情况</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Auto-protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>OAM自动协议使能标志</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Auto-overtime: (s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>自动协议超时时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Ttsi/lsr-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>TTSI中的LSR ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Ttsi/tunnel-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>TTSI中的Tunnel ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>oam detect information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>OAM检测信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>OAM报文检测类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Frequency</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>OAM检测频率</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Detect state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>OAM检测状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Defect-state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>缺陷状态，&#8220;No-defect&#8221;表示隧道无故障；&#8220;dLocv&#8221;表示隧道故障</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Available state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>可用状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Unavailable time (s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>不可用时长，单位为秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>oam backward information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>OAM反向通道信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Tunnel name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>反向通道名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Share attribute</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>反向通道使用方式，包括共享模式（Share）和独占模式（Private）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Lsp signal status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>反向LSP信令状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.272360796170325%" headers="d44647e278 "><p>Bdi-frequency</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.72763920382969%" headers="d44647e282 "><p>BDI报文发送频率，&#8220;Per-second&#8221;表示每秒发送一次；&#8220;Detect frequency&#8221;表示按OAM检测报文的发送频率发送BDI报文</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 在宿端查看槽位1的接口板上所有OAM实例的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls oam egress all slot 1</strong>
+--------------------------------------------------------------------------------
+Verbose information about the NO.1 oam at the egress
+--------------------------------------------------------------------------------
+lsp basic information:                    oam basic information:
+---------------------------------------   --------------------------------------
+Lsp name            : oamlsp              Oam-Index           : 256
+Lsp signal status   : Up                  Oam select board    : 1
+Lsp establish type  : Static lsp          Enable-state        : --
+Lsp incoming Label  : 30                  Auto-protocol       : Enable
+Lsp ingress lsr-id  : 1.1.1.1             Auto-overtime (s)   : 300
+Lsp tnl-id/lsp-id   : 100/--              Ttsi/lsr-id         : 1.1.1.1
+Lsp Incoming-int    : Pos1/0/0            Ttsi/tunnel-id      : 100
+
+oam detect information:                   oam backward information:
+---------------------------------------   --------------------------------------
+Type                : CV                  Tunnel name         : Tunnel1/0/0
+Frequency           : 1s                  Share attribute     : Private
+Detect-state        : Start               Lsp signal status   : Up
+Defect-type         : Non-defect          Bdi-frequency       : Per-second
+Available-state     : Available
+Unavailable time (s): 1194
+
+oam statistic information:
+---------------------------------------
+Send bdi-packet     : 1205
+Received cv-packet  : 0
+Received ffd-packet : 0
+Received autopro-packet: 0
+--------------------------------------------------------------------------------
+Total Oam Num:                    1
+Total Start Oam Num:              1
+Total Defect Oam Num:             0
+Total Unavaliable Oam Num:        0
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_oam_egress__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_oam_egress__tb_03" frame="border" border="1" rules="all"><caption>表3 display oam egress slot命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="43.32325522801713%" id="d44647e620"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="56.67674477198287%" id="d44647e624"><p>描述.</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d44647e620 "><p>oam statistic information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d44647e624 "><p>宿端OAM实例的统计信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d44647e620 "><p>Send bdi-packet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d44647e624 "><p>宿端发送的BDI报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d44647e620 "><p>Received cv-packet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d44647e624 "><p>宿端接收到的CV报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d44647e620 "><p>Received ffd-packet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d44647e624 "><p>宿端接收到的FFD报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d44647e620 "><p>Received autopro-packet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d44647e624 "><p>宿端接收到的OAM自动协议报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d44647e620 "><p>Total Oam Num:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d44647e624 "><p>所有配置了OAM检测的LSP数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d44647e620 "><p>Total Start Oam Num:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d44647e624 "><p>所有启动OAM检测的LSP数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d44647e620 "><p>Total Defect Oam Num:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d44647e624 "><p>所有检测到故障的LSP数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d44647e620 "><p>Total Unavaliable Oam Num:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d44647e624 "><p>所有目前不可用的LSP数量</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_oam_egress__tb_02_1"></a><a name="tb_02_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_oam_egress__tb_02_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d44647e745"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d44647e749"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d44647e745 "><p>VRPV500R005C02B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d44647e749 "><p>将详细输出信息中的&#8220;Available state&#8221;字段改为&#8220;Available-state&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d44647e745 "><p>VRPV500R006C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d44647e749 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_oam_configuration_commands.html">MPLS OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_oam_egress.html">mpls oam egress</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,120 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="hotkey">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_hotkey.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="hotkey">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>hotkey</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="hotkey"></a><a name="hotkey"></a>
+
+
+<h1 class="topictitle1">hotkey</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>hotkey</strong>命令用来为某命令定义快捷键。</p>
+<p><strong>undo hotkey</strong>命令用来恢复系统的快捷键缺省值。</p>
+<p>缺省情况下，系统给CTRL_G、CTRL_L、CTRL_O三个快捷键指定了缺省值，其它快捷键缺省值为空。分别为：</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>hotkey</strong><em> </em>[ <strong>CTRL_G</strong><em> </em>| <strong>CTRL_L</strong><em> </em>| <strong>CTRL_O</strong> <span>| <strong>CTRL_T</strong></span> ] <em>command-text</em></p>
+<p><strong>undo hotkey </strong>[ <strong>CTRL_G</strong> | <strong>CTRL_L</strong> | <strong>CTRL_O</strong> <span>| <strong>CTRL_T</strong></span> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>CTRL_G</strong>：表示为快捷键&#8220;Ctrl+G&#8221;指定一条命令。</p>
+<p><strong>CTRL_L</strong>：表示为快捷键&#8220;Ctrl+L&#8221;指定一条命令。</p>
+<p><strong>CTRL_O</strong>：表示为快捷键&#8220;Ctrl+O&#8221;指定一条命令。</p>
+<p><strong>CTRL_T</strong>：表示为快捷键&#8220;Ctrl+T&#8221;指定一条命令。</p>
+<p><em>command-text</em>：指定快捷键关联的命令行。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>CTRL_G对应命令<strong>display current-configuration</strong>（显示当前配置）；</p>
+<p>CTRL_L对应命令<strong>display ip routing-table</strong>（显示路由表信息）；</p>
+<p>CTRL_O对应命令<strong>undo debugging all</strong>（停止所有调试信息的输出）。</p>
+<p>如果经常使用某命令，则可以为该命令定义快捷键；也可以根据实际需要来改变系统定义的快捷键默认值。</p>
+<p>输入<em>command-text</em>时，允许命令的缩写或者简写形式。例如：hotkey ctrl_g &#8220;display cur&#8221;等同于hotkey ctrl_g &#8220;display current-configuration&#8221;。</p>
+<p>通过<strong>hotkey</strong>为某命令定义完毕快捷键后，既可以通过快捷键来执行该命令，也可以用常规方式执行该命令。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>一个快捷键只能用于一条命令。如果重复定义某快捷键，则后面的定义会覆盖前面的定义。</p>
+<p>定义快捷键时，对于由多个字组成的命令，即命令中间有空格，则需要使用双引号标识。对于单个字的命令，即命令中没有空格，则不需要使用双引号。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="hotkey__d79672e132"></a><a name="d79672e132"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"> <p># 将命令<strong>display tcp status</strong>与快捷键CTRL_G关联。</p>
+ <pre class="screen">&lt;Quidway&gt;<strong> <strong>system</strong></strong></pre>
+ <pre class="screen">[Quidway]<strong> hotkey ctrl_g &#8220;display tcp status&#8221;</strong></pre>
+ <pre class="screen">[Quidway]<strong> display hotkey</strong></pre>
+ <pre class="screen">----------------- HOTKEY -----------------</pre>
+  <pre class="screen">            =Defined hotkeys=</pre>
+<pre class="screen">Hotkeys Command</pre>
+ <pre class="screen">CTRL_G  display current-configuration</pre>
+ <pre class="screen">CTRL_L  display ip routing-table</pre>
+ <pre class="screen">CTRL_O  undo debug all</pre>
+ <pre class="screen">CTRL_G  display tcp status</pre>
+ <pre class="screen">           =Undefined hotkeys=</pre>
+  <pre class="screen">            =System hotkeys=</pre>
+ <pre class="screen">Hotkeys Function</pre>
+ <pre class="screen">CTRL_A  Move the cursor to the beginning of the current line.</pre>
+ <pre class="screen">CTRL_B  Move the cursor one character left.</pre>
+ <pre class="screen">CTRL_C  Stop current command function.</pre>
+ <pre class="screen">CTRL_D  Erase current character.</pre>
+ <pre class="screen">CTRL_E  Move the cursor to the end of the current line.</pre>
+ <pre class="screen">CTRL_F  Move the cursor one character right.</pre>
+ <pre class="screen">CTRL_H  Erase the character left of the cursor.</pre>
+ <pre class="screen">CTRL_K  Kill outgoing connection.</pre>
+ <pre class="screen">CTRL_N  Display the next command from the history buffer.</pre>
+ <pre class="screen">CTRL_P  Display the previous command from the history buffer.</pre>
+<pre class="screen">CTRL_R  Redisplay the current line.</pre>
+ <pre class="screen">CTRL_U   Delete all characters up to the cursor.</pre>
+<pre class="screen">CTRL_V  Paste text from the clipboard.</pre>
+ <pre class="screen">CTRL_W  Delete the word left of the cursor.</pre>
+ <pre class="screen">CTRL_X  Delete all characters up to the cursor.</pre>
+ <pre class="screen">CTRL_Y  Delete all characters after the cursor.</pre>
+ <pre class="screen">CTRL_Z  Return to the user view.</pre>
+ <pre class="screen">CTRL_]  Kill incoming connection or redirect connection.</pre>
+ <pre class="screen">ESC_B   Move the cursor one word back.</pre>
+ <pre class="screen">ESC_D   Delete remainder of word.</pre>
+ <pre class="screen">ESC_F   Move the cursor forward one word.</pre>
+ <pre class="screen">ESC_N   Move the cursor down a line.</pre>
+ <pre class="screen">ESC_P   Move the cursor up a line.</pre>
+ <pre class="screen">ESC_&lt;   Specify the beginning of clipboard.</pre>
+ <pre class="screen">ESC_&gt; Specify the end of clipboard.</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_configuration_commands.html">基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_hotkey.html">display hotkey</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

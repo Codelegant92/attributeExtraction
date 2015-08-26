@@ -1,0 +1,67 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dialer bundle-member">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dcc_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="dialer_bundle.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dialer_bundle-member">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dialer bundle-member</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dialer_bundle-member"></a><a name="dialer_bundle-member"></a>
+
+<h1 class="topictitle1">dialer bundle-member</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dialer bundle-member</strong>命令用来在共享DCC的配置中设置一个物理接口属于哪一个Dialer bundle。</p>
+<p><strong>undo dialer bundle-member</strong>命令用来将该物理接口脱离该Dialer bundle。</p>
+<p>物理接口缺省为不属于任何Dialer bundle。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dialer bundle-member</strong> <em>number</em> [<strong> priority</strong> <em>priority</em> ] [ <strong>max-link</strong> <em>max-channel </em>] [ <strong>min-link</strong> <em>min-channel </em>]</p>
+<p><strong>undo dialer bundle-member</strong> <em>number</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>number</em>：Dialer bundle序号。整数形式，取值范围是1～255。</p>
+<p><em>priority</em>：物理接口在这个Dialer bundle中的优先级。整数形式，取值范围是1～255。优先级高的物理接口优先使用，本参数为可选项。<em>priority</em>的缺省值是1。</p>
+<p><strong>max-link</strong> <em>max-channel</em>：表示Dialer bundle能够使用该接口的最大通道数，取值范围是1～255。</p>
+<p><strong>min-link </strong><em>min-channel</em>：表示Dialer bundle能够使用该接口的最小通道数，取值范围是1<strong>～</strong>255。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>此命令只能用于物理接口，一个物理接口可以是多个Dialer bundle的成员。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>对于ISDN物理接口（BRI或PRI接口），为了支持该ISDN接口B通道能够根据Dialer接口来动态封装链路层协议，则必须先将该接口的链路层封装协议设置成PPP。</p>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dialer_bundle-member__d11543e90"></a><a name="d11543e90"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置Serial1/0/0属于Dialer bundle1、bundle2，优先级均为50。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface serial 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0] <strong>dialer bundle-member 1 priority 50</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0] <strong>dialer bundle-member 2 priority 50</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dcc_configuration_commands.html">DCC配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="dialer_bundle.html">dialer bundle</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

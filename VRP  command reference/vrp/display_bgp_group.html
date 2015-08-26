@@ -1,0 +1,628 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display bgp group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="peer_group_bgp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_bgp_group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display bgp group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_bgp_group"></a><a name="display_bgp_group"></a>
+
+
+<h1 class="topictitle1">display bgp group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display bgp group</strong>命令用来显示对等体组信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display bgp group</strong> [ <em>group-name</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv4</strong> { <strong>all</strong> | <strong>vpn-instance</strong> <em>vpn-instance-name</em> } <strong>group</strong> [ <em>group-name</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp l2vpn</strong> <strong>group</strong> [ <em>group-name</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpls group</strong> [ <em>group-name</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp ipv6 group</strong> [ <em>group-name</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv6</strong> <strong>all group</strong> [ <em>group-name</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv6</strong> <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> <strong>group</strong> [ <em>group-name</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>group-name</em>：指定的对等体组名。</p>
+<p><strong>vpnv4</strong>：查看VPNv4的BGP对等体组信息。</p>
+<p><strong>all</strong>：查看所有VPNv4的对等体组信息。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例名称。区分大小写。</p>
+<p><strong>l2vpn</strong>：查看L2VPN的BGP对等体组信息。</p>
+<p><strong>vpls</strong>：查看VPLS的BGP对等体组信息。</p>
+<p><strong>ipv6</strong>：查看IPv6对等体组信息。</p>
+<p><strong>vpnv6</strong>：查看BGP VPNv6对等体组信息。</p>
+<p><strong>vpnv6</strong> <strong>vpn6-instance</strong> <strong>group</strong>：查看指定IPv6 VPN实例的对等体组信息。</p>
+<p><em>vpn6-instance-name</em>：指定IPv6 VPN实例名称。区分大小写。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_bgp_group__d14859e344"></a><a name="d14859e344"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示对等体组my-peer的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp group my-peer</strong></pre>
+
+<pre class="screen"> BGP peer-group: my-peer</pre>
+<pre class="screen"> Remote AS 200</pre>
+<pre class="screen"> Group's BFD has been enabled</pre>
+<pre class="screen"> Type : internal</pre>
+<pre class="screen"> Maximum allowed route limit: 150000</pre>
+<pre class="screen"> Threshold: 75%</pre>
+<pre class="screen"> Configured hold timer value: 180</pre>
+<pre class="screen"> Keepalive timer value: 60</pre>
+<pre class="screen"> Minimum route advertisement interval is 15 seconds</pre>
+<pre class="screen"> listen-only has been configured</pre>
+<pre class="screen">PeerSession Members:</pre>
+<pre class="screen">   2.2.2.2</pre>
+
+<pre class="screen"> Peer Preferred Value: 0</pre>
+<pre class="screen"> No routing policy is configured</pre>
+<pre class="screen">  Peer Members:</pre>
+<pre class="screen">  Peer             V    AS  MsgRcvd  MsgSent  OutQ  Up/Down       State PrefRcv</pre>
+<pre class="screen">  2.2.2.2         4   200        0        0     0 00:00:47      Active       0</pre>
+
+
+<div class="tablenoborder"><a name="display_bgp_group__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_group__tb_01" frame="border" border="1" rules="all"><caption>表1 display bgp group命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.19249181153943%" id="d14859e401"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.807508188460574%" id="d14859e405"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Remote AS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>对等体所在的AS号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Group's BFD has been enabled,</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>对等体组已经使能BFD功能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><div class="p">对等体组的类型<ul>
+<li><p>internal：对等体组类型为IBGP</p>
+</li>
+<li><p>external：对等体组类型为EBGP</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Configured hold timer value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>所配置的保持时间的值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Keepalive timer value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>存活时间的值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Minimum route advertisement interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>路由通告的最短时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Listen-only has been configured</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>仅监听连接请求，不主动发起连接功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>PeerSession Members</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>对等体成员之间建立了会话连接的成员</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Maximum allowed route limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>最大可允许的BGP路由的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Threshold</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>告警阈值，即BGP路由数量占可允许接收的路由数量的百分比</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Peer Preferred Value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>对等体的首选值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Peer Members</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>表示以下显示的是对等体的相关信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Peer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>对等体的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>V</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>BGP版本号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>As</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>对等体所在的自治系统号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>MsgRcvd</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>收到的消息数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>MsgSent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>发送的消息数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>OutQ</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>等待向邻居发送的消息数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>Up/Down</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>BGP会话处于当前状态的时长</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><div class="p">BGP状态机<ul>
+<li><p>Idle：BGP拒绝任何进入的连接请求，是BGP初始状态</p>
+</li>
+<li><p>Active：BGP将尝试进行TCP连接的建立，是BGP的中间状态</p>
+</li>
+<li><p>Established：BGP对等体间可以交换Update报文、Notification报文和Keepalive报文</p>
+</li>
+<li><p>Connect：此状态下，BGP等待TCP连接的建立完成后再决定后续操作</p>
+</li>
+<li><p>OpenSent：此状态下，BGP等待对等体的Open消息</p>
+</li>
+<li><p>OpenConfirm：此状态下，BGP等待一个Notification报文或Keepalive报文</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e401 "><p>PrefRcv </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e405 "><p>本端从对等体上收到路由前缀的数目</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示所有VPNv4的BGP对等体组信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv4 all group</strong></pre>
+<pre class="screen">Group in VPNV4:</pre>
+
+<pre class="screen"> BGP peer-group: aa</pre>
+<pre class="screen"> Remote AS number isn't specified</pre>
+<pre class="screen"> Type : external</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">   3.3.3.3</pre>
+
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">   3.3.3.3</pre>
+<pre class="screen"> ***********************</pre>
+
+<pre class="screen"> BGP peer-group: bb</pre>
+<pre class="screen"> Remote AS 100</pre>
+<pre class="screen"> Type : internal</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">  NONE</pre>
+
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">   4.4.4.4</pre>
+
+
+<pre class="screen">Group in VPN-Instance:</pre>
+
+<pre class="screen"> BGP peer-group: cc</pre>
+<pre class="screen"> Remote AS number isn't specified</pre>
+<pre class="screen"> VPN-Instance: 1</pre>
+
+<pre class="screen"> Type : external</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">   2.2.2.1</pre>
+
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">   2.2.2.1</pre>
+
+<div class="tablenoborder"><a name="display_bgp_group__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_group__tb_02" frame="border" border="1" rules="all"><caption>表2 display bgp vpnv4 all group命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.19249181153943%" id="d14859e760"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.807508188460574%" id="d14859e764"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e760 "><p>Group in VPNV4</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e764 "><p>显示所有VPNv4对等体组信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e760 "><p>BGP peer-group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e764 "><p>BGP对等体名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e760 "><p>Remote AS number isn't specified</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e764 "><p>当对等体组为混合EBGP对等组时，显示此信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e760 "><p>Group in VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e764 "><p>显示VPN实例相关的对等体组信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e760 "><p>VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e764 "><p>VPN实例名称</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示所有BGP IPv6对等体组的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp ipv6 group</strong></pre>
+<pre class="screen"> BGP peer-group is in</pre>
+<pre class="screen"> Remote AS 100</pre>
+<pre class="screen"> Type : internal</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">   2::1</pre>
+
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">   1::1               2::1</pre>
+<pre class="screen"> ***********************</pre>
+
+<pre class="screen"> BGP peer-group is ex</pre>
+<pre class="screen"> Remote AS number not specified</pre>
+<pre class="screen"> Type : external</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">   20::1</pre>
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">   10::1              20::1</pre>
+<p># 查看BGP VPNv6对等体组rr1的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp vpnv6 all group rr1</strong></pre>
+
+<pre class="screen"> BGP peer-group: rr1</pre>
+<pre class="screen"> Remote AS 100</pre>
+<pre class="screen"> Type : internal</pre>
+<pre class="screen"> Configured hold timer value: 180</pre>
+<pre class="screen"> Keepalive timer value: 60</pre>
+<pre class="screen"> Minimum route advertisement interval is 15 seconds</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">  NONE</pre>
+
+<pre class="screen"> Peer Preferred Value: 0</pre>
+<pre class="screen"> No routing policy is configured</pre>
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">  Peer            V    AS  MsgRcvd  MsgSent  OutQ  Up/Down       State PrefRcv</pre>
+
+<pre class="screen">  1.1.1.1         4   100      586      633     0 09:32:18 Established       1</pre>
+<pre class="screen">  2.2.2.2         4   100      718      643     0 09:32:02 Established       1</pre>
+<p># 显示所有BGP IPv6对等体组的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display bgp vpnv6 all group</strong></strong></pre>
+<pre class="screen">Group in VPNV6:</pre>
+
+<pre class="screen"> BGP peer-group: 123</pre>
+<pre class="screen"> Remote AS number isn't specified</pre>
+<pre class="screen"> Type : external</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">   1::1</pre>
+
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">  No Peer Exists</pre>
+<pre class="screen"> ***********************</pre>
+
+<pre class="screen"> BGP peer-group: 222</pre>
+<pre class="screen"> Remote AS 200</pre>
+<pre class="screen"> Type : internal</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">   2::2</pre>
+
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">  No Peer Exists</pre>
+<pre class="screen"> ***********************</pre>
+
+<pre class="screen"> BGP peer-group: 333</pre>
+<pre class="screen"> Remote AS 400</pre>
+<pre class="screen"> Type : external</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">   3::3</pre>
+
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">  No Peer Exists</pre>
+
+
+<pre class="screen">Group in VPN6-Instance:</pre>
+
+<pre class="screen"> BGP peer-group: 55</pre>
+<pre class="screen"> Remote AS number isn't specified</pre>
+<pre class="screen"> VPN6-Instance: 1</pre>
+
+<pre class="screen"> Type : external</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">   4::4</pre>
+
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">   4::4</pre>
+
+<div class="tablenoborder"><a name="display_bgp_group__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_group__tb_03" frame="border" border="1" rules="all"><caption>表3 display bgp vpnv6 all group命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.19249181153943%" id="d14859e1002"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.807508188460574%" id="d14859e1006"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e1002 "><p>Group in VPN6-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e1006 "><p>显示所有VPNv6实例的对等体组信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e1002 "><p>Remote AS number isn't specified</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e1006 "><p>当对等体组为混合EBGP对等组时，显示此信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d14859e1002 "><p>VPN6-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d14859e1006 "><p>VPNv6实例名称</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看本设备上名为vpn6的IPv6 VPN实例的所有对等体组信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp vpnv6 vpn6-instance vpn6 group</strong></pre>
+<pre class="screen">BGP peer-group: g1</pre>
+<pre class="screen"> Remote AS 65410</pre>
+<pre class="screen"> Type : external</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">   2000::2</pre>
+
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">   2000::2</pre>
+<p># 查看本设备上名为vpn6的IPv6 VPN实例的名为g1的对等体组信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp vpnv6 vpn6-instance vpn6 group g1</strong></pre>
+
+<pre class="screen">BGP peer-group: g1</pre>
+<pre class="screen"> Remote AS 65410</pre>
+<pre class="screen"> VPN6-Instance: vpn6</pre>
+
+<pre class="screen"> Type : external</pre>
+<pre class="screen"> Configured hold timer value: 180</pre>
+<pre class="screen"> Keepalive timer value: 60</pre>
+<pre class="screen"> Minimum route advertisement interval is 30 seconds</pre>
+<pre class="screen"> PeerSession Members:</pre>
+<pre class="screen">   2000::2</pre>
+
+<pre class="screen"> Peer Preferred Value: 0</pre>
+<pre class="screen"> No routing policy is configured</pre>
+<pre class="screen"> Peer Members:</pre>
+<pre class="screen">  Peer            V    AS  MsgRcvd  MsgSent  OutQ  Up/Down       State PrefRcv</pre>
+
+<pre class="screen">  2000::2         4 65410      103       90     0 01:20:55 Established       0</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_bgp_group__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_group__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d14859e1120"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d14859e1124"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d14859e1120 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d14859e1124 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="peer_group_bgp.html">peer group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

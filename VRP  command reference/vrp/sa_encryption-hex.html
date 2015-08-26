@@ -1,0 +1,86 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="sa encryption-hex">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="security_acl.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_local.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_remote.html">
+<meta name="DC.Relation" scheme="URI" content="sa_duration_security_policy_view.html">
+<meta name="DC.Relation" scheme="URI" content="proposal.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="sa_encryption-hex">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>sa encryption-hex</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="sa_encryption-hex"></a><a name="sa_encryption-hex"></a>
+
+<h1 class="topictitle1">sa encryption-hex</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>sa</strong> <strong>encryption-hex</strong>命令用来设置在使用<strong>manual</strong>方式的安全策略时安全联盟的加密密钥参数。</p>
+<p><strong>undo sa encryption-hex</strong>命令用来删除设置的安全联盟的加密密钥参数。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>sa</strong> <strong>encryption-hex</strong> { <strong>inbound</strong> | <strong>outbound</strong> } <strong>esp</strong> <em>hex-key</em></p>
+<p><strong>undo sa encryption-hex</strong> { <strong>inbound</strong> | <strong>outbound</strong> } <strong>esp</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>inbound</strong>：设置入方向安全联盟的参数，IPSec使用入方向安全联盟处理接收的报文。</p>
+<p><strong>outbound</strong>：设置出方向安全联盟的参数，IPSec使用出方向安全联盟处理发送的报文。</p>
+<p><strong>esp</strong>：设置采用ESP协议的安全联盟的参数。如果安全策略引用的提议规定了采用ESP协议，使用<strong>esp</strong>关键字来设置安全联盟的参数。</p>
+<p><em>hex-key</em>：使用ESP协议时，指定安全联盟的加密密钥。以16进制格式输入，输入的密钥长度必须符合所采用的加密算法的要求。如果使用DES算法，密钥长度范围是8个字节；如果使用3DES算法，密钥长度范围是24个字节。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>手工方式安全策略视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>此命令仅用于<strong>manual</strong>方式的安全策略，用该命令设置安全联盟的参数，实现手工创建安全联盟。</p>
+<p>对于<strong>isakmp</strong>方式的安全策略，不需要设置安全联盟的参数，该命令无效，IKE将自动协商安全联盟的参数并创建安全联盟。</p>
+<p>在为系统配置安全联盟时，必须分别设置<strong>inbound</strong>和<strong>outbound</strong>两个方向安全联盟的参数。</p>
+<p>在安全隧道的两端设置的安全联盟参数必须是完全匹配的。本端的入方向安全联盟的加密密钥必须和对端的出方向安全联盟的加密密钥一样；本端的出方向安全联盟的加密密钥必须和对端的入方向安全联盟的加密密钥一样。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="sa_encryption-hex__d116330e100"></a><a name="d116330e100"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在采用ESP协议及DES加密算法的安全策略中设置入方向安全联盟的SPI为1001，加密算法的密钥为0x1234567890abcdef ；输出安全联盟的SPI为2001，加密算法的密钥为0x abcdefabcdef1234。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ipsec proposal prop_esp</strong></pre>
+<pre class="screen">[Quidway-ipsec-proposal-prop_esp]<strong> transform esp</strong></pre>
+<pre class="screen">[Quidway-ipsec-proposal-prop_esp]<strong> esp encryption-algorithm des</strong></pre>
+<pre class="screen">[Quidway-ipsec-proposal-prop_esp]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> ipsec policy tianjin 100 manual</strong></pre>
+<pre class="screen">[Quidway-ipsec-policy-manual-tianjin-100]<strong> proposal prop_esp</strong></pre>
+<pre class="screen">[Quidway-ipsec-policy-manual-tianjin-100]<strong> sa spi inbound esp 1001</strong></pre>
+<pre class="screen">[Quidway-ipsec-policy-manual-tianjin-100]<strong> sa encryption-hex inbound esp 1234567890abcdef</strong></pre>
+<pre class="screen">[Quidway-ipsec-policy-manual-tianjin-100]<strong> sa spi outbound esp 2001</strong></pre>
+<pre class="screen">[Quidway-ipsec-policy-manual-tianjin-100]<strong> sa encryption-hex outbound esp abcdefabcdef1234</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipsec_policy_system_view.html">ipsec policy（系统视图）</a></div>
+<div><a href="ipsec_policy_interface_view.html">ipsec policy（接口视图）</a></div>
+<div><a href="security_acl.html">security acl</a></div>
+<div><a href="tunnel_local.html">tunnel local</a></div>
+<div><a href="tunnel_remote.html">tunnel remote</a></div>
+<div><a href="sa_duration_security_policy_view.html">sa duration（安全策略视图）</a></div>
+<div><a href="proposal.html">proposal</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

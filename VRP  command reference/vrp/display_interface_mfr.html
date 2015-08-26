@@ -1,0 +1,317 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface mfr">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frame_relay_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_fr_interface.html">
+<meta name="DC.Relation" scheme="URI" content="default_interface-description_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface_mfr">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface mfr</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface_mfr"></a><a name="display_interface_mfr"></a>
+
+
+
+<h1 class="topictitle1">display interface mfr</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p>命令<strong>display interface mfr</strong>用来查看MFR接口的配置和状态信息，包括报文统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display interface mfr</strong> [ <em>interface-number</em>[<em>.subnumber</em> ] ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-number</em>：捆绑接口的编号，三维形式：槽号/卡号/接口号。</p>
+<p><em>subnumber</em>：捆绑接口子接口编号。整数形式，取值范围是1～1024。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface_mfr__d29274e51"></a><a name="d29274e51"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看MFR接口4/0/2的配置和状态信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display interface mfr 4/0/2</strong></pre>
+<pre class="screen">MFR4/0/2 current state : UP</pre>
+<pre class="screen">Line protocol current state : UP</pre>
+<pre class="screen">Last line protocol up time: 2007-11-03, 17:45:06</pre>
+<pre class="screen">Route Port,The Maximum Transmit Unit is 1500</pre>
+<pre class="screen">Internet Address is 23.1.1.1/24</pre>
+<pre class="screen">Link layer protocol is FR IETF</pre>
+<pre class="screen">  LMI DLCI is 0, LMI type is Q.933a, frame relay DTE</pre>
+<pre class="screen">  LMI status enquiry sent 2, LMI status received 2</pre>
+<pre class="screen">  LMI status timeout 0, LMI message discarded 0</pre>
+<pre class="screen">Physical is MFR, baudrate: 128000</pre>
+<pre class="screen">QoS max-bandwidth : 64 Kbps</pre>
+<pre class="screen">Output queue : (Urgent queue : Size/Length/Discards)  0/50/0</pre>
+<pre class="screen">Output queue : (Protocol queue : Size/Length/Discards) 0/1000/0</pre>
+<pre class="screen">Output queue : (FIFO queuing : Size/Length/Discards)  0/75/0</pre>
+<pre class="screen">Statistics last cleared: never</pre>
+<pre class="screen">    Last 300 seconds input rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Last 300 seconds output rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    8 packets input, 206 bytes, 0 drops</pre>
+<pre class="screen">    8 packets output, 222 bytes, 0 drops  </pre>
+
+<div class="tablenoborder"><a name="display_interface_mfr__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_mfr__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface mfr输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="31.016042780748666%" id="d29274e109"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="68.98395721925134%" id="d29274e113"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>MFR4/0/2 current state :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><div class="p">显示接口MFR4/0/2的物理状态：<ul>
+<li><p>UP：接口处于正常启动的状态。</p>
+</li>
+<li><p>DOWN：接口在物理上出现故障。</p>
+</li>
+<li><p>Administratively down：如果网络管理员在该接口执行shutdown命令，将显示状态为Administratively down。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>Line protocol current state :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><div class="p">显示该接口的链路协议状态：<ul>
+<li><p>UP：接口的链路协议处于正常的启动状态。</p>
+</li>
+<li><p>DOWN：接口的链路协议不正常。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>Last line protocol up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><p>接口的协议状态最近一次变为Up的时间。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>The Maximum Transmit Unit is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><p>接口的最大传输单元（MTU）。如串口缺省值是1500字节。长度大于MTU的报文，将会被分片后再发送。如果设置了不准分片，会被丢弃。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>Internet Address is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><p>接口的IP地址和子网掩码。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>Link layer protocol is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><p>链路层连接协议。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>LMI DLCI is 0, LMI type is Q.933a, frame relay DTE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><p>LMI使用的DLCI是0，类别Q933A,帧中继DTE端。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>LMI status enquiry sent, LMI status received </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><p>发送状态查询报文数，以及收到状态报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>LMI status timeout , LMI message discarded</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><p>LMI状态查询超时个数，LMI消息丢弃个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>Physical is MFR, baudrate:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><p>物理链路是MFR，波特率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>Output queue : (Urgent queue : Size/Length/Discards)Output queue : (Protocol queue : Size/Length/Discards)Output queue : (FIFO queuing : Size/Length/Discards)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><div class="p">接口输出队列的当前状态，通常包括三类输出队列（Output queue）：<ul>
+<li><p>紧急队列（Urgent queue），链路层的协议报文，比如PPP的协商报文和Keepalive报文等将进入这个队列。</p>
+</li>
+<li><p>协议队列（Protocol queue），IP优先级为6的报文将进入协议队列。</p>
+</li>
+<li><p>普通的报文队列（FIFO queue），根据接口上应用的队列类型，可能是FIFO（First In First Out Queue）、PQ（Priority Queue）、CQ（Custom Queue）或CBQ（Class-based Queue）等。</p>
+</li>
+</ul>
+当发生拥塞时，接口首先发送紧急队列中的报文，然后是协议队列中的报文，最后发送普通队列中的报文。对于各种发送队列，显示为Size/Length/Discards形式的数字，这里各字段含义如下：<ul>
+<li><p>Size ：队列中的分组数。</p>
+</li>
+<li><p>Length：用分组表示的最大队列的长度。</p>
+</li>
+<li><p>Discards：由于队列已满而丢失的分组数。</p>
+</li>
+</ul>
+通过检查Discards在一段时间内与Size和Length的关系，可以考察该接口的性能是否满足要求。例如：当Discards的值较大时可能表示<span class="keyword">路由器</span>正忙于进行其他工作，而无法及时处理进入的分组，如果这种情况持续很长的时间，则通常表示需要一个更强大的<span class="keyword">路由器</span>以满足工作的要求。</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>Statistics last cleared:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><p>上次清除本接口统计信息的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>Last 300 seconds input rate</p>
+<p>Last 300 seconds output rate </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><p>这一字段显示了在前300秒内通过接口发送和接收的字节速率和报文速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.016042780748666%" headers="d29274e109 "><p>8 packets input, 206 bytes, 0 drops8 packets output, 222 bytes, 0 drops</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.98395721925134%" headers="d29274e113 "><p>接口接收和发送的报文总数和字节总数，以及由于缓存空间不足而丢失的报文字节数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_interface_mfr__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_mfr__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d29274e351"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d29274e355"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d29274e351 "><p>VRPV500R003C07B250</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d29274e355 "><p>增加显示上次清除本接口统计信息的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d29274e351 "><p>VRPV500R005C02B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d29274e355 "><p>除在链路协议状态处显示具有spoofing特性的接口和Trunk成员接口外，所有协议是Up状态的三层接口都增加显示接口的协议状态最近一次变为Up的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d29274e351 "><p>VRPV500R005C05B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d29274e355 "><p>缺省情况下，系统不显示接口默认描述信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/frame_relay_configuration_commands.html">帧中继配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_fr_interface.html">display fr interface</a></div>
+<div><a href="default_interface-description_enable.html">default interface-description enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

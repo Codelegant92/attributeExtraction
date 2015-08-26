@@ -1,0 +1,468 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls ldp session">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_ldp_lsp.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_ldp_peer.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_ldp_remote-peer.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_ldp_session">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls ldp session</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_ldp_session"></a><a name="display_mpls_ldp_session"></a>
+
+
+<h1 class="topictitle1">display mpls ldp session</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls ldp session</strong>命令用来查看LDP对等体间的会话信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls ldp session</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] [ <strong>verbose</strong> | <em>peer-id</em> ] [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+<p><strong>display mpls ldp session</strong> [ <strong>all</strong> ] [ <strong>verbose</strong> ] [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：显示指定VPN实例名的LDP会话信息。</p>
+<p><em>peer-id</em>：显示指定对等体LSR-ID的LDP会话信息。</p>
+<p><strong>verbose</strong>：显示LDP会话的详细信息。</p>
+<p><strong>all</strong>：显示所有LDP会话的信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行此命令可以查看LDP会话的建立情况，以及会话相关的实时信息，比如发送和接收的Hello消息数。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_ldp_session__d44062e127"></a><a name="d44062e127"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有LDP会话信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls ldp session</strong></pre>
+<pre class="screen">
+               LDP Session(s) in Public Network
+ ------------------------------------------------------------------------------
+ Peer-ID            Status      LAM  SsnRole  SsnAge      KA-Sent/Rcv
+ ------------------------------------------------------------------------------
+ 2.2.2.9:0          Operational DU   Passive  000:00:49   198/199
+ 3.3.3.9:0          Operational DU   Passive  000:00:49   200/200
+ ------------------------------------------------------------------------------
+ TOTAL: 2 session(s) Found.
+ LAM : Label Advertisement Mode      SsnAge Unit : DDD:HH:MM
+</pre>
+<p># 查看目的地址是2.2.2.9/32的LDP会话信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls ldp session | include 2.2.2.9</strong></pre>
+<pre class="screen">               LDP Session(s) in Public Network
+--------------------------------------------------------------------------
+ Peer-ID            Status      LAM  SsnRole  SsnAge      KA-Sent/Rcv
+--------------------------------------------------------------------------
+ 2.2.2.9:0          Operational DU   Passive  000:00:49   198/199
+
+--------------------------------------------------------------------------
+ LAM : Label Advertisement Mode      SsnAge Unit : DDD:HH:MM</pre>
+
+<div class="tablenoborder"><a name="display_mpls_ldp_session__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_ldp_session__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls ldp session命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.7941546989166%" id="d44062e157"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.2058453010834%" id="d44062e161"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e157 "><p>Peer-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e161 "><p>对等体的LDP标识符，格式为&lt;LSR ID&gt;：&lt;标签空间&gt;：</p>
+<ul>
+<li><p>&#8220;0&#8221;表示全局标签空间</p>
+</li>
+<li><p>&#8220;1&#8221;表示接口标签空间</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e157 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e161 "><p>LDP会话的状态：</p>
+<ul>
+<li><p>Operational：表示LDP会话已经建立</p>
+</li>
+<li><p>Initialized：表示LDP会话处于初始化状态</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e157 "><p>LAM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e161 "><p>LDP会话的标签发布方式，<span class="keyword">VRP</span>采用的标签分发方式为为DU。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e157 "><p>SsnRole</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e161 "><p>LSR在LDP会话中的角色：</p>
+<ul>
+<li><p>Active：LSR ID值较大的一方表示建立LDP会话的主动方</p>
+</li>
+<li><p>Passive：LSR ID值较小的一方表示建立LDP会话的被动方</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e157 "><p>SsnAge</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e161 "><p>LDP会话从建立至今的时间间隔，格式为：&#8220;天：小时：分钟&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e157 "><p>KA-Sent/Rcv</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e161 "><p>会话发送和接收的keepalive消息数</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+<p># 查看所有LDP会话的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls ldp session verbose</strong></pre>
+<pre class="screen">
+               LDP Session(s) in Public Network
+ ------------------------------------------------------------------------------
+ Peer LDP ID     : 2.2.2.9:0            Local LDP ID   : 1.1.1.9:0
+ TCP Connection  : 1.1.1.9 &lt;- 2.2.2.9
+ Session State   : Operational          Session Role   : Passive
+ Session FT Flag : Off                  MD5 Flag       : Off
+ Reconnect Timer : ---                  Recovery Timer : ---
+
+ Negotiated Keepalive Timer        : 45 Sec
+ Keepalive Message Sent/Rcvd       : 179/179 (Message Count)
+ Label Advertisement Mode          : Downstream Unsolicited
+ Label Resource Status(Peer/Local) : Available/Available
+ Session Age                       : 000:00:44  (DDD:HH:MM)
+
+ Addresses received from peer: (Count: 3)
+ 10.1.1.2            10.2.1.1            2.2.2.9
+
+ ------------------------------------------------------------------------------
+ Peer LDP ID     : 3.3.3.9:0            Local LDP ID   : 1.1.1.9:0
+ TCP Connection  : 1.1.1.9 &lt;- 3.3.3.9
+ Session State   : Operational          Session Role   : Passive
+ Session FT Flag : Off                  MD5 Flag       : Off
+ Reconnect Timer : ---                  Recovery Timer : ---
+
+ Negotiated Keepalive Timer        : 45 Sec
+ Keepalive Message Sent/Rcvd       : 180/180 (Message Count)
+ Label Advertisement Mode          : Downstream Unsolicited
+ Label Resource Status(Peer/Local) : Available/Available
+ Session Age                       : 000:00:44  (DDD:HH:MM)
+
+ Addresses received from peer: (Count: 2)
+ 10.2.1.2            3.3.3.9
+
+ ------------------------------------------------------------------------------
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_ldp_session__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_ldp_session__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls ldp session命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.7941546989166%" id="d44062e291"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.2058453010834%" id="d44062e295"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Peer LDP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>对等体的LDP标识符，格式为&lt;LSR ID&gt;：&lt;标签空间&gt;：</p>
+<ul>
+<li><p>&#8220;0&#8221;表示全局标签空间</p>
+</li>
+<li><p>&#8220;1&#8221;表示接口标签空间</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Local LDP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>本地LDP标识符，格式为&lt;LSR ID&gt;：&lt;标签空间&gt;：</p>
+<ul>
+<li><p>&#8220;0&#8221;表示全局标签空间</p>
+</li>
+<li><p>&#8220;1&#8221;表示接口标签空间</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>TCP Connection </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>LDP会话之间建立的TCP连接：</p>
+<ul>
+<li><p>LSR ID值较大的一方表示建立TCP连接的主动方</p>
+</li>
+<li><p>LSR ID值较小的一方表示建立TCP连接的被动方</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Session State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>LDP会话的状态：</p>
+<ul>
+<li><p>Operational：表示LDP会话已经建立</p>
+</li>
+<li><p>Initialized：表示LDP会话处于初始化状态</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Session Role</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>LSR在LDP会话中的角色：</p>
+<ul>
+<li><p>Active：LSR ID值较大的一方表示建立LDP会话的主动方</p>
+</li>
+<li><p>Passive：LSR ID值较小的一方表示建立LDP会话的被动方</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Session FT Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>会话协商的LDP GR能力：</p>
+<ul>
+<li><p>On：开启LDP GR功能</p>
+</li>
+<li><p>Off：关闭LDP GR功能</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>MD5 Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>MD5认证标志：</p>
+<ul>
+<li><p>On：表示建立TCP连接时开启MD5认证</p>
+</li>
+<li><p>Off：表示建立TCP连接时关闭MD5认证</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Reconnect Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>协商的重连接定时器时间</p>
+<p>只有开启了LDP GR功能，即&#8220;Session FT Flag&#8221;的值为&#8220;On&#8221;，才能使用该值</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Recovery Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>协商的恢复定时器时间</p>
+<p>只有开启了LDP GR功能，即&#8220;Session FT Flag&#8221;的值为&#8220;On&#8221;，才能使用该值</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Negotiated Keepalive Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>协商的Keepalive 定时器的值，为LDP对等体两端所配置的Keepalive保持定时器的较小值</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Rcv/Keepalive Message Sent/Rcvd</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>会话发送和接收的keepalive消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Label Advertisement Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>LDP会话的标签发布方式，<span class="keyword">VRP</span>采用的标签分发方式为DU</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Label Resource Status(Peer/Local)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>对等体与本地的标签资源状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Session Age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>LDP会话从建立至今的时间间隔</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d44062e291 "><p>Addresses received from peer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d44062e295 "><p>从LDP对等体接收到的Address消息内的ip地址，其中包括该对等体的LSR ID和使能了LDP的接口的ip地址</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d44062e559"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d44062e563"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d44062e559 "><p>VRPV500R005C02B310</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d44062e563 "><p>使用正则表达式过滤LDP会话信息时，删除显示信息中的统计功能&#8220;TOTAL: * Session(s) Found. &#8221;。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_ldp_lsp.html">display mpls ldp lsp</a></div>
+<div><a href="display_mpls_ldp_peer.html">display mpls ldp peer</a></div>
+<div><a href="display_mpls_ldp_remote-peer.html">display mpls ldp remote-peer</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

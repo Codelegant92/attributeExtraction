@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display nat">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nat_and_nat_user_log_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_nat">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display nat</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_nat"></a><a name="display_nat"></a>
+
+<h1 class="topictitle1">display nat</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display nat</strong>命令显示用户对地址转换的配置。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>nat </strong>{ <strong>all </strong>|<strong> address-group </strong>|<strong> outbound </strong>| <strong>server  </strong>| <strong>alg </strong>}</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：表示显示所有的关于地址转换的配置信息及NAT ALG的配置信息。</p>
+<p><strong>outbound</strong>：表示显示配置的地址转换的信息。</p>
+<p><strong>address-group</strong>：表示显示配置的地址池的信息。</p>
+<p><strong>server</strong>：表示显示配置的内部服务器的信息。</p>
+<p><strong>alg</strong>：表示显示配置的NAT ALG的信息。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display nat</strong>命令显示了地址池的使用信息和地址转换的情况。</p>
+<p>用户可以根据该命令的输出信息认证地址转换的配置是否正确。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_nat__d52443e69"></a><a name="d52443e69"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有的关于地址转换的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display nat all</strong></pre>
+<pre class="screen">NAT address-group information:</pre>
+<pre class="screen">      0 : from      10.110.1.1   to     10.110.1.30, reference   0 times</pre>
+<pre class="screen">     10 : from      100.1.1.10   to      100.1.1.20, reference   1 times</pre>
+<pre class="screen">     18 : from     10.110.27.1   to   10.110.27.100, reference   0 times</pre>
+<pre class="screen">  Total   3 address-groups</pre>
+<pre class="screen">NAT outbound information:</pre>
+<pre class="screen">                    Gigabitethernet 4/1/0: acl(3100) --- NAT address-group(10)</pre>
+<pre class="screen">Server in private network information:</pre>
+<pre class="screen">      GlobalAddr   GlobalPort      InsideAddr   InsidePort     Pro    VPN   Ref</pre>
+<pre class="screen">Interface:Gigabitethernet 3/1/0</pre>
+<pre class="screen">    192.168.10.2        ----       100.1.1.2        ----     ---      (1)time (1)</pre>
+<pre class="screen">  Total   1 NAT servers</pre>
+<p>上述信息表示：</p>
+<p>配置了三个地址池：地址池号分别是0、10、18，其中第10号地址池被引用了一次。</p>
+<p>在GE4/1/0配置了1个地址转换关联：ACL规则3100与地址池10关联，进行PAT方式的地址转换。</p>
+<p>在GE3/1/0配置了1个内部服务器。http:// 192.168.10.2的服务器，内部地址是100.1.1.2。</p>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nat_and_nat_user_log_configuration_commands.html">NAT及NAT用户日志配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

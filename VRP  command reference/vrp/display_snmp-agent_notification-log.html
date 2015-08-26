@@ -1,0 +1,325 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display snmp-agent notification-log">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_notification-log.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_snmp-agent_notification-log">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display snmp-agent notification-log</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_snmp-agent_notification-log"></a><a name="display_snmp-agent_notification-log"></a>
+
+
+<h1 class="topictitle1">display snmp-agent notification-log</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display snmp-agent notification-log</strong>命令用于显示告警缓冲区中最新告警日志的内容。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display snmp-agent notification-log</strong> [ <strong>info</strong> | <strong>logtime</strong> <em>starttime</em><strong> to</strong> <em>endtime</em> | <strong>size</strong> <em>size</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>info</strong>：告警缓冲区的信息。包括告警日志缓冲区中全局告警日志的数目、丢弃的告警日志数目、告警日志的老化时间、告警日志条数的限制数目、当前的告警日志记录的总数目和告警日志记录的使能标志。</p>
+<p><em>starttime</em>：告警日志记录的起始时间。格式为HH:MM:SS YYYY/MM/DD，HH:MM:SS表示时:分:秒。HH范围是0～23，MM和SS范围是0～59。YYYY/MM/DD表示年/月/日，YYYY范围是2000～2099，MM范围是1～12，DD范围是1～31。</p>
+<p><em>endtime</em>：告警日志记录的终止时间。格式为HH:MM:SS YYYY/MM/DD，HH:MM:SS表示时:分:秒。HH范围是0～23，MM和SS范围是0～59。YYYY/MM/DD表示年/月/日，YYYY范围是2000～2099，MM范围是1～12，DD范围是1～31。</p>
+<p><strong>size </strong><em>size</em>：需要显示的最近告警日志的指定条数，不同产品，可显示的最大的值是不一样的，<span class="keyword">VRP</span>支持15000条。如果指定的条数超过目前系统中存在的日志条数，则输出当前告警缓冲区中所有的告警日志信息。此参数取值以各产品实现规格为准。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>用户通过该命令显示告警缓冲区中告警日志信息的内容，可以用三种方式来查询：</p>
+<ul>
+<li><p>显示最近告警日志的指定条数。</p>
+</li>
+<li><p>根据告警日志记录的时间来显示。</p>
+</li>
+<li><p>默认情况下，显示所有记录的告警日志信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_snmp-agent_notification-log__d66219e91"></a><a name="d66219e91"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示告警日志信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display snmp-agent notification-log info</strong>
+Notification log information :</pre>
+<pre class="screen">Notifications log information: enable 
+GlobalNotificationsLogged: 0
+GlobalNotificationsBumped: 0</pre>
+<pre class="screen">GlobalNotificationsLimit: 500
+GlobalNotificationsAgeout: 24
+Total number of notification log: 0</pre>
+
+<div class="tablenoborder"><a name="display_snmp-agent_notification-log__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_snmp-agent_notification-log__tb_01" frame="border" border="1" rules="all"><caption>表1 display snmp-agent notification-log info命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="39.35500125976316%" id="d66219e116"><p>参数</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="60.64499874023683%" id="d66219e120"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="39.35500125976316%" headers="d66219e116 "><p>Notification Admin Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.64499874023683%" headers="d66219e120 "><p>告警日志使能状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.35500125976316%" headers="d66219e116 "><p>GlobalNotificationsLogged</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.64499874023683%" headers="d66219e120 "><p>全局告警日志记录数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.35500125976316%" headers="d66219e116 "><p>GlobalNotificationsBumped</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.64499874023683%" headers="d66219e120 "><p>全局告警日志记录丢弃条数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.35500125976316%" headers="d66219e116 "><p>GlobalNotificationsLimit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.64499874023683%" headers="d66219e120 "><p>全局告警日志配置的限制条数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.35500125976316%" headers="d66219e116 "><p>GlobalNotificationsAgeout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.64499874023683%" headers="d66219e120 "><p>全局告警日志配置的老化时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.35500125976316%" headers="d66219e116 "><p>Total number of notification log</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.64499874023683%" headers="d66219e120 "><p>当前的告警日志记录的总条数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示最近20条告警日志，但是目前系统中日志条数的总数为1条。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display snmp-agent notification-log size 20</strong></pre>
+<pre class="screen"> Total number of notifications log : 1
+
+LogTable :
+  LogIndex= 12
+  LogTime= 229323</pre>
+<pre class="screen">  LogDateAndTime= 2007/3/8 10:28:16
+  LogEngineID= 000007DB7F00000100004CFB
+  LogEngineTAddress= 192.168.39.1/162</pre>
+<pre class="screen">  LogEngineTDomain= snmpUDPDomain
+  LogContextEngineID= null
+  LogContextName= secu10164391</pre>
+<pre class="screen">  LogNotificationID= 1.3.6.1.4.1.2011.6.10.2.1
+LogVariableTable :
+  LogVariableIndex= 1
+  LogVariableOID= 1.3.6.1.2.1.1.3</pre>
+<pre class="screen">  LogVariableValueType= TimeTicksLogVariableValue = 229323
+  LogVariableIndex= 2
+  LogVariableOID= 1.3.6.1.6.3.1.1.4.1</pre>
+<pre class="screen">  LogVariableValueType= OidLogVariableValue = 1
+  LogVariableIndex= 3
+  LogVariableOID= 1.3.6.1.4.1.2011.6.10.1.1.7.1.3.29</pre>
+<pre class="screen">  LogVariableValueType= Integer32LogVariableValue = 1
+  LogVariableIndex= 4
+  LogVariableOID= 1.3.6.1.4.1.2011.6.10.1.1.7.1.4.29</pre>
+<pre class="screen">  LogVariableValueType= Integer32LogVariableValue = 3
+  LogVariableIndex= 5
+  LogVariableOID= 1.3.6.1.4.1.2011.6.10.1.1.7.1.5.29</pre>
+<pre class="screen">  LogVariableValueType= Integer32LogVariableValue = 2</pre>
+
+<div class="tablenoborder"><a name="display_snmp-agent_notification-log__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_snmp-agent_notification-log__tb_02" frame="border" border="1" rules="all"><caption>表2 display snmp-agent notification-log命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.82766439909297%" id="d66219e233"><p>参数</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.17233560090703%" id="d66219e237"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志索引。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogTime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志记录距离系统启动的相对时间，以10ms为单位。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogDateAndTime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志记录的绝对时间和日期。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogEngineID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志记录的SNMP报文的引擎ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogEngineTAddress</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志记录的报文IP地址和端口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogEngineTDomain</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志记录的报文的传输类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogContextEngineID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志记录的SNMP报文上下文的引擎ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogContextName</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>安全用户名＋IP地址＋VPN实例名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogNotificationID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志记录的节点OID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogVariableIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志变量的索引。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogVariableOID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志变量节点的OID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogVariableValueType</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志变量值的类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66219e233 "><p>LogVariableValue</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66219e237 "><p>日志变量值。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="snmp-agent_notification-log.html">snmp-agent notification-log</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,116 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="default-route-advertise(IS-IS)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="default-route-advertise_is-is">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>default-route-advertise(IS-IS)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="default-route-advertise_is-is"></a><a name="default-route-advertise_is-is"></a>
+
+
+<h1 class="topictitle1">default-route-advertise(IS-IS)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>default-route-advertise</strong>命令用来设置Level-1、Level-2路由器生成缺省路由。</p>
+<p><strong>undo default-route-advertise</strong>命令用来取消此项功能。</p>
+<p>缺省情况下，使用参数<strong>always</strong>。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>default-route-advertise</strong> [ <strong>always</strong> | <strong>match default</strong> | <strong>route-policy</strong> <em>route-policy-name</em> ] [ <strong>cost</strong> <em>cost</em> ] [ <strong>tag</strong> <em>tag</em> ] [ <strong>level-1</strong> | <strong>level-1-2</strong> | <strong>level-2</strong> ] [ <strong>avoid-learning</strong> ]</p>
+<p><strong>undo default-route-advertise</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>always</strong>：总是无条件的发布缺省路由，即发布的缺省路由中将自己作为下一跳。缺省情况下，使用参数<strong>always</strong>。</p>
+<p><strong>match default</strong>：如果在路由表中存在其他路由协议或其它IS-IS进程生成的缺省路由，在LSP中发布此缺省路由。如果路由表中此路由被删除，则接收这条缺省路由的路由器也会将其删除。</p>
+<p><strong>route-policy</strong> <em>route-policy-name</em>：指定路由策略名称。如果有外部路由通过此路由策略，则在LSP中发布缺省路由。此处的路由策略不影响IS-IS引入外部路由。</p>
+<p><strong>cost</strong> <em>cost</em>：指定缺省路由的开销值。取值范围根据cost-style而定。当cost-style为narrow、narrow-compatible或compatible时，为整数形式，取值范围是0～63；当cost-style为wide或wide-compatible时，为整数形式，取值范围是0～4261412864。</p>
+<p><strong>tag</strong> <em>tag</em>：发布的缺省路由的标记值。整数形式，取值范围是1～4294967295。缺省值是0。</p>
+<p><strong>level-1</strong>：设置发布的缺省路由级别为Level-1。</p>
+<p><strong>level-2</strong>：设置发布的缺省路由级别为Level-2。</p>
+<p><strong>level-1-2</strong>：设置发布的缺省路由级别为Level-1-2。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果不指定级别，则默认为生成Level-2级别的缺省路由。</p>
+</div></div>
+<p><strong>avoid-learning</strong>：避免IS-IS进程学到缺省路由并添加到路由表。如果路由表中已存在的缺省路由为活跃状态，则将此路由置为不活跃状态。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令可在Level-1或Level-2路由器上设置。</p>
+<p>通过使用路由策略，可以强制IS-IS只在路由表中有匹配的路由项时才生成缺省路由。</p>
+<ul>
+<li>如果在路由策略视图中执行<strong>apply isis level-1</strong>命令，可以在L1 LSP中生成缺省路由。</li>
+<li>如果在路由策略视图中执行<strong>apply isis level-2</strong>命令，则可以在L2 LSP中生成缺省路由。</li>
+<li>如果在路由策略视图中执行<strong>apply isis level-1-2</strong>命令，则可以在L1 LSP、L2 LSP中各自生成缺省路由。</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="default-route-advertise_is-is__d9354e157"></a><a name="d9354e157"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置当前路由器发布匹配路由策略filter的Level-2级别的IPv4缺省路由，开销值为15。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>isis</strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>default-route-advertise route-policy filter cost 15</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="default-route-advertise_is-is__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="default-route-advertise_is-is__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d9354e184"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d9354e188"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d9354e184 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d9354e188 "><p>将参数<strong>match</strong> { <strong>default</strong> | <strong>route-policy</strong> <em>route-policy-name</em> }改为<strong>match default</strong> | <strong>route-policy</strong> <em>route-policy-name</em>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

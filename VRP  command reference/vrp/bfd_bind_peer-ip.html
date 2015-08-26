@@ -1,0 +1,101 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="bfd bind peer-ip">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="bfd.html">
+<meta name="DC.Relation" scheme="URI" content="bfd_cfg-name.html">
+<meta name="DC.Relation" scheme="URI" content="commit.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="bfd_bind_peer-ip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>bfd bind peer-ip</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="bfd_bind_peer-ip"></a><a name="bfd_bind_peer-ip"></a>
+
+
+<h1 class="topictitle1">bfd bind peer-ip</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>bfd bind peer-ip</strong>命令用来创建BFD会话绑定，并生成BFD会话。</p>
+<p><strong>undo bfd</strong> <em>cfg-name</em>命令用来删除指定的BFD会话，同时取消BFD的绑定配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>bfd</strong> <em>cfg-name</em> <strong>bind peer-ip</strong> <em>peer-ip</em> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ]
+[ <strong>interface</strong> <em>interface-type interface-number</em> ] [ <strong>source-ip</strong> <em>source-ip</em> ]</p>
+<p><strong>undo
+bfd</strong> <em>cfg-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>cfg-name</em>：BFD配置名。字符串形式，长度范围是1～15。</p>
+<p><strong>peer-ip</strong> <em>peer-ip</em>：BFD会话绑定的对端IP地址。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：BFD会话绑定的VPN实例名称。VPN实例是字符串形式，长度范围是1～31。如果不指定VPN实例，则认为对端地址是公网地址。</p>
+<p><strong>interface</strong> <em>interface-type
+interface-number</em>：BFD会话绑定的本端三层接口。可以是Ethernet、POS等物理接口，也可以是Trunk、Vlanif及子接口这类逻辑接口。</p>
+<p><strong>source-ip</strong> <em>source-ip</em>：BFD报文携带的源IP地址。如果不配置该参数，系统将在本地路由表中查找去往对端IP地址的出接口，以该出接口的IP地址作为本端发送的BFD报文的源IP地址。通常情况下不需要配置该参数。当BFD与单播逆向路径转发URPF（Unicast
+Reverse Path Forwarding）特性一起应用时，由于URPF会对接收到的报文进行源IP地址检查，用户需要手工配置BFD报文的源IP地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置VRRP快速切换时，若VRRP监视peer BFD会话，则必须在两端设备上配置peer BFD会话，否则VRRP会产生振荡。</p>
+<p>在创建BFD绑定时：</p>
+<ul>
+<li><p>如果只指定对端IP，表示检测多跳路由。</p>
+</li>
+<li><p>如果同时指定了对端IP和本端接口，表示检测单跳链路，即检测以该接口为出接口、以<strong>peer-ip</strong>为下一跳地址的一条固定路由。</p>
+</li>
+</ul>
+<p>源地址的配置：</p>
+<ul>
+<li><p><strong>source-ip</strong>参数用于保证在使能了URPF特性的情况下，BFD报文不会被错误地丢弃。该参数的正确性需要用户保证，系统只检查该参数是否是合法的源IP（例如，不能是组播或广播地址），不进行正确性检查。</p>
+</li>
+<li><p>如果在BFD会话配置成功后，再修改出接口的IP地址，BFD报文中的源IP地址不会更新。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="bfd_bind_peer-ip__d4209e137"></a><a name="d4209e137"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置一个名为test的BFD会话，对从本端的GE1/0/0.1子接口到达1.1.1.2的单跳链路进行检测。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> bfd test bind peer-ip 1.1.1.2 interface gigabitethernet 1/0/0.1</strong></pre>
+<p>#
+创建一个名为pos0的BFD会话，检测到对端IP地址为1.1.2.2的多跳链路。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> bfd pos0 bind peer-ip 1.1.2.2</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bfd_configuration_commands.html">BFD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="bfd.html">bfd</a></div>
+<div><a href="bfd_cfg-name.html">bfd cfg-name</a></div>
+<div><a href="commit.html">commit</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

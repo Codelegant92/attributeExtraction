@@ -1,0 +1,298 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display cfm mep">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mep_mep-id.html">
+<meta name="DC.Relation" scheme="URI" content="mep_ccm-send_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_cfm_mep">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display cfm mep</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_cfm_mep"></a><a name="display_cfm_mep"></a>
+
+
+<h1 class="topictitle1">display cfm mep</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display cfm mep</strong>命令用来查看指定MD和MA内的MEP的信息，包括：</p>
+<ul>
+<li><p>所在MD的名称和级别</p>
+</li>
+<li><p>所在MA的名称和MA关联的VLAN</p>
+</li>
+<li><p>MEP的ID</p>
+</li>
+<li><p>所在的接口</p>
+</li>
+<li><p>CCM消息发送功能的使能状态</p>
+</li>
+<li><p>类型</p>
+</li>
+</ul>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display cfm mep</strong> [ <strong>md</strong> <em>md-name</em> [ <strong>ma</strong> <em>ma-name</em> [ <strong>mep-id</strong> <em>mep-id</em> ]
+] ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>md</strong> <em>md-name</em>：显示指定MD内MEP的信息。md-name表示MD的名称，字符串形式，不支持空格、&#8220;-&#8221;和&#8220;?&#8221;，长度范围是1～43。不输入本参数时，显示本设备上所有MD和MA内的MEP的信息。</p>
+<p><strong>ma </strong><em>ma-name</em>：显示指定MA内MEP的信息。<em>ma-name</em>表示MA的名称，字符串形式，不支持空格、&#8220;-&#8221;和&#8220;?&#8221;，长度范围是1～43。输入参数<em>md-name</em>，但不输入本参数时，显示本设备上指定MD内所有MA内的MEP的信息。</p>
+<p><strong>mep-id </strong><em>mep-id</em>：显示指定MEP的信息。<em>mep-id</em>表示MEP的ID，整数形式，取值范围是1～8191。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当配置完MEP后或CFM功能出现故障时，可使用本命令验证或了解MEP的配置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_cfm_mep__d18984e154"></a><a name="d18984e154"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看md1内ma1中ID为10的MEP的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display cfm mep md md1 ma ma1 mep-id 10</strong></strong></pre>
+<pre class="screen">The total number of MEPs is 1</pre>
+<pre class="screen"> MD Name            : md1</pre>
+<pre class="screen"> Level              : 4</pre>
+<pre class="screen"> MA Name            : ma1</pre>
+<pre class="screen"> MEP ID             : 10</pre>
+<pre class="screen"> Vlan ID            : 10</pre>
+<pre class="screen"> VSI Name           : --</pre>
+<pre class="screen"> Interface Name    : GigabitEthernet1/0/1</pre>
+<pre class="screen"> CCM Send           : enabled</pre>
+<pre class="screen"> Direction          : inward</pre>
+<p>#
+查看md1内ma1内所有MEP的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display cfm mep md md1 ma ma1</strong></strong></pre>
+<pre class="screen">The total number of MEPs is 2</pre>
+<pre class="screen"> MD Name            : md1</pre>
+<pre class="screen"> Level              : 4</pre>
+<pre class="screen"> MA Name            : ma1</pre>
+<pre class="screen"> MEP ID             : 10</pre>
+<pre class="screen"> Vlan ID            : 10</pre>
+<pre class="screen"> VSI Name           : --</pre>
+<pre class="screen"> Interface Name    : GigabitEthernet1/0/1</pre>
+<pre class="screen"> CCM Send           : enabled</pre>
+<pre class="screen"> Direction          : inward</pre>
+<pre class="screen"> MD Name            : md1</pre>
+<pre class="screen"> Level              : 4</pre>
+<pre class="screen"> MA Name            : ma1</pre>
+<pre class="screen"> MEP ID             : 20</pre>
+<pre class="screen"> Vlan ID            : 10</pre>
+<pre class="screen"> VSI Name           : --</pre>
+<pre class="screen"> Interface Name    : GigabitEthernet2/0/1</pre>
+<pre class="screen"> CCM Send           : enabled</pre>
+<pre class="screen"> Direction          : inward</pre>
+<p># 查看md1内所有MEP的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display cfm mep md md1</strong></strong></pre>
+<pre class="screen">The total number of MEPs is 3</pre>
+<pre class="screen"> MD Name            : md1</pre>
+<pre class="screen"> Level              : 4</pre>
+<pre class="screen"> MA Name            : ma1</pre>
+<pre class="screen"> MEP ID             : 10</pre>
+<pre class="screen"> Vlan ID            : 10</pre>
+<pre class="screen"> VSI Name           : --</pre>
+<pre class="screen"> Interface Name    : GigabitEthernet1/0/1</pre>
+<pre class="screen"> CCM Send           : enabled</pre>
+<pre class="screen"> Direction          : inward</pre>
+<pre class="screen"> MD Name            : md1</pre>
+<pre class="screen"> Level              : 4</pre>
+<pre class="screen"> MA Name            : ma1</pre>
+<pre class="screen"> MEP ID             : 20</pre>
+<pre class="screen"> Vlan ID            : 10</pre>
+<pre class="screen"> VSI Name           : --</pre>
+<pre class="screen"> Interface Name    : GigabitEthernet2/0/1</pre>
+<pre class="screen"> CCM Send           : enabled</pre>
+<pre class="screen"> Direction          : inward</pre>
+<pre class="screen"> MD Name            : md1</pre>
+<pre class="screen"> Level              : 4</pre>
+<pre class="screen"> MA Name            : ma2</pre>
+<pre class="screen"> MEP ID             : 30</pre>
+<pre class="screen"> Vlan ID            : 10</pre>
+<pre class="screen"> VSI Name           : --</pre>
+<pre class="screen"> Interface Name    : GigabitEthernet3/0/1</pre>
+<pre class="screen"> CCM Send           : enabled</pre>
+<pre class="screen"> Direction          : inward</pre>
+
+<div class="tablenoborder"><a name="display_cfm_mep__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cfm_mep__tb_01" frame="border" border="1" rules="all"><caption>表1 display cfm mep命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.93801965230537%" id="d18984e306"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.06198034769464%" id="d18984e310"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18984e306 "><p>MD Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18984e310 "><p>MD的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18984e306 "><p>Level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18984e310 "><p>MD的级别，范围是0～7，级别越高，MD的优先级越高。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18984e306 "><p>MA Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18984e310 "><p>MA的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18984e306 "><p>MEP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18984e310 "><p>MEP节点标识。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18984e306 "><p>VLAN ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18984e310 "><p>MA关联的VLAN ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18984e306 "><p>VSI Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18984e310 "><p>MA关联的VSI名字。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18984e306 "><p>Interface Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18984e310 "><p>MEP所在的接口。如果MEP是VLANIF型的，本字段显示为&#8220;--&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18984e306 "><p>CCM send</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18984e310 "><div class="p">MEP的CCM消息发送功能的使能状态，取值包括：<ul>
+<li><p>enabled：MEP的CCM消息发送功能处于使能状态。</p>
+</li>
+<li><p>disabled：MEP的CCM消息发送功能处于禁止状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18984e306 "><p>Direction</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18984e310 "><div class="p">MEP的类型，取值包括：<ul>
+<li><p>inward：表示该MEP是一个inward型的MEP。inward型MEP发出的802.1ag协议报文在当前设备上的发送方式为在当前MA关联的VLAN内广播，但不会发送到该MEP所在的接口上。</p>
+</li>
+<li><p>outward：表示该MEP是一个outward型的MEP。outward型MEP发出的协议报文直接通过该MEP所在的接口向外发送。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_cfm_mep__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cfm_mep__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="36.5%" id="d18984e451"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63.5%" id="d18984e455"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36.5%" headers="d18984e451 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5%" headers="d18984e455 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mep_mep-id.html">mep mep-id</a></div>
+<div><a href="mep_ccm-send_enable.html">mep ccm-send enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

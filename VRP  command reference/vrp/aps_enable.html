@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="aps enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="protection_restore.html">
+<meta name="DC.Relation" scheme="URI" content="protection_mac-tunnel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="aps_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>aps enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="aps_enable"></a><a name="aps_enable"></a>
+
+
+<h1 class="topictitle1">aps enable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>aps enable</strong>命令用来使能APS协议。</p>
+<p><strong>undo aps enable</strong>命令用来关闭APS协议。</p>
+<p>缺省情况下，<span class="keyword">VRP</span>设备的APS协议处于关闭状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>aps enable</strong></p>
+<p><strong>undo aps enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MAC Tunnel视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>APS（Automatic Protection Switching）自动保护倒换协议负责执行MAC Tunnel的保护倒换动作，协调隧道的两端完成业务的保护倒换和恢复。</p>
+<p>在MAC Tunnel保护组中的工作隧道出现故障时，APS协议会将业务倒换到保护隧道进行传输。在工作隧道恢复后，如果保护组的回切模式为恢复式，APS可以将业务回切到工作隧道进行传输。</p>
+<p>只有在MAC Tunnel保护组配置完整的情况下，该命令才可见。</p>
+<p>对于APS型保护组，工作隧道和保护隧道必须有相同的源MAC地址和相同的目的MAC地址，才能配置APS自动保护倒换。</p>
+<p>没有ASP协议控制的保护倒换，直接通过CFM故障检测触发倒换。对于OAM型保护组，工作隧道和保护隧道的目的MAC地址必须不同。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="aps_enable__d2045e57"></a><a name="d2045e57"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在MAC Tunnel视图下配置保护组的APS协议的启动。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>mac-tunnel</strong><strong> tunnel-name </strong><strong>mytunnel</strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-mytunnel] <strong>protection mac-tunnel ProTunnel2 protocol aps</strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-mytunnel] <strong>aps</strong> <strong>enable</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="protection_restore.html">protection restore</a></div>
+<div><a href="protection_mac-tunnel.html">protection mac-tunnel</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

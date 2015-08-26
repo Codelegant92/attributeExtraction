@@ -1,0 +1,68 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qos pql inbound-interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/congestion_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_qos_pq_interface.html">
+<meta name="DC.Relation" scheme="URI" content="display_qos_pql.html">
+<meta name="DC.Relation" scheme="URI" content="qos_pq.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qos_pql_inbound-interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qos pql inbound-interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qos_pql_inbound-interface"></a><a name="qos_pql_inbound-interface"></a>
+
+<h1 class="topictitle1">qos pql inbound-interface</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qos pql inbound-interface</strong>命令用来建立基于接口的分类规则。</p>
+<p><strong>undo qos pql inbound-interface</strong>命令用来删除相应的分类规则。</p>
+<p>缺省情况下，不配置任何分类规则。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qos pql</strong> <em>pql-index</em> <strong>inbound-interface</strong><em> interface-type interface-number</em> <strong>queue</strong> {<strong> top</strong> | <strong>middle</strong> | <strong>normal</strong> | <strong>bottom</strong> }</p>
+<p><strong>undo qos pql </strong><em>pql-index</em> <strong>inbound-interface</strong> <em>interface-type interface-number</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>pql-index</em>：优先队列的组号，取值范围是1～16。</p>
+<p><em>interface-type</em>：接口的类型。</p>
+<p><em>interface-number</em>：接口的编号。</p>
+<p><strong>top</strong>、<strong>middle</strong>、<strong>normal</strong>、<strong>bottom</strong>：对应PQ的四个队列，优先级依次降低。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>qos pql inbound-interface</strong>命令按报文输入的接口进行匹配。</p>
+<p>对于同一个<em>pql-index</em>，该命令可以重复使用，为来自不同接口的报文建立不同的分类规则。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qos_pql_inbound-interface__d109655e99"></a><a name="d109655e99"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定规则12，使得来自pos 1/0/0的报文进入middle队列。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>qos pql 12 inbound-interface pos 1/0/0 queue middle</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/congestion_management_configuration_commands.html">拥塞管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_qos_pq_interface.html">display qos pq interface</a></div>
+<div><a href="display_qos_pql.html">display qos pql</a></div>
+<div><a href="qos_pq.html">qos pq</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

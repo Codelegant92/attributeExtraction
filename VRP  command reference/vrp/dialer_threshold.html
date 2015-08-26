@@ -1,0 +1,67 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dialer threshold">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dcc_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_dialer.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dialer_threshold">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dialer threshold</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dialer_threshold"></a><a name="dialer_threshold"></a>
+
+<h1 class="topictitle1">dialer threshold</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dialer threshold</strong>命令用来设定DCC接口上链路的负载阈值，当DCC接口的所有链路的流量与可用带宽的比例超过设定的百分比时，启动另一条链路呼叫同一个目的地址。</p>
+<p><strong>undo dialer threshold</strong>命令用来恢复缺省值。</p>
+<p>缺省不启动流量控制。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dialer threshold </strong><em>traffic-percentage</em> [ <strong>in</strong> | <strong>in-out</strong> | <strong>out</strong> ]</p>
+<p><strong>undo dialer threshold</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>traffic-percentage</em>：链路实际流量与带宽的百分比，取值范围是1～99。</p>
+<p><strong>in</strong>：计算实际负载时只计算向内的流量。</p>
+<p><strong>in-out</strong>：计算实际负载时只计算向内和向外流量中较大的一个。</p>
+<p><strong>out</strong>：计算实际负载时只计算向外的流量。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置该命令前，必须先执行命令<a href="dialer_user.html">dialer user</a>设置对端用户名，或执行命令<a href="dialer_enable-circular.html">dialer enable-circular</a>使能轮询DCC。</p>
+<p>当DCC接口的一条链路的流量与带宽的比例超过设定的负载阈值后，启动第二条链路与原有链路进行MP捆绑；当两条链路的流量与带宽的比例超过设定的负载阈值后，启动第三条与原有链路进行MP捆绑；&#8230;&#8230;依此类推。</p>
+<p>反过来，当所有N条（N为大于2的整数）链路的流量与N-1条链路的带宽的比例小于设定的负载阈值时，关闭一条链路&#8230;&#8230;</p>
+<p>在轮询DCC下，本命令用来与Dialer circular-group对应的接口（包括ISDN的BRI/PRI接口以及Dialer接口）上；在共享DCC下，本命令只能用于Dialer接口。另外，本命令须与<strong>ppp mp</strong>命令结合使用。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dialer_threshold__d11837e78"></a><a name="d11837e78"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置接口Dialer1的流量门限为80%。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface dialer 1</strong></pre>
+<pre class="screen">[Quidway-Dialer1]<strong> dialer threshold 80</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dcc_configuration_commands.html">DCC配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_dialer.html">display dialer</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

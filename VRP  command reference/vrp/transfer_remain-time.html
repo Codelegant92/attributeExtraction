@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="transfer remain-time">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="bulk-stat_enable.html">
+<meta name="DC.Relation" scheme="URI" content="bulk-file.html">
+<meta name="DC.Relation" scheme="URI" content="collect_enable.html">
+<meta name="DC.Relation" scheme="URI" content="transfer_retry.html">
+<meta name="DC.Relation" scheme="URI" content="transfer_interval.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="transfer_remain-time">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>transfer remain-time</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="transfer_remain-time"></a><a name="transfer_remain-time"></a>
+
+
+<h1 class="topictitle1">transfer remain-time</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>transfer remain-time </strong><em>remain-time</em>命令用来配置统计文件的上传保存时间。</p>
+<p><strong>undo transfer remain-time</strong>命令用来将统计文件的上传保存时间恢复为缺省值。</p>
+<p>缺省情况下，统计报文的保存时间是5分钟。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>transfer remain-time </strong><em>remain-time</em></p>
+<p><strong>undo transfer remain-time</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>remain-time</em>: 命令用来配置统计文件上传保存时间。单位是分钟，取值范围是1～30。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>bulk-file视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>为了保证每个统计文件不同时保存多个上传文件，<em>remain-time</em>必须小于等于文件上传周期。文件上传保留时间是指从压缩文件生成开始，到压缩文件最终上传失败而被删除之间的时间。</p>
+<p>结合重传次数，可以计算出重传间隔，重传次数耗尽时，文件保留时间结束，若仍未上传成功就删除该统计文件。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="transfer_remain-time__d125571e57"></a><a name="d125571e57"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置批量统计文件&#8220;iftable&#8221;的保留时间为10分钟。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> bulk-stat enable</strong></pre>
+<pre class="screen">Info：Succeeded in enabling the bulk stat function.</pre>
+<pre class="screen">[Quidway]<strong> bulk-file iftable</strong></pre>
+<pre class="screen">[Quidway-bulk-file-iftable]<strong> transfer remain-time 10</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="bulk-stat_enable.html">bulk-stat enable</a></div>
+<div><a href="bulk-file.html">bulk-file</a></div>
+<div><a href="collect_enable.html">collect enable</a></div>
+<div><a href="transfer_retry.html">transfer retry</a></div>
+<div><a href="transfer_interval.html">transfer interval</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

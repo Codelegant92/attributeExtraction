@@ -1,0 +1,128 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="telnet">
+<meta name="DC.Relation" scheme="URI" content="../vrp/telnet_and_ssh_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="telnet">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>telnet</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="telnet"></a><a name="telnet"></a>
+
+
+<h1 class="topictitle1">telnet</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>telnet</strong>命令用来从当前<span class="keyword">路由器</span>用Telnet工具再登录到其它<span class="keyword">路由器</span>。</p>
+<p>缺省情况下，在不指定<em>port-number</em>时，Telnet端口号为23。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>telnet</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] [ <strong>-a</strong> <em>source-ip-address</em> ] <em>host-name</em> [ <em>port-number</em> ]</p>
+<p><strong>telnet ipv6</strong> [ <strong>-a</strong> <em>source-ip-address</em> ] [ <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> ] <em>host-name</em> [ <strong>-i</strong> <em>interface-type interface-number </em>] [ <em>port-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例名，字符串形式，长度范围是1～31。</p>
+<p><strong>-a</strong> <em>source-ip-address</em>：本端<span class="keyword">路由器</span>的IPv4/IPv6地址。</p>
+<p><strong>vpn6-instance </strong><em>vpn6-instance-name</em>：VPN6的实例名称。字符串形式，不支持空格，长度范围是1～31。</p>
+<p><em>host-name</em>：远端<span class="keyword">路由器</span>的IPv4/IPv6地址或主机名，IPv4地址取值范围1～20，IPv6地址取值范围1～46。</p>
+<p><em>port-number</em>：远端<span class="keyword">路由器</span>提供Telnet服务的TCP端口号，范围1～65535。缺省值是23。</p>
+<p><strong>-i</strong> <em>interface-type interface-number</em>：如果远端主机使用了IPv6链路本地地址，则需要指定本地的出接口。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>0：参观级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过执行<strong>telnet</strong>命令，用户可以很方便地从一个<span class="keyword">路由器</span>登录到另一个<span class="keyword">路由器</span>进行远程管理。</p>
+<p>在连接的过程中，可以使用&#8220;Ctrl_K&#8221;停止本端路由设备与远端路由设备的连接。</p>
+<p>通过指定源地址，用户可以以指定的IP地址与服务端通信，从而达到进行安全校验的目的。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="telnet__d123496e150"></a><a name="d123496e150"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 从当前<span class="keyword">路由器</span>Quidway1登录到另外一台<span class="keyword">路由器</span>Quidway2（IP地址为10.10.0.1）。</p>
+<pre class="screen">&lt;Quidway1&gt;<strong> telnet 10.10.0.1</strong></pre>
+<pre class="screen">Trying 10.10.0.1 ...</pre>
+<pre class="screen">Press CTRL+K to abort</pre>
+<pre class="screen">Connected to 10.10.0.1 ...</pre>
+<pre class="screen">***********************************************************</pre>
+<pre class="screen">*   Copyright （C） 2000-2009 Huawei Technologies Co., Ltd *</pre>
+<pre class="screen">*       Without the owner"s prior written consent,        *</pre>
+<pre class="screen">* no decompiling or reverse-engineering shall be allowed. *</pre>
+<pre class="screen">* Notice:                                                 *</pre>
+<pre class="screen">*      This is a private communication system.            *</pre>
+<pre class="screen">*   Unauthorized access or use may lead to prosecution.   *</pre>
+<pre class="screen">***********************************************************</pre>
+<pre class="screen">Info: The max number of VTY users is 20, and the number</pre>
+<pre class="screen">      of current VTY users on line is 6.</pre>
+<pre class="screen">&lt;Quidway2&gt;</pre>
+<p># 连接远端路由设备，其IPv6地址为3001::1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> telnet ipv6 3001::1</strong></pre>
+<pre class="screen">Trying 3001::1 ...</pre>
+<pre class="screen">Press CTRL+K to abort</pre>
+<pre class="screen">Connected to 3001::1 ...</pre>
+<pre class="screen">*********************************************************</pre>
+<pre class="screen">*          All rights reserved (1997-2005)              *</pre>
+<pre class="screen">*      Without the owner's prior written consent,       *</pre>
+<pre class="screen">*no decompiling or reverse-engineering shall be allowed.*</pre>
+<pre class="screen">*********************************************************</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="telnet__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="telnet__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d123496e226"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d123496e230"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d123496e226 "><p>VRPV500R003C07B330</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d123496e230 "><p>支持Telnet源地址功能，命令增加参数[<strong>-a</strong> <em>source-ip-address</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/telnet_and_ssh_commands.html">Telnet及SSH命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

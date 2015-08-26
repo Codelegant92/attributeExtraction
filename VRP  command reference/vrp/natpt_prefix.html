@@ -1,0 +1,86 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="natpt prefix">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nat-pt_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="natpt_prefix">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>natpt prefix</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="natpt_prefix"></a><a name="natpt_prefix"></a>
+
+
+<h1 class="topictitle1">natpt prefix</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>natpt prefix</strong>命令用来配置全局或接口的NAT-PT前缀。</p>
+<p><strong>undo natpt prefix</strong>命令用来取消配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>natpt prefix</strong> <em>prefix</em> [ <strong>interface</strong> <em>interface-type interface-number</em> [ <strong>nexthop</strong> <em>ipv4-addresse</em> ] ]</p>
+<p><strong>undo natpt prefix</strong> <em>prefix</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>prefix</em>：指定IPv6地址前缀，格式为X:X::X:X，前缀长度只能为96位。</p>
+<p><em>interface-type interface-number</em>：指定接口类型及接口编号。</p>
+<p><em>ipv4-address</em>：指定下一跳的IPv4地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果接口和下一跳均未配置，则此前缀为全局前缀，否则为接口前缀。</p>
+<p>收到IPv6侧报文后，检查报文目的地址的前缀。</p>
+<ul>
+<li>如果为全局前缀，根据FIB转发转换后的报文。</li>
+<li>如果为接口前缀，根据接口或下一跳转发转换后的报文。</li>
+</ul>
+<p>由于首先检查IPv4侧报文在接收接口的NAT-PT前缀，因此接口NAT-PT前缀有较高的优先级。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>NAT-PT前缀必须不同于IPv6接口地址前缀。</p>
+</li>
+<li><p>使用<strong>undo natpt prefix</strong>命令可能会影响某些动态映射的转换。</p>
+</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="natpt_prefix__d99403e99"></a><a name="d99403e99"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置全局的NAT-PT前缀。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>natpt prefix 2001::</strong></pre>
+<p># 配置特定接口的NAT-PT的前缀。</p>
+<pre class="screen">[Quidway] <strong>natpt prefix 3001:: interface gigabitethernet 2/0/0</strong></pre>
+<p># 配置含有下一跳的NAT-PT前缀。</p>
+<pre class="screen">[Quidway] <strong>natpt prefix 3001:: interface pos 3/0/0 nexthop 128.23.0.1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nat-pt_configuration_commands.html">NAT-PT配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

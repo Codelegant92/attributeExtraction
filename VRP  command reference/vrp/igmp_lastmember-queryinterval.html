@@ -1,0 +1,86 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="igmp lastmember-queryinterval">
+<meta name="DC.Relation" scheme="URI" content="../vrp/igmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="igmp_robust-count.html">
+<meta name="DC.Relation" scheme="URI" content="robust-count_igmp_view.html">
+<meta name="DC.Relation" scheme="URI" content="display_igmp_interface.html">
+<meta name="DC.Relation" scheme="URI" content="lastmember-queryinterval.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="igmp_lastmember-queryinterval">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>igmp lastmember-queryinterval</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="igmp_lastmember-queryinterval"></a><a name="igmp_lastmember-queryinterval"></a>
+
+
+<h1 class="topictitle1">igmp lastmember-queryinterval</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>igmp lastmember-queryinterval</strong>命令用来在接口上设置IGMP查询器在收到主机发送的IGMP Leave报文时，发送IGMP最后组成员查询报文的时间间隔。</p>
+<p><strong>undo igmp lastmember-queryinterval</strong>命令用来恢复该配置参数的缺省值。</p>
+<p>缺省情况下，发送IGMP最后组成员查询报文的时间间隔是1秒。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>igmp lastmember-queryinterval </strong><em>interval</em></p>
+<p><strong>undo igmp lastmember-queryinterval</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interval</em>：表示IGMP查询器发送最后组成员查询报文的时间间隔。整数形式，取值范围是1～5，单位是秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只有当IGMP查询器运行在IGMPv2或v3版本时有效。</p>
+<p>&#8220;最后组成员查询&#8221;也称为&#8220;指定组查询&#8221;，在IGMPv3上还包括&#8220;指定源组查询&#8221;。</p>
+<p>在主机所在的共享网络上，可能同时连接着多台组播<span class="keyword">路由器</span>。这些组播<span class="keyword">路由器</span>之间自发进行选举过程，获胜者称为查询器，负责维护接口上IGMP组成员关系。</p>
+<p>当查询器收到针对某组播组的Leave报文时，连续发送指定组查询报文，询问该组播组是否还存在成员。指定组查询报文的发送间隔<em>interval</em>可以使用<strong>igmp
+lastmember-queryinterval</strong>命令或<strong>lastmember-queryinterval</strong>命令设置，发送次数<em>robust-value</em>可以使用<strong>igmp robust-count</strong>命令或<strong>robust-count</strong>命令设置。</p>
+<p>如果网段中还存在这个组的成员，那么它必须在最大响应时间内发送Report报文。</p>
+<p>如果查询器在<em>robust-value</em>&times;<em>interval</em>时间内，收到主机发送的Report报文，就会继续维护该组的组成员关系；否则就认为网段内该组的最后一个成员已经离开，不再维护该组的组成员关系。</p>
+<p>该命令和IGMP视图下的<a href="lastmember-queryinterval.html">lastmember-queryinterval</a>命令功能完全相同，差别只是作用范围不同。IGMP视图下的配置具有全局性，对所有接口有效；接口视图下的配置只对当前接口有效。系统优先采用接口视图下的配置。当接口视图下没有进行配置，才采用IGMP视图下的配置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="igmp_lastmember-queryinterval__d81406e95"></a><a name="d81406e95"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在GE1/0/0口上配置查询器发送最后组成员查询消息（即指定组查询消息）时间间隔为3秒。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> igmp lastmember-queryinterval 3</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/igmp_configuration_commands.html">IGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="igmp_robust-count.html">igmp robust-count</a></div>
+<div><a href="robust-count_igmp_view.html">robust-count</a></div>
+<div><a href="display_igmp_interface.html">display igmp interface</a></div>
+<div><a href="lastmember-queryinterval.html">lastmember-queryinterval</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

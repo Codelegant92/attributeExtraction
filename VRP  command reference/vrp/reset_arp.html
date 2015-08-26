@@ -1,0 +1,93 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset arp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/arp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="arp_static.html">
+<meta name="DC.Relation" scheme="URI" content="display_arp_interface.html">
+<meta name="DC.Relation" scheme="URI" content="display_arp_slot.html">
+<meta name="DC.Relation" scheme="URI" content="display_arp_vpn-instance.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_arp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset arp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_arp"></a><a name="reset_arp"></a>
+
+<h1 class="topictitle1">reset arp</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset arp</strong>命令用来清除ARP映射表中的ARP项。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset arp</strong> { <strong>all</strong> | <strong>dynamic</strong> | <strong>interface</strong> <em>interface-type interface-number</em> | <strong>slot</strong> <em>slot-id </em>| <strong>static</strong> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：表示清除所有的ARP项。</p>
+<p><strong>dynamic</strong>：表示清除动态ARP项。</p>
+<p><strong>interface</strong>：表示选择接口。</p>
+<p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口序号。</p>
+<p><strong>slot</strong> <em>slot-id</em>：表示接口板的槽号。</p>
+<p><strong>static</strong>：表示清除静态ARP项。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>执行<strong>reset arp</strong>命令将取消IP地址和MAC地址的映射关系，可能导致无法访问某些节点。</p>
+</div></div>
+<p>使用<strong>reset arp</strong>命令对ARP表项进行维护，重新建立ARP表项。</p>
+<p>使用<strong>reset arp</strong>命令时，对于分布式设备，如果不指定接口板槽号，表示对主控板上的ARP表项进行操作。</p>
+<p>对指定<em>slot-id</em>的板子进行操作：</p>
+<ul><li>如果是主控板，则可以删除动态（<strong>dynamic</strong>）和静态（<strong>static</strong>）的表项</li><li>如果是接口板，则只能删除动态（<strong>dynamic</strong>）表项</li></ul>
+<p>对指定<strong>interface</strong>的接口进行操作时，接口类型只能是Ethernet口、GE口、虚拟以太网口三种，而且只能删除该接口的动态（<strong>dynamic</strong>）表项。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_arp__d111403e120"></a><a name="d111403e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 删除主控板的ARP映射表中的<strong>static</strong>项。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>reset arp static</strong></pre>
+<p># 删除接口GE 1/0/0的ARP映射表中的<strong>dynamic</strong>项。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>reset arp interface gigabitethernet 1/0/0</strong></pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="49%" id="d111403e146"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="51%" id="d111403e149"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="49%" headers="d111403e146 "><p>VRPV500R005C02B173</p>
+</td>
+<td class="cellrowborder" valign="top" width="51%" headers="d111403e149 "><p>删除<strong>reset arp</strong>命令。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/arp_configuration_commands.html">ARP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="arp_static.html">arp static</a></div>
+<div><a href="display_arp_interface.html">display arp interface</a></div>
+<div><a href="display_arp_slot.html">display arp slot</a></div>
+<div><a href="display_arp_vpn-instance.html">display arp vpn-instance</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

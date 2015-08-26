@@ -1,0 +1,381 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls ldp peer">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_ldp_remote-peer.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_ldp_session.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_ldp_adjacency.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_ldp_peer">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls ldp peer</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_ldp_peer"></a><a name="display_mpls_ldp_peer"></a>
+
+
+<h1 class="topictitle1">display mpls ldp peer</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls ldp peer</strong>命令用来查看LDP对等体的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls ldp peer</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] [ <strong>verbose</strong> | <em>peer-id</em> ] [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+<p><strong>display mpls ldp peer</strong> [ <strong>all</strong> ] [ <strong>verbose</strong> ] [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：显示指定VPN实例的LDP对等体信息。</p>
+<p><strong>verbose</strong>：显示LDP对等体的详细信息。</p>
+<p><em>peer-id</em>：显示指定LDP对等体的信息。</p>
+<p><strong>all</strong>：显示所有LDP对等体的信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_ldp_peer__d43862e127"></a><a name="d43862e127"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看LDP对等体的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls ldp peer</strong></pre>
+<pre class="screen">
+ LDP Peer Information in Public network
+ ------------------------------------------------------------------------------
+ Peer-ID                TransportAddress   DiscoverySource
+ ------------------------------------------------------------------------------
+ 2.2.2.9:0              2.2.2.9            Pos1/0/0
+ 3.3.3.9:0              3.3.3.9            Remote Peer : pe2
+ ------------------------------------------------------------------------------
+ TOTAL: 2 Peer(s) Found.        </pre>
+
+<div class="tablenoborder"><a name="display_mpls_ldp_peer__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_ldp_peer__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls ldp peer命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.18997228521038%" id="d43862e149"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.81002771478963%" id="d43862e153"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e149 "><p>Peer-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e153 "><p>LDP标识符，格式为&lt;LSR ID&gt;：&lt;标签空间&gt;，标签空间的取值为：</p>
+<ul>
+<li><p>0：表示全局标签空间</p>
+</li>
+<li><p>非0：表示接口标签空间</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e149 "><p>TransportAddress</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e153 "><p>LDP对等体的传输地址，用于建立TCP连接</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e149 "><p>DiscoverySource</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e153 "><div class="p">发现LDP对等体的源端：<ul>
+<li><p>显示接口时表示：发现本地LDP对等体的源端为本地接口</p>
+</li>
+<li><p>显示远端对等体的配置名称时表示：发现远端LDP对等体的源端为远端对等体</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看LDP对等体的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls ldp peer verbose</strong></pre>
+<pre class="screen">
+ LDP Peer Information in Public network
+ ------------------------------------------------------------------------------
+ Peer LDP ID         : 2.2.2.9:0
+ Peer Max PDU Length : 4096             Peer Transport Address : 2.2.2.9
+ Peer Loop Detection : Off              Peer Path Vector Limit : ----
+ Peer FT Flag        : Off              Peer Keepalive Timer   : 45 Sec
+ Recovery Timer      : ----             Reconnect Timer        : ----
+ Peer Type           : Local
+
+ Peer Label Advertisement Mode : Downstream Unsolicited
+ Peer Discovery Source         : Pos1/0/0
+
+ ------------------------------------------------------------------------------
+ Peer LDP ID         : 3.3.3.9:0
+ Peer Max PDU Length : 4096             Peer Transport Address : 3.3.3.9
+ Peer Loop Detection : Off              Peer Path Vector Limit : ----
+ Peer FT Flag        : Off              Peer Keepalive Timer   : 45 Sec
+ Recovery Timer      : ----             Reconnect Timer        : ----
+ Peer Type           : Remote
+
+ Peer Label Advertisement Mode : Downstream Unsolicited
+ Peer Discovery Source         : remote peer: pe2
+
+ ------------------------------------------------------------------------------
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_ldp_peer__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_ldp_peer__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls ldp peer verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.18997228521038%" id="d43862e237"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.81002771478963%" id="d43862e241"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Peer LDP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><p>LDP标识符，格式为&lt;LSR ID&gt;：&lt;标签空间&gt;，标签空间的取值为：</p>
+<ul>
+<li><p>0：表示全局标签空间</p>
+</li>
+<li><p>非0：表示接口标签空间</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Peer Max PDU Length</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><p>LDP对等体的最大PDU长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Peer Transport Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><p>LDP对等体的传输地址，用于建立TCP连接</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Peer Loop Detection</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><p>LDP对等体的环路检测功能：</p>
+<ul>
+<li><p>On：开启环路检测功能</p>
+</li>
+<li><p>Off：关闭环路检测功能</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Peer Path Vector Limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><p>LDP对等体的最大路径向量限制值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Peer FT Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><p>LDP对等体的GR FT标志（只有收到初始化消息，且初始化消息中含有FT TLV时，才能对该标志置位）：</p>
+<ul>
+<li><p>On：开启LDP GR功能</p>
+</li>
+<li><p>Off：关闭LDP GR功能</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Peer Keepalive Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><p>LDP对等体配置的keepalive定时器的值</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Recovery Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><p>LDP对等体的恢复时间</p>
+<p>只有开启了LDP GR功能，即&#8220;Peer FT Flag&#8221;的值为&#8220;On&#8221;，该字段的值才不为空</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Reconnect Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><p>LDP对等体的重连接时间</p>
+<p>只有开启了LDP GR功能，即&#8220;Peer FT Flag&#8221;的值为&#8220;On&#8221;，该字段的值才不为空</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Peer Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><p>LDP对等体的类型：</p>
+<ul>
+<li><p>Local：本地LDP对等体</p>
+</li>
+<li><p>Remote：远端LDP对等体</p>
+</li>
+<li><p>Local&amp;Remote：本地远端共存LDP对等体</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Peer Label Advertisement Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><p>对等体标签发布方式，<span class="keyword">VRP</span>采用的标签分发方式为DU</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43862e237 "><p>Peer Discovery Source</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43862e241 "><div class="p">LDP对等体的发现源：<ul>
+<li><p>显示接口时表示：发现本地LDP对等体的源端为本地接口</p>
+</li>
+<li><p>显示远端对等体的配置名称时表示：发现远端LDP对等体的源端为远端对等体</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.499999999999996%" id="d43862e456"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.5%" id="d43862e460"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.499999999999996%" headers="d43862e456 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.5%" headers="d43862e460 "><p>使用正则表达式过滤LDP会话信息时，删除显示信息中的统计功能&#8220;TOTAL: * Session(s) Found.&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.499999999999996%" headers="d43862e456 "><p>VRPV500R005C05B020</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.5%" headers="d43862e460 "><p>在输出信息中增加&#8220;Peer Type&#8221;字段。</p>
+</td>
+
+</tr>
+
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_ldp_remote-peer.html">display mpls ldp remote-peer</a></div>
+<div><a href="display_mpls_ldp_session.html">display mpls ldp session</a></div>
+<div><a href="display_mpls_ldp_adjacency.html">display mpls ldp adjacency</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

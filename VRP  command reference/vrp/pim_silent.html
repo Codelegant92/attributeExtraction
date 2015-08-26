@@ -1,0 +1,73 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="pim silent">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="pim_silent">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>pim silent</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="pim_silent"></a><a name="pim_silent"></a>
+
+
+<h1 class="topictitle1">pim silent</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>pim silent</strong>命令用来在接口上使能PIM Silent功能。</p>
+<p><strong>undo pim silent</strong>命令用来在接口上取消PIM Silent功能。</p>
+<p>缺省情况下，接口未使能PIM Silent功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>pim silent</strong></p>
+<p><strong>undo pim silent</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>为了避免恶意主机模拟PIM Hello报文攻击<span class="keyword">路由器</span>，可以在直连用户的接口上执行<strong>pim silent</strong>命令，将接口设置为PIM消极模式。接口进入消极状态后，禁止接收和转发任何PIM协议报文，删除该接口上的所有PIM邻居以及PIM状态机，并自动成为DR。同时，该接口上的IGMP功能不受影响。</p>
+<p>PIM silent仅适用于与用户主机网段直连的接口，且该网段上只能连接一台PIM <span class="keyword">路由器</span>。</p>
+<div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>如果在与<span class="keyword">路由器</span>相连的接口上启动该功能，将导致PIM邻居无法正常建立，引发组播故障。</p>
+<p>如果用户网段与多台<span class="keyword">路由器</span>相连，在多个接口上配置PIM Silent，则这些接口都成为了静态DR，将导致该网段中同时存在多个DR，从而引发组播故障。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="pim_silent__d105634e68"></a><a name="d105634e68"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 对接口GE1/0/0配置PIM消极模式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>pim silent</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

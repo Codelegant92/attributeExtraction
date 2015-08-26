@@ -1,0 +1,99 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="bfd all-interfaces(ospf)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ospf_bfd.html">
+<meta name="DC.Relation" scheme="URI" content="ospf_bfd_block.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="bfd_all-interfaces_ospf">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>bfd all-interfaces(ospf)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="bfd_all-interfaces_ospf"></a><a name="bfd_all-interfaces_ospf"></a>
+
+
+<h1 class="topictitle1">bfd all-interfaces(ospf)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>bfd all-interfaces enable</strong>命令用来在OSPF进程下使能BFD特性，使用缺省参数值建立BFD会话。</p>
+<p><strong>bfd all-interfaces</strong> { <strong>min-rx-interval</strong> <em>receive-interval</em> | <strong>min-tx-interval</strong><em> transmit-interval</em> | <strong>detect-multiplier</strong> <em>multiplier-value </em>} <sup>*</sup>命令用来配置BFD会话的参数值。</p>
+<p><strong>undo bfd all-interfaces enable</strong>命令用来取消进程下的BFD特性。</p>
+<p><strong>undo bfd all-interfaces </strong>{ <strong>min-rx-interval</strong> | <strong>min-tx-interval</strong> | <strong>detect-multiplier</strong> } <sup>*</sup>命令用来恢复BFD会话参数的缺省值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>bfd all-interfaces enable</strong></p>
+<p><strong>bfd all-interfaces</strong> { <strong>min-rx-interval</strong> <em>receive-interval </em>| <strong>min-tx-interval</strong> <em>transmit-interval</em> | <strong>detect-multiplier</strong> <em>multiplier-value </em>} <sup>*</sup></p>
+<p><strong>undo bfd all-interfaces enable</strong></p>
+<p><strong>undo bfd all-interfaces</strong> { <strong>min-rx-interval</strong> | <strong>min-tx-interval</strong> | <strong>detect-multiplier </strong>} <sup>*</sup></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>enable</strong>：使能BFD功能。</p>
+<p><strong>min-rx-interval</strong> <em>receive-interval</em>：指定期望从对端接收BFD报文的最小接收间隔。<em>receive-interval</em>取值范围是100～1000，单位是毫秒。缺省值是1000毫秒。</p>
+<p><strong>min-tx-interval </strong><em>transmit-interval</em>：指定向对端发送BFD报文的最小发送间隔。<em>transmit-interval</em>取值范围是100～1000，单位是毫秒。缺省值是1000毫秒。</p>
+<p><strong>detect-multiplier</strong> <em>multiplier-value</em>：指定本地检测倍数。<em>multiplier-value</em>取值范围是3～50，缺省值是3。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>使能BFD特性后，OSPF只和状态达到Full的邻居建立起BFD会话。</p>
+</li>
+<li><p>检测参数的缺省值是动态的从BFD模块获得的，不同产品的缺省值可能不同。</p>
+</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>OSPF视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本地的<strong>min-rx-interval</strong>值与对端的<strong>min-tx-interval</strong>值进行协商得到<em>receive-interval</em>，如果在<em>receive-interval</em> &times; <em>multiplier-value</em>时间间隔内没有收到对方发送的BFD报文，就宣告邻居进入Down状态。</p>
+<p>如果没有配置全局BFD，OSPF的BFD特性可以配置，但不会创建BFD会话。同样，如果只配置BFD的会话参数，但没有执行<strong>bfd all-interfaces enable</strong>命令，也不会创建BFD会话。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>接口配置的BFD特性优先级高于进程配置的BFD特性优先级。</p>
+</li>
+<li><p>如果使能OSPF的接口配置了<strong>ospf bfd block</strong>命令，则该接口不会使能OSPF BFD特性。</p>
+</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="bfd_all-interfaces_ospf__d4106e201"></a><a name="d4106e201"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置OSPF进程的BFD特性，指定最小发送间隔为400ms。</p>
+<pre class="screen">[Quidway] <strong>ospf </strong></pre>
+<pre class="screen">[Quidway-ospf-1]<strong> bfd all-interfaces enable</strong></pre>
+<pre class="screen">[Quidway-ospf-1] <strong>bfd all-interface min-tx-interval 400</strong></pre>
+<p># 取消OSPF进程的BFD特性。</p>
+<pre class="screen">[Quidway] <strong>ospf 1</strong></pre>
+<pre class="screen">[Quidway-ospf-1] <strong>undo bfd all-interfaces enable</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ospf_bfd.html">ospf bfd</a></div>
+<div><a href="ospf_bfd_block.html">ospf bfd block</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

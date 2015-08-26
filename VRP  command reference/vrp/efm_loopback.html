@@ -1,0 +1,98 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="efm loopback">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_efm_session.html">
+<meta name="DC.Relation" scheme="URI" content="efm_mode.html">
+<meta name="DC.Relation" scheme="URI" content="efm_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="efm_loopback">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>efm loopback</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="efm_loopback"></a><a name="efm_loopback"></a>
+
+
+<h1 class="topictitle1">efm loopback</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>efm loopback</strong>命令用来配置当前接口发起或终止EFM OAM远端环回。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>efm loopback</strong> { <strong>start</strong> [ <strong>timeout</strong> <em>timeout </em>]
+| <strong>stop</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>start</strong>：发起EFM OAM远端环回。</p>
+<p><strong>timeout</strong> <em>timeout</em>：指定远端环回的超时时间。<em>timeout</em>表示远端环回的超时时间，取值范围是0～1000，单位是分钟，缺省值是20分钟。0表示不设置超时时间，即端口始终处于远端环回状态。</p>
+<p><strong>stop</strong>：终止EFM OAM远端环回。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Eehternet接口视图、GE接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>EFM OAM远端环回可用来定位链路故障和测试链路质量。当远端环回功能启动后，可通过本端向对端发送测试报文，通过观察报文的发送和返回情况来测试链路的质量。</p>
+<p>当在接口上执行本命令时，该接口向对端发送环回消息。对端收到消息后，根据消息的内容进入或者退出环回状态。当对端处于环回状态时，对端对从本端接收的除EFM
+OAM协议报文外的所有报文做环回处理，即将报文从接收接口发回本端。</p>
+<p>应在不需转发业务数据的链路上进行EFM OAM远端环回，否则将影响业务数据的正常转发。</p>
+<p>为避免由于用户忘记停止EFM
+OAM远端环回而造成链路长时间无法正常转发业务数据，<span class="keyword">VRP</span>设备的EFM
+OAM远端环回具有超时自动取消功能。缺省情况下，远端环回的超时时间是20分钟，到达此时间，远端环回自动取消。如果需要使某链路一直处于远端环回状态，可将超时时间设置为0。</p>
+<p>只有在两端的EFM
+OAM协议处于握手状态，本端的EFM OAM工作模式为主动模式时，远端环回才能成功进行。可使用<a href="display_efm_session.html">display efm session</a>命令查询本端和对端之间EFM
+OAM协议是否处于握手状态。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="efm_loopback__d75107e80"></a><a name="d75107e80"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置接口GigabitEthernet1/0/0发起EFM OAM远端环回。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>efm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> <strong>efm enable</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> efm loopback start</strong></pre>
+<p>#
+配置接口GigabitEthernet1/0/0EFM OAM远端环回的超时时间。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>efm loopback start timeout 10</strong></pre>
+<p>#
+配置接口GigabitEthernet1/0/0终止EFM OAM远端环回。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> efm loopback stop</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_efm_session.html">display efm session</a></div>
+<div><a href="efm_mode.html">efm mode</a></div>
+<div><a href="efm_enable.html">efm enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

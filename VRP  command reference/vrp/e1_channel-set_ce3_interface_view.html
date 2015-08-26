@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="e1 channel-set（CE3接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ce3_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_controller_e3_e1.html">
+<meta name="DC.Relation" scheme="URI" content="using_ce3_interface_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="e1_channel-set_ce3_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>e1 channel-set（CE3接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="e1_channel-set_ce3_interface_view"></a><a name="e1_channel-set_ce3_interface_view"></a>
+
+
+<h1 class="topictitle1">e1 channel-set（CE3接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>e1 channel-set</strong>命令用来对CE3接口的E1通道进行时隙捆绑。</p>
+<p><strong>undo e1 channel-set</strong>命令用来取消指定的时隙捆绑。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>e1</strong> <em>e1-number </em><strong>channel-set</strong> <em>set-number</em> <strong>timeslot-list</strong> <em>slot-list</em> </p>
+<p><strong>undo
+e1</strong> <em>e1-number </em><strong>channel-set</strong> <em>set-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>e1-number</em>：E1通道的顺序号。整数形式，取值范围是1～16。</p>
+<p><em>set-number</em>：指定E1上时隙捆绑形成的channel-set的索引号。整数形式，取值范围是0～30。</p>
+<p><em>slot-list</em>：用于捆绑的时隙编号或时隙范围。整数形式，取值范围是1～31。指定捆绑时隙时，可以指定单个时隙，也可以指定时隙范围。使用&#8220;,&#8221;分隔多个时隙，使用&#8220;-&#8221;表示时隙范围。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>CE3接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有当CE3接口工作在通道化模式下时，才能配置该命令。</p>
+<p>CE3接口支持通道化到64kbit/s，每个E1最多可捆绑出31个通道，但一个CE3的16个E1捆绑的通道数最多为256个。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="e1_channel-set_ce3_interface_view__d74341e79"></a><a name="d74341e79"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在CE3接口3/0/0接口第3个E1通道上捆绑1个128K的时隙接口</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> controller e3 3/0/0</strong></pre>
+<pre class="screen">[Quidway-E3 3/0/0] <strong>e1 3 channel-set 0 timeslot-list 1,2</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ce3_interface_configuration_commands.html">CE3接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_controller_e3_e1.html">display controller e3
+e1</a></div>
+<div><a href="using_ce3_interface_view.html">using（CE3接口视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

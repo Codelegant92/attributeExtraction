@@ -1,0 +1,68 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qos gts">
+<meta name="DC.Relation" scheme="URI" content="../vrp/traffic_policing_traffic_shaping_rate_limiting_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qos_gts">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qos gts</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qos_gts"></a><a name="qos_gts"></a>
+
+<h1 class="topictitle1">qos gts</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qos gts</strong>命令用来为某一类别的流或所有流设置整形参数，并开始整形。</p>
+<p><strong>undo qos gts</strong>命令用来取消对某一类流或所有流的整形设置。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qos gts</strong> { <strong>any </strong>|<strong> acl </strong><em>acl-index</em> } <strong>cir</strong> <em>cir</em> [ <strong>cbs</strong><em> cbs</em> [ <strong>ebs</strong> <em>ebs</em> [ <strong>queue-length</strong> <em>queue-length</em> ] ] ]</p>
+<p><strong>undo qos gts</strong> { <strong>any</strong> | <strong>acl </strong><em>acl-index</em> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>any</strong>：对所有的IP数据包进行流量整形。</p>
+<p><strong>acl</strong>：对匹配访问控制列表ACL的数据包进行流量整形。</p>
+<p><em>acl-index</em>：访问控制列表编号，取值范围2000～3999。</p>
+<p><strong>cir</strong>：承诺信息速率。</p>
+<p><em>committed-information-rate</em>：承诺信息速率的值，取值范围是8000bps~155000000bps。</p>
+<p><strong>cbs</strong>：承诺突发尺寸，实际平均速率在承诺速率以内时的突发流量。</p>
+<p><em>cbs</em>：承诺突发尺寸的值，取值范围是15000～155000000bit。cbs的取值应大于等于cir取值的1/2，当cir&gt;30000bit/s时，缺省取值是cir的1/2，当cir&lt;30000bit/s时，缺省取值是15000。</p>
+<p><strong>ebs</strong>：过度突发尺寸。</p>
+<p><em>ebs</em>：过度突发尺寸，取值范围是0～155000000bit。</p>
+<p>缺省取值是0，即只采用一个令牌桶监管。</p>
+<p><strong>queue-length</strong>：缓存队列的最大长度，取值范围是1～1024缺省取值是50。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>qos gts acl</strong>用来为符合某一ACL的流设置整形参数，可以多次配置，使用不同的ACL为不同的流设置整形参数。</p>
+<p><strong>qos gts any</strong>用来为所有的流设置整形参数，如果多次配置<strong>qos gts any</strong>命令，新命令将覆盖已有的配置。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qos_gts__d109532e125"></a><a name="d109532e125"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 下面的命令将在接口GE6/2/0上对满足ACL规则2001的报文进行流量整形。正常流量为38400bit，在第一时间可以有2倍于正常流量的突发流量通过，以后速率小于等于38400bit的流量时正常发送，速率大于38400bit时，将进入队列缓存，缓存队列长度为100。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface GigabitEthernet6/2/0</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet6/2/0]<strong> qos gts acl 2001 cir 38400 cbs 76800 ebs 0 queue-length 100</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/traffic_policing_traffic_shaping_rate_limiting_configuration_commands.html">流量监管、流量整形和接口限速配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

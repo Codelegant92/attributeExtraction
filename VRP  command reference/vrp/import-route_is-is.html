@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="import-route (IS-IS)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="import-route_is-is">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>import-route (IS-IS)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="import-route_is-is"></a><a name="import-route_is-is"></a>
+
+
+<h1 class="topictitle1">import-route (IS-IS)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>import-route</strong>命令用来引入其他路由协议的路由信息。</p>
+<p><strong>undo import-route</strong>命令用来取消IS-IS引入其它路由协议的路由信息。</p>
+<p>缺省情况下，IS-IS不引入其它路由协议的路由信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>import-route</strong> <em>protocol</em> [ <em>process-id</em> ] [ <strong>cost-type</strong> { <strong>external</strong> | <strong>internal</strong> } | <strong>cost</strong> <em>cost</em> | <strong>tag</strong> <em>tag</em> | <strong>route-policy </strong><em>route-policy-name</em> | [ <strong>level-1</strong> | <strong>level-2</strong> | <strong>level-1-2</strong> ] ] <sup>*</sup></p>
+<p><strong>undo import-route</strong> <em>protocol</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>protocol</em>：引入的源路由协议，可以是<strong>direct</strong>、<strong>static</strong>、<strong>rip</strong>、<strong>ospf</strong>、<strong>isis</strong>和<strong>bgp</strong>。</p>
+<p><em>process-id</em>：当<em>protocol</em>为<strong>rip</strong>、<strong>ospf</strong>或<strong>isis</strong>时需要指定进程号，缺省为1。</p>
+<p><strong>cost</strong><em> cost</em>：引入路由的开销值。当路由器的cost-style为wide、wide-compatible或compatible时，引入路由的开销值取值范围是0～4261412864，否则取值范围是0～63。缺省值是0。</p>
+<p><strong>cost-type</strong> { <strong>external</strong> | <strong>internal</strong> }：引入外部路由的开销类型，为<strong>external</strong>或<strong>internal</strong>。当路由器的cost-style为wide、wide-compatible或compatible时，引入外部路由的开销类型将不区分<strong>external</strong>和<strong>internal</strong>。缺省开销类型为<strong>external</strong>。</p>
+<p><strong>tag</strong><em> tag</em>：为引入的路由分配管理标签号。整数形式，取值范围是1～4294967295。</p>
+<p><strong>route-policy</strong><em> route-policy-name</em>：指定路由策略名称。</p>
+<p><strong>level-1</strong>：引入路由到Level-1的路由表中。</p>
+<p><strong>level-2</strong>：引入路由到Level-2的路由表中。</p>
+<p><strong>level-1-2</strong>：引入路由到Level-1和Level-2的路由表中。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果不指定级别，默认为引入路由到Level-2路由表中。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对IS-IS而言，其它路由协议发现的路由总被当作外部路由来处理。在引入其它协议路由时，可以设置引入路由的开销值和开销类型。</p>
+<p>在IS-IS引入路由时，可以指定将路由引入到Level-1、Level-2以及Level-1-2。</p>
+<p>IS-IS将所有引入路由域中的路由当作外部路由，它们描述了应该如何选择到路由域以外目的地的路由。</p>
+<p>可以配置IS-IS在引入外部路由时保留路由的原有开销值，在路由发布和路由计算时，采用这些路由的原有开销值。在这种情况下，IS-IS不能配置引入路由的开销类型和开销值，且引入的外部路由协议只能是OSPF、RIP、IS-IS或者BGP。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="import-route_is-is__d82049e193"></a><a name="d82049e193"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置IS-IS引入静态路由，并设置该路由的开销值为15。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>isis</strong>
+[Quidway-isis-1] <strong>import-route static cost 15</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

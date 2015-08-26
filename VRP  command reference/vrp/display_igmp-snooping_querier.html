@@ -1,0 +1,188 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display igmp-snooping querier">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="igmp-snooping_querier_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_igmp-snooping_querier">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display igmp-snooping querier</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_igmp-snooping_querier"></a><a name="display_igmp-snooping_querier"></a>
+
+
+<h1 class="topictitle1">display igmp-snooping querier</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display igmp-snooping querier</strong>命令用来显示IGMP Snooping查询器信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display igmp-snooping querier</strong> { <strong>vlan</strong> [ <em>vlan-id</em> ] | <strong>vsi </strong>[ <em>vsi-name</em> ] }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vlan</strong><em> vlan-id</em>：VLAN编号，取值范围是1～4094。</p>
+<p><strong>vsi </strong><em>vsi-name</em>：VSI实例的名称。字符串形式，不支持空格，区分大小写，长度范围是1～31。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display igmp-snooping querier vlan</strong>不指定参数<em>vlan-id</em>时，显示所有VLAN的IGMP Querier配置信息。</p>
+<p><strong>display igmp-snooping querier vsi</strong>不指定参数<em>vsi-name</em>时，显示所有VSI的IGMP Querier配置信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_igmp-snooping_querier__d26308e72"></a><a name="d26308e72"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有VLAN的查询器配置状况</p>
+<pre class="screen">&lt;Quidway&gt;<strong><strong> <strong>display igmp-snooping querier vlan</strong></strong></strong></pre>
+<pre class="screen">VLAN                            Querier-state</pre>
+<pre class="screen">-----------------------------------------------</pre>
+<pre class="screen">1                                Enable</pre>
+<pre class="screen">2                                Disable</pre>
+<pre class="screen">3                                Disable</pre>
+<pre class="screen">-----------------------------------------------</pre>
+<pre class="screen"> total entry 3 </pre>
+
+<div class="tablenoborder"><a name="display_igmp-snooping_querier__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp-snooping_querier__tb_01" frame="border" border="1" rules="all"><caption>表1 display igmp-snooping querier vlan输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="25.875535399344923%" id="d26308e109"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="74.12446460065509%" id="d26308e113"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="25.875535399344923%" headers="d26308e109 "><p>VLAN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.12446460065509%" headers="d26308e113 "><p>VLAN编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.875535399344923%" headers="d26308e109 "><p>Querier-state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.12446460065509%" headers="d26308e113 "><div class="p">查询器状态：<ul>
+<li><p>Disable：查询器未启动。</p>
+</li>
+<li><p>Enable：查询器已启动。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.875535399344923%" headers="d26308e109 "><p>total entry 3</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.12446460065509%" headers="d26308e113 "><p>总共显示查询器的三条信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示所有VSI的查询器配置状况</p>
+<pre class="screen">&lt;Quidway&gt;<strong><strong> <strong>display igmp-snooping querier vsi </strong></strong></strong></pre>
+<pre class="screen">VSI                             Querier-state</pre>
+<pre class="screen">-----------------------------------------------</pre>
+<pre class="screen">v123                             Enable</pre>
+<pre class="screen">-----------------------------------------------</pre>
+<pre class="screen"> total entry 1                                 </pre>
+
+<div class="tablenoborder"><a name="display_igmp-snooping_querier__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp-snooping_querier__tb_02" frame="border" border="1" rules="all"><caption>表2 display igmp-snooping querier vsi输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="37.57873519778282%" id="d26308e198"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="62.421264802217195%" id="d26308e202"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="37.57873519778282%" headers="d26308e198 "><p>VSI</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.421264802217195%" headers="d26308e202 "><p>VSI名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.57873519778282%" headers="d26308e198 "><p>Querier-state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.421264802217195%" headers="d26308e202 "><div class="p">查询器状态：<ul>
+<li><p>Disable：查询器未启动。</p>
+</li>
+<li><p>Enable：查询器已启动。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.57873519778282%" headers="d26308e198 "><p>total entry 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.421264802217195%" headers="d26308e202 "><p>总共显示查询器的一条信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="igmp-snooping_querier_enable.html">igmp-snooping querier enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

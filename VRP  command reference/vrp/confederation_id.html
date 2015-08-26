@@ -1,0 +1,77 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="confederation id">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="confederation_peer-as.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="confederation_id">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>confederation id</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="confederation_id"></a><a name="confederation_id"></a>
+
+
+<h1 class="topictitle1">confederation id</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>confederation id</strong>命令用来配置联盟ID。</p>
+<p><strong>undo confederation id</strong>命令用来取消<em>as-number</em>参数指定的BGP联盟体。</p>
+<p>缺省情况下，未配置联盟的ID。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>confederation id</strong> <em>as-number</em></p>
+<p><strong>undo confederation id</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>as-number</em>：自治系统号，其内部包括多个子自治系统。整数形式，取值范围是1～65535。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>为解决在一个大的AS域中可能存在的IBGP全连接数过大的问题，可以考虑采用联盟的方法：先将这个AS域划分为几个较小的子自治系统，这些子自治系统组成一个联盟；路由的一些关键属性（下一跳、MED、本地优先级）在通过每个子自治系统时没有丢弃，因此每个子自治系统之间虽然存在EBGP关系，但是从联盟外部来看还是一个整体。这样做既保证了原来AS域的完整性，同时还可以缓解域中过多的连接数的问题。</p>
+<p>联盟ID相当于整个自治系统的编号，其他相关外部AS在指定对等体所在的AS号时，要指定这个联盟ID。属于同一个联盟的所有子自治系统都必须指定相同的联盟ID，且联盟ID不能与其任意子自治系统号相同。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="confederation_id__d8048e56"></a><a name="d8048e56"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置联盟ID。一个AS分成了4个子自治系统38、39、40和41，它们的联盟ID是9号。其中对端1.2.3.4是AS联盟中的成员，而对端3.4.5.6则是AS联盟的外部成员，对于外部成员来讲，9号联盟就是一个统一的AS域。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 41</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> confederation id 9</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> confederation peer-as 38 39 40 </strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> peer 1.2.3.4 as-number 38</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> peer 3.4.5.6 as-number 98</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="confederation_peer-as.html">confederation peer-as</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

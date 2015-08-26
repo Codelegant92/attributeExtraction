@@ -1,0 +1,218 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display fr pvc-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frame_relay_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="fr_compression_frf9.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_fr_pvc-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display fr pvc-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_fr_pvc-info"></a><a name="display_fr_pvc-info"></a>
+
+
+<h1 class="topictitle1">display fr pvc-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p>命令<strong>display fr pvc-info</strong>用来查看帧中继虚电路的配置情况和统计信息：</p>
+<ul>
+<li><p>不指定任何参数时，显示所有接口DLCI的帧中继基本配置和统计信息。</p>
+</li>
+<li><p>只指定接口号，不指定DLCI号时，显示所有指定接口下DLCI的帧中继基本配置和统计信息。</p>
+</li>
+<li><p>既指定接口号，也指定DLCI号时，显示指定接口下指定DLCI的帧中继基本配置和统计信息以及帧中继QoS的配置和统计信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display fr pvc-info</strong> [ <strong>interface</strong> <em>interface-type
+interface-number</em> ] [ <span><strong>dlci </strong></span><em>dlci-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口编号，既可以指定主接口也可以指定子接口。</p>
+<p><span><strong>dlci </strong></span><em>dlci-number</em>：DLCI号。取值范围是16～1007。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果配置了帧中继压缩（FRF.9），将显示帧中继压缩的状态信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_fr_pvc-info__d25244e78"></a><a name="d25244e78"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看帧中继虚电路的配置情况和统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display fr pvc-info</strong></pre>
+<pre class="screen">PVC statistics for interface MFR4/0/100 (DTE, physical DOWN)</pre>
+<pre class="screen">  DLCI = 100, USAGE = LOCAL (1000), MFR4/0/100</pre>
+<pre class="screen">    create time = 2003/03/27 11:14:20, status = INACTIVE</pre>
+<pre class="screen">    in BECN = 0, in FECN = 0</pre>
+<pre class="screen">    in packets = 0, in bytes = 0</pre>
+<pre class="screen">    out packets = 0, out bytes = 0 </pre>
+<pre class="screen">Congestion Management :Active</pre>
+<pre class="screen">  set BECN pkts 0          set FECN pkts 0          drop DE pkts 0</pre>
+<pre class="screen">DE Group : 1 DE set pkts 0</pre>
+<pre class="screen">Traffic Policying : Active</pre>
+<pre class="screen">  cir 56000 cbs 56000 ebs 0</pre>
+<pre class="screen">  pkts 0 dropped pkts 0 set DE pkts 0</pre>
+<pre class="screen">Traffic Shaping : inactive</pre>
+<pre class="screen">  cir 0 cbs 0 ebs 0 mincir 0</pre>
+<pre class="screen">  pkts 0 bytes 0 dropped pkts 0</pre>
+<pre class="screen">Output queue : (Protocol queue : Size/Length/Discards) 0/500/0</pre>
+<pre class="screen">  Output queue : (FIFO queuing : Size/Length/Discards)  0/40/0</pre>
+
+<div class="tablenoborder"><a name="display_fr_pvc-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fr_pvc-info__tb_01" frame="border" border="1" rules="all"><caption>表1 display fr pvc-info命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="39.229024943310655%" id="d25244e132"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="60.770975056689345%" id="d25244e136"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="39.229024943310655%" headers="d25244e132 "><p>DLCI</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.770975056689345%" headers="d25244e136 "><p>虚电路的标识符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.229024943310655%" headers="d25244e132 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.770975056689345%" headers="d25244e136 "><p>虚电路状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.229024943310655%" headers="d25244e132 "><p>in BECN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.770975056689345%" headers="d25244e136 "><p>该虚电路接收到&#8220;显示后向拥塞指示&#8221;个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.229024943310655%" headers="d25244e132 "><p>in FECN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.770975056689345%" headers="d25244e136 "><p>该虚电路接收到&#8220;显示前向拥塞指示&#8221;个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.229024943310655%" headers="d25244e132 "><p>in packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.770975056689345%" headers="d25244e136 "><p>该虚电路接收到的报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.229024943310655%" headers="d25244e132 "><p>in bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.770975056689345%" headers="d25244e136 "><p>该虚电路接收到的字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.229024943310655%" headers="d25244e132 "><p>out packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.770975056689345%" headers="d25244e136 "><p>该虚电路发送的报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.229024943310655%" headers="d25244e132 "><p>out bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.770975056689345%" headers="d25244e136 "><p>该虚电路发送的字节数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="display_fr_pvc-info__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fr_pvc-info__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.962967628164755%" id="d25244e247"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.037032371835245%" id="d25244e251"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="45.962967628164755%" headers="d25244e247 "><p>VRPV500R006C01B070</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.037032371835245%" headers="d25244e251 "><p>在命令行中增加<strong>dlci</strong>关键字。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/frame_relay_configuration_commands.html">帧中继配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="fr_compression_frf9.html">fr compression frf9</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

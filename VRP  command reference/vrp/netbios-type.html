@@ -1,0 +1,70 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="netbios-type">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_server_ip-pool.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_server_netbios-type_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_server_netbios-type_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="nbns-list.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="netbios-type">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>netbios-type</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="netbios-type"></a><a name="netbios-type"></a>
+
+<h1 class="topictitle1">netbios-type</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>netbios-type</strong>命令用来配置全局DHCP地址池的客户端的NetBIOS节点类型。</p>
+<p><strong>undo netbios-type</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，不指定客户端的节点类型。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>netbios-type</strong> { <strong>b-node</strong> | <strong>h-node</strong> |<strong> m-node</strong> | <strong>p-node</strong> }</p>
+<p><strong>undo netbios-type</strong> { <strong>b-node</strong> | <strong>h-node</strong> | <strong>m-node</strong> | <strong>p-node</strong> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>b-node</strong>：广播模式节点（broadcast），采用广播方式获取主机名和IP地址之间的映射。</p>
+<p><strong>p-node</strong>：端对端模式节点（peer-to-peer），采用与NetBIOS服务器通信的方式来获取映射关系。</p>
+<p><strong>m-node</strong>：混合m模式节点（mixed），是具有部分广播特性的p类节点。</p>
+<p><strong>h-node</strong>：混合h模式节点（hybrid），是具备&#8220;端对端&#8221;通信机制的b类节点。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>DHCP地址池视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>DHCP客户端在广域网上使用NetBIOS协议通信时，需要在主机名和IP地址之间建立映射关系，使用<strong>netbios-type</strong>命令用来配置全局DHCP地址池的客户端的NetBIOS节点类型。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="netbios-type__d99685e80"></a><a name="d99685e80"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将DHCP地址池0的客户端NetBIOS节点类型指定为b-node。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> dhcp server ip-pool 0</strong></pre>
+<pre class="screen">[Quidway-dhcp-0] <strong>netbios-type b-node</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_configuration_commands.html">DHCP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="dhcp_server_ip-pool.html">dhcp server ip-pool</a></div>
+<div><a href="dhcp_server_netbios-type_interface_view.html">dhcp server netbios-type（接口视图）</a></div>
+<div><a href="dhcp_server_netbios-type_system_view.html">dhcp server netbios-type（系统视图）</a></div>
+<div><a href="nbns-list.html">nbns-list</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

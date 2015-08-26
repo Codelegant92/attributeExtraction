@@ -1,0 +1,82 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="bsr-policy（IPv4）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="bsr-policy_ipv4">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>bsr-policy（IPv4）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="bsr-policy_ipv4"></a><a name="bsr-policy_ipv4"></a>
+
+
+<h1 class="topictitle1">bsr-policy（IPv4）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>bsr-policy</strong>命令用来限定合法BSR地址范围，使<span class="keyword">路由器</span>丢弃来自该地址范围之外的BSR报文，从而防止BSR欺骗。</p>
+<p><strong>undo bsr-policy</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，BSR地址范围不受任何限制，即接收到的所有BSR报文都认为是有效的。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>bsr-policy</strong> <em>basic-acl-number</em></p>
+<p><strong>undo bsr-policy</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>basic-acl-number</em>：表示基本访问控制列表号，该列表定义了针对BSR报文源地址范围的过滤策略。整数形式，取值范围是2000～2999。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例PIM视图、VPN实例PIM视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在应用BSR机制的PIM-SM网络中，任何一台<span class="keyword">路由器</span>都可以被配置为C-BSR，从而参与BSR竞选。一旦竞选获胜，就会掌管网络中RP信息的发布权。为了避免合法BSR被恶意取代，通常针对以下两类情况实施预防措施。</p>
+<ul>
+<li><p>某些恶意主机通过伪造BSR报文欺骗<span class="keyword">路由器</span>，试图更改<span class="keyword">路由器</span>上的RP映射关系。</p>
+<p>预防措施：由于BSR报文是组播报文，TTL值是1，因此这种攻击通常发生在边缘<span class="keyword">路由器</span>上。由于BSR在网络内部，主机却在网络外部，因此<span class="keyword">路由器</span>通过对接收到的BSR报文进行邻居检查和RPF检查，就可以防止此类攻击。</p>
+</li>
+<li><p>网络中某台<span class="keyword">路由器</span>被攻击者控制，或者有非法接入的<span class="keyword">路由器</span>。攻击者可以将此<span class="keyword">路由器</span>设置为C-BSR，并且使其在竞争中获胜，从而控制网络中RP信息的发布权。</p>
+<p>预防措施：由于<span class="keyword">路由器</span>被配置为C-BSR后会自动向全网扩散BSR消息，而BSR报文是逐跳转发的TTL为1的组播报文，因此只要其邻居<span class="keyword">路由器</span>不接收此BSR消息，就不会影响整个网络。解决的办法就是在全网每一台<span class="keyword">路由器</span>上都配置<strong>bsr-policy</strong>命令，限定合法的BSR范围，如：只允许1.1.1.1/32和1.1.1.2/32作为BSR，这样<span class="keyword">路由器</span>就不会接收和转发除此以外的其他的BSR消息，从而防止此类攻击。</p>
+</li>
+</ul>
+<p>以上的两种预防策略可以部分地保护网络中BSR的安全性。但是如果某台合法的BSR路由器被攻击者控制，还是可能导致问题。</p>
+<p><strong>bsr-policy</strong>命令与<strong>acl</strong>命令配合使用。在ACL视图下，通过<strong>rule</strong>命令的<strong>source</strong>参数定义BSR报文源地址范围。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="bsr-policy_ipv4__d4847e122"></a><a name="d4847e122"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例下，配置合法BSR地址范围是10.1.1.0/24网段。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> acl number 2001</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2001]<strong> rule permit source 10.1.1.0 0.0.0.255</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2001]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> pim</strong></pre>
+<pre class="screen">[Quidway-pim]<strong> bsr-policy 2001</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

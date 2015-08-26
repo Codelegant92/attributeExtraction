@@ -1,0 +1,96 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ipv6 enable(IS-IS)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="isis.html">
+<meta name="DC.Relation" scheme="URI" content="network-entity.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipv6_enable_is-is">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ipv6 enable(IS-IS)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipv6_enable_is-is"></a><a name="ipv6_enable_is-is"></a>
+
+
+<h1 class="topictitle1">ipv6 enable(IS-IS)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ipv6 enable</strong>命令用来使能IS-IS进程的IPv6能力。</p>
+<p><strong>undo ipv6 enable</strong>命令用来取消该配置。</p>
+<p>缺省情况下，不使能IS-IS路由进程的IPv6能力。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ipv6 enable</strong> [ <strong>topology</strong> { <strong>compatible</strong> [ <strong>enable-mt-spf</strong> ] | <strong>ipv6</strong> | <strong>standard</strong> } ]</p>
+<p><strong>undo ipv6 enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>topology</strong>：用于指定网络的拓扑类型。</p>
+<p><strong>compatible</strong>：指定拓扑类型为兼容模式，即兼容标准拓扑和IPv6拓扑。IS-IS形成IPv6邻接关系，发布IPv6和标准拓扑链路。但是SPF只在标准拓扑上运行。该模式有助于从标准拓扑到IPv6拓扑的过渡。</p>
+<p><strong>compatible enable-mt-spf</strong>：指定兼容模式下在IPv6拓扑上运行SPF。</p>
+<p><strong>ipv6</strong>：在IPv6拓扑上使能IS-IS进程的IPv6。网络中的链路可以配置成IPv4或IPv6，但SPF计算在各自的拓扑中单独进行。</p>
+<p><strong>standard</strong>：指定拓扑类型为标准模式，即在集成拓扑上使能IS-IS进程的IPv6。网络管理员必须保证网络中所有的链路支持一致的拓扑模式。缺省情况下，使能IPv6选择standard参数。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使能IS-IS进程的IPv6时，缺省拓扑类型为<strong>standard</strong>。</p>
+<div class="p">为了使IS-IS协议的IPv6功能正常运行，必须先执行以下操作：<ol>
+<li><p>在系统视图下使用<strong>ipv6</strong>命令使能全局IPv6。</p>
+</li>
+<li><p>使用<strong>isis</strong>命令使能IS-IS进程。</p>
+</li>
+<li><p>使用<strong>network-entity</strong>命令为IS-IS设置网络实体名称（NET）。</p>
+</li>
+<li><p>在IS-IS视图下使用<strong>ipv6 enable</strong>命令使能IS-IS进程的IPv6能力。</p>
+</li>
+<li><p>在各个需要运行IS-IS进程的接口上使用<strong>ipv6 enable</strong>命令使能接口的IPv6能力，然后再配置IPv6地址。</p>
+</li>
+<li><p>使用<strong>isis ipv6 enable</strong>命令在各接口上使能IS-IS</p>
+。</li>
+</ol>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ipv6_enable_is-is__d85780e130"></a><a name="d85780e130"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能IS-IS进程1中IPv6拓扑的IPv6功能。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>ipv6</strong>
+[Quidway] <strong>isis 1</strong>
+[Quidway-isis-1] <strong>network-entity 10.0001.1010.1020.1030.00</strong>
+[Quidway-isis-1] <strong>ipv6 enable topology ipv6</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="isis.html">isis</a></div>
+<div><a href="network-entity.html">network-entity</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

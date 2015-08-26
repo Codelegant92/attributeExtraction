@@ -1,0 +1,82 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="lsp-trigger bgp-label-route">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="lsp-trigger.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_route-state.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="lsp-trigger_bgp-label-route">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>lsp-trigger bgp-label-route</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="lsp-trigger_bgp-label-route"></a><a name="lsp-trigger_bgp-label-route"></a>
+
+<h1 class="topictitle1">lsp-trigger bgp-label-route</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>lsp-trigger bgp-label-route</strong>命令用来配置LDP为带标签的公网BGP路由分标签的能力。</p>
+<p><strong>undo lsp-trigger bgp-label-route</strong>命令用来恢复为缺省设置。</p>
+<p>缺省情况下，LDP不为带标签的公网BGP路由分标签。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>lsp-trigger bgp-label-route</strong> [ <strong>ip-prefix</strong> <em>ip-prefix-name</em> ]</p>
+<p><strong>undo lsp-trigger bgp-label-route</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ip-prefix</strong> <em>ip-prefix-name</em>：根据IP地址前缀列表触发带标签的公网BGP路由建立LDP LSP。字符串形式，不支持空格，长度范围是1～169。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MPLS视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>lsp-trigger bgp-label-route</strong>和<strong>lsp-trigger</strong>命令都用于配置LDP LSP的触发建立策略。前者仅适用于带标签的公网BGP路由；后者适用于静态路由和IGP路由。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>LDP GR期间修改LSP触发策略的操作无效。</p>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="lsp-trigger_bgp-label-route__d90897e57"></a><a name="d90897e57"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置为带标签的公网BGP路由触发建立LDP LSP。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> mpls</strong></pre>
+<pre class="screen">[Quidway-mpls]<strong> lsp-trigger bgp-label-route</strong></pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="lsp-trigger_bgp-label-route__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="lsp-trigger_bgp-label-route__tb_01" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="32.5%" id="d90897e79"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="67.5%" id="d90897e82"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="32.5%" headers="d90897e79 "><p>VRPV500R005C02B151</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.5%" headers="d90897e82 "><p>首次发布</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="lsp-trigger.html">lsp-trigger</a></div>
+<div><a href="display_mpls_route-state.html">display mpls route-state</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

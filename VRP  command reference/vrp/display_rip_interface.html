@@ -1,0 +1,355 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rip interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rip_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="rip.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rip_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rip interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rip_interface"></a><a name="display_rip_interface"></a>
+
+
+<h1 class="topictitle1">display rip interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display rip interface</strong>命令用来显示RIP的接口信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display rip </strong><em>process-id</em> <strong>interface </strong>[ <em>interface-type interface-number </em>] [ <strong>verbose </strong>]<span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：RIP进程号。整数形式，取值范围是1～65535。</p>
+<p><em>interface-type</em>：接口类型，如GigabitEthernet、Loopback等。</p>
+<p><em>interface-number</em>：接口号。</p>
+<p><strong>verbose</strong>：查看RIP接口的详细信息</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>此命令的输出信息有助于查看RIP配置及运行状态，进行故障诊断并验证配置效果。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rip_interface__d62609e111"></a><a name="d62609e111"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看GigabitEthernet1/0/0接口上RIP的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display rip 1 interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen"> --------------------------------------------------------------------------</pre>
+<pre class="screen"> Interface                 IP Address      State    Protocol            MTU</pre>
+<pre class="screen"> --------------------------------------------------------------------------</pre>
+<pre class="screen"> GigabitEthernet 1/0/0     1.1.1.2         UP       RIPv1 Compatible    500</pre>
+
+<div class="tablenoborder"><a name="display_rip_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rip_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display rip interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="36.10481229528849%" id="d62609e139"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63.89518770471152%" id="d62609e143"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e139 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e143 "><p>使能RIP协议的接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e139 "><p>IP Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e143 "><p>接口的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e139 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e143 "><div class="p">接口状态：<ul>
+<li><p>Up</p>
+</li>
+<li><p>Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e139 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e143 "><p>接口运行RIP的版本</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e139 "><p>MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e143 "><p>链路的MTU值</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看GigabitEthernet1/0/0接口上RIP的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rip 1 interface GigabitEthernet1/0/0 verbose</strong></pre>
+<pre class="screen"> GigabitEthernet1/0/0 (81.1.1.1)</pre>
+<pre class="screen">  State:   UP        MTU: 500</pre>
+<pre class="screen">  Metricin: 0        Metricout: 1</pre>
+<pre class="screen">  Input: Enabled     Output: Enabled</pre>
+<pre class="screen">  Protocol: RIPv2 Compatible (Non-Standard)</pre>
+<pre class="screen">  Send   RIPv1 Packets</pre>
+<pre class="screen">  Receive  RIPv1 Packets, RIPv2, Multicast and Broadcast Packets</pre>
+<pre class="screen">  Poison-reverse: Disabled</pre>
+<pre class="screen">  Split-Horizon: Enabled</pre>
+<pre class="screen">  Authentication type: None</pre>
+<pre class="screen">  Summary Address(es):</pre>
+
+<div class="tablenoborder"><a name="display_rip_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rip_interface__tb_02" frame="border" border="1" rules="all"><caption>表2 display rip interface verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="36.10481229528849%" id="d62609e259"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63.89518770471152%" id="d62609e263"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><div class="p">接口状态：<ul>
+<li><p>UP：</p>
+</li>
+<li><p>DOWN：</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>Metricin</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><p>接口接收RIP报文时给路由增加的度量值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>Metricout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><p>接口发送RIP报文时给路由增加的度量值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>Input</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><p>是否允许接收报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>Output</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><p>是否允许发送报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><div class="p">在接口上运行的协议：<ul>
+<li><p>RIPv1</p>
+</li>
+<li><p>RIPv2</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>Send</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><div class="p">接口发送的报文类型<ul>
+<li><p>RIPv1</p>
+</li>
+<li><p>RIPv2</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>Receive</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><div class="p">接口接收的报文类型<ul>
+<li><p>RIPv1</p>
+</li>
+<li><p>RIPv2</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>Poison-reverse</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><p>接口是否使能了毒性反转特性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>Split Horizon</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><p>接口是否使能了水平分割特性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>Authentication type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><p>接口上配置的认证类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.10481229528849%" headers="d62609e259 "><p>Summary Address(es)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.89518770471152%" headers="d62609e263 "><p>聚合地址</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_rip_interface__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rip_interface__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d62609e457"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d62609e461"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d62609e457 "><p>VRPV500R003C07B200</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d62609e461 "><p>使用<strong>verbose</strong>参数时，显示信息中删除了&#8220;OSB Timer Value&#8221;字段。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d62609e457 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d62609e461 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rip_configuration_commands.html">RIP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="rip.html">rip</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

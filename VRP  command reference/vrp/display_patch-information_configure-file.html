@@ -1,0 +1,233 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display patch-information configure-file">
+<meta name="DC.Relation" scheme="URI" content="../vrp/update_and_maintenance.html">
+<meta name="DC.Relation" scheme="URI" content="patch-state_run.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_patch-information_configure-file">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display patch-information configure-file</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_patch-information_configure-file"></a><a name="display_patch-information_configure-file"></a>
+
+
+<h1 class="topictitle1">display patch-information configure-file</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display patch-information configure-file</strong>命令用来查看补丁状态文件。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display patch-information configure-file </strong>[ <strong>next-startup </strong>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>next-startup</strong>：查看下一次启动后的补丁状态文件。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果没有设置下一次启动后的补丁状态，则执行<strong>display patch-information configure-file next-startup</strong>命令查看到的下次重启后的补丁状态文件与当前的补丁状态文件相同。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display patch-information configure-file</strong>命令可以查看当前的补丁状态文件。</p>
+<p>补丁状态文件仅用于设备重启后恢复单板上的补丁状态，查看当前的补丁状态文件不等于查看当前的补丁状态。例如，补丁状态文件中记录某单板的补丁状态为激活态，设备重启后，该单板补丁状态变为去激活态，但补丁状态文件中该单板状态仍为激活态，此时补丁状态文件中记录的补丁状态与实际情况不符。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>目前此命令仅在NE40E、NE80E、NE5000E上可用。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_patch-information_configure-file__d58472e57"></a><a name="d58472e57"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看设备当前的补丁状态文件。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display patch-information configure-file</strong></pre>
+<pre class="screen">Codes: M(Max patch ID in the board)</pre>
+<pre class="screen">--------------------------------------</pre>
+<pre class="screen">Slot   Run  Active  Deactive  NPPatch</pre>
+<pre class="screen">--------------------------------------  </pre>
+<pre class="screen"> 1    unregistered      M      -      -          idle</pre>
+<pre class="screen"> 2    unregistered      M      -      -          idle</pre>
+<pre class="screen"> 3    unregistered      M      -      -          idle</pre>
+<pre class="screen"> 4    unregistered      M      -      -          idle</pre>
+<pre class="screen"> 5      registered      M      -      -          idle</pre>
+<pre class="screen"> 6    unregistered      M      -      -          idle</pre>
+<pre class="screen"> 7    unregistered      M      -      -          idle</pre>
+<pre class="screen"> 8    unregistered      M      -      -          idle</pre>
+<pre class="screen"> 9      registered      M      -      -          idle</pre>
+<pre class="screen"> 10     registered      M      -      -          idle </pre>
+<pre class="screen">--------------------------------------       </pre>
+<p># 查看设备下一次启动后的补丁状态文件。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display patch-information configure-file next-startup</strong></pre>
+<pre class="screen">Codes: M(Max patch ID in the board)</pre>
+<pre class="screen">--------------------------------------</pre>
+<pre class="screen">Slot   Run  Active  Deactive  NPPatch</pre>
+<pre class="screen">--------------------------------------  </pre>
+<pre class="screen"> 1       M      -      -      -</pre>
+<pre class="screen"> 2       M      -      -      -</pre>
+<pre class="screen"> 3       M      -      -      -</pre>
+<pre class="screen"> 4       M      -      -      -</pre>
+<pre class="screen"> 5       M      -      -      -</pre>
+<pre class="screen"> 6       M      -      -      -</pre>
+<pre class="screen"> 7       M      -      -      -</pre>
+<pre class="screen"> 8       M      -      -      -</pre>
+<pre class="screen"> 9       M      -      -      -</pre>
+<pre class="screen"> 10      M      -      -      -</pre>
+<pre class="screen">--------------------------------------   </pre>
+
+<div class="tablenoborder"><a name="display_patch-information_configure-file__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_patch-information_configure-file__tb_01" frame="border" border="1" rules="all"><caption>表1 display patch-information configure-file命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d58472e143"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d58472e147"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d58472e143 "><p>Slot</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d58472e147 "><p>单板的槽位号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d58472e143 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d58472e147 "><div class="p">单板的状态<ul>
+<li><p>registered：单板在槽位中</p>
+</li>
+<li><p>unregistered：单板不在槽位中</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d58472e143 "><p>Run</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d58472e147 "><p>补丁状态为运行态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d58472e143 "><p>Active</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d58472e147 "><p>补丁状态为激活态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d58472e143 "><p>Deactive</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d58472e147 "><p>补丁状态为去激活态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d58472e143 "><p>NPPatch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d58472e147 "><p>产品补丁状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d58472e143 "><p>idle</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d58472e147 "><p>无补丁</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_patch-information_configure-file__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_patch-information_configure-file__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d58472e256"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d58472e260"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d58472e256 "><p>VRPV500R003C08B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d58472e260 "><p>修改命令关键字：将命令<strong>display patch state </strong>[ <strong>next-startup </strong>]修改为<strong>display patch-information configure-file </strong>[ <strong>next-startup </strong>]；修改显示信息的格式：将标题项的首字母全部大写。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d58472e256 "><p>VRPV500R005C02B071</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d58472e260 "><p>原只有用户视图下支持此命令，修改为在所有视图下支持此命令。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/update_and_maintenance.html">升级维护</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="patch-state_run.html">patch-state run</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

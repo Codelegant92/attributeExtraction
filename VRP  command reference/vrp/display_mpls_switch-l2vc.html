@@ -1,0 +1,710 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls switch-l2vc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_switch-l2vc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_switch-l2vc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls switch-l2vc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_switch-l2vc"></a><a name="display_mpls_switch-l2vc"></a>
+
+
+<h1 class="topictitle1">display mpls switch-l2vc</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls switch-l2vc</strong>命令用来显示指定的或者所有的交换PW信息（纯静态、纯动态或者静动混合PW交换）。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls switch-l2vc</strong> [ <em>ip-address vc-id</em> <strong>encapsulation</strong> { <em>encapsulation-type</em> | <strong>ip</strong>-<strong>interworking</strong> | <strong>ip-layer2</strong> } | <strong>state</strong> { <strong>down</strong> | <strong>up</strong> } ]<span> [<strong> | count</strong> ] </span><span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：PW对端设备的LSR-ID。</p>
+<p><em>vc-id</em>：虚电路号。十进制整数形式，取值范围是1～4294967295。</p>
+<p><em>encapsulation-type</em>：PW的封装类型，可以为<strong>atm-1to1-vcc</strong>、<strong>atm-1to1-vpc</strong>、<strong>atm-aal5-pdu</strong>、<strong>atm-aal5-sdu</strong>、<strong>atm-nto1-vcc</strong>、<strong>atm-nto1-vpc</strong>、<strong>atm-trans-cell</strong>、<strong>ethernet</strong>、<strong>fr</strong>、<strong>hdlc</strong>、<strong>ppp</strong>、或<strong>vlan</strong>。</p>
+<p><strong>ip</strong>-<strong>interworking</strong>：如果进行异种介质互通的设备都是华为设备，选择参数 <strong>ip-interworking</strong>来显示交换PW的信息。</p>
+<p><strong>ip-layer2</strong>：如果与其他设备制造商的设备进行异种介质互通，选择参数<strong>ip-layer2</strong>来显示交换PW的信息。</p>
+<p><strong>state</strong>：对等体之间VC的状态信息。</p>
+<p><strong>down</strong>：状态为Down的VC信息。</p>
+<p><strong>up</strong>：状态为Up的VC信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display mpls switch-l2vc</strong>命令后，如果没有指定参数则显示所有的交换信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_switch-l2vc__d47806e189"></a><a name="d47806e189"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定交换PW的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls switch-l2vc 1.1.1.9 100 encapsulation ppp</strong></pre>
+<pre class="screen"> Total Switch VC : 1</pre>
+
+<pre class="screen">*Switch-l2vc type             : SVC&lt;----&gt;SVC</pre>
+<pre class="screen"> Peer IP Address              : 3.3.3.9, 1.1.1.9</pre>
+<pre class="screen"> VC ID                        : 100, 100</pre>
+<pre class="screen"> VC Type                      : ppp</pre>
+<pre class="screen"> VC State                     : up</pre>
+<pre class="screen"> In/Out Label                 : 200/200, 100/100</pre>
+<pre class="screen"> Control Word                 : Disable, Disable</pre>
+<pre class="screen"> VCCV Capality                : Disable, Disable</pre>
+<pre class="screen"> Switch-l2vc tunnel info    :</pre>
+<pre class="screen">                                   1 tunnels for peer 5.5.5.9</pre>
+<pre class="screen">                                   NO.0  TNL Type : lsp   , TNL ID : 0x600200a</pre>
+<pre class="screen">                                   1 tunnels for peer 1.1.1.9</pre>
+<pre class="screen">                                   NO.0  TNL Type : lsp   , TNL ID : 0x6002002</pre>
+<pre class="screen"> Create time                  : 0 days, 0 hours, 7 minutes, 2 seconds</pre>
+<pre class="screen"> UP time                      : 0 days, 0 hours, 7 minutes, 2 seconds</pre>
+<pre class="screen"> Last change time             : 0 days, 0 hours, 7 minutes, 2 seconds</pre>
+<pre class="screen">VC last up time : 2008/07/24 12:31:31
+VC total up time: 0 days, 2 hours, 12 minutes, 51 seconds
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_switch-l2vc__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_switch-l2vc__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls switch-l2vc命令输出信息描述（SVC-SVC）</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.86898463088939%" id="d47806e246"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.1310153691106%" id="d47806e250"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>Switch-l2vc Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>交换类型，可以为 LDP&lt;--&gt;LDP、LDP-SVC或者SVC&lt;--&gt;SVC。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>Peer ip address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>交换的两个对端IP地址，分左右显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>VC ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>交换的两个虚电路号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>VC Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>VC的封装类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>VC State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><div class="p">VC的状态：<ul>
+<li><p>up表示VC建立成功；</p>
+</li>
+<li><p>down表示VC建立不成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>In/Out Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>两侧的入/出标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>Control Word</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>两端控制字的使能状态。Disable表示没有使能控制字，Enable表示使能了控制字。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>VCCV Capality</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>两侧的VC连接检测的使能状态。Disable表示没有使能VC连接检测，Enable表示使能了VC连接检测。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>Switch-l2vc tunnel info:1 tunnels for peer 3.3.3.9NO.0  TNL Type : lsp   , TNL ID : 0x220001 tunnels for peer 1.1.1.9NO.0  TNL Type : lsp, TNL ID : 0x22002</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>两端的隧道信息。TNL Type表示隧道类型。TNL ID表示隧道ID，系统自动分配。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>Create Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>该交换VC已经创建了多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>Up Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>该交换VC保持UP状态多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>Last Change Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>该交换VC最后一次状态变化距现在多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>VC last up time :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>VC最近一次UP的时刻。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e246 "><p>VC total up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e250 "><p>VC累积UP的时间（除去中间DOWN的时间）。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看对等体之间状态为up的switch l2vc信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display mpls switch-l2vc state up</strong></strong></pre>
+<pre class="screen">Total Switch VC : 1, 1 up, 0 down</pre>
+<pre class="screen">*Switch-l2vc type             : LDP?&agrave;LDP</pre>
+<pre class="screen"> Peer IP Address              : 5.5.5.9, 1.1.1.9</pre>
+<pre class="screen"> VC ID                        : 200, 100</pre>
+<pre class="screen"> VC Type                      : ppp</pre>
+<pre class="screen"> VC State                     : up</pre>
+<pre class="screen"> Session State                   : up, up</pre>
+<pre class="screen"> Local/Remote Lable             : 1025/1024, 1024/1025</pre>
+<pre class="screen"> Local/Remote MTU               : 4470/4470, 4470/4470</pre>
+<pre class="screen"> Local/Remote Control Word    : Disable/Disable, Disable/Disable</pre>
+<pre class="screen"> Local/Remote VCCV Capality   : Disable/Disable, Disable/Disable</pre>
+<pre class="screen"> Switch-l2vc tunnel info      :</pre>
+<pre class="screen">                                1 tunnels for peer 5.5.5.9</pre>
+<pre class="screen">                                NO.0  TNL Type : lsp   , TNL ID : 0x202003</pre>
+<pre class="screen">                                1 tunnels for peer 1.1.1.9</pre>
+<pre class="screen">                                NO.0  TNL Type : lsp   , TNL ID : 0x202000</pre>
+<pre class="screen"> Create time                  : 0 days, 0 hours, 3 minutes, 54 seconds</pre>
+<pre class="screen"> UP time                      : 0 days, 0 hours, 3 minutes, 12 seconds</pre>
+<pre class="screen"> Last change time             : 0 days, 0 hours, 3 minutes, 12 seconds</pre>
+<pre class="screen">VC last up time : 2008/07/24 12:31:31
+VC total up time: 0 days, 2 hours, 12 minutes, 51 seconds
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_switch-l2vc__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_switch-l2vc__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls switch-l2vc命令输出信息描述（LDP-LDP）</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.86898463088939%" id="d47806e485"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.1310153691106%" id="d47806e489"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>Switch-l2vc Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>交换类型，可以为 LDP&lt;--&gt;LDP、LDP-SVC或者SVC&lt;--&gt;SVC。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>Peer ip address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>交换的两个对端IP地址，分左右显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>VC ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>交换的两个虚电路号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>VC Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>VC的封装类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>VC State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><div class="p">VC的状态：<ul>
+<li><p>up表示VC建立成功；</p>
+</li>
+<li><p>down表示VC建立不成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>Session State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><div class="p">两侧的会话建立的状态。<ul>
+<li><p>up表示会话建立成功。</p>
+</li>
+<li><p>down表示会话建立不成功。</p>
+</li>
+<li><p>none表示没有会话。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>Local/Remote Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>两侧的入/出标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>Local/Remote MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><div class="p">两侧PW的本端和远端的MTU值。<ul>
+<li><p>对于LDP来说，显示本端和对端的MTU值。</p>
+</li>
+<li><p>对于SVC来说，只显示本端的MTU值。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>Local/Remote Control Word</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>两端控制字的使能状态。Disable表示没有使能控制字，Enable表示使能了控制字。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>Local/Remote VCCV Capality</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>两侧的VC连接检测的使能状态。Disable表示没有使能VC连接检测，Enable表示使能了VC连接检测。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>Switch-l2vc tunnel info:1 tunnels for peer 3.3.3.9NO.0  TNL Type : lsp   , TNL ID : 0x220001 tunnels for peer 1.1.1.9NO.0  TNL Type : lsp, TNL ID : 0x22002</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>两端的隧道信息。TNL Type表示隧道类型。TNL ID表示隧道ID，系统自动分配。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>Create Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>该交换VC已经创建了多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>Up Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>该交换VC保持UP状态多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>Last Change Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>该交换VC最后一次状态变化距现在多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>VC last up time :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>VC最近一次UP的时刻。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d47806e485 "><p>VC total up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d47806e489 "><p>VC累积UP的时间（除去中间DOWN的时间）。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看对等体之间所有的switch l2vc信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display mpls switch-l2vc</strong></strong></pre>
+<pre class="screen">Total Switch VC : 1, 1 up, 0 down</pre>
+
+<pre class="screen">*Switch-l2vc type             : LDP?&agrave;SVC</pre>
+<pre class="screen"> Peer IP Address              : 1.1.1.9, 5.5.5.9</pre>
+<pre class="screen"> VC ID                        : 100, 200</pre>
+<pre class="screen"> VC Type                      : ppp</pre>
+<pre class="screen"> VC State                     : up</pre>
+<pre class="screen"> Session State                   : up, None</pre>
+<pre class="screen"> Local(In)/Remote(Out) Label  : 17408/17408, 100/200</pre>
+<pre class="screen"> Local/Remote MTU               : 4470/4470, 4470</pre>
+<pre class="screen"> Local/Remote Control Word    : Disable/Disable, Disable</pre>
+<pre class="screen"> Local/Remote VCCV Capality   : Disable/Disable, Disable</pre>
+<pre class="screen"> Switch-l2vc tunnel info      :</pre>
+<pre class="screen">                                     1 tunnels for peer 1.1.1.9</pre>
+<pre class="screen">                                     NO.0  TNL Type : lsp   , TNL ID : 0x6002002</pre>
+<pre class="screen">                                     1 tunnels for peer 5.5.5.9</pre>
+<pre class="screen">                                     NO.0  TNL Type : lsp   , TNL ID : 0x600200a</pre>
+<pre class="screen"> Create time                   : 0 days, 0 hours, 3 minutes, 48 seconds</pre>
+<pre class="screen"> UP time                        : 0 days, 0 hours, 3 minutes, 48 seconds</pre>
+<pre class="screen"> Last change time             : 0 days, 0 hours, 3 minutes, 48 seconds</pre>
+<pre class="screen">VC last up time : 2008/07/24 12:31:31
+VC total up time: 0 days, 2 hours, 12 minutes, 51 seconds
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_switch-l2vc__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_switch-l2vc__tb_03" frame="border" border="1" rules="all"><caption>表3 display mpls switch-l2vc命令输出信息描述（LDP-SVC）</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.045351473922903%" id="d47806e771"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.95464852607711%" id="d47806e775"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>Switch-l2vc Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>交换类型，可以为 LDP&lt;--&gt;LDP、LDP-SVC或者SVC&lt;--&gt;SVC。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>Peer ip address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>交换的两个对端IP地址，分左右显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>VC ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>交换的两个虚电路号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>VC Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>VC的封装类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>VC State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><div class="p">VC的状态：<ul>
+<li><p>up表示VC建立成功；</p>
+</li>
+<li><p>down表示VC建立不成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>Session State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><div class="p">两侧的会话建立的状态。<ul>
+<li><p>up表示会话建立成功。</p>
+</li>
+<li><p>down表示会话建立不成功。</p>
+</li>
+<li><p>none表示没有会话。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>Local(In)/Remote(Out) Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>两侧的入/出标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>Local/Remote MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><div class="p">两侧PW的本端和远端的MTU值。<ul>
+<li><p>对于LDP来说，显示本端和对端的MTU值。</p>
+</li>
+<li><p>对于SVC来说，只显示本端的MTU值。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>Local/Remote Control Word</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>两端控制字的使能状态。Disable表示没有使能控制字，Enable表示使能了控制字。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>Local/Remote VCCV Capality</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>两侧的VC连接检测的使能状态。Disable表示没有使能VC连接检测，Enable表示使能了VC连接检测。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>Switch-l2vc tunnel info:1 tunnels for peer 3.3.3.9NO.0  TNL Type : lsp   , TNL ID : 0x220001 tunnels for peer 1.1.1.9NO.0  TNL Type : lsp, TNL ID : 0x22002</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>两端的隧道信息。TNL Type表示隧道类型。TNL ID表示隧道ID，系统自动分配。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>Create Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>该交换VC已经创建了多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>Up Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>该交换VC保持UP状态多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>Last Change Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>该交换VC最后一次状态变化距现在多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>VC last up time :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>VC最近一次UP的时刻。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.045351473922903%" headers="d47806e771 "><p>VC total up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.95464852607711%" headers="d47806e775 "><p>VC累积UP的时间（除去中间DOWN的时间）。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_switch-l2vc__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_switch-l2vc__tb_04" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.0047871000252%" id="d47806e1007"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.99521289997481%" id="d47806e1011"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d47806e1007 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d47806e1011 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d47806e1007 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d47806e1011 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pwe3_configuration_commands.html">PWE3配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_switch-l2vc.html">mpls switch-l2vc</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

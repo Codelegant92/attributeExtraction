@@ -1,0 +1,99 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="x25 map">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_x25_map.html">
+<meta name="DC.Relation" scheme="URI" content="x25_reverse-charge-accept.html">
+<meta name="DC.Relation" scheme="URI" content="x25_call-facility.html">
+<meta name="DC.Relation" scheme="URI" content="x25_timer_idle.html">
+<meta name="DC.Relation" scheme="URI" content="x25_vc-per-map.html">
+<meta name="DC.Relation" scheme="URI" content="x25_modulo.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="x25_map">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>x25 map</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="x25_map"></a><a name="x25_map"></a>
+
+<h1 class="topictitle1">x25 map</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>x25 map</strong>命令用来设置局域网之间使用的网际协议的地址与X.121地址之间的地址映射。</p>
+<p><strong>undo x25 map</strong>命令用来删除已有的映射。</p>
+<p>缺省情况下，系统没有任何地址映射。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>x25 map</strong> { <strong>compressedtcp</strong> <em>protocol-address</em> | <strong>ip</strong> <em>ip-address </em>}* <strong>x121-address</strong><em> x.121-address</em> [ <em>option</em> ]</p>
+<p><strong>undo x25 map</strong> { <strong>compressedtcp</strong> <em>protocol-address</em> | <strong>ip</strong> <em>ip-address </em>}*</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>compressedtcp</strong>：使用TCP头压缩。</p>
+<p><strong>ip</strong>：使用IP协议。</p>
+<p><em>ip-address</em>：对端主机的网络协议地址。</p>
+<p><em>x.121-address</em>：对端主机的X.121地址，字符串形式，长度范围是1～15 ，只有0～9数字是有效的。</p>
+<p><em>option</em>：该地址映射指定一些属性或用户设施。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>由于X.25协议能够在一个物理接口上复用多条逻辑虚电路，所以需要手工指定所有的网络地址与X.121地址的映射关系。</p>
+<p>一旦指定一条地址映射，这条地址映射的所有内容（包括协议地址、X.121地址及其所有选项）都不能再被改变，若想改变，可以先用<strong>undo x25 map</strong>命令删除该地址映射，然后再创建一条新的地址映射。</p>
+<p>在同一个X.25接口上，不应该存在两条或两条以上协议地址相同的地址映射。</p>
+<p>X.25地址映射各选项意义详细解释如下：</p>
+<p><strong>broadcast</strong>：向该目的地发送网际协议的广播和IP协议的多播，该选项对一些路由协议（如RIP）提供了强有力的支持。</p>
+<p><strong>closed-user-group</strong> <em>group-number</em>：指定和该地址映射对应的封闭用户群号。<em>group-number</em>取值范围是0～9999。</p>
+<p><strong>encapsulation-type</strong>：设置封装方法，可选择的方法有nonstandard、ietf、multi-protocol、snap。</p>
+<p><strong>idle-timer </strong><em>minutes</em>：指定与该地址映射相关联的虚电路的最大空闲时间。取值范围是0～255，单位是分钟。0表示空闲时间无限大。</p>
+<p><strong>no-callin</strong>：禁止接受针对于该地址映射的呼叫。</p>
+<p><strong>no-callout</strong>：禁止使用该地址映射发起呼叫。</p>
+<p><strong>packet-size</strong><em> input-packet output-packet</em>：使用该地址映射发起呼叫时，与对端进行最大分组长度的协商，分组长度以字节为单位，这两个值必须在16到4096范围内（包括16和4096），并且必须是2的整数次幂。</p>
+<p><strong>reverse-charge-accept</strong>：对该地址映射发起的呼叫里如果携带了反向计费请求，只有在地址映射里配置该选项才能接受呼叫。</p>
+<p><strong>reverse-charge-request</strong>：使用该地址映射发起呼叫时，携带反向计费请求。</p>
+<p><strong>roa-list</strong> <em>name</em>：为该接口指定一个在系统视图下用<strong>x25 roa</strong>命令配置的ROA列表名，<em>name</em>为字符串形式，长度是1～19。</p>
+<p><strong>send-delay</strong> <em>milliseconds</em>：使用该地址映射发起呼叫时，携带最大传输时延请求。取值范围是0～65534，单位是毫秒。</p>
+<p><strong>threshold</strong><em> in out</em>：使用该地址映射发起呼叫时，与对端进行吞吐量级的协商。参数<em>in</em>和<em>out</em>的值只能取75，150，300，600，1200，2400，4800，9600，19200或48000。</p>
+<p><strong>vc-per-map</strong><em> count</em>：设置可以与该地址映射相关联的虚电路的最大数目。取值范围是1～8。</p>
+<p><strong>window-size</strong> <em>input-window-size output-window-size</em>：使用该地址映射发起呼叫时，与对端进行窗口尺寸的协商，<em>input-window-size</em>和<em>output-window-size</em>的值在1到该地址映射所在的X.25接口的模数减1之间（包括1和模数减1）。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="x25_map__d129656e195"></a><a name="d129656e195"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 分别在X.25接口Serial1/0/0和Serial2/0/0上各设置两条地址映射，这四条地址映射具有互不相同的属性。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> link-protocol x25</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> x25 map ip 202.38.160.11 x121-address 20112451 reverse-charge-request reverse-charge-accept</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> x25 map ip 202.38.160.138 x121-address 20112450 packet-size 512 512 idle-timer 10</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 2/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial2/0/0]<strong> link-protocol x25</strong></pre>
+<pre class="screen">[Quidway-Serial2/0/0]<strong> x25 map ip 20.30.4.1 x121-address 25112451 window-size 4 4 broadcast</strong></pre>
+<pre class="screen">[Quidway-Serial2/0/0]<strong> x25 map ip 20.30.4.8 x121-address 25112450 no-callin</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_x25_map.html">display x25 map</a></div>
+<div><a href="x25_reverse-charge-accept.html">x25 reverse-charge-accept</a></div>
+<div><a href="x25_call-facility.html">x25 call-facility</a></div>
+<div><a href="x25_timer_idle.html">x25 timer idle</a></div>
+<div><a href="x25_vc-per-map.html">x25 vc-per-map</a></div>
+<div><a href="x25_modulo.html">x25 modulo</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

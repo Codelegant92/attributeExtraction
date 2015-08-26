@@ -1,0 +1,96 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="cfm md">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_enable_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="display_cfm_md.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cfm_md">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>cfm md</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="cfm_md"></a><a name="cfm_md"></a>
+
+
+<h1 class="topictitle1">cfm md</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>cfm md</strong>命令用来创建维护域MD，并进入MD视图。如该MD已存在，则本命令用来进入MD视图。</p>
+<p><strong>undo cfm md</strong>命令用来删除MD。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>cfm md</strong> <em>md-name</em> <span>[<strong> format </strong>{<strong> no-md-name </strong>|<strong> dnsname-and-mdname </strong>|<strong> mac-address </strong>|<strong> md-name </strong>} ]</span> [<strong> level </strong><em>level </em>]</p>
+<p><strong>undo cfm md</strong> { <strong>all</strong> | <strong>name</strong> <em>md-name </em>}</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>md </strong><em>md-name</em>：指定MD的名称，用来标识一个维护域。字符串形式，不支持空格、&#8220;-&#8221;和&#8220;?&#8221;，长度范围是1～43。MD的名称用于标识MD，同一设备上的MD的名称不能重复。</p>
+<p><strong>no-md-name</strong>：表示发送的报文中的MA ID域中没有MD Name字段。</p>
+<p><strong>dnsname-and-mdname</strong>：表示用户在配置MD时使用DNS名称＋MD名称作为MD名称。</p>
+<p><strong>mac-address</strong>：表示用户在配置MD时不用指定MAC地址。</p>
+<p><strong>md-name</strong>：表示用户在配置MD时输入MD名称，报文中的MA ID域中含有MD名称。</p>
+<p><strong>level</strong> <em>level</em>：指定MD的级别。整数形式，取值范围是0～7，值越大MD的优先级越高。缺省值是0级。</p>
+<p><strong>all</strong>：表示删除所有MD。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>可以把由一个ISP管理的所有具备CFM功能的设备配置在一个MD内。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>低级别MD的802.1ag协议报文进入高级别的MD后被丢弃，高级别MD的802.1ag协议报文可以穿越低级别的MD。相同级别的MD的802.1ag协议报文不能彼此穿越。</p>
+</div></div>
+<p>802.1ag standard2007标准版本规定，用户在配置MD时可指定MD名称类型。每个维护域只能有一种类型名称和一个级别。可以使用本命令进入一个已经存在的MD视图，但是不能使用本命令更改已经存在的MD的名称输入类型和级别。若需要更改已经存在的MD的名称输入类型和级别，需先删除该MD，然后再重新创建MD。</p>
+<p>802.1ag draft7草案版本中规定创建了一个MD后，不能再使用本命令修改该MD的级别，如要修改，需先删除该MD，然后再重新创建MD。</p>
+<p>使用<a href="cfm_enable_system_view.html">cfm enable（系统视图）</a>命令全局使能CFM功能后才能使用本命令。</p>
+<p>一台<span class="keyword">路由器</span>设备上最多可创建64个MD。</p>
+<p>删除一个MD时，设备自动删除该MD下的所有MA、MEP、MIP、RMEP的相关配置。</p>
+<p>MA、MEP、RMEP必须在MD内创建，因此在创建MA、MEP、RMEP前必须先创建MD。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="cfm_md__d6197e133"></a><a name="d6197e133"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建名称为mdcustomer、级别为4级的MD。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm enable</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm md mdcustomer level 4</strong></pre>
+<p># 将mdcustomer的级别从4改为6。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> undo cfm md name mdcustomer</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm md mdcustomer level 6</strong></pre>
+<p># 创建名称为mdcustomer、名称输入类型为md-name、级别为4级的MD。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm enable</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm md mdcustomer format md-name level 4</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_enable_system_view.html">cfm enable（系统视图）</a></div>
+<div><a href="display_cfm_md.html">display cfm md</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

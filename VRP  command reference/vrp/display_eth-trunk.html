@@ -1,0 +1,485 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display eth-trunk">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="eth-trunk.html">
+<meta name="DC.Relation" scheme="URI" content="least_active-linknumber_eth-trunk_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="load-balance_eth-trunk_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="max_bandwidth-affected-linknumber.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_eth-trunk">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display eth-trunk</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_eth-trunk"></a><a name="display_eth-trunk"></a>
+
+
+<h1 class="topictitle1">display eth-trunk</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display eth-trunk</strong>命令用来查看Eth-Trunk接口的配置信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display eth-trunk</strong> [ <em>trunk-id</em> [ <strong>interface</strong> <em>interface-type</em> <em>interface-number</em> | <strong>verbose</strong> ] ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>trunk-id</em>：端口聚合的Trunk ID。取值范围是0～63。</p>
+<p><strong>interface</strong> <em>interface-type</em> <em>interface-number</em>：Eth-Trunk中的成员接口。</p>
+<p><strong>verbose</strong>：显示Eth-Trunk接口的详细配置信息，包括接口流量统计信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p><strong>verbose</strong>关键字仅在NE40E、NE80E和NE5000E上支持。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置完Eth-Trunk接口，可以使用本命令查看Eth-Trunk接口的配置结果。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_eth-trunk__d23609e120"></a><a name="d23609e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看接口Eth-Trunk 1(手工负载分担模式)的配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display eth-trunk 1</strong></pre>
+<pre class="screen">Eth-Trunk1's state information is:</pre>
+<pre class="screen"> WorkingMode: NORMAL            Hash Arithmetic: According to flow </pre>
+<pre class="screen"> Least Active-linknumber：2    Max Bandwidth-affected-linknumber：16</pre>
+<pre class="screen"> Operate Status: up             Number Of Up Ports In Trunk：2</pre>
+<pre class="screen"> ----------------------------------------------------------------------------------</pre>
+<pre class="screen"> PortName                       Status   weight </pre>
+<pre class="screen"> GigabitEthernet2/0/1           Up       1    </pre>
+<pre class="screen"> GigabitEthernet2/0/2           Up       2 </pre>
+<p># 查看捆绑口Eth-Trunk 10(静态LACP模式)的配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display eth-trunk 10</strong></pre>
+<pre class="screen">Eth-Trunk10's state information is:</pre>
+<pre class="screen"> Local:</pre>
+<pre class="screen"> LAG ID: 10                       WorkingMode: STATIC</pre>
+<pre class="screen"> Preempt Delay: 30              Hash Arithmetic: According to flow</pre>
+<pre class="screen"> System Priority: 50            System ID: 00e0-fc7f-7242</pre>
+<pre class="screen"> Least Active-linknumber：2    Max Active-linknumber：16</pre>
+<pre class="screen"> Operate Status: up             Number Of Up Ports In Trunk：2</pre>
+<pre class="screen"> ---------------------------------------------------------------------------------------</pre>
+<pre class="screen"> ActorPortName          Status    PortType  PortPri PortNo  PortKey   PortState   Weight</pre>
+<pre class="screen"> GigabitEthernet1/0/0   Unselect  1GE       32768   6144    2609      11100010    1</pre>
+<pre class="screen"> GigabitEthernet1/0/1   Unselect  1GE       10      6145    2609      11100011    2</pre>
+<pre class="screen"> GigabitEthernet1/0/2   Selected  1GE       32768   6146    2609      11111100    1</pre>
+<pre class="screen"> GigabitEthernet1/0/3   Selected  1GE       10      6147    2609      11111100    1</pre>
+
+<pre class="screen"> Partner:</pre>
+<pre class="screen"> ---------------------------------------------------------------------------------------</pre>
+<pre class="screen"> ActorPortName          SysPri    SystemID         PortPri  PortNo  PortKey   PortState</pre>
+<pre class="screen"> GigabitEthernet1/0/0   0         0000-0000-0000   0        0       0         11100011</pre>
+<pre class="screen"> GigabitEthernet1/0/1   0         0000-0000-0000   0        0       0         11100011</pre>
+<pre class="screen"> GigabitEthernet1/0/2   12        00e0-fca8-0418   32768    6146    2609      11111100</pre>
+<pre class="screen"> GigabitEthernet1/0/3   12        00e0-fca8-0418   32768    6147    2609      11111100</pre>
+<p># 查看捆绑口Eth-Trunk 10(静态LACP模式)的详细配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display eth-trunk 10 verbose</strong></pre>
+<pre class="screen">Eth-Trunk10's state information is:</pre>
+<pre class="screen"> Local:</pre>
+<pre class="screen"> LAG ID: 10                       WorkingMode: STATIC</pre>
+<pre class="screen"> Preempt Delay Time: 30        Hash arithmetic: According to flow</pre>
+<pre class="screen"> System Priority: 50            System ID: 00e0-fc7f-7242</pre>
+<pre class="screen"> Least active-linknumber：2    Max Active-linknumber：16</pre>
+<pre class="screen"> Operate status: down           Number Of Up Ports in Trunk：0</pre>
+<pre class="screen"> ---------------------------------------------------------------------------------------</pre>
+<pre class="screen"> ActorPortName          Status    PortType  PortPri PortNo  PortKey   PortState   Weight</pre>
+<pre class="screen"> GigabitEthernet1/0/0   Unselect  1GE       32768   6144    2609      11100010    1</pre>
+<pre class="screen"> GigabitEthernet1/0/1   Unselect  1GE       10      6145    2609      11100011    2</pre>
+
+<pre class="screen"> Partner:</pre>
+<pre class="screen"> ---------------------------------------------------------------------------------------</pre>
+<pre class="screen"> ActorPortName          SysPri    SystemID         PortPri  PortNo   PortKey     PortState</pre>
+<pre class="screen"> GigabitEthernet1/0/0   0         0000-0000-0000   0        0        0           11100011</pre>
+<pre class="screen"> GigabitEthernet1/0/1   0         0000-0000-0000   0        0        0           11100011 </pre>
+
+
+<pre class="screen">Flow statistic：</pre>
+<pre class="screen"> Interface GigabitEthernet1/0/0</pre>
+<pre class="screen">    Last 300 seconds input rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Last 300 seconds output rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    0 packets input, 0 bytes, 0 drops</pre>
+<pre class="screen">    0 packets output, 0 bytes, 0 drops</pre>
+
+<pre class="screen"> Interface GigabitEthernet1/0/1</pre>
+<pre class="screen">    Last 300 seconds input rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Last 300 seconds output rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    0 packets input, 0 bytes, 0 drops</pre>
+<pre class="screen">    0 packets output, 0 bytes, 0 drops</pre>
+
+<pre class="screen"> Interface Eth-Trunk10</pre>
+<pre class="screen">    Last 300 seconds input rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Last 300 seconds output rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    0 packets input, 0 bytes, 0 drops</pre>
+<pre class="screen">    0 packets output, 0 bytes, 0 drops </pre>
+
+<div class="tablenoborder"><a name="display_eth-trunk__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_eth-trunk__tb_01" frame="border" border="1" rules="all"><caption>表1 display eth-trunk命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.15469891660368%" id="d23609e278"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.84530108339633%" id="d23609e282"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Local</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>本端Eth-Trunk接口的配置信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>LAG ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>Eth-Trunk接口的ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>WorkingMode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>Eth-Trunk接口的工作模式。</p>
+<ul>
+<li><p>NORMAL：表示手工负载分担模式。</p>
+</li>
+<li><p>STATIC：表示静态LACP模式。</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Preempt Delay</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>优先级抢占延时。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Hash arithmetic</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><div class="p">散列算法的依据。<ul>
+<li>According to flow：Eth-Trunk接口根据流进行散列。</li>
+<li>According to packet all：Eth-Trunk接口根据所有包进行散列。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>System Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>系统的LACP优先级。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>System ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>系统ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Least active-linknumber</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>处于Up状态的成员链路的下限阈值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Max Active-linknumber</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>处于Up状态的成员链路的上限阈值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Max bandwidth-affected-linknumber</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>影响二层Eth-Trunk口带宽的成员口的最大数目。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Operate status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><div class="p">Eth-Trunk接口的状态。<ul>
+<li><p>UP：接口处于正常启动的状态。</p>
+</li>
+<li><p>DOWN：接口在物理上出现故障。</p>
+</li>
+<li><p>Administratively down：如果网络管理员在该接口执行<strong>shutdown</strong>命令，将显示状态为<strong>Administratively down</strong>。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Number Of Up Ports in Trunk</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>Eth-Trunk接口中处于Up状态的成员接口数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>ActorPortName</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>成员接口名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><div class="p">本地成员接口的状态，有以下两种：<ul>
+<li><p>Selected</p>
+</li>
+<li><p>Unselected</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>PortType</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>本地成员接口的类型。1GE：表示GE接口。100M：表示Ethernet接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>PortPri</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>成员接口的LACP优先级。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>PortNo</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>成员接口在LACP中的编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>PortKey</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>成员接口在LACP中的Key值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>PortState</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>成员接口LACP状态的state字节信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Weight</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>成员接口的权重。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Partner</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>对端Eth-Trunk成员接口的信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Flow statistic</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>接口的流量统计信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Last 300 seconds input rate Last 300 seconds output rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>显示了Eth-Trunk接口或成员接口在前300秒内发送和接收的字节速率和报文速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>Input/Output</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>接口收到或发送报文的方向。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>接口接收或发送的总报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>接口接收或发送的总字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.15469891660368%" headers="d23609e278 "><p>drops</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.84530108339633%" headers="d23609e282 "><p>接口丢弃的报文数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_eth-trunk__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_eth-trunk__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d23609e649"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d23609e653"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d23609e649 "><p>VRPV500R005C02B030</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d23609e653 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+
+<tbody>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%"><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%"><p>命令增加通配符： [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="eth-trunk.html">eth-trunk</a></div>
+<div><a href="least_active-linknumber_eth-trunk_interface_view.html">least active-linknumber</a></div>
+<div><a href="load-balance_eth-trunk_interface_view.html">load-balance</a></div>
+<div><a href="max_bandwidth-affected-linknumber.html">max bandwidth-affected-linknumber</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

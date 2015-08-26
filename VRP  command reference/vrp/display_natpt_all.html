@@ -1,0 +1,259 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display natpt all">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nat-pt_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_natpt_all">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display natpt all</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_natpt_all"></a><a name="display_natpt_all"></a>
+
+
+<h1 class="topictitle1">display natpt all</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display natpt all</strong>命令用来查看所有NAT-PT配置信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display natpt</strong> <strong>all</strong><span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_natpt_all__d52630e84"></a><a name="d52630e84"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有NAT-PT配置信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display natpt all</strong></pre>
+<pre class="screen">NATPT IPv4 Address Pool Information:</pre>
+<pre class="screen"> 1 : from 8.0.0.10            to      8.0.0.19</pre>
+<pre class="screen"> 2 : from 8.0.0.25            to      8.0.0.35</pre>
+
+<pre class="screen"> NATPT address mapping(v6bound view):</pre>
+<pre class="screen"> IPv4 Address    IPv6 Address                            Type</pre>
+<pre class="screen"> 8.0.0.55        3001::0001                              DESTINATION</pre>
+<pre class="screen"> 8.0.0.66        3001::0002                              SOURCE</pre>
+
+<pre class="screen"> NATPT V6Server static mapping:</pre>
+<pre class="screen"> IPv4 Address                    IPv6 Address                           Pro</pre>
+<pre class="screen"> 8.0.0.70^    1                  3001::0070^    1                       TCP</pre>
+
+<pre class="screen"> NATPT V4bound information:</pre>
+<pre class="screen"> Info:No Dynamic V4 Address Records Present</pre>
+
+<pre class="screen"> NATPT V6bound information:</pre>
+<pre class="screen"> 3001::                                  &gt;<strong>       addressgroup( 1) [pat]</strong></pre>
+
+<pre class="screen"> NATPT Prefix Info:</pre>
+<pre class="screen"> Prefix                                  Interface       NextHop</pre>
+<pre class="screen"> 3001::</pre>
+
+<pre class="screen"> NATPT aging-time value information:</pre>
+<pre class="screen">      tcp -------aging-time value is  86400 (seconds)</pre>
+<pre class="screen">      udp -------aging-time value is     40 (seconds)</pre>
+<pre class="screen">     icmp -------aging-time value is     20 (seconds)</pre>
+<pre class="screen">      dns -------aging-time value is     10 (seconds)</pre>
+<pre class="screen">      syn -------aging-time value is    240 (seconds)</pre>
+<pre class="screen">   finrst -------aging-time value is      5 (seconds)</pre>
+<pre class="screen">     frag -------aging-time value is      5 (seconds)</pre>
+
+<pre class="screen"> NATPT Statistics:</pre>
+<pre class="screen">          Total Sessions:            0</pre>
+<pre class="screen">          Expired Sessions:          1</pre>
+<pre class="screen">          Hits:                      9</pre>
+<pre class="screen">          Misses:                    1</pre>
+<pre class="screen">          Total Fragment Sessions:   0</pre>
+<pre class="screen">          Expired Fragment Sessions: 0</pre>
+<pre class="screen">          Fragment Hits:             0</pre>
+<pre class="screen">          Fragment Misses:           0</pre>
+<pre class="screen">          Total Address Mappings:    2 ( static: 2  dynamic: 0 )</pre>
+<pre class="screen">          Total V6Server Mappings:   1</pre>
+
+<pre class="screen"> NATPT Interfaces:</pre>
+<pre class="screen">          Ethernet1/0/1</pre>
+<pre class="screen">          Ethernet1/0/0                  </pre>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption>表1 display natpt all命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="53.5%" id="d52630e192"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="46.5%" id="d52630e196"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="53.5%" headers="d52630e192 "><p>NATPT IPv4 Address Pool Information:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.5%" headers="d52630e196 "><p>所有IPv4地址池信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="53.5%" headers="d52630e192 "><p>NATPT address mapping(v6bound view):</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.5%" headers="d52630e196 "><p>IPv6侧的NAT-PT地址映射信息。IPv4侧的NAT-PT地址映射信息与IPv6侧的基本相同，只需将Type字段中的DESTINATION和SOURCE互换。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="53.5%" headers="d52630e192 "><p>NATPT V6Server static mapping:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.5%" headers="d52630e196 "><p>从IPv4侧到目的地址的静态PAT映射</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="53.5%" headers="d52630e192 "><p>NATPT V4bound information:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.5%" headers="d52630e196 "><p>使用<strong>natpt v4bound</strong>配置的IPv4绑定关系</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="53.5%" headers="d52630e192 "><p>NATPT V6bound information:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.5%" headers="d52630e196 "><p>使用<strong>natpt v6bound</strong>配置的IPv6绑定关系</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="53.5%" headers="d52630e192 "><p>NATPT Prefix Info:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.5%" headers="d52630e196 "><p>NAT-PT发布的前缀信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="53.5%" headers="d52630e192 "><p>NATPT aging-time value information:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.5%" headers="d52630e196 "><p>NAT-PT Session的有效时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="53.5%" headers="d52630e192 "><p>NATPT Statistics</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.5%" headers="d52630e196 "><p>NAT-PT的统计信息，包括：</p>
+<ul>
+<li>Total Sessions：当前Session的数目</li>
+<li>Expired Sessions：超时Session的数目</li>
+<li>Hits：地址转换成功的次数</li>
+<li>Misses：地址转换失败的次数</li>
+<li>Total Fragment Sessions：已存在的分片报文的Session数目</li>
+<li>Expired Fragment Sessions：超时的分片报文的Session数目</li>
+<li>Fragment Hits：分片报文转换成功的次数</li>
+<li>Fragment Misses：分片报文转换失败的次数</li>
+<li>Total Address Mappings：地址映射数目</li>
+<li>Total V6Server Mappings：IPv4侧的静态PAT映射数目</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="53.5%" headers="d52630e192 "><p>NATPT Interfaces</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.5%" headers="d52630e196 "><p>使能NAT-PT的接口</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_natpt_all__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_natpt_all__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d52630e355"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d52630e359"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d52630e355 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d52630e359 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nat-pt_configuration_commands.html">NAT-PT配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

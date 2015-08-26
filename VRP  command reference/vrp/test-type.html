@@ -1,0 +1,96 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="test-type">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="nqa.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="test-type">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>test-type</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="test-type"></a><a name="test-type"></a>
+
+
+<h1 class="topictitle1">test-type</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>test-type</strong>命令用来配置NQA测试例的测试类型。</p>
+<p>缺省情况下，不配置任何测试类型。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>test-type</strong> { <strong>dhcp</strong> | <strong>dns</strong> | <strong>ftp</strong> | <strong>http</strong> | <strong>icmp</strong> | <strong>icmpjitter</strong> | <strong>jitter</strong> | <strong>lspjitter</strong> | <strong>lspping</strong> | <strong>lsptrace</strong> | <strong>macping</strong> | <strong>mactnlping</strong> | <strong>mping</strong> | <strong>mtrace</strong> | <strong>pathjitter</strong> | <strong>pathmtu</strong> | <strong>pwe3ping</strong> | <strong>pwe3trace</strong> | <strong>snmp</strong> | <strong>tcp</strong> | <strong>trace</strong> | <strong>udp</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>dhcp</strong>：DHCP测试。</p>
+<p><strong>dns</strong>：DNS测试。</p>
+<p><strong>ftp</strong>：FTP服务测试。</p>
+<p><strong>http</strong>：HTTP服务测试。</p>
+<p><strong>icmp</strong>：ICMP测试。</p>
+<p><strong>icmpjitter </strong>：ICMP Jitter测试，通过ICMP报文测试网络的抖动情况。</p>
+<p><strong>jitter</strong>：Jitter测试，测试对UDP报文处理的抖动情况。</p>
+<p><strong>lspjitter</strong>：LSP抖动测试。</p>
+<p><strong>lspping</strong>：LSP Ping测试。</p>
+<p><strong>lsptrace</strong>：LSP Trace route测试。</p>
+<p><strong>macping</strong>：MAC Ping测试。 </p>
+<p><strong>mactnlping</strong>：MAC Tunnel Ping测试。</p>
+<p><strong>mping</strong>：MPing类型测试。</p>
+<p><strong>mtrace</strong>：MTtrace类型测试。</p>
+<p><strong>pathjitter</strong>：path Jitter测试，通过ICMP报文测试报文传送过程中逐跳抖动情况。</p>
+<p><strong>pathmtu</strong>：path MTU测试，找到网络中最小的MTU值。</p>
+<p><strong>pwe3ping</strong>：PWE3Ping测试。</p>
+<p><strong>pwe3ping</strong>：PWE3Trace测试。</p>
+<p><strong>snmp</strong>：SNMP测试。</p>
+<p><strong>tcp</strong>：TCP测试。</p>
+<p><strong>trace</strong>：Trace route测试。</p>
+<p><strong>udp</strong>：UCP测试。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>NQA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>不能修改正在运行的测试例的类型。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="test-type__d123793e192"></a><a name="d123793e192"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置NQA测试例的测试类型为TCP测试。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> nqa test-instance user test</strong>
+[Quidway-nqa-user-test]<strong> test-type tcp</strong></pre>
+<p># 配置NQA测试例的测试类型为ICMP Jitter测试。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> nqa test-instance user test</strong>
+[Quidway-nqa-user-test]<strong> test-type icmpjitter</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nqa_configuration_commands.html">NQA配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="nqa.html">nqa</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

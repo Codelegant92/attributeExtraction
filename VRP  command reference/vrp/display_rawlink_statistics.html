@@ -1,0 +1,242 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rawlink statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_performance_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_rawlink_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rawlink_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rawlink statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rawlink_statistics"></a><a name="display_rawlink_statistics"></a>
+
+
+<h1 class="topictitle1">display rawlink statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display rawlink statistics</strong>命令用来查看RawLink统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display rawlink statistics</strong><span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display rawlink statistics</strong>命令用来查看RawLink统计信息，包括：</p>
+<ul>
+<li>RawLink输入统计</li>
+<li>RawLink输出统计</li>
+<li>IFNET指针是否为空</li>
+<li>因没有对应的协议控制块（PCB）而丢失的分组数</li>
+<li>数据是否是通过多播接收的</li>
+<li>是否加入了多播组</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rawlink_statistics__d62182e103"></a><a name="d62182e103"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示RawLink统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display rawlink statistics</strong></pre>
+<pre class="screen">Received packets:
+Total: 1771645
+ifnet is null: 0
+input packets missing pcb cache: 1181096
+not pass multicast: 0
+no join multicast: 0
+full sock and pstMBuf to be freed: 0
+full sock and nothing to be freed: 0
+full sock and other reason: 0
+
+Send packets:
+Total: 125850</pre>
+
+<div class="tablenoborder"><a name="display_rawlink_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rawlink_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display ip statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d62182e125"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d62182e129"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d62182e125 "><p>Received packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d62182e129 "><p>接收报文统计</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d62182e125 "><p>Total</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d62182e129 "><p>总计收到的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d62182e125 "><p>ifnet is null</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d62182e129 "><p>因系统无法根据输入报文找到相应的入接口而被丢弃的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d62182e125 "><p>input packets missing pcb cache</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d62182e129 "><p>因没有对应的协议控制块（PCB）而丢失的分组数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d62182e125 "><p>not pass multicast</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d62182e129 "><p>多播目的地址不是本机接口地址的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d62182e125 "><p>no join multicast</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d62182e129 "><p>因接口没有加入多播组而被丢弃的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d62182e125 "><p>full sock and pstMbuf to be freed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d62182e129 "><p>因Socket接收缓存已满而被丢弃的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d62182e125 "><p>full sock and nothing to be freed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d62182e129 "><p>因报文在由传输层向Socket层传递的过程中出错而被丢弃的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d62182e125 "><p>full sock and other reason</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d62182e129 "><p>因报文不可识别而被丢弃的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d62182e125 "><p>Send packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d62182e129 "><p>发送报文统计</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d62182e125 "><p>Total</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d62182e129 "><p>总计被发送的报文数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_rawlink_statistics__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rawlink_statistics__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d62182e272"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d62182e276"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d62182e272 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d62182e276 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_performance_configuration_commands.html">IP性能配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_rawlink_statistics.html">reset rawlink statistics</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

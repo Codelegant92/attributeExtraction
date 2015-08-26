@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="network (BGP)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="network_bgp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>network (BGP)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="network_bgp"></a><a name="network_bgp"></a>
+
+
+<h1 class="topictitle1">network (BGP)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>network</strong>命令用来配置BGP发布的本地网络路由，即将本地路由表中的路由以静态方式加入到BGP路由表中，并发布给对等体。</p>
+<p><strong>undo network</strong>命令用来删除已有配置。</p>
+<p>缺省情况下，BGP不发布任何本地的网络路由。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>network</strong> { <em>ipv4-address</em> [ <em>mask</em> | <em>mask-length</em> ] | <em>ipv6-address</em> <em>prefix-length</em> } [ <strong>route-policy</strong> <em>route-policy-name</em> ]</p>
+<p><strong>undo</strong> <strong>network</strong> { <em>ipv4-address</em> [ <em>mask</em> | <em>mask-length</em> ] | <em>ipv6-address</em> <em>prefix-length</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ipv4-address</em>：BGP发布的IPv4网络地址，点分十进制形式。</p>
+<p><em>mask</em>：IP地址掩码。如果没有指定掩码，则按有类地址处理。</p>
+<p><em>mask-length</em>：IP地址掩码长度。如果没有指定掩码长度，则按有类地址处理。</p>
+<p><em>ipv6-address prefix-length</em>：BGP发布的IPv6网络地址和前缀长度。前缀长度为整数形式，取值范围是0～128。</p>
+<p><strong>route-policy</strong> <em>route-policy-name</em>：发布路由应用的Route-Policy。字符串形式，长度范围是1～40。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP视图、BGP-IPv4单播地址族视图、BGP-IPv6单播地址族视图、BGP-VPN实例视图、BGP-VPN6实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>undo network</strong>命令删除已有的配置时，需要注意指定正确的掩码。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="network_bgp__d99767e111"></a><a name="d99767e111"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定BGP发布本地路由10.0.0.0/16。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> ipv4-family unicast</strong></pre>
+<pre class="screen">[Quidway-bgp-af-ipv4]<strong> network 10.0.0.0 255.255.0.0</strong></pre>
+<p># 配置BGP4+发布路由2002::/16。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> ipv6-family unicast</strong></pre>
+<pre class="screen">[Quidway-bgp-af-ipv6]<strong> network 2002:: 16</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

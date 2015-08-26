@@ -1,0 +1,101 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="vrrp-group priority">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vrrp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="vrrp-group_priority">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>vrrp-group priority</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="vrrp-group_priority"></a><a name="vrrp-group_priority"></a>
+
+<h1 class="topictitle1">vrrp-group priority</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>vrrp-group priority</strong>命令用来配置VRRP管理组优先级。</p>
+<p><strong>undo vrrp-group priority</strong>命令用来恢复VRRP管理组优先级为缺省值。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>vrrp-group priority</strong> { <em>priority</em> | <strong>increased</strong> <em>plus-priority</em> | <strong>using-vrrp-priority</strong> }</p>
+<p><strong>undo vrrp-group priority</strong> [ <strong>increased</strong> | <strong>using-vrrp-priority</strong> ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>priority</em>：VRRP管理组优先级，取值范围1～254，缺省值是100。</p>
+<p><strong>increased</strong> <em>plus-priority</em>：VRRP管理组中VRRP备份组的优先级增加值，指的是当备份组的接口出现故障时，备份组的优先级增加的数值，这种情况下备份组优先级的增加将导致主<span class="keyword">路由器</span>的优先级降低的幅度加大，从而促进主备切换。<em>plus-priority</em>取值范围0～254，缺省值是0。</p>
+<p><strong>using-vrrp-priority</strong>：通过计算VRRP备份组的优先级决定VRRP管理组的优先级。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VRRP管理组视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当主<span class="keyword">路由器</span>的接口出现故障时，VRRP管理组的优先级采用递减算法调整大小。其算法为：</p>
+<p>递减后的VRRP管理组的优先级＝VRRP管理组的配置优先级－（未配置transfer-only属性且处于Down状态的接口所在的VRRP备份组的优先级/64之和）。</p>
+<p>例如：VRRP管理组的初始优先级为100，该VRRP管理组中包含3个VRRP备份组，各VRRP备份组和数据通道的信息如下：</p>
+<ul><li><p>数据通道接口1，对应VRRP1（优先级128），属性data</p>
+</li><li><p>数据通道接口2，对应VRRP2（优先级128），属性data transfer-only</p>
+</li><li><p>数据通道接口3，对应VRRP3（优先级96），属性无</p>
+</li></ul>
+<p>根据优先级的递减算法，在以下三种情况下，VRRP管理组的优先级为：</p>
+<ul><li><p>当接口1变为DOWN状态，则VRRP管理组的优先级为98（100－128/64=98）</p>
+</li><li><p>当接口1和2都处于DOWN状态时，VRRP管理组的优先级仍旧为98（因为接口2的属性为<strong>transfer-only</strong>，这种接口的状态变化不影响VRRP管理组状态，因此也不影响VRRP管理组的优先级）</p>
+</li><li><p>当接口1和3都出现DOWN状态时，VRRP管理组的优先级变为97（100－128/64－96/64=97）</p>
+</li></ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul><li><p>为了保证主<span class="keyword">路由器</span>发生故障后VRRP管理组优先级降低的值大于等于1，建议配置VRRP备份组的优先级大于128。</p>
+</li><li><p>内部软件保证递减后的VRRP管理组的优先级仍处于优先级的有效取值范围内，不会为负数或小数。</p>
+</li></ul>
+</div></div>
+<p>主<span class="keyword">路由器</span>发生故障后，通过递减算法得到的优先级与从<span class="keyword">路由器</span>的优先级相比有以下三种情况：</p>
+<ul><li><p>递减后的优先级比从<span class="keyword">路由器</span>的优先级低</p>
+<ul><li><p>如果采用抢占方式，Slave<span class="keyword">路由器</span>等待抢占延迟时间超时后进行主备状态切换。</p>
+</li><li><p>如果采用非抢占方式，Slave<span class="keyword">路由器</span>等待3个Hello报文周期的时间后，将自己的状态切换为Master。</p>
+</li></ul>
+</li><li><p>递减后的优先级与从<span class="keyword">路由器</span>的优先级相同</p>
+<p>通过比较配置了data属性的数据主通道的IP地址的大小判断，IP地址大的为主<span class="keyword">路由器</span>，IP地址小的为从<span class="keyword">路由器</span>。</p>
+</li><li><p>递减后的优先级大于从<span class="keyword">路由器</span>的优先级</p>
+<p>不进行主备切换，可能导致部分业务中断。</p>
+</li></ul>
+<p>有两种方式配置VRRP管理组优先级：</p>
+<ul><li><p>指定优先级</p>
+<p>执行命令<strong>vrrp-group priority</strong> <em>priority</em>，可以指定VRRP管理组的优先级。同时可以再执行<strong>vrrp-group priority</strong> <strong>increased</strong> <em>plus-priority</em>命令来指定VRRP管理组中VRRP备份组优先级的增加值。</p>
+</li><li><p>通过VRRP备份组的优先级计算VRRP管理组的优先级</p>
+<p>执行命令<strong>vrrp-group priority</strong> <strong>using-vrrp-priority</strong>，VRRP管理组的优先级将通过计算VRRP备份组的优先级确定。其计算方法是：</p>
+<p>VRRP管理组的优先级＝所有可用但没有配置transfer-only属性的VRRP备份组的优先级之和/所有可用但没有配置transfer-only属性的VRRP备份组总数。</p>
+<p>例如：如果有以下配置，各接口正常，则VRRP管理组的初始优先级为100（200/2），该VRRP管理组中包含3个VRRP备份组，各VRRP备份组和数据通道的信息如下：</p>
+<ul><li><p>数据通道接口1，对应VRRP1（优先级100），属性data</p>
+</li><li><p>数据通道接口2，对应VRRP2（优先级100），属性data transfer-only</p>
+</li><li><p>数据通道接口3，对应VRRP3（优先级100），属性无</p>
+</li></ul>
+<p>在主<span class="keyword">路由器</span>的接口状态出现故障时，VRRP管理组优先级的取值有以下几种变化：</p>
+<ul><li><p>当接口1变为Down状态，则VRRP管理组的优先级为50（100/2=50）；</p>
+</li><li><p>当接口1和2都处于Down状态时，VRRP管理组的优先级仍旧为50（这是因为接口2的属性为<strong>transfer-only</strong>，这种接口的状态变化不影响VRRP管理组状态，因此也不影响VRRP管理组的优先级）；</p>
+</li><li><p>当接口1和3都出现Down状态时，VRRP管理组的优先级变为1（0/2=0，但是优先级0保留做系统特殊用途，VRRP管理组的优先级最小值为1）。</p>
+</li></ul>
+</li></ul>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="vrrp-group_priority__d128693e233"></a><a name="d128693e233"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 为VRRP管理组1配置优先级110。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>vrrp-group 1</strong></pre>
+<pre class="screen">[Quidway-vrrpgroup-1] <strong>vrrp-group priority 110</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vrrp_configuration_commands.html">VRRP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

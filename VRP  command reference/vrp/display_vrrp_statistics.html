@@ -1,0 +1,276 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display vrrp statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vrrp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_vrrp_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display vrrp statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_vrrp_statistics"></a><a name="display_vrrp_statistics"></a>
+
+
+<h1 class="topictitle1">display vrrp statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>vrrp</strong>命令用来查看当前VRRP的状态信息和配置参数以及报文收发的统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display vrrp</strong> [ <strong>interface</strong><em> interface-type interface-number</em> ] [<em>virtual-router-id </em>] <strong>statistics</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface</strong><em> interface-type interface-number</em>：接口类型和接口编号，接口类型只能是以太网。</p>
+<p><em>virtual-router-id</em>：VRRP备份组号。十进制整数形式，取值范围是1～255。</p>
+<p><strong>statistics</strong>：显示VRRP备份组报文收发的统计信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display vrrp statistics</strong>命令时，如果不输入接口名和备份组号，则显示该<span class="keyword">路由器</span>上所有备份组的状态信息。如果只输入接口名，则显示该接口上的所有备份组的状态信息。如果输入接口名和备份组号，则显示指定接口上特定备份组的状态信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_vrrp_statistics__d72891e69"></a><a name="d72891e69"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示接口GE1/0/0下的vrrp报文统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vrrp interface gigabitethernet 1/0/0 statistics</strong></pre>
+<pre class="screen">    GigabitEthernet 1/0/0 | virtual router 1</pre>
+<pre class="screen">                            Transited to master : 1</pre>
+<pre class="screen">                        Received advertisements : 0</pre>
+<pre class="screen">                  Advertisement interval errors : 0</pre>
+<pre class="screen">                 Failed to authentication check : 0</pre>
+<pre class="screen">                         Received ip ttl errors : 0</pre>
+<pre class="screen">            Received packets with priority zero : 0</pre>
+<pre class="screen">                Sent packets with priority zero : 0</pre>
+<pre class="screen">                  Received invalid type packets : 0</pre>
+<pre class="screen">        Received unmatched address list packets : 0</pre>
+<pre class="screen">            Unknown authentication type packets : 0</pre>
+<pre class="screen">                 Mismatched authentication type : 0</pre>
+<pre class="screen">                           Packet length errors : 0</pre>
+<pre class="screen">       Discarded packets since track admin-vrrp : 0</pre>
+
+<div class="tablenoborder"><a name="display_vrrp_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vrrp_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display vrrp interface statistics显示信息解释</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.774754346182924%" id="d72891e117"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.22524565381708%" id="d72891e121"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>GigabitEthernet1/0/0 | Virtual Router 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>VRRP备份组所在的接口和VRRP备份组号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Transited to master</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>切换成Master状态的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Received advertisements</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>收到advertisement报文的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Advertisement interval errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>advertisement时间间隔错误的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Failed to authentication check</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>认证错误的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Received ip ttl errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>TTL错误的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Received packets with priority zero</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>收到优先级为0的advertisement报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Sent packets with priority zero</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>发送优先级为0的advertisement报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Received invalid type packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>收到无效类型的VRRP报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Received unmatched address list packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>虚拟IP地址列表错误的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Mismatched authentication type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>不匹配认证的报文个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Unknown authentication type packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>不能识别的认证类型的报文个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Packet length errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>报文长度错误的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.774754346182924%" headers="d72891e117 "><p>Discarded packets since track admin-vrrp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.22524565381708%" headers="d72891e121 "><p>业务备份组因绑定管理备份组后所丢弃的接收报文个数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示所有VRRP报文统计信息</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vrrp statistics</strong></pre>
+<pre class="screen">   Checksum errors : 0</pre>
+<pre class="screen">   Version errors : 0</pre>
+<pre class="screen">      Vrid errors : 0</pre>
+<pre class="screen">  GigabitEthernet2/0/0 | virtual router 1</pre>
+<pre class="screen">                            Transited to master : 1</pre>
+<pre class="screen">                        Received advertisements : 0</pre>
+<pre class="screen">                  Advertisement interval errors : 0</pre>
+<pre class="screen">                 Failed to authentication check : 0</pre>
+<pre class="screen">                         Received ip ttl errors : 0</pre>
+<pre class="screen">            Received packets with priority zero : 0</pre>
+<pre class="screen">                Sent packets with priority zero : 0</pre>
+<pre class="screen">                  Received invalid type packets : 0</pre>
+<pre class="screen">        Received unmatched address list packets : 0</pre>
+<pre class="screen">            Unknown authentication type packets : 0</pre>
+<pre class="screen">                 Mismatched authentication type : 0</pre>
+<pre class="screen">                           Packet length errors : 0</pre>
+<pre class="screen">       Discarded packets since track admin-vrrp : 0</pre>
+<p>显示信息的解释请参见上表。</p>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_vrrp_statistics__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vrrp_statistics__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d72891e339"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d72891e343"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d72891e339 "><p>VRPV500R005C02B020</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d72891e343 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vrrp_configuration_commands.html">VRRP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

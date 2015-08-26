@@ -1,0 +1,196 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display synchronization-result">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="synchronization-config.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_synchronization-result">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display synchronization-result</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_synchronization-result"></a><a name="display_synchronization-result"></a>
+
+
+<h1 class="topictitle1">display synchronization-result</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display synchronization-result</strong>命令用来查看成员交换机保存配置文件到FTP服务器的结果。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display synchronization-result</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>集群视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只能在成员交换机上执行。</p>
+<p>当使用<strong>synchronization-config</strong>命令把成员交换机的配置文件保存到FTP服务器后，可以使用本命令用来查看保存的结果。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_synchronization-result__d68208e42"></a><a name="d68208e42"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看成员交换机保存配置文件到FTP服务器的结果。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cluster</strong></strong></pre>
+<pre class="screen">[Quidway-cluster]<strong> <strong>display synchronization-result</strong></strong></pre>
+<pre class="screen">The result of member switchs' synchronization:</pre>
+<pre class="screen">------------------------------------------------------------------------------</pre>
+<pre class="screen">SN   Device              MacAddress     IpAddress      result</pre>
+<pre class="screen">------------------------------------------------------------------------------</pre>
+<pre class="screen">1    NE40E               0002-0002-0002 10.0.0.2       success</pre>
+<pre class="screen">2    NE40E               0003-0003-0003 10.0.0.3       timeout</pre>
+<pre class="screen">3    NE40E               0004-0004-0004 10.0.0.4       running</pre>
+<p>该显示信息主要内容解释见<a href="#display_synchronization-result__tb_01">表1</a>。</p>
+
+<div class="tablenoborder"><a name="display_synchronization-result__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_synchronization-result__tb_01" frame="border" border="1" rules="all"><caption>表1 display increment-synchronization-result命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.772990677752585%" id="d68208e93"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.22700932224741%" id="d68208e97"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d68208e93 "><p>SN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d68208e97 "><div class="p">成员编号。<ul>
+<li><p>&#8220;0&#8221;表示命令交换机。</p>
+</li>
+<li><p>其它数字表示成员交换机。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d68208e93 "><p>Device</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d68208e97 "><p>设备的类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d68208e93 "><p>MAC Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d68208e97 "><p>设备的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d68208e93 "><p>IpAddress</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d68208e97 "><p>设备的集群IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d68208e93 "><p>Result</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d68208e97 "><div class="p">下发增量配置的结果：<ul>
+<li><p>success</p>
+</li>
+<li><p>failed to get FTP configuration</p>
+</li>
+<li><p>failed to access FTP</p>
+</li>
+<li><p>failed to upload file</p>
+</li>
+<li><p>running</p>
+</li>
+<li><p>timeout</p>
+</li>
+<li><p>error</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_synchronization-result__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_synchronization-result__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d68208e214"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d68208e218"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d68208e214 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d68208e218 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="synchronization-config.html">synchronization-config</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

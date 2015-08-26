@@ -1,0 +1,92 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="test-packet start">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_test-packet_result.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="test-packet_start">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>test-packet start</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="test-packet_start"></a><a name="test-packet_start"></a>
+
+
+<h1 class="topictitle1">test-packet start</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>test-packet start</strong>命令用来发送测试报文。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>test-packet start</strong> [ <strong> mac</strong> <em>mac-address</em> ]
+[ <strong>vlan</strong> <em>vlan-id</em> ] { <strong>interface</strong> <em>interface-type interface-number</em> | <strong>service-instance</strong> <em>instance-name</em> }
+[ <strong>-c</strong> <em>count</em> | <strong>-p</strong> <em>speed</em> | <strong>-s</strong> <em>size</em> ]
+*</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>mac</strong> <em>mac-address</em>：指定测试报文的目的MAC地址。<em>mac-address</em>表示MAC地址，格式为H-H-H，其中H为1至4位的十六进制数。</p>
+<p><strong>vlan</strong> <em>vlan-id</em>：指定报文所属VLAN。<em>vlan-id</em>表示VLAN ID，整数形式，取值范围是1～4094。</p>
+<p><strong>interface</strong> <em>interface-type
+interface-number</em>：指定发送测试报文的出接口。<em>interface-type</em>表示接口类型，取值包括：<strong>ethernet</strong>和<strong>gigabitethernet</strong>。<em>interface-number</em>表示接口编号。</p>
+<p><strong>service-instance </strong><em>instance-name</em>：指定发送测试报文的MAC tunnel业务实例。<em>instance-name</em>表示业务实例的名称，字符串形式，不支持空格，长度范围是1～31字节。该业务实例必须处于Up状态，且必须是点到点类型的。</p>
+<p><strong>-c</strong> <em>count</em>：指定发送测试报文的数量。<em>count</em>表示发送测试报文的数量，整数形式，取值范围是1～65535，缺省值是5。</p>
+<p><strong>-p</strong> <em>speed</em>：指定发送测试报文的速率。<em>speed</em>表示发送测试报文的速率，整数形式，取值包括1、5，单位是Mbit/s，缺省值是1Mbit/s。</p>
+<p><strong>-s</strong> <em>size</em>：指定测试报文的长度。<em>size</em>表示测试报文的长度，取值范围是64～1518，单位是字节，缺省值是64字节。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用本命令发送的测试报文是为了测试链路的丢包率构造的一种以太类型的报文。本命令可和EFM OAM远端环回功能配合使用，来测试链路的丢包率。</p>
+<p>当指定通过MAC
+tunnel的业务实例发送测试报文时，如果该业务实例封装映射模式是：</p>
+<ul>
+<li><p>transparent类型，可以不指定参数<strong>vlan</strong> <em>vlan-id</em>；</p>
+</li>
+<li><p>s-tagged类型，必须指定参数<strong>vlan</strong> <em>vlan-id</em>，且与对应业务实例的Port+VLAN中的VLAN相同，否则测试报文在出MAC
+tunnel遂道时会被丢弃。</p>
+</li>
+</ul>
+<p>在发送测试报文进行过程中，不能修改发送测试报文的参数。</p>
+<p>如需终止发送测试报文，可按&lt;Ctrl+C&gt;快捷键。</p>
+<p>使用本命令发送测试报文后，可使用<a href="display_test-packet_result.html">display test-packet result</a>命令查看测试结果。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="test-packet_start__d123764e189"></a><a name="d123764e189"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 发送测试报文，目的MAC地址为0000-0300-0204，出接口为GigabitEthernet4/0/0。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>test-packet start mac 0000-0300-0204 interface gigabitethernet4/0/0</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_test-packet_result.html">display test-packet
+result</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,353 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display transmission-alarm">
+<meta name="DC.Relation" scheme="URI" content="../vrp/transmission_alarm_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_transmission-alarm_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="transmission-alarm_damping.html">
+<meta name="DC.Relation" scheme="URI" content="transmission-alarm_down.html">
+<meta name="DC.Relation" scheme="URI" content="transmission-alarm_holdoff-timer.html">
+<meta name="DC.Relation" scheme="URI" content="transmission-alarm_log.html">
+<meta name="DC.Relation" scheme="URI" content="transmission-alarm_threshold.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_transmission-alarm">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display transmission-alarm</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_transmission-alarm"></a><a name="display_transmission-alarm"></a>
+
+
+<h1 class="topictitle1">display transmission-alarm</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display transmission-alarm</strong>命令用来查看接口告警状态和告警统计信息。如果没有指定告警类型，则缺省显示该接口的所有告警信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display transmission-alarm</strong> <em>interface-type interface-number</em> [ <strong>auais</strong> | <strong>b3tca</strong> | <strong>lais</strong> | <strong>lcd</strong> | <strong>lof</strong> | <strong>lom</strong> | <strong>lop</strong> | <strong>los</strong> | <strong>lrdi</strong> | <strong>lrei</strong> | <strong>oof</strong> | <strong>pais</strong> | <strong>prdi</strong> | <strong>prei</strong> | <strong>pplm</strong> | <strong>puneq</strong> | <strong>rdool</strong> | <strong>rrool</strong> | <strong>sdbere</strong> | <strong>sfbere</strong> | <strong>trool</strong> | <strong>wlnk</strong> ]
+*</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type interface-number</em>：接口类型和接口编号。</p>
+<p><strong>auais</strong>：Administrative Unit Alarm Indication Signal，高阶告警指示。</p>
+<p><strong>b3tca</strong>：B3 Threshold Crossing Alarm，B3超越门限值告警指示。</p>
+<p><strong>lais</strong>：Line Alarm Indication Signal，线路告警指示。</p>
+<p><strong>lcd</strong>：Loss
+of Code Group Synchronization，同步码丢失告警指示。只能在10GE-WAN接口上查看到该告警的相关信息。</p>
+<p><strong>lof</strong>：Loss of Frame，帧丢失告警指示。</p>
+<p><strong>lom</strong>：Loss of Tributary Multiframe，支路单元复帧丢失告警指示。</p>
+<p><strong>lop</strong>：Loss of Pointer，指针失步告警指示。</p>
+<p><strong>los</strong>：Loss of Signal，信号失步告警指示。</p>
+<p><strong>lrdi</strong>：Line
+Remote Defect Indication，线路远端缺陷告警指示。</p>
+<p><strong>lrei</strong>：Line Remote Error Indication，复用段远端误块告警指示。</p>
+<p><strong>oof</strong>：Out of Frame，帧失步告警指示。</p>
+<p><strong>pais</strong>：Path Alarm Indication Signal，通道级告警指示。</p>
+<p><strong>prdi</strong>：Path Remote Defect Indication，通道级远端缺陷告警指示。</p>
+<p><strong>prei</strong>：Path
+Remote Error Indication，通道远端误块告警指示。</p>
+<p><strong>pplm</strong>：Path Payload Mismatch，通道信号标签不匹配告警指示。</p>
+<p><strong>puneq</strong>：Path Unequipped Indication，通道信号标签不确定告警指示。</p>
+<p><strong>rdool</strong>：Receive Data Out of Lock，接收数据失锁告警指示。</p>
+<p><strong>rrool</strong>：Receive Reference Out of Lock，接收参考时钟失锁告警指示。</p>
+<p><strong>sdbere</strong>：Signal
+Degrade Threshold Alarm，信号损耗门限告警指示。</p>
+<p><strong>sfbere</strong>：Signal Fail Threshold Alarm，信号失效门限告警指示。</p>
+<p><strong>trool</strong>：Transmit Reference Out of Lock，发送参考时钟失锁告警指示。</p>
+<p><strong>wlnk</strong>：WAN Interface Link Stauts Alarm，WAN接口状态告警指示。只能在10GE-WAN接口上查看到该告警的相关信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>告警wlnk永远是打开状态，用户不可对该告警进行配置。只能通过<strong>display transmission-alarm</strong>命令查看该告警的统计信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_transmission-alarm__d69829e200"></a><a name="d69829e200"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看POS1/2/0接口的告警状态和告警统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display transmission-alarm pos 1/2/0</strong></pre>
+<pre class="screen"> Interface: Pos1/2/0
+  Filter function: disabled
+  Damping function: disabled
+  Last reset time: 0-0-0,0:0:0.0
+  Alarm auais
+    Status: Down
+    Flapping count: 0
+  Alarm b3tca
+    Status: Down
+    Flapping count: 0
+  Alarm lais
+    Status: Down, If down
+    Flapping count: 1164
+  Alarm lof
+    Status: Up, If down
+    Flapping count: 1
+  Alarm lom
+    Status: Down
+    Flapping count: 0
+  Alarm lop
+    Status: Down
+    Flapping count: 0
+  Alarm los
+    Status: Up, If down
+    Flapping count: 1
+  Alarm lrdi
+    Status: Down
+    Flapping count: 792
+  Alarm lrei
+    Status: Down
+    Flapping count: 0
+  Alarm oof
+    Status: Up
+    Flapping count: 1
+  Alarm pais
+    Status: Up
+    Flapping count: 1
+  Alarm prdi
+    Status: Up
+    Flapping count: 1
+  Alarm prei
+    Status: Down
+    Flapping count: 0
+  Alarm pplm
+    Status: Up
+    Flapping count: 1
+  Alarm rdool
+    Status: Down
+    Flapping count: 0
+  Alarm rrool
+    Status: Down
+    Flapping count: 0
+  Alarm sdbere
+    Status: Up
+    Flapping count: 1
+  Alarm sfbere
+    Status: Up
+    Flapping count: 1
+  Alarm trool
+    Status: Down
+    Flapping count: 0
+  Alarm puneq
+    Status: Down
+    Flapping count: 0</pre>
+
+<div class="tablenoborder"><a name="display_transmission-alarm__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_transmission-alarm__tb_01" frame="border" border="1" rules="all"><caption>表1 display transmission-alarm命令显示说明</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="26.12748803224994%" id="d69829e222"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="73.87251196775007%" id="d69829e226"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="26.12748803224994%" headers="d69829e222 "><p>Interface:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.87251196775007%" headers="d69829e226 "><p>接口名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.12748803224994%" headers="d69829e222 "><p>Filter function:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.87251196775007%" headers="d69829e226 "><p>过滤功能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.12748803224994%" headers="d69829e222 "><p>Damping function:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.87251196775007%" headers="d69829e226 "><p>抑制功能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.12748803224994%" headers="d69829e222 "><p>Last reset time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.87251196775007%" headers="d69829e226 "><p>最近一次执行命令<strong>reset transmission-alarm statistic</strong>的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.12748803224994%" headers="d69829e222 "><p>Alarm</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.87251196775007%" headers="d69829e226 "><div class="p">告警类型。可能的告警类型有：<ul>
+<li><p>auais：Administrative Unit Alarm Indication Signal，高阶告警指示。</p>
+</li>
+<li><p>b3tca：B3 Threshold Crossing Alarm，B3超越门限值告警指示。</p>
+</li>
+<li><p>lais：Line Alarm Indication Signal，线路告警指示。</p>
+</li>
+<li><p>lcd：Loss of Code Group Synchronization，同步码丢失告警指示。只能在10GE-WAN接口上查看到该告警的相关信息。</p>
+</li>
+<li><p>lof：Loss of Frame，帧丢失告警指示。</p>
+</li>
+<li><p>lom：Loss of Tributary Multiframe，支路单元复帧丢失告警指示。</p>
+</li>
+<li><p>lop：Loss of Pointer，指针失步告警指示。</p>
+</li>
+<li><p>los：Loss of Signal，信号失步告警指示。</p>
+</li>
+<li><p>lrdi：Line Remote Defect Indication，线路远端缺陷告警指示。</p>
+</li>
+<li><p>lrei：Line Remote Error Indication，复用段远端误块告警指示。</p>
+</li>
+<li><p>oof：Out of Frame，帧失步告警指示。</p>
+</li>
+<li><p>pais：Path Alarm Indication Signal，通道级告警指示。</p>
+</li>
+<li><p>prdi：Path Remote Defect Indication，通道级远端缺陷告警指示。</p>
+</li>
+<li><p>prei：Path Remote Error Indication，通道远端误块告警指示。</p>
+</li>
+<li><p>pplm：Path Payload Mismatch，通道信号标签不匹配告警指示。</p>
+</li>
+<li><p>puneq：Path Unequipped Indication，通道信号标签不确定告警指示。</p>
+</li>
+<li><p>rdool：Receive Data Out of Lock，接收数据失锁告警指示。</p>
+</li>
+<li><p>rrool：Receive Reference Out of Lock，接收参考时钟失锁告警指示。</p>
+</li>
+<li><p>sdbere：Signal Degrade Threshold Alarm，信号损耗门限告警指示。</p>
+</li>
+<li><p>sfbere：Signal Fail Threshold Alarm，信号失效门限告警指示。</p>
+</li>
+<li><p>trool：Transmit Reference Out of Lock，发送参考时钟失锁告警指示。</p>
+</li>
+<li><p>wlnk：WAN Interface Link Stauts Alarm，WAN接口状态告警指示。只能在10GE-WAN接口上查看到该告警的相关信息。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.12748803224994%" headers="d69829e222 "><p>Status:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.87251196775007%" headers="d69829e226 "><div class="p">告警状态。<ul>
+<li><p>Up：表示产生了此告警。</p>
+</li>
+<li><p>Down：表示没有产生此告警或此告警消除。</p>
+</li>
+<li><p>If down：表示此告警可以使接口的物理层状态变为Down。</p>
+</li>
+<li><p>Log：表示此告警可以产生日志信息。</p>
+</li>
+<li><p>In filtering：表示此告警正在被过滤。</p>
+</li>
+<li><p>In suppressing：表示此告警正在被抑制。</p>
+</li>
+<li><p>In aging：表示此告警正在老化。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.12748803224994%" headers="d69829e222 "><p>Flapping count:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.87251196775007%" headers="d69829e226 "><p>振荡次数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_transmission-alarm__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_transmission-alarm__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d69829e448"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d69829e452"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d69829e448 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d69829e452 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d69829e448 "><p>VRPV500R005C02B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d69829e452 "><p>把告警名称pslm(Path Signal Label Mismatch)修改为pplm(Path Payload Mismatch)；新增了可查看lcd、puneq和wlnk三种告警的状态和统计信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/transmission_alarm_configuration_commands.html">传输告警配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_transmission-alarm_statistics.html">reset transmission-alarm statistics</a></div>
+<div><a href="transmission-alarm_damping.html">transmission-alarm damping</a></div>
+<div><a href="transmission-alarm_down.html">transmission-alarm down</a></div>
+<div><a href="transmission-alarm_holdoff-timer.html">transmission-alarm holdoff-timer</a></div>
+<div><a href="transmission-alarm_log.html">transmission-alarm log</a></div>
+<div><a href="transmission-alarm_threshold.html">transmission-alarm threshold</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

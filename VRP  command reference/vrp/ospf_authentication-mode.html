@@ -1,0 +1,104 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ospf authentication-mode">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="authentication-mode_ospf_area_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ospf_authentication-mode">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ospf authentication-mode</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ospf_authentication-mode"></a><a name="ospf_authentication-mode"></a>
+
+<h1 class="topictitle1">ospf authentication-mode</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ospf authentication-mode</strong>命令用来设置相邻路由器之间的验证模式及验证字。</p>
+<p><strong>ospf authentication-mode null</strong>命令用来在接口上配置null验证模式。</p>
+<p><strong>undo ospf authentication-mode</strong>命令用来删除接口下已设置的验证模式。</p>
+<p>缺省情况下，接口不对OSPF报文进行验证。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p>简单验证模式：</p>
+<p><strong>ospf authentication-mode simple</strong> [ [ <strong>plain</strong> ] <em>plain-text</em> | <strong>cipher</strong><em> cipher-text</em> ]</p>
+<p><strong>undo ospf authentication-mode</strong></p>
+<p>MD5/HMAC-MD5验证模式：</p>
+<p><strong>ospf authentication-mode</strong> { <strong>md5</strong> | <strong>hmac-md5</strong> } [ <em>key-id</em> { <strong>plain</strong> <em>plain-text</em> | [ <strong>cipher</strong> ] <em>cipher-text</em> } ]</p>
+<p><strong>undo ospf authentication-mode</strong></p>
+<p>无验证模式：</p>
+<p><strong>ospf authentication-mode null</strong></p>
+<p><strong>undo ospf authentication-mode</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>simple</strong>：简单验证模式。</p>
+<p><strong>md5</strong>：MD5验证模式。</p>
+<p><strong>hmac-md5</strong>：HMAC-MD5验证模式。</p>
+<p><strong>null</strong>：null验证模式。</p>
+<p><strong>plain</strong>：明文口令类型。只能键入明文口令，在查看配置文件时以明文方式显示口令。对于简单验证模式，当此参数缺省时，默认为<strong>plain</strong>类型。</p>
+<p><em>plain-text</em>：指定明文验证字。<strong>simple</strong>模式下是1～8字节字符串，不支持空格；<strong>md5、hmac-md5</strong>模式是1～16字节字符串。</p>
+<p><strong>cipher</strong>：密文口令类型。对于MD5/HMAC-MD5验证模式，当此参数缺省时，默认为<strong>cipher</strong>类型。</p>
+<p><em>cipher-text</em>：指定密文验证字。<strong>simple</strong>模式下，1～8字节字符串对应明文，24字节对应密文；<strong>md5、hmac-md5</strong>模式下1～16字节字符串对应明文，24字节对应密文。</p>
+<p><em>key-id</em>：验证字标识符。整数形式，取值范围是1～255。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置时需要注意以下几点：</p>
+<ul><li><p>同一网段的路由器接口下配置的验证模式和口令必须相同</p>
+</li><li><p>同时配置了接口验证和区域验证时，优先使用接口验证建立OSPF邻居</p>
+</li><li><p>OSPF协议不支持NULL接口的配置</p>
+</li><li><p>验证字中不允许包含空格</p>
+</li></ul>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ospf_authentication-mode__d101478e160"></a><a name="d101478e160"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 路由器Quidway1的接口Pos1/0/0与路由器Quidway2的接口Pos2/0/0在同一网段131.119.0.0上，配置接口支持简单验证模式，口令为abc。</p>
+<p># 在Quidway1上配置。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong> </pre>
+<pre class="screen">[Quidway1] <strong>interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway1-Pos1/0/0]<strong> ospf authentication-mode simple abc</strong></pre>
+<p># 在Quidway2上配置。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong> </pre>
+<pre class="screen">[Quidway2] <strong>interface pos 2/0/0</strong></pre>
+<pre class="screen">[Quidway2-Pos2/0/0] <strong>ospf authentication-mode simple abc</strong></pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="ospf_authentication-mode__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="ospf_authentication-mode__tb_01" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.34895439657345%" id="d101478e200"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d101478e203"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d101478e200 "><p>VRPV500R006C02B220</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d101478e203 "><p>关键字<strong>simple</strong>后的参数由必选修改为可选</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="authentication-mode_ospf_area_view.html">authentication-mode（OSPF区域视图）</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

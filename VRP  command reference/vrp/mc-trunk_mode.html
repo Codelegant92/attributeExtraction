@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mc-trunk mode">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mc-trunk_eth-trunk_interface_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mc-trunk_mode">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mc-trunk mode</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mc-trunk_mode"></a><a name="mc-trunk_mode"></a>
+
+
+<h1 class="topictitle1">mc-trunk mode</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mc-trunk mode</strong>命令用来配置Eth-Trunk在MC-Trunk中的工作模式。</p>
+<p><strong>undo mc-trunk mode</strong>命令用来恢复Eth-Trunk在MC-Trunk中的工作模式为缺省工作模式。</p>
+<p>缺省情况下，Eth-Trunk在MC-Trunk中工作在自动模式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mc-trunk mode </strong>{ <strong>auto</strong> | <strong>force-master</strong> | <strong>force-backup</strong> }</p>
+<p><strong>undo mc-trunk mode</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>auto</strong>：自动模式。</p>
+<p><strong>force-master</strong>：强制为主用状态。</p>
+<p><strong>force-backup</strong>：强制为备用状态。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Eth-Trunk接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只能对已经加入MC-Trunk的Eth-Trunk执行本命令。当Eth-Trunk退出MC-Trunk时，该配置将自动清除。</p>
+<p>在MC-Trunk正常工作期间，改变发送周期，会引起主备状态振荡。因此建议在改变发送周期前，先将成员Eth-Trunk的工作模式设置为强制主/备模式，待新的配置协商稳定后，再恢复自动状态。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mc-trunk_mode__d92557e68"></a><a name="d92557e68"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置Eth-Trunk 1在MC-Trunk中的模式为强制主用。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway] <strong>interface Eth-Trunk 1</strong>
+[Quidway-Eth-Trunk1] <strong>mc-trunk mode force-master</strong>
+</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mc-trunk_eth-trunk_interface_view.html">mc-trunk
+(Eth-Trunk接口视图)</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

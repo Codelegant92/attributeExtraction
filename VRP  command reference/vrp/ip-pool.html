@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ip-pool">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="auto-build.html">
+<meta name="DC.Relation" scheme="URI" content="build.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ip-pool">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ip-pool</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ip-pool"></a><a name="ip-pool"></a>
+
+<h1 class="topictitle1">ip-pool</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ip-pool</strong>命令用于配置HGMP集群内部通信的IP地址池，以及命令交换机用于集群内部通信的IP地址。</p>
+<p><strong>undo ip-pool</strong>命令用于删除HGMP集群内部通信的IP地址池。</p>
+<p>缺省情况下，未设置HGMP集群内部通信的IP地址池。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ip-pool</strong> <em>administrator-ip-address</em> { <em>mask-length</em> | <em>mask</em> }</p>
+<p><strong>undo ip-pool</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>administrator-ip-address</em>：指定命令交换机用于HGMP集群内部通信的IP地址。请将其设置为合法的单播地址，否则将会提示出错信息。</p>
+<p><em>mask-length</em>：指定<em>ip-address</em>的掩码长度。十进制整数形式，取值范围是1～30。</p>
+<p><em>mask</em>：指定<em>ip-address</em>的掩码。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>集群视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只有在设备没有加入任何HGMP集群时有效。</p>
+<p>改变或删除IP地址池之前需要先删除HGMP集群，否则无法执行本命令。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ip-pool__d83429e65"></a><a name="d83429e65"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置集群内部通信地址池为私网IP地址池10.10.10.0/24，并且命令交换机用于集群内部通信的私网IP地址是10.10.10.1/24。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cluster</strong></strong></pre>
+<pre class="screen">[Quidway-cluster]<strong> <strong>ip-pool 10.10.10.1 255.255.255.0</strong></strong></pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="ip-pool__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="ip-pool__tb_01" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.338345864661655%" id="d83429e93"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d83429e96"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d83429e93 "><p>VRPV500R006C01B060</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d83429e96 "><p>首次发布</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="auto-build.html">auto-build</a></div>
+<div><a href="build.html">build</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

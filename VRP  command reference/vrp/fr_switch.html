@@ -1,0 +1,67 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="fr switch">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frame_relay_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_fr_standby_group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="fr_switch">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>fr switch</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="fr_switch"></a><a name="fr_switch"></a>
+
+<h1 class="topictitle1">fr switch</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>fr switch</strong>命令用来对交换PVC配置备份功能。</p>
+<p><strong>undo fr switch</strong>命令用来删除指定的交换PVC。</p>
+<p>缺省情况下，没有用于帧中继交换的PVC。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>fr switch </strong><em>name</em> [<strong> interface </strong><em>interface-type in-interface-number</em><strong> dlci </strong><em>in-dlci</em><strong> interface </strong><em>interface-type out-interface-number</em><strong> dlci </strong><em>out-dlci </em>[ [ <strong>standby</strong> <em>pvc-name</em> ] <strong>group </strong><em>group-number</em> ] ]</p>
+<p><strong>undo fr switch </strong><em>name</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>name</em>：用于帧中继交换的PVC名称。字符串形式，长度是1～31。</p>
+<p><strong>interface </strong><em>interface-type in-interface-number </em><strong>dlci </strong><em>in-dlci</em>：PVC入侧的接口的类型、接口编号和DLCI值。<em>dlci-number</em>取值范围是16～1007。当使用帧中继PVC或Tunnel接口备份帧中继链路时，入接口必须和主用链路的入接口为同一接口，否则无法配置成功。</p>
+<p><strong>interface </strong><em>interface-type out-interface-number </em><strong>dlci </strong><em>out-dlci</em>：PVC出侧的主用或备用PVC的接口类型、接口编号和DLCI值。<em>dlci-number</em>取值范围是16～1007。接口类型可以是帧中继接口或Tunnel接口。</p>
+<p><strong>standby</strong> <em>pvc-name</em>：将配置的PVC作为名是&#8220;<em>pvc-name</em>&#8221;的交换PVC的备用链路，<em>pvc-name</em>为字符串形式，长度是1～31。</p>
+<p><em>group-number</em>：此交换PVC所在备份组的组号。取值范围是1～256。备用PVC必须和主用PVC在同一个备份组中。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置时，必须先配置接口类型为DCE或NNI，且接口上必须配置好DLCI。</p>
+<p>配置时，如果不使用<strong>standby</strong>参数，但使用<strong>group</strong>指定了所属的备份组，则表示此PVC是主用链路；如果使用<strong>standby</strong>参数，则表示此PVC作为备用链路。主备链路是一一对应的，如果对同一条备用链路多次配置主用链路，新的配置将覆盖以前的配置。</p>
+<p>对交换PVC配置备份功能时，如果指定的备份组不存在，则系统将自动创建一个使用指定组号的备份组，并将此交换PVC加入该备份组。</p>
+<p>删除交换PVC时，如果此交换PVC是所属备份组的最后一条链路，系统将自动删除此备份组。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="fr_switch__d77634e130"></a><a name="d77634e130"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建一条名为pvc2的交换PVC，指定它作为名为pvc1的交换PVC的备份链路，它们都属于PVC备份组1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> fr switch pvc2 interface serlai 1/0/0 dlci 100 interface serial 2/0/0 dlci 200 standby pvc1 group 1</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/frame_relay_configuration_commands.html">帧中继配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_fr_standby_group.html">display fr standby group</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,77 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ospfv3 peer router-id">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospfv3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ospfv3_peer.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ospfv3_peer_router-id">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ospfv3 peer router-id</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ospfv3_peer_router-id"></a><a name="ospfv3_peer_router-id"></a>
+
+
+<h1 class="topictitle1">ospfv3 peer router-id</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer</strong>命令用来设定NBMA网络上相邻路由器IP地址及DR优先级等参数。</p>
+<p><strong>undo peer</strong>命令用来取消该操作。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ospfv3 peer router-id</strong> <em>router-id</em> <em>ipv6-address</em> [ <strong>dr-eligible</strong> | <strong>cost</strong> <em>cost</em> | <strong>poll</strong> <em>interval</em> | <strong>instance</strong> <em>instance-id</em> ] <sup>*</sup> </p>
+<p><strong>undo ospfv3 peer router-id</strong> <em>router-id</em> [ <strong>dr-eligible</strong> | <strong>cost</strong> | <strong>poll</strong> | <strong>instance</strong> <em>instance-id</em> ] * </p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>router-id</em>：邻居路由器的Router ID。</p>
+<p><em>ipv6-address</em>：邻接点的IPv6地址。</p>
+<p><strong>dr-eligible</strong>：指定NBMA网络上邻居路由器可以参加DR选举。</p>
+<p><strong>cost</strong> <em>cost</em>：指定NBMA网络上邻居路由器的接口开销。整数形式，取值范围是1～65535。</p>
+<p><strong>poll</strong> <em>interval</em>：指定NBMA网络上邻居路由器发送轮询Hello报文的时间间隔。整数形式，取值范围是1～65535。</p>
+<p><strong>instance</strong> <em>instance-id</em>：指定接口所属的实例ID。整数形式，取值范围是0～255。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ospfv3_peer_router-id__d102203e125"></a><a name="d102203e125"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在POS1/0/0接口上中指定对端可以参加DR选择。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0] <strong>ospfv3 peer router-id 1.1.1.1 100::1 dr-eligible</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospfv3_configuration_commands.html">OSPFv3配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ospfv3_peer.html">display ospfv3 peer</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

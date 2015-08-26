@@ -1,0 +1,481 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display icmpv6 statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_icmpv6_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display icmpv6 statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_icmpv6_statistics"></a><a name="display_icmpv6_statistics"></a>
+
+
+<h1 class="topictitle1">display icmpv6 statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display icmpv6 statistics</strong>命令用来查看ICMPv6流量统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display icmpv6 statistics </strong>[ <strong>slot</strong> <em>slot-id </em>| <strong>interface</strong> <em>interface-type interface-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>slot</strong> <em>slot-id</em>：显示分布式环境中相关I/O板上的ICMPv6统计信息。在集中式环境中此项无效。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：显示指定接口的ICMPv6统计信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>例如报文传输，报文接收，报文封装与拆封，这些都有助于定位故障原因。本地路由设备收到的报文数指的是接收的报文总数，无论这些报文被转发、传入上层还是被丢弃。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_icmpv6_statistics__d26035e62"></a><a name="d26035e62"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看路由设备的ICMPv6报文处理统计信息。</p>
+<pre class="screen">[Quidway]<strong> display icmpv6 statistics</strong></pre>
+<pre class="screen">ICMPv6 protocol:                                                                
+                                                                                
+  Sent packets:                                                                 
+    Total              : 3630                                                   
+    Unreached          : 3630       Prohibited         : 0                      
+    Hop count exceeded : 0          Parameter problem  : 0                      
+    Too big            : 0          Echoed             : 0                      
+    Echo replied       : 0          Router solicit     : 0                      
+    Router advert      : 0          Neighbor solicit   : 0                      
+    Neighbor advert    : 0          Redirected         : 0                      
+    Rate limited       : 0                                                      
+                                                                                
+  Received packets:                                                             
+    Total              : 3630       Format error       : 0                      
+    Checksum error     : 0          Too short          : 0                      
+    Bad code           : 0          Bad length         : 0                      
+    Unknown info type  : 0          Unknown error type : 0                      
+    Unreached          : 3630       Prohibited         : 0                      
+    Hop count exceeded : 0          Parameter problem  : 0                      
+    Too big            : 0          Echoed             : 0                      
+    Echo replied       : 0          Router solicit     : 0                      
+    Router advert      : 0          Neighbor solicit   : 0                      
+    Neighbor advert    : 0          Redirected         : 0                      
+    Rate limited       : 0                                                      </pre>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption>表1 display icmpv6 statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="38%" id="d26035e84"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="62%" id="d26035e88"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>ICMPv6 protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>ICMPv6报文的统计信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Sent packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>ICMPv6发送报文的统计信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Total</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Unreached</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送目的不可达ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Prohibited</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送管理受限不可达ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Hop count exceeded</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送跳数超出限制ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Parameter problem</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送参数错误ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Too big</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送超大报文ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Echoed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送ICMPv6请求报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Echo replied</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送ICMPv6响应报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Router solicit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送RS报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Router advert</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送RA报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Neighbor solicit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送NS报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Neighbor advert</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送NA报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Redirected</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>发送重定向ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Rate limited</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>因ICMPv6错误产生速率限制而未发送的报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Received packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>ICMPv6接收报文的统计信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Total</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Format error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收ICMPv6格式错误报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Checksum error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的校验和错误的ICMPv6报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Too short</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的过短ICMPv6报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Bad code</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的编码字段值非法的ICMPv6报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Bad length</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的长度错误的ICMPv6报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Unknown info type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的未知信息类型ICMPv6报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Unknown error type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的未知错误类型ICMPv6报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Unreached</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的目的不可达ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Prohibited</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的管理受限不可达ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Hop count exceeded</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的跳数超出限制ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Parameter problem</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的参数错误ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Too big</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的超大报文ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Echoed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的ICMPv6请求报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Echo replied</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的ICMPv6响应报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Router solicit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的RS报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Router advert</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的RA报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Neighbor solicit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的NS报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Neighbor advert</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收到的NA报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Redirected</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>接收重定向ICMPv6消息报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38%" headers="d26035e84 "><p>Rate limited</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62%" headers="d26035e88 "><p>因ICMPv6错误处理速率限制而未接收的报文总数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="38.5%" id="d26035e528"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="61.5%" id="d26035e532"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d26035e528 "><p>VRPV500R006C01B021</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d26035e532 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_basic_configuration_commands.html">IPv6基础配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

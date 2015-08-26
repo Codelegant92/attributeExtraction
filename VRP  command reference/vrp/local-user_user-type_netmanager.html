@@ -1,0 +1,109 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="local-user user-type netmanager">
+<meta name="DC.Relation" scheme="URI" content="../vrp/user_management_commands.html">
+<meta name="DC.Relation" scheme="URI" content="user-interface_maximum-vty.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="local-user_user-type_netmanager">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>local-user user-type netmanager</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="local-user_user-type_netmanager"></a><a name="local-user_user-type_netmanager"></a>
+
+
+<h1 class="topictitle1">local-user user-type netmanager</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>local-user </strong><em>user-name</em> <strong>user-type netmanager</strong>命令用来增加网管类型用户。</p>
+<p><strong>undo local-user</strong> <em>user-name</em> <strong>user-type netmanager</strong>命令用来删除网管类型用户。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>local-user </strong><em>user-name</em> <strong>user-type netmanager</strong></p>
+<p><strong>undo local-user</strong> <em>user-name</em> <strong>user-type netmanager </strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>AAA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在AAA视图下，增加的网管类型用户，需要是已经存在的本地用户。</p>
+<p>网管类型用户只有通过AAA认证后才能登录到设备。</p>
+<p>网管类型用户不支持RSA认证通过登录设备。</p>
+<p>当VTY用户数量没有达到最大的登录数量时，网管用户可以占用当前登录用户没有占用的VTY进行登录。</p>
+<p>系统为网管用户保留了5个VTY，供网管用户登录。</p>
+<p>当前VTY登录用户达到最大数后，对新登录的用户进行判断，如果是非网管用户，则不允许登录；如果是网管用户则进行AAA认证通过认证后才能登录。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="local-user_user-type_netmanager__d90101e76"></a><a name="d90101e76"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 增加网管类型用户。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>aaa</strong></strong></pre>
+<pre class="screen">[Quidway-aaa]<strong> <strong>local-user mmi password simple 123456</strong></strong></pre>
+<pre class="screen">[Quidway-aaa]<strong> local-user mmi user-type netmanager</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="local-user_user-type_netmanager__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="local-user_user-type_netmanager__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d90101e113"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d90101e117"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d90101e113 "><p>VRPV500R005C01B050</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d90101e117 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/user_management_commands.html">用户管理命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="user-interface_maximum-vty.html">user-interface maximum-vty</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

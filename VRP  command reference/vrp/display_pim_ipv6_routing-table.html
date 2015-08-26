@@ -1,0 +1,163 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display pim ipv6 routing-table">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_pim_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_multicast_ipv6_routing-table.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_pim_ipv6_routing-table">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display pim ipv6 routing-table</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_pim_ipv6_routing-table"></a><a name="display_pim_ipv6_routing-table"></a>
+
+
+<h1 class="topictitle1">display pim ipv6 routing-table</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display pim ipv6 routing-table</strong>命令用来查看IPv6 PIM组播路由表。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display pim ipv6</strong> <strong>routing-table</strong> [ <em>ipv6-source-address</em> [ <strong>mask</strong> <em>mask-length </em>] | <em>ipv6-group-address</em> [ <strong>mask</strong> <em>mask-length </em>] | <strong>flags</strong> { <strong>act</strong> | <strong>del</strong> | <strong>exprune</strong> | <strong>ext</strong> | <strong>loc</strong> | <strong>niif</strong> | <strong>nonbr</strong> | <strong>none</strong> | <strong>rpt</strong> | <strong>sg_rcvr</strong> | <strong>sgjoin</strong> | <strong>spt</strong> | <strong>swt</strong> | <strong>wc</strong> | <strong>upchg</strong> } | <strong>fsm</strong> | <strong>incoming-interface</strong> [ <em>interface-type interface-num</em>ber | <strong>register</strong> ] | <strong>mode</strong> { <strong>dm</strong> | <strong>sm</strong> | <strong>ssm</strong> } | <strong>outgoing-interface</strong> { <strong>exclude</strong> | <strong>include</strong> | <strong>match</strong> } [ <em>interface-type interface-number</em> | <strong>none</strong> | <strong>register</strong> ] ] <sup>*</sup> <span>[<strong> | count</strong> ] </span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ipv6-source-address</em>：指定组播源的IPv6地址。</p>
+<p><em>ipv6-group-address</em>：指定组播组的地址。</p>
+<p><strong>mask </strong><em>mask-length</em>：指定组播源或组的掩码长度。整数形式，其中组播源的掩码长度的取值范围是0～128；组播组的掩码长度的取值范围是8～128。</p>
+<p><strong>flags</strong>：指定路由项的分类。</p>
+<p><strong>act</strong>：显示正在转发组播数据的路由项。</p>
+<p><strong>del</strong>：显示要删除的路由项。</p>
+<p><strong>exprune</strong>：显示状态为ex-pruned的路由项，即RPT上该表项被剪枝，并且没有接收者对该组播源感兴趣。</p>
+<p><strong>ext</strong>：显示只配置了MLD的接口加入组播组相关的路由项。</p>
+<p><strong>loc</strong>：显示与组播源直连的<span class="keyword">路由器</span>上的组播路由项。</p>
+<p><strong>niff</strong>：显示找不到上游接口的路由项。该标识仅用于（*，G），当<span class="keyword">路由器</span>找不到RP，或没有RP路由，或朝向RP的上游接口没有使能PIM SM的情况下，组播路由项被标志为niff。</p>
+<p><strong>nonbr</strong>：显示上游邻居映射失败的路由项。</p>
+<p><strong>none</strong>：显示没有标志的PIM路由项。</p>
+<p><strong>rpt</strong>：显示RPT树上已经被剪枝的路由项。</p>
+<p><strong>sgjoin</strong>：显示有（S, G）加入者、且下游接口未使能PIM（仅使能MLD）的路由项。</p>
+<p><strong>sg_rcvr</strong>：显示有（S, G）加入者、且下游接口使能了PIM的路由项。</p>
+<p><strong>spt</strong>：显示SPT树上的路由项。</p>
+<p><strong>swt</strong>：显示正在向SPT树切换的路由项。</p>
+<p><strong>wc</strong>：显示（*, G）形式的路由项。</p>
+<p><strong>upchg</strong>：显示上游接口发生了变化的路由表项。</p>
+<p><strong>fsm</strong>：显示有限状态机的详细信息。</p>
+<p><strong>incoming-interface</strong>：显示入接口为指定接口的路由项。</p>
+<p><em>interface-type interface-number</em>：指定接口类型和编号。</p>
+<p><strong>register</strong>：显示注册接口。</p>
+<p><strong>mode</strong>：指定IPv6 PIM的模式。</p>
+<p><strong>dm</strong>：显示密集模式路由项。</p>
+<p><strong>sm</strong>：显示稀疏模式的路由项。</p>
+<p><strong>ssm：</strong>显示指定源模式的路由项。</p>
+<p><strong>outgoing-interface</strong>：显示出接口为指定接口的路由项。</p>
+<p><strong>exclude</strong>：显示下游不包含指定接口的（S, G）路由项。如果包含此关键字，必须指定接口类型和编号。</p>
+<p><strong>include</strong>：显示下游包含指定接口的（S, G）路由项。如果包含此关键字，必须指定接口类型和编号。</p>
+<p><strong>match</strong>：显示下游匹配指定接口的（S,
+G）路由项。如果不指定接口类型和编号，显示下游为空的(S, G)路由项。</p>
+<p><strong>none</strong>：显示没有下游的路由项。</p>
+<p><strong>register</strong>：显示注册接口。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>请根据需要选择Flag值查看IPv6 PIM组播路由表。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_pim_ipv6_routing-table__d59821e349"></a><a name="d59821e349"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示IPv6 PIM组播路由表。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display pim ipv6 routing-table</strong></pre>
+<pre class="screen">VPN-Instance: public net</pre>
+<pre class="screen"> Total 1 (*, G) entry; 1 (S, G) entry</pre>
+
+<pre class="screen"> (*, FFE3::1)</pre>
+<pre class="screen">     Protocol: pim-dm, Flag: WC</pre>
+<pre class="screen">     UpTime: 00:57:31</pre>
+<pre class="screen">     Upstream interface: NULL</pre>
+<pre class="screen">         Upstream neighbor: NULL</pre>
+<pre class="screen">         RPF prime neighbor: NULL</pre>
+<pre class="screen">     Downstream interface(s) information:</pre>
+<pre class="screen">     Total number of downstreams: 1</pre>
+<pre class="screen">         1: GigabitEthernet1/0/0</pre>
+<pre class="screen">             Protocol: static, UpTime: 00:57:31, Expires: never</pre>
+
+<pre class="screen"> (2001::2, FFE3::1)</pre>
+<pre class="screen">     Protocol: pim-dm, Flag:</pre>
+<pre class="screen">     UpTime: 00:04:24</pre>
+<pre class="screen">     Upstream interface: Pos1/0/0</pre>
+<pre class="screen">         Upstream neighbor: FE80::A01:100:1</pre>
+<pre class="screen">         RPF prime neighbor: FE80::A01:100:1</pre>
+<pre class="screen">     Downstream interface(s) information:</pre>
+<pre class="screen">     Total number of downstreams: 1</pre>
+<pre class="screen">         1: GigabitEthernet1/0/0</pre>
+<pre class="screen">             Protocol: pim-dm, UpTime: 00:04:24, Expires:  -</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_pim_ipv6_routing-table__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_ipv6_routing-table__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d59821e414"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d59821e418"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d59821e414 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d59821e418 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_pim_configuration_commands.html">IPv6 PIM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_multicast_ipv6_routing-table.html">display multicast ipv6 routing-table</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,126 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="build">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cluster_enable.html">
+<meta name="DC.Relation" scheme="URI" content="ip-pool.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="build">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>build</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="build"></a><a name="build"></a>
+
+
+<h1 class="topictitle1">build</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>build</strong>命令用来创建HGMP集群、创建命令交换机和修改HGMP集群名称。</p>
+<p><strong>undo build</strong>命令用来删除HGMP集群。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>build</strong> <em>cluster-name</em></p>
+<p><strong>undo build</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>cluster-name</em>：指定集群名称。字符串格式，区分大小写，不支持空格，长度范围是1～8。集群名称只能包含字母、数字、连字符&#8220;-&#8221;和下划线&#8220;_&#8221;。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>集群视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>build</strong>命令只能在命令交换机和没有加入任何HGMP集群的设备上执行：</p>
+<ul>
+<li><p>如果设备已经是HGMP集群中的命令交换机，通过本配置，可以改变它所在集群的集群名称和集群成员的主机名。</p>
+</li>
+<li><p>如果设备没有加入任何HGMP集群，通过本配置，可以在此设备上创建集群，并且此设备成为集群的命令交换机。</p>
+</li>
+</ul>
+<p>执行本命令将会改变设备的系统名称。执行<strong>undo build</strong>或<strong>undo cluster enable</strong>命令可恢复。</p>
+<p><strong>undo build</strong>命令只能在命令交换机上执行。</p>
+<p>执行本命令时，必须已经使能HGMP集群功能并且创建了集群管理VLAN及相应的VLANIF，同时还必须先配置HGMP集群可使用的IP范围。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="build__d4910e75"></a><a name="d4910e75"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置当前设备为命令交换机，并配置HGMP集群名称为HUAWEI。该命令交换机与成员交换机连接的接口为GE1/0/1，管理VLAN的编号为1，内部通信地址池为私网IP地址池10.0.0.1/8。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>vlan 1</strong></strong></pre>
+<pre class="screen">[Quidway-vlan1]<strong> port gigabitethernet 1/0/1</strong></pre>
+<pre class="screen">[Quidway-vlan1]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface vlanif 1</strong></strong></pre>
+<pre class="screen">[Quidway-Vlanif1]<strong> <strong>quit</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> cluster</strong></pre>
+<pre class="screen">[Quidway-cluster]<strong><strong> ip-pool 10.0.0.1 8</strong></strong></pre>
+<pre class="screen">[Quidway-cluster]<strong> build HUAWEI</strong></pre>
+<pre class="screen">[HUAWEI_0.Quidway-cluster]</pre>
+<p># 修改集群HUAWEI的名称为HW。</p>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[HUAWEI_0.Quidway]<strong> cluster</strong></pre>
+<pre class="screen">[HUAWEI_0.Quidway-cluster]<strong> build HW</strong></pre>
+<pre class="screen">[HW_0.Quidway-cluster]</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="build__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="build__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d4910e153"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d4910e157"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d4910e153 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d4910e157 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cluster_enable.html">cluster enable</a></div>
+<div><a href="ip-pool.html">ip-pool</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

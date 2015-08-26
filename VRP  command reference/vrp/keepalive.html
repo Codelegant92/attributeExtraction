@@ -1,0 +1,120 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="keepalive">
+<meta name="DC.Relation" scheme="URI" content="../vrp/gre_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_keepalive_packets_count.html">
+<meta name="DC.Relation" scheme="URI" content="reset_keepalive_packets_count.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="keepalive">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>keepalive</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="keepalive"></a><a name="keepalive"></a>
+
+
+<h1 class="topictitle1">keepalive</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>keepalive</strong>命令用来使能GRE隧道的keepalive功能。</p>
+<p><strong>undo
+keepalive</strong>命令用来取消GRE隧道的keepalive功能。</p>
+<p>缺省情况下，没有使能GRE隧道的keepalive功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>keepalive</strong> [ <strong>period</strong> <em>period</em> ] [ <strong>retry-times</strong> <em>retry-times</em> ]</p>
+<p><strong>undo keepalive</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>period</em>：发送keepalive报文的周期。整数形式，取值范围是1～32767，单位是秒。缺省值是5秒。</p>
+<p><em>retry-times</em>：不可达计数器参数。整数形式，取值范围是1～255。缺省值是3。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>keepalive</strong>命令后，该GRE隧道的keepalive功能立即生效。执行<strong>undo
+keepalive</strong>后，该功能立即失效。</p>
+<p>使能keepalive功能后，GRE隧道源端周期性的发送keepalive报文。每发送一个，不可达计数器加1。如果此计数器的值到达预先设置的参数值<em>retry-times</em>还没收到回送报文，就认为对端不可达。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="keepalive__d87720e76"></a><a name="d87720e76"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能GRE隧道的keepalive功能，其参数使用缺省值。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> keepalive</strong></pre>
+<p># 使能GRE隧道的keepalive功能并指定发送周期为12，不可达计数器参数为缺省值。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> keepalive period 12</strong></pre>
+<p># 使能GRE隧道的keepalive功能并指定发送周期为12秒，retry-times为4。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> keepalive period 12 retry-times 4</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="keepalive__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="keepalive__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="31.902153140527457%" id="d87720e131"><p>Version</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="68.09784685947254%" id="d87720e135"><p>Revision</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="31.902153140527457%" headers="d87720e131 "><p>VRPV500R005C02B040</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="68.09784685947254%" headers="d87720e135 "><p>该命令取代了原命令<strong>link-alive</strong>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/gre_configuration_commands.html">GRE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_keepalive_packets_count.html">display
+keepalive packets count</a></div>
+<div><a href="reset_keepalive_packets_count.html">reset keepalive
+packets count</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

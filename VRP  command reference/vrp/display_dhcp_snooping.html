@@ -1,0 +1,212 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display dhcp snooping">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_snooping_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_dhcp_snooping_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_dhcp_snooping">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display dhcp snooping</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_dhcp_snooping"></a><a name="display_dhcp_snooping"></a>
+
+<h1 class="topictitle1">display dhcp snooping</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>dhcp</strong> <strong>snooping</strong>命令用来显示接口上的DHCP Snooping相关信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>dhcp</strong> <strong>snooping</strong> { <strong>interface</strong> <em>interface-type</em> <em>interface-number</em> | <strong>vlan</strong> <em>vlanid</em> [ <strong>interface</strong> <em>interface-type</em> <em>interface-number</em> ] }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vlan</strong> <em>vlanid</em>：表示VLAN ID，取值范围1~4094。此参数仅在二层设备上可配置。</p>
+<p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口编号。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display</strong> <strong>dhcp</strong> <strong>snooping</strong>后，设备将显示VLAN和接口下所有的DHCP Snooping配置信息。显示信息的内容和含义，请参见下表。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_dhcp_snooping__d22607e87"></a><a name="d22607e87"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示Ethernet4/0/0接口相关的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display dhcp snooping interface ethernet 4/0/0</strong></pre>
+<pre class="screen">dhcp snooping enable</pre>
+<pre class="screen">dhcp snooping trusted</pre>
+<pre class="screen">dhcp snooping check arp enable</pre>
+<pre class="screen">dhcp snooping alarm arp enable</pre>
+<pre class="screen">dhcp snooping alarm arp threshold 50</pre>
+<pre class="screen">dhcp snooping nomatch-packet arp action discard</pre>
+<pre class="screen">dhcp snooping check ip enable</pre>
+<pre class="screen">dhcp snooping alarm ip enable</pre>
+<pre class="screen">dhcp snooping alarm ip threshold 50</pre>
+<pre class="screen">dhcp snooping nomatch-packet ip action discard</pre>
+<pre class="screen">dhcp snooping alarm dhcp-reply enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-reply threshold 10</pre>
+<pre class="screen">dhcp snooping check dhcp-chaddr enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-chaddr enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-chaddr threshold 50</pre>
+<pre class="screen">dhcp snooping check dhcp-request enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-request enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-request threshold 50</pre>
+<pre class="screen">arp total                145</pre>
+<pre class="screen">ip   total               120</pre>
+<pre class="screen">dhcp-request total       115</pre>
+<pre class="screen">chaddr&amp;src mac total     108</pre>
+<pre class="screen">dhcp-reply total         78</pre>
+<pre class="screen">dhcp-ratelimit total     98</pre>
+
+<div class="tablenoborder"><a name="display_dhcp_snooping__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_dhcp_snooping__tb_01" frame="border" border="1" rules="all"><caption>表1 display dhcp snooping命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="40.24390243902439%" id="d22607e150"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="59.756097560975604%" id="d22607e153"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping enable </p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0 下DHCP Snooping功能已经使能，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping trusted</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0 下trusted状态已经使能，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping check arp enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0上ARP检查功能已经使能，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping alarm arp enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0上ARP检查告警功能已经使能，超过了告警阈值，就会产生告警，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping alarm arp threshold 50</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>设置接口Ethernet 4/0/0上ARP检查的告警阈值为50，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping nomatch-packet arp action discard</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0上设置不匹配ARP报文的转发行为是discard，默认值是forward，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping check ip enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0上IP检查功能已经使能，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping alarm ip enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0上IP检查告警功能已经使能，超过了告警阈值，就会产生告警，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping alarm ip threshold 50</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>设置接口Ethernet 4/0/0上IP检查的告警阈值为50，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping nomatch-packet ip action discard</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0上设置不匹配IP报文的转发行为是discard，默认值是forward，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping alarm dhcp-reply enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0上dhcp-reply检查告警功能已经使能，超过了告警阈值，就会产生告警，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping alarm dhcp-reply threshold 50</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>设置接口Ethernet 4/0/0上dhcp-reply检查的告警阈值为50，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping check dhcp-chaddr enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0上dhcp-chaddr检查功能已经使能，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping alarm dhcp-chaddr enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0上dhcp-chaddr检查告警功能已经使能，超过了告警阈值，就会产生告警，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping alarm dhcp-chaddr threshold 50</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>设置接口Ethernet 4/0/0上dhcp-chaddr检查的告警阈值为50，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping check dhcp-request enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0上dhcp- request检查功能已经使能，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping alarm dhcp- request enable</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口Ethernet 4/0/0上dhcp- request检查告警功能已经使能，超过了告警阈值，就会产生告警，在查询vlan下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp snooping alarm dhcp- request threshold 50</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>设置接口Ethernet 4/0/0上dhcp- request检查的告警阈值为50，在查询VLAN下的某接口信息时显示</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>arp total 140</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口上累计丢弃的arp报文为140个，这个计数器达到设置的告警阈值后也不会清零</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>ip total 120</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口上累计丢弃的ip报文为120个，这个计数器达到设置的告警阈值后也不会清零</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp-req total 115</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口上累计丢弃的dhcp-request报文为115个，这个计数器达到设置的告警阈值后也不会清零</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>chaddr &amp;src mac total 108</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口上累计丢弃的dhcp-reqmac报文为108个，这个计数器达到设置的告警阈值后也不会清零</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp-reply total 78</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口上累计丢弃的的dhcp- reply报文为78个，这个计数器达到设置的告警阈值后也不会清零</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="40.24390243902439%" headers="d22607e150 "><p>dhcp-ratelimit total 98</p>
+</td>
+<td class="cellrowborder" valign="top" width="59.756097560975604%" headers="d22607e153 "><p>接口上累计丢弃的dhcp报文超过速率限制后的数目为98个，这个计数器达到设置的告警阈值后也不会清零</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_snooping_configuration_commands.html">DHCP Snooping命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_dhcp_snooping_statistics.html">reset dhcp snooping statistics</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

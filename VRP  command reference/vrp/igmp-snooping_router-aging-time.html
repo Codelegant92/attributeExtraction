@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="igmp-snooping router-aging-time">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="igmp-snooping_router-aging-time">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>igmp-snooping router-aging-time</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="igmp-snooping_router-aging-time"></a><a name="igmp-snooping_router-aging-time"></a>
+
+
+<h1 class="topictitle1">igmp-snooping router-aging-time</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>igmp-snooping router-aging-time</strong>命令用来配置路由端口的老化时间。无论端口上收到的是PIM Hello报文还是IGMP Query报文，只要目前定时器的剩余值小于该配置值，都会将定时器设置为该值。</p>
+<p><strong>undo igmp-snooping router-aging-time</strong>命令用来恢复该配置的缺省值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>igmp-snooping router-aging-time</strong> <em>router-aging-time</em></p>
+<p><strong>undo igmp-snooping router-aging-time</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>router-aging-time</strong><em> router-aging-time</em>：路由端口老化时间，取值范围是1～1000，单位为秒。</p>
+<p>通过IGMP报文学到的路由端口，老化时间缺省值是180秒。通过PIM Hello报文学到的路由端口，老化时间的缺省值是PIM Hello报文中的Holdtime值。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VLAN视图、VSI视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>路由端口是指朝向组播<span class="keyword">路由器</span>的端口。路由端口可以分为如下两类。</p>
+<ul>
+<li><p>动态路由端口：能够接收到源地址不为0.0.0.0的IGMP Query报文或者PIM Hello报文的端口。动态路由端口依赖于<span class="keyword">路由器</span>与主机之间交互的协议报文，动态维护。每个动态路由端口启动一个定时器，定时器的超时时间为&#8220;路由端口老化时间&#8221;。在定时器超时前，如果没有从该端口收到源地址不为0.0.0.0的IGMP Query报文或PIM
+Hello报文，则该端口不再属于路由端口。</p>
+</li>
+<li><p>静态路由端口：用户使用配置命令指定的，不会老化。</p>
+</li>
+</ul>
+<div class="p">在VLAN视图下配置时，以下情况会导致配置不成功：<ul>
+<li><p>VLAN已经绑定了VSI；</p>
+</li>
+<li><p>VLAN内包含VE接口。</p>
+</li>
+</ul>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="igmp-snooping_router-aging-time__d81011e81"></a><a name="d81011e81"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置VLAN 2内的路由端口老化时间为500秒。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 2</strong></pre>
+<pre class="screen">[Quidway-vlan2]<strong> igmp-snooping router-aging-time 500</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

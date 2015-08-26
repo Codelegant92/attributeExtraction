@@ -1,0 +1,270 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ospf migp-routing">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ospf_migp-routing">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ospf migp-routing</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ospf_migp-routing"></a><a name="display_ospf_migp-routing"></a>
+
+
+<h1 class="topictitle1">display ospf migp-routing</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ospf migp-routing</strong>命令用来显示OSPF的MIGP路由信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>ospf </strong>[ <em>process-id</em> ] <strong>migp-routing</strong> [
+[ <em>ip-address</em> [ <em>mask</em> | <em>mask-length</em> ] ] | [ <strong>interface</strong> <em>interface-type
+interface-number</em> ] ] [ <strong>nexthop</strong> <em>nexthop-address</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：OSPF进程号。整数形式，取值范围是1～65535。</p>
+<p><em>ip-address</em>：目的IP地址，点分十进制格式。</p>
+<p><em>mask</em>：指定子网掩码，点分十进制格式。</p>
+<p><em>mask-length</em>：指定掩码长度。整数形式，取值范围是0～32。</p>
+<p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口号。</p>
+<p><strong>nexthop </strong><em>nexthop-address</em>：显示下一跳IP地址为此指定值的路由信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过<strong>display ospf migp-routing</strong>命令可以查看出接口为TE-Tunnel的路由的实际物理接口。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ospf_migp-routing__d55946e156"></a><a name="d55946e156"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示OSPF的MIGP路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ospf migp-routing</strong></pre>
+
+<pre class="screen">          OSPF Process 1 with Router ID 2.2.2.2</pre>
+<pre class="screen">                   MIGP Routing Tables</pre>
+
+<pre class="screen"> Routing for Network</pre>
+<pre class="screen"> Destination        Cost  Type       NextHop         AdvRouter       Area</pre>
+<pre class="screen"> 192.168.3.0/24     4     Stub       10.0.1.1        5.5.5.5         0.0.0.0</pre>
+<pre class="screen"> 4.4.4.4/32         3     Stub       10.0.1.1        4.4.4.4         0.0.0.0</pre>
+<pre class="screen"> 5.5.5.5/32         4     Stub       10.0.1.1        5.5.5.5         0.0.0.0</pre>
+<pre class="screen"> 10.0.3.0/24        3     Transit    10.0.1.1        5.5.5.5         0.0.0.0</pre>
+
+<pre class="screen"> Total Nets: 4</pre>
+<pre class="screen"> Intra Area: 4  Inter Area: 0  ASE: 0  NSSA: 0</pre>
+
+<div class="tablenoborder"><a name="display_ospf_migp-routing__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_migp-routing__tb_01" frame="border" border="1" rules="all"><caption>表1 display ospf migp-routing命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d55946e199"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d55946e203"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55946e199 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55946e203 "><p>目的地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55946e199 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55946e203 "><p>到达目的地址的开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55946e199 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55946e203 "><div class="p">目的网络的类型。根据目的网络类型不同，可将路由分为区域间路由（Inter-area）和区域内路由（Stub和Transit）。<ul>
+<li>Stub：router-lsa发布的路由，对应非广播网络、非NBMA网络的直连路由</li>
+<li>Transit：network-lsa发布的路由</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55946e199 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55946e203 "><p>到达目的地址的下一跳地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55946e199 "><p>AdvRouter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55946e203 "><p>发布路由器</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55946e199 "><p>Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55946e203 "><p>区域号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55946e199 "><p>Total Nets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55946e203 "><p>区域内部、区域间、ASE和NSSA区域的网络总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55946e199 "><p>Intra Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55946e203 "><p>区域内部路由总数（即Stub类型和Transit类型的总和）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55946e199 "><p>Inter Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55946e203 "><p>区域间路由总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55946e199 "><p>ASE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55946e203 "><p>ASE区域路由总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55946e199 "><p>NSSA</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55946e203 "><p>NSSA区域路由总数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示指定下一跳地址的OSPF的MIGP路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ospf migp-routing</strong> <strong>nexthop 10.0.1.1</strong></pre>
+
+<pre class="screen">          OSPF Process 1 with Router ID 2.2.2.2</pre>
+
+<pre class="screen"> Destination : 192.168.3.0/24</pre>
+<pre class="screen"> AdverRouter : 5.5.5.5                  Area      : 0.0.0.0</pre>
+<pre class="screen"> Cost        : 4                        Type      : Stub</pre>
+<pre class="screen"> NextHop     : 10.0.1.1                 Interface : Ethernet6/2/0</pre>
+
+<pre class="screen"> Destination : 4.4.4.4/32</pre>
+<pre class="screen"> AdverRouter : 4.4.4.4                  Area      : 0.0.0.0</pre>
+<pre class="screen"> Cost        : 3                        Type      : Stub</pre>
+<pre class="screen"> NextHop     : 10.0.1.1                 Interface : Ethernet6/2/0</pre>
+
+<pre class="screen"> Destination : 5.5.5.5/32</pre>
+<pre class="screen"> AdverRouter : 5.5.5.5                  Area      : 0.0.0.0</pre>
+<pre class="screen"> Cost        : 4                        Type      : Stub</pre>
+<pre class="screen"> NextHop     : 10.0.1.1                 Interface : Ethernet6/2/0</pre>
+
+<pre class="screen"> Destination : 10.0.3.0/24</pre>
+<pre class="screen"> AdverRouter : 5.5.5.5                  Area      : 0.0.0.0</pre>
+<pre class="screen"> Cost        : 3                        Type      : Transit</pre>
+<pre class="screen"> NextHop     : 10.0.1.1                 Interface : Ethernet6/2/0 </pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ospf_migp-routing__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_migp-routing__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d55946e402"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d55946e406"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d55946e402 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d55946e406 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

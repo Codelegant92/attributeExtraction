@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="protection restore">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="aps_enable.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-tunnel_protection.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="protection_restore">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>protection restore</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="protection_restore"></a><a name="protection_restore"></a>
+
+
+<h1 class="topictitle1">protection restore</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>protection restore</strong>命令用来配置保护组的回切模式，分为恢复式和非恢复式两种。</p>
+<p><strong>undo protection restore</strong>命令用来恢复保护组的回切模式为缺省值。</p>
+<p>缺省情况下，保护组的回切模式为恢复式，回切等待时间为5分钟。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>protection restore</strong> { <strong>revertive</strong> [<strong> wtr</strong> <em>wtr-time</em> ] | <strong>non-revertive</strong> }</p>
+<p><strong>undo protection restore</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>revertive：</strong>指定保护组的回切模式为恢复试。</p>
+<p><strong>wtr</strong><em> wtr-time</em>：指定回切等待时间。单位为分钟，取值范围是5～12。缺省情况下，回切等待时间是5分钟。</p>
+<p><strong>non-revertive：</strong>指定保护组的回切方式为非恢复式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MAC Tunnel视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果在保护组中的工作隧道发生故障，APS协议会将业务切换到保护隧道进行传输。在工作隧道恢复正常后，可以根据需求将业务回切到工作隧道进行传输，或者不回切，业务仍继续在保护隧道中传输。</p>
+<p>如果保护组的回切模式为恢复式，工作隧道恢复正常后，业务不会立刻回切，需要等待一段时间后才将业务由保护隧道回切到工作隧道进行传输。</p>
+<p>APS型的保护组只有在使能CFM功能，关闭APS协议的情况下才能用此命令。OAM型保护组则没有限制。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="protection_restore__d108538e75"></a><a name="d108538e75"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置保护组的回切模式为恢复式，回切等待时间为6分钟。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>mac-tunnel</strong><strong> tunnel-name </strong><strong>mytunnel</strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-mytunnel] <strong>protection mac-tunnel protunnel2 </strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-mytunnel] <strong>protection restore revertive wtr 6</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="aps_enable.html">aps enable</a></div>
+<div><a href="display_mac-tunnel_protection.html">display mac-tunnel protection</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

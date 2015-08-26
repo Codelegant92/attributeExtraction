@@ -1,0 +1,89 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="c-bsr">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pim_sm.html">
+<meta name="DC.Relation" scheme="URI" content="c-rp_ipv4.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="c-bsr_ipv4">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>c-bsr</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="c-bsr_ipv4"></a><a name="c-bsr_ipv4"></a>
+
+
+<h1 class="topictitle1">c-bsr</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>c-bsr</strong>命令用来配置C-BSR。</p>
+<p><strong>undo c-bsr</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，未配置C-BSR。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>c-bsr</strong> <em>interface-type interface-number</em> [ <em>hash-length</em> [ <em>priority</em> ] ]</p>
+<p><strong>undo c-bsr</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type interface-number</em>：<span class="keyword">路由器</span>的接口类型和接口号。候选BSR（C-BSR）就配置在该接口上，该接口一定要启用PIM-SM，配置才能生效。</p>
+<p><em>hash-length</em>：表示该C-BSR的哈希掩码长度，该掩码将被带入哈希函数，用于计算RP。整数形式，取值范围是0～32。缺省值是30。</p>
+<p><em>priority</em>：表示该C-BSR的优先级。数值越大，C-BSR的优先级越高。整数形式，取值范围是0～255。缺省值是0。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例PIM视图、VPN实例PIM视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>充当C-BSR的接口必须先使能PIM-SM。</p>
+<div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>对通过GRE-TUNNEL学习的组播BSR消息，要配置组播静态路由，保证到BSR下一跳是GRE口。组播静态路由配置要合理规划，避免路由回环。</p>
+</div></div>
+<p>PIM-SM网络借助BSR机制动态选举RP。BSR收集众多C-RP的信息，或者接收其他<span class="keyword">路由器</span>发送的Auto-RP宣告，然后向全网络发布RP-Set。网络内的所有<span class="keyword">路由器</span>都能够根据RP-Set计算出和特定组播组对应的RP。由于BSR和PIM-SM域中其他的设备需要交换大量信息，因此应在C-BSR与PIM-SM域中的其它设备之间保留较大的通信带宽。</p>
+<p>同一台<span class="keyword">路由器</span>可以同时充当C-RP和C-BSR。一台<span class="keyword">路由器</span>上可以存在多实例，每个实例中最多只能配置一个C-BSR；若同一实例中重复使用<strong>c-bsr</strong>命令，则最新配置有效。</p>
+<p>在一个PIM-SM域中，需要配置一个或多个C-BSR，C-BSR之间通过自动选举，产生自举路由器BSR，BSR负责收集并发布RP信息。C-BSR应为骨干网<span class="keyword">路由器</span>。在将<span class="keyword">路由器</span>配置为C-BSR时，必须同时指定一个启动了PIM-SM的接口。</p>
+<p>下面简单描述一下C-BSR之间的自动选举：</p>
+<ul>
+<li><p>最初，每个C-BSR都认为自己是本PIM-SM域的BSR，并使用<strong>c-bsr</strong>命令指定接口的IP地址作为BSR地址，发送自举报文（Bootstrap message）。</p>
+</li>
+<li><p>当C-BSR收到其它<span class="keyword">路由器</span>发来的自举报文时，它将新收到的自举报文的BSR信息与当前承认的BSR信息进行比较，比较标准包括优先级和IP地址，优先级较高者较优。优先级相同的情况下，较大的IP地址被认为是更好的。如果前者更好，则将这个新的BSR地址替换当前承认的BSR地址；否则，保留自己的BSR地址，继续将自己视为BSR。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="c-bsr_ipv4__d5234e117"></a><a name="d5234e117"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例下，在<span class="keyword">路由器</span>GE1/0/0上配置C-BSR。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> pim</strong></pre>
+<pre class="screen">[Quidway-pim]<strong> c-bsr gigabitethernet1/0/0</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pim_sm.html">pim sm</a></div>
+<div><a href="c-rp_ipv4.html">c-rp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

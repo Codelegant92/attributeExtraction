@@ -1,0 +1,77 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="traffic-statistics peer（Martini）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="traffic-statistics_peer_kompella.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="traffic-statistics_peer_martini">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>traffic-statistics peer（Martini）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="traffic-statistics_peer_martini"></a><a name="traffic-statistics_peer_martini"></a>
+
+
+<h1 class="topictitle1">traffic-statistics peer（Martini）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>traffic-statistics peer</strong>命令用来使能指定Martini方式VPLS PW上的公网流量统计功能。</p>
+<p><strong>undo traffic-statistics peer</strong>命令用来去使能指定Martini方式VPLS PW上的公网流量统计功能。</p>
+<p>缺省情况下，去使能指定Martini方式VPLS PW上的公网流量统计功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>traffic-statistics peer</strong> <em>peer-address</em> [ <strong>negotiation-vc-id</strong> <em>vc-id </em>] <strong>enable</strong></p>
+<p><strong>undo traffic-statistics peer</strong> <em>peer-address</em> [ <strong>negotiation-vc-id</strong> <em>vc-id </em>] <strong>enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>peer</strong><em> peer-address</em>：PW的对端IP地址。</p>
+<p><strong>negotiation-vc-id</strong><em> vc-id</em>：PW的ID值。十进制整数形式，取值范围是1～4294967295。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VSI-LDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>用户进入VSI-LDP视图下，对指定Martini方式VPLS PW使能/去使能公网流量统计功能，PW由用户所在的VSI视图与指定的对端IP地址和PW ID唯一确定。</p>
+<p>如果已经在VSI-LDP视图下使用<strong>traffic-statistics enable</strong>命令使能了基于VSI的全局流量统计，则不能使用<strong>undo traffic-statistics peer</strong>命令删除指定peer的流量统计。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="traffic-statistics_peer_martini__d125453e88"></a><a name="d125453e88"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在VSI-newvsi-ldp下使能指定PW上的公网流量统计功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> vsi newvsi static</strong></pre>
+<pre class="screen">[Quidway-vsi-newvs]<strong> pwsignal ldp</strong></pre>
+<pre class="screen">[Quidway- vsi-newvsi-ldp]<strong>vsi-id 1</strong></pre>
+<pre class="screen">[Quidway- vsi-newvsi-ldp]<strong> traffic-statistics <strong>peer 100.22.33.20</strong> <strong>negotiation-vc-id 2 enable</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="traffic-statistics_peer_kompella.html">traffic-statistics_peer_kompella</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

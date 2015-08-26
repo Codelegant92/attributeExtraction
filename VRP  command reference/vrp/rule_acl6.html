@@ -1,0 +1,244 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="rule（ACL6）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/acl6_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rule_acl6">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>rule（ACL6）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="rule_acl6"></a><a name="rule_acl6"></a>
+
+<h1 class="topictitle1">rule（ACL6）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>rule</strong>命令用来增加或修改基本ACL6规则。基本ACL6只采用源地址信息来定义ACL6规则。</p>
+<p>此命令应用于IPv6的ACL配置模式。删除或修改已有规则时，必须指定规则ID。</p>
+<p><strong>undo rule</strong>命令用来删除IPv6的ACL规则。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p># 创建或删除基本ACL6的规则</p>
+<p><strong>rule</strong> [ <em>rule-id</em> ] { <strong>deny </strong>|<strong> permit</strong> } [ <strong>fragment |</strong> <strong>logging | source</strong> {<em> source-ipv6-address</em> <em>prefix-length | source-ipv6-address</em>/<em>prefix-length</em> | <strong>any</strong> } | <strong>time-range</strong> <em>time-name </em>| <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> ] <sup>*</sup></p>
+<p><strong>undo</strong> <strong>rule</strong> <em>rule-id</em> [ <strong>fragment</strong> |<strong> logging</strong> |<strong> source </strong>|<strong> time-range </strong>| <strong>vpn6-instance</strong> ] <sup>*</sup></p>
+<p># 创建或删除高级ACL6的规则</p>
+<ul><li><p>当参数<em>protocol</em>为TCP或UDP时，高级ACL6的命令格式为：</p>
+</li></ul>
+<p><strong>rule</strong> [<em> rule-id</em> ] { <strong>deny </strong>| <strong>permit </strong>} <em>protocol</em> [ <strong>destination</strong> { <em>destination-ipv6-address prefix-length</em> | <em>destination-ipv6-address/prefix-length</em> | <strong>any</strong> } | <strong>destination</strong>-<strong>port</strong> <em>operator port</em> | <strong>fragment</strong> | <strong>logging</strong> | <strong>precedence</strong> <em>precedence</em> | <strong>source</strong> { <em>source-ipv6-address prefix-length</em> | <em>source-ipv6-address/prefix-length</em> | <strong>any</strong> } | <strong>source-port</strong> <em>operator port</em> | <strong>time</strong>-<strong>range</strong> <em>time-name</em> | <strong>tos</strong> 	<em>tos</em> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> ] <sup>*</sup></p>
+<ul><li><p>当参数<em>protocol</em>为ICMPv6时，高级ACL6的命令格式为：</p>
+</li></ul>
+<p><strong>rule</strong> [<em> rule-id</em> ] { <strong>deny </strong>| <strong>permit </strong>} <em>protocol </em>[ <strong>destination</strong> { <em>destination-ipv6-address prefix-length</em> | <em>destination-ipv6-address/prefix-length</em> | <strong>any</strong> } | <strong>fragment</strong> | <strong>icmpv6-type</strong> { <em>icmp6-type-name</em> | <em>icmp6-type icmp6-code </em>}<strong> | logging</strong> | <strong>precedence</strong> <em>precedence</em> | <strong>source</strong> { <em>source-ipv6-address prefix-length</em> | <em>source-ipv6-address/prefix-length</em> | <strong>any</strong> } | <strong>time</strong>-<strong>range</strong> <em>time-name</em> | <strong>tos</strong><em> tos</em> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> ] <sup>*</sup></p>
+<ul><li><p>当<em>protocol</em>为其他协议时，高级ACL6的命令格式为：</p>
+</li></ul>
+<p><strong>rule</strong> [ <em>rule-id </em>] { <strong>deny </strong>| <strong>permit </strong>} <em>protocol</em> [ <strong>destination</strong> {<em> destination-ipv6-address prefix-length</em> | <em>destination-ipv6-address/prefix-length</em> |  <strong>any</strong> } | <strong>fragment</strong> | <strong>logging</strong> | <strong>precedence</strong> <em>precedence</em> | <strong>source</strong> { <em>source-ipv6-address prefix-length</em> | <em>source-ipv6-address/prefix-length</em> | <strong>any</strong> } | <strong>time</strong>-<strong>range</strong> <em>time-name </em>| <strong>tos</strong> <em>tos</em> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> ] <sup>*</sup></p>
+<ul><li><p>删除高级ACL6的规则</p>
+</li></ul>
+<p><strong>undo</strong> <strong>rule</strong> <em>rule-id</em> [ <strong>destination</strong> | <strong>destination-port</strong> | <strong>fragment</strong> | <strong>icmp6-type</strong> | <strong>logging </strong>| <strong>precedence</strong> | <strong>source</strong> | <strong>source-port</strong> |<strong> time-range</strong> | <strong>tos</strong> | <strong>vpn6-instance</strong> ] <sup>*</sup></p>
+<p># 创建或删除接口ACL6的规则</p>
+<p><strong>rule</strong> [ <em>rule-id </em>] { <strong>deny </strong>| <strong>permit </strong>} <strong>interface</strong> { <em>interface-type interface-number</em> | <strong>any</strong> } [ <strong>logging</strong> |<strong> time-range</strong> <em>time-name</em> ] <sup>*</sup></p>
+<p><strong>undo</strong> <strong>rule</strong> <em>rule-id </em>[ <strong>logging</strong> |<strong> time-range</strong> ] <sup>*</sup></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p># 使用命令<strong>rule</strong>为ACL6增加一个规则的时候，参数说明如下：</p>
+<p><em>rule-id</em>：规则ID，整数形式，取值范围是0～2047。如果指定了ID的规则存在，可以对其进行修改。如果不存在，将会创建一条带有指定ID的新规则。如果未指定规则ID，可创建新规则，系统会自动分配规则ID。</p>
+<p><strong>permit</strong>：允许数据报文通过。</p>
+<p><strong>deny</strong>：丢弃匹配规则的数据报文。</p>
+<p><em>protocol</em>：用名字或数字表示的IP承载的协议类型。数字是整数形式，取值范围是1～255；用名字表示时，可以选取：<span><strong>gre</strong></span>、<strong>icmpv6</strong>、<strong>ipv6</strong>、<strong>ipv6-ah</strong>、<strong>ipv6-esp</strong>、<strong>ospf</strong>、<strong>tcp</strong>和<strong>udp</strong>。</p>
+<p><strong>source</strong><em> source-ipv6-address prefix-length |</em><strong> any</strong>：数据包的源地址和前缀。<em>source-ipv6-address</em>表示IPv6地址。<em>prefix-length</em>的取值范围1～128。或用&#8220;<strong>any</strong>&#8221;代表任何源地址。</p>
+<p><strong>destination</strong><em> destination-ipv6-address prefix-length |</em><strong> any：</strong>数据包的目的地址和前缀。<em>destination-ipv6-address</em>表示IPv6地址。<em>prefix-length</em>的取值范围1～128。或用&#8220;<strong>any</strong>&#8221;代表任何目的地址。</p>
+<p><strong>logging：</strong>将符合条件的数据包记录为日志。</p>
+<p><strong>time-range </strong><em>time-range-name</em>：设置ACL6规则仅在规定时间段内生效。<em>time-range-name</em>，表示生效时间段的名称。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：设置IPv6 VPN实例名称。字符串形式，区分大小写，长度范围是1～31。</p>
+<p><strong>source-port</strong><em> operator</em>：比较源或者目的地址的端口号的操作符。当IPv6承载的协议类型是TCP6或UDP6时，支持比较操作。操作符包括：lt（小于），gt（大于），eq（等于），<span>neq（不等于），</span>range（在范围内）。只有range需要两个端口号做操作数，其他的只需要一个端口号做操作数。</p>
+<p><strong>destination-port</strong>：指定UDP或者TCP报文的目的端口信息，仅仅在规则指定的协议号是TCP或者UDP有效。如果不指定，表示TCP/UDP报文的任何目的端口信息都匹配。</p>
+<p><em>port</em>：TCP或UDP的端口号，用名字或数字表示，数字的取值范围是0～65535。</p>
+<p><strong>icmpv6-type</strong> { <em>icmp6-type-name</em> | <em>icmp6-type icmp6-code </em>}：指定ICMPv6报文的类型和消息码信息，仅仅在报文协议是ICMPv6的情况下有效。如果不配置，表示任何ICMPv6类型的报文都匹配。<em>icmp6-type</em>，ICMPv6的消息类型，取值为0～255的整数。<em>icmp6-code</em>，ICMPv6消息码，取值为0～255的整数。<em>icmp6-type-name</em>的取值及对应的ICMP-Type 和ICMP-Code，如下表所示。</p>
+
+<div class="tablenoborder"><a name="rule_acl6__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="rule_acl6__tb_01" frame="border" border="1" rules="all"><caption>表1 <em>icmp6-type-name</em>的取值及对应的ICMP-Type和ICMP-Code</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="32.06097253716301%" id="d115871e614"><p>icmp6-type-name</p>
+</th>
+<th class="cellrowborder" valign="top" width="31.79642227261275%" id="d115871e617"><p>icmp-type</p>
+</th>
+<th class="cellrowborder" valign="top" width="36.14260519022424%" id="d115871e620"><p>icmp-code</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Redirect</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>137</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Echo</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>128</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Echo-reply</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>129</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Err-Header-field</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>4</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Frag-time-exceeded</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>3</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>1</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Hop-limit-exceeded</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>3</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Host-admin-prohib</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>1</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>1</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Host-unreachable</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>1</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>3</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Neighbor-advertisement</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>136</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Neighbor-solicitation</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>135</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Network-unreachable</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>1</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Packet-too-big</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>2</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Port-unreachable</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>1</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>4</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Router-advertisement</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>134</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Router-solicitation</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>133</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Unknown-ipv6-opt</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>4</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>2</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d115871e614 "><p>Unknown-next-hdr</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d115871e617 "><p>4</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d115871e620 "><p>1</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>fragment</strong>：指定该规则是否仅对非首片分片报文有效。当包含此参数时表示该规则仅对非首片分片报文有效。</p>
+<p><strong>precedence</strong>：数据包可以依据优先级字段进行过滤。取值为0～7的数字，或名字。</p>
+<p><strong>tos</strong><em> tos</em>：数据包可以依据服务类型字段进行过滤。取值为0～15的数字，或名字。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p><strong>precedence</strong>和<strong>tos</strong>通常用在和QoS相关的配置中。</p>
+</div></div>
+<p># 使用命令<strong>undo rule</strong>删除规则的时候，参数说明如下：</p>
+<p><em>rule-id</em>：ACL6规则编号，必须是一个已经存在的ACL6规则编号。如果后面不指定参数，则将这个ACL6规则完全删除。否则只是删除对应ACL6规则的部分信息。</p>
+<p><strong>source</strong>：删除编号对应的ACL6规则的源地址部分的信息设置。</p>
+<p><strong>destination</strong>：删除编号对应的ACL6规则的目的地址部分的信息设置。</p>
+<p><strong>source-port</strong>：删除编号对应的ACL6规则的源端口部分的信息设置，仅仅在规则的协议号是TCP或者UDP的情况下有效。</p>
+<p><strong>destination-port</strong>：删除编号对应的ACL6规则的目的端口部分的信息设置，仅仅在规则的协议号是TCP或者UDP的情况下有效。</p>
+<p><strong>icmp6-type</strong>：删除编号对应的ACL6规则的ICMPv6类型部分的信息设置。</p>
+<p><strong>precedence</strong>：删除编号对应的ACL6规则的precedence的相关设置。</p>
+<p><strong>tos</strong>：删除编号对应的ACL6规则的tos的相关设置。</p>
+<p><strong>time-range</strong>：删除编号对应的ACL6规则的时间段设置。该命令请参见<a href="time-range.html">time-range</a>。</p>
+<p><strong>vpn6-instance</strong>：删除编号对应的ACL6规则的VPN6实例设置。</p>
+<p><strong>logging</strong>：删除编号对应的ACL6规则对符合条件的数据包做日志的设置。</p>
+<p><strong>fragment</strong>：删除编号对应的ACL6规则仅对非首片分片报文有效的设置。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>基本访问控制列表命令：基本ACL6视图</p>
+<p>高级访问控制列表命令：高级ACL6视图</p>
+<p>基于接口的访问控制列表命令：基于接口ACL6视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>不同的应用对规则的配置要求有差异。该命令针对不同的路由协议，过滤规则有所不同。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="rule_acl6__d115871e885"></a><a name="d115871e885"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建匹配顺序为config的基本ACL6。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>acl ipv6 number 2000 match-order config</strong></pre>
+<pre class="screen">[Quidway-acl6-basic-2000] <strong>rule permit source 2030:5060::9050/64</strong></pre>
+<pre class="screen">[Quidway-acl6-basic-2000] <strong>rule 8 deny source fe80:5060::8050/96</strong></pre>
+<p># 增加一条规则，禁止从源2001::1/64地址的主机建立与2003::1/64地址的主机的端口号大于128的UDP（用户数据报协议）连接。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>acl ipv6 3101</strong></pre>
+<pre class="screen">[Quidway-acl6-adv-3101] <strong>rule deny udp source 2001::1 64 destination 2003::1 64 destination-port gt 128 vpn6-instance vpn1</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/acl6_configuration_commands.html">ACL6配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

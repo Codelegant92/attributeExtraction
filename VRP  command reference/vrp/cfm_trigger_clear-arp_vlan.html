@@ -1,0 +1,73 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="cfm trigger clear-arp vlan">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_enable_system_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cfm_trigger_clear-arp_vlan">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>cfm trigger clear-arp vlan</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="cfm_trigger_clear-arp_vlan"></a><a name="cfm_trigger_clear-arp_vlan"></a>
+
+
+<h1 class="topictitle1">cfm trigger clear-arp vlan</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>cfm trigger clear-arp vlan</strong>命令用来配置在物理接口上清除ARP表项。</p>
+<p><strong>undo cfm trigger clear-arp vlan</strong>命令用来取消在物理接口上清除ARP表项。</p>
+<p>缺省情况下，接口不清除ARP表项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>cfm md </strong><em>md-name</em><strong> ma </strong><em>ma-name</em><strong> trigger clear-arp vlan </strong><em>vlan-id</em></p>
+<p><strong>undo cfm md </strong><em>md-name</em><strong> ma </strong><em>ma-name</em><strong> trigger clear-arp vlan </strong><em>vlan-id</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vlan-id</em>：指定ARP表项中的VLAN编号。取值范围1~4094。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet接口视图、GE接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当CFM检测到故障后，通知OAM管理模块，OAM管理模块根据接口和VLAN ID查找CFM故障关系表，清除VLANIF接口对应的ARP表项。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="cfm_trigger_clear-arp_vlan__d6238e68"></a><a name="d6238e68"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置接口GigabitEthernet1/0/1收到故障通知后清除ARP表项。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> <strong>cfm md md1 ma ma1 trigger clear-arp vlan 10</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_enable_system_view.html">cfm enable（系统视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

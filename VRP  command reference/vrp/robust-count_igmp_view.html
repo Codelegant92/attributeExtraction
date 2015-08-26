@@ -1,0 +1,67 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="robust-count（IGMP视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/igmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="igmp_robust-count.html">
+<meta name="DC.Relation" scheme="URI" content="display_igmp_interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="robust-count_igmp_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>robust-count（IGMP视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="robust-count_igmp_view"></a><a name="robust-count_igmp_view"></a>
+
+<h1 class="topictitle1">robust-count（IGMP视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>robust-count</strong>命令用来在全局性上设置IGMP查询器健壮系数。</p>
+<p><strong>undo robust-count</strong>命令用来恢复该配置参数的缺省值。</p>
+<p>缺省情况下，IGMP查询器的健壮系数是2。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>robust-count</strong><em> robust-value</em></p>
+<p><strong>undo robust-count</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>robust-value</em>：表示IGMP健壮系数，用来弥补可能发生的网络丢包而设置的消息重传次数。整数形式，取值范围是2～5。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例IGMP视图、VPN实例IGMP视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>健壮系数用来规定以下两个值：</p>
+<ul><li><p>查询器启动时发送普遍组查询消息的次数</p>
+</li><li><p>查询器收到离开消息后发送指定组查询消息的次数</p>
+</li></ul>
+<p>该命令和接口视图下的<strong>igmp robust-count</strong>命令功能完全相同，差别只是作用范围不同。IGMP视图下的配置具有全局性，对所有接口有效；接口视图下的配置只对当前接口有效。系统优先采用接口视图下的配置。当接口视图下没有进行配置，才采用IGMP视图下的配置。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="robust-count_igmp_view__d114832e53"></a><a name="d114832e53"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在IGMP视图下，配置查询器健壮系数为3。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> igmp</strong></pre>
+<pre class="screen">[Quidway-igmp]<strong> robust-count 3</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/igmp_configuration_commands.html">IGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="igmp_robust-count.html">igmp robust-count</a></div>
+<div><a href="display_igmp_interface.html">display igmp interface</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

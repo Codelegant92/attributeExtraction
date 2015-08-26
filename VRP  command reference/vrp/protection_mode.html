@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="protection mode">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="aps_enable.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-tunnel_protection.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="protection_mode">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>protection mode</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="protection_mode"></a><a name="protection_mode"></a>
+
+<h1 class="topictitle1">protection mode</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>protection mode</strong>命令用来配置保护组的保护模式，此命令只对APS保护组有效。</p>
+<p><strong>undo protection mode</strong>命令用来恢复保护组的保护模式为缺省值。</p>
+<p>缺省情况下，保护模式为<strong>one-to-one</strong>，即1&#8758;1保护模式。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>protection mode</strong> {<strong> one-plus-one</strong> { <strong>bidirectional</strong> | <strong>unidirectional</strong> } | <strong>one-to-one</strong> }</p>
+<p><strong>undo protection mode</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>one-plus-one</strong>：1＋1保护模式。该保护模式下，保护倒换有单向倒换与双向倒换两种方式。</p>
+<p><strong>bidirectional</strong>：双向倒换。</p>
+<p><strong>unidirectional</strong>：单向倒换。</p>
+<p><strong>one-to-one</strong>：1&#8758;1保护模式。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MAC Tunnel视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>APS的保护倒换有1&#8758;1保护倒换和1＋1保护倒换两种模式：</p>
+<ul><li><p>1&#8758;1保护倒换：在MAC Tunnel保护组中，正常情况下，只有工作隧道传输业务。如果发生保护倒换，业务将切换到保护隧道进行传输，工作隧道内没有业务流。该模式下，保护倒换是由隧道的发端来执行的。</p>
+</li><li><p>1＋1保护倒换：在MAC Tunnel保护组中，在隧道的入端，业务将被复制，工作隧道和保护隧道内传输完全相同的业务。正常情况下，隧道的收端只选择从工作隧道接收业务，来自保护隧道的业务将被丢弃。在该模式下，保护倒换是由隧道的收端来执行的。</p>
+</li><li><p>在1＋1模式下，保护倒换分为单向倒换和双向倒换两种方式：</p>
+</li><li><p>单向倒换：正反MAC Tunnel分别配置一条保护隧道，当某一方向的MAC Tunnel发生故障时，只需要将该方向的MAC Tunnel工作隧道倒换到保护隧道上，另一个方向的MAC Tunnel不发生倒换</p>
+</li><li><p>双向倒换：某一方向的MAC Tunnel工作隧道发生故障时，正反两个方向的MAC Tunnel需要同时倒换到保护隧道进行数据传输。</p>
+</li></ul>
+<p>本命令只有在MAC Tunnel保护组配置完成后在工作隧道上可见，而且只能在工作隧道上配置。</p>
+<p>执行本命令前，必须先关闭APS协议。</p>
+<p>在同一视图下重复执行<strong>protection mode</strong>命令，新配置覆盖原有配置。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="protection_mode__d108502e92"></a><a name="d108502e92"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在工作MAC Tunnel视图下配置保护组的APS协议保护模式为1＋1双向倒换。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>mac-tunnel</strong><strong> tunnel-name </strong><strong>mytunnel</strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-mytunnel] <strong>protection mac-tunnel ProTunnel protocol aps</strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-mytunnel] <strong>protection mode one-plus-one</strong> <strong>bidirectional</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="aps_enable.html">aps enable</a></div>
+<div><a href="display_mac-tunnel_protection.html">display mac-tunnel protection</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

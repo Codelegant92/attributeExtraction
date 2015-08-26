@@ -1,0 +1,386 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display migp routing-table">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_policy_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_migp_routing-table">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display migp routing-table</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_migp_routing-table"></a><a name="display_migp_routing-table"></a>
+
+
+<h1 class="topictitle1">display migp routing-table</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display migp routing-table</strong>命令用来显示MIGP路由表的概要信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display migp routing-table</strong> [ <em>ip-address</em> [ <em>mask-length</em> | <em>mask</em> ] ] [ <strong>verbose</strong> ]<span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：目的IP地址。点分十进制格式。</p>
+<p><em>mask</em>：掩码。点分十进制格式。</p>
+<p><em>mask-length</em>：掩码长度。整数形式，取值范围是0～32。</p>
+<p><strong>verbose</strong>：显示激活和未激活路由的详细信息。不指定该参数，则只显示激活路由的概要信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>显示信息中，每一行代表一条路由。内容包括目的地址、掩码长度、协议、优先级、权值、下一跳和出接口。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_migp_routing-table__d40752e120"></a><a name="d40752e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示MIGP路由表的概要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display migp routing-table</strong>
+Route Flags: R - relied, D - download to fib
+------------------------------------------------------------------------------
+Routing Tables: MIGP
+         Destinations : 4        Routes : 4
+
+Destination/Mask    Proto  Pre  Cost     Flags NextHop         Interface
+
+4.4.4.4/32           OSPF   10   3              10.0.1.1        GigabitEthernet6/2/0
+5.5.5.5/32           OSPF   10   4              10.0.1.1        GigabitEthernet6/2/0
+10.0.3.0/24          OSPF   10   3              10.0.1.1        GigabitEthernet6/2/0
+192.168.3.0/24       OSPF   10   4              10.0.1.1        GigabitEthernet6/2/0
+</pre>
+
+<div class="tablenoborder"><a name="display_migp_routing-table__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_migp_routing-table__tb_01" frame="border" border="1" rules="all"><caption>表1 display migp routing-table命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="bottom" width="44%" id="d40752e141"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="bottom" width="56.00000000000001%" id="d40752e145"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e141 "><p>Route Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e145 "><div class="p">路由标记<ul>
+<li>R：表示该路由是迭代路由</li>
+<li>D：表示该路由下发到FIB表</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e141 "><p>Routing Tables：MIGP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e145 "><p>MIGP路由表</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e141 "><p>Destinations</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e145 "><p>目的网络/主机的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e141 "><p>Routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e145 "><p>路由的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e141 "><p>Destination/Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e145 "><p>目的网络/主机的地址和掩码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e141 "><p>Proto</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e145 "><p>用来学习路由的协议</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e141 "><p>Pre</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e145 "><p>优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e141 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e145 "><p>路由开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e141 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e145 "><p>路由标记，即路由表头的Route Flags</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e141 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e145 "><p>下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e141 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e145 "><p>可达下一跳的出接口</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示MIGP路由表的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display migp routing-table verbose</strong>
+Routing Table : MIGP
+         Destinations : 5        Routes : 5
+
+
+Destination: 4.4.4.4/32
+     Protocol: ISIS            Process ID: 1
+   Preference: 15                    Cost: 20
+      NextHop: 10.0.1.1         Interface: GigabitEthernet2/0/0
+        State: Active Adv             Age: 00h34m26s
+
+Destination: 5.5.5.5/32
+     Protocol: ISIS            Process ID: 1
+   Preference: 15                    Cost: 30
+      NextHop: 10.0.1.1         Interface: GigabitEthernet2/0/0
+        State: Active Adv             Age: 00h34m26s
+
+Destination: 10.0.2.0/24
+     Protocol: ISIS            Process ID: 1
+   Preference: 15                    Cost: 20
+      NextHop: 10.0.1.1         Interface: GigabitEthernet2/0/0
+        State: Active Adv             Age: 00h34m26s
+
+Destination: 10.0.3.0/24
+     Protocol: ISIS            Process ID: 1
+   Preference: 15                    Cost: 30
+      NextHop: 10.0.1.1         Interface: GigabitEthernet2/0/0
+        State: Active Adv             Age: 00h34m27s
+
+Destination: 192.168.3.0/24
+     Protocol: ISIS            Process ID: 1
+   Preference: 15                    Cost: 40
+      NextHop: 10.0.1.1         Interface: GigabitEthernet2/0/0
+        State: Active Adv             Age: 00h34m28s
+</pre>
+
+<div class="tablenoborder"><a name="display_migp_routing-table__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_migp_routing-table__tb_02" frame="border" border="1" rules="all"><caption>表2 display migp routing-table verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="bottom" width="44%" id="d40752e304"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="bottom" width="56.00000000000001%" id="d40752e308"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e304 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e308 "><p>目的网络/主机的地址和掩码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e304 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e308 "><p>路由协议</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e304 "><p>Process ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e308 "><p>路由协议的进程号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e304 "><p>Preference</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e308 "><p>路由的优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e304 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e308 "><p>路由开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e304 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e308 "><p>下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e304 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e308 "><p>出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e304 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e308 "><div class="p">路由的状态<ul>
+<li>Active：激活路由</li>
+<li>Invalid：无效路由</li>
+<li>Inactive：非激活路由</li>
+<li>NoAdv：不允许发布的路由</li>
+<li>Adv：可以发布的路由</li>
+<li>Del：即将被删除的路由</li>
+<li>GotQ：迭代成功的路由</li>
+<li>WaitQ：尚未迭代成功的路由</li>
+<li>Stale.：带Stale标记的路由，在GR中使用</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44%" headers="d40752e304 "><p>Age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.00000000000001%" headers="d40752e308 "><p>路由的存活时间</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_migp_routing-table__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_migp_routing-table__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d40752e458"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d40752e462"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d40752e458 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d40752e462 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_policy_configuration_commands.html">IPv4组播路由管理命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

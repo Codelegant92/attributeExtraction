@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="rmon2 hlhostcontroltable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rmon_rmon2_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_rmon2_hlhostcontroltable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rmon2_hlhostcontroltable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>rmon2 hlhostcontroltable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="rmon2_hlhostcontroltable"></a><a name="rmon2_hlhostcontroltable"></a>
+
+
+<h1 class="topictitle1">rmon2 hlhostcontroltable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>rmon2 hlhostcontroltable</strong>命令用来创建或修改主机控制表中的一行。</p>
+<p><strong>undo rmon2 hlhostcontroltable</strong>命令用来删除主机控制表中的指定行信息或整个表信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>rmon2</strong> <strong>hlhostcontroltable</strong> <strong>index</strong> <em>ctrl-index</em> [<strong> datasource interface </strong><em>interface-type interface-number</em> ] [<strong> maxentry</strong> <em>maxentry-value </em>] [ <strong>owner</strong><em> owner-name </em>] [ <strong>status</strong> { <strong>active</strong> | <strong>inactive </strong>}
+]</p>
+<p><strong>undo rmon2 hlhostcontroltable</strong> [ <em> </em><strong>index</strong><em> ctrl-index </em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ctrl-index</em>：唯一识别主机控制表中的行数，是该表的索引。整数形式，取值范围是1～65535。</p>
+<p><strong>datasource interface </strong><em>interface-type interface-number</em>：即hlHostControlDataSource，用来识别接口，从而识别子网。该值即接口索引，是该行定义的数据表条目的数据源。在命令行中直接使用接口类型和编号。</p>
+<p><strong>maxentry</strong> <em>maxentry-value</em>：主机表的最大条目数，取值范围是1～100000，缺省值为50。</p>
+<p><strong>owner</strong><em> owner-name</em>：所有者描述信息。字符串类型，长度范围是1～127，不可为空。</p>
+<p><strong>status</strong>：即hlHostControlStatus，表示主机控制表条目的状态。</p>
+<p><strong>active</strong>：表示该条目已激活，可以使用。</p>
+<p><strong>inactive</strong>：表示该条目没有激活，状态为notinservice，不能使用。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>主机表条目过多会影响到系统转发性能，一般情况下使用缺省值即可。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="rmon2_hlhostcontroltable__d114649e120"></a><a name="d114649e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建主机控制表中的一行。</p>
+<pre class="screen">[Quidway]<strong> rmon2 hlhostcontroltable index 1 datasource interface GigabitEthernet2/0/0 maxentry 100 owner huawei status active</strong></pre>
+<p># 修改主机控制表中的一行hlHostControlStatus为notinservice。</p>
+<pre class="screen">[Quidway]<strong> rmon2 hlhostcontroltable index 1 status inactive</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rmon_rmon2_configuration_commands.html">RMON和RMON2配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_rmon2_hlhostcontroltable.html">display rmon2 hlhostcontroltable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="switch-to group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="free-groupmembers.html">
+<meta name="DC.Relation" scheme="URI" content="join.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="switch-to_group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>switch-to group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="switch-to_group"></a><a name="switch-to_group"></a>
+
+
+<h1 class="topictitle1">switch-to group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>switch-to group</strong>命令用来将当前测试例升级为NQA测试组。</p>
+<p><strong>undo switch-to group</strong>命令用来将NQA测试组降回为测试例。</p>
+<p>缺省情况下，没有NQA测试组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>switch-to group</strong></p>
+<p><strong>undo switch-to group</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>NQA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p></p>
+<p>ICMP、TCP、UDP、SNMP、LSP Ping、LSP Jitter、ICMP Jitter、PWE3 Ping和Jitter类型的测试例都可以升级为测试组。</p>
+<p>如果测试组中不包含测试例，不能进行测试。</p>
+<p>不能直接查看测试组的执行结果，只能查看成员测试例的测试结果。</p>
+<p>对于测试组，不能配置源地址、源端口、目的地址、目的端口。这些参数只能对成员测试例配置。</p>
+<p>在测试组中，组长不参与测试，只是完成对测试周期<strong>frequency</strong>、超时时间<strong>timeout、</strong>探测包间隔<strong>interval、</strong>组测试执行时间<strong>group-period</strong>的管理。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="switch-to_group__d122461e67"></a><a name="d122461e67"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 升级测试例user group1为测试组。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>nqa test-instance user group1</strong></strong></pre>
+<pre class="screen">[Quidway-nqa-user-group1]<strong> test-type icmp</strong></pre>
+<pre class="screen">[Quidway-nqa-user-group1]<strong> <strong>switch-to group</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nqa_configuration_commands.html">NQA配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="free-groupmembers.html">free-groupmembers</a></div>
+<div><a href="join.html">join</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

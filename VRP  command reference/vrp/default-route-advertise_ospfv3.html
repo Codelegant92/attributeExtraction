@@ -1,0 +1,94 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="default-route-advertise（OSPFv3）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospfv3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="import-route_ospfv3.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="default-route-advertise_ospfv3">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>default-route-advertise（OSPFv3）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="default-route-advertise_ospfv3"></a><a name="default-route-advertise_ospfv3"></a>
+
+
+<h1 class="topictitle1">default-route-advertise（OSPFv3）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>default-route-advertise</strong>命令用来将缺省路由通告到OSPFv3路由区域。</p>
+<p><strong>undo default-route-advertise</strong>命令用来取消通告缺省路由。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>default-route-advertise</strong> [ <strong>always</strong> | <strong>cost</strong> <em>cost</em> | <strong>type</strong> <em>type</em> | <strong>route-policy</strong> <em>route-policy-name</em> ] <sup>*</sup></p>
+<p><strong>undo</strong> <strong>default-route-advertise</strong> [ <strong>always</strong> | <strong>cost</strong> | <strong>type</strong> | <strong>route-policy</strong> ] <sup>*</sup></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>always</strong>：无论本机是否存在激活的非OSPFv3缺省路由，都会产生并发布一个描述缺省路由的LSA。配置了<strong>always</strong>参数的路由器不再计算来自其他路由器的缺省路由。如果没有指定该关键字，本机路由表中必须有激活的非OSPFv3缺省路由时才生成缺省路由的LSA。</p>
+<p><strong>cost</strong> <em>cost</em>：指定该ASE LSA的度量值。整数形式，取值范围是0～16777214。缺省值是1。</p>
+<p><strong>type </strong><em>type</em>：指定该ASE LSA的类型。整数形式，取值范围是1～2。缺省值是2。</p>
+<ul>
+<li><p>Type-1：第一类外部路由，到第一类外部路由的开销=本路由器到相应的ASBR的开销+ASBR到该路由目的地址的开销。</p>
+</li>
+<li><p>Type-2：第二类外部路由，到第二类外部路由的开销=ASBR到该路由目的地址的开销。</p>
+</li>
+</ul>
+<p><strong>route-policy</strong> <em>route-policy-name</em>：通过路由策略，实现在路由表中有匹配的非OSPFv3产生的缺省路由表项时，按路由策略所配置的参数发布缺省路由。字符串形式，取值范围是1～40。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>OSPFv3视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>OSPFv3路由域中在通告缺省路由前，会比较缺省路由的优先级。如果在其中某OSPFv3路由器上同时配置了静态缺省路由，要使OSPFv3通告的缺省路由加入到当前的路由表中，则必须保证所配置的静态缺省路由的优先级比OSPFv3通告的缺省路由的优先级低。</p>
+<p>不能通告通过<strong>import-route</strong>命令引入的缺省路由，如果要发布缺省路由，必须使用该命令。生成的缺省路由的度量值由命令<strong>default-route-advertise</strong>中的<strong>cost</strong>、<strong>type</strong>值决定，并默认<strong>tag</strong>值为1。当本机路由表中没有非OSPFv3的缺省路由时，要产生缺省路由ASE LSA应使用<strong>always</strong>参数。</p>
+<p>路由策略只用来过滤本机存在激活的非OSPF缺省路由，并且遵循以下原则进行匹配：</p>
+<ul>
+<li><p>如果该缺省路由通过策略，则按照路由策略中所配置的参数生成缺省路由。可以通过路由策略配置的参数包括cost值、tag值和type类型；</p>
+</li>
+<li><p>如果该缺省路由没有通过策略且没有配置<strong>always</strong>参数时，将不会生成缺省路由；</p>
+</li>
+<li><p>如果该缺省路由没有通过策略且配置了<strong>always</strong>参数时，将生成缺省路由，参数按照命令<strong>default-route-advertise</strong> [ <strong>always</strong> | <strong>cost</strong> <em>cost</em> | <strong>type</strong> <em>type</em> | <strong>route-policy</strong> <em>route-policy-name</em> ] *中配置的为准。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>路由策略中配置的缺省路由参数值的优先级大于<strong>default-route-advertise</strong> [ <strong>always</strong> | <strong>cost</strong> <em>cost</em> | <strong>type</strong> <em>type</em> | <strong>route-policy</strong> <em>route-policy-name</em> ] *中参数的优先级。</p>
+</div></div>
+<p>用户可使用Type-3 LSA通告缺省路由，PE路由器会将通告的缺省路由发布给CE路由器。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="default-route-advertise_ospfv3__d9440e216"></a><a name="d9440e216"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将产生的缺省路由的ASE LSA通告到OSPFv3路由区域。本地路由器没有缺省路由。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> OSPFv3 1</strong></pre>
+<pre class="screen">[Quidway-OSPFv3-1]<strong> default-route-advertise always</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospfv3_configuration_commands.html">OSPFv3配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="import-route_ospfv3.html">import-route (OSPFv3)</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

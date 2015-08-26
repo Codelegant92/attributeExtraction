@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="senderid-tlv-type">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_enable_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_default_md.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="senderid-tlv-type">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>senderid-tlv-type</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="senderid-tlv-type"></a><a name="senderid-tlv-type"></a>
+
+
+<h1 class="topictitle1">senderid-tlv-type</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>senderid-tlv-type</strong>命令用来配置Sender ID TLV类型在CFM报文中。</p>
+<p>缺省情况下，Sender ID TLV类型为<strong>defer</strong>。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>senderid-tlv-type </strong>{<strong> none </strong>|<strong> chassis </strong>|<strong> manage </strong>|<strong> chassis-manage </strong>|<strong> defer </strong>}</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>none</strong>：表示发送的CFM报文中不含Sender ID TLV类型。</p>
+<p><strong>chassis</strong>：表示发送的CFM报文中含有Chassis ID相关信息。</p>
+<p><strong>manage</strong>：表示发送的CFM报文中含有管理地址相关信息。</p>
+<p><strong>chassis-manage</strong>：表示发送的CFM报文中含有Chassis ID和管理地址相关信息。</p>
+<p><strong>defer</strong>：表示Sender ID TLV的内容由MD管理对象决定。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MD视图、默认MD视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>现如今，802.1ag协议分为draft7草案版本和standard2007标准版本，本命令只支持standard2007标准版本使用。</p>
+<p>此命令用于在MD视图和默认级别MD视图下配置Sender ID TLV类型，此类型将用于填写CFM报文。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="senderid-tlv-type__d117008e78"></a><a name="d117008e78"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置Sender ID TLV的类型为manage。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm enable</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm default md</strong></pre>
+<pre class="screen">[Quidway-default-md]<strong> senderid-tlv-type manage</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_enable_system_view.html">cfm enable（系统视图）</a></div>
+<div><a href="cfm_default_md.html">cfm default md</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

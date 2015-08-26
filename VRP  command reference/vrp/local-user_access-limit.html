@@ -1,0 +1,73 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="local-user access-limit">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aaa_and_user_management_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="local-user_access-limit">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>local-user access-limit</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="local-user_access-limit"></a><a name="local-user_access-limit"></a>
+
+
+<h1 class="topictitle1">local-user access-limit</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>local-user access-limit</strong>命令用来限制使用指定用户名接入可建立的连接数目。</p>
+<p><strong>undo local-user access-limit</strong>命令用来取消限制。</p>
+<p>缺省情况下，不限制用户的连接数目。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>local-user </strong><em>user-name</em><strong> access-limit </strong><em>max-number</em></p>
+<p><strong>undo local-user </strong><em>user-name</em><strong> access-limit</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>user-name</em>：用户名。字符串形式，长度范围是1～64。</p>
+<p><em>max-number</em>：允许用户接入的最大数量，最小值为1，最大值与具体使用的产品相关。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>AAA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>一个用户帐号可以有多个接入。通常情况下，对于某些PPP方式，建议设置一个帐号只允许一个接入，对于VLAN接入可以不作限制或者限制成16个。具体设置应当遵从运行商的筹划配置。</p>
+<p>当本地用户下已经建立了一些接入时，新设置的接入数限制应能容忍已经上线的这些接入，否则设置不成功：假设该本地用户下的已经接入数为n（n&gt;1），新接入限制为m，若m&lt;n，则不允许修改。</p>
+<p>如果必须设置比当前上线情况更加苛刻的限制条件，可以先用<strong>cut access-user</strong>命令有选择地切断一些该用户下的连接。</p>
+<p>一个用户的实际可接入数受系统容量、所在域的接入数限制、本身的接入数限制的综合影响，最终是这些条件限制中最苛刻的结果。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="local-user_access-limit__d89944e71"></a><a name="d89944e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置本地用户hello@163.net最多可建立5个接入连接。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> aaa</strong></pre>
+<pre class="screen">[Quidway-aaa]<strong> local-user hello@163.net access-limit 5</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/aaa_and_user_management_configuration_commands.html">AAA及用户管理配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

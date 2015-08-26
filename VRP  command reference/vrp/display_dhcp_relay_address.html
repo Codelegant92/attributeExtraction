@@ -1,0 +1,171 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display dhcp relay address">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ip_relay_address_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="ip_relay_address_system_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_dhcp_relay_address">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display dhcp relay address</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_dhcp_relay_address"></a><a name="display_dhcp_relay_address"></a>
+
+
+<h1 class="topictitle1">display dhcp relay address</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display dhcp relay address</strong>命令用来查看启动中继代理功能的接口的DHCP配置情况。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display dhcp relay address</strong> {<strong> all</strong> | <strong>interface</strong> <em>interface-type interface-number </em>| <strong>vlan</strong> <em>vlan-id </em>}</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface</strong> <em>interface-type interface-number</em>：指定该接口类型和编号。</p>
+<p><strong>vlan</strong><em> vlan-id</em>：指定VLAN编号，表示查看指定VLAN的DHCP的配置情况。</p>
+<p><strong>all</strong>：所有启动中继代理功能的接口。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置完中继后，使用<strong>display dhcp relay address</strong>命令用来查看启动中继代理功能接口的DHCP配置情况。包括：该接口所代理的DHCP服务器地址、DHCP option与DHCP服务器地址、中继代理地址的关联配置情况。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_dhcp_relay_address__d22049e71"></a><a name="d22049e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有接口的DHCP配置情况。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display dhcp relay address all</strong></pre>
+<pre class="screen">    **  GigabitEthernet1/0/0 DHCP Relay Address  **</pre>
+<pre class="screen">   *：option is none，(*)：option-text is none </pre>
+<pre class="screen">DHCP Option          Relay Agent IP       Server IP  </pre>
+<pre class="screen">*                    1.1.1.1              1.1.1.1    </pre>
+<pre class="screen">45                   1.1.1.1              -          </pre>
+<pre class="screen">60(*)                1.1.1.1              -          </pre>
+<pre class="screen">60(a)                2.2.2.1              10.1.1.2   </pre>
+<pre class="screen">60(abc)              -                    1.1.1.1    </pre>
+<pre class="screen">                                          10.1.1.2   </pre>
+
+<div class="tablenoborder"><a name="display_dhcp_relay_address__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_dhcp_relay_address__tb_01" frame="border" border="1" rules="all"><caption>表1 display dhcp relay address命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="19.5%" id="d22049e109"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="80.5%" id="d22049e113"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="19.5%" headers="d22049e109 "><p>DHCP Option</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="80.5%" headers="d22049e113 "><div class="p">DHCP Option。具体情况如下：<ul>
+<li>*：表示没有DHCP option与中继代理地址、DHCP服务器地址的关联，带任意选项的报文可以根据此项配置进行转发。</li>
+<li>45：表示与中继代理地址1.1.1.1关联的是option 45。</li>
+<li>60(*)：表示与中继代理地址1.1.1.1关联的是option 60，带任意option60字符串的报文都可以根据此项配置进行转发。</li>
+<li>60(a)：表示与中继代理地址2.2.2.1、DHCP服务器10.1.1.2相关联的是字符串为a的option60。</li>
+<li>60(abc)：表示与DHCP服务器1.1.1.1和10.1.1.2相关联的是字符串为abc的option60。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="19.5%" headers="d22049e109 "><p>Relay Agent IP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="80.5%" headers="d22049e113 "><div class="p">中继代理地址。<ul>
+<li>-：表示没有配置与该DHCP option相关联的中继代理地址。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="19.5%" headers="d22049e109 "><p>Server IP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="80.5%" headers="d22049e113 "><div class="p">DHCP服务器地址。<ul>
+<li>-：表示没有配置与该DHCP option相关联的DHCP服务器地址。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50.5%" id="d22049e195"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="49.5%" id="d22049e199"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50.5%" headers="d22049e195 "><p>VRPV500R006C02</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.5%" headers="d22049e199 "><p>修改回显信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_configuration_commands.html">DHCP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ip_relay_address_interface_view.html">ip relay address（接口视图）</a></div>
+<div><a href="ip_relay_address_system_view.html">ip relay address（系统视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

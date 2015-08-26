@@ -1,0 +1,104 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="remote-peer pwe3">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="remote-ip.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="remote-peer_pwe3">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>remote-peer pwe3</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="remote-peer_pwe3"></a><a name="remote-peer_pwe3"></a>
+
+
+<h1 class="topictitle1">remote-peer pwe3</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>remote-peer pwe3</strong>命令用来配置禁止向所有远端邻居分发标签。</p>
+<p><strong>undo remote-peer pwe3</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，允许向所有远端邻居分发标签。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>remote-peer pwe3</strong></p>
+<p><strong>undo remote-peer pwe3</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>MPLS LDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>remote-peer pwe3</strong>和<strong>remote-ip</strong> <em>ip-address</em> <strong>pwe3</strong>命令都用于禁止向远端邻居分发标签。前者对所有的远端邻居有效，后者只对指定的远端邻居有效。</p>
+<p>配置LDP远端会话时，建议使用<strong>remote-peer pwe3</strong>或<strong>remote-ip</strong> <em>ip-address</em> <strong>pwe3</strong>命令禁止向远端邻居分发标签，否则会影响系统性能。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p><strong>remote-peer pwe3</strong>和<strong>remote-ip</strong> <em>ip-address</em> <strong>pwe3</strong>命令不适用于LDP over TE场景。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="remote-peer_pwe3__d111143e87"></a><a name="d111143e87"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置禁止向远端邻居分发标签。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> mpls lsr-id 1.1.1.9</strong></pre>
+<pre class="screen">[Quidway]<strong> mpls</strong></pre>
+<pre class="screen">[Quidway-mpls]<strong> mpls ldp</strong></pre>
+<pre class="screen">[Quidway-mpls-ldp]<strong> remote-peer pwe3</strong></pre>
+<pre class="screen">Warning: The modification will take effect on all remote peers including the ex
+isting peers. Continue? (y/n)<strong> y</strong></pre>
+<pre class="screen">[Quidway-mpls-ldp]</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="remote-peer_pwe3__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="remote-peer_pwe3__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%"><p>VRPV500R005C02B180</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%"><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="remote-ip.html">remote-ip</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

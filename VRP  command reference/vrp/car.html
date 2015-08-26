@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="car">
+<meta name="DC.Relation" scheme="URI" content="../vrp/class-based_qos_configuration_commmands.html">
+<meta name="DC.Relation" scheme="URI" content="traffic_behavior.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="car">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>car</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="car"></a><a name="car"></a>
+
+<h1 class="topictitle1">car</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>car</strong>命令用来为流行为配置使用流量监管。</p>
+<p><strong>undo car</strong>命令用来取消流量监管配置。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>car cir </strong><em>cir</em> [ <strong>cbs</strong> <em>cbs</em> <strong>ebs</strong> <em>ebs</em> ] [ <strong>green</strong> <em>action</em> [ <strong>red</strong> <em>action </em>] ]</p>
+<p><strong>undo car</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>cir</strong>：承诺信息速率。</p>
+<p><em>cir</em>：流量的平均速率，取值范围是8000～155000000 bps。</p>
+<p><em>cbs</em>：承诺突发尺寸，每个时间间隔可发送的位数，取值范围是15000～155000000bit。cbs的取值应大于等于cir取值的1/2，当cir&gt;30000bit/s时，缺省取值是cir的1/2，当cir&lt;30000bit/s时，缺省取值是15000bit。</p>
+<p><em>ebs</em>：过度突发尺寸，取值范围是0～155000000bit，取值范围是0～155000000bit，缺省取值是0，即只采用一个令牌桶监管。</p>
+<p><strong>green</strong>：数据包的流量符合承诺速率时对数据包采取的动作，缺省值为<strong>pass</strong>。</p>
+<p><strong>red</strong>：数据包的流量不符合承诺速率时对数据包采取的动作，缺省值为<strong>discard</strong>。</p>
+<p><em>action</em>：对数据包采取的动作，有以下几种：</p>
+<ul><li><p><strong>discard</strong>：丢弃数据包。</p>
+</li><li><p><strong>remark-dscp-pass</strong>：设置新的DSCP值new-dscp，并发送，取值范围是0～63。</p>
+</li><li><p><strong>remark-prec-pass</strong>：设置新的IP优先级new-precedence，并发送，取值范围是0～7。</p>
+</li><li><p><strong>remark-mpls-exp-pass</strong>：设置新MPLS报文的EXP域，并发送，取值范围是0～7。</p>
+</li><li><p><strong>pass</strong>：发送数据包。</p>
+</li></ul>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>流行为视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>接口上应用的策略中使用<strong>car</strong>时，可以应用到接口的入或出方向。</p>
+<p>接口上应用配置了CAR的策略将导致原有的<strong>qos car</strong>命令失效。</p>
+<p>如果多次使用该命令在同一个策略的类上配置，最后一次配的将覆盖以前配置的。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="car__d5719e130"></a><a name="d5719e130"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 为流行为配置使用流量监管。报文正常流量为38400bit，在第一时间可以有2倍于正常流量的突发流量通过，以后速率小于等于38400bit时正常发送，大于38400bit时，报文优先级改为0并发送。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong><strong> traffic behavior database</strong></strong></pre>
+<pre class="screen">[Quidway-behavior-database]<strong> car cir 38400 cbs 76800 ebs 0 green pass red remark-prec-pass 0</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/class-based_qos_configuration_commmands.html">基于类的QoS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="traffic_behavior.html">traffic behavior</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

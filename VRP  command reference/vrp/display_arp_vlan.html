@@ -1,0 +1,216 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display arp vlan">
+<meta name="DC.Relation" scheme="URI" content="../vrp/arp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_arp_vlan">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display arp vlan</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_arp_vlan"></a><a name="display_arp_vlan"></a>
+
+
+<h1 class="topictitle1">display arp vlan</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display arp vlan</strong>命令用来查看指定VLAN内的ARP映射表。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display arp vlan</strong> <em>vlan-id</em> <strong>interface</strong> <em>interface-type interface-number</em> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vlan</strong> <em>vlan-id</em>：VLAN ID，用来标识一个VLAN，取值范围是1～4094。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：指定的接口类型和接口编号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控ARP表项或ARP出现故障时，可以使用此命令查看ARP表项的内容。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_arp_vlan__d13209e94"></a><a name="d13209e94"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看VLAN1的成员接口GE1/0/0的ARP表项。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display arp vlan 1 interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">IP ADDRESS      MAC ADDRESS     EXPIRE(M) TYPE        INTERFACE   VPN-INSTANCE
+                                          VLAN/CEVLAN PVC
+------------------------------------------------------------------------------
+10.0.0.1        00e0-fcb8-d6b6  19        D-1         GE1/0/0
+                                             1/-
+------------------------------------------------------------------------------
+Total:1         Dynamic:1       Static:0    Interface:0   </pre>
+
+<div class="tablenoborder"><a name="display_arp_vlan__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_arp_vlan__tb_01" frame="border" border="1" rules="all"><caption>表1 display arp vlan命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d13209e116"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d13209e120"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>IP ADDRESS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><p>ARP表项中的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>MAC ADDRESS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><p>ARP表项中的MAC地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>EXPIRE(M)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><p>ARP表项的剩余存活时间（单位是分钟）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>TYPE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><div class="p">表项类型及获取该表项的槽位号。类型共有三位。第一位包括以下标志：<ul>
+<li><p>I：Interface，接口本身的MAC地址；</p>
+</li>
+<li><p>D：Dynamic，通过ARP协议报文获取的动态表项；</p>
+</li>
+<li><p>S：Static，通过静态配置获取的静态表项。</p>
+</li>
+</ul>
+第二位只有标志F，表示该表项已上报路由模块，计算到该IP地址的路由并且更新FIB表项。<div class="note"><span class="notetitle"> 说明： </span><div class="notebody"><p>对于没有上报路由模块的表项将显示&#8220;-&#8221;。对于I类型的ARP表项，该标志位不存在。</p>
+</div></div>
+第三位表示获取该表项的槽位号。<div class="note"><span class="notetitle"> 说明： </span><div class="notebody"><p>对于I类型和S类型的ARP表项将显示&#8220;-&#8221;。</p>
+</div></div>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>VPN-INSTANCE </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><p>ARP表项所属的VPN实例的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>INTERFACE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><p>学到ARP表项的接口类型和编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>VLAN/CEVLAN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><p>ARP表项所属的VLAN ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>PVC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><p>PVC所在的接口与VPI/VCI</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>Total：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><p>ARP映射表中ARP表项的个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>Dynamic：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><p>ARP映射表中动态ARP表项的个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>Static：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><p>ARP映射表中静态ARP表项的个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d13209e116 "><p>Interface：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d13209e120 "><p>ARP映射表中本身接口的ARP表项的个数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/arp_configuration_commands.html">ARP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

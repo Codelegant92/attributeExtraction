@@ -1,0 +1,283 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="AAA及用户管理配置命令">
+<meta name="DC.Relation" scheme="URI" content="../vrp/security_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aaa.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/access-limit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/accounting_interim-fail.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/accounting_realtime.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/accounting_start-fail.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/accounting-mode.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/accounting-scheme_aaa_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/accounting-scheme_aaa_domain_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/authentication-mode_authentication_scheme_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/authentication-scheme_aaa_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/authentication-scheme_aaa_domain_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/authorization-cmd.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/authorization-cmd_no-response-policy.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/authorization-mode.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/authorization-scheme_aaa_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/authorization-scheme_aaa_domain_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/authentication-super.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cmd_recording-scheme.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cut_access-user.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_aaa_configuration.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_accounting-scheme.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_authentication-scheme.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_authorization-scheme.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_access-user.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_domain.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_hwtacacs-server_accounting-stop-packet.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_hwtacacs-server_template.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ip_pool.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_local-user.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_radius-server_configuration.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_recording-scheme.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dns.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/domain.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server_accounting.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server_accounting-stop-packet.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server_authentication.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server_authorization.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server_shared-key.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server_source-ip.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server_template.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server_timer_quiet.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server_timer_response-timeout.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server_traffic-unit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-server_user-name_domain-included.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hwtacacs-user_change-password_hwtacacs-server.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/idle-cut.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_address_ppp-negotiate.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_pool.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-user_access-limit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-user_change-password.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-user_ftp-directory.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-user_idle-cut.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-user_level.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-user_password.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-user_service-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-user_state.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nbns.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/outbound_recording-scheme.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server_accounting.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server_authentication.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server_nas-port-format.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server_nas-port-id-format.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server_retransmit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server_shared-key.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server_template.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server_timeout.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server_traffic-unit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server_type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/radius-server_user-name_domain-included.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/recording-mode.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/recording-scheme.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/remote_address.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_hwtacacs-server_accounting-stop-packet.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_hwtacacs-server_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/state.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/system_recording-scheme.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="aaa_and_user_management_configuration_commands">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>AAA及用户管理配置命令</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="aaa_and_user_management_configuration_commands"></a><a name="aaa_and_user_management_configuration_commands"></a>
+
+
+<h1 class="topictitle1">AAA及用户管理配置命令</h1>
+
+<div>
+<div class="section"><h4 class="sectiontitle">功能描述</h4><p>主要介绍AAA及用户管理的配置命令。</p>
+</div>
+
+<div class="section"><h4 class="sectiontitle">相关链接</h4></div>
+
+</div>
+
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="../vrp/aaa.html">aaa</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/access-limit.html">access-limit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/accounting_interim-fail.html">accounting interim-fail</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/accounting_realtime.html">accounting realtime</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/accounting_start-fail.html">accounting start-fail</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/accounting-mode.html">accounting-mode</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/accounting-scheme_aaa_view.html">accounting-scheme（AAA视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/accounting-scheme_aaa_domain_view.html">accounting-scheme（AAA域视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/authentication-mode_authentication_scheme_view.html">authentication-mode（认证方案视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/authentication-scheme_aaa_view.html">authentication-scheme（AAA视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/authentication-scheme_aaa_domain_view.html">authentication-scheme（AAA域视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/authorization-cmd.html">authorization-cmd</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/authorization-cmd_no-response-policy.html">authorization-cmd no-response-policy</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/authorization-mode.html">authorization-mode</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/authorization-scheme_aaa_view.html">authorization-scheme（AAA视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/authorization-scheme_aaa_domain_view.html">authorization-scheme（AAA域视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/authentication-super.html">authentication-super</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cmd_recording-scheme.html">cmd recording-scheme</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/cut_access-user.html">cut access-user</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_aaa_configuration.html">display aaa configuration</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_accounting-scheme.html">display accounting-scheme</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_authentication-scheme.html">display authentication-scheme</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_authorization-scheme.html">display authorization-scheme</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_access-user.html">display access-user</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_domain.html">display domain</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_hwtacacs-server_accounting-stop-packet.html">display hwtacacs-server accounting-stop-packet</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_hwtacacs-server_template.html">display hwtacacs-server template</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ip_pool.html">display ip pool</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_local-user.html">display local-user</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_radius-server_configuration.html">display radius-server configuration</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_recording-scheme.html">display recording-scheme</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/dns.html">dns</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/domain.html">domain</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs_enable.html">hwtacacs enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server.html">hwtacacs-server</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server_accounting.html">hwtacacs-server accounting</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server_accounting-stop-packet.html">hwtacacs-server accounting-stop-packet</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server_authentication.html">hwtacacs-server authentication</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server_authorization.html">hwtacacs-server authorization</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server_shared-key.html">hwtacacs-server shared-key</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server_source-ip.html">hwtacacs-server source-ip</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server_template.html">hwtacacs-server template</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server_timer_quiet.html">hwtacacs-server timer quiet</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server_timer_response-timeout.html">hwtacacs-server timer response-timeout</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server_traffic-unit.html">hwtacacs-server traffic-unit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-server_user-name_domain-included.html">hwtacacs-server user-name domain-included</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hwtacacs-user_change-password_hwtacacs-server.html">hwtacacs-user change-password hwtacacs-server</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/idle-cut.html">idle-cut</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ip_address_ppp-negotiate.html">ip address ppp-negotiate</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ip_pool.html">ip pool</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-user_access-limit.html">local-user access-limit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-user_change-password.html">local-user change-password</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-user_ftp-directory.html">local-user ftp-directory</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-user_idle-cut.html">local-user idle-cut</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-user_level.html">local-user level</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-user_password.html">local-user password</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-user_service-type.html">local-user service-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-user_state.html">local-user state</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nbns.html">nbns</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/outbound_recording-scheme.html">outbound recording-scheme</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius_enable.html">radius enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server.html">radius-server</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server_accounting.html">radius-server accounting</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server_authentication.html">radius-server authentication</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server_nas-port-format.html">radius-server nas-port-format</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server_nas-port-id-format.html">radius-server nas-port-id-format</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server_retransmit.html">radius-server retransmit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server_shared-key.html">radius-server shared-key</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server_template.html">radius-server template</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server_timeout.html">radius-server timeout</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server_traffic-unit.html">radius-server traffic-unit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server_type.html">radius-server type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/radius-server_user-name_domain-included.html">radius-server user-name domain-included</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/recording-mode.html">recording-mode</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/recording-scheme.html">recording-scheme</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/remote_address.html">remote address</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_hwtacacs-server_accounting-stop-packet.html">reset hwtacacs-server accounting-stop-packet</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_hwtacacs-server_statistics.html">reset hwtacacs-server statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/state.html">state</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/system_recording-scheme.html">system recording-scheme</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/security_commands.html">安全命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

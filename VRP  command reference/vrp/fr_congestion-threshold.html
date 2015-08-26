@@ -1,0 +1,64 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="fr congestion-threshold">
+<meta name="DC.Relation" scheme="URI" content="../vrp/fr_qos_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="congestion-threshold.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="fr_congestion-threshold">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>fr congestion-threshold</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="fr_congestion-threshold"></a><a name="fr_congestion-threshold"></a>
+
+<h1 class="topictitle1">fr congestion-threshold</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>fr congestion-threshold</strong>命令用来使能帧中继接口的拥塞管理功能。</p>
+<p><strong>undo fr congestion-threshold</strong>命令用来禁止该功能。</p>
+<p>缺省情况下，禁止帧中继接口的拥塞管理功能。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>fr congestion-threshold</strong> { <strong>de</strong> | <strong>ecn</strong> } <em>queue-percentage</em></p>
+<p><strong>undo fr congestion-threshold </strong>{ <strong>de</strong> | <strong>ecn </strong> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>de</strong>：发生拥塞时，丢弃DE标志位为1的帧中继报文。</p>
+<p><strong>ecn</strong>：发生拥塞时，对帧中继报文的BECN和FECN标志位进行处理。</p>
+<p><em>queue-percentage</em>：网络拥塞阈值，为接口队列的使用率。它等于接口队列当前长度占队列总长度的百分比，取值范围是1～100。缺省值为100。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>帧中继接口视图、MFR接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令功能类似于命令<strong>congestion-threshold</strong>，不同之处在于：本命令所应用的范围是帧中继接口，而命令<strong>congestion-threshold</strong>所应用的范围是帧中继虚电路。</p>
+<p>通常情况下，帧中继拥塞管理被应用于帧中继网络的DCE接口或NNI接口。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="fr_congestion-threshold__d76943e71"></a><a name="d76943e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置接口队列长度超过总长度80％时，开始丢弃DE标志位为1的帧中继报文。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface serial4/1/2</strong></strong></pre>
+<pre class="screen">[Quidway-Serial4/1/2]<strong> <strong>fr congestion-threshold de 80</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/fr_qos_configuration_commands.html">帧中继QoS命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="congestion-threshold.html">congestion-threshold</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

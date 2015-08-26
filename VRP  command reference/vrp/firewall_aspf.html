@@ -1,0 +1,60 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="firewall aspf">
+<meta name="DC.Relation" scheme="URI" content="../vrp/firewall_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="firewall_aspf">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>firewall aspf</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="firewall_aspf"></a><a name="firewall_aspf"></a>
+
+<h1 class="topictitle1">firewall aspf</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>firewall</strong> <strong>aspf</strong>命令用来在一个接口的指定方向上应用ASPF策略。</p>
+<p><strong>undo</strong> <strong>firewall</strong> <strong>aspf</strong>命令用来删除该接口的指定方向上应用的ASPF策略。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>firewall</strong> <strong>aspf</strong> <em>aspf-policy-number</em> { <strong>inbound</strong> | <strong>outbound</strong> }</p>
+<p><strong>undo</strong> <strong>firewall</strong> <strong>aspf</strong> <em>aspf-policy-number</em> { <strong>inbound</strong> | <strong>outbound</strong> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>aspf-policy-number</em>：在接口上使用的ASPF策略号。</p>
+<p><strong>inbound</strong>：对接口的入方向的报文应用ASPF策略。</p>
+<p><strong>outbound</strong>：对接口的出方向的报文应用ASPF策略。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对ASPF策略，有两个概念：内部接口和外部接口。</p>
+<p>如果路由器连接了内部网和Internet，并且路由器要通过部署ASPF来保护内部网的服务器，则路由器上与内部网连接的接口就是内部接口，与Internet相连的接口就是外部接口。当ASPF应用于外部接口时，ASPF将拒绝Internet上的用户对内部网的访问，但内部网的用户访问Internet时，返回的报文可以通过ASPF。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="firewall_aspf__d76442e85"></a><a name="d76442e85"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 接口GE1/0/0的出方向上配置ASPF防火墙功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface Gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Gigabitethernet 1/0/0]<strong> firewall aspf 1 outbound</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/firewall_configuration_commands.html">防火墙配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

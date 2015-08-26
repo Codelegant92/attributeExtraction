@@ -1,0 +1,122 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te commit">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_tunnel-id.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_commit">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te commit</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_commit"></a><a name="mpls_te_commit"></a>
+
+
+<h1 class="topictitle1">mpls te commit</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te commit</strong>命令用来把MPLS TE隧道配置提交系统处理。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te commit</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在执行<strong>mpls te commit</strong>命令之前，对MPLS TE隧道的配置不会生效。如果未配置<strong>destination</strong>或隧道ID，则提交失败，需要补全后再重新提交。当MPLS TE的参数发生改变，需要使用该命令使之生效。</p>
+<div class="p">当TE隧道同时配置了热备份和RRVPN，且主LSP处于热备份Inuse状态时，不能同时修改主隧道的Modify属性和RRVPN的子隧道属性，否则配置无法生效，即命令<strong>mpls te commit</strong>执行不成功。其中，主隧道的Modify属性包括：<ul>
+<li>环路检测</li>
+<li>RRO记录</li>
+<li>资源允许被抢占</li>
+<li>允许抢占别的LSP的资源</li>
+<li>亲和属性</li>
+<li>亲和属性掩码</li>
+<li>带宽</li>
+<li>隧道备份类型</li>
+<li>跳数限制</li>
+<li>CAR策略</li>
+<li>路由锁定</li>
+<li>显示路径</li>
+<li>快速重路由属性及Bypass隧道的带宽</li>
+<li>自动快速重路由的Bypass隧道的属性</li>
+</ul>
+</div>
+<p>修改RRVPN的子隧道属性是指修改RRVPN子隧道的带宽。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_commit__d96124e94"></a><a name="d96124e94"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置一条MPLS TE隧道，并提交配置。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> tunnel-protocol mpls te</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> destination 2.2.2.9</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te tunnel-id 100</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te commit</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_te_commit__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_te_commit__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d96124e133"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d96124e137"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d96124e133 "><p>VRPV500R005C02B211</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d96124e137 "><p>增加命令行输入限制：当TE隧道同时配置了热备份和RRVPN，且主LSP处于热备份Inuse状态时，不能同时修改主隧道的Modify属性和RRVPN的子隧道属性</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_te_tunnel-id.html">mpls te tunnel-id</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,463 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display tcp statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_performance_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_tcp_status.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_tcp_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display tcp statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_tcp_statistics"></a><a name="display_tcp_statistics"></a>
+
+
+<h1 class="topictitle1">display tcp statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display tcp statistics</strong>命令用来查看TCP流量统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display tcp statistics</strong><span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>显示系统当前所有TCP连接的流量统计信息。统计信息主要分为发送和接收两大部分，每部分再细分为不同类型报文，如：接收的有重复的报文、校验和错误报文等等。最后还有一些与连接密切相关的统计信息，如：接受的连接数、重传报文数、保活探测报文数等。</p>
+<p>以上信息大都是以包为单位，个别的将给出字节数。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_tcp_statistics__d68499e83"></a><a name="d68499e83"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><div class="p"># 显示TCP流量统计信息。<pre class="screen">&lt;Quidway&gt; <strong>display tcp statistics</strong></pre>
+<pre class="screen">Received packets:
+Total: 0
+Total(64bit high-capacity counter): 0
+packets in sequence: 0 (0 bytes)
+window probe packets: 0, window update packets: 0
+checksum error: 0, offset error: 0, short error: 0
+
+duplicate packets: 0 (0 bytes),partially duplicate packets: 0 (0 bytes)
+out-of-order packets: 0 (0 bytes)
+packets of data after window: 0 (0 bytes)
+packets received after close: 0
+
+ACK packets: 0 (0 bytes)
+duplicate ACK packets: 0, too much ACK packets: 0
+
+Sent packets:
+Total: 0
+Total(64bit high-capacity counter): 0
+urgent packets: 0
+control packets: 0 (including 0 RST)
+window probe packets: 0, window update packets: 0
+
+data packets: 0 (0 bytes),data packets retransmitted: 0 (0 bytes)
+ACK-only packets: 0 (0 delayed)
+
+Other information:
+Retransmitted timeout: 0, connections dropped in retransmitted timeout: 0
+Keep alive timeout: 0, keep alive probe: 0, Keep alive timeout, so connections d
+isconnected : 0
+Initiated connections: 0, accepted connections: 0, established connections: 0
+Closed connections: 0 (dropped: 0, initiated dropped: 0)
+Packets dropped with MD5 authentication: 0
+Packets permitted with MD5 authentication: 0</pre>
+</div>
+
+<div class="tablenoborder"><a name="display_tcp_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_tcp_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display tcp statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d68499e105"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d68499e109"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>Received packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>接收报文统计</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>Total</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>Total(64bit high-capacity counter)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>报文总数（以64位计数器计数）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>packets in sequence ( bytes)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>报文按顺序到达数（共计字节数）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>window probe packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>窗口探测报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>window update packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>窗口更新报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>checksum error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>报文校验出错数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>offset error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>报文长度出错数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>short error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>报文太短数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>duplicate packets( bytes)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>完全重复报文数（共计字节数）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>partially duplicate packets( bytes)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>部分重复报文数（共计字节数）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>out-of-order packets( bytes)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>乱序报文数（共计字节数）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>packets of data after window( bytes)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>报文落在接收窗口外数（共计字节数）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>packets received after close</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>报文在连接关闭后到达数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>ACK packets( bytes)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>确认报文数（确认数据字节数）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>duplicate ACK packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>重复的确认报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>too much ACK packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>经过确认但未发送数据的ACK报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>Sent packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>发送数据统计</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>urgent packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>紧急数据报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>control packets (RST)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>控制报文数（RST报文数）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>data packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>数据报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>data packets retransmitted (0 bytes)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>报文重发数（共计字节数）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>ACK only packets (delayed)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>ACK报文数（延迟ACK报文数）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>Retransmitted timeout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>重传定时器超时次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>connections dropped in retransmitted timeout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>重传次数超过限制而丢弃的连接数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>Keepalive timeout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>保活定时器超时次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>keepalive probe</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>发送保活探测报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>Keepalive timeout, so connections disconnected</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>保活探测失败丢弃连接数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>Initiated connections</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>发起连接次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>accepted connections</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>接受连接数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>established connections</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>已建立连接数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>Closed connections(dropped, initiated dropped)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>已关闭连接数目（意外丢弃连接（收到SYN之后），主动连接失败到对端SYN之前的次数）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>Packets dropped with MD5 authentication</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>MD5验证丢弃报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d68499e105 "><p>Packets permitted with MD5 authentication</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d68499e109 "><p>MD5验证通过报文数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_tcp_statistics__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_tcp_statistics__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d68499e505"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d68499e509"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d68499e505 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d68499e509 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_performance_configuration_commands.html">IP性能配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_tcp_status.html">display tcp status</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

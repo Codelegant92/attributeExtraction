@@ -1,0 +1,212 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display tcp status">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_performance_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_tcp_status">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display tcp status</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_tcp_status"></a><a name="display_tcp_status"></a>
+
+
+<h1 class="topictitle1">display tcp status</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display tcp status</strong>命令用来查看TCP状态信息，使用户查看当前的TCP连接状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display tcp status </strong>[ [<strong> task-id</strong><strong> </strong><em>task-id </em>] [ <strong>socket-id</strong> <em>socket-id </em>] | [ <strong>local-ip</strong> <em>ipv4-address </em>] [ <strong>local-port</strong> <em>local-port-number</em> ] [ <strong>remote-ip</strong> <em>ipv4-address</em> ]
+[ <strong>remote-port </strong><em>remote-port-number</em> ] ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>task-id </strong><em>task-id</em>：指定任务ID，显示此任务ID的TCP连接状态。整数形式，取值范围是1～200。</p>
+<p><strong>socket-id</strong> <em>socket-id</em>：指定Socket ID号，显示此Socket ID的TCP连接状态。整数形式，取值范围是1～14848。</p>
+<p><strong>local-ip</strong> <em>ipv4-address</em>：指定本端地址，即本台设备的IP地址。显示该IP地址的TCP连接状态。</p>
+<p><strong>local-port</strong> <em>local-port-number</em>：指定本端端口号，即本台设备的端口号。显示该端口号的TCP连接状态，取值范围是0～65535。</p>
+<p><strong>remote-ip</strong> <em>ipv4-address</em>：指定远端地址，即其它设备的IP地址。显示该IP地址的TCP连接状态。</p>
+<p><strong>remote-port</strong> <em>remote-port-number</em>：指定远端端口号，即其它设备的端口号。显示该端口号的TCP连接状态，取值范围是0～65535。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过设置参数（Task ID、Socket ID、本端地址、本端端口号、远端地址、远端端口号），只有满足参数条件的信息会被显示出来。这样可以减少显示信息的输出数量，方便查看，提高问题定位的精确度和效率。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_tcp_status__d68637e159"></a><a name="d68637e159"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看本机上的TCP连接状态信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display tcp status</strong></pre>
+<pre class="screen">TCPCB    Tid/Soid Local Add:port        Foreign Add:port      VPNID  State</pre>
+<pre class="screen">0a5d560c 30 /1    0.0.0.0:23            0.0.0.0:0             14849 Listening</pre>
+
+<p># 查看从本端地址0.0.0.0，端口号23发起的TCP连接的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display tcp status local-ip 0.0.0.0 local-port 23</strong></pre>
+<pre class="screen">TCPCB    Tid/Soid Local Add:port        Foreign Add:port      VPNID  State</pre>
+<pre class="screen">0a5d560c 30 /1    0.0.0.0:23            0.0.0.0:0             14849 Listening</pre>
+
+<p># 查看从本端地址0.0.0.0，端口号24发起的TCP连接的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display tcp status local-ip 0.0.0.0 local-port 24</strong></pre>
+<pre class="screen">TCPCB    Tid/Soid Local Add:port        Foreign Add:port      VPNID  State</pre>
+
+<div class="tablenoborder"><a name="display_tcp_status__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_tcp_status__tb_01" frame="border" border="1" rules="all"><caption>表1 display tcp status命令显示信息中各字段的说明</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.772990677752585%" id="d68637e203"><p>字段</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.22700932224741%" id="d68637e207"><p>说明</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d68637e203 "><p>TCPCB</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d68637e207 "><p>TCP任务控制块编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d68637e203 "><p>Tid/Soid</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d68637e207 "><p>Task ID 和Socket ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d68637e203 "><p>Local Add: port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d68637e207 "><p>TCP连接的本端IP地址和本端端口号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d68637e203 "><p>Foreign Add: port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d68637e207 "><p>远端IP地址和远端端口号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d68637e203 "><p>VPNID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d68637e207 "><p>VPN ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d68637e203 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d68637e207 "><div class="p">TCP的连接状态。具体情况如下：<ul>
+<li><p>Closed：关闭状态</p>
+</li>
+<li><p>Listening：监听状态</p>
+</li>
+<li><p>Syn_Rcvd：接收到SYN同步报文状态</p>
+</li>
+<li><p>Established：连接建立状态</p>
+</li>
+<li><p>Close_Wait：在Established状态下，用户向服务器发送FIN报文请求终止连接。服务器接收到用户发送的FIN报文后，向用户发送ACK报文，然后进入该状态。</p>
+</li>
+<li><p>Fin_Wait1：用户向服务器发送FIN报文请求终止本方向连接，然后进入该状态</p>
+</li>
+<li><p>Fin_Wait2：用户在收到服务器对自己发出的FIN报文的相应ACK报文后，进入该状态。</p>
+</li>
+<li><p>Time_Wait：TCP在关闭一个连接之后就进入超时等待状态。它在这个状态中停留时间达到最长报文段寿命的两倍时，就删去该连接的记录。</p>
+</li>
+<li><p>Closing：同时关闭</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_tcp_status__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_tcp_status__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d68637e333"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d68637e337"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d68637e333 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d68637e337 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_performance_configuration_commands.html">IP性能配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

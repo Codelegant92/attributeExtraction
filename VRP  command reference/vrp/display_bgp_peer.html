@@ -1,0 +1,978 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display bgp peer">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="peer_as-number.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_bgp_peer">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display bgp peer</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_bgp_peer"></a><a name="display_bgp_peer"></a>
+
+
+<h1 class="topictitle1">display bgp peer</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display bgp peer</strong>命令用来显示BGP对等体信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display bgp</strong> [ <strong>vpnv4 vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>peer</strong> [ { <em>group-name</em> | <em>ipv4-address</em> } <strong>log-info</strong> | [ <em>ipv4-address</em> ] <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv4 all peer</strong> [ [ <em>ipv4-address</em> ] <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp l2vpn</strong> <strong>peer</strong> [ <em>ipv4-address</em> <strong>verbose</strong> | <strong>verbose </strong>]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpls
+peer</strong> [ <em>ipv4-address</em> <strong>verbose</strong> | <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp ipv6 peer</strong> [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp ipv6 peer</strong> <em>ipv4-address</em> <strong>verbose</strong><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp ipv6 peer</strong> <em>ipv6-address</em> { <strong>log-info</strong> | <strong>verbose</strong> }<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv6 all peer</strong> [ [ <em>ipv4-address</em> ] <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv6 vpn6-instance</strong> <em>vpn6-instance-name</em> <strong>peer</strong> [ { <em>group-name</em> | <em>ipv6-address</em> } <strong>log-info</strong> | [ <em>ipv6-address</em> ] <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：查看指定VPN实例的对等体信息。</p>
+<p><em>ipv4-address</em>：指定要显示的IPv4对等体的地址。如果需要显示6PE对等体时，请执行<strong>display bgp ipv6 peer</strong> <em>ipv4-address</em> <strong>verbose</strong>命令。</p>
+<p><em>group-name</em>：指定要显示的对等体组的名称。</p>
+<p><strong>log-info</strong>：查看指定对等体的日志信息。</p>
+<p><strong>verbose</strong>：查看对等体的详细信息。</p>
+<p><strong>vpnv4</strong>：查看VPNv4的对等体信息。</p>
+<p><strong>all</strong>：查看所有VPNv4的对等体信息。</p>
+<p><strong>l2vpn</strong>：查看BGP-L2VPN地址族下对等体的信息。</p>
+<p><strong>vpls</strong>：查看BGP-VPLS地址族下对等体的信息。</p>
+<p><em>ipv6-address</em>：指定要显示的IPv6对等体的地址。</p>
+<p><strong>vpnv6</strong>：查看BGP VPNv6对等体信息。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：查看指定IPv6 VPN实例的对等体信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_bgp_peer__d16753e457"></a><a name="d16753e457"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示BGP对等体的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp peer</strong>
+
+ BGP Local router ID : 1.2.3.4
+ local AS number : 10
+ Total number of peers : 2                 Peers in established state : 1</pre>
+<pre class="screen">
+  Peer             V    AS  MsgRcvd  MsgSent  OutQ  Up/Down       State PrefRcv
+
+  1.1.1.1         4   100        0        0     0 00:00:07        Idle       0
+  1.2.5.6         4   200       32       35     0 00:17:49 Established       0</pre>
+
+<div class="tablenoborder"><a name="display_bgp_peer__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_peer__tb_01" frame="border" border="1" rules="all"><caption>表1 display bgp peer命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="26.73217435122197%" id="d16753e480"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="73.26782564877804%" id="d16753e484"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d16753e480 "><p>BGP Local router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d16753e484 "><p>BGP本地路由器ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d16753e480 "><p>local AS number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d16753e484 "><p>本地AS编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d16753e480 "><p>Peer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d16753e484 "><p>对等体的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d16753e480 "><p>V</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d16753e484 "><p>对等体使用的BGP版本</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d16753e480 "><p>AS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d16753e484 "><p>自治系统号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d16753e480 "><p>MsgRcvd</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d16753e484 "><p>收到的消息数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d16753e480 "><p>MsgSent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d16753e484 "><p>发送的消息数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d16753e480 "><p>OutQ</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d16753e484 "><p>等待发往指定对等体的消息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d16753e480 "><p>Up/Down</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d16753e484 "><p>BGP会话处于当前状态的时长</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d16753e480 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d16753e484 "><div class="p">对等体的状态<ul>
+<li><p>Idle：BGP拒绝任何进入的连接请求，是BGP初始状态。</p>
+</li>
+<li><p>Active：BGP将尝试进行TCP连接的建立，是BGP的中间状态。</p>
+</li>
+<li><p>Established：BGP对等体间可以交换Update报文、Notification报文和Keepalive报文。</p>
+</li>
+<li><p>Connect：此状态下，BGP等待TCP连接的建立完成后再决定后续操作。</p>
+</li>
+<li><p>OpenSent：此状态下，BGP等待对等体的Open消息。</p>
+</li>
+<li><p>OpenConfirm：此状态下，BGP等待一个Notification报文或Keepalive报文。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d16753e480 "><p>PrefRcv</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d16753e484 "><p>本端从对等体上收到路由前缀的数目</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看对等体2.2.2.9的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp peer 2.2.2.9 verbose</strong>
+
+         BGP Peer is 2.2.2.9,  remote AS 200,
+         Type: EBGP link 
+         BGP version 4, Remote router ID 0.0.0.0 </pre>
+<pre class="screen">         BGP current state: Established, Up for 20h21m17s
+         BGP current event: KATimerExpired
+         BGP last state: OpenConfirm</pre>
+<pre class="screen">         BGP Peer Up count: 3
+         Received total routes: 0
+         Received active routes total: 0
+         Advertised total routes: 0</pre>
+<pre class="screen">         Port:  Local - 179      Remote - 54446
+         Configured: Active Hold Time: 180 sec   Keepalive Time:60 sec
+         Received  : Active Hold Time: 180 sec
+         Negotiated: Active Hold Time: 180 sec   Keepalive Time:60 sec
+         Peer optional capabilities:
+         Peer supports bgp multi-protocol extension
+         Peer supports bgp route refresh capability</pre>
+<pre class="screen">         Address family IPv4 Unicast: advertised and received
+ 
+ Received: Total 76 messages
+                  Update messages                0
+                  Open messages                  5
+                  KeepAlive messages             71
+                  Notification messages          0</pre>
+<pre class="screen">                  Refresh messages               0
+
+ Sent: Total 91 messages
+                  Update messages                0
+                  Open messages                  10</pre>
+<pre class="screen">                  KeepAlive messages             77
+                  Notification messages          4
+                  Refresh messages               0
+ Last keepalive received: 2009-03-30 09:14:14
+ Minimum route advertisement interval is 30 seconds 
+ Optional capabilities: 
+ Route refresh capability has been enabled
+</pre>
+<pre class="screen"> Listen-only has been configured
+ Peer Preferred Value: 0
+ Routing policy configured:
+ Peer's BFD has been enabled
+ No routing policy is configured</pre>
+
+<div class="tablenoborder"><a name="display_bgp_peer__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_peer__tb_02" frame="border" border="1" rules="all"><caption>表2 display bgp peer verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.28294280675233%" id="d16753e675"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.71705719324767%" id="d16753e679"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>BGP链路类型，有IBGP Link和EBGP Link</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>BGP version </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>BGP协议版本</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>remote router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>对等体的路由器ID</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>BGP current state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><div class="p">BGP当前的状态<ul>
+<li><p>Idle：BGP拒绝任何进入的连接请求，是BGP初始状态。</p>
+</li>
+<li><p>Active：BGP将尝试进行TCP连接的建立，是BGP的中间状态。</p>
+</li>
+<li><p>Established：BGP对等体间可以交换Update报文、Notification报文和Keepalive报文。</p>
+</li>
+<li><p>Connect：此状态下，BGP等待TCP连接的建立完成后再决定后续操作。</p>
+</li>
+<li><p>OpenSent：此状态下，BGP等待对等体的Open消息。</p>
+</li>
+<li><p>OpenConfirm：此状态下，BGP等待一个Notification报文或Keepalive报文。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>BGP current event</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>BGP当前事件</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>BGP last state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>BGP上一个阶段的状态。可能出现的状态有：Idle、Connect、Active、OpenSent、OpenConfirm和Established</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><div class="p">端口号<ul>
+<li><p>Local：本地端口号，BGP使用TCP作为其传输层协议，固定端口号为179</p>
+</li>
+<li><p>Remote：对等体端口号</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>BGP Peer Up count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>指定时间内BGP对等体的震荡次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Received total routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>接收的路由前缀数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Received active routes total</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>活跃的路由前缀数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Advertised total routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>发送的路由前缀数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Configured</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><div class="p">本地配置的定时器<ul>
+<li><p>Active Hold Time：HoldTime时间，BGP在HoldTime时间里，如果没有收到对等体的KeepAlive报文，就会认为对方已经Down掉，此时BGP会通知其它的对等体撤销从该Down掉的路由器收到的路由</p>
+</li>
+<li><p>Keep Alive Time：向对等体发送KeepAlive报文的时间间隔，BGP对等体之间会定时发送KeepAlive报文，彼此通告工作正常。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Received : Active Hold Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>表示对等体的HoldTime时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Negotiated : Active Hold Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>表示BGP对等体经过能力协商之后确定的HoldTime时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Address family IPv4 Unicast</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>IPv4单播地址族</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Minimum route advertisement interval is 30 seconds</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><div class="p">缺省情况下，路由通告的最短时间间隔<ul>
+<li><p>EBGP为30s</p>
+</li>
+<li><p>IBGP为15s</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Received</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><div class="p">接收到邻居的报文数目<ul>
+<li><p>Total：总条数</p>
+</li>
+<li><p>Update messages：Update报文数</p>
+</li>
+<li><p>Open messages：Open报文数</p>
+</li>
+<li><p>KeepAlive messages：Keepalive报文数</p>
+</li>
+<li><p>Notification messages：Notification报文数</p>
+</li>
+<li><p>Refresh messages：Route-refresh报文数</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Sent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><div class="p">发送给邻居的报文数目<ul>
+<li><p>Total：总条数</p>
+</li>
+<li><p>Update messages：Update报文数</p>
+</li>
+<li><p>Open messages：Open报文数</p>
+</li>
+<li><p>KeepAlive messages：Keepalive报文数</p>
+</li>
+<li><p>Notification messages：Notification报文数</p>
+</li>
+<li><p>Refresh messages：Route-refresh报文数</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Peer optional capabilities</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>对等体支持的能力（可选）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Optional capabilities</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>对等体支持的能力（可选）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Route refresh capability has been enabled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>路由刷新功能已经使能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Listen-only has been configured</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>仅监听连接请求，不主动发起连接功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Peer Preferred Value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>对等体的首选值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Routing policy configured</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>配置的路由策略</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e675 "><p>Peer&#8217;s BFD has been enabled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e679 "><p>对等体的BFD功能已经使能</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看名为vrf1的VPN实例的BGP对等体信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv4 vpn-instance vrf1 peer</strong>
+
+ BGP local router ID : 1.1.1.9
+ Local AS number : 100
+ Total number of peers : 1                 Peers in established state : 1</pre>
+<pre class="screen">
+  Peer        V    AS  MsgRcvd  MsgSent  OutQ  Up/Down       State PrefRcv
+
+  10.1.1.1    4 65410      207      192     0 02:59:49 Established       1 </pre>
+<p># 查看名为vpna的VPN实例的BGP对等体详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv4 vpn-instance vpna peer verbose</strong>
+
+         BGP Peer is 10.1.1.1,  remote AS 200,
+         Type: EBGP link
+         BGP version 4, remote router ID 10.1.1.1</pre>
+<pre class="screen">         BGP current state: Established, Up for   03h01m22s
+         BGP current event: RecvKeepalive
+         BGP last state: OpenConfirm</pre>
+<pre class="screen">         BGP Peer Up count: 2
+         Received total routes: 0
+         Received active routes total: 0
+         Advertised total routes: 0</pre>
+<pre class="screen">         Port:  Local - 3722     Remote - 179
+         Configured: Active Hold Time: 180 sec   Keepalive Time:60 sec
+         Received  : Active Hold Time: 180 sec
+         Negotiated: Active Hold Time: 180 sec
+         Peer optional capabilities:
+         Peer support bgp multi-protocol extended
+         Peer support bgp route refresh capability</pre>
+<pre class="screen">         Address family IPv4 Unicast: advertised and received
+ 
+ Received: Total 76 messages
+                  Update messages                0
+                  Open messages                  5
+                  KeepAlive messages             71</pre>
+<pre class="screen">                  Notification messages          0
+                  Refresh messages               0
+
+ Sent: Total 91 messages
+                  Update messages                0</pre>
+<pre class="screen">                  Open messages                  10
+                  KeepAlive messages             77
+                  Notification messages          4
+                  Refresh messages               0</pre>
+<pre class="screen"> Last keepalive received: 2009-03-30 09:24:18
+ Maximum allowed prefix number: 150000
+ Threshold: 75%
+ Minimum route advertisement interval is 30 seconds
+ Optional capabilities:
+ Route refresh capability has been enabled</pre>
+<pre class="screen"> Peer Preferred Value: 0
+ Routing policy configured:
+ No routing policy is configured</pre>
+
+<div class="tablenoborder"><a name="display_bgp_peer__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_peer__tb_03" frame="border" border="1" rules="all"><caption>表3 display bgp vpnv4 peer verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.28294280675233%" id="d16753e1117"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.71705719324767%" id="d16753e1121"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.28294280675233%" headers="d16753e1117 "><p>Threshold</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.71705719324767%" headers="d16753e1121 "><p>告警阈值，即BGP路由数量占可允许接收的路由数量的百分比</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看L2VPN地址族中对等体的状态。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp l2vpn peer</strong>
+
+ BGP local router ID : 1.1.1.9
+ local AS number : 100
+ Total number of peers : 1                 Peers in established state : 1
+
+  Peer            V          AS  MsgRcvd  MsgSent  OutQ  Up/Down       State PrefRcv
+
+  1.25.1.3        4         100    13433      836     0 00:00:39 Established   0</pre>
+<p># 查看L2VPN地址族中对等体3.3.3.9的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp l2vpn peer 3.3.3.9 verbose</strong>
+
+         BGP Peer is 3.3.3.9,  remote AS 200,
+         Type: IBGP link
+         BGP version 4, remote router ID 3.3.3.9</pre>
+<pre class="screen">         BGP Peer Up count: 2
+         Received total routes: 0
+         Received active routes total: 0
+         Advertised total routes: 0</pre>
+<pre class="screen">         BGP current state: Established, Up for   00:21:15
+         BGP current event: KATimerExpired
+         BGP last state: OpenConfirm</pre>
+<pre class="screen">         Port:  Local - 179      Remote - 1034
+         Configured: Active Hold Time: 180 sec   Keep Alive Time:60 sec
+         Received  : Active Hold Time: 180 sec
+         Negotiated: Active Hold Time: 180 sec
+         Peer optional capabilities:
+         Peer support bgp multi-protocol extended
+         Peer support bgp route refresh capability</pre>
+<pre class="screen">         Address family IPv4 Unicast: advertised and received
+         Address family L2VPN: advertised and received
+ 
+ Received: Total 76 messages
+                  Update messages                0
+                  Open messages                  5</pre>
+<pre class="screen">                  KeepAlive messages             71
+                  Notification messages          0
+                  Refresh messages               0
+
+ Sent: Total 91 messages</pre>
+<pre class="screen">                  Update messages                0
+                  Open messages                  10
+                  KeepAlive messages             77
+                  Notification messages          4</pre>
+<pre class="screen">                  Refresh messages               0
+ Last keepalive received: 2009-03-30 09:35:40
+ Maximum allowed prefix number: 150000
+ Threshold: 75%
+ Minimum route advertisement interval is 15 seconds</pre>
+<pre class="screen"> Peer Preferred Value: 0
+ Routing policy configured:
+ No routing policy is configured</pre>
+<p># 查看BGP-VPLS地址族下所有对等体的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp vpls peer</strong>
+</pre>
+<pre class="screen"> BGP local router ID : 200.1.1.1
+ Local AS number : 100
+ Total number of peers : 1                 Peers in established state : 1
+
+Peer            V    AS  MsgRcvd  MsgSent    OutQ  Up/Down       State PrefRcv</pre>
+<pre class="screen">
+1.1.1.1         4   100       14       16       0 00:10:06 Established       0</pre>
+<p># 显示IPv6对等体信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp ipv6 peer</strong>
+
+ BGP Local router ID : 20.0.0.1</pre>
+<pre class="screen"> local AS number : 100
+  Total number of peers : 1                 Peers in established state : 1
+
+  Peer            V    AS  MsgRcvd  MsgSent  OutQ  Up/Down       State PrefRcv</pre>
+<pre class="screen">
+  20::21          4   200       17       19     0 00:09:59 Established       3</pre>
+<p># 显示IPv6对等体的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp ipv6 peer 2001::1 verbose</strong>
+
+         BGP Peer is 2001::1,  remote AS 1,</pre>
+<pre class="screen">         Type: EBGP link
+         BGP version 4, remote router ID 1.1.1.1</pre>
+<pre class="screen">         BGP current state: Established, Up for 00h00m59s
+         BGP current event: RecvKeepalive
+         BGP last state: OpenConfirm</pre>
+<pre class="screen">         BGP Peer Up count: 2
+         Received total routes: 0
+         Received active routes total: 0
+         Advertised total routes: 0</pre>
+<pre class="screen">         Port:  Local - 179      Remote - 49153
+         Configured: Active Hold Time: 180 sec   Keepalive Time:60 sec
+         Received  : Active Hold Time: 180 sec
+         Negotiated: Active Hold Time: 180 sec   Keepalive Time:60 sec
+         Peer optional capabilities:
+         Peer supports bgp multi-protocol extension
+         Peer supports bgp route refresh capability</pre>
+<pre class="screen">         Address family IPv6 Unicast: advertised and received
+
+ Received: Total 76 messages
+                  Update messages                0
+                  Open messages                  5
+                  KeepAlive messages             71
+                  Notification messages          0</pre>
+<pre class="screen">                  Refresh messages               0
+
+ Sent: Total 91 messages
+                  Update messages                0
+                  Open messages                  10</pre>
+<pre class="screen">                  KeepAlive messages             77
+                  Notification messages          4
+                  Refresh messages               0
+ Last keepalive received: 2009-03-30 09:38:52</pre>
+<pre class="screen"> OutQ: 0
+ Minimum route advertisement interval is 30 seconds
+ Optional capabilities:
+ Route refresh capability has been enabled
+</pre>
+<pre class="screen"> listen-only has been configured
+ Peer Preferred Value: 0
+ Routing policy configured:
+ No routing policy is configured</pre>
+<p># 查看VPNv6对等体的简要信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv6 all peer</strong>
+
+ BGP local router ID : 1.1.1.1</pre>
+<pre class="screen"> Local AS number : 100
+ Total number of peers : 2                 Peers in established state : 2
+
+  Peer            V    AS  MsgRcvd  MsgSent  OutQ  Up/Down       State PrefRcv</pre>
+<pre class="screen">
+  2.2.2.2         4   100      210      220     0   02:42:55    Established    1
+
+  Peer of vpn6 instance :
+
+  vpn6 instance vpna :
+  2000::2         4 65410      205      178     0 02:42:53     Established    0</pre>
+
+<div class="tablenoborder"><a name="display_bgp_peer__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_peer__tb_04" frame="border" border="1" rules="all"><caption>表4 display bgp vpnv6 all peer命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d16753e1243"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d16753e1247"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d16753e1243 "><p>Peer of vpn6 instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d16753e1247 "><p>显示VPN6实例下的所有对等体信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d16753e1243 "><p>vpn6 instance vpna</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d16753e1247 "><p>显示名称为vpna的VPN6实例的对等体信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看IPv4地址为2.2.2.2的VPNv6对等体的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv6 all peer 2.2.2.2 verbose</strong>
+         BGP Peer is 2.2.2.2,  remote AS 200,
+         Type: IBGP link
+         BGP version 4, remote router ID 2.2.2.2</pre>
+<pre class="screen">         BGP current state: Established, Up for 02h43m52s
+         BGP current event: RecvKeepalive
+         BGP last state: OpenConfirm</pre>
+<pre class="screen">         BGP Peer Up count: 2
+         Received total routes: 0
+         Received active routes total: 0
+         Advertised total routes: 0</pre>
+<pre class="screen">         Port:  Local - 53308    Remote - 179
+         Configured: Active Hold Time: 180 sec   Keepalive Time:60 sec
+         Received  : Active Hold Time: 180 sec
+         Negotiated: Active Hold Time: 180 sec   Keepalive Time:60 sec
+         Peer optional capabilities:</pre>
+<pre class="screen">         Peer supports bgp multi-protocol extension
+         Peer supports bgp route refresh capability</pre>
+<pre class="screen">         Address family IPv4 Unicast: advertised and received
+         Address family VPNv6: advertised and received
+
+ Received: Total 76 messages
+                  Update messages                0
+                  Open messages                  5
+                  KeepAlive messages             71</pre>
+<pre class="screen">                  Notification messages          0
+                  Refresh messages               0
+
+ Sent: Total 91 messages
+                  Update messages                0</pre>
+<pre class="screen">                  Open messages                  10
+                  KeepAlive messages             77
+                  Notification messages          4
+                  Refresh messages               0</pre>
+<pre class="screen"> Last keepalive received: 2009-03-30 09:52:41
+ Minimum route advertisement interval is 15 seconds
+ Optional capabilities:
+ Route refresh capability has been enabled</pre>
+<pre class="screen"> Connect-interface has been configured
+ Peer Preferred Value: 0
+ Routing policy configured:
+ No routing policy is configured</pre>
+<p># 查看IPv6 VPN实例的BGP对等体组的日志信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp vpnv6 vpn6-instance vpn1 peer g1 log-info</strong>
+
+ Peer : 2000::2
+
+     Date         Time         State   Error      Notification
+
+  26-Aug-2006    09:10:06       Up
+  26-Aug-2006    09:09:23       Down    4/0    Send Notification</pre>
+<pre class="screen">  25-Aug-2006    09:08:45       Up
+  25-Aug-2006    09:08:16       Down    4/0    Receive Notification
+  24-Aug-2006    11:20:56       Up</pre>
+<p># 查看本设备上IPv6地址为2000::2的IPv6 VPN实例的BGP对等体的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp vpnv6 vpn6-instance vpn1 peer 2000::2 verbose</strong>
+
+         BGP Peer is 2000::2,  remote AS 65410,
+         Type: EBGP link
+         BGP version 4, remote router ID 10.1.1.1</pre>
+<pre class="screen">         BGP current state: Established, Up for 02h39m36s
+         BGP current event: KATimerExpired
+         BGP last state: OpenConfirm</pre>
+<pre class="screen">         BGP Peer Up count: 2
+         Received total routes: 0
+         Received active routes total: 0
+         Advertised total routes: 0</pre>
+<pre class="screen">         Port:  Local - 49177    Remote - 179
+         Configured: Active Hold Time: 180 sec   Keepalive Time:60 sec
+         Received  : Active Hold Time: 180 sec
+         Negotiated: Active Hold Time: 180 sec   Keepalive Time:60 sec
+         Peer optional capabilities:
+         Peer supports bgp multi-protocol extension
+         Peer supports bgp route refresh capability</pre>
+<pre class="screen">         Address family IPv6 Unicast: advertised and received
+
+ Received: Total 76 messages
+                  Update messages                0
+                  Open messages                  5
+                  KeepAlive messages             71
+                  Notification messages          0</pre>
+<pre class="screen">                  Refresh messages               0
+
+ Sent: Total 91 messages
+                  Update messages                0
+                  Open messages                  10</pre>
+<pre class="screen">                  KeepAlive messages             77
+                  Notification messages          4
+                  Refresh messages               0
+ Last keepalive received: 2009-03-30 09:51:52</pre>
+<pre class="screen"> Minimum route advertisement interval is 30 seconds
+ Optional capabilities:
+ Route refresh capability has been enabled</pre>
+<pre class="screen"> Peer Preferred Value: 0
+ Routing policy configured:
+ No routing policy is configured</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_bgp_peer__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_peer__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d16753e1348"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d16753e1352"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d16753e1348 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d16753e1352 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d16753e1348 "><p>VRPV500R006C02B210</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d16753e1352 "><p>使用<strong>verbose</strong>参数显示IPv4对等体详细信息时，显示信息中增加了&#8220;BGP Peer Up count&#8221;、&#8220;Received total routes&#8221;、&#8220;Received active routes total&#8221;和&#8220;Advertised total routes&#8221;等四个字段。</p>
+</td>
+
+</tr>
+
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="peer_as-number.html">peer as-number</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

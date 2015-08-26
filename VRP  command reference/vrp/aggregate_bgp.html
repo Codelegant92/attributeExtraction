@@ -1,0 +1,90 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="aggregate (BGP)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="peer_route-policy_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="summary_automatic_bgp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="aggregate_bgp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>aggregate (BGP)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="aggregate_bgp"></a><a name="aggregate_bgp"></a>
+
+
+<h1 class="topictitle1">aggregate (BGP)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>aggregate</strong>命令用来在BGP路由表中创建一条聚合记录。这条聚合路由在本地的出接口为NULL0，当其他路由器收到聚合路由后会自动加上出接口。</p>
+<p><strong>undo aggregate</strong>命令用来关闭该功能。</p>
+<p>缺省情况下，不进行路由聚合。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>aggregate</strong> <em>ipv4-address</em> { <em>mask</em> | <em>mask-length</em> } [ <strong>as-set</strong> | <strong>attribute-policy</strong> <em>route-policy-name1</em> | <strong>detail-suppressed</strong> | <strong>origin-policy</strong> <em>route-policy-name2</em> | <strong>suppress-policy</strong> <em>route-policy-name3</em> ] *</p>
+<p><strong>undo aggregate</strong> <em>ipv4-address</em> { <em>mask</em> | <em>mask-length</em> } [ <strong>as-set</strong> | <strong>attribute-policy</strong> <em>route-policy-name1</em> | <strong>detail-suppressed</strong> | <strong>origin-policy</strong> <em>route-policy-name2</em> | <strong>suppress-policy</strong> <em>route-policy-name3</em> ] *</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ipv4-address</em>：聚合路由的IPv4地址，点分十进制形式。</p>
+<p><em>mask</em>：聚合路由的网络掩码(点分十进制形式)。</p>
+<p><em>mask-length</em>：聚合路由的网络掩码长度。</p>
+<p><strong>as-set</strong>：生成具有AS-SET的路由。</p>
+<p><strong>attribute-policy</strong> <em>route-policy-name1</em>：设置聚合后路由的属性策略名称。字符串形式，长度为1～40。</p>
+<p><strong>detail-suppressed</strong>：仅通告聚合路由。</p>
+<p><strong>origin-policy</strong> <em>route-policy-name2</em>：设置允许生成聚合路由的策略名称。字符串形式，长度为1～40。</p>
+<p><strong>suppress-policy</strong> <em>route-policy-name3</em>：设置抑制指定路由通告的策略名称。字符串形式，长度为1～40。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP视图、BGP-IPv4单播地址族视图、BGP-VPN实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>BGP路由聚合分为手动聚合和自动聚合两种，<strong>aggregate</strong>命令用于实现手动聚合。该命令可以对BGP本地路由表中的路由进行聚合。手动聚合后的路由的优先级高于自动聚合。</p>
+<p>如果聚合路由中所包含的具体路由各Origin属性不相同，那么聚合路由的Origin属性按照优先级incomplete &gt; egp &gt; igp为准。聚合路由会携带原来所有具体路由中的团体属性。</p>
+<p>通过设置关键字<strong>as-set</strong>，可创建一条聚合路由，该路由的自治系统AS（Autonomous
+System）路径包含了具体路由的AS路径信息。若需聚合较多AS路径时，请慎用此关键字，因为当具体路由的变化较频繁时，会导致路由振荡。</p>
+<p>关键字<strong>detail-suppressed</strong>抑制该聚合路由所包含的所有具体路由，只发布该聚合路由。生成的聚合路由带Atomic-aggregate属性，并且不能携带原具体路由的团体属性。</p>
+<p>关键字<strong>suppress-policy</strong>能产生聚合路由，但抑制指定路由的通告。可以用<strong>route-policy</strong>的<strong>if</strong>-<strong>match</strong>子句有选择地抑制一些具体路由，即匹配该策略的路由将被抑制，但其它未通过策略的具体路由仍被通告。也可以通过<a href="peer_route-policy_bgp.html">peer route-policy</a>命令，配置不希望发布给对等体的策略达到相同效果。</p>
+<p>使用关键字<strong>origin-policy</strong>仅在匹配<strong>route-policy</strong>时才生成聚合路由。</p>
+<p>关键字<strong>attribute-policy</strong>可设置聚合路由的属性。如果在策略中使用命令<a href="apply_as-path.html">apply as-path</a>配置了AS_Path属性，且设置了关键字<strong>as-set</strong>，那么策略中的AS_Path不会生效。通过<a href="peer_route-policy_bgp.html">peer route-policy</a>命令也可以完成同样的工作。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="aggregate_bgp__d796e207"></a><a name="d796e207"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建一条聚合记录。该路由发布的路径为一个包含所有聚合路径信息的AS集合段。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> ipv4-family unicast</strong></pre>
+<pre class="screen">[Quidway-bgp-af-ipv4]<strong> aggregate 168.32.0.0 255.255.0.0 as-set</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="peer_route-policy_bgp.html">peer route-policy</a></div>
+<div><a href="summary_automatic_bgp.html">summary automatic</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,299 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_interface_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_interface"></a><a name="display_mpls_interface"></a>
+
+
+<h1 class="topictitle1">display mpls interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls interface</strong>命令用来查看使能了MPLS能力的接口信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls interface</strong> [ <em>interface-type</em> <em>interface-number</em> ] [ <strong>verbose</strong> ]<span><span> [<strong> |
+count</strong> ]</span> [<strong> | </strong>{ <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type interface-number</em>：接口类型和接口编号。</p>
+<p><strong>verbose</strong>：显示使能了MPLS能力的接口详细信息。例如TE FRR项，如果存在手工FRR的旁路隧道保护该接口，则该项为enable，且显示手工FRR的旁路隧道。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使能MPLS基本能力以后，可以执行此命令查看使能了MPLS能力的接口信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_interface__d41744e99"></a><a name="d41744e99"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有使能了MPLS能力的接口的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls interface</strong></pre>
+<pre class="screen">Interface             Status    TE Attr   LSP Count  CRLSP Count Effective MTU
+Pos1/0/0              Up        Dis       2          0           1500
+Pos2/0/0              Up        En        0          1           1500
+Pos3/0/0              Up        Dis       1          0           1500
+</pre>
+<p># 查看指定的使能了MPLS能力的接口的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls interface pos 2/0/0 verbose</strong></pre>
+<pre class="screen">No                    :  1
+Interface             :  Pos2/0/0
+Status                :  Up
+TE Attribute          :  Enable
+Static LSPCount       :  0
+Static CR-LSPCount    :  0
+LDP LSPCount          :  0
+RSVP LSPCount         :  0
+MPLS MTU              :  -
+Interface MTU         :  1500
+Effective MTU         :  1500
+TE FRR                :  Disable
+Interface Index       :  0x18000206
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls interface verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="23.607961703199802%" id="d41744e129"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="76.39203829680021%" id="d41744e133"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>No</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><p>序列号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><p>使能了MPLS的接口的类型和编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><div class="p">接口的状态：<ul>
+<li><p>Up</p>
+</li>
+<li><p>Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>TE Attribute</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><div class="p">接口TE属性的使能状态：<ul>
+<li><p>Disable：表示该接口没有使能MPLS TE</p>
+</li>
+<li><p>Enable：表示该接口使能了MPLS TE</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>Static LSPCount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><p>接口上建立的静态LSP数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>Static CR-LSPCount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><p>接口上建立的静态CR-LSP数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>LDP LSPCount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><p>接口上建立的LDP LSP数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>RSVP LSPCount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><p>接口上使用RSVP建立的LSP数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>MPLS MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><p>接口上使用<a href="mpls_mtu.html">mpls mtu</a>命令配置的MPLS MTU值。如果接口上没有配置<a href="mpls_mtu.html">mpls mtu</a>命令，此处显示为&#8220;-&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>Interface MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><p>接口上配置的MTU值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>Effective MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><div class="p">MPLS转发实际采用的MTU值<ul>
+<li><p>如果没有配置MPLS MTU，取Interface MTU</p>
+</li>
+<li><p>如果配置了MPLS MTU，取MPLS MTU和Interface MTU中的较小值</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>TE FRR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><div class="p">接口上TE FRR的使能状态：<ul>
+<li><p>Disable：没有手工FRR的旁路隧道保护该接口</p>
+</li>
+<li><p>Enable：有手工FRR的旁路隧道保护该接口</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.607961703199802%" headers="d41744e129 "><p>Interface Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.39203829680021%" headers="d41744e133 "><p>接口索引</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_interface__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d41744e344"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d41744e348"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d41744e344 "><p>VRPV500R005C02B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d41744e348 "><p>显示信息中的&#8220;FRR&#8221;字段改为&#8220;TE FRR&#8221;，该字段对应的值&#8220;Disabled&#8221;改为&#8220;Disable&#8221;，&#8220;Enabled&#8221;改为&#8220;Enable&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d41744e344 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d41744e348 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_system_view.html">mpls（系统视图）</a></div>
+<div><a href="mpls_interface_view.html">mpls（接口视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

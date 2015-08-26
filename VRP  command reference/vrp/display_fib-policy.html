@@ -1,0 +1,158 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display fib-policy">
+<meta name="DC.Relation" scheme="URI" content="../vrp/interface_board_intermixing_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="apply_fib-policy.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_fib-policy">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display fib-policy</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_fib-policy"></a><a name="display_fib-policy"></a>
+
+
+<h1 class="topictitle1">display fib-policy</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display fib-policy</strong>命令用来查看IPv4 FIB策略。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display fib-policy slot</strong><em> slot-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>slot </strong><em>slot</em>-<em>number</em>：需要查看IPv4 FIB策略的接口板编号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行命令<strong>display fib-policy</strong>，可以查看接口板配置的策略，如果没有配置策略也会提示用户策略没有配置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_fib-policy__d23972e49"></a><a name="d23972e49"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看2号接口板IPv4 FIB策略的应用信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display fib-policy slot 2</strong></pre>
+<pre class="screen">  Fib-policy:</pre>
+<pre class="screen">    public route</pre>
+<pre class="screen">    vpn route: vpna</pre>
+
+<div class="tablenoborder"><a name="display_fib-policy__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fib-policy__tb_01" frame="border" border="1" rules="all"><caption>表1 display fib-policy输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="20.693943539360777%" id="d23972e75"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="79.30605646063923%" id="d23972e79"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="20.693943539360777%" headers="d23972e75 "><p>Fib-policy:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.30605646063923%" headers="d23972e79 "><div class="p">本接口板上应用的IPv4 FIB策略。可能显示的配置信息有：<ul>
+<li><p>Have not configured FIB policy：接口板上没有配置任何IPv4 FIB策略</p>
+</li>
+<li><p>public route：接口板上配置了IPv4公网策略</p>
+</li>
+<li><p>VPN route：接口板上配置了IPv4 VPN转发表项策略</p>
+</li>
+<li><p>Have configured no-route FIB policy：接口板不接收主控板下发的任何IPv4转发表项</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="20.693943539360777%" headers="d23972e75 "><p>public route</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.30605646063923%" headers="d23972e79 "><p>IPv4公网转发表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="20.693943539360777%" headers="d23972e75 "><p>vpn route:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.30605646063923%" headers="d23972e79 "><p>IPv4 VPN转发表项。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_fib-policy__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fib-policy__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d23972e152"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d23972e156"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d23972e152 "><p>VRPV500R005C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d23972e156 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/interface_board_intermixing_configuration_commands.html">接口板混插配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="apply_fib-policy.html">apply fib-policy</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

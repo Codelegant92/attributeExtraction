@@ -1,0 +1,97 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mac-address static vlanif">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mac_address_table_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-address.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mac-address_static_vlanif">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mac-address static vlanif</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mac-address_static_vlanif"></a><a name="mac-address_static_vlanif"></a>
+
+
+<h1 class="topictitle1">mac-address static vlanif</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mac-address static vlanif</strong>命令用来配置静态MAC地址表项。该表项中的出端口已经加入了VLANIF接口对应的VLAN中，并且VLANIF接口已经与VSI绑定。</p>
+<p><strong>undo mac-address</strong>命令用来删除MAC地址表项。</p>
+<p>缺省情况下，系统没有配置任何静态MAC地址表项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mac-address</strong> <strong>static</strong> <em>mac-address</em> <em>interface-type interface-number</em> <strong>vlanif</strong> <em>interface-number</em> <strong>vsi</strong> <em>vsi-name</em></p>
+<p><strong>undo mac-address</strong> <em>mac-address</em> <strong>vsi</strong> <em>vsi-name</em></p>
+<p><strong>undo</strong> <strong>mac-address</strong> { <strong>all</strong> | <strong>dynamic</strong> | <strong>static</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>static</strong>：静态表项，不被老化。当收到指定地址的帧后，直接通过出接口转发。配置并保存后，系统复位或接口板热插拔表项不丢失。</p>
+<p><em>mac-address</em>：单播MAC地址，格式为H-H-H。其中H为4位的十六进制数，可以输入1～4位，如00e0、fc01。当输入不足4位时，表示前面的几位为0，如：输入e0，等同于00e0。MAC地址不可设置为FFFF-FFFF-FFFF。</p>
+<p><em>interface-type interface-number</em>：接口类型及编号，可以是Ethernet接口、GE接口或Eth-Trunk接口。</p>
+<p><strong>vlanif</strong> <em>interface-number</em>：绑定了VSI的VLANIF接口的编号。</p>
+<p><strong>vsi</strong> <em>vsi-name</em>：指定的VSI实例的名称。字符串形式，不支持空格，区分大小写，取值范围是1～31。</p>
+<p><strong>dynamic</strong>：动态表项，可以被老化，系统复位或接口板热插拔后丢失。</p>
+<p><strong>all</strong>：所有表项。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>系统视图、Ethernet接口视图、GE接口视图、Eth-Trunk接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用命令<strong>mac-address</strong> <strong>vlanif</strong>时，命令中接口必须是二层端口，并且该端口已经加入了VLANIF接口对应的VLAN中。该VLANIF接口必须与命令中配置的VSI绑定。</p>
+<p>一个物理接口上关联的某个VSI可以绑定多个VLAN，而一个VLANIF接口绑定的某个VSI可以关联多个物理接口。因此，在为绑定了VLANIF接口的VSI配置MAC地址静态表项时，需要同时指定物理接口和VLANIF接口。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mac-address_static_vlanif__d91432e134"></a><a name="d91432e134"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 接口VLANIF10与名称为abc的VSI绑定，在该VSI添加一个MAC地址为0011-2233-4455的MAC地址表项。当收到目的MAC为0011-2233-4455且属于VLAN10的帧时，使用出端口GE1/0/0转发。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vsi abc static</strong></pre>
+<pre class="screen">[Quidway-vsi-abc]<strong> pwsignal ldp</strong></pre>
+<pre class="screen">[Quidway-vsi-abc-ldq]<strong> vsi-id 1</strong></pre>
+<pre class="screen">[Quidway-vsi-abc-ldq]<strong> quit</strong></pre>
+<pre class="screen">[Quidway-vsi-abc]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 10</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> port default vlan 10</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface vlanif 10</strong></pre>
+<pre class="screen">[Quidway-Vlanif10]<strong> l2 binding vsi abc</strong></pre>
+<pre class="screen">[Quidway-Vlanif10]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address static 0011-2233-4455 gigabitethernet 1/0/0 vlanif 10 vsi abc</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mac_address_table_configuration_commands.html">MAC地址表配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mac-address.html">display mac-address</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

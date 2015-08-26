@@ -1,0 +1,178 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display fr lmi-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frame_relay_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="fr_interface-type.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_fr_lmi-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display fr lmi-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_fr_lmi-info"></a><a name="display_fr_lmi-info"></a>
+
+
+<h1 class="topictitle1">display fr lmi-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display fr lmi-info</strong>命令用来显示LMI协议帧的统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display fr lmi-info</strong> [<strong> interface</strong> <em>interface-type</em> <em>interface-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口编号，只能是主接口，三维形式：槽号/卡号/接口号。不指定接口则显示指定接口类型的全部接口信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>LMI协议用于维护当前帧中继链路，协议报文包括状态请求报文和状态报文。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_fr_lmi-info__d25122e53"></a><a name="d25122e53"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看LMI协议帧的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display fr lmi-info</strong></pre>
+<pre class="screen">Frame relay LMI statistics for interface MFR6/0/0 (DTE, Q933)</pre>
+<pre class="screen">  T391DTE = 10 (hold timer 10)</pre>
+<pre class="screen">  N391DTE = 5, N392DTE = 3, N393DTE = 4</pre>
+<pre class="screen">  out status enquiry = 0, in status = 0</pre>
+<pre class="screen">  status timeout = 0, discarded messages = 0</pre>
+<pre class="screen">Frame relay LMI statistics for interface Serial6/0/0 (DCE, Q933)</pre>
+<pre class="screen">  T392DCE = 15, N392DCE = 3, N393DCE = 4</pre>
+<pre class="screen">  in status enquiry = 250, out status = 250</pre>
+<pre class="screen">  status enquiry timeout = 0, discarded messages = 15</pre>
+
+<div class="tablenoborder"><a name="display_fr_lmi-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fr_lmi-info__tb_01" frame="border" border="1" rules="all"><caption>表1 display fr lmi-info输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.71680524061477%" id="d25122e91"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.28319475938523%" id="d25122e95"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="45.71680524061477%" headers="d25122e91 "><p>T391DTE = 10 (hold timer 10)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.28319475938523%" headers="d25122e95 "><p>用户侧轮询定时器。它定义了DTE设备发送状态请求报文的间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.71680524061477%" headers="d25122e91 "><p>N391DTE = </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.28319475938523%" headers="d25122e95 "><p>发送全状态查询报文的轮询个数，即计数器值达到N391时，发送全状态查询报文。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.71680524061477%" headers="d25122e91 "><p>N392DTE = </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.28319475938523%" headers="d25122e95 "><p>错误门限。表示在被观察的事件总数中发生错误的门限。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.71680524061477%" headers="d25122e91 "><p>N393DTE =</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.28319475938523%" headers="d25122e95 "><p>事件计数器。表示被观察的事件总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.71680524061477%" headers="d25122e91 "><p>out status enquiry =  </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.28319475938523%" headers="d25122e95 "><p>发送状态查询消息数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.71680524061477%" headers="d25122e91 "><p>in status =</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.28319475938523%" headers="d25122e95 "><p>接收状态应答消息数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.71680524061477%" headers="d25122e91 "><p>status timeout =  </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.28319475938523%" headers="d25122e95 "><p>请求状态报文超时次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.71680524061477%" headers="d25122e91 "><p>discarded messages=</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.28319475938523%" headers="d25122e95 "><p>丢弃的消息数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.71680524061477%" headers="d25122e91 "><p>DCE, Q933</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.28319475938523%" headers="d25122e95 "><p>DCE端，Q933类型消息格式。LMI消息类型有ANSI、Q933等。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/frame_relay_configuration_commands.html">帧中继配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="fr_interface-type.html">fr interface-type</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

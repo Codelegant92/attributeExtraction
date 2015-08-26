@@ -1,0 +1,70 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="smart-link flush send">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="smart-link_flush_send">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>smart-link flush send</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="smart-link_flush_send"></a><a name="smart-link_flush_send"></a>
+
+
+<h1 class="topictitle1">smart-link flush send</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>smart-link flush send vlan</strong> 用来使能1:1主备模式下主备切换时活动接口Flush报文的发送。</p>
+<p><strong>undo smart-link flush send</strong>用来关闭1:1主备模式下主备切换时活动接口Flush报文的发送。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>smart-link flush send vlan</strong> <em>vlan-id</em></p>
+<p><strong>undo smart-link flush send</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vlan</strong> <em>vlan-id</em> ：发出SmartLink Flush报文的VLAN ID，取值范围是1～4094。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Eth-Trunk接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令配置的前提条件是需要该Eth-Trunk为1:1主备工作模式。如果需要更改当前Eth-Trunk工作模式，可以通过执行<a href="mode.html"><strong>mode</strong></a>命令修改。</p>
+<p>配置了此命令后，当主备接口切换时，会从新的主接口发送flush报文，来通知对端老化MAC地址，避免因为MAC地址不同步引起的数据传输中断。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="smart-link_flush_send__d118230e58"></a><a name="d118230e58"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在Eth-Trunk 1上允许发送Flush报文，报文中的VLAN ID为1000。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface eth-trunk 1</strong></pre>
+<pre class="screen">[Quidway-Eth-Trunk1] <strong>portswitch</strong></pre>
+<pre class="screen">[Quidway-Eth-Trunk1]<strong> smart-link flush send vlan 1000</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

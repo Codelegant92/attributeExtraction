@@ -1,0 +1,1278 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls l2vc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_l2vc.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_l2vpn_forwarding-info.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_l2vc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls l2vc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_l2vc"></a><a name="display_mpls_l2vc"></a>
+
+
+<h1 class="topictitle1">display mpls l2vc</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls l2vc</strong>命令用来查看<span class="keyword">VRP</span>上Martini方式的虚电路VC（Virtual Circuit）。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls l2vc</strong> [ <em>vc-id</em> | <strong>interface</strong> <em>interface-type interface-number</em> | <strong>remote-info</strong> [ <em>vc-id</em> ] | <strong>state</strong> { <strong>down</strong> | <strong>up</strong> } ]<span> [<strong> | count</strong> ]</span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface </strong><em>interface-type interface-number</em>：与CE相连的接口类型和接口编号。</p>
+<p><strong>remote-info</strong>：显示远端对等体上的VC信息。</p>
+<p><em>vc-id</em>：二层虚电路的ID。十进制整数形式，取值范围是1～4294967295。</p>
+<p><strong>state</strong>：对等体之间VC的状态信息。</p>
+<p><strong>down</strong>：状态为Down的VC信息。</p>
+<p><strong>up</strong>：状态为Up的VC信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display mpls l2vc</strong>命令后，如果指定接口，则只显示指定CE接口上Martini方式的VC。</p>
+<p>如果指定参数<strong>remote-info</strong>但不指定<em>vc-id</em>，则显示对等体上的，与本端共同建立的所有VC的信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_l2vc__d41849e146"></a><a name="d41849e146"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看<span class="keyword">路由器</span>上所有Martini方式的VC。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls l2vc</strong></pre>
+<pre class="screen">total LDP VC : 1     1 up       0 down</pre>
+<pre class="screen"> *client interface     : GigabitEthernent1/0/1</pre>
+<pre class="screen">  session state        : up</pre>
+<pre class="screen">  AC status            : up</pre>
+<pre class="screen">  VC state             : up</pre>
+<pre class="screen">  VC ID                : 100</pre>
+<pre class="screen">  VC type              : IP-interworking</pre>
+<pre class="screen">  destination          : 3.3.3.3</pre>
+<pre class="screen">  local VC label       : 21504        remote VC label      : 21504</pre>
+<pre class="screen">  control word         : enable</pre>
+<pre class="screen">  forwarding entry     : existent</pre>
+<pre class="screen">  local group ID       : 0</pre>
+<pre class="screen">  manual fault         : not set</pre>
+<pre class="screen">  active state         : active</pre>
+<pre class="screen">  link state           : up</pre>
+<pre class="screen">  local VC MTU         : 1500         remote VC MTU        : 1500</pre>
+<pre class="screen">  tunnel policy name   : --</pre>
+<pre class="screen">  traffic behavior name: --</pre>
+<pre class="screen">  PW template name     : 1to3</pre>
+<pre class="screen">  primary or secondary : primary</pre>
+<pre class="screen">  create time          : 1 days, 4 hours, 51 minutes, 22 seconds</pre>
+<pre class="screen">  up time              : 0 days, 0 hours, 33 minutes, 13 seconds</pre>
+<pre class="screen">  last change time     : 0 days, 0 hours, 33 minutes, 13 seconds  </pre>
+<pre class="screen">  VC last up time : 2008/07/24 12:31:31
+  VC total up time: 0 days, 2 hours, 12 minutes, 51 seconds
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vc__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vc__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls l2vc命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.08616780045352%" id="d41849e217"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.91383219954649%" id="d41849e221"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Total ldp vc</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>所有已建立的Martini方式的VC（以LDP为信令的VC）条数，包括状态为up的条数和状态为down的条数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Client Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>用户接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Session State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>VC两端设备的LDP会话建立的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>AC Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>接入线路（Attachment Circuit）的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>VC State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>VC的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>VC ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>VC的标志符，唯一标志了一条VC</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>VC Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>VC的封装类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>对端设备的LSR ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Local VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>本地VC标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Remote VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>远程VC的标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Control Word</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>是否使能控制字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>forwarding entry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>是否存在转发表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>local group ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>本端Group ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>manual fault</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>是否手工设置了PW故障。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>active state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>是否处于活跃状态（活跃状态表示可以转发）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>link state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>AC接口的链路状态：</p>
+<ul>
+<li><p>Up：该接口处于物理可用状态</p>
+</li>
+<li><p>Down：该接口处于不可用状态</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Local VC MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>本地VC接口的最大传输单元</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Remote VC MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>远程VC接口的最大传输单元</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Tunnel Policy Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>隧道策略的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Traffic Behavior Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>流量行为的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>PW Template Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>PW模板的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>primary or secondary</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>使用主用PW还是备用PW。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Create time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>该VC已经创建了多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>UP time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>该VC保持UP状态多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>Last change time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>该VC最后一次状态变化距现在多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>VC last up time :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>VC最近一次UP的时刻。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d41849e217 "><p>VC total up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d41849e221 "><p>VC累积UP的时间（除去中间DOWN的时间）。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看设备接口GE1/0/1.1上的Martini方式的VC状态。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls l2vc interface gigabitethernet 1/0/1.1</strong></pre>
+<pre class="screen">*client interface       : GigaibitEthernet1/0/1.1 is up</pre>
+<pre class="screen">  session state          : up</pre>
+<pre class="screen">  AC state               : up</pre>
+<pre class="screen">  VC state               : up</pre>
+<pre class="screen">  VC ID                  : 100</pre>
+<pre class="screen">  VC type                : VLAN</pre>
+<pre class="screen">  destination            : 192.3.3.3</pre>
+<pre class="screen">  local group ID         : 0            remote group ID      : 0</pre>
+<pre class="screen">  local VC label         : 21504        remote VC label      : 21504</pre>
+<pre class="screen">  local AC OAM State     : up</pre>
+<pre class="screen">  local PSN State        : up</pre>
+<pre class="screen">  local forwarding state : forwarding</pre>
+<pre class="screen">  remote AC OAM state    : up</pre>
+<pre class="screen">  remote PSN state       : up</pre>
+<pre class="screen">  remote forwarding state: forwarding</pre>
+<pre class="screen">  BFD for PW             : disable</pre>
+<pre class="screen">  manual fault           : not set</pre>
+<pre class="screen">  active state           : active</pre>
+<pre class="screen">  forwarding entry       : exist</pre>
+<pre class="screen">  link state             : up</pre>
+<pre class="screen">  local VC MTU           : 1500         remote VC MTU        : 1500</pre>
+<pre class="screen">  local VCCV             : Disable</pre>
+<pre class="screen">  remote VCCV            : Disable</pre>
+<pre class="screen">  local control word     : disable      remote control word  : disable</pre>
+<pre class="screen">  tunnel policy name     : --</pre>
+<pre class="screen">  traffic behavior name  : --</pre>
+<pre class="screen">  PW template name       : --</pre>
+<pre class="screen">  primary or secondary   : primary</pre>
+<pre class="screen">  VC tunnel/token info   : 1 tunnels/tokens</pre>
+<pre class="screen">    NO.0  TNL type : lsp   , TNL ID : 0x2002003</pre>
+<pre class="screen">  create time            : 0 days, 0 hours, 11 minutes, 34 seconds</pre>
+<pre class="screen">  up time                : 0 days, 0 hours, 9 minutes, 24 seconds</pre>
+<pre class="screen">  last change time       : 0 days, 0 hours, 9 minutes, 24 seconds</pre>
+<pre class="screen">VC last up time : 2008/07/24 12:31:31
+VC total up time: 0 days, 2 hours, 12 minutes, 51 seconds
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vc__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vc__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls l2vc interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="26.73217435122197%" id="d41849e625"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="73.26782564877804%" id="d41849e629"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Client interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>用户接口及其状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Session State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><div class="p">VC两端的LDP会话状态：<ul>
+<li><p>up表示VC两端LDP会话建立成功；</p>
+</li>
+<li><p>down表示VC两端的会话LDP建立不成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>AC Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>本PE与直连CE之间的链路状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>VC State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><div class="p">VC状态，up或down：<ul>
+<li><p>up表示PW建立成功；</p>
+</li>
+<li><p>down表示PW建立不成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>VC ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>虚电路号，十进制整数，缺省值为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>VC Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>L2VC的封装类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>对端设备的LSR ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Local Group ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>本端Group ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Remote Group ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>远端Group ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>local VC label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>本端VC标签值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>remote VC label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>远端VC标签值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>local AC OAM State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>本端AC的OAM状态。</p>
+<ul>
+<li><p>配置<a href="mpls_l2vpn_oam-mapping.html">mpls l2vpn oam-mapping</a>命令后，VC下的Local AC OAM State表示AC链路的链路状态。</p>
+</li>
+<li><p>如果不配置<a href="mpls_l2vpn_oam-mapping.html">mpls l2vpn oam-mapping</a>命令，那么Local AC OAM State的状态一直保持up，与链路状态没有关联关系。</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>local PSN State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>本端设备网络侧的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>local forwarding state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>本端转发表的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>remote AC OAM state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>远端AC的OAM状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>remote PSN state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>远端设备网络侧的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>remote forwarding state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>远端转发表的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>BFD for PW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>是否使能了BFD检测PW状态的功能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>manual fault</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>是否手工设置了PW故障。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>active state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>是否处于活跃状态（活跃状态表示可以转发）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>forwarding entry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>是否存在转发表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>link state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>AC接口的链路状态：</p>
+<ul>
+<li><p>Up：该接口处于物理可用状态</p>
+</li>
+<li><p>Down：该接口处于不可用状态</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Local VC MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>本端VC最大传输单元。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Remote VC MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>远端VC最大传输单元。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Local VCCV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><div class="p">是否使能本端VC连接检测功能。<ul>
+<li><p>disable表示本端没有使能VC连接检测功能；</p>
+</li>
+<li><p>enable表示本端使能了VC连接检测功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Remote VCCV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><div class="p">是否使能远端VC连接检测功能。<ul>
+<li><p>disable表示远端没有使能VC连接检测功能；</p>
+</li>
+<li><p>enable表示远端使能了VC连接检测功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>tunnel policy name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>应用于该VC的隧道策略名。&#8220;--&#8221;表示没有为该VC配置隧道策略。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>traffic behavior name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>应用于该VC的流量策略名。&#8220;--&#8221;表示没有为该VC配置流量策略。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>PW Template Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>模板名称。&#8220;--&#8221;表示没有为该PW配置PW模板。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>primary or secondary</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>使用主用PW还是备用PW。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>VC Tunnel/token info: 1 tunnels/tokens</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>VC Tunnel/token信息。&#8220;1 tunnels/tokens&#8221;表示该PW使用一个隧道/Token。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>TNL Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>该PW使用的隧道的类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>TNL ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>该PW使用的隧道ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Create Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>该VC已经创建了多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Up Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>该VC保持UP状态多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>Last Change Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>该VC最后一次状态变化距现在多长时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>VC last up time :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>VC最近一次UP的时刻。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e625 "><p>VC total up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e629 "><p>VC累积UP的时间（除去中间DOWN的时间）。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看从远端对等体接收的Martini方式的VC信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display mpls l2vc remote-info</strong></strong></pre>
+<pre class="screen">Total remote ldp vc : 1</pre>
+<pre class="screen">Transport  Group Peer            Remote       Remote     C   MTU/  N   S</pre>
+<pre class="screen">VC ID      ID    Addr            Encap        VC Label   Bit CELLS Bit Bit</pre>
+<pre class="screen">100        0     3.3.3.9         interworking 17408      0   1500  1   0</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vc__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vc__tb_03" frame="border" border="1" rules="all"><caption>表3 display mpls l2vc remote-info命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="26.73217435122197%" id="d41849e1152"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="73.26782564877804%" id="d41849e1156"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e1152 "><p>Total remote ldp vc</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e1156 "><p>所有已建立的远程标签LDP VC条数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e1152 "><p>Transport VC ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e1156 "><p>传输的VC ID，此ID唯一标志了一条VC</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e1152 "><p>Group ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e1156 "><p>L2VPN所属的组号，默认值为0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e1152 "><p>Peer Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e1156 "><p>远端对等体的地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e1152 "><p>Remote Encap</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e1156 "><p>远端的VC封装类型</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e1152 "><p>C Bit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e1156 "><div class="p">是否使能控制字（Control Word），<ul>
+<li><p>1：表示使能控制字</p>
+</li>
+<li><p>0：表示未使能控制字</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e1152 "><p>Mtu/CELLS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e1156 "><p>L2VPN的最大传输单元</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e1152 "><p>N Bit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e1156 "><div class="p">是否支持Notification报文。<ul>
+<li><p>1：表示支持</p>
+</li>
+<li><p>0：表示不支持</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d41849e1152 "><p>S Bit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d41849e1156 "><div class="p">状态码（Status Code）。<ul>
+<li><p>0：表示转发状态</p>
+</li>
+<li><p>1：表示非转发状态</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看对等体之间状态为up的VC信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls l2vc state up</strong></pre>
+<pre class="screen">Total LDP VC : 1     1 up       0 down</pre>
+<pre class="screen"> *client interface     : GigabitEthernet1/0/1.1</pre>
+<pre class="screen">  session state        : up</pre>
+<pre class="screen">  AC status            : up</pre>
+<pre class="screen">  VC state             : up</pre>
+<pre class="screen">  VC ID                : 100</pre>
+<pre class="screen">  VC type              : VLAN</pre>
+<pre class="screen">  destination          : 3.3.3.3</pre>
+<pre class="screen">  local VC label       : 21504        remote VC label      : 21504</pre>
+<pre class="screen">  control word         : enable</pre>
+<pre class="screen">  forwarding entry     : existent</pre>
+<pre class="screen">  local group ID       : 0</pre>
+<pre class="screen">  manual fault         : not set</pre>
+<pre class="screen">  active state         : active</pre>
+<pre class="screen">  link state           : up</pre>
+<pre class="screen">  local VC MTU         : 1500         remote VC MTU        : 1500</pre>
+<pre class="screen">  tunnel policy name   : --</pre>
+<pre class="screen">  traffic behavior name: --</pre>
+<pre class="screen">  PW template name     : 1to3</pre>
+<pre class="screen">  primary or secondary : primary</pre>
+<pre class="screen">  create time          : 1 days, 5 hours, 7 minutes, 12 seconds</pre>
+<pre class="screen">  up time              : 0 days, 0 hours, 49 minutes, 3 seconds</pre>
+<pre class="screen">  last change time     : 0 days, 0 hours, 49 minutes, 3 seconds</pre>
+<pre class="screen">VC last up time : 2008/07/24 12:31:31
+VC total up time: 0 days, 2 hours, 12 minutes, 51 seconds
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vc__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vc__tb_04" frame="border" border="1" rules="all"><caption>表4 display mpls l2vc state up命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.80599647266314%" id="d41849e1362"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.19400352733686%" id="d41849e1366"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Total LDP VC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>所有已建立的Martini方式的VC（以LDP为信令的VC）条数，包括状态为up的条数和状态为down的条数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Client Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>用户接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Session State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>VC两端设备的LDP会话建立的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>AC Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>接入线路（Attachment Circuit）的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>VC State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>VC的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>VC ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>VC的标志符，唯一标志了一条VC</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>VC Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>VC的封装类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>对端设备的LSR ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Local VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>本地VC标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Remote VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>远程VC的标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Control Word</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>是否使能控制字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>forwarding entry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>是否存在转发表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>local group ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>本端Group ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>manual fault</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>是否手工设置了PW故障。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>active state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>是否处于活跃状态（活跃状态表示可以转发）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>link state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>AC接口的链路状态：</p>
+<ul>
+<li><p>Up：该接口处于物理可用状态</p>
+</li>
+<li><p>Down：该接口处于不可用状态</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Local VC MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>本地VC接口的最大传输单元</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Remote VC MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>远程VC接口的最大传输单元</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Tunnel Policy Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>隧道策略的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Traffic Behavior Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>流量行为的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>PW Template Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>PW模板的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>primary or secondary</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>使用主用PW还是备用PW。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Create time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>该VC已经创建了多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>UP time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>该VC保持UP状态多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>Last change time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>该VC最后一次状态变化距现在多长时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>VC last up time :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>VC最近一次UP的时刻。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.80599647266314%" headers="d41849e1362 "><p>VC total up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.19400352733686%" headers="d41849e1366 "><p>VC累积UP的时间（除去中间DOWN的时间）。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_l2vc__tb_05"></a><a name="tb_05"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vc__tb_05" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.0047871000252%" id="d41849e1695"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.99521289997481%" id="d41849e1699"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d41849e1695 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d41849e1699 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d41849e1695 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d41849e1699 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_l2vc.html">mpls l2vc</a></div>
+<div><a href="display_mpls_l2vpn_forwarding-info.html">display mpls l2vpn forwarding-info</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

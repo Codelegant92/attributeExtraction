@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ip ip-prefix">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_policyconfiguration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="route-policy-change_notify-delay.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ip_ip-prefix">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ip ip-prefix</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ip_ip-prefix"></a><a name="ip_ip-prefix"></a>
+
+
+<h1 class="topictitle1">ip ip-prefix</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ip ip-prefix</strong>命令用来配置地址前缀列表或其中一项。</p>
+<p><strong>undo ip ip-prefix</strong>命令用来删除地址前缀列表或其中一项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ip ip-prefix</strong> <em>ip-prefix-name</em> [ <strong>index</strong> <em>index-number</em> ] {<strong> permit </strong>|<strong> deny </strong>} <em>ipv4-address mask-length</em> [ <strong>greater-equal</strong> <em>greater-equal-value</em> ] [ <strong>less-equal</strong> <em>less-equal-value</em> ] </p>
+<p><strong>undo ip ip-prefix</strong> <em>ip-prefix-name</em> [ <strong>index</strong> <em>index-number</em> ] </p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-prefix-name</em>：指定地址前缀列表的名称。该名称必须唯一。字符串形式，不支持空格，取值范围是1～169。</p>
+<p><em>index-number</em>：指定本匹配项在地址前缀列表中的序号。缺省情况下，该序号值按照配置先后顺序依次递增，每次加10，第一个序号值为10。</p>
+<p><strong>permit</strong>：指定地址前缀列表的匹配模式为允许。在该模式下，如果过滤的IP地址在定义的范围内，则通过过滤，进行相应的设置；否则，必须进行下一节点的测试。</p>
+<p><strong>deny</strong>：指定地址前缀列表的匹配模式为拒绝。在该模式下，如果过滤的IP地址在定义的范围内，该IP地址不能通过过滤从而不能进入下一节点的测试；否则，将进行下一节点的测试。</p>
+<p><em>ipv4-address</em>：指定IP地址。</p>
+<p><em>mask-length</em>：掩码长度。</p>
+<p><strong>greater-equal</strong> <em>greater-equal-value </em>| <strong>less-equal</strong> <em>less-equal-value</em>：如果IP地址和掩码长度都已匹配，则使用该参数来指定地址前缀范围。<strong>greater-equal</strong>的意思是&#8220;大于等于&#8221;；<strong>less-equal</strong>的意思是&#8220;小于等于&#8221;。长度范围可以表达为<em>mask-length</em> &lt;= <em>greater-equal-value</em> &lt;=<em> less-equal-value </em>&lt;= 32。如果只指定了<strong>greater-equal</strong>，前缀范围为[<em>greater-equal-value</em>，32]；如果只指定了<strong>less-equal</strong>，前缀范围为[<em>mask-length</em>，<em>less-equal-value</em>]。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>地址前缀列表用于IP地址过滤。同一个地址前缀列表可包含多个表项，一个表项指定一个地址前缀范围。此时，多个表项之间是&#8220;或&#8221;的关系，即通过一个表项就可通过该地址前缀列表的过滤。没有通过任何一个表项的过滤就意味着没有通过该地址前缀列表的过滤。</p>
+<p>地址前缀范围包括两个部分，分别由<em>mask-length</em>和[<em>greater-equal-value</em>，<em>less-equal-value</em>]决定。如果指定了这两部分，要被过滤的IP地址必须匹配这两部分规定的前缀范围。</p>
+<p>如果指定<em>ipv4-address mask-length</em>为0.0.0.0 0，只匹配缺省路由。</p>
+<p>如果指定的地址前缀范围为0.0.0.0 0 less-equal 32，则匹配所有路由。</p>
+<p>配置了地址前缀列表后，缺省情况下，RM会立即通知各个协议应用该列表进行过滤。如果需要延迟列表的生效时间，需使用命令<a href="route-policy-change_notify-delay.html">route-policy-change notify-delay</a>配置延迟生效时间。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ip_ip-prefix__d83818e173"></a><a name="d83818e173"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置名为p1的地址前缀列表，只允许10.0.192.0/8网段内，掩码长度在17到18之间的路由通过。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>ip ip-prefix p1 permit 10.0.192.0 8 greater-equal 17 less-equal 18</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_policyconfiguration_commands.html">路由策略配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="route-policy-change_notify-delay.html">route-policy-change notify-delay</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

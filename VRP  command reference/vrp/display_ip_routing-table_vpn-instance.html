@@ -1,0 +1,702 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ip routing-table vpn-instance">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ip_routing-table_vpn-instance">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ip routing-table vpn-instance</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ip_routing-table_vpn-instance"></a><a name="display_ip_routing-table_vpn-instance"></a>
+
+
+<h1 class="topictitle1">display ip routing-table vpn-instance</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ip routing-table vpn-instance</strong>命令用来查看IPv4 VPN实例路由表的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ip routing-table vpn-instance</strong> <em>vpn-instance-name</em> [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ip routing-table vpn-instance</strong> <em>vpn-instance-name</em> <strong>acl</strong> <em>acl-number</em> [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ip routing-table</strong> <strong>vpn-instance</strong> <em>vpn-instance-name</em> <em>ip-address</em> [ <em>mask</em> | <em>mask-length</em> ] [ <strong>longer-match</strong> ] [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ip routing-table</strong> <strong>vpn-instance</strong> <em>vpn-instance-name ip-address1</em> { <em>mask1</em> | <em>mask-length1</em> } <em>ip-address2</em> { <em>mask2</em> | <em>mask-length2</em> } [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ip routing-table vpn-instance</strong> <em>vpn-instance-name</em> <strong>ip-prefix</strong> <em>ip-prefix-name</em> [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ip routing-table vpn-instance</strong> <em>vpn-instance-name</em> <strong>protocol</strong> <em>protocol</em> [ <strong>inactive</strong> | <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ip routing-table vpn-instance</strong> <em>vpn-instance-name</em> <strong>statistics</strong><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vpn-instance-name</em>：VPN实例的名称。</p>
+<p><strong>verbose</strong>：显示激活和未激活路由的详细信息。不指定该参数，则只显示激活路由的概要信息。</p>
+<p><strong>acl</strong>：使用ACL对输出的信息进行过滤。如果指定的ACL不存在，将显示所有激活路由的信息。</p>
+<p><em>acl-number</em>：基本访问控制列表ACL号。</p>
+<p><em>ip-address</em>：目的IP地址，点分十进制格式。</p>
+<p><strong>longer-match</strong>：仅显示与特定网络/掩码匹配的路由。</p>
+<p><em>mask</em>：掩码，点分十进制格式。</p>
+<p><em>mask-length</em>：掩码长度。整数形式，取值范围是0～32。</p>
+<p><em>ip-address1/ip-address2</em>：目的IP地址，点分十进制格式。<em>ip-address1</em>和<em>ip-address2</em>共同决定一个地址范围，从而显示在此范围内的路由信息。</p>
+<p><em>mask1</em> | <em>mask-length1</em>：目的地址<em>ip-address1</em>的掩码/掩码长度。</p>
+<p><em>mask2</em> | <em>mask-length2</em>：目的地址<em>ip-address2</em>的掩码/掩码长度。</p>
+<p><strong>ip-prefix</strong> <em>ip-prefix-name</em>：指定前缀列表名称。</p>
+<p><strong>protocol</strong> <em>protocol</em>：指定显示路由信息的协议。该参数可为下列关键字：</p>
+<ul>
+<li><p><strong>direct</strong>：显示直连路由信息。</p>
+</li>
+<li><p><strong>static</strong>：显示静态路由信息。</p>
+</li>
+<li><p><strong>bgp</strong>：显示BGP路由信息。</p>
+</li>
+<li><p><strong>isis</strong>：显示IS-IS路由信息。</p>
+</li>
+<li><p><strong>ospf</strong>：显示OSPF路由信息。</p>
+</li>
+<li><p><strong>rip</strong>：显示RIP路由信息。</p>
+</li>
+
+</ul>
+<p><strong>inactive</strong>：只显示未激活路由的概要信息。</p>
+<p><strong>verbose</strong>：显示激活和未激活路由的详细信息。</p>
+<p><strong>statistics</strong>：显示路由统计信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>显示信息中，每一行代表一条路由。内容包括目的地址、掩码长度、协议、优先级、路由开销值、路由标记、下一跳和输出接口。</p>
+<p>该命令（不含<strong>verbose</strong>参数）只显示当前被优选的路由。</p>
+<p>对于该命令，按照后面选择参数的不同匹配的方式也不同。</p>
+<ul>
+<li><p>对于<strong>display ip routing-table</strong> <strong>vpn-instance</strong> <em>vpn-instance-name</em> <em>ip-address</em>，显示与目的地址最长匹配的路由表项。</p>
+</li>
+<li><p>对于<strong>display ip routing-table</strong> <strong>vpn-instance</strong> <em>vpn-instance-name</em> <em>ip-address mask</em>，显示与目的地址和掩码精确匹配的路由表项。</p>
+</li>
+<li><p>对于<strong>display ip routing-table</strong> <strong>vpn-instance</strong> <em>vpn-instance-name</em> <em>ip-address</em> <strong>longer-match</strong>，显示与目的地址和自然掩码指定的IP地址匹配的所有路由表项。</p>
+</li>
+<li><p>对于<strong>display ip routing-table</strong> <strong>vpn-instance</strong> <em>vpn-instance-name</em> <em>ip-address mask</em> <strong>longer-match</strong>，显示与目的地址和输入掩码指定的IP地址匹配的所有路由表项。</p>
+</li>
+<li><p>对于<strong>display ip routing-table</strong> <strong>vpn-instance</strong> <em>vpn-instance-name</em> <em>ip-address1</em> <em>mask1</em> <em>ip-address2</em> <em>mask2</em>，该命令用来查看目的地址在输入的<em>ip-address1</em> <em>mask1</em>到<em>ip-address2</em> <em>mask2</em>范围内的路由表项。</p>
+</li>
+</ul>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ip_routing-table_vpn-instance__d32259e586"></a><a name="d32259e586"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看当前名为vpn1的IPv4 VPN实例的路由表的概要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip routing-table vpn-instance vpn1</strong>
+Route Flags: R - relay, D - download to fib
+------------------------------------------------------------------------------
+Routing Tables: vpn1
+         Destinations : 3        Routes : 3
+
+Destination/Mask    Proto  Pre  Cost     Flags NextHop         Interface
+
+        1.1.1.0/24  Direct 0    0           D  1.1.1.1         Ethernet2/0/0
+        1.1.1.1/32  Direct 0    0           D  127.0.0.1       InLoopBack0
+        5.5.5.0/24  Static 60   0          RD  1.1.1.2         Ethernet2/0/0</pre>
+
+<div class="tablenoborder"><a name="display_ip_routing-table_vpn-instance__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_routing-table_vpn-instance__tb_01" frame="border" border="1" rules="all"><caption>表1 display ip routing-table vpn-instance命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.20508944318468%" id="d32259e607"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.79491055681531%" id="d32259e611"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e607 "><p>Route Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e611 "><div class="p">路由标记<ul>
+<li><p>R：表示该路由是迭代路由</p>
+</li>
+<li><p>D：表示该路由下发到FIB表</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e607 "><p>Routing Tables：vpn1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e611 "><p>此路由表是私网路由表。实例名称为vpn1</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e607 "><p>Destinations</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e611 "><p>目的网络/主机的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e607 "><p>Routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e611 "><p>路由的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e607 "><p>Destination/Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e611 "><p>目的网络/主机的地址和掩码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e607 "><p>Proto</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e611 "><p>路由协议</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e607 "><p>Pre</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e611 "><p>优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e607 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e611 "><p>路由开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e607 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e611 "><p>路由标记，即路由表头的Route Flags</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e607 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e611 "><p>下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e607 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e611 "><p>下一跳可达的出接口</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看当前名为vpn1的IPv4 VPN实例的路由表的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip routing-table vpn-instance vpn1 verbose</strong>
+Route Flags: R - relay, D - download to fib
+------------------------------------------------------------------------------
+Routing Table : vpn1
+         Destinations : 3        Routes : 3
+
+
+Destination: 1.1.1.0/24
+     Protocol: Direct          Process ID: 0
+   Preference: 0                     Cost: 0
+      NextHop: 1.1.1.1          Neighbour: 0.0.0.0
+        State: Active Adv             Age: 00h18m29s
+          Tag: 0                 Priority: 0
+        Label: NULL               QoSInfo: 0x0
+ RelayNextHop: 0.0.0.0          Interface: Ethernet2/0/0
+     TunnelID: 0x0                  Flags:  D
+
+Destination: 1.1.1.1/32
+     Protocol: Direct          Process ID: 0
+   Preference: 0                     Cost: 0
+      NextHop: 127.0.0.1        Neighbour: 0.0.0.0
+        State: Active NoAdv           Age: 00h18m29s
+          Tag: 0                 Priority: 0
+        Label: NULL               QoSInfo: 0x0
+ RelayNextHop: 0.0.0.0          Interface: InLoopBack0
+     TunnelID: 0x0                  Flags:  D
+
+Destination: 5.5.5.0/24
+     Protocol: Static          Process ID: 0
+   Preference: 60                    Cost: 0
+      NextHop: 1.1.1.2          Neighbour: 0.0.0.0
+        State: Active Adv GotQ        Age: 00h18m30s
+          Tag: 0                 Priority: 0
+        Label: NULL               QoSInfo: 0x0
+ RelayNextHop: 0.0.0.0          Interface: Ethernet2/0/0
+     TunnelID: 0x0                  Flags:  D</pre>
+<p># 查看当前名为vpna的IPv4 VPN实例中地址为34.34.34.3的路由表的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ip routing-table vpn-instance vpna 34.34.34.3 verbose</strong>
+Routing Table : vpna
+Summary Count : 1
+ Route of Packet Load-balance:  NextHop: 0.0.0.0	 Interface: InLoopBack0
+
+Destination: 34.34.34.3/32
+     Protocol: Direct          Process ID: 0
+   Preference: 0                     Cost: 0
+      NextHop: 127.0.0.1        Neighbour: 0.0.0.0
+        State: Active NoAdv           Age: 18d08h24m42s
+          Tag: 0                 Priority: 0
+        Label: NULL               QoSInfo: 0x0
+ RelayNextHop: 0.0.0.0          Interface: InLoopBack0
+     TunnelID: 0x0                  Flags:  D    
+</pre>
+
+<div class="tablenoborder"><a name="display_ip_routing-table_vpn-instance__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_routing-table_vpn-instance__tb_02" frame="border" border="1" rules="all"><caption>表2 display ip routing-table vpn-instance verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.20508944318468%" id="d32259e779"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.79491055681531%" id="d32259e783"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>Route Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><div class="p">路由标记<ul>
+<li><p>R：表示该路由是迭代路由</p>
+</li>
+<li><p>D：表示该路由下发到FIB表</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>路由协议</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>ProcessID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>路由协议的进程号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>Preference</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>路由协议优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>Neighbor</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>邻居接口的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><div class="p">路由的状态<ul>
+<li><p>Active：激活路由</p>
+</li>
+<li><p>Invalid：无效路由</p>
+</li>
+<li><p>Inactive：非激活路由</p>
+</li>
+<li><p>NoAdv：不允许发布的路由</p>
+</li>
+<li><p>Adv：可以发布的路由</p>
+</li>
+<li><p>Del：即将被删除的路由</p>
+</li>
+<li><p>GotQ：迭代成功的路由</p>
+</li>
+<li><p>WaitQ：尚未迭代成功的路由</p>
+</li>
+
+<li><p>Stale.：带Stale标记的路由，在GR中使用</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>Age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>路由生成时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>Tag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>路由引入标识</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>MPLS分配的标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>QoSInfo</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>QoS信息</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>RelayNextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>迭代的下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>隧道ID，值为0x0表示没有使用隧道或隧道建立不成功</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>路由标记，即路由表头的Route Flags</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e779 "><p>Route of Packet Load-balance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e783 "><p>显示逐包软转发查询时所使用的路由的信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看通过ACL2000过滤的激活路由的概要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip routing-table vpn-instance vpn1 acl 2000</strong>
+Route Flags: R - relay, D - download to fib
+------------------------------------------------------------------------------
+Routes Matched by Access list 2000:
+        Destinations : 1           Routes : 1</pre>
+<pre class="screen">
+Destination/Mask    Proto    Pre  Cost     Flags NextHop         Interface
+
+        1.1.1.1/32    Direct 0     0          D     127.0.0.1       InLoopBack0</pre>
+<p># 查看通过ip-prefix过滤的路由的概要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip routing-table vpn-instance vpn1 ip-prefix 1</strong>
+Route Flags: R - relay, D - download to fib
+------------------------------------------------------------------------------</pre>
+<pre class="screen">Routes Matched by Prefix-list 1:
+         Destinations : 2           Routes : 2
+
+Destination/Mask    Proto  Pre  Cost     Flags NextHop         Interface
+
+        1.1.1.0/24  Direct 0    0           D  1.1.1.1         Ethernet6/2/0</pre>
+<pre class="screen">        1.1.1.1/32  Direct 0    0           D  127.0.0.1       InLoopBack0</pre>
+<p># 查看当前名为vpn1的IPv4 VPN实例的路由表的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip routing-table vpn-instance vpn1 statistics</strong></pre>
+<pre class="screen">Summary prefixes: 3</pre>
+
+<pre class="screen">Proto     total      active      added        deleted      freed
+          routes     routes      routes       routes       routes
+DIRECT    2          2           2            0            0
+STATIC    1          1           1            0            0
+RIP       0          0           0            0            0
+OSPF      0          0           0            0            0
+IS-IS     0          0           0            0            0
+BGP       0          0           0            0            0
+Total     3          3           3            0            0</pre>
+
+
+<div class="tablenoborder"><a name="display_ip_routing-table_vpn-instance__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_routing-table_vpn-instance__tb_03" frame="border" border="1" rules="all"><caption>表3 display ip routing-table vpn-instance statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.01788863693626%" id="d32259e1051"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.98211136306375%" id="d32259e1055"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32259e1051 "><p>Summary prefixes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32259e1055 "><p>当前路由表中路由前缀总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32259e1051 "><p>Proto</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32259e1055 "><p>路由协议</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32259e1051 "><p>total routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32259e1055 "><p>当前路由表中的路由总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32259e1051 "><p>active routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32259e1055 "><p>路由表中激活路由的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32259e1051 "><p>added routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32259e1055 "><p>路由表中增加的路由数目（激活和未激活）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32259e1051 "><p>deleted routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32259e1055 "><p>路由表中删除的路由数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32259e1051 "><p>freed routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32259e1055 "><p>路由表中释放（永久删除）的路由数目</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看当前名为vnp1的所有直连路由的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip routing-table vpn-instance vpn1 protocol direct</strong>
+Route Flags: R - relay, D - download to fib
+------------------------------------------------------------------------------
+vpn4 routing table : Direct
+         Destinations : 2           Routes : 2
+
+Direct routing table status : &lt;Active&gt;
+         Destinations : 2           Routes : 2
+
+Destination/Mask    Proto  Pre  Cost     Flags NextHop         Interface
+
+        1.1.1.0/24  Direct 0    0           D  1.1.1.1         Ethernet1/0/0
+        1.1.1.1/32  Direct 0    0           D  127.0.0.1       InLoopBack0
+
+Direct routing table status : &lt;Inactive&gt;
+         Destinations : 0           Routes : 0</pre>
+
+<div class="tablenoborder"><a name="display_ip_routing-table_vpn-instance__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_routing-table_vpn-instance__tb_04" frame="border" border="1" rules="all"><caption>表4 display ip routing-table vpn-instance protocol命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.20508944318468%" id="d32259e1162"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.79491055681531%" id="d32259e1166"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e1162 "><p>Active</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e1166 "><p>显示激活状态的路由信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d32259e1162 "><p>Inactive</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d32259e1166 "><p>显示未激活状态的路由信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ip_routing-table_vpn-instance__tb_03_1"></a><a name="tb_03_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_routing-table_vpn-instance__tb_03_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d32259e1210"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d32259e1214"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d32259e1210 "><p>VRPV500R003C07B300</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d32259e1214 "><p>使用<strong>verbose</strong>参数时，显示信息中增加了R标志和D标志。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d32259e1210 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d32259e1214 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_basic_configuration_commands.html">IP路由表显示命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,208 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display l2vpn ccc-interface vc-type">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_vpls_connection.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_l2vpn_ccc-interface_vc-type">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display l2vpn ccc-interface vc-type</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_l2vpn_ccc-interface_vc-type"></a><a name="display_l2vpn_ccc-interface_vc-type"></a>
+
+
+<h1 class="topictitle1">display l2vpn ccc-interface vc-type</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display l2vpn ccc-interface vc-type</strong>命令用来查看L2VPN连接使用的接口的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display l2vpn ccc-interface vc-type</strong> { <strong>all</strong> | <em>vc-type</em> } [ <strong>down</strong> | <strong>up </strong>]<span> [<strong> | count</strong> ] </span><span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：显示所有L2VPN连接的接口信息。</p>
+<p><em>vc-type</em>：L2VPN连接的类型，此参数为<strong>bgp-vc</strong>、<strong>ccc</strong>、<strong>ldp-vc</strong>、<strong>rsvp-vc</strong>或<strong>static-vc</strong>。VPLS连接中此参数为<strong>vpls-vc</strong>。</p>
+<p><strong>down</strong>：显示处于Down状态的L2VPN连接的接口信息。</p>
+<p><strong>up</strong>：显示处于Up状态的L2VPN连接的接口信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在定位各种L2VPN的故障时，可以使用<strong>display l2vpn ccc-interface vc-type</strong>命令查看该连接使用的AC接口的信息，包括使用于各类L2VPN连接的AC接口总数，各接口的状态、封装类型及其对应的L2VPN连接类型。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_l2vpn_ccc-interface_vc-type__d38028e131"></a><a name="d38028e131"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有L2VPN的接口信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display l2vpn ccc-interface vc-type all</strong></pre>
+<pre class="screen">Total ccc-interface of VPLS VC: 1</pre>
+<pre class="screen">up (1), down (0)</pre>
+<pre class="screen">Interface                  Encap Type                   State    VC Type</pre>
+<pre class="screen">GegabitEthernet1/0/1.1     ethernet sub interface       up       vpls-vc     </pre>
+
+<div class="tablenoborder"><a name="display_l2vpn_ccc-interface_vc-type__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_l2vpn_ccc-interface_vc-type__tb_01" frame="border" border="1" rules="all"><caption>表1 display l2vpn ccc-interface vc-type命令的输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="40.199042579994966%" id="d38028e159"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="59.80095742000504%" id="d38028e163"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="40.199042579994966%" headers="d38028e159 "><p>Total ccc-interface of vpls VC:1up (1), down (0)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.80095742000504%" headers="d38028e163 "><p>表示L2VPN连接的总数为1。其中有一个L2VPN状态为up；有0个L2VPN连接状态为down。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.199042579994966%" headers="d38028e159 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.80095742000504%" headers="d38028e163 "><p>该L2VPN连接在本设备上关联的接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.199042579994966%" headers="d38028e159 "><p>Encap Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.80095742000504%" headers="d38028e163 "><p>该L2VPN连接的封装类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.199042579994966%" headers="d38028e159 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.80095742000504%" headers="d38028e163 "><p>该L2VPNl连接的当前状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.199042579994966%" headers="d38028e159 "><p>VC Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.80095742000504%" headers="d38028e163 "><p>该L2VPN连接的类型。</p>
+<ul>
+<li><p>CCC：交叉电路连接</p>
+</li>
+<li><p>ldp-vc：Martini方式的L2VPN连接</p>
+</li>
+<li><p>static-vc：SVC方式的L2VPN连接</p>
+</li>
+<li><p>bgp-vc：Kompella方式的L2VPN连接</p>
+</li>
+<li><p>vpls-vc：VPLS连接</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看所有vpls-vc类型的L2VPN的接口信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display l2vpn ccc-interface vc-type vpls-vc</strong></strong></pre>
+<pre class="screen">Total ccc-interface of VPLS VC: 1</pre>
+<pre class="screen">up (1), down (0)</pre>
+<pre class="screen">Interface                    Encap Type                    State   VC Type</pre>
+<pre class="screen">GigabitEthernet1/0/1.1    ethernet sub interface      up      vpls-vc</pre>
+<p>以上显示结果请参见上表。</p>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_l2vpn_ccc-interface_vc-type__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_l2vpn_ccc-interface_vc-type__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.0047871000252%" id="d38028e280"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.99521289997481%" id="d38028e284"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d38028e280 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d38028e284 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d38028e280 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d38028e284 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_vpls_connection.html">display vpls connection</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

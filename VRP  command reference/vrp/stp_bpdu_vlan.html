@@ -1,0 +1,72 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="stp bpdu vlan">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bpdu_tunnel_commands.html">
+<meta name="DC.Relation" scheme="URI" content="bpdu-tunnel_stp_vlan.html">
+<meta name="DC.Relation" scheme="URI" content="bpdu-tunnel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="stp_bpdu_vlan">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>stp bpdu vlan</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="stp_bpdu_vlan"></a><a name="stp_bpdu_vlan"></a>
+
+<h1 class="topictitle1">stp bpdu vlan</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>stp</strong> <strong>bpdu</strong> <strong>vlan</strong>命令用来使能接口发出的BPDU报文携带指定的VLAN ID值。</p>
+<p><strong>undo</strong> <strong>stp</strong> <strong>bpdu</strong> <strong>vlan</strong>命令用来取消接口发出的BPDU报文携带指定的VLAN ID值。</p>
+<p>缺省情况，接口发出的BPDU报文不携带VLAN ID值。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>stp</strong> <strong>bpdu</strong> <strong>vlan</strong> <em>vlan-id</em></p>
+<p><strong>undo</strong> <strong>stp</strong> <strong>bpdu</strong> <strong>vlan</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vlan-id</em>：指定接口发出的BPDU报文携带的VLAN ID值，取值范围是1～4094。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>Ethernet接口视图、GE接口视图、Eth-Trunk接口视图<span>、VE接口视图</span></p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>stp</strong> <strong>bpdu</strong> <strong>vlan</strong>命令只能在二层接口上使用，并且该接口已经通过Trunk方式加入VLAN。</p>
+<p>当有多个用户网络接入同一个PE的接口时，为了区分不同用户网络的BPDU报文，就需要使CE接口上送PE的BPDU报文携带指定的VLAN ID值，并且CE接口收到的BPDU报文也要携带指定的VLAN ID值。</p>
+<p>在CE的接口上通过<strong>stp</strong> <strong>bpdu</strong> <strong>vlan</strong> <em>vlan-id</em>命令配置CE接口上送PE的BPDU报文携带指定的VLAN ID值，在连接CE的PE接口通过<a href="bpdu-tunnel_stp_vlan.html">bpdu-tunnel stp vlan</a>命令使带有指定VLAN ID的BPDU报文穿越运营商网络。</p>
+<p>在配置CE接口上送PE的BPDU报文携带指定的VLAN ID值前，需要保证该接口已经加入指定的VLAN中。</p>
+<p>一般情况下，<strong>stp</strong> <strong>bpdu</strong> <strong>vlan</strong>命令配置在CE设备的网络侧接口上。</p>
+<p>不能把<strong>stp bpdu vlan</strong>和<strong>bpdu-tunnel</strong>命令同时配置在同一个接口下，否则会提示配置冲突。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="stp_bpdu_vlan__d121468e124"></a><a name="d121468e124"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置接口GE1/0/0发出的BPDU报文带指定的VLAN ID值为100。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> portswitch</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> port trunk allow-pass vlan 100</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> stp bpdu vlan 100</strong></pre>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>当接口为二层接口时，<strong>portswitch</strong>命令不可用，此时就不需要进行转换。</p>
+</div></div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bpdu_tunnel_commands.html">BPDU Tunnel配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="bpdu-tunnel_stp_vlan.html">bpdu-tunnel stp vlan</a></div>
+<div><a href="bpdu-tunnel.html">bpdu-tunnel</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

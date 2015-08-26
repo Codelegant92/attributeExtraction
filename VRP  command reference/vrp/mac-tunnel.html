@@ -1,0 +1,100 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mac-tunnel">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-tunnel_tunnel-name_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="mac-tunnel_si_view.html">
+<meta name="DC.Relation" scheme="URI" content="protection_mac-tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="shutdown_mac_tunnel_view.html">
+<meta name="DC.Relation" scheme="URI" content="split-horizon_enable.html">
+<meta name="DC.Relation" scheme="URI" content="virtual-mac.html">
+<meta name="DC.Relation" scheme="URI" content="vlan_mac_tunnel_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mac-tunnel">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mac-tunnel</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mac-tunnel"></a><a name="mac-tunnel"></a>
+
+
+<h1 class="topictitle1">mac-tunnel</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mac-tunnel</strong>命令用来创建MAC Tunnel。如果隧道已存在，则直接进入MAC Tunnel视图。</p>
+<p><strong>undo mac-tunnel</strong>命令用来删除指定的MAC Tunnel。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mac-tunnel tunnel-name </strong><em>tunnel-name</em></p>
+<p><strong>undo mac-tunnel</strong> <strong>tunnel-name</strong><em> tunnel-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>tunnel-name</strong><em> tunnel-name</em>：指定MAC Tunnel的名称。长度范围是1～31个字符，首位不能是空格，名称中间不能有空格、&#8220;?&#8221;和&#8220;-&#8221;。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>MAC Tunnel由骨干VLAN和MAC Tunne对端设备的虚拟MAC地址唯一标识。因此MAC Tunnel是有方向的，即由本端到对端是一条单向的MAC Tunnel。</p>
+<p><span class="keyword">VRP</span>设备上的MAC Tunnel只支持双向隧道。双向MAC Tunnel的两端设备互以对端设备的虚拟MAC地址为目标地址，使用相同的骨干VLAN。</p>
+<p>创建MAC Tunnel要求两个前提条件：</p>
+<ul>
+<li>设备上已经创建虚拟MAC地址（使用命令<strong>virtual-mac</strong>创建）</li>
+<li>已创建的MAC Tunnel数量没有达到最大值</li>
+</ul>
+<p>创建MAC Tunnel后，系统会自动将隧道的状态设置为Down，并且启动隧道的水平分割功能。因此完成配置MAC Tunnel的属性后，还需执行命令undo shutdown来激活MAC Tunnel。</p>
+<p>如果要删除一个MAC Tunnel，需要满足如下前提条件：</p>
+<ul>
+<li>该MAC Tunnel已经存在</li>
+<li>该MAC Tunnel没有被业务实例绑定</li>
+<li>该MAC Tunnel没有加入保护组</li>
+</ul>
+<p><span class="keyword">VRP</span>每块单板最多可配置4K个MAC Tunnel，整机最多可配置8K个MAC Tunnel。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mac-tunnel__d91731e91"></a><a name="d91731e91"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建名为mytunnel的MAC Tunnel，并使能该隧道。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>virtual-mac 0001-0001-0001</strong></pre>
+<pre class="screen">[Quidway] <strong>mac-tunnel tunnel-name mytunnel</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mac-tunnel.html">display mac-tunnel</a></div>
+<div><a href="display_mac-tunnel_tunnel-name_statistics.html">display mac-tunnel tunnel-name statistics</a></div>
+<div><a href="mac-tunnel_si_view.html">mac-tunnel（业务实例视图）</a></div>
+<div><a href="protection_mac-tunnel.html">protection mac-tunnel</a></div>
+<div><a href="shutdown_mac_tunnel_view.html">shutdown（MAC Tunnel视图）</a></div>
+<div><a href="split-horizon_enable.html">split-horizon enable</a></div>
+<div><a href="virtual-mac.html">virtual-mac</a></div>
+<div><a href="vlan_mac_tunnel_view.html">vlan（MAC Tunnel视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

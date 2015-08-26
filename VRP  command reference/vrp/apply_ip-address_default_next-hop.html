@@ -1,0 +1,73 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="apply ip-address default next-hop">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_unicast_pbr_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="policy-based-route.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="apply_ip-address_default_next-hop">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>apply ip-address default next-hop</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="apply_ip-address_default_next-hop"></a><a name="apply_ip-address_default_next-hop"></a>
+
+
+<h1 class="topictitle1">apply ip-address default next-hop</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>apply ip-address default next-hop</strong>命令用来设置报文的缺省下一跳。</p>
+<p><strong>undo apply ip-address default next-hop</strong>命令用来取消已设置的报文缺省下一跳。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>apply ip-address default next-hop </strong><em>ip-address1</em> [ <em>ip-address2 </em>]</p>
+<p><strong>undo apply ip-address default next-hop</strong> [ <em>ip-address1</em> ] [ <em>ip-address2 </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address1</em>，<em>ip-address2</em>：指定报文的缺省下一跳IP地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Policy-Based-Route视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令对在路由表中未查询到路由的报文起作用。命令中指定的报文缺省下一跳地址不能是本地IP地址。</p>
+<p>可以配置两个下一跳IP地址以达到负载分担的目的。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="apply_ip-address_default_next-hop__d1616e64"></a><a name="d1616e64"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置报文的缺省下一跳为1.1.1.1。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>policy-based-route policy1 permit node 10</strong></pre>
+<pre class="screen">[Quidway-policy-based-route-policy1-10] <strong>apply ip-address default next-hop 1.1.1.1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_unicast_pbr_configuration_commands.html">IP单播策略路由配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="policy-based-route.html">policy-based-route</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

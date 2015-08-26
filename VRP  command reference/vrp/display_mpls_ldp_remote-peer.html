@@ -1,0 +1,195 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls ldp remote-peer">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_ldp_peer.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_ldp_session.html">
+<meta name="DC.Relation" scheme="URI" content="remote-ip.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_ldp_remote-peer">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls ldp remote-peer</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_ldp_remote-peer"></a><a name="display_mpls_ldp_remote-peer"></a>
+
+
+<h1 class="topictitle1">display mpls ldp remote-peer</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls ldp remote-peer</strong>命令用来查看LDP会话的远端对等体信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls ldp remote-peer</strong> [ <em>remote-peer-name </em>] [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>remote-peer-name</em>：显示指定远端对等体名称的远端对等体信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>此命令和<strong>display mpls ldp peer</strong>命令不同，此命令用来查看本地配置了的远端对等体，只需要完成配置，就可以查看到相关信息。而<strong>display mpls ldp peer</strong>命令用来查看本地已经发现了的LDP对等体，只有本端和对端都已经完成了配置，并且建立了对等体关系，才能查看到相关信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_ldp_remote-peer__d43998e84"></a><a name="d43998e84"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看远端对等体信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls ldp remote-peer</strong></pre>
+<pre class="screen">                         LDP Remote Entity Information</pre>
+<pre class="screen"> ------------------------------------------------------------------------</pre>
+<pre class="screen"> Remote Peer Name: abc</pre>
+<pre class="screen"> Remote Peer IP: 2.2.2.2                LDP ID: 1.1.1.1:0</pre>
+<pre class="screen"> Transport Address: 1.1.1.1             Entity Status: Active</pre>
+<pre class="screen"> Configured Keepalive Timer: 45 Sec     Configured Hello Timer: 45 Sec</pre>
+<pre class="screen"> Negotiated Hello Timer: 45 Sec         Hello Packet sent/received: 3/2</pre>
+<pre class="screen">------------------------------------------------------------------------------</pre>
+<pre class="screen"> TOTAL: 1 Remote-Peer(s) Found.</pre>
+
+<div class="tablenoborder"><a name="display_mpls_ldp_remote-peer__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_ldp_remote-peer__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls ldp remote-peer命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.7941546989166%" id="d43998e122"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.2058453010834%" id="d43998e126"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d43998e122 "><p>Remote Peer Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d43998e126 "><p>远端对等体名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d43998e122 "><p>Remote Peer IP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d43998e126 "><p>远端对等体IP</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d43998e122 "><p>LDP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d43998e126 "><p>本地LDP ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d43998e122 "><p>Transport Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d43998e126 "><p>与远端对等体建立LDP会话的传输地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d43998e122 "><p>Entity Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d43998e126 "><div class="p">远端对等体的状态：<ul>
+<li>Active：激活状态</li>
+<li>Inactive：非激活状态</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d43998e122 "><p>Configured Keepalive Timer </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d43998e126 "><p>配置的keepalive定时器时间</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d43998e122 "><p>Configured Hello Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d43998e126 "><p>配置的Hello定时器值</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d43998e122 "><p>Negotiated Hello Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d43998e126 "><p>协商的Hello定时器值</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d43998e122 "><p>Hello Packet sent/received</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d43998e126 "><p>此远端对等体接收和发送的Hello消息数</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_ldp_peer.html">display_mpls_ldp_peer</a></div>
+<div><a href="display_mpls_ldp_session.html">display mpls ldp session</a></div>
+<div><a href="remote-ip.html">remote-ip</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

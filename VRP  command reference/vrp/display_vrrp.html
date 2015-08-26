@@ -1,0 +1,369 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display vrrp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vrrp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_vrrp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display vrrp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_vrrp"></a><a name="display_vrrp"></a>
+
+
+<h1 class="topictitle1">display vrrp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>vrrp</strong>命令用来查看当前VRRP的状态信息和配置参数。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>vrrp</strong> [ <strong>interface</strong> <em> interface-type interface-number</em> [ <em>virtual-router-ID</em> ] ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface</strong> <em>interface-type interface-number</em>：接口类型和接口编号。</p>
+<p><em>virtual-router-ID</em>：备份组编号，取值范围是1～255。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不输入接口名和备份组号，则显示该<span class="keyword">路由器</span>上所有备份组的状态信息。</p>
+<p>如果只输入接口名，则显示该接口上的所有备份组的状态信息。</p>
+<p>如果输入接口名和备份组号，则显示指定接口上特定备份组的状态信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_vrrp__d72225e69"></a><a name="d72225e69"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示<span class="keyword">路由器</span>上的全部备份组信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vrrp</strong></pre>
+<pre class="screen">GigabitEthernet3/0/2 | Virtual Router 1
+    State          : Backup
+    Virtual IP     : 10.10.1.111
+    PriorityRun    : 200
+    PriorityConfig : 200
+    MasterPriority : 180
+    Preempt        : YES      Delay Time : 0
+    TimerRun       : 1
+    TimerConfig    : 1
+    Auth Type      : NONE
+    Virtual Mac    :  0000-5e00-0101
+    Check TTL      : YES
+    Config type    : normal-vrrp
+    Track If       : GigabitEthernet4/1/4      priority reduced : 70
+    IF State       : UP
+    Track EFM      : GigabitEthernet1/0/0
+    EFM state      : DOWN
+
+vlanif1 | Virtual Router 2
+    State                    : Initialize
+    Virtual IP               : 192.2.1.10
+    Send VRRP packet to vlan : 4
+    PriorityRun              : 100
+    PriorityConfig           : 100
+    MasterPriority           : 100
+    Preempt                  : YES           Delay Time : 0
+    TimerRun                 : 1
+    TimerConfig              : 1
+    Auth Type                : NONE
+    Virtual Mac              :  0000-5e00-0101
+    Check TTL                : YES
+    Config type              : normal-vrrp
+</pre>
+
+<div class="tablenoborder"><a name="display_vrrp__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vrrp__tb_01" frame="border" border="1" rules="all"><caption>表1 display vrrp命令显示信息解释</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="25.02645502645503%" id="d72225e94"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="74.97354497354497%" id="d72225e98"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>GigabitEthernet2/0/0 | Virtual Router 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>接口上的备份组ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><div class="p"><span class="keyword">路由器</span>的VRRP状态，VRRP正常工作时，有以下三种取值：<ul>
+<li><p>Master：表示<span class="keyword">路由器</span>在该备份组中作为Master。</p>
+</li>
+<li><p>Backup：表示<span class="keyword">路由器</span>在该备份组中作为Backup。</p>
+</li>
+<li><p>Initialize：所有VRRP路由器以Initialize状态开始，当端口DOWN（包括人工shutdown或者物理down）后，回归到Initialize状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Virtual IP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>虚拟IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>send VRRP packet to vlan</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>sub-VLAN的VLAN ID，表示super-VLAN的接口收到VRRP报文后向该sub-VLAN广播报文。</p>
+<p>只有在super-VLAN的接口下配置了VRRP的广播模式（advertise send-mode）才会显示该字段。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>PriorityRun</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p><span class="keyword">路由器</span>的运行优先级，即当前的优先级。如果本<span class="keyword">路由器</span>是某个VRRP备份组的IP地址拥有者，将显示<span class="keyword">路由器</span>在该备份组的运行优先级为255。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>PriorityConfig</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>为该<span class="keyword">路由器</span>配置的优先级，使用<a href="vrrp_vrid_priority.html">vrrp vrid priority</a>命令配置。对于IP地址拥有者，此处将显示为缺省的优先级100，而不是255。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>MasterPriority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>该备份组中Master的优先级。如果本<span class="keyword">路由器</span>是某个VRRP备份组的IP地址拥有者，将显示<span class="keyword">路由器</span>在该备份组的Master优先级为255。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Preempt</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>抢占方式标识，&#8220;YES&#8221;表示采用抢占。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Delay Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>采用抢占方式时的延迟时间，单位为秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>TimerRun</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>VRRP中Master的广播报文时间间隔，单位为秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>TimerConfig</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>VRRP配置的广播报文时间间隔，单位为秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Auth Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><div class="p">VRRP报文认证方式，有以下两种取值：<ul>
+<li><p>None：表示没有配置认证。</p>
+</li>
+<li><p>SIMPLE TEXT：表示配置了简单字符认证。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Virtual Mac</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>虚拟MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Check TTL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>是否检测VRRP报文的TTL值，取值是YES或NO。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Config type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><div class="p">配置的VRRP备份组的类型，有以下三种取值：<ul>
+<li><p>normal-vrrp：普通VRRP备份组</p>
+</li>
+<li><p>admin-vrrp：配置VRRP管理组时的VRRP管理组</p>
+</li>
+<li><p>member-vrrp：配置VRRP管理组时的VRRP成员组</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Auth key</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>如果配置了简单字符认证，此处将显示配置的认证字。如果没有配置认证，将不显示此字段。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Track IF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>只有配置了VRRP监视接口功能时，才能看到此字段，显示所监视的接口类型和编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Track EFM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>只有配置了VRRP监视EFM功能时，才能看到此字段，显示所监视的接口类型和编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Track BFD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>只有配置了VRRP监视BFD会话时，才能看到此字段，显示所监视BFD会话的本地标识符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>Priority reduced 或 Priority increased</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><p>当所监视的接口或BFD会话状态变为Down时，本<span class="keyword">路由器</span>降低或增加的优先级值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>IF State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><div class="p">VRRP所监视接口的状态，有以下两种取值：<ul>
+<li><p>Up</p>
+</li>
+<li><p>Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>EFM state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><div class="p">VRRP所监视的EFM状态，有以下两种取值：<ul>
+<li><p>Up</p>
+</li>
+<li><p>Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.02645502645503%" headers="d72225e94 "><p>BFD-Session State </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.97354497354497%" headers="d72225e98 "><div class="p">VRRP所监视BFD会话的状态，有以下三种取值：<ul>
+<li><p>Up：BFD会话处于Up状态</p>
+</li>
+<li><p>Down：BFD会话处于Down状态</p>
+</li>
+<li><p>Initialize：BFD会话配置项存在但是BFD会话还没有建立。VRRP和所监视BFD会话的监视关系还没有建立。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vrrp_configuration_commands.html">VRRP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

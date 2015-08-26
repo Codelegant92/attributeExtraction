@@ -1,0 +1,132 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mac-address static vlan">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mac_address_table_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-address.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mac-address_static_vlan">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mac-address static vlan</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mac-address_static_vlan"></a><a name="mac-address_static_vlan"></a>
+
+
+<h1 class="topictitle1">mac-address static vlan</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mac-address static vlan</strong>命令用来配置静态MAC地址表项。该表项中的出端口属于某个指定的VLAN。</p>
+<p><strong>undo mac-address</strong>命令用来删除的MAC地址表项。</p>
+<p>缺省情况下，系统没有配置任何静态MAC地址表项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mac-address</strong><strong> static</strong> <em>mac-address</em> <em>interface-type</em> <em>interface-number</em> <strong>vlan</strong> <em>vlan-id</em> [ <strong>ce-vlan</strong> <em>ce-vlan</em> ]</p>
+<p><strong>mac-address</strong> <strong>static</strong> <em>mac-address</em> <strong>virtual-ethernet</strong> <em>interface-number</em> <strong>atm</strong> <em>interface-number</em> <strong>pvc</strong> { <em>pvc-name</em> [ <em>vpi</em>/ <em>vci</em> ] | <em>vpi</em>/<em>vci</em> } <strong>vlan</strong> <em>vlan-id</em></p>
+<p><strong>undo</strong> <strong>mac-address</strong> { <strong>all</strong> | <strong>dynamic</strong> | <strong>static</strong> } [ <em>interface-type</em> <em>interface-number</em> ] [ <strong>vlan</strong> <em>vlan-id</em> ]</p>
+<p><strong>undo</strong> <strong>mac-address</strong> { <strong>all</strong> | <strong>dynamic</strong> | <strong>static</strong> } <strong>virtual-ethernet</strong> <em>interface-number</em> <strong>atm</strong> <em>interface-number</em> <strong>pvc</strong> { <em>pvc-name</em> [ <em>vpi</em>/ <em>vci</em> ] | <em>vpi</em>/<em>vci</em> } <strong>vlan</strong> <em>vlan-id</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>static</strong>：静态表项，不被老化。当收到指定地址的帧后，直接通过出接口转发。配置并保存后，系统复位或接口板热插拔表项不丢失。</p>
+<p><em>mac-address</em>：单播MAC地址，格式为H-H-H。其中H为4位的十六进制数，可以输入1～4位，如00e0、fc01。当输入不足4位时，表示前面的几位为0，如：输入e0，等同于00e0。MAC地址不可设置为FFFF-FFFF-FFFF。</p>
+<p><em>interface-type interface-number</em>：接口类型及编号，可以是Ethernet接口、GE接口或Eth-Trunk接口。本命令中的接口必须是属于指定VLAN的二层端口。</p>
+<p><strong>vlan</strong><em> vlan-id</em>：VLAN ID，十进制整数形式，取值范围是1～4094。</p>
+<p><strong>ce-vlan</strong> <em>ce-vlan</em>：配置VLAN Mapping时，接口收到的用户VLAN ID。十进制整数形式，取值范围是1～4094。</p>
+<p><strong>dynamic</strong>：动态表项，可以被老化，系统复位或接口板热插拔后丢失。</p>
+<p><strong>all</strong>：所有表项。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>系统视图、Ethernet接口视图、GE接口视图、Eth-Trunk接口视图、VE接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用命令<strong>mac-address</strong> <strong>static</strong> <em>mac-address</em> <em>interface-type interface-number</em> <strong>vlan</strong> <em>vlan-id</em>时，命令中的接口必须是二层端口，并且该端口已经通过port defaut、trunk或者VLAN Stacking方式加入到指定的VLAN中。</p>
+<p>使用命令<strong>mac-address</strong> <strong>static</strong> <em>mac-address</em> <em>interface-type interface-number</em> <strong>vlan</strong> <em>vlan-id </em><strong>ce-vlan</strong> <em>ce-vlan</em>时，命令中接口必须是二层端口，并且该端口已经通过VLAN Mapping方式加入到指定的VLAN中。</p>
+<p>使用命令<strong>mac-address</strong> <strong>static</strong> <em>mac-address</em> <strong>virtual-ethernet</strong> <em>interface-number</em> <strong>atm</strong> <em>interface-number</em> <strong>pvc</strong> { <em>pvc-name</em> [ <em>vpi</em>/ <em>vci</em> ] | <em>vpi</em>/<em>vci</em> } <strong>vlan</strong> <em>vlan-id</em>时，命令中的VE接口必须是二层端口，并且该VE端口已经通过port defaut、trunk或者VLAN Stacking方式加入到指定的VLAN中。</p>
+<p><strong>undo</strong> <strong>mac-address</strong> { <strong>all</strong> | <strong>dynamic</strong> | <strong>static</strong> } [ <em>interface-type</em> <em>interface-number</em> ] [ <strong>vlan</strong> <em>vlan-id</em>]命令和<strong>undo</strong> <strong>mac-address</strong> { <strong>all</strong> | <strong>dynamic</strong> | <strong>static</strong> } <strong>virtual-ethernet</strong> <em>interface-number</em> <strong>atm</strong> <em>interface-number</em> <strong>pvc</strong> { <em>pvc-name</em> [ <em>vpi</em>/<em>vci</em> ] | <em>vpi</em>/<em>vci</em> } <strong>vlan</strong> <em>vlan-id</em>命令仅可以在系统视图下执行。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mac-address_static_vlan__d91358e393"></a><a name="d91358e393"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在配置静态MAC地址表项，该表项中的出端口属于某个VLAN：</p>
+<ul>
+<li><p>当收到目的MAC为0011-2233-4455且属于VLAN10的帧时，使用出端口GE1/0/0转发，其中GE1/0/0以port default方式加入VLAN10。</p>
+</li>
+<li><p>当收到目的MAC为0011-2233-4466且属于VLAN20的帧时，使用出端口GE1/0/1转发，其中GE1/0/1以trunk方式加入VLAN20。</p>
+</li>
+<li><p>当收到目的MAC为0011-2233-4477且属于VLAN30的帧时，使用出端口GE1/0/2转发，其中GE1/0/2以stacking方式加入VLAN30。</p>
+</li>
+</ul>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 10</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 20</strong></pre>
+<pre class="screen">[Quidway-vlan20]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 30</strong></pre>
+<pre class="screen">[Quidway-vlan30]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> portswitch</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> port default vlan 10</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> portswitch</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> port trunk allow-pass vlan 20</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/2</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/2]<strong> portswitch</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/2]<strong> port vlan-stacking outside-vlan 100 stack-vlan 30</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/2]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address static 0011-2233-4455 gigabitethernet 1/0/0 vlan 10</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address static 0011-2233-4466 gigabitethernet 1/0/1 vlan 20</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address static 0011-2233-4477 gigabitethernet 1/0/2 vlan 30</strong></pre>
+<p># 配置静态MAC地址表项，该表项中的出端口上启用了VLAN mapping功能：</p>
+<ul>
+<li><p>当收到目的MAC为0011-2233-4455且属于VLAN100的帧时，使用出端口GE1/0/0转发，其中GE1/0/0以mapping方式加入VLAN100。当从出端口GE1/0/0转发该帧时，VLAN100将被替换成用户VLAN10。</p>
+</li>
+<li><p>当收到目的MAC为0011-2233-4466且属于VLAN100的帧时，使用出端口GE1/0/0转发，其中GE1/0/0以mapping方式加入VLAN100。当从出端口GE1/0/0转发该帧时，VLAN100将被替换成用户VLAN11。</p>
+</li>
+</ul>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 100</strong></pre>
+<pre class="screen">[Quidway-vlan100]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> port vlan-mapping outside-vlan 10 to 20 map-vlan 100</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address static 0011-2233-4455 gigabitethernet 1/0/0 vlan 100 ce-vlan 10</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address static 0011-2233-4466 gigabitethernet 1/0/0 vlan 100 ce-vlan 11</strong></pre>
+<p># 根据指定端口删除静态MAC地址表项。</p>
+<pre class="screen">[Quidway] <strong>undo mac-address static gigabitethernet 1/0/0</strong></pre>
+<p># 根据指定端口和VLAN删除静态MAC地址表项。</p>
+<pre class="screen">[Quidway] <strong>undo mac-address static gigabitethernet 1/0/0 vlan 1</strong></pre>
+<p># 根据指定端口和PVC删除静态MAC地址表项。</p>
+<pre class="screen">[Quidway] <strong>undo mac-address static virtual-ethernet 1/0/0 atm 1/0/0 pvc pvc1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mac_address_table_configuration_commands.html">MAC地址表配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mac-address.html">display mac-address</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

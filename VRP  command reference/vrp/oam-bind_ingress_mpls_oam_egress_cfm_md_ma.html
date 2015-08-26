@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="oam-bind ingress mpls oam egress cfm md ma">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_enable_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_md.html">
+<meta name="DC.Relation" scheme="URI" content="ma.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="oam-bind_ingress_mpls_oam_egress_cfm_md_ma">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>oam-bind ingress mpls oam egress cfm md ma</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="oam-bind_ingress_mpls_oam_egress_cfm_md_ma"></a><a name="oam-bind_ingress_mpls_oam_egress_cfm_md_ma"></a>
+
+
+<h1 class="topictitle1">oam-bind ingress mpls oam egress cfm md ma</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>oam-bind ingress mpls oam egress cfm md ma</strong>命令配置MPLS OAM向以太网CFM传递故障。</p>
+<p><strong>undo
+oam-bind ingress mpls oam egress cfm md ma</strong>命令取消MPLS OAM向以太网CFM传递故障。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>oam-bind ingress mpls</strong> <strong>oam</strong> { <strong>lsp-name</strong> <em>lsp-name</em> | <strong>lsr-id</strong> <em>lsr-id</em> <strong>tunnel-id</strong> <em>tunnel-id</em> } <strong>egress cfm md</strong> <em>md-name</em> <strong>ma</strong> <em>ma-name</em></p>
+<p><strong>undo
+oam-bind ingress mpls</strong> <strong>oam</strong> { <strong>lsp-name</strong> <em>lsp-name</em> | <strong>lsr-id</strong> <em>lsr-id</em> <strong>tunnel-id</strong> <em>tunnel-id</em> } <strong>egress
+cfm md</strong> <em>md-name</em> <strong>ma</strong> <em>ma-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>md-name</em>：用来标识一个维护域，与<em>ma-name</em>组合最长为44个字符。</p>
+<p><em>ma-name</em>：用来标识一个维护域，与<em>md-name</em>组合最长为44个字符。</p>
+<p><em>lsp-name</em>：LSP名称，字符串形式，长度范围是1～15。</p>
+<p><em>lsr-id</em>：绑定被检测LSP的隧道出节点的IP地址。</p>
+<p><em>tunnel-id</em>：绑定的被检测LSP的隧道ID，取值范围是1～65534。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>OAM管理视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置LSP出节点与以太网CFM绑定，OAM管理模块通过绑定关系向以太网CFM传递故障。</p>
+<p>配置该命令时，相关的MD、MA和MPLS隧道必需已经创建。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="oam-bind_ingress_mpls_oam_egress_cfm_md_ma__d101122e136"></a><a name="d101122e136"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置MPLS OAM向以太网CFM传递故障。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>oam-mgr</strong></pre>
+<pre class="screen">[Quidway-oam-mgr] <strong>oam-bind ingress mpls oam lsp-name atob egress cfm md mdcustomer1 ma macustomer1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_enable_system_view.html">cfm enable（系统视图）</a></div>
+<div><a href="cfm_md.html">cfm md</a></div>
+<div><a href="ma.html">ma</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

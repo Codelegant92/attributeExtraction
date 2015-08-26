@@ -1,0 +1,145 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="check region-configuration">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mstp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="active_region-configuration.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="check_region-configuration">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>check region-configuration</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="check_region-configuration"></a><a name="check_region-configuration"></a>
+
+
+<h1 class="topictitle1">check region-configuration</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>check region-configuration</strong>命令用来查看域配置信息，包括域名、修订级别以及VLAN映射表。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>check region-configuration</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MST域视图<span>、MST进程域视图</span></p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有域名、VLAN映射表、MSTP修订级别三个配置完全相同，交换机才能处在同一个域中。因此，在配置交换机的MST域属性时，必须确保此三个配置完全一致。</p>
+<p>为保证交换机的MST域配置完全正确，建议在激活MST域配置之前，使用本命令查看MST域配置是否正确。在证实域配置完全正确后，再激活MST域配置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="check_region-configuration__d6470e41"></a><a name="d6470e41"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示MST域配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> stp region-configuration</strong></pre>
+<pre class="screen">[Quidway-mst-region]<strong> check region-configuration</strong></pre>
+<pre class="screen">Admin. Configuration:</pre>
+<pre class="screen">   Format selector :0</pre>
+<pre class="screen">   Region name     :00b010000001</pre>
+<pre class="screen">   Revision level  :0</pre>
+<pre class="screen">   Instance   Vlans Mapped</pre>
+<pre class="screen">      0       1 to 9, 11 to 4094</pre>
+<pre class="screen">     16       10</pre>
+<p># 显示MSTP进程10中的MST域配置信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>stp process 10</strong></pre>
+<pre class="screen">[Quidway-mst-process-10] <strong>stp region-configuration</strong></pre>
+<pre class="screen">[Quidway-mst-process-10-region] <strong>check region-configuration</strong></pre>
+<pre class="screen">Admin. Configuration:</pre>
+<pre class="screen">   Format selector :0</pre>
+<pre class="screen">   Region name     :00b010000001</pre>
+<pre class="screen">   Revision level  :0</pre>
+<pre class="screen">   Instance   Vlans Mapped</pre>
+<pre class="screen">      0       1 to 9, 11 to 4094</pre>
+<pre class="screen">     16       10</pre>
+
+<div class="tablenoborder"><a name="check_region-configuration__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="check_region-configuration__tb_01" frame="border" border="1" rules="all"><caption>表1 check region-configuration命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="39.25422020660116%" id="d6470e115"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="60.745779793398846%" id="d6470e119"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="39.25422020660116%" headers="d6470e115 "><p>Format selector</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.745779793398846%" headers="d6470e119 "><p>MSTP协议规定的选择因子。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.25422020660116%" headers="d6470e115 "><p>Region name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.745779793398846%" headers="d6470e119 "><p>MST域的域名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.25422020660116%" headers="d6470e115 "><p>Revision level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.745779793398846%" headers="d6470e119 "><p>MST域的修订级别。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.25422020660116%" headers="d6470e115 "><p>Instance   Vlans Mapped</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.745779793398846%" headers="d6470e119 "><p>MST域的生成树实例和VLAN之间的映射关系。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mstp_configuration_commands.html">MSTP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="active_region-configuration.html">active region-configuration</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

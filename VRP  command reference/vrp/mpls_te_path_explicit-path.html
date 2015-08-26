@@ -1,0 +1,110 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te path explicit-path">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="explicit-path.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_path_explicit-path">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te path explicit-path</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_path_explicit-path"></a><a name="mpls_te_path_explicit-path"></a>
+
+
+<h1 class="topictitle1">mpls te path explicit-path</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te path explicit-path</strong>命令用来为当前隧道设置使用的显式路径。</p>
+<p><strong>undo mpls te path</strong>命令用来删除显式路径。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te path explicit-path</strong> <em>path-name</em> [ <strong>secondary</strong> ]</p>
+<p><strong>undo mpls te path</strong> [ <strong>secondary</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>path-name</em>：MPLS-TE显式路径名称，字符串形式，长度为1～31。</p>
+<p><strong>secondary</strong>：表示为备份隧道配置显示路径。该参数只在（用<a href="mpls_te_backup.html">mpls te backup</a>命令）配置CR-LSP备份时使用。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置<strong>mpls te path explicit-path</strong>命令之前，必须先在系统视图下配置相应的显式路径并为显式路径指定节点，否则该命令配置不成功。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_path_explicit-path__d96664e67"></a><a name="d96664e67"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建并配置显式路径path1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway] <strong>explict-path path1</strong>
+[Quidway-explicit-path-path1] <strong>next hop 2.2.2.2</strong></pre>
+<p>#
+设置为Tunnel1/0/0使用显式路径path1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> tunnel-protocol mpls te</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te path explicit-path path1</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_te_path_explicit-path__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_te_path_explicit-path__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d96664e110"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d96664e114"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d96664e110 "><p>VRPV500R005C02B070</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d96664e114 "><p>增加该命令行输入的限制：不允许将没有配置任何Hop的显式路径应用到该命令中。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="explicit-path.html">explicit-path</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

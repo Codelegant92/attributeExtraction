@@ -1,0 +1,129 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rmon2 nlhosttable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rmon_rmon2_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rmon2_nlhosttable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rmon2 nlhosttable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rmon2_nlhosttable"></a><a name="display_rmon2_nlhosttable"></a>
+
+<h1 class="topictitle1">display rmon2 nlhosttable</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display rmon2 nlhosttable</strong>命令用来查看主机表。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display rmon2 nlhosttable</strong> [ <strong>hostcontrolindex</strong> <em>ctrl-index</em> ] [ <strong>timemark </strong><em>time-value </em>] [ <strong>protocoldirlocalindex</strong> <em>protocol-local-index </em>] [ <strong>hostaddress </strong><em>ip-address</em> ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>hostcontrolindex</strong> <em>ctrl-index</em>：索引值，唯一识别主机控制表中的行数。整数形式，取值范围是1～65535。</p>
+<p><strong>timemark </strong><em>time-value</em>：启用时间过滤器。时间过滤器取值范围是0～4294967295。主机表中，ChgTm项大于该值的条目将被显示。</p>
+<p><strong>protocoldirlocalindex </strong><em>protocol-local-index</em>：标识nlHostAddress的网络层协议。协议索引值的取值范围是1～2147483647。</p>
+<p><strong>hostaddress </strong><em>ip-address</em>：查看指定主机的流量。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对于每个接口下每一种协议生成的主机条目，最多可显示前5000行的信息。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rmon2_nlhosttable__d63743e74"></a><a name="d63743e74"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看主机表中的第一行信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rmon2 nlhosttable hostcontrolindex 1 protocoldirlocalindex 2 hostaddress 10.110.94.177</strong>
+Abbreviation:
+HIdx - hlHostControlIndex
+PIdx - ProtocolDirLocalIndex
+Addr - nlHostAddress
+InPkts - nlHostInPkts
+OutPkts - nlHostOutPkts
+InOctes - nlHostInOctets
+OutOctes - nlHostOutOctets
+OutMac - nlHostOutMacNonUnicastPkts
+ChgTm - nlHostTimeMark
+CrtTm - nlHostCreateTime
+HIdx PIdx Addr     InPkts OutPkts InOctes OutOctes OutMac  ChgTm  CrtTm
+1    2   10.110.94.177  4    5      216     483          23702127 23681236</pre>
+
+<div class="tablenoborder"><a name="display_rmon2_nlhosttable__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rmon2_nlhosttable__tb_01" frame="border" border="1" rules="all"><caption>表1 display rmon2 nlhosttable命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="46.560846560846564%" id="d63743e90"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="53.43915343915344%" id="d63743e93"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63743e90 "><p>HIdx</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63743e93 "><p>主机控制索引</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63743e90 "><p>PIdx</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63743e93 "><p>协议目录索引</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63743e90 "><p>Addr</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63743e93 "><p>主机地址</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63743e90 "><p>InPkts</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63743e93 "><p>输入包</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63743e90 "><p>OutPkts</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63743e93 "><p>输出包</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63743e90 "><p>InOctes</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63743e93 "><p>输入字节</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63743e90 "><p>OutOctes</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63743e93 "><p>输出字节</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63743e90 "><p>OutMac</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63743e93 "><p>输出非单播包</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63743e90 "><p>ChgTm</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63743e93 "><p>时间过滤器</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63743e90 "><p>CrtTm</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63743e93 "><p>创建时间</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rmon_rmon2_configuration_commands.html">RMON和RMON2配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,197 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qinq termination l2">
+<meta name="DC.Relation" scheme="URI" content="../vrp/qinq_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="control-vid.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qinq_termination_l2">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qinq termination l2</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qinq_termination_l2"></a><a name="qinq_termination_l2"></a>
+
+
+<h1 class="topictitle1">qinq termination l2</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qinq termination l2</strong>命令用来配置QinQ终结子接口绑定PWE3/VLL,VPLS时的属性。</p>
+<p><strong>undo qinq termination l2</strong>命令用来取消QinQ终结子接口的属性。</p>
+<p>缺省情况下，QinQ终结子接口具有非对称属性。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qinq termination l2</strong> { <strong>symmetry</strong> <span>[ <strong>user-mode</strong> ]</span> | <strong>asymmetry</strong> }</p>
+<p><strong>undo qinq termination l2</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><span><strong>symmetry user-mode</strong></span>：QinQ终结子接口以对称方式接入PWE3和VPWS<span>，且支持HQOS</span>。</p>
+<p><strong>asymmetry</strong>：QinQ终结子接口以非对称方式接入PWE3和VPWS。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet子接口视图、GE子接口视图、Eth-Trunk子接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在以太网子接口上使用<strong>qinq termination l2</strong>命令前，应先在该子接口下配置<strong>control-vid</strong> <em>vid</em> <strong>qinq-termination</strong>命令，否则无法看到<strong>qinq termination l2</strong>命令。</p>
+<p>对称方式下MAC地址学习只针对外层Tag进行学习。根据用户报文的目的MAC地址查MAC表，得到出口PW。然后PE根据PW封装方式进行报文的封装。如<a href="#qinq_termination_l2__tab_01">表1</a>和<a href="#qinq_termination_l2__tab_02">表2</a>所示。</p>
+<p>对称方式可以完成用户VLAN的隔离。</p>
+<p>如果配置<strong>symmetry user-mode</strong>，仍然按对称方式针对外层Tag进行MAC学习，同时增加对于内层Tag的HQOS功能。</p>
+<p>非对称方式下MAC地址学习针对内外层Tag。根据用户报文的目的MAC地址查MAC表，得到出口PW。然后PE根据PW封装方式进行报文的封装。如<a href="#qinq_termination_l2__tab_01">表1</a>和<a href="#qinq_termination_l2__tab_02">表2</a>所示。</p>
+
+<div class="tablenoborder"><a name="qinq_termination_l2__tab_01"></a><a name="tab_01"></a><table cellpadding="4" cellspacing="0" summary="" id="qinq_termination_l2__tab_01" frame="border" border="1" rules="all"><caption>表1 报文入接口处理</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" rowspan="2" valign="top" width="33.33333333333333%" id="d109101e120"><p>入接口类型</p>
+</th>
+
+<th class="cellrowborder" colspan="2" valign="top" id="d109101e124"><p>VLL/PWE3/VPLS</p>
+</th>
+
+</tr>
+
+<tr>
+<th class="cellrowborder" valign="top" width="33.33333333333333%" id="d109101e131"><p>以太封装方式</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="33.33333333333333%" id="d109101e135"><p>VLAN封装方式</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d109101e120 d109101e131 "><p>对称方式</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d109101e124 d109101e135 "><p>剥掉外层Tag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d109101e124 "><p>不处理，两层Tag都保留</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d109101e120 d109101e131 "><p>非对称</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d109101e124 d109101e135 "><p>两层Tag都剥掉</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d109101e124 "><p>剥掉两层Tag，再添加一层Tag</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+<div class="tablenoborder"><a name="qinq_termination_l2__tab_02"></a><a name="tab_02"></a><table cellpadding="4" cellspacing="0" summary="" id="qinq_termination_l2__tab_02" frame="border" border="1" rules="all"><caption>表2 报文出接口处理</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" rowspan="2" valign="top" width="33.44481605351171%" id="d109101e189"><p>出接口类型</p>
+</th>
+
+<th class="cellrowborder" colspan="2" valign="top" id="d109101e193"><p>VLL/PWE3/VPLS</p>
+</th>
+
+</tr>
+
+<tr>
+<th class="cellrowborder" valign="top" width="33.44481605351171%" id="d109101e200"><p>以太封装方式</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="33.44481605351171%" id="d109101e204"><p>VLAN封装方式</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.44481605351171%" headers="d109101e189 d109101e200 "><p>对称方式</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="33.44481605351171%" headers="d109101e193 d109101e204 "><p>添加外层Tag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="33.11036789297658%" headers="d109101e193 "><p>替换外层Tag</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.44481605351171%" headers="d109101e189 d109101e200 "><p>非对称</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="33.44481605351171%" headers="d109101e193 d109101e204 "><p>添加两层Tag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="33.11036789297658%" headers="d109101e193 "><p>剥掉一层Tag，再添加两层Tag</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qinq_termination_l2__d109101e245"></a><a name="d109101e245"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在子接口GE1/0/0.1上配置对称属性。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mode user-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0.1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> control-vid 1 qinq-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> qinq termination l2 symmetry</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> quit</strong></pre>
+
+<p># 在子接口GE1/0/0.1上配置对称属性且支持HQOS属性。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mode user-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0.1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> control-vid 1 qinq-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> qinq termination l2 symmetry user-mode</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> quit</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/qinq_configuration_commands.html">QinQ配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="control-vid.html">control-vid</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

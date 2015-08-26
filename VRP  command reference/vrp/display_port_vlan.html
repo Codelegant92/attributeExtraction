@@ -1,0 +1,190 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display port vlan">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vlan_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="port_link-type.html">
+<meta name="DC.Relation" scheme="URI" content="port_trunk_allow-pass.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_port_vlan">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display port vlan</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_port_vlan"></a><a name="display_port_vlan"></a>
+
+
+<h1 class="topictitle1">display port vlan</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>port</strong> <strong>vlan</strong>命令用来显示VLAN中包含的端口信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>port</strong> <strong>vlan</strong> [ <em>interface-type interface-number</em> ]<span> [<strong> | count</strong> ]</span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em>：接口类型，以太类接口，例如Ethernet、GigabitEthernet、Eth-Trunk、Virtual-Ethernet。</p>
+<p><em>interface-number</em>：接口序号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+<p>当指定接口类型和编号时，若该接口为交换式端口，则显示该端口的Link Type、PVID、Trunk VLAN List信息。</p>
+<p>若不指定接口类型和编号，则显示所有交换式端口的Link Type、PVID、Trunk VLAN List信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_port_vlan__d60471e109"></a><a name="d60471e109"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查询所有交换式端口的Link Type、PVID、Trunk VLAN List信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display port vlan </strong></pre>
+<pre class="screen">Port                     Link Type            PVID         Trunk VLAN List  </pre>
+<pre class="screen">--------------------------------------------------------------------------- </pre>
+<pre class="screen">GigabitEthernet1/0/0     trunk                0            5</pre>
+<pre class="screen">Eth-Trunk2               hybrid               2            10-12, 2049</pre>
+<pre class="screen">Eth-Trunk3               trunk                0            10-12, 2049</pre>
+<pre class="screen">Eth-Trunk4               dot1q-tunnel         10</pre>
+
+<div class="tablenoborder"><a name="display_port_vlan__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_port_vlan__tb_01" frame="border" border="1" rules="all"><caption>表1 display port vlan命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.06000252111433%" id="d60471e141"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.93999747888566%" id="d60471e145"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.06000252111433%" headers="d60471e141 "><p>Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.93999747888566%" headers="d60471e145 "><p>端口类型和编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.06000252111433%" headers="d60471e141 "><p>Link Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.93999747888566%" headers="d60471e145 "><div class="p">端口链路类型，有以下类型。<ul>
+<li><p>access</p>
+</li>
+<li><p>trunk</p>
+</li>
+<li><p>hybrid</p>
+</li>
+<li><p>dot1q-tunnel</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.06000252111433%" headers="d60471e141 "><p>PVID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.93999747888566%" headers="d60471e145 "><p>端口所属的缺省VLAN ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.06000252111433%" headers="d60471e141 "><p>Trunk VLAN List</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.93999747888566%" headers="d60471e145 "><p>端口允许通过的VLAN ID。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_port_vlan__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_port_vlan__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d60471e229"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d60471e233"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d60471e229 "><p>VRPV500R005C01B050</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d60471e233 "><p>原命令中关键字allow-vlan，修改为vlan。并修改命令显示信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d60471e229 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d60471e233 "><p>命令增加通配符：[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vlan_configuration_commands.html">VLAN配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="port_link-type.html">port link-type</a></div>
+<div><a href="port_trunk_allow-pass.html">port trunk allow-pass</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="x25 vc-range">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_x25_vc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="x25_vc-range">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>x25 vc-range</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="x25_vc-range"></a><a name="x25_vc-range"></a>
+
+
+<h1 class="topictitle1">x25 vc-range</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>x25 vc-range</strong>命令用来设置X.25虚电路范围的上限及下限。</p>
+<p><strong>undo x25 vc-range</strong>命令用来恢复X.25虚电路范围的上限及下限的缺省值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>x25 vc-range</strong> [ <strong>in-channel</strong> <em>lic hic</em> ] [ <strong>bi-channel</strong> <em>ltc htc</em> ] [ <strong>out-channel</strong> <em>loc hoc</em> ]</p>
+<p><strong>undo x25 vc-range</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>lic hic</em>：表示X.25虚电路单向呼入信道区间的下限及上限。取值范围是0～4095。如果hic（即单向呼入信道区间的上限）设置为0，那么必须将lic（即单向呼入信道区间的下限）也设置为0，表示禁止使用单向呼入信道区间。X.25虚电路范围中单向呼入信道区间的下限和上限缺省值均为0。</p>
+<p><em>ltc htc</em>：表示X.25虚电路双向信道区间的下限及上限。取值范围是0～4095；如果将htc（即双向信道区间的上限）设置为0，那么必须将ltc（即双向信道区间的下限）也设置为0，表示禁止使用双向信道区间。X.25虚电路双向信道区间的下限缺省值是1，上限缺省值是1024。</p>
+<p><em>loc hoc</em>：表示X.25虚电路单向呼出信道区间的下限及上限。取值范围是0～4095。如果将hoc（即单向呼出信道区间的上限）设置为0，那么必须将loc（即单向呼出信道区间的下限）也设置为0，表示禁止使用单向呼出信道区间。X.25虚电路范围中单向呼出信道区间的下限和上限缺省值均是0。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在<span class="keyword">VRP</span>中，X.25缺省地将单向呼入信道区间和单向呼出信道区间禁止使用，只保留双向信道区间（从1到1024）供使用；请根据接入商的要求正确地设置虚电路范围。</p>
+<p>执行完该命令后，必须重新启动接口，使配置生效。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="x25_vc-range__d130293e78"></a><a name="d130293e78"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置接口Serial 1/0/0的链路层协议为X.25，并且启用虚电路范围中的单向呼入信道区间和双向信道区间，禁用单向呼出信道区间；执行完该命令序列后，这三个区间分别是[1，7]、[8，1024]和[0，0]。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong>link-protocol x25</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> x25 vc-range in-channel 1 7 bi-channel 8 1024</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> shutdown</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> undo shutdown</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_x25_vc.html">display x25 vc</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

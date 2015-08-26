@@ -1,0 +1,417 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls bfd session">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_bfd_session">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls bfd session</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_bfd_session"></a><a name="display_mpls_bfd_session"></a>
+
+
+<h1 class="topictitle1">display mpls bfd session</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls bfd session</strong>命令用来查看BFD会话的相关信息。包括LDP
+LSP和TE CR-LSP的BFD会话信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls bfd session</strong> [ <strong>fec</strong><em> fec-address</em> | <strong>monitor</strong> | <strong>nexthop</strong> <em>ip-address</em> | <strong>outgoing-interface</strong> <em>interface-type interface-number</em> | <strong>protocol</strong> { <strong>ldp</strong> [ <strong>fec</strong><em> fec-address</em> ] | <strong>rsvp-te</strong> [ <strong>lsp-id</strong> <em>ingress-lsr-id session-id lsp-id</em> ] | <strong>cr-static</strong> [ <strong>lsp-id</strong><em> ingress-lsr-id session-id lsp-id</em> ] } [ <strong>verbose</strong> ] | <strong>statistics</strong> | <strong>verbose</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>fec</strong><em> fec-address</em>：查看指定FEC的BFD会话相关信息。</p>
+<p><strong>monitor</strong>：查看BFD会话的监控信息。</p>
+<p><strong>nexthop </strong><em>ip-address</em>：查看指定下一跳的BFD会话相关信息。</p>
+<p><strong>outgoing-interface</strong><em> interface-type</em> <em>interface-number</em>：查看指定出接口的LSP的BFD会话的相关信息。</p>
+<p><strong>protocol
+ldp</strong>：查看协议类型为LDP的BFD会话相关信息。</p>
+<p><strong>protocol rsvp-te</strong>：查看协议类型为RSVP-TE的BFD会话相关信息。</p>
+<p><strong>lsp-id</strong> <em>ingress-lsr-id</em>：入节点的LSR ID，点分十进制格式。</p>
+<p><em>session-id</em>：会话标识。整数形式，取值范围是<span>0</span>～<span>65535</span>。</p>
+<p><em>lsp-id</em>：LSP的标识号。整数形式，取值范围是0～65535。</p>
+<p><strong>protocol cr-static</strong>：查看协议类型为CR-Static的BFD会话相关信息。</p>
+<p><strong>statistics</strong>：查看BFD会话的统计信息，如BFD会话的总数量等。</p>
+<p><strong>verbose</strong>：查看BFD会话的详细信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_bfd_session__d41533e159"></a><a name="d41533e159"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看BFD会话的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls bfd session</strong></pre>
+<pre class="screen">----------------------------------------------------------------------</pre>
+<pre class="screen">                 BFD Information: LDP  LSP</pre>
+<pre class="screen">----------------------------------------------------------------------</pre>
+<pre class="screen">FEC            BFD-DISC  OUT IF      NEXTHOP        TUNNEL         STATE</pre>
+<pre class="screen">3.3.3.3        8         S6/0/0      100.1.1.2      Tun1/0/0        Up</pre>
+<pre class="screen">----------------------------------------------------------------------</pre>
+
+<div class="tablenoborder"><a name="display_mpls_bfd_session__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_bfd_session__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls bfd session命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.86722096245906%" id="d41533e191"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.13277903754094%" id="d41533e195"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e191 "><p>FEC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e195 "><p>转发等价类</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e191 "><p>BFD-DISC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e195 "><p>BFD会话的本地标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e191 "><p>OUT IF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e195 "><p>出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e191 "><p>NEXTHOP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e195 "><p>下一跳的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e191 "><p>TUNNEL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e195 "><p>隧道类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e191 "><p>STATE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e195 "><p>MPLS BFD会话的状态</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls bfd session protocol rsvp-te lspid 3.3.3.3 3 1 verbose</strong></pre>
+<pre class="screen">--------------------------------------------------------------------- </pre>
+<pre class="screen">                 BFD Information: TE TUNNEL                                     </pre>
+<pre class="screen">--------------------------------------------------------------------- </pre>
+<pre class="screen">  No                       :  1                                                 </pre>
+<pre class="screen">  LspIndex                 :  6157                                              </pre>
+<pre class="screen">  Protocol                 :  RSVP-TE                                           </pre>
+<pre class="screen">  Tunnel-Interface         :  Tunnel1/0/6                                       </pre>
+<pre class="screen">  Fec                      :  2.2.2.2                                           </pre>
+<pre class="screen">  Nexthop                  :  100.2.3.2                                         </pre>
+<pre class="screen">  Out-Interface            :  GigabitEthernet4/2/0                                          </pre>
+<pre class="screen">  Bfd-Discriminator        :  8195                                              </pre>
+<pre class="screen">  TEMIB Tunn Table Index   :  3                                                 </pre>
+<pre class="screen">  SessionTunnelID          :  3                                                 </pre>
+<pre class="screen">  LocalLspId               :  1                                                 </pre>
+<pre class="screen">  PrevSessionTunnelID      :  -                                                 </pre>
+<pre class="screen">  NextSessionTunnelID      :  12                                                </pre>
+<pre class="screen">  ActTx                    :  2200                                              </pre>
+<pre class="screen">  ActRx                    :  2200                                              </pre>
+<pre class="screen">  ActMulti                 :  -                                                 </pre>
+<pre class="screen">  Bfd-State                :  Down                                              </pre>
+<pre class="screen">  Time                     :  2559 sec   </pre>
+
+<div class="tablenoborder"><a name="display_mpls_bfd_session__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_bfd_session__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls bfd session protocol rsvp-te verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.86722096245906%" id="d41533e330"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.13277903754094%" id="d41533e334"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>No</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>序号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>LspIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>LSP索引号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>协议类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>Tunnel-Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>Tunnel接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>Fec</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>转发等价类</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>NEXTHOP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>下一跳的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>Out-Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>出接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>Bfd-Discriminator</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>BFD会话的本地标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>TEMIB Tunn Table Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>指定LSP对应的Tunnel表项索引号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>SessionTunnelID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>会话ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>LocalLspId</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>本地LSP的ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>PrevSessionTunnelID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>绑定了BFD会话的前一个LSP对应的Tunnel表项索引号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>NextSessionTunnelID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>绑定了BFD会话的后一个LSP对应的Tunnel表项索引号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>ActTx</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>BFD会话实际的最小发送时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>ActRx</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>BFD会话实际的最小接收时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>ActMulti</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>BFD会话实际的本地检测倍数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>Bfd-State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>BFD会话状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d41533e330 "><p>Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d41533e334 "><p>从BFD会话创建或刷新至现在所经过的时间</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_bfd_session__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_bfd_session__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d41533e554"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d41533e558"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d41533e554 "><p>VRPV500R005C02B140</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d41533e558 "><p>在<strong>protocol</strong> <strong>ldp</strong>后增加参数<strong>fec</strong><em> fec-address</em>，在<strong>protocol rsvp-te</strong>和<strong>protocol cr-static</strong>后增加参数<strong>lsp-id</strong> <em>ingress-lsr-id</em> <em>session-id lsp-id</em>，并修改回显信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d41533e554 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d41533e558 "><p>将参数<em>session-id</em>的最小值由1改为0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d41533e554 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d41533e558 "><p>将参数<em>session-id</em>的最大值由65534改为65535</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d41533e554 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d41533e558 "><p>将显示信息中&#8220;Tunnel-Interface&#8221;的显示由Tunnel修改为Tun</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

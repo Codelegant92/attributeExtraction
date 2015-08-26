@@ -1,0 +1,355 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display cfm remote-mep">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_trigger_if-down.html">
+<meta name="DC.Relation" scheme="URI" content="remote-mep_ccm-receive_enable.html">
+<meta name="DC.Relation" scheme="URI" content="remote-mep.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_cfm_remote-mep">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display cfm remote-mep</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_cfm_remote-mep"></a><a name="display_cfm_remote-mep"></a>
+
+
+<h1 class="topictitle1">display cfm remote-mep</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display cfm remote-mep</strong>命令用来查看指定MD和MA内的RMEP的信息，包括：</p>
+<ul>
+<li><p>所在MD的名称和级别</p>
+</li>
+<li><p>所在MA的名称和MA关联的VLAN</p>
+</li>
+<li><p>RMEP的ID</p>
+</li>
+<li><p>所在设备的桥MAC地址</p>
+</li>
+<li><p>当前设备是否接收该RMEP发送的CCM消息</p>
+</li>
+<li><p>是否配置了接口闪断功能</p>
+</li>
+</ul>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display cfm remote-mep</strong> [ <strong>md</strong> <em>md-name</em> [ <strong>ma</strong> <em>ma-name</em> [ <strong>mep-id</strong> <em>mep-id</em> ] ] ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>md</strong> <em>md-name</em>：显示指定MD内RMEP的信息。<em>md-name</em>表示MD的名称，字符串形式，不支持空格、&#8220;-&#8221;和&#8220;?&#8221;，长度范围是1～43。不输入本参数时，显示本设备上所有MD和MA内的RMEP的信息。</p>
+<p><strong>ma</strong> <em>ma-name</em>：。显示指定MA内RMEP的信息。<em>ma-name</em>表示MA的名称，字符串形式，不支持空格、&#8220;-&#8221;和&#8220;?&#8221;，长度范围是1～43。输入<em>md-name</em>参数，但不输入本参数时，显示本设备上指定MD内所有MA内的RMEP的信息。</p>
+<p><strong>mep-id</strong> <em>mep-id</em>：显示指定RMEP的信息。<em>mep-id</em>表示RMEP的ID，整数形式，取值范围是1～8191。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当配置完RMEP后或CFM功能出现故障时，可使用本命令验证或了解RMEP的配置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_cfm_remote-mep__d19275e159"></a><a name="d19275e159"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看md1内ma1中ID为50的RMEP的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display cfm remote-mep md mdcustomer ma macustomer mep-id 50</strong></pre>
+<pre class="screen">The total number of RMEPs is 1</pre>
+<pre class="screen"> MD Name              : md1</pre>
+<pre class="screen"> Level                : 4</pre>
+<pre class="screen"> MA Name              : ma1</pre>
+<pre class="screen"> RMEP ID              : 50</pre>
+<pre class="screen"> Vlan ID              : 10</pre>
+<pre class="screen"> VSI Name             : --</pre>
+<pre class="screen"> MAC                   : 0000-0121-0222</pre>
+<pre class="screen"> CCM Receive         : enabled</pre>
+<pre class="screen"> Trigger-If-Down    : disabled</pre>
+<pre class="screen"> CFM Status          : down</pre>
+<p># 查看md1内ma1内所有RMEP的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display cfm remote-mep md md1 ma ma1</strong></pre>
+<pre class="screen">The total number of RMEPs is 2</pre>
+<pre class="screen"> MD Name              : md1</pre>
+<pre class="screen"> Level                : 4</pre>
+<pre class="screen"> MA Name              : ma1</pre>
+<pre class="screen"> RMEP ID              : 50</pre>
+<pre class="screen"> Vlan ID              : 10</pre>
+<pre class="screen"> VSI Name             : --</pre>
+<pre class="screen"> MAC                   : 0000-0121-0222</pre>
+<pre class="screen"> CCM Receive         : enabled</pre>
+<pre class="screen"> Trigger-If-Down    : disabled</pre>
+<pre class="screen"> CFM Status          : down</pre>
+<pre class="screen"> MD Name              : md1</pre>
+<pre class="screen"> Level                : 4</pre>
+<pre class="screen"> MA Name              : ma1</pre>
+<pre class="screen"> RMEP ID              : 60</pre>
+<pre class="screen"> Vlan ID              : 10</pre>
+<pre class="screen"> VSI Name             : --</pre>
+<pre class="screen"> MAC                   : --</pre>
+<pre class="screen"> CCM Receive         : enabled</pre>
+<pre class="screen"> Trigger-If-Down    : disabled</pre>
+<pre class="screen"> CFM Status          : down</pre>
+<p># 查看当前设备上配置的所有RMEP的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display cfm remote-mep</strong></pre>
+<pre class="screen">The total number of RMEPs is 3</pre>
+<pre class="screen"> MD Name              : md1</pre>
+<pre class="screen"> Level                : 4</pre>
+<pre class="screen"> MA Name              : ma1</pre>
+<pre class="screen"> RMEP ID              : 50</pre>
+<pre class="screen"> Vlan ID              : 10</pre>
+<pre class="screen"> VSI Name             : --</pre>
+<pre class="screen"> MAC                   : 0000-0121-0222</pre>
+<pre class="screen"> CCM Receive         : enabled</pre>
+<pre class="screen"> Trigger-If-Down    : disabled</pre>
+<pre class="screen"> CFM Status          : down</pre>
+<pre class="screen"> MD Name              : md1</pre>
+<pre class="screen"> Level                : 4</pre>
+<pre class="screen"> MA Name              : ma1</pre>
+<pre class="screen"> RMEP ID              : 60</pre>
+<pre class="screen"> Vlan ID              : 10</pre>
+<pre class="screen"> VSI Name             : --</pre>
+<pre class="screen"> MAC                   : --</pre>
+<pre class="screen"> CCM Receive         : enabled</pre>
+<pre class="screen"> Trigger-If-Down    : disabled</pre>
+<pre class="screen"> CFM Status          : down</pre>
+<pre class="screen"> MD Name              : md1</pre>
+<pre class="screen"> Level                : 3</pre>
+<pre class="screen"> MA Name              : ma2</pre>
+<pre class="screen"> RMEP ID              : 110</pre>
+<pre class="screen"> Vlan ID              : 20</pre>
+<pre class="screen"> VSI Name             : --</pre>
+<pre class="screen"> MAC                   : --</pre>
+<pre class="screen"> CCM Receive         : disabled</pre>
+<pre class="screen"> Trigger-If-Down    : disabled</pre>
+<pre class="screen"> CFM Status          : down</pre>
+<pre class="screen">&lt;Quidway&gt; <strong>display cfm remote-mep</strong>
+The total number of RMEPs is : 1
+The status of RMEPS : 0 up, 1 down
+--------------------------------------------------
+ MD Name            : 11
+ Level              : 0
+ MA Name            : 22
+ RMEP ID            : 33
+ Vlan ID            : --
+ VSI Name           : --
+ MAC                : --
+ CCM Receive        : disabled
+ Trigger-If-Down    : disabled
+ CFM Status         : disabled
+</pre>
+
+<div class="tablenoborder"><a name="display_cfm_remote-mep__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cfm_remote-mep__tb_01" frame="border" border="1" rules="all"><caption>表1 display cfm remote-mep命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.93801965230537%" id="d19275e322"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.06198034769464%" id="d19275e326"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="bottom" width="33.93801965230537%" headers="d19275e322 "><p>The total number of RMEPs is</p>
+</td>
+
+<td class="cellrowborder" valign="bottom" width="66.06198034769464%" headers="d19275e326 "><p>RMEP的数量。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19275e322 "><p>MD Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19275e326 "><p>MD的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19275e322 "><p>Level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19275e326 "><p>MD的级别，范围是0～7。级别越高MD的优先级越高。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19275e322 "><p>MA Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19275e326 "><p>MA的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19275e322 "><p>RMEP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19275e326 "><p>RMEP的标识。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19275e322 "><p>Vlan ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19275e326 "><p>MA关联的VLAN的ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19275e322 "><p>VSI Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19275e326 "><p>MA关联的VSI。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19275e322 "><p>MAC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19275e326 "><p>RMEP所在设备的桥MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19275e322 "><p>CCM- receive</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19275e326 "><div class="p">当前设备是否接收该RMEP发送的CCM消息，取值包括：<ul>
+<li><p>disabled：当前设备不接收该RMEP发送的CCM消息。</p>
+</li>
+<li><p>enabled：当前设备接收该RMEP发送的CCM消息。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19275e322 "><p>Trigger If-down</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19275e326 "><div class="p">RMEP是否配置了接口闪断功能，取值包括：<ul>
+<li><p>disabled：表示RMEP未配置接口闪断功能。</p>
+</li>
+<li><p>enabled：表示RMEP配置了接口闪断功能。即：当该RMEP所在MA的MEP检测到和该RMEP之间有CFM连通性故障时，对该MEP所在接口进行闪断操作。</p>
+</li>
+</ul>
+详细说明请参见<a href="cfm_trigger_if-down.html">cfm trigger if-down</a>。</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19275e322 "><p>CFM Stauts</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19275e326 "><div class="p">CFM的运行状态：<ul>
+<li><p>up：CC链路检测正常</p>
+</li>
+<li><p>down：CC链路检测故障</p>
+</li>
+<li><p>disable：没有配置CFM功能（即没有配置本端CC发送使能和远端CC接收使能）</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_cfm_remote-mep__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cfm_remote-mep__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42%" id="d19275e507"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.99999999999999%" id="d19275e511"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42%" headers="d19275e507 "><p>VRPV500R005C05B006</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="d19275e511 "><p>增加The status of RMEPS字段</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42%" headers="d19275e507 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="d19275e511 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_trigger_if-down.html">cfm trigger if-down</a></div>
+<div><a href="remote-mep_ccm-receive_enable.html">remote-mep ccm-receive enable</a></div>
+<div><a href="remote-mep.html">remote-mep</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

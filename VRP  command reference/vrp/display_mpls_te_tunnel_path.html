@@ -1,0 +1,211 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te tunnel path">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_tunnel_path">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te tunnel path</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_tunnel_path"></a><a name="display_mpls_te_tunnel_path"></a>
+
+
+<h1 class="topictitle1">display mpls te tunnel path</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls te tunnel path</strong>命令用来查看隧道的路径信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te tunnel path</strong> [ [ <em>tunnel-name</em> ] [ <strong>lsp-id</strong> <em>ingress-lsr-id</em> <em>session-id </em><em>local-lsp-id</em> ]<span> | <strong>fast-reroute</strong> { <strong>local-protection-available</strong> | <strong>local-protection-inuse</strong> } ]</span><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>tunnel-name</em>：隧道的名称，字符串形式，不支持空格，区分大小写，长度范围是1～<span>255</span>。隧道名称的形式必须与配置文件中的名称形式完全一致，包括大小写和空格。例如，如果配置文件中的Tunnel接口信息为&#8220;interface
+Tunnel1/0/0&#8221;，此处指定隧道名称时，只能用&#8220;Tunnel1/0/0&#8221;，不能更改大小写或增加空格，&#8220;tunnel1/0/0&#8221;或&#8220;Tunnel
+1/0/0&#8221;都是错误的写法。</p>
+<p><em>ingress-lsr-id</em>：入节点的LSR-ID，点分十进制格式。</p>
+<p><em>session-id</em>：会话标识。整数形式，取值范围是<span>0</span>～<span>65535</span>。</p>
+<p><em>local-lsp-id</em>：LSP标识号。整数形式，取值范围是0～<span>65535</span>。</p>
+<p><strong>fast-reroute local-protection-available</strong>：快速重路由的本地保护功能可用。</p>
+<p><strong>fast-reroute local-protection-inuse</strong>：快速重路由的本地保护功能正在使用。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定隧道接口的编号，将显示所有隧道的路径属性信息。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>只有用户配置了<a href="mpls_te_record-route.html">mpls te record-route</a>命令，系统才能记录并显示路径信息。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_tunnel_path__d50252e151"></a><a name="d50252e151"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有隧道路径属性信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te tunnel path</strong></pre>
+<pre class="screen">Tunnel Interface Name : Tunnel1/0/0</pre>
+<pre class="screen"> Lsp ID : 1.1.1.9 :100 :1024</pre>
+<pre class="screen"> Hop Information</pre>
+<pre class="screen">  Hop 0   10.1.1.1</pre>
+<pre class="screen">  Hop 1   10.1.1.2</pre>
+<pre class="screen">  Hop 2   2.2.2.9</pre>
+<pre class="screen">  Hop 3   20.1.1.1</pre>
+<pre class="screen">  Hop 4   20.1.1.2</pre>
+<pre class="screen">  Hop 5   3.3.3.9</pre>
+
+<pre class="screen"> Tunnel Interface Name : Tunnel1/0/0</pre>
+<pre class="screen"> Lsp ID : 1.1.1.9 :100 :2048</pre>
+<pre class="screen"> Hop Information</pre>
+<pre class="screen">  Hop 0   30.1.1.1</pre>
+<pre class="screen">  Hop 1   30.1.1.2</pre>
+<pre class="screen">  Hop 2   4.4.4.9</pre>
+<pre class="screen">  Hop 3   40.1.1.1</pre>
+<pre class="screen">  Hop 4   40.1.1.2</pre>
+<pre class="screen">  Hop 5   3.3.3.9</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_tunnel_path__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_tunnel_path__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te tunnel path命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.06399596875787%" id="d50252e208"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.93600403124212%" id="d50252e212"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d50252e208 "><p>Tunnel Interface Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d50252e212 "><p>隧道接口的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d50252e208 "><p>LSP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d50252e212 "><p>隧道入口配置的LSP ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d50252e208 "><p>Hop Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d50252e212 "><p>跳数的信息，下面显示每跳的序号和到达的地址</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看入节点为1.1.1.9、会话标识为1和LSP标识为2的隧道路径的属性信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls te tunnel path lsp-id 1.1.1.9 1 2</strong>
+ Tunnel Interface Name : Tunnel1/0/0
+ Lsp ID : 1.1.1.9 :1 :2
+ Hop Information
+  Hop 0   10.1.1.1
+  Hop 1   10.1.1.2  Label 3
+  Hop 2   2.2.2.9   
+</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_te_tunnel_path__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_tunnel_path__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d50252e274"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d50252e278"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d50252e274 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d50252e278 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d50252e274 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d50252e278 "><p>将参数<em>tunnel-name</em>的字符串长度上限由63改为255</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d50252e274 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d50252e278 "><p>将参数<em>session-id</em>的字符串长度下限由1改为0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d50252e274 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d50252e278 "><p>将参数<em>session-id</em>和<em>local-lsp-id</em>的字符串长度上限由65534改为65535</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

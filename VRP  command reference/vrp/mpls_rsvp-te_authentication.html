@@ -1,0 +1,73 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls rsvp-te authentication">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_rsvp-te_authentication">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls rsvp-te authentication</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_rsvp-te_authentication"></a><a name="mpls_rsvp-te_authentication"></a>
+
+
+<h1 class="topictitle1">mpls rsvp-te authentication</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls rsvp-te authentication</strong>命令用来在接口启动验证功能并配置认证密钥。</p>
+<p><strong>undo
+mpls rsvp-te authentication</strong>命令用来关闭接口的验证功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls rsvp-te authentication</strong> { <strong>cipher</strong> | <strong>plain</strong> } <em>auth-key</em></p>
+<p><strong>undo
+mpls rsvp-te authentication</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>cipher</strong>：以密文方式显示认证密钥。</p>
+<p><strong>plain</strong>：以明文方式显示认证密钥。</p>
+<p><em>auth-key</em>：字符串形式，不支持空格。以明文方式输入时，长度范围是<span>8～16</span>；以MD5密文方式输入时，<span>长度为24位</span>。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行该命令前，应先在接口上启动RSVP-TE特性。</p>
+<p>在接口配置此命令后，所有从此接口发送的报文将携带由MD5算法根据验证密钥计算得到的认证信息，从此接口接收的报文也将使用此密钥来验证。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_rsvp-te_authentication__d94669e71"></a><a name="d94669e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能验证机制，以密文方式显示认证密钥。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> mpls rsvp-te authentication cipher beijing123</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

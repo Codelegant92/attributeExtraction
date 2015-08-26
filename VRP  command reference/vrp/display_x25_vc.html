@@ -1,0 +1,186 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display x25 vc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="x25_pvc.html">
+<meta name="DC.Relation" scheme="URI" content="x25_switch_pvc.html">
+<meta name="DC.Relation" scheme="URI" content="x25_xot_pvc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_x25_vc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display x25 vc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_x25_vc"></a><a name="display_x25_vc"></a>
+
+<h1 class="topictitle1">display x25 vc</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display x25 vc</strong>命令用来显示X.25虚电路。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display x25 vc</strong> [ <em>vcn </em>]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vcn</em>：虚电路号（Virtual circuit number）。取值范围是1～4095，如果不指定虚电路号，则显示全部虚电路。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>SVC是在有数据传输要求时，由X.25经过呼叫临时建立的；PVC是手工配置的，不论是否有数据传输要求而总是存在的。</p>
+<p>当<span class="keyword">路由器</span>工作在X.25交换方式时，为了传输被交换数据，也会有虚电路被建立。这几种虚电路都可以通过使用此命令来查看信息，只是在显示信息的某些域有所区别。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_x25_vc__d73730e39"></a><a name="d73730e39"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示X.25虚电路。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display x25 vc</strong></pre>
+<pre class="screen">Interface: Serial2/0/0</pre>
+<pre class="screen">  SVC 1</pre>
+<pre class="screen">    State: P4</pre>
+<pre class="screen">    Map: ip 10.1.1.2 to 130</pre>
+<pre class="screen">    Window size: input 2  output 2</pre>
+<pre class="screen">    Packet Size: input 128  output 128</pre>
+<pre class="screen">    Local PS: 5  Local PR: 5  Remote PS: 5  Remote PR: 4</pre>
+<pre class="screen">    Local Busy: FALSE  Reset times: 0</pre>
+<pre class="screen">    Input/Output:</pre>
+<pre class="screen">      DATA 5/5  INTERRUPT 0/0</pre>
+<pre class="screen">      RR 0/0  RNR 0/0  REJ 0/0</pre>
+<pre class="screen">      Bytes 420/420</pre>
+<pre class="screen">    Snd Queue(Current/Max): 0/200</pre>
+<pre class="screen">Interface: Serial2/1/0</pre>
+<pre class="screen">  SVC 10</pre>
+<pre class="screen">    State: P4</pre>
+<pre class="screen">    SVC &lt;--&gt;<strong> Serial2/0/0 SVC 60</strong></pre>
+<pre class="screen">    Window size: input 2  output 2</pre>
+<pre class="screen">    Packet Size: input 128  output 128</pre>
+<pre class="screen">    Local PS: 0  Local PR: 0  Remote PS: 0  Remote PR: 0</pre>
+<pre class="screen">    Local Busy: FALSE  Reset times: 0</pre>
+<pre class="screen">    Input/Output:</pre>
+<pre class="screen">      DATA 5/5  INTERRUPT 0/0</pre>
+<pre class="screen">      RR 0/0  RNR 0/0  REJ 0/0</pre>
+<pre class="screen">      Bytes 420/420</pre>
+<pre class="screen">    Snd Queue(Current/Max): 0/200</pre>
+<pre class="screen">Interface: Serial2/0/0-1.1.1.1</pre>
+<pre class="screen">  PVC 1</pre>
+<pre class="screen">    State: P/Inactive</pre>
+<pre class="screen">    XOT PVC &lt;--&gt;<strong> Serial2/0/0 PVC 1 connected</strong></pre>
+<pre class="screen">    Window size: input 2  output 2</pre>
+<pre class="screen">    Packet Size: input 128  output 128</pre>
+<pre class="screen">    Local PS: 0  Local PR: 0  Remote PS: 0  Remote PR: 0</pre>
+<pre class="screen">    Local Busy: FALSE  Reset times: 0</pre>
+<pre class="screen">    Input/Output:</pre>
+<pre class="screen">      DATA 0/0  INTERRUPT 0/0</pre>
+<pre class="screen">      RR 0/0  RNR 0/0  REJ 0/0</pre>
+<pre class="screen">      Bytes 0/0</pre>
+<pre class="screen">    Snd Queue(Current/Max): 1/200</pre>
+<pre class="screen">Interface: Serial2/0</pre>
+<pre class="screen">  PVC 1</pre>
+<pre class="screen">    State: D3</pre>
+<pre class="screen">    PVC &lt;--&gt;<strong> XOT Serial2/0/0-1.1.1.1 PVC 1 connected</strong></pre>
+<pre class="screen">    Window size: input 2  output 2</pre>
+<pre class="screen">    Packet Size: input 128  output 128</pre>
+<pre class="screen">    Local PS: 0  Local PR: 0  Remote PS: 0  Remote PR: 0</pre>
+<pre class="screen">    Local Busy: FALSE  Reset times: 0</pre>
+<pre class="screen">    Input/Output:</pre>
+<pre class="screen">      DATA 0/0  INTERRUPT 0/0</pre>
+<pre class="screen">      RR 0/0  RNR 0/0  REJ 0/0</pre>
+<pre class="screen">      Bytes 0/0</pre>
+<pre class="screen">    Snd Queue(Current/Max): 0/200</pre>
+<pre class="screen">Interface: Serial2/0/0</pre>
+<pre class="screen">  SVC 59</pre>
+<pre class="screen">    State: P4</pre>
+<pre class="screen">    PAD: UI-130 From remote 130 connected to local 220</pre>
+<pre class="screen">    Window size: input 2  output 2</pre>
+<pre class="screen">    Packet Size: input 128  output 128</pre>
+<pre class="screen">    Local PS: 3  Local PR: 1  Remote PS: 1  Remote PR: 2</pre>
+<pre class="screen">    Local Busy: FALSE  Reset times: 0</pre>
+<pre class="screen">    Input/Output: </pre>
+<pre class="screen">      DATA 9/11  INTERRUPT 0/0</pre>
+<pre class="screen">      RR 6/2  RNR 0/0  REJ 0/0</pre>
+<pre class="screen">      Bytes 53/363</pre>
+<pre class="screen">Snd Queue(Current/Max): 0/200</pre>
+
+<div class="tablenoborder"><a name="display_x25_vc__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_x25_vc__tb_01" frame="border" border="1" rules="all"><caption>表1 display x25 vc命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="39.17863441672966%" id="d73730e190"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="60.82136558327035%" id="d73730e193"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="39.17863441672966%" headers="d73730e190 "><p>Interface:</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.82136558327035%" headers="d73730e193 "><p>有虚电路的接口类型和接口编号。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.17863441672966%" headers="d73730e190 "><p>SVC 1</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.82136558327035%" headers="d73730e193 "><p>虚电路的类型和虚电路号。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.17863441672966%" headers="d73730e190 "><p>State:</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.82136558327035%" headers="d73730e193 "><p>状态。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.17863441672966%" headers="d73730e190 "><p>Map:</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.82136558327035%" headers="d73730e193 "><p>映射的IP地址和虚电路号。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.17863441672966%" headers="d73730e190 "><p>Window size:</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.82136558327035%" headers="d73730e193 "><p>窗口大小。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.17863441672966%" headers="d73730e190 "><p>Packet Size:</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.82136558327035%" headers="d73730e193 "><p>报文大小。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.17863441672966%" headers="d73730e190 "><p>Local PS: 5  Local PR: 5  Remote PS: 5  Remote PR: 4</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.82136558327035%" headers="d73730e193 "><p>本地和远端的发送和接收（PS和PR）值。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.17863441672966%" headers="d73730e190 "><p>Local Busy: FALSE  Reset times: 0</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.82136558327035%" headers="d73730e193 "><p>本地不忙，恢复次数为0。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.17863441672966%" headers="d73730e190 "><p>SVC &lt;--&gt; Serial2/0/0 SVC 60</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.82136558327035%" headers="d73730e193 "><p>虚电路交换的远端接口和虚电路号。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.17863441672966%" headers="d73730e190 "><p>XOT PVC &lt;--&gt; Serial2/0/0 PVC 1 connected</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.82136558327035%" headers="d73730e193 "><p>XOT连接的远端接口号和虚电路号及状态。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="x25_pvc.html">x25 pvc</a></div>
+<div><a href="x25_switch_pvc.html">x25 switch pvc</a></div>
+<div><a href="x25_xot_pvc.html">x25 xot pvc</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

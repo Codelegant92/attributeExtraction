@@ -1,0 +1,463 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls l2vc oam-mapping">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_l2vpn_oam-mapping.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_l2vpn_oam-mapping.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_l2vc_oam-mapping">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls l2vc oam-mapping</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_l2vc_oam-mapping"></a><a name="display_mpls_l2vc_oam-mapping"></a>
+
+
+<h1 class="topictitle1">display mpls l2vc oam-mapping</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>mpls l2vc</strong> <strong>oam-mapping</strong>命令用来查看以LDP为信令的L2VPN的AC状态和PSN侧状态的映射(OAM Mapping)表信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>mpls l2vc</strong> <strong>oam-mapping</strong> [ <strong>interface </strong><em>interface-type interface-number</em> ]<span> [<strong> | count</strong> ]</span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type interface-number</em>：接口类型和编号。用于显示指定VC(LDP信令)接口的OAM Mapping信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display mpls l2vc oam-mapping</strong>命令后：</p>
+<ul>
+<li><p>如果指定接口名称，则显示该接口下详细的OAM Mapping信息。</p>
+</li>
+<li><p>如果没有指定接口名称，则只显示所有接口的基本OAM Mapping信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_l2vc_oam-mapping__d42366e116"></a><a name="d42366e116"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有以LDP为信令的VC接口的OAM Mapping信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls l2vc oam-mapping</strong></pre>
+<pre class="screen">Interface                    Active VC-ID      VC-status AC-OAM  BFD-for-PW</pre>
+<pre class="screen">Pos1/0/0                     Yes    100        Main      Enable  Enable</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vc_oam-mapping__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vc_oam-mapping__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls l2vc oam-mapping命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="23.557213930348258%" id="d42366e140"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="76.44278606965175%" id="d42366e144"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e140 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e144 "><p>AC接口类型和编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e140 "><p>Active</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e144 "><div class="p">该标识仅在主、备PW同时存在时才有意义。表示PW是否为活动状态：<ul>
+<li><p>Yes：表明该PW为活动状态</p>
+</li>
+<li><p>No：表明该PW为非活动状态</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e140 "><p>VC-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e144 "><p>本端VC的ID值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e140 "><p>VC-status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e144 "><div class="p">本端PW是主用PW还是备用PW。<ul>
+<li><p>Main：主用PW。</p>
+</li>
+<li><p>Secondary：备用PW。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e140 "><p>AC-OAM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e144 "><div class="p">表示本PE设备上是否使用OAM通告AC故障给远端PE：<ul>
+<li><p>Enable：表明本PE使用OAM通告AC故障给远端PE</p>
+</li>
+<li><p>Disable：表明本PE不使用OAM通告AC故障给远端PE</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e140 "><p>BFD-for-PW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e144 "><div class="p">表示本PE设备上是否配置了使用BFD检测PW状态故障的功能。<ul>
+<li><p>Enable：表明本PE使用BFD检测PW状态</p>
+</li>
+<li><p>Disable：表明本PE不使用BFD检测PW状态</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看POS1/0/0接口上的OAM Mapping信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display mpls l2vc oam-mapping interface pos1/0/0</strong></strong></pre>
+<pre class="screen"> AC OAM Info:</pre>
+<pre class="screen">  ACFD Index     : 0x800</pre>
+<pre class="screen">  Notify         : Enable</pre>
+<pre class="screen">  Detect         : Enable</pre>
+<pre class="screen">  AC OAM State   : Up</pre>
+<pre class="screen">  OAM-mapping    : Enable</pre>
+<pre class="screen"> PSN info:</pre>
+<pre class="screen">  VC-ID          : 100</pre>
+<pre class="screen">  VC status      : Primary</pre>
+<pre class="screen">  Active State   : Active</pre>
+<pre class="screen">  Link State     : Up</pre>
+<pre class="screen">  BFD for PW     : Enable</pre>
+<pre class="screen">    BFDSessionIndex:256 ,BFD State : up</pre>
+<pre class="screen">  BFD for LSP    : 0    TunnelNum: 1    PSN State : up   </pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vc_oam-mapping__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vc_oam-mapping__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls l2vc oam-mapping interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="23.557213930348258%" id="d42366e309"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="76.44278606965175%" id="d42366e313"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>AC OAM Info</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><p>表示以下5行内容是AC OAM相关信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>ACFD Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><p>AC转发信息索引。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>Notify</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><div class="p">表示本地PE上是否配置了将PSN故障通告给本地CE的功能：<ul>
+<li><p>Enable：配置了将PSN故障通告给本地CE的功能</p>
+</li>
+<li><p>Disable：未配置将PSN故障通告给本地CE的功能</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>Detect</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><div class="p">表示本地PE上是否配置了检测本地AC故障：<ul>
+<li><p>Enable：配置了检测本地AC故障</p>
+</li>
+<li><p>Disable：未配置检测本地AC故障</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>AC OAM State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><div class="p">本地AC故障检测的状态。<ul>
+<li><p>Up：未使能AC故障检测，或使能了AC故障并且未检测到AC故障。</p>
+</li>
+<li><p>Down：使能了AC故障并且检测到AC故障。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>OAM-mapping</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><div class="p">表示本地PE上是否配置OAM Mapping功能：<ul>
+<li><p>Enable：本地PE上配置了OAM Mapping功能</p>
+</li>
+<li><p>Disable：本地PE上未配置OAM Mapping功能</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>PSN info</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><p>表示以下内容是PW的相关信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>VC-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><p>VC的标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>VC status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><div class="p">表示该PW为主用PW还是备用PW<ul>
+<li><p>Primary：该PW为主用PW</p>
+</li>
+<li><p>Secondary：该PW为备份PW</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>Active state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><div class="p">该标识仅在主、备PW同时存在时才有意义。表示该PW是否为活动状态：<ul>
+<li><p>Active：该PW处于活动状态</p>
+</li>
+<li><p>InActive：该PW处于非活动状态</p>
+</li>
+</ul>
+当一个AC接口上只配置了一个PW时，该PW为活动状态。如果一个AC接口上配置了主备PW，则正常情况下主PW为活动状态；备份PW为非活动状态。当主PW出现故障时，备份PW变为活动状态，主PW为非活动状态。</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>Link State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><div class="p">AC接口的链路状态：<ul>
+<li><p>Up：该接口处于物理可用状态</p>
+</li>
+<li><p>Down：该接口处于不可用状态</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>BFD for PW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><p>本端PE设备上是否配置了使用BFD检测PW状态故障的功能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>BFDSessionIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><p>BFD会话的索引值，该内容只有使能了BFD检测PW状态的功能后才可见。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>BFD State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><div class="p">BFD会话的状态：<ul>
+<li><p>Up：BFD会话处于Up状态</p>
+</li>
+<li><p>Down：BFD会话处于Down状态</p>
+</li>
+<li><p>Admin down：BFD会话处于管理Down状态</p>
+</li>
+</ul>
+该内容只有使能了BFD检测PW状态的功能后才可见。</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>BFD for LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><p>表示该PW是否使用BFD检测隧道。值为0表示没有使用BFD检测隧道。值为非0表示使用了BFD检测隧道</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>TunnelNum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><p>被BFD检测的隧道的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.557213930348258%" headers="d42366e309 "><p>PSN State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.44278606965175%" headers="d42366e313 "><p>因没有使用BFD检测隧道，故隧道的状态默认为Up。当PW使用没有使能BFD的隧道，PSN State也为Up</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_l2vc_oam-mapping__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vc_oam-mapping__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d42366e608"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d42366e612"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d42366e608 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d42366e612 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d42366e608 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d42366e612 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_l2vpn_oam-mapping.html">mpls l2vpn oam-mapping</a></div>
+<div><a href="display_mpls_l2vpn_oam-mapping.html">display mpls l2vpn oam-mapping</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

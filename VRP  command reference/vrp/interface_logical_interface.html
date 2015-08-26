@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="interface（逻辑接口）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/virtual_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="interface_ethernet_gigabitethernet.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="interface_logical_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>interface（逻辑接口）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="interface_logical_interface"></a><a name="interface_logical_interface"></a>
+
+
+<h1 class="topictitle1">interface（逻辑接口）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>interface</strong>命令用来创建点到多点或点到点类型的子接口。</p>
+<p><strong>undo interface</strong>命令用来删除指定的子接口。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>interface </strong><em>interface-type interface-number</em>.<em>subinterface-number</em> [ <strong>p2mp</strong> | <strong>p2p</strong> ]</p>
+<p><strong>undo interface</strong> <em>interface-type interface-number</em>.<em>subinterface-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface</strong> <em>interface-type interface-number</em>：接口类型和接口编号。</p>
+<p><em>subinterface-number</em>：子接口编号。取值范围是1～4096。整数形式，不同物理接口、不同产品上的子接口取值范围可能不同。所有产品上，一个主接口可创建的子接口数量最大为1024个。</p>
+<p><strong>p2mp</strong>：配置子接口类型为点到多点。这是缺省的子接口类型。</p>
+<p><strong>p2p</strong>：配置子接口类型为点到点。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>目前，只有封装ATM、帧中继或X.25的接口可以配置点到多点或点到点类型的子接口，以太网子接口则是广播类型的子接口。</p>
+<p>实际使用中，一个主接口可创建的子接口数量最大为1024个。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>当接口下配有子接口时，在主接口连续执行<a href="shutdown_interface_view.html">shutdown（接口视图）</a>和<strong>undo shutdown</strong>操作的间隔应至少为15秒。</p>
+</li>
+<li><p>当子接口配置了与L2VPN（VLL或VPLS）的绑定关系时，必须先删除子接口和L2VPN的绑定关系，才能删除子接口。</p>
+</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="interface_logical_interface__d83148e98"></a><a name="d83148e98"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在ATM接口2/0/0上创建一个子接口。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface atm 2/0/0.1</strong></pre>
+<pre class="screen">[Quidway-Atm2/0/0.1]</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/virtual_interface_configuration_commands.html">逻辑接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="interface_ethernet_gigabitethernet.html">interface { ethernet | gigabitethernet }</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

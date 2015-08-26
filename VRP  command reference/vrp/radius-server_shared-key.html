@@ -1,0 +1,59 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="radius-server shared-key">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aaa_and_user_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_radius-server_configuration.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="radius-server_shared-key">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>radius-server shared-key</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="radius-server_shared-key"></a><a name="radius-server_shared-key"></a>
+
+<h1 class="topictitle1">radius-server shared-key</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>radius-server shared-key</strong>命令用来设置RADIUS服务器的共享密钥。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>radius-server shared-key </strong><em>key-string</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>key-string</em>：共享密钥，字符串形式，长度范围是1～16，缺省值是&#8220;huawei&#8221;。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>RADIUS模板视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>密钥用于加密用户口令及生成回应认证符（Response Authenticator）。RADIUS发送认证报文时，对口令等重要信息使用MD5加密，确保认证信息在网络中传输的安全性。为了确保认证双方的身份合法性，要求<span class="keyword">路由器</span>上的密钥与RADIUS服务器间设定的密钥必须相同。</p>
+<p>只有当该RADIUS Server模板没有用户使用时，才能改变此配置。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="radius-server_shared-key__d110180e37"></a><a name="d110180e37"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置RADIUS服务器共享密钥为hello。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> radius-server template test1</strong></pre>
+<pre class="screen">[Quidway-radius-test1]<strong> radius-server shared-key hello</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/aaa_and_user_management_configuration_commands.html">AAA及用户管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_radius-server_configuration.html">display radius-server configuration</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

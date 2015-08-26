@@ -1,0 +1,858 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te cspf tedb">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_cspf_tedb">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te cspf tedb</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_cspf_tedb"></a><a name="display_mpls_te_cspf_tedb"></a>
+
+
+<h1 class="topictitle1">display mpls te cspf tedb</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls te cspf tedb</strong>命令用来查看满足指定条件的基于CSPF的TEDB信息。可以使用正则表达式对输出信息进行过滤。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te cspf tedb </strong>{<strong> all</strong> | <strong>area</strong> <em>area-id</em> | <strong>interface</strong> <em>ip-address</em> | <strong>network-lsa</strong> | <strong>node</strong> [ <em>router-id</em> ]<span> | <strong>srlg</strong> <em>srlg-number</em></span> }
+[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：所有TEDB节点信息。</p>
+<p><em>area-id</em>：区域ID。对于OSPF，取值范围是0～4294967295；对于IS-IS，取值为1或2。</p>
+<p><em>ip-address</em>：接口IP地址。</p>
+<p><strong>network-lsa</strong>：所有的Network-LSA信息。</p>
+<p><strong>node</strong>：节点信息。</p>
+<p><em>router-id</em>：设备ID，点分十进制格式。</p>
+<p><strong>srlg</strong> <em>srlg-number</em>：SRLG号。<em>srlg-number</em>为整数形式，取值范围是0～4294967295。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_cspf_tedb__d48166e137"></a><a name="d48166e137"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看TEDB信息的network-lsa。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te cspf tedb network-lsa</strong></pre>
+<pre class="screen">Maximum Network LSA Supported:   1024</pre>
+<pre class="screen">Current Total Network LSA Number:        6</pre>
+<pre class="screen">IGP-Type:OSPF      Process-ID:   1</pre>
+<pre class="screen">ID  DR-Router-ID    DR-Address      Area       DR-OSPF-Router-ID     Neighbors</pre>
+<pre class="screen">1   1.1.1.1         172.168.4.1     0          60.0.0.31</pre>
+<pre class="screen">       Neighbor: 3.3.3.3         Ospf-Router-Id:3.3.3.3</pre>
+<pre class="screen">       Neighbor: 1.1.1.1         Ospf-Router-Id:60.0.0.31</pre>
+<pre class="screen">IGP-Type:ISIS      Process-ID:   1</pre>
+<pre class="screen">ID  DR-Router-ID    DR-Address      Area       DR-ISIS-System-ID     Neighbors</pre>
+<pre class="screen">2   1.1.1.1         172.168.4.1     Level-2    0010.0100.1001.04</pre>
+<pre class="screen">       Neighbor: 1.1.1.1         Isis-System-Id:0010.0100.1001.00</pre>
+<pre class="screen">       Neighbor: 3.3.3.3         Isis-System-Id:3333.3333.3333.00</pre>
+<pre class="screen">3   3.3.3.3         172.168.10.1    Level-2    3333.3333.3333.05</pre>
+<pre class="screen">       Neighbor: 3.3.3.3         Isis-System-Id:3333.3333.3333.00</pre>
+<pre class="screen">       Neighbor: 4.4.4.4         Isis-System-Id:0040.0400.4004.00</pre>
+<pre class="screen">4   1.1.1.1         172.168.5.1     Level-2    0010.0100.1001.02</pre>
+<pre class="screen">       Neighbor: 1.1.1.1         Isis-System-Id:0010.0100.1001.00</pre>
+<pre class="screen">       Neighbor: 4.4.4.4         Isis-System-Id:0040.0400.4004.00</pre>
+<pre class="screen">5   2.2.2.2         172.168.6.1     Level-2    0020.0200.2002.03</pre>
+<pre class="screen">       Neighbor: 2.2.2.2         Isis-System-Id:0020.0200.2002.00</pre>
+<pre class="screen">       Neighbor: 3.3.3.3         Isis-System-Id:3333.3333.3333.00</pre>
+<pre class="screen">6   2.2.2.2         172.168.8.1     Level-2    0020.0200.2002.02</pre>
+<pre class="screen">       Neighbor: 2.2.2.2         Isis-System-Id:0020.0200.2002.00</pre>
+<pre class="screen">       Neighbor: 4.4.4.4         Isis-System-Id:0040.0400.4004.00</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_cspf_tedb__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_cspf_tedb__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te cspf tedb命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.7941546989166%" id="d48166e205"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.2058453010834%" id="d48166e209"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d48166e205 "><p>IGP-Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d48166e209 "><div class="p">内部网关协议<ul>
+<li><p>OSPF</p>
+</li>
+<li><p>IS-IS</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d48166e205 "><p>Process-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d48166e209 "><p>IGP进程ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d48166e205 "><p>ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d48166e209 "><p>顺序号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d48166e205 "><p>DR-Router-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d48166e209 "><p>指定设备（Designated Router）的ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d48166e205 "><p>DR-Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d48166e209 "><p>指定设备（Designated Router）的接口地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d48166e205 "><p>Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d48166e209 "><p>设备属于的区域</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d48166e205 "><p>DR-OSPF-Router-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d48166e209 "><p>指定设备的Ospf的Router ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d48166e205 "><p>DR-ISIS-System-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d48166e209 "><p>指定设备的ISIS的System ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d48166e205 "><p>Neighbor</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d48166e209 "><p>邻居设备ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d48166e205 "><p>OSPF-Router-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d48166e209 "><p>邻居设备的OSPF的Router ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d48166e205 "><p>ISIS-System-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d48166e209 "><p>邻居设备的ISIS的System ID</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看所有TEDB信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te cspf tedb all</strong></pre>
+<pre class="screen">Maximum Node Supported: 128              Maximum Link Supported: 256</pre>
+<pre class="screen">Current Total Node Number: 6             Current Total Link Number: 18</pre>
+<pre class="screen">Maximum SRLGs supported: 5120            Current Total SRLG Number: 0</pre>
+<pre class="screen">Id     Router-Id        IGP      Process-Id     Area            Link-Count</pre>
+<pre class="screen">1      3.3.3.3          OSPF     100            0               1</pre>
+<pre class="screen">2      1.1.1.1          OSPF     100            0               3</pre>
+<pre class="screen">3      2.2.2.2          OSPF     100            0               2</pre>
+<pre class="screen">4      1.1.1.1          ISIS     100            Level-1,2       4</pre>
+<pre class="screen">5      2.2.2.2          ISIS     100            Level-2,1       6</pre>
+<pre class="screen">6      3.3.3.3          ISIS     100            Level-1,2       2</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_cspf_tedb__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_cspf_tedb__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls te cspf tedb all命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="38.88888888888889%" id="d48166e389"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="61.111111111111114%" id="d48166e393"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="38.88888888888889%" headers="d48166e389 "><p>Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.111111111111114%" headers="d48166e393 "><p>顺序号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.88888888888889%" headers="d48166e389 "><p>Router-Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.111111111111114%" headers="d48166e393 "><p>设备ID，点分十进制格式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.88888888888889%" headers="d48166e389 "><p>IGP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.111111111111114%" headers="d48166e393 "><div class="p">内部网关协议：<ul>
+<li><p>OSPF</p>
+</li>
+<li><p>IS-IS</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.88888888888889%" headers="d48166e389 "><p>Process-Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.111111111111114%" headers="d48166e393 "><p>IGP进程ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.88888888888889%" headers="d48166e389 "><p>Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.111111111111114%" headers="d48166e393 "><p>设备所属的区域</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.88888888888889%" headers="d48166e389 "><p>Link-Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.111111111111114%" headers="d48166e393 "><p>设备上连接的指定IGP类型和进程号的链路总数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看指定区域的TEDB信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te cspf tedb area 0</strong></pre>
+<pre class="screen"> Router Node Information for Area 0:</pre>
+<pre class="screen">ID     Router-ID        IGP      Process-ID     Area            Link-Count</pre>
+<pre class="screen">1      1.1.1.1          OSPF     1              01</pre>
+<pre class="screen">2      3.3.3.3          OSPF     1              01</pre>
+
+<pre class="screen">Network LSA Information for Area 0:</pre>
+<pre class="screen">IGP-Type:OSPF      Process-ID:   1</pre>
+<pre class="screen">ID  DR-Router-ID    DR-Address      Area       DR-OSPF-Router-ID     Neighbors</pre>
+<pre class="screen">1   1.1.1.1         172.168.4.1     2          60.0.0.31</pre>
+<pre class="screen">       Neighbor: 3.3.3.3         Ospf-Router-Id:3.3.3.3</pre>
+<pre class="screen">       Neighbor: 1.1.1.1         Ospf-Router-Id:60.0.0.31</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_cspf_tedb__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_cspf_tedb__tb_03" frame="border" border="1" rules="all"><caption>表3 display mpls te cspf tedb area命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="36.13000755857899%" id="d48166e519"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63.86999244142102%" id="d48166e523"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>Link-Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>设备上连接的指定IGP类型和进程号的链路总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>顺序号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>Router-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>Router ID，点分十进制形式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>IGP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><div class="p">内部网关协议<ul>
+<li><p>OSPF</p>
+</li>
+<li><p>IS-IS</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>IGP-Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><div class="p">内部网关协议<ul>
+<li><p>OSPF</p>
+</li>
+<li><p>IS-IS</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>Process-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>IGP进程ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>DR-Router-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>指定设备（Designated Router）的ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>DR-Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>指定设备（Designated Router）的接口地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>设备所属的区域</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>DR-OSPF-Router-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>指定设备的OSPF的Router ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>DR-ISIS-System-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>指定设备的ISIS的System ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>Neighbor</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>邻居设备ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>Ospf-Router-Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>邻居设备的OSPF的Router ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d48166e519 "><p>Isis-System-Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d48166e523 "><p>邻居设备的ISIS的System ID</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看指定节点的TEDB信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te cspf tedb node 1.1.1.1</strong></pre>
+<pre class="screen"> Router ID: 1.1.1.1</pre>
+<pre class="screen">  IGP Type: ISIS      Process ID: 1</pre>
+<pre class="screen">  MPLS-TE Link Count: 2</pre>
+<pre class="screen">  Link[1]:</pre>
+<pre class="screen">    ISIS System ID: 0010.0100.1001.00</pre>
+<pre class="screen">    Interface IP Address: 172.168.4.1</pre>
+<pre class="screen">    DR Address: 172.168.4.1</pre>
+<pre class="screen">    DR ISIS System ID: 0010.0100.1001.04</pre>
+<pre class="screen">    IGP Area: Level-2</pre>
+<pre class="screen">    Link Type: multi-access  Link Status: Active      Timer: 0</pre>
+<pre class="screen">    IGP Metric: 10              TE Metric: 10          Color: 0x0</pre>
+<pre class="screen">    Maximum Bandwidth: 0 (kbps)</pre>
+<pre class="screen">    Maximum Reservable Bandwidth: 0 (kbps)</pre>
+<pre class="screen">    Bandwidth Constraint Model: Russian Doll</pre>
+<pre class="screen">    Bandwidth Constraints:           Local Overbooking Multiplier:</pre>
+<pre class="screen">         BC[0]:  0          (kbps)   LOM[0]:  1</pre>
+<pre class="screen">         BC[1]:  0          (kbps)   LOM[1]:  1</pre>
+<pre class="screen">    BW Unreserved for Class type 0:</pre>
+<pre class="screen">         [0]:    0          (kbps),  [1]:     0          (kbps)</pre>
+<pre class="screen">         [2]:    0          (kbps),  [3]:     0          (kbps)</pre>
+<pre class="screen">         [4]:    0          (kbps),  [5]:     0          (kbps)</pre>
+<pre class="screen">         [6]:    0          (kbps),  [7]:     0          (kbps)</pre>
+<pre class="screen">    BW Unreserved for Class type 1:</pre>
+<pre class="screen">         [0]:    0          (kbps),  [1]:     0          (kbps)</pre>
+<pre class="screen">         [2]:    0          (kbps),  [3]:     0          (kbps)</pre>
+<pre class="screen">         [4]:    0          (kbps),  [5]:     0          (kbps)</pre>
+<pre class="screen">         [6]:    0          (kbps),  [7]:     0          (kbps)</pre>
+<pre class="screen">  Link[2]:</pre>
+<pre class="screen">    ISIS System ID: 0010.0100.1001.00</pre>
+<pre class="screen">    Interface IP Address: 172.168.5.1</pre>
+<pre class="screen">    Peer    IP   Address: 172.168.5.2</pre>
+<pre class="screen">    Peer    Router    Id: 4.4.4.4</pre>
+<pre class="screen">    Peer  ISIS System ID: 0040.0400.4004.00</pre>
+<pre class="screen">    IGP Area: Level-2</pre>
+<pre class="screen">    Link  Type: point-to-point  Link Status: Active      Timer: 0</pre>
+<pre class="screen">    IGP Metric: 10              TE Metric: 10          Color: 0x0</pre>
+<pre class="screen">    Maximum Bandwidth: 0 (kbps)</pre>
+<pre class="screen">    Maximum Reservable Bandwidth: 0 (kbps)</pre>
+<pre class="screen">    Bandwidth Constraint Model: Russian Doll</pre>
+<pre class="screen">    Bandwidth Constraints:           Local Overbooking Multiplier:</pre>
+<pre class="screen">         BC[0]:  0          (kbps)   LOM[0]:  1</pre>
+<pre class="screen">         BC[1]:  0          (kbps)   LOM[1]:  1</pre>
+<pre class="screen">    BW Unreserved for Class type 0:</pre>
+<pre class="screen">         [0]:    0          (kbps),  [1]:     0          (kbps)</pre>
+<pre class="screen">         [2]:    0          (kbps),  [3]:     0          (kbps)</pre>
+<pre class="screen">         [4]:    0          (kbps),  [5]:     0          (kbps)</pre>
+<pre class="screen">         [6]:    0          (kbps),  [7]:     0          (kbps)</pre>
+<pre class="screen">    BW Unreserved for Class type 1:</pre>
+<pre class="screen">         [0]:    0          (kbps),  [1]:     0          (kbps)</pre>
+<pre class="screen">         [2]:    0          (kbps),  [3]:     0          (kbps)</pre>
+<pre class="screen">         [4]:    0          (kbps),  [5]:     0          (kbps)</pre>
+<pre class="screen">         [6]:    0          (kbps),  [7]:     0          (kbps)</pre>
+<pre class="screen"> Router ID: 1.1.1.1</pre>
+<pre class="screen">  IGP Type: OSPF      Process ID: 1</pre>
+<pre class="screen">  MPLS-TE Link Count: 2</pre>
+<pre class="screen">  Link[1]:</pre>
+<pre class="screen">    OSPF Route ID: 60.0.0.31</pre>
+<pre class="screen">    Interface IP Address: 172.168.4.1</pre>
+<pre class="screen">    DR Address: 172.168.4.1</pre>
+<pre class="screen">    IGP Area: 0</pre>
+<pre class="screen">    Link  Type: multi-access  Link Status: Active      Timer: 0</pre>
+<pre class="screen">    IGP Metric: 1TE Metric: 1           Color: 0x0</pre>
+<pre class="screen">    Maximum Bandwidth: 0 (kbps)</pre>
+<pre class="screen">    Maximum Reservable Bandwidth: 0 (kbps)</pre>
+<pre class="screen">    Bandwidth Constraint Model: Russian Doll</pre>
+<pre class="screen">    Bandwidth Constraints:           Local Overbooking Multiplier:</pre>
+<pre class="screen">         BC[0]:  0          (kbps)   LOM[0]:  1</pre>
+<pre class="screen">         BC[1]:  0          (kbps)   LOM[1]:  1</pre>
+<pre class="screen">    BW Unreserved for Class type 0:</pre>
+<pre class="screen">         [0]:    0          (kbps),  [1]:     0          (kbps)</pre>
+<pre class="screen">         [2]:    0          (kbps),  [3]:     0          (kbps)</pre>
+<pre class="screen">         [4]:    0          (kbps),  [5]:     0          (kbps)</pre>
+<pre class="screen">         [6]:    0          (kbps),  [7]:     0          (kbps)</pre>
+<pre class="screen">    BW Unreserved for Class type 1:</pre>
+<pre class="screen">         [0]:    0          (kbps),  [1]:     0          (kbps)</pre>
+<pre class="screen">         [2]:    0          (kbps),  [3]:     0          (kbps)</pre>
+<pre class="screen">         [4]:    0          (kbps),  [5]:     0          (kbps)</pre>
+<pre class="screen">         [6]:    0          (kbps),  [7]:     0          (kbps)</pre>
+<pre class="screen">  Link[2]:</pre>
+<pre class="screen">    OSPF Route ID: 60.0.0.31</pre>
+<pre class="screen">    Interface IP Address: 172.168.5.1</pre>
+<pre class="screen">    Peer    IP   Address: 172.168.5.2</pre>
+<pre class="screen">    Peer    Router    ID: 4.4.4.4</pre>
+<pre class="screen">    Peer  OSPF  Route ID: 4.4.4.4</pre>
+<pre class="screen">    IGP Area: 0</pre>
+<pre class="screen">    Link  Type: point-to-point  Link Status: Active      Timer: 0</pre>
+<pre class="screen">    IGP Metric: 1TE Metric: 1           Color: 0x0</pre>
+<pre class="screen">    Maximum Bandwidth: 0 (kbps)</pre>
+<pre class="screen">    Maximum Reservable Bandwidth: 0 (kbps)</pre>
+<pre class="screen">    Bandwidth Constraint Model: Russian Doll</pre>
+<pre class="screen">    Bandwidth Constraints:           Local Overbooking Multiplier:</pre>
+<pre class="screen">         BC[0]:  0          (kbps)   LOM[0]:  1</pre>
+<pre class="screen">         BC[1]:  0          (kbps)   LOM[1]:  1</pre>
+<pre class="screen">    BW Unreserved for Class type 0:</pre>
+<pre class="screen">         [0]:    0          (kbps),  [1]:     0          (kbps)</pre>
+<pre class="screen">         [2]:    0          (kbps),  [3]:     0          (kbps)</pre>
+<pre class="screen">         [4]:    0          (kbps),  [5]:     0          (kbps)</pre>
+<pre class="screen">         [6]:    0          (kbps),  [7]:     0          (kbps)</pre>
+<pre class="screen">    BW Unreserved for Class type 1:</pre>
+<pre class="screen">         [0]:    0          (kbps),  [1]:     0          (kbps)</pre>
+<pre class="screen">         [2]:    0          (kbps),  [3]:     0          (kbps)</pre>
+<pre class="screen">         [4]:    0          (kbps),  [5]:     0          (kbps)</pre>
+<pre class="screen">         [6]:    0          (kbps),  [7]:     0          (kbps)</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_cspf_tedb__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_cspf_tedb__tb_04" frame="border" border="1" rules="all"><caption>表4 display mpls te cspf tedb node命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="40.27462836986647%" id="d48166e932"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="59.72537163013354%" id="d48166e936"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>Router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>设备ID，点分十进制格式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>IGP-Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><div class="p">内部网关协议：<ul>
+<li><p>OSPF</p>
+</li>
+<li><p>IS-IS</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>ISIS System ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>ISIS System ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>DR ISIS System ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>DR设备的ISIS System ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>Peer ISIS System ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>对端的ISIS System ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>Link [ x ] </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>链路信息，X为链路编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>IGP Metric: 100</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>链路的IGP度量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>TE Metric: 100</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>链路的TE度量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>Color</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>链路的颜色</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>链路的定时器数据</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>Maximum Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>链路的最大带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>Maximum Reservable Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>链路的最大可预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d48166e932 "><p>BW Unreserved for Class type 0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d48166e936 "><p>CT0的未预留带宽，之后的[ 0 ]～[ 7 ]表示各优先级的未预留带宽</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看指定接口地址的TEDB信息</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te cspf tedb interface 20.1.1.1</strong></pre>
+<pre class="screen">Router ID: 2.2.2.2</pre>
+<pre class="screen">  IGP Type: ISIS   Process Id: 100</pre>
+<pre class="screen">  Link[1] :</pre>
+<pre class="screen">    Interface IP Address: 20.1.1.1</pre>
+<pre class="screen">    DR Address: 20.1.1.2</pre>
+<pre class="screen">    IGP Area: Level-1</pre>
+<pre class="screen">    Link  Type: multi-access  Link Status: Active</pre>
+<pre class="screen">    IGP Metric: 10              TE Metric: 0           Color: 0x0</pre>
+<pre class="screen">    Maximum Bandwidth: 0 (kbps)</pre>
+<pre class="screen">    Maximum Reservable Bandwidth: 0 (kbps)</pre>
+<pre class="screen">    Bandwidth Constraints:           Local Overbooking Multiplier:</pre>
+<pre class="screen">         BC[0] :  0          (kbps)   LOM[0] :  1</pre>
+<pre class="screen">         BC[1] :  0          (kbps)   LOM[1] :  1</pre>
+<pre class="screen">    BW Unreserved for Class type 0:</pre>
+<pre class="screen">         [0] :    0          (kbps),  [1] :     0          (kbps)</pre>
+<pre class="screen">         [2] :    0          (kbps),  [3] :     0          (kbps)</pre>
+<pre class="screen">         [4] :    0          (kbps),  [5] :     0          (kbps)</pre>
+<pre class="screen">         [6] :    0          (kbps),  [7] :     0          (kbps)</pre>
+<pre class="screen">    BW Unreserved for Class type 1:</pre>
+<pre class="screen">         [0] :    0          (kbps),  [1] :     0          (kbps)</pre>
+<pre class="screen">         [2] :    0          (kbps),  [3] :     0          (kbps)</pre>
+<pre class="screen">         [4] :    0          (kbps),  [5] :     0          (kbps)</pre>
+<pre class="screen">         [6] :    0          (kbps),  [7] :     0          (kbps)</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_cspf_tedb__tb_05"></a><a name="tb_05"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_cspf_tedb__tb_05" frame="border" border="1" rules="all"><caption>表5 display mpls te cspf tedb interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d48166e1175"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d48166e1179"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d48166e1175 "><p>Router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d48166e1179 "><p>Router ID，点分十进制格式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d48166e1175 "><p>IGP-Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d48166e1179 "><div class="p">内部网关协议<ul>
+<li><p>OSPF</p>
+</li>
+<li><p>IS-IS</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d48166e1175 "><p>Link [ x ] </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d48166e1179 "><p>链路信息，X为链路号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d48166e1175 "><p>BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d48166e1179 "><p>带宽</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_te_cspf_tedb__tb_02_1"></a><a name="tb_02_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_cspf_tedb__tb_02_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d48166e1255"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d48166e1259"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d48166e1255 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d48166e1259 "><p>增加参数<strong>srlg</strong> <em>srlg-number</em></p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

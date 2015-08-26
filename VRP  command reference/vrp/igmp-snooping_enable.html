@@ -1,0 +1,94 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="igmp-snooping enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_igmp-snooping.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="igmp-snooping_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>igmp-snooping enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="igmp-snooping_enable"></a><a name="igmp-snooping_enable"></a>
+
+
+<h1 class="topictitle1">igmp-snooping enable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>igmp-snooping enable</strong>命令用来使能IGMP Snooping功能。</p>
+<p><strong>undo</strong> <strong>igmp-snooping enable</strong>命令用来禁止IGMP Snooping功能。</p>
+<p>缺省情况下，IGMP Snooping功能处于禁止状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>igmp-snooping enable</strong></p>
+<p><strong>undo igmp-snooping enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图、VLAN视图、VSI视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有当全局使能IGMP Snooping后，才能配置VLAN/VSI的IGMP Snooping使能。</p>
+<p>在系统视图下和VLAN/VSI视图下使用此命令的区别如下：</p>
+<ul>
+<li><p>在系统视图下执行此命令，将使能或禁止<span class="keyword">路由器</span>的IGMP Snooping功能。如果需要使用IGMP Snooping功能，必须首先在系统视图下使用<strong>igmp-snooping enable</strong>命令使能<span class="keyword">路由器</span>的IGMP Snooping功能，否则其它和IGMP Snooping功能相关的命令不可用。</p>
+</li>
+<li><p>如果在系统视图下使用<strong>undo</strong> <strong>igmp-snooping enable</strong>命令，将关闭整个<span class="keyword">路由器</span>的IGMP Snooping功能。</p>
+</li>
+<li><p>在VLAN/VSI视图下执行此命令，将使能或禁止该VLAN/VSI的IGMP Snooping功能。在系统视图下使能<span class="keyword">路由器</span>的IGMP Snooping功能后，缺省情况下VLAN/VSI的IGMP Snooping功能仍处于禁止状态。要使能某个VLAN/VSI的IGMP Snooping功能，还需要在该VLAN/VSI视图下执行<strong>igmp-snooping enable</strong>命令。</p>
+</li>
+<li><p>如果在VLAN/VSI视图下使用<strong>undo</strong> <strong>igmp-snooping enable</strong>命令，将关闭整个VLAN/VSI内的IGMP Snooping功能。</p>
+</li>
+</ul>
+<div class="p">在VLAN视图下配置时，以下情况会导致配置不成功：<ul>
+<li><p>VLAN已经绑定了VSI；</p>
+</li>
+<li><p>VLAN内包含VE接口。</p>
+</li>
+</ul>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="igmp-snooping_enable__d80716e111"></a><a name="d80716e111"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能<span class="keyword">路由器</span>的IGMP Snooping功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> igmp-snooping enable</strong></pre>
+<p># 使能VLAN 2的IGMP Snooping功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 2</strong></pre>
+<pre class="screen">[Quidway-vlan2]<strong> igmp-snooping enable</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_igmp-snooping.html">display igmp-snooping</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

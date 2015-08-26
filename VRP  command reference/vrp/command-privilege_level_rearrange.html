@@ -1,0 +1,90 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="command-privilege level rearrange">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="command-privilege_level.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="command-privilege_level_rearrange">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>command-privilege level rearrange</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="command-privilege_level_rearrange"></a><a name="command-privilege_level_rearrange"></a>
+
+
+
+<h1 class="topictitle1">command-privilege level rearrange</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"> <p><strong>command-privilege level rearrange</strong>用来将默认注册为2、3级的命令，分别批量提升到10、15级。</p>
+ <p><strong>undo command-privilege
+level rearrange</strong>用来将批量提升到10、15级的命令重新恢复到2、3级。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"> <p><strong>command-privilege level rearrange</strong></p>
+ <p><strong>undo command-privilege
+level rearrange</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"> <p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"> <p>被提升的命令必须是没有被命令<a href="command-privilege_level.html">command-privilege
+level</a>单独修改过的。被<a href="command-privilege_level.html">command-privilege
+level</a>单独修改过的命令，维持原来级别不作提升。</p>
+ <p>命令级别恢复的操作对象只能是被批量提升的命令级别。被<a href="command-privilege_level.html">command-privilege
+level</a>单独修改过的命令，维持原来级别不作修改。</p>
+ <p>在执行命令<strong>command-privilege level rearrange</strong>之前，需要用户首先设置相应的15级用户对应的super密码，不然非Console口的用户将无法提升自己的级别，无法访问相应级别的命令。</p>
+ <div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>设置了相应的15级用户对应的super密码后，无法从系统取回。请妥善保管密码，以免遗忘或者遗失。</p>
+</div></div>
+ <p>命令级别批量提升以后，命令<strong>undo
+command-privilege level rearrange</strong>的级别也被调整到了15级，所以应该确保执行此命令的用户级别是15级。</p>
+ <p>命令级别被批量提升后，会提示用户命令级别已经被批量提升，以减少对其他用户的影响。</p>
+ <p>命令被批量提升后，在没有被恢复之前，如果用户再次进行命令级别批量提升操作，此操作将会无效，不会改变当前的命令状态。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="command-privilege_level_rearrange__d7897e86"></a><a name="d7897e86"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"> <p># 将当前的命令级别批量提升。</p>
+ <pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+ <pre class="screen">[Quidway]<strong> command-privilege level rearrange</strong></pre>
+ <pre class="screen">You have not set the super password corresponding to a Level 15 user.</pre>
+ <pre class="screen">It is recommended to quit the operation and set the password.</pre>
+ <pre class="screen">Are you sure to continue ?[ Y / N ]<strong> y</strong></pre>
+ <pre class="screen">=== Message from Con0 to all other terminals : ===</pre>
+ <pre class="screen">The Command levels have been upgraded in batch !</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_configuration_commands.html">基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="command-privilege_level.html">command-privilege level</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

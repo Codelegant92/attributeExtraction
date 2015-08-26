@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="remote address">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_address_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aaa_and_user_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ip_address_ppp-negotiate.html">
+<meta name="DC.Relation" scheme="URI" content="ip_pool.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="remote_address">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>remote address</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="remote_address"></a><a name="remote_address"></a>
+
+
+<h1 class="topictitle1">remote address</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>remote address</strong>命令用来配置为对端用户分配IP地址的方式。</p>
+<p><strong>undo
+remote address</strong>命令用来取消当前的设置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>remote address</strong> { <em>ip-address</em> | <strong>pool</strong> [ <em>pool-number</em> ] }</p>
+<p><strong>undo remote address</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：指定为对端分配的IP地址。点分十进制格式。</p>
+<p><strong>pool</strong> [ <em>pool-number</em> ]：指定为对端分配地址时使用的地址池。整数形式，取值范围是：0～99。这里的地址池是在AAA视图下配置的。如果不指定地址池编号，则缺省使用地址池0。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在服务器端可以使用<strong>remote address</strong>命令指定一个地址池（也可以指定一个IP地址），为对端用户分配IP地址。</p>
+<p>只有封装PPP协议的接口可以使用该命令借用其他接口的IP地址。</p>
+<p>对端用户如果需要通过协商获得IP地址，应先使用<strong>ip address ppp-negotiate</strong>命令使能接口的IP地址协商功能。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>对端用户和服务器必须是直连(包括物理直连或二层逻辑直连)的。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="remote_address__d111205e76"></a><a name="d111205e76"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置接口POS1/0/0为对端分配IP地址129.102.0.1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0] <strong>remote address 129.102.0.1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_address_configuration_commands.html">IP地址配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ip_address_ppp-negotiate.html">ip address ppp-negotiate</a></div>
+<div><a href="ip_pool.html">ip pool</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

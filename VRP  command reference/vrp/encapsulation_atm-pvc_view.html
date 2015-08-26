@@ -1,0 +1,90 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="encapsulation（ATM-PVC视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/atm_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pvc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="encapsulation_atm-pvc_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>encapsulation（ATM-PVC视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="encapsulation_atm-pvc_view"></a><a name="encapsulation_atm-pvc_view"></a>
+
+
+<h1 class="topictitle1">encapsulation（ATM-PVC视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>encapsulation</strong>命令用来为PVC指定ATM AAL5封装类型。</p>
+<p><strong>undo encapsulation</strong>命令用来恢复缺省封装。</p>
+<p>缺省情况下，为<strong>aal5snap</strong>封装。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>encapsulation</strong> <em>aal5-encap</em></p>
+<p><strong>undo encapsulation</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>aal5-encap</em>：AAL5封装类型。其可能的值如下：</p>
+<ul>
+<li><p>aal5snap：LLC/SNAP（逻辑链接控制/子网访问协议）封装类型</p>
+</li>
+<li><p>aal5mux：MUX复用封装类型</p>
+</li>
+<li><p>aal5muxnonstandard：非标准兼容的MUX复用封装类型，用于与其他厂商设备互通</p>
+</li>
+<li><p>aal5nlpid：RFC1490封装类型</p>
+</li>
+</ul>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>ATM-PVC视图<span>、ATM-Class视图</span></p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有<strong>aal5snap</strong>封装支持InARP协议，当采用<strong>aal5mux</strong>、<strong>aal5muxnonstandard</strong>和<strong>aal5nlpid</strong>封装时不能配置InARP。</p>
+<p>如果配置了InARP，必须先删除InARP后才能将PVC的AAL5封装类型改变为<strong>aal5mux</strong>、<strong>aal5muxnonstandard</strong>或<strong>aal5nlpid</strong>。</p>
+<p>另外，某些类型的封装可能并不支持部分应用方式（即IPoA、IPoEoA、PPPoA和PPPoEoA中的一种或几种），当出现不能支持的情况时，系统会给出提示。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="encapsulation_atm-pvc_view__d75413e99"></a><a name="d75413e99"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p>下面两种做法都可以指定PVC的AAL5封装类型为aal5snap。</p>
+<p>#
+指定PVC 1/32的AAL5封装类型为aal5snap。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface atm 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Atm1/0/0] <strong>pvc 1/32</strong></pre>
+<pre class="screen">[Quidway-atm-pvc-Atm1/0/0-1/32]<strong> encapsulation aal5snap</strong></pre>
+<p># 指定PVC 1/33的AAL5封装类型为aal5snap。</p>
+<pre class="screen">[Quidway-atm-pvc-Atm1/0/0-1/33]<strong> undo encapsulation</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/atm_configuration_commands.html">ATM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pvc.html">pvc</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

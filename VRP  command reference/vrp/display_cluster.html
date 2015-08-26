@@ -1,0 +1,387 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display cluster">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cluster.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_cluster">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display cluster</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_cluster"></a><a name="display_cluster"></a>
+
+
+<h1 class="topictitle1">display cluster</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display cluster</strong>命令用来查看本设备所属HGMP集群的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display cluster</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令可以在命令交换机和成员交换机上执行。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_cluster__d19782e37"></a><a name="d19782e37"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在命令交换机上显示集群信息。</p>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt;<strong> <strong>display cluster</strong></strong></pre>
+<pre class="screen">Cluster name:"<strong>HUAWEI</strong>"
+Role:Administrator switch
+
+management vlan id    : <strong>1</strong>(default vlan)
+Cluster multicast MAC address : 0180-c200-000a(default)
+Cluster auto-join      : disabled
+
+Handshake timer:10 sec
+Handshake hold-time:60 sec
+IP pool:10.0.0.1/8
+No logging host configured
+No SNMP host configured
+No FTP server configured
+No TFTP server configured
+No SFTP server configured
+cluster-member ftp-timeout: 300 sec(default)
+Cluster SNMP NAT capability : enabled
+Cluster FTP NAT capability : disabled
+There are 3 member(s) in the cluster, and 0 of them are down.</pre>
+<p>该显示信息主要内容解释见<a href="#display_cluster__tb_01">表1</a>。</p>
+
+<div class="tablenoborder"><a name="display_cluster__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cluster__tb_01" frame="border" border="1" rules="all"><caption>表1 display cluster命令输出信息描述（命令交换机）</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d19782e72"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d19782e76"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>Cluster name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>本设备所属集群的集群名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>Role</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><div class="p">本设备在本集群中的角色。<ul>
+<li><p>Administrator Switch表示命令交换机。</p>
+</li>
+<li><p>Member Switch表示成员交换机。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>management vlan id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>管理VLAN的VLAN编号。缺省值是1。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>Cluster multicast MAC address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>集群的组播地址。缺省值是0180-C200-000A。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>Cluster auto-join</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><div class="p">是否使能了候选交换机自动加入集群的功能。<ul>
+<li><p>disabled表示禁止本功能。</p>
+</li>
+<li><p>enabled表示使能本功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>Handshake timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>命令交换机与成员交换机之间发送握手报文的时间间隔。以秒为单位。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>Handshake hold-time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>角色状态的有效保留时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>IP pool</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>命令交换机用于集群内通信的IP地址，以及本集群使用的IP地址池的范围。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>logging host</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>集群公用日志主机的配置情况。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>SNMP host</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>集群公用SNMP主机的配置情况。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>FTP server</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>集群公用FTP服务器的配置情况。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>TFTP server</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>集群公用TFTP服务器的配置情况。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>SFTP server</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>集群公用SFTP服务器的配置情况。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>cluster-member ftp-timeout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>成员交换机FTP连接空闲时间。缺省值是300，以秒为单位。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>Cluster SNMP NAT capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><div class="p">是否使能集群中的设备通过NAT方式来访问SNMP主机。<ul>
+<li><p>disabled表示禁止本功能。</p>
+</li>
+<li><p>enabled表示使能本功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>Cluster FTP NAT capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><div class="p">是否使能集群中的设备通过NAT方式来访问FTP Client或者FTP Server。<ul>
+<li><p>disabled表示禁止本功能。</p>
+</li>
+<li><p>enabled表示使能本功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d19782e72 "><p>There are 3 member（s） in the cluster, and 0 of them are down.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d19782e76 "><p>集群中成员交换机的数量，以及在这些成员中状态为down的交换机数量。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 在成员编号为1的成员交换机上显示集群信息。</p>
+<pre class="screen">&lt;HUAWEI_1.Quidway&gt;<strong> display cluster</strong></pre>
+<pre class="screen"> Cluster name:"HUAWEI"</pre>
+<pre class="screen"> Role:Member</pre>
+<pre class="screen"> Member number:1</pre>
+
+<pre class="screen"> management vlan id    : 1(default vlan)</pre>
+<pre class="screen"> cluster multicast mac : 0180-c200-000a(default)</pre>
+<pre class="screen"> cluster autojoin      :  disabled</pre>
+
+<pre class="screen"> Handshake timer:10 sec</pre>
+<pre class="screen"> Handshake hold-time:60 sec</pre>
+
+<pre class="screen"> Administrator device mac address:000b-09ab-5c49</pre>
+<pre class="screen"> Administrator status:Up</pre>
+<p>该显示信息主要内容解释见<a href="#display_cluster__tb_02">表2</a>。</p>
+
+<div class="tablenoborder"><a name="display_cluster__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cluster__tb_02" frame="border" border="1" rules="all"><caption>表2 display cluster命令输出信息描述（成员交换机）</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.00050390526581%" id="d19782e360"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.99949609473419%" id="d19782e364"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19782e360 "><p>Member number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19782e364 "><p>本设备在集群内的成员编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19782e360 "><p>cluster autojoin</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19782e364 "><p>是否使能了候选交换机自动加入集群的功能。</p>
+<p>本字段在成员交换机上没有意义。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19782e360 "><p>Administrator device mac address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19782e364 "><p>本集群命令交换机的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19782e360 "><p>Administrator status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19782e364 "><p>命令交换机的状态。包括DOWN和UP两个状态。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_cluster__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cluster__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d19782e432"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d19782e436"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d19782e432 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d19782e436 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cluster.html">cluster</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

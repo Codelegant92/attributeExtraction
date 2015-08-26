@@ -1,0 +1,158 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display snmp-agent target-host">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_target-host_inform.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_snmp-agent_target-host">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display snmp-agent target-host</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_snmp-agent_target-host"></a><a name="display_snmp-agent_target-host"></a>
+
+
+<h1 class="topictitle1">display snmp-agent target-host</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display snmp-agent target-host</strong>命令用于显示所有目标主机的信息。包括目标主机的IP地址、接收告警的端口号、所在VPN实例的名字、告警的发送方式、告警发送使用的安全名字符串、协议版本以及安全级别。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display snmp-agent target-host</strong> </p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>可以使用该命令查看当前所有目标主机的配置信息。系统现在最多支持保存20条目标主机信息，因此最多可显示20个目标主机信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_snmp-agent_target-host__d66431e38"></a><a name="d66431e38"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示系统中所有告警主机的配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display snmp-agent target-host</strong>
+  Target-host number: 4
+  Level: (A)authentication; (P)privacy; (N)no authentication and privacy
+  No. IP-address       VPN instance/Security name        Port Type   Ver. Level
+  ------------------------------------------------------------------------------
+  1   100.1.1.48       -/NMS1                            162  inform v2c  N
+  2   1.1.1.2          -/NMS2                            162  inform v3   N
+  3   1.1.1.1          -/a                               162  inform v3   N
+  4   100.1.1.48       -/a                               162  trap   v1   N</pre>
+
+<div class="tablenoborder"><a name="display_snmp-agent_target-host__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_snmp-agent_target-host__tb_01" frame="border" border="1" rules="all"><caption>表1 display snmp-agent target-host命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="55.127236079617035%" id="d66431e59"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="44.872763920382965%" id="d66431e63"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66431e59 "><p>IP-address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66431e63 "><p>告警主机的IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66431e59 "><p>VPN instance/Security name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66431e63 "><p>VPN实例名/安全用户名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66431e59 "><p>Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66431e63 "><p>发送请求的UDP端口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66431e59 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66431e63 "><p>请求类型，Trap或者Inform。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66431e59 "><p>Ver</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66431e63 "><p>SNMP协议版本号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66431e59 "><p>Level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66431e63 "><div class="p">安全用户名级别。可以有以下级别:<ul>
+<li>(A)authentication：对报文进行认证但不加密。 </li>
+</ul>
+<ul>
+<li>(P)privacy：对报文进行认证并且加密。</li>
+</ul>
+<ul>
+<li>(N)no authentication and privacy：对报文既不认证也不加密。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="snmp-agent_target-host_inform.html">snmp-agent target-host inform</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

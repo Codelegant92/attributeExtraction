@@ -1,0 +1,66 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="pvc-group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/atm_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ip-precedence.html">
+<meta name="DC.Relation" scheme="URI" content="pvc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="pvc-group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>pvc-group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="pvc-group"></a><a name="pvc-group"></a>
+
+<h1 class="topictitle1">pvc-group</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>pvc-group</strong>命令用来在ATM接口视图下使用<strong>pvc-group</strong>命令在ATM接口上创建一个PVC-Group或进入PVC-Group视图。</p>
+<p><strong>undo pvc-group</strong>命令用来删除指定的PVC-Group。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>pvc-group</strong> { <em>pvc-name </em>[<em> vpi</em>/<em>vci </em>] | <em>vpi</em>/<em>vci</em> }</p>
+<p><strong>undo</strong> <strong>pvc-group</strong> {<em> pvc-name </em>[<em> vpi</em>/<em>vci </em>] | <em>vpi</em>/<em>vci</em> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>pvc-name：PVC名，最长为16个字符，在ATM接口上保持唯一，不区分大小写，并且不能是合法的VPI/VCI值对，如&#8220;1/20&#8221;就不允许作为PVC名。<em>pvc-name</em>对应的PVC必须已经建立。</p>
+<p><em>vpi</em>/<em>vci</em>：<em>vpi</em>为ATM网络虚路径标识（Virtual Path Identifier，VPI），取值范围是0～255；<em>vci</em>为ATM网络虚通道标识（Virtual Channel Identifier，VCI），取值范围是0～2047。通常，<em>vci</em>取值0到31保留用于特定用途，建议用户不要使用。<em>vpi</em>/<em>vci</em>对应的PVC必须已经建立。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>ATM接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>一旦为某条PVC指定了名称<em>pvc-name</em>（例如&#8220;huawei&#8221;），则可以通过键入<strong>pvc-group</strong> <em>pvc-name</em>（如&#8220;<strong>pvc-group</strong> huawei&#8221;）进入PVC-Group视图</p>
+<p>在删除该PVC-Group时，既可以通过键入<strong>undo</strong> <strong>pvc-group</strong> <em>pvc-name</em>（如&#8220;<strong>undo</strong> <strong>pvc-group</strong> huawei&#8221;），也可以通过<strong>undo</strong> <strong>pvc-group</strong> <em>vpi</em>/<em>vci</em>（假设该PVC的VPI/VCI为1/32，则就是&#8220;<strong>undo</strong> <strong>pvc-group</strong> 1/32&#8221;）来完成。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>当链路状态不稳定，本端PVC-Group中的PVC需要感知到对端PVC的状态变化时，必须在本端PVC上通过执行命令<a href="oam_frequency.html">oam frequency</a>配置OAM。</p>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="pvc-group__d108696e151"></a><a name="d108696e151"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 以一条名为&#8220;huawei&#8221;、VPI/VCI为1/32的PVC为基础创建一个PVC-Group。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface atm 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Atm1/0/0] <strong>pvc-group huawei 1/32</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/atm_configuration_commands.html">ATM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ip-precedence.html">ip-precedence</a></div>
+<div><a href="pvc.html">pvc</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

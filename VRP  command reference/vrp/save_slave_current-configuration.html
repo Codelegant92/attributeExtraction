@@ -1,0 +1,115 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="save slave current-configuration">
+<meta name="DC.Relation" scheme="URI" content="../vrp/file_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="save.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="save_slave_current-configuration">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>save slave current-configuration</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="save_slave_current-configuration"></a><a name="save_slave_current-configuration"></a>
+
+
+<h1 class="topictitle1">save slave current-configuration</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>save slave current-configuration</strong> <em>destination-filename</em>命令用来保存备板的配置信息到目标文件。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>save slave current-configuration </strong><em>destination-filename</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>destination-filename</em>：保存备板配置的文件名和路径。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令不能和<strong>save</strong> [<em> configuration-file</em> ]命令同时使用，以避免多用户同时写文件出现错误。</p>
+<p>配置文件的后缀名必须是&#8220;.cfg&#8221;或&#8220;.zip&#8221;。</p>
+<p>将配置信息保存到新建文件时，系统将建立指定文件名的新文件。</p>
+<p>将配置信息保存到已有文件时，系统将覆盖原文件内容。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="save_slave_current-configuration__d116500e56"></a><a name="d116500e56"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 保存备板配置信息到新建文件。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> save slave current-configuration xxxxx.cfg</strong></pre>
+<pre class="screen">Are you sure to save the current slave configuration to cfcard:/xxxxx.cfg? [Y/N]<strong>  :y</strong></pre>
+<pre class="screen">System is collecting current slave configuration. Please wait a moment..........</pre>
+<pre class="screen">........</pre>
+<pre class="screen">Now saving the current slave configuration to the device</pre>
+<pre class="screen">Info:Save the current slave configuration to cfcard:/xxxxx.cfg successfully.</pre>
+<p># 保存备板配置信息到已有文件。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>save slave current-configuration xxxxx.cfg</strong></strong></pre>
+<pre class="screen">Are you sure to save the current slave configuration to cfcard:/xxxxx.cfg? [Y/N]<strong> :y</strong></pre>
+<pre class="screen">The file cfcard:/xxxxx.cfg exists. Overwrite it?[Y/N]<strong>:y</strong></pre>
+<pre class="screen">Deleting file cfcard:/xxxxx.cfg ...Done!</pre>
+<pre class="screen">System is collecting current slave configuration. Please wait a moment..................</pre>
+<pre class="screen">Now saving the current slave configuration to the device</pre>
+<pre class="screen">Info:Save the current slave configuration to cfcard:/xxxxx.cfg successfully.</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="save_slave_current-configuration__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="save_slave_current-configuration__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="53.27538422776518%" id="d116500e111"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="46.72461577223482%" id="d116500e115"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="53.27538422776518%" headers="d116500e111 "><p>VRPV500R003C07B220</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.72461577223482%" headers="d116500e115 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/file_management_configuration_commands.html">管理配置文件命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="save.html">save</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,93 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ntp-service trace">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ntp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ntp-service_trace">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ntp-service trace</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ntp-service_trace"></a><a name="display_ntp-service_trace"></a>
+
+<h1 class="topictitle1">display ntp-service trace</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ntp-service trace</strong>命令用来查看从本地设备回溯到参考时钟源的各个NTP时间服务器的简要信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ntp-service trace</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display ntp-service trace</strong>命令，可以看到从本地设备起，沿着时间同步NTP服务器链，一直回溯到参考时钟源的各NTP服务器简要信息。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ntp-service_trace__d54162e31"></a><a name="d54162e31"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看从本地设备回溯到参考时钟源的各个NTP时间服务器的简要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ntp-service trace</strong>
+server 127.0.0.1,stratum 5, offset 0.024099, synch distance 0.06337,
+server 171.1.1.2,stratum 4, offset 0.028786, synch distance 0.04575,
+server 201.1.1.2,stratum 3, offset 0.035199, synch distance 0.03075,
+server 200.1.7.1,stratum 2, offset 0.039855, synch distance 0.01096,
+refid 127.127.1.0</pre>
+
+<div class="tablenoborder"><a name="display_ntp-service_trace__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ntp-service_trace__tb_01" frame="border" border="1" rules="all"><caption>表1 display ntp-service trace命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="23.721340388007057%" id="d54162e47"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="76.27865961199295%" id="d54162e50"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="23.721340388007057%" headers="d54162e47 "><p>server</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.27865961199295%" headers="d54162e50 "><p>NTP服务器的IP地址。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.721340388007057%" headers="d54162e47 "><p>stratum</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.27865961199295%" headers="d54162e50 "><p>该NTP服务器的层数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.721340388007057%" headers="d54162e47 "><p>offset</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.27865961199295%" headers="d54162e50 "><p>相对上一级时钟源的时差。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.721340388007057%" headers="d54162e47 "><p>synch distance</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.27865961199295%" headers="d54162e50 "><p>相对上一级时钟源的同步距离，此参数评价描述时钟源，NTP选择同步距离最小的时钟源。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.721340388007057%" headers="d54162e47 "><p>refid</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.27865961199295%" headers="d54162e50 "><p>参考时钟源</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ntp_configuration_commands.html">NTP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

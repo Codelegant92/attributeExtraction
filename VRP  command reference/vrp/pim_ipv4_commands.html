@@ -1,0 +1,244 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="IPv4 PIM命令">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_multicast_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/auto-rp_listening_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bsr-policy_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_admin-scope.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_global.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_group.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_hash-length_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_holdtime_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_interval_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_priority_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-rp_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-rp_advertisement-interval_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-rp_holdtime_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-rp_priority_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/crp-policy_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_bfd_session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_bsr-info.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_claimed-route.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_control-message_counters.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_grafts.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_neighbor.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_routing-table.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_rp-info.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/fast-switch_inter-slot.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hello-option_dr-priority_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hello-option_holdtime_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hello-option_lan-delay_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hello-option_neighbor-tracking_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hello-option_override-interval_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/holdtime_assert_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/holdtime_join-prune_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_bfd.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_bfd_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_bsr-boundary.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_dm.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_hello-option_dr-priority.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_hello-option_holdtime.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_hello-option_lan-delay.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_hello-option_neighbor-tracking.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_hello-option_override-interval.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_holdtime_assert.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_holdtime_join-prune.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_require-genid.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_silent.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_sm.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_state-refresh-capable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_timer_dr-switch-delay.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_timer_graft-retry.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_timer_hello.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_timer_join-prune.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_triggered-hello-delay.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/probe-interval_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/register-header-checksum.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/register-policy_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/register-suppression-timeout_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_pim_control-message_counters.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/source-lifetime_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/source-policy_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/spt-switch-threshold_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ssm-policy_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/state-refresh-interval_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/state-refresh-rate-limit_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/state-refresh-ttl_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/static-rp_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/timer_hello_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/timer_join-prune_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/timer_spt-switch_ipv4.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="pim_ipv4_commands">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>IPv4 PIM命令</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="pim_ipv4_commands"></a><a name="pim_ipv4_commands"></a>
+
+
+<h1 class="topictitle1">IPv4 PIM命令</h1>
+
+<div></div>
+
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="../vrp/auto-rp_listening_enable.html">auto-rp listening enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/bsr-policy_ipv4.html">bsr-policy（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_ipv4.html">c-bsr</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_admin-scope.html">c-bsr admin-scope</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_global.html">c-bsr global</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_group.html">c-bsr group</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_hash-length_ipv4.html">c-bsr hash-length（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_holdtime_ipv4.html">c-bsr holdtime（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_interval_ipv4.html">c-bsr interval（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_priority_ipv4.html">c-bsr priority</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-rp_ipv4.html">c-rp（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-rp_advertisement-interval_ipv4.html">c-rp advertisement-interval（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-rp_holdtime_ipv4.html">c-rp holdtime（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-rp_priority_ipv4.html">c-rp priority（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/crp-policy_ipv4.html">crp-policy（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_bfd_session.html">display pim bfd session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_bsr-info.html">display pim bsr-info</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_claimed-route.html">display pim claimed-route</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_control-message_counters.html">display pim control-message counters</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_grafts.html">display pim grafts</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_interface.html">display pim interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_neighbor.html">display pim neighbor</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_routing-table.html">display pim routing-table</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_rp-info.html">display pim rp-info</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/fast-switch_inter-slot.html">fast-switch inter-slot</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hello-option_dr-priority_ipv4.html">hello-option dr-priority（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hello-option_holdtime_ipv4.html">hello-option holdtime（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hello-option_lan-delay_ipv4.html">hello-option lan-delay（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hello-option_neighbor-tracking_ipv4.html">hello-option neighbor-tracking（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hello-option_override-interval_ipv4.html">hello-option override-interval（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/holdtime_assert_ipv4.html">holdtime assert（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/holdtime_join-prune_ipv4.html">holdtime join-prune（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim.html">pim</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_bfd.html">pim bfd</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_bfd_enable.html">pim bfd enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_bsr-boundary.html">pim bsr-boundary</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_dm.html">pim dm</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_hello-option_dr-priority.html">pim hello-option dr-priority</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_hello-option_holdtime.html">pim hello-option holdtime</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_hello-option_lan-delay.html">pim hello-option lan-delay</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_hello-option_neighbor-tracking.html">pim hello-option neighbor-tracking</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_hello-option_override-interval.html">pim hello-option override-interval</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_holdtime_assert.html">pim holdtime assert</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_holdtime_join-prune.html">pim holdtime join-prune</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_require-genid.html">pim require-genid</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_silent.html">pim silent</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_sm.html">pim sm</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_state-refresh-capable.html">pim state-refresh-capable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_timer_dr-switch-delay.html">pim timer dr-switch-delay</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_timer_graft-retry.html">pim timer graft-retry</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_timer_hello.html">pim timer hello</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_timer_join-prune.html">pim timer join-prune</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_triggered-hello-delay.html">pim triggered-hello-delay</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/probe-interval_ipv4.html">probe-interval（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/register-header-checksum.html">register-header-checksum</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/register-policy_ipv4.html">register-policy（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/register-suppression-timeout_ipv4.html">register-suppression-timeout（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_pim_control-message_counters.html">reset pim control-message counters</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/source-lifetime_ipv4.html">source-lifetime（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/source-policy_ipv4.html">source-policy（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/spt-switch-threshold_ipv4.html">spt-switch-threshold（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ssm-policy_ipv4.html">ssm-policy（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/state-refresh-interval_ipv4.html">state-refresh-interval（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/state-refresh-rate-limit_ipv4.html">state-refresh-rate-limit（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/state-refresh-ttl_ipv4.html">state-refresh-ttl（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/static-rp_ipv4.html">static-rp（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/timer_hello_ipv4.html">timer hello（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/timer_join-prune_ipv4.html">timer join-prune（IPv4）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/timer_spt-switch_ipv4.html">timer spt-switch（IPv4）</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_multicast_commands.html">IP组播命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

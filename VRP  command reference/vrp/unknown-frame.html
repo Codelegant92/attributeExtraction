@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="unknown-frame">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="vsi.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="unknown-frame">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>unknown-frame</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="unknown-frame"></a><a name="unknown-frame"></a>
+
+
+<h1 class="topictitle1">unknown-frame</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>unknown-frame</strong>命令用于指定对接收到的不可知帧的处理方式。</p>
+<p>缺省情况下，对于不可知帧，在单播和多播的情况下，处理方式都是广播。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>unknown-frame </strong>{<strong> unicast </strong>|<strong> multicast</strong> } { <strong>broadcast</strong> | <strong>drop</strong> |<strong> local-handle </strong>}</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>unicast</strong>：用于指定类型为单播不可知帧。</p>
+<p><strong>multicast</strong>：用于指定类型为多播不可知帧。</p>
+<p><strong>drop</strong>：用于指定对接收到的不可知帧的处理方式是丢弃。</p>
+<p><strong>local-handle</strong>：用于指定对接收到的不可知帧的处理方式是本地处理。</p>
+<p><strong>broadcast</strong>：用于指定对接收到的不可知帧的处理方式是广播。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VSI视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对于Kompella方式的VPLS，使用<strong>unknown-frame</strong>命令前，需要先执行<a href="pwsignal.html">pwsignal</a>命令和<a href="route-distinguisher_vsi-bgp_view.html">route-distinguisher（VSI-BGP视图）</a>命令；对于Martini方式的VPLS，使用<strong>unknown-frame</strong>命令前，需要先执行<a href="pwsignal.html">pwsignal</a>命令和<a href="vsi-id.html">vsi-id</a>命令。</p>
+<p>不可知帧是指VSI实例接收到数据帧后，无法在其MAC表中找到与该数据帧的目的地址相对应的表项。</p>
+<p>执行<strong>unknown-frame</strong>命令后，对于不可知帧，可分为单播和多播两种类型。处理方式包括三种，分别为丢弃、本地处理和广播方式。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="unknown-frame__d126821e98"></a><a name="d126821e98"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置当前VSI实例的单播不可知帧的处理方式为丢弃。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>vsi company1 auto</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company1]<strong> pwsignal bgp</strong></pre>
+<pre class="screen">[Quidway-vsi-company1-bgp]<strong> <strong>route-distinguisher 100:1</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company1-bgp]<strong> <strong>quit</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company1]<strong> <strong>unknown-frame unicast drop</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="vsi.html">vsi</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

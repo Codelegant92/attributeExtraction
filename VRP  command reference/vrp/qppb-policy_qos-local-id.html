@@ -1,0 +1,60 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qppb-policy qos-local-id">
+<meta name="DC.Relation" scheme="URI" content="../vrp/qppb_configuration_commmands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qppb-policy_qos-local-id">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qppb-policy qos-local-id</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qppb-policy_qos-local-id"></a><a name="qppb-policy_qos-local-id"></a>
+
+<h1 class="topictitle1">qppb-policy qos-local-id</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qppb-policy qos-local-id</strong> 命令用来配置查找FIB获得QoS Local ID的方式。</p>
+<p><strong>undo qppb-policy qos-local-id</strong>命令用来取消配置。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qppb-policy qos-local-id </strong>{<strong> source </strong>[<strong> destination </strong>] |<strong> destination </strong>}</p>
+<p><strong>undo qppb-policy qos-local-id </strong>{<strong> source </strong>[<strong> destination </strong>] |<strong> destination </strong>}</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>source</strong>：根据源IP查找FIB获得QoS Local ID。</p>
+<p><strong>destination</strong>：根据目的IP查找FIB获得QoS Local ID。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>destination</strong>和<strong>source</strong>两个关键字表示所发布的携带路由属性的路由方向作为流量的目的地址方向还是源地址方向。</p>
+<p>如果流量方向是从路由策略发送方到流量策略接收方，使能QPPB功能时，使用source。</p>
+<p>如果流量方向是从路由策略接收方到路由策略发送方，使能QPPB功能时，使用destination。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qppb-policy_qos-local-id__d109898e70"></a><a name="d109898e70"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口GigabitEthernet2/1/0上启动<strong>qppb</strong>处理，根据源IP查找FIB获得QoS Local ID。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface GigabitEthernet2/1/0</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet2/1/0]<strong> <strong>qppb-policy qos-local-id source</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/qppb_configuration_commmands.html">QPPB配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

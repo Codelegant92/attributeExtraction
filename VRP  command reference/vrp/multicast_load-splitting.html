@@ -1,0 +1,107 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="multicast load-splitting">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_policy_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="multicast_load-splitting">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>multicast load-splitting</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="multicast_load-splitting"></a><a name="multicast_load-splitting"></a>
+
+
+<h1 class="topictitle1">multicast load-splitting</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>multicast load-splitting</strong>命令用来使能IPv4组播路由的负载分担。</p>
+<p><strong>undo multicast load-splitting</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，未使能IPv4组播路由的负载分担。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>multicast load-splitting</strong> { <strong>balance-preferred</strong> | <strong>group</strong> | <strong>source</strong> | <strong>source-group</strong> }</p>
+<p><strong>undo multicast load-splitting</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>balance-preferred</strong>：表示基于组播均衡优先进行负载分担。该方式解决了根据组播组、组播源或源/组进行负载分担时对于连续组地址分担不均的问题。</p>
+<p><strong>group</strong>：表示基于组播组进行负载分担。</p>
+<p><strong>source</strong>：表示基于组播源进行负载分担。</p>
+<p><strong>source-group</strong>：表示同时基于组播源、组播组进行负载分担。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图、VPN实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><span class="keyword">路由器</span>从单播、MBGP、组播静态路由表中选择一条最优路由作为RPF路由，创建组播路由表项，转发组播数据流。存在多条最优路由时，使用<strong>multicast load-splitting</strong>命令，可以实现组播负载分担。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="multicast_load-splitting__d98856e78"></a><a name="d98856e78"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中根据组播源进行负载分担。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> multicast load-splitting source</strong></pre>
+<p># 在VPN实例中，根据组播源进行负载分担。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ip vpn-instance mytest</strong></pre>
+<pre class="screen">[Quidway-vpn-instance-mytest]<strong> multicast load-splitting source</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="multicast_load-splitting__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="multicast_load-splitting__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d98856e115"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d98856e119"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d98856e115 "><p>VRPV500R006C01B080</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d98856e119 "><p>增加<strong>balance-preferred</strong>。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_policy_configuration_commands.html">IPv4组播路由管理命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

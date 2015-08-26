@@ -1,0 +1,95 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te vpn-binding l2vpn interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_qos_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_bandwidth_tunnel_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_commit.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_vpn-binding_l2vpn_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te vpn-binding l2vpn interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_vpn-binding_l2vpn_interface"></a><a name="mpls_te_vpn-binding_l2vpn_interface"></a>
+
+<h1 class="topictitle1">mpls te vpn-binding l2vpn interface</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te vpn-binding l2vpn interface</strong>命令用来将VLL静态绑定到MPLS TE。</p>
+<p><strong>undo mpls te vpn-binding l2vpn interface</strong>命令用来删除VLL静态绑定MPLS TE。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te vpn-binding l2vpn interface </strong><em>interface-type interface-number</em><strong> cir </strong><em>cir</em><strong> pir </strong><em>pir</em> [<strong> flow-queue </strong><em>flow-queue-name </em>]</p>
+<p><strong>undo mpls te vpn-binding l2vpn interface </strong><em>interface-type interface-number</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface </strong><em>interface-type interface-number</em>：VLL接口名称。</p>
+<p><strong>cir</strong><em> cir</em>：VPN的承诺信息速率。取值范围是100～10000000，单位是kbit/s。</p>
+<p><strong>pir</strong><em> pir</em>：VPN的峰值信息速率。取值范围是100～10000000，单位是kbit/s。</p>
+<p><strong>flow-queue</strong><em> flow-queue-name</em>：Flow-queue模板名称。字符串格式，长度范围是1～31。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>mpls te vpn-binding l2vpn interface</strong>命令用来将VLL静态绑定到MPLS TE隧道上，并配置VPN的CIR、PIR和Flow-queue 模板。其中CIR限制VPN的承诺信息速率，PIR限制VPN的峰值信息速率，Flow-queue模板配置VPN中各种优先级流量的带宽比例。</p>
+<p>同一个TE隧道接口下，该命令与多CT配置和模板配置互斥。</p>
+<div class="p">当TE隧道同时配置了热备份和RRVPN，且主LSP处于热备份Inuse状态时，不能同时修改主隧道的Modify属性和RRVPN的子隧道属性，否则配置无法生效，即命令<strong>mpls te commit</strong>执行不成功。其中，主隧道的Modify属性包括：<ul><li>环路检测</li><li>RRO记录</li><li>资源允许被抢占</li><li>允许抢占别的LSP的资源</li><li>亲和属性</li><li>亲和属性掩码</li><li>带宽</li><li>隧道备份类型</li><li>跳数限制</li><li>CAR策略</li><li>路由锁定</li><li>显示路径</li><li>快速重路由属性及Bypass隧道的带宽</li><li>自动快速重路由的Bypass隧道的属性</li></ul>
+</div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_vpn-binding_l2vpn_interface__d97236e113"></a><a name="d97236e113"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在TE下绑定VLL L2VPN 接口Ethernet 2/0/1，CIR为2000kbit/s，PIR为3000 kbit/s，Flow-queue 模板使用已经配置的fq1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> interface Tunnel 2/0/7</strong></pre>
+<pre class="screen">[Quidway-Tunnel2/0/7]<strong> mpls te vpn-binding l2vpn interface Ethernet2/0/1 cir 2000 pir 3000 flow-queue fq1</strong></pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_te_vpn-binding_l2vpn_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_te_vpn-binding_l2vpn_interface__tb_01" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.338345864661655%" id="d97236e137"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d97236e140"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d97236e137 "><p>VRPV500R005C02B040</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d97236e140 "><p>首次发布</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d97236e137 "><p>VRPV500R005C02B211</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d97236e140 "><p>增加命令行输入限制：当TE隧道同时配置了热备份和RRVPN，且主LSP处于热备份Inuse状态时，不能同时修改主隧道的Modify属性和RRVPN的子隧道属性。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d97236e137 "><p>VRPV500R006C01B010</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d97236e140 "><p>增加命令行输入限制条件：同一个TE隧道接口下，该命令与多CT配置和模板配置互斥。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpn_qos_configuration_commands.html">VPN QoS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_te_bandwidth_tunnel_interface_view.html">mpls te bandwidth (Tunnel接口视图)</a></div>
+<div><a href="mpls_te_commit.html">mpls te commit</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

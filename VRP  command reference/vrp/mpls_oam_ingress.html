@@ -1,0 +1,90 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls oam ingress">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_oam_ingress_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_oam_ingress">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls oam ingress</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_oam_ingress"></a><a name="mpls_oam_ingress"></a>
+
+
+<h1 class="topictitle1">mpls oam ingress</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls</strong> <strong>oam</strong> <strong>ingress</strong>命令用来在LSP的入节点配置MPLS
+OAM参数。</p>
+<p><strong>undo</strong> <strong>mpls</strong> <strong>oam</strong> <strong>ingress</strong>命令用来删除指定的MPLS
+OAM参数。</p>
+<p>缺省情况下，检测报文的类型为CV，发送频率固定为1秒；反向通道采用共享方式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls</strong> <strong>oam</strong> <strong>ingress</strong> <strong>tunnel</strong> <em>tunnel-number</em> [ <strong>type</strong> { <strong>cv</strong> | <strong>ffd</strong> <strong>frequency</strong> <em>ffd-fre</em> } ] [ <strong>backward-lsp</strong> { <strong>lsp-name</strong> <em>lsp-name</em> | <strong>lsr-id</strong> <em>rev-ingress-lsr-id</em> <strong>tunnel-id</strong> <em>rev-tunnel-id</em> | <strong>share</strong> } ]<span> [ <strong>packet-priority </strong><em>priority</em> ]</span></p>
+<p><strong>undo</strong> <strong>mpls</strong> <strong>oam</strong> <strong>ingress</strong> { <strong>all</strong> | <strong>tunnel</strong> <em>interface-number</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>tunnel</strong> <em>tunnel-number</em>:：隧道的接口编号，代表启用MPLS
+OAM检测功能的隧道。</p>
+<p><strong>type</strong>：设置OAM检测报文的类型，可选输入为CV、FFD。</p>
+<p><em>ffd-fre</em>：设置FFD报文发送频率，仅针对FFD报文。可选输入为10、20、50、100、200和500，单位为毫秒。</p>
+<p><strong>backward-lsp</strong>：设置反向通道LSP的共享类型，分共享和独占两种。独占方式提供两种LSP的标识&#8220;lsp-name&#8221;和&#8220;lsr-id
+tunnel-id&#8221;。</p>
+<p><strong>lsp-name</strong> <em>lsp-name</em>：静态LSP名称。字符串形式，不支持空格，长度范围是1～19。</p>
+<p><strong>lsr-id</strong> <em>rev-ingress-lsr-id</em>：反向通道入节点的LSR ID。</p>
+<p><strong>tunnel-id</strong> <em>rev-tunnel-id</em>：反向通道的隧道ID。整数形式，取值范围是1～65534。</p>
+<p><strong>share</strong>：设置反向LSP为共享。</p>
+<p><strong>packet-priority</strong>：设置CV和FFD报文发送的优先级。</p>
+<p><em>priority</em>：CV和FFD报文发送的优先级。整数形式，取值范围是0～7，值越大，表示优先级越高。缺省值是0。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置MPLS OAM参数前，必须先执行<a href="mpls_oam.html">mpls oam</a>命令全局使能MPLS OAM功能。</p>
+<p>如果反向通道是静态LSP或静态CR-LSP，则反向通道必须采用独占方式。</p>
+<p>如果执行<strong>static-lsp egress</strong>或<strong>static-cr-lsp egress</strong>命令创建反向LSP时，指定了参数<strong>lsrid</strong> <em>ingress-lsr-id</em>和<strong>tunnel-id</strong> <em>tunnel-id</em>，则在此步骤中配置反向通道可以选用参数<strong>lsr-id</strong> <em>rev-ingress-lsr-id</em>和<strong>tunnel-id</strong> <em>rev-tunnel-id</em>，否则必须用参数<strong>lsp-name</strong> <em>lsp-name</em>。</p>
+<p>配置OAM参数后，需要执行<a href="mpls_oam_ingress_enable.html">mpls oam
+ingress enable</a>命令手工启动OAM。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_oam_ingress__d94573e237"></a><a name="d94573e237"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在Tunnel1/0/0接口上配置MPLS OAM参数：检测类型为FFD，速率100毫秒，反向LSP为共享方式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> mpls oam ingress tunnel 1/0/0 type ffd frequency 100</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_oam_configuration_commands.html">MPLS OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_oam_ingress_enable.html">mpls oam ingress
+enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

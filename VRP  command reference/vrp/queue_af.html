@@ -1,0 +1,65 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="queue af">
+<meta name="DC.Relation" scheme="URI" content="../vrp/class-based_qos_configuration_commmands.html">
+<meta name="DC.Relation" scheme="URI" content="traffic_behavior.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="queue_af">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>queue af</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="queue_af"></a><a name="queue_af"></a>
+
+<h1 class="topictitle1">queue af</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>queue af</strong>命令用来配置类进行确保转发（Assured-forwarding），并配置类可确保的最小带宽。</p>
+<p><strong>undo queue af</strong>命令用来取消配置。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>queue af bandwidth</strong> { <em>bandwidth</em> | <strong>pct</strong> <em>percentage </em>}</p>
+<p><strong>undo</strong> <strong>queue af</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>bandwidth</em>：带宽，取值范围8～1000000，单位Kbps。</p>
+<p><em>percentage</em>：可用带宽的百分比，取值范围1～100。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>流行为视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当在策略下将类与queue af所属行为关联时，必须满足：</p>
+<ul><li><p>同一个策略下为确保转发（queue af）和加速转发（queue ef）的类指定的带宽之和必须不大于该策略所应用接口的可用带宽；</p>
+</li><li><p>同一个策略下为确保转发（queue af）和加速转发（queue ef）的类指定的带宽百分比之和必须不大于100；</p>
+</li><li><p>同一个策略下确保转发（queue af）和加速转发（queue ef）的类的带宽的配置必须都采用相同的值的类型，比如都采用绝对值形式，或者都采用百分比形式。</p>
+</li></ul>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="queue_af__d109940e64"></a><a name="d109940e64"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 为行为database配置确保转发，并且确保最小带宽为200Kbps。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong><strong> traffic behavior database</strong></strong></pre>
+<pre class="screen">[Quidway-behavior-database]<strong> <strong>queue af bandwidth 200</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/class-based_qos_configuration_commmands.html">基于类的QoS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="traffic_behavior.html">traffic behavior</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

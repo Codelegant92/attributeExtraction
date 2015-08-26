@@ -1,0 +1,143 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display time-range">
+<meta name="DC.Relation" scheme="URI" content="../vrp/acl_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="time-range.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_time-range">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display time-range</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_time-range"></a><a name="display_time-range"></a>
+
+
+<h1 class="topictitle1">display time-range</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>time-range</strong>命令用来显示当前时间段的配置和状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>time-range</strong> {<em> time-name </em>| <strong>all</strong> }<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>time-name</em>：指定时间段的名称。</p>
+<p><strong>all</strong>：所有配置的时间段。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>显示信息中，对于当前处在激活状态的时间段将显示Active，对于非激活状态的时间段将显示Inactive。</p>
+<p>由于系统更新ACL状态有一个误差，大约1分钟，而<strong>display</strong> <strong>time-range</strong>会采用当前时间对其进行判断，所以有可能出现<strong>display</strong> <strong>time-range</strong>看到一个时间段已经激活，而引用它的ACL没有激活。这种情况是正常的。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_time-range__d69141e116"></a><a name="d69141e116"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有时间段。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display time-range all</strong></pre>
+<pre class="screen">Current time is 14:19:16 3-15-2006 Wednesday</pre>
+<pre class="screen">Time-range : time1 ( Inactive )</pre>
+<pre class="screen"> 10:00 to 12:00 daily</pre>
+<pre class="screen">Time-range : time2 ( Inactive )</pre>
+<pre class="screen"> from 13:00 2006/4/1 to 23:59 2099/12/31  </pre>
+<pre class="screen">Time-range : active1 ( Active )</pre>
+<pre class="screen"> 14:00 to 00:00 daily  </pre>
+<p># 显示名字为active1的时间段。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display time-range active1</strong></pre>
+<pre class="screen">Current time is 14:22:36 3-15-2006 Wednesday</pre>
+<pre class="screen">Time-range : active1 ( Active )</pre>
+<pre class="screen"> 14:00 to 00:00 daily</pre>
+
+<div class="tablenoborder"><a name="display_time-range__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_time-range__tb_01" frame="border" border="1" rules="all"><caption>表1 display time-range命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d69141e162"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d69141e166"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d69141e162 "><p>Current time is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d69141e166 "><p>系统的当前时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d69141e162 "><p>Time-range : </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d69141e166 "><p>时间段的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d69141e162 "><p>Inactive</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d69141e166 "><p>该时间段在当前时间处于非激活状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d69141e162 "><p>Active</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d69141e166 "><p>该时间段在当前时间处于激活状态</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/acl_configuration_commands.html">ACL配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="time-range.html">time-range</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,66 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="priority ingress">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_service-instance.html">
+<meta name="DC.Relation" scheme="URI" content="priority_mac_tunnel_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="priority_ingress">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>priority ingress</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="priority_ingress"></a><a name="priority_ingress"></a>
+
+<h1 class="topictitle1">priority ingress</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>priority ingress</strong>命令用来配置当前业务实例的源端优先级，即对入隧道方向的报文进行封装时I-TAG的优先级。</p>
+<p><strong>undo priority ingress</strong>命令用来恢复当前业务实例的源端优先级为缺省值。</p>
+<p>缺省情况下为信任用户优先级，优先级配置为<strong>trust-8021p</strong>。当接口类型为<strong>transparent</strong>时，业务实例默认源端优先级自动修改为0。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>priority ingress </strong>{ <em>priority</em> | <strong>trust-8021p</strong> }</p>
+<p><strong>undo priority ingress</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>priority</em>：指定业务实例的源端优先级。整数形式，取值范围是0～7，值越大优先级越高。</p>
+<p><strong>trust-8021p</strong>：指定业务实例信任用户报文的优先级。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>业务实例视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>业务实例的优先级体现业务在MAC Tunnel内传输的优先级。报文进入MAC Tunnel时，<span class="keyword">VRP</span>设备首先将按业务实例优先级进行调度处理。如果MAC Tunnel没有配置指定优先级，业务实例的优先级会进一步映射到隧道的骨干VLAN。</p>
+<p>业务实例的服务接口类型为<strong>transparent</strong>（透明传输模式）时，不允许配置信任用户报文优先级。</p>
+<p>在同一个视图下重复执行<strong>priority ingress</strong>命令后，新配置覆盖老配置。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="priority_ingress__d108129e69"></a><a name="d108129e69"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置业务实例的优先级为信任用户报文的优先级。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>service-instance instance-name mysi</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi] <strong>priority ingress trust-8021p </strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_service-instance.html">display service-instance</a></div>
+<div><a href="priority_mac_tunnel_view.html">priority（MAC Tunnel视图）</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

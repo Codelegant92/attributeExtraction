@@ -1,0 +1,183 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display stp region-configuration">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mstp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="instance.html">
+<meta name="DC.Relation" scheme="URI" content="region-name.html">
+<meta name="DC.Relation" scheme="URI" content="revision-level.html">
+<meta name="DC.Relation" scheme="URI" content="stp_process.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_stp_region-configuration">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display stp region-configuration</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_stp_region-configuration"></a><a name="display_stp_region-configuration"></a>
+
+
+<h1 class="topictitle1">display stp region-configuration</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display stp region-configuration</strong>命令用来显示交换机上当前生效的MST域配置信息，包括域名、域的修订级别以及VLAN与生成树实例的映射关系。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>stp</strong> [ <strong>process</strong> <em>processs-id</em> ] <strong>region-configuration </strong><span>[<strong> | count</strong> ] </span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>process</strong> <em>process-id</em>：MSTP进程的ID值，十进制整数形式，取值范围是1～256。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+<ul>
+<li><p>在系统视图中使用本命令，如果不指定MSTP进程的ID，则默认显示MSTP进程0的相关信息，否则显示指定ID的MSTP进程信息。</p>
+</li>
+<li><p>在MSTP进程视图中使用本命令，如果不指定MSTP进程的ID，则默认显示所在视图MSTP进程的信息，否则显示指定ID的MSTP进程信息。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>关于MSTP进程0的内容，请参见<a href="stp_process.html">stp process</a>命令。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_stp_region-configuration__d68091e115"></a><a name="d68091e115"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示MST域的配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display stp region-configuration</strong></pre>
+<pre class="screen">Oper Configuration:</pre>
+<pre class="screen">   Format selector :0</pre>
+<pre class="screen">   Region name     :huawei</pre>
+<pre class="screen">   Revision level  :0</pre>
+<pre class="screen">   Instance   Vlans Mapped</pre>
+<pre class="screen">      0       21 to 4094</pre>
+<pre class="screen">      1       1 to 10</pre>
+<pre class="screen">      2       11 to 20</pre>
+
+<div class="tablenoborder"><a name="display_stp_region-configuration__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_stp_region-configuration__tb_01" frame="border" border="1" rules="all"><caption>表1 display stp region-configuration命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.67649281934997%" id="d68091e151"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.32350718065004%" id="d68091e155"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.67649281934997%" headers="d68091e151 "><p>Format selector</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.32350718065004%" headers="d68091e155 "><p>MSTP协议规定的选择因子。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.67649281934997%" headers="d68091e151 "><p>Region name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.32350718065004%" headers="d68091e155 "><p>MST域的域名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.67649281934997%" headers="d68091e151 "><p>Revision level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.32350718065004%" headers="d68091e155 "><p>MST域的修订级别。相关命令请参考<a href="revision-level.html">revision-level</a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.67649281934997%" headers="d68091e151 "><p>Instance   Vlans Mapped</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.32350718065004%" headers="d68091e155 "><p>MST域的生成树实例和VLAN之间的映射关系。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_stp_region-configuration__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_stp_region-configuration__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d68091e224"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d68091e228"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d68091e224 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d68091e228 "><p>命令增加通配符：[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mstp_configuration_commands.html">MSTP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="instance.html">instance</a></div>
+<div><a href="region-name.html">region-name</a></div>
+<div><a href="revision-level.html">revision-level</a></div>
+<div><a href="stp_process.html">stp process</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,65 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dialer user">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dcc_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ppp_pap_local-user.html">
+<meta name="DC.Relation" scheme="URI" content="ppp_chap_user.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dialer_user">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dialer user</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dialer_user"></a><a name="dialer_user"></a>
+
+<h1 class="topictitle1">dialer user</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dialer user</strong>命令用来设置对端用户名，以便接收呼叫时能验证请求。</p>
+<p><strong>undo dialer user</strong>命令用来删除对端用户名。</p>
+<p>缺省无对端用户名</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dialer user</strong> <em>username</em></p>
+<p><strong>undo dialer user</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>username</em>：对端用户名，为长度为1～32的字符串，用于PPP验证。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Dialer接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令仅在Dialer接口上有效。</p>
+<p>当Dialer接口封装PPP时，利用PPP验证得到的对端用户名决定接收呼叫时的Dialer接口，此时可以选择配置<strong>dialer number</strong>命令。</p>
+<p>当Dialer接口封装帧中继时，由于取消了用户名的协商过程，被叫端将根据接收到的主叫端拨号串来区分不同的Dialer接口，因此该命令无需配置，但是此时必须配置<strong>dialer number</strong>命令。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dialer_user__d11978e52"></a><a name="d11978e52"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置对端用户名为&#8220;<span class="keyword">Router</span>B&#8221;。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface dialer 3</strong></pre>
+<pre class="screen">[Quidway-Dialer3] <strong>dialer user <span class="keyword">Router</span>B</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dcc_configuration_commands.html">DCC配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ppp_pap_local-user.html">ppp pap local-user</a></div>
+<div><a href="ppp_chap_user.html">ppp chap user</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

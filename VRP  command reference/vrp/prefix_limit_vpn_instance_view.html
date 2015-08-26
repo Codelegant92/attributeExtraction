@@ -1,0 +1,109 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="prefix limit（VPN实例视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_mpls_ip_vpn_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="prefix_limit_vpn_instance_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>prefix limit（VPN实例视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="prefix_limit_vpn_instance_view"></a><a name="prefix_limit_vpn_instance_view"></a>
+
+
+<h1 class="topictitle1">prefix limit（VPN实例视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>prefix limit</strong>命令用来限制当前VPN实例支持的最大路由前缀数，以避免PE设备引入过多VPN路由前缀。</p>
+<p><strong>undo prefix limit</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，不限制VPN实例的最大路由前缀数。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>prefix limit</strong> <em>number</em> { <em>alert-percent</em> | <strong>simply-alert</strong> }</p>
+<p><strong>undo prefix limit</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>number</em>：指定一个VPN实例最多可以支持的路由前缀数。整数形式，取值范围是：最小为1，最大值决定于规格文件中定义的单播路由前缀总数。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>PE设备所能容纳的单播路由前缀数量由License文件所规定，与<strong>prefix limit</strong>命令无关。所有的私网路由前缀和公网路由前缀的总和不能超过该限制值，否则路由管理将拒绝添加超出的路由前缀，并产生告警信息。</p>
+</div></div>
+<p><em>alert-percent</em>：指定最大路由前缀数的百分比形式。整数形式，取值范围是1～100。当加入VPN实例的路由前缀数超过（<em>number</em>&times;<em>alert-percent</em>）&divide;100时，系统开始产生警告信息。此时VPN实例的路由表可以继续加入VPN路由。但路由前缀数到达number后，后来的路由前缀将被丢弃。</p>
+<p><strong>simply-alert</strong>：标志当VPN路由前缀数超过<em>number</em>的时候，允许系统将VPN路由前缀继续添加到该VPN实例的路由表中，只是产生告警。但设备的私网路由前缀和公网路由前缀的总数到达规格文件限制的单播路由前缀总数后，后来的VPN路由前缀也将被丢弃。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VPN实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置<strong>prefix limit</strong>可防止VPN实例的路由表注入过多路由前缀，但不能防止PE从其他PE设备接收过多的路由前缀。</p>
+<p>如果PE和CE之间运行BGP协议，当VPN实例路由前缀数超出了限制值而导致该BGP路由不能继续被添加到VPN实例路由表时，BGP对等体会话自动断开，32秒后再重新尝试建立对等体关系。</p>
+<p>当执行<strong>undo prefix limit</strong>时，系统将重新收集VPNv4路由表中属于本VPN实例的路由添加到本VPN路由表中。</p>
+<p>命令<strong>prefix limit</strong>配置了<strong>simply-alert</strong>，在路由前缀超限时，只引发告警，可以继续添加路由前缀，不会导致BGP对等体连接断开。</p>
+<p>建议在私网中只配置命令<strong>routing-table limit</strong>和<strong>prefix limit</strong>中的一个。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="prefix_limit_vpn_instance_view__d108077e107"></a><a name="d108077e107"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置名为vpn1的VPN实例引入路由前缀数超过1000个时，仅产生告警。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ip vpn-instance vpn1</strong></pre>
+<pre class="screen">[Quidway-vpn-instance-vpn1]<strong> route-distinguisher 100:1</strong></pre>
+<pre class="screen">[Quidway-vpn-instance-vpn1]<strong> prefix limit 1000 simply-alert</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="prefix_limit_vpn_instance_view__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="prefix_limit_vpn_instance_view__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d108077e138"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d108077e142"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d108077e138 "><p>VRPV500R005C07B650</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d108077e142 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_mpls_ip_vpn_configuration_commands.html">BGP/MPLS IP VPN配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

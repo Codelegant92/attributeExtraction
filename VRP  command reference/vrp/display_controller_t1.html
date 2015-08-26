@@ -1,0 +1,257 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display controller t1">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ct1_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="controller_t1.html">
+<meta name="DC.Relation" scheme="URI" content="default_interface-description_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_controller_t1">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display controller t1</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_controller_t1"></a><a name="display_controller_t1"></a>
+
+
+<h1 class="topictitle1">display controller t1</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display controller t1</strong>命令用来查看CT1的配置和状态信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display controller t1 </strong>[ <em>controller-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>controller-number</em>：CT1接口的编号，包括槽号、接口卡号、端口号三部分。如果不指定编号，将显示所有CT1接口的配置和状态信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和报文统计信息等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_controller_t1__d20955e43"></a><a name="d20955e43"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看CT1接口3/0/7的配置情况和状态信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display controller t1 3/0/7</strong></pre>
+<pre class="screen">T1 3/0/7 current state : DOWN</pre>
+<pre class="screen">  Frame-format ESF, code B8ZS, clock slave, loopback not set</pre>
+<pre class="screen">  Front card ID: 8TPA</pre>
+<pre class="screen">  Front card PCB version: RTC18TPA REV.0</pre>
+<pre class="screen">  Back card ID: 8TKA</pre>
+<pre class="screen">  Back card PCB version: RTC18TKA REV.0</pre>
+<pre class="screen">  CPLD software version number: 1</pre>
+<pre class="screen">  No cable</pre>
+<pre class="screen">  Alarm: LOS LOF</pre>
+<pre class="screen">  Error: 0 FERR, 0 CERR, 0 LCV, 0 FEBE </pre>
+
+<div class="tablenoborder"><a name="display_controller_t1__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_controller_t1__tb_01" frame="border" border="1" rules="all"><caption>表1 display controller t1命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.239103048626852%" id="d20955e83"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.76089695137314%" id="d20955e87"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>T1 3/0/7 current state :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><div class="p">T1接口当前的物理状态：<ul>
+<li><p>UP：物理状态正常启动。</p>
+</li>
+<li><p>DOWN：物理连接不正常。</p>
+</li>
+<li><p>Administratively down：如果网络管理员在该接口执行<strong>shutdown</strong>命令，将显示状态为Administratively down。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>Frame-format</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><p>CT1接口的帧格式：请参见<a href="frame-format_ct1_interface_view.html">frame-format（CT1接口视图）</a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>code </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><p>CT1接口的线路编解码格式：请参见<a href="code_ct1_interface_view.html">code（CT1接口视图）</a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>clock</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><p>时钟模式：请参见<a href="clock_ct1_interface_view.html">clock（CT1接口视图）</a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>loopback not set</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><p>没有使能CT1接口环回功能。只有在进行某些特殊功能测试时，才将CT1接口设为环回。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>Front card ID:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><p>前卡ID。如对于NE16E/08E/05，前卡就是PMC前卡，安装在VIU上的扣卡。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>Front card PCB version:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><p>前卡PCB版本信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>Back card ID:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><p>后卡ID。如对于NE16E/08E/05，后卡是安装在VIEU上的扣卡。前卡和后卡要配合使用，也就是说前卡和后卡必须匹配。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>Back card PCB version:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><p>后卡PCB版本信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>CPLD software version number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><p>CPLD版本号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>No cable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><p>没有线缆。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20955e83 "><p>Alarm:Error:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20955e87 "><div class="p">告警类型和错误类型。可能出现的错误类型有以下几类。<ul>
+<li><p>LOS：Loss of Signal，帧同步丢失。</p>
+</li>
+<li><p>LOF：Loss of Frame，帧丢失。</p>
+</li>
+<li><p>CERR：CRC Error，循环冗余校验错。</p>
+</li>
+<li><p>LCV：Line Code Violation，线路码错误。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_controller_t1__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_controller_t1__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d20955e285"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d20955e289"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d20955e285 "><p>VRPV500R005C05B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d20955e289 "><p>缺省情况下，系统不显示接口默认描述信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ct1_interface_configuration_commands.html">CT1接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="controller_t1.html">controller t1</a></div>
+<div><a href="default_interface-description_enable.html">default interface-description enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

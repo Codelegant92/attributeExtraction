@@ -1,0 +1,285 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls rsvp-te interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_rsvp-te_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls rsvp-te interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_rsvp-te_interface"></a><a name="display_mpls_rsvp-te_interface"></a>
+
+
+<h1 class="topictitle1">display mpls rsvp-te interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>mpls rsvp-te interface</strong>命令用来查看接口的RSVP-TE配置信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls rsvp-te interface</strong> [ <em>interface-type interface-number </em>]
+[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type interface-number</em>：接口类型和接口号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定<em>interface-type interface-number</em>，将显示所有使能了RSVP-TE接口的RSVP-TE信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_rsvp-te_interface__d45698e84"></a><a name="d45698e84"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定接口的RSVP-TE信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display mpls rsvp-te interface gigabitethernet 1/0/0</strong></strong></pre>
+<pre class="screen">Interface: GigabitEthernet1/0/0</pre>
+<pre class="screen"> Interface Address: 10.3.1.1</pre>
+<pre class="screen"> Interface state: UP                   Interface Index: 0x800086</pre>
+<pre class="screen"> Total-BW: 50                          Used-BW: 20</pre>
+<pre class="screen"> Hello configured: NO                  Num of Neighbors: 1</pre>
+<pre class="screen"> SRefresh feature: DISABLE             SRefresh Interval: 30 sec</pre>
+<pre class="screen"> Mpls Mtu: 1500                        Retransmit Interval: 500 msec</pre>
+<pre class="screen"> Increment Value: 1</pre>
+<pre class="screen"> Authentication: DISABLE  </pre>
+<pre class="screen"> Bfd Enabled: DISABLE                  Bfd Min-Tx: 100
+ Bfd Min-Rx: 100                       Bfd Detect-Multi: 3</pre>
+
+<div class="tablenoborder"><a name="display_mpls_rsvp-te_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_rsvp-te_interface__tb_02" frame="border" border="1" rules="all"><caption>表1 display mpls rsvp-te interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.01788863693626%" id="d45698e126"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.98211136306375%" id="d45698e130"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Interface Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>接口地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Interface state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><div class="p">接口状态：<ul>
+<li><p>UP</p>
+</li>
+<li><p>DOWN</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Interface Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>接口的索引号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Total-BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>接口上TE可以使用的总带宽（单位：kbit/s）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Used-BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>接口上TE已经占用的带宽（单位：Kbit/s）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Hello configured</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><div class="p">接口上是否配置了Hello特性：<ul>
+<li><p>YES：配置了Hello特性</p>
+</li>
+<li><p>NO：没有配置Hello特性</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Num of Neighbors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>本端的邻居个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Srefresh feature</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>是否启用了摘要刷新特性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Srefresh interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>摘要刷新定时器时长（单位：秒）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Mpls Mtu</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>MPLS实际转发采用的MTU值</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Retransmit interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>重传定时器时长（单位：微秒）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Increment value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>重传增量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Authentication</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><div class="p">是否使能了验证：<ul>
+<li><p>ENABLE：使能了验证</p>
+</li>
+<li><p>DISABLE：没有使能验证</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Bfd Enabled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><div class="p">是否全局使能了BFD for RSVP：<ul>
+<li>ENABLE：全局使能了BFD for RSVP</li>
+<li>DISABLE：未全局使能BFD for RSVP</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Bfd Min-Tx</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>本地配置的BFD消息最小发送时间间隔，单位是毫秒</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Bfd Min-Rx</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>本地配置的BFD消息最小接收时间间隔，单位是毫秒</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d45698e126 "><p>Bfd Detect-Multi</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d45698e130 "><p>本地BFD检测倍数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

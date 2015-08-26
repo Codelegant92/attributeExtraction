@@ -1,0 +1,190 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display trunkfwdtbl eth-trunk">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="eth-trunk.html">
+<meta name="DC.Relation" scheme="URI" content="port-standby_ethernet_interface_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_trunkfwdtbl_eth-trunk">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display trunkfwdtbl eth-trunk</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_trunkfwdtbl_eth-trunk"></a><a name="display_trunkfwdtbl_eth-trunk"></a>
+
+
+<h1 class="topictitle1">display trunkfwdtbl eth-trunk</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display trunkfwdtbl eth-trunk</strong>命令用来查看捆绑组转发表。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display trunkfwdtbl</strong> <strong>eth-trunk</strong> <em>trunk-id</em> [ <strong>slot</strong> <em>slot-id </em>]<span> [<strong> | count</strong> ]</span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>trunk-id</em>：Trunk ID，取值范围是0～63。</p>
+<p><strong>slot</strong> <em>slot-id</em>：接口板板号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong> exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>从捆绑组转发表中可以看到转发负载分担的状态，转发表显示信息主要包括两列内容：&#8220;MASTER&#8221;所在列表示主用成员端口，&#8220;SLAVE&#8221;所在列表示备用成员端口。</p>
+<ul>
+
+<li><p>如果没有配置备份端口，而捆绑组内有其他成员端口处于UP状态，将使用这些端口作为组内的备份端口，显示在&#8220;SLAVE&#8221;处。</p>
+</li>
+<li><p>如果没有配置备份端口，组内也没有其他处于UP状态的端口，&#8220;SLAVE&#8221;处显示的端口与&#8220;MASTER&#8221;处相同，即，端口自己作备份。</p>
+</li>
+</ul>
+<p>另外，由于捆绑组中最多可以支持16条物理成员链路，转发表将显示16条表项。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_trunkfwdtbl_eth-trunk__d70140e119"></a><a name="d70140e119"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看捆绑组转发表。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display trunkfwdtbl eth-trunk 1</strong></pre>
+<pre class="screen"> Show the Trunk Forwarding Table</pre>
+<pre class="screen"> Eth-Trunk1           The   Forwarding  Table   is   :</pre>
+<pre class="screen"> MASTER                                         SLAVE</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+<pre class="screen">GigabitEthernet1/0/0                           GigabitEthernet1/0/0</pre>
+
+<div class="tablenoborder"><a name="display_trunkfwdtbl_eth-trunk__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_trunkfwdtbl_eth-trunk__tb_01" frame="border" border="1" rules="all"><caption>表1 display trunkfwdtbl eth-trunk命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.900226757369616%" id="d70140e177"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.09977324263039%" id="d70140e181"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.900226757369616%" headers="d70140e177 "><p>Eth-Trunk1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.09977324263039%" headers="d70140e181 "><p>查看的Eth-Trunk接口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.900226757369616%" headers="d70140e177 "><p>MASTER</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.09977324263039%" headers="d70140e181 "><p>主链路的接口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.900226757369616%" headers="d70140e177 "><p>SLAVE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.09977324263039%" headers="d70140e181 "><p>备份链路的接口号。Trunk成员口互为备份接口如果只有一个接口，备份链路就是自己。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_trunkfwdtbl_eth-trunk__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_trunkfwdtbl_eth-trunk__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d70140e236"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d70140e240"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d70140e236 "><p>VRPV500R005C05B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d70140e240 "><p><em>trunk-id</em>取值范围从0～63扩大为0～127。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d70140e236 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d70140e240 "><p>命令增加通配符：[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="eth-trunk.html">eth-trunk</a></div>
+<div><a href="port-standby_ethernet_interface_view.html">port-standby（Ethernet接口视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

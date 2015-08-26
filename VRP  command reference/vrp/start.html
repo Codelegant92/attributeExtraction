@@ -1,0 +1,100 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="start">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_nqa-agent.html">
+<meta name="DC.Relation" scheme="URI" content="display_nqa-schedule.html">
+<meta name="DC.Relation" scheme="URI" content="display_nqa_results.html">
+<meta name="DC.Relation" scheme="URI" content="display_nqa_history.html">
+<meta name="DC.Relation" scheme="URI" content="restart_nqa_view.html">
+<meta name="DC.Relation" scheme="URI" content="stop.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="start">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>start</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="start"></a><a name="start"></a>
+
+
+<h1 class="topictitle1">start</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>start</strong>命令用来配置NQA测试例的启动方式和结束方式。</p>
+<p>缺省情况下，测试报文发送完毕后，测试自动结束。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>start at</strong> [ <em>yyyy</em>/<em>mm</em>/<em>dd</em> ] <em>hh</em>:<em>mm</em>:<em>ss</em> [ <strong>end</strong> { <strong>at</strong> [ <em>yyyy</em>/<em>mm</em>/<em>dd</em> ] <em>hh</em>:<em>mm</em>:<em>ss</em> | <strong>delay</strong> { <strong>seconds</strong> <em>second</em> | <em>hh</em>:<em>mm</em>:<em>ss</em> } | <strong>lifetime</strong> { <strong>seconds</strong> <em>second</em> | <em>hh</em>:<em>mm</em>:<em>ss</em> } } ]</p>
+<p><strong>start delay</strong> { <strong>seconds</strong> <em>second</em> | <em>hh</em>:<em>mm</em>:<em>ss</em> } [ <strong>end</strong> { <strong>at</strong> [ <em>yyyy</em>/<em>mm</em>/<em>dd</em> ] <em>hh</em>:<em>mm</em>:<em>ss</em> | <strong>delay</strong> { <strong>seconds</strong> <em>second</em> | <em>hh</em>:<em>mm</em>:<em>ss</em> } | <strong>lifetime</strong> { <strong>seconds</strong> <em>second</em> | <em>hh</em>:<em>mm</em>:<em>ss</em> } } ]</p>
+<p><strong>start now</strong> [ <strong>end</strong> { <strong>at</strong> [ <em>yyyy</em>/<em>mm</em>/<em>dd</em> ] <em>hh</em>:<em>mm</em>:<em>ss</em> | <strong>delay</strong> { <strong>seconds</strong> <em>second</em> | <em>hh</em>:<em>mm</em>:<em>ss</em> } | <strong>lifetime</strong> { <strong>seconds</strong> <em>second</em> | <em>hh</em>:<em>mm</em>:<em>ss</em> } } ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>start at</strong>：在指定的时刻开始测试例的执行。</p>
+<p><strong>start delay</strong>：延迟启动测试例的执行。</p>
+<p><strong>start now</strong>：立即启动当前测试例的执行。</p>
+<p><strong>end at</strong>：在指定的时刻结束当前测试例的执行。</p>
+<p><strong>end delay</strong>：延迟结束测试例的执行。</p>
+<p><em>yyyy</em>/<em>mm</em>/<em>dd</em>：测试例启动或停止的日期，<em>yyyy</em>指定年，<em>mm</em>指定月，<em>dd</em>指定天。年的取值范围是2000～2099。</p>
+<p><em>hh</em>:<em>mm</em>:<em>ss</em>：测试例启动或停止的时刻。<em>hh</em>指定小时，<em>mm</em>指定分钟，<em>ss</em>指定秒。</p>
+<p><strong>seconds</strong><em> second</em>：延迟指定的时间后启动或停止。延迟时间的单位是秒，取值范围是1～86399。</p>
+<p><em>hh:mm:ss</em>：延迟指定的时间后启动或停止。<em>hh</em>范围是0～23，<em>mm</em>和<em>ss</em>范围是0～59。以这种方式指定延迟时间后，系统会自动转换成以秒表示的形式。</p>
+<p><strong>lifetime</strong>：配置测试例的持续时间。</p>
+<p><strong>seconds</strong><em> second</em>：以秒为单位设置测试例的生命周期。取值范围是1～86399。</p>
+<p><em>hh:mm:ss</em>：生命周期的时刻。<em>hh</em>指定小时，<em>mm</em>指定分钟，<em>ss</em>指定秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>NQA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果当前正在执行的测试例总数已经达到系统允许的最大数目，<strong>start</strong>命令将失败。</p>
+<p><strong>start</strong>命令一旦被执行，即测试例一旦执行结束，<strong>start</strong>命令就会从配置文件中删除。</p>
+<p>对于同一个测试例，执行<strong>start now</strong>命令需要在上一次测试执行完成后，才能再次执行。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="start__d120392e374"></a><a name="d120392e374"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 立即开始执行当前的测试例。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>nqa test-instance user test</strong></strong></pre>
+<pre class="screen">[Quidway-nqa-user-test]<strong> <strong>start now</strong></strong></pre>
+<p># 使测试例在当前时间的10小时后启动。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>nqa test-instance user test</strong></strong></pre>
+<pre class="screen">[Quidway-nqa-user-test]<strong> <strong>start delay 10:00:00</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nqa_configuration_commands.html">NQA配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_nqa-agent.html">display nqa-agent</a></div>
+<div><a href="display_nqa-schedule.html">display nqa-schedule</a></div>
+<div><a href="display_nqa_results.html">display nqa results</a></div>
+<div><a href="display_nqa_history.html">display nqa history</a></div>
+<div><a href="restart_nqa_view.html">restart（NQA视图）</a></div>
+<div><a href="stop.html">stop</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

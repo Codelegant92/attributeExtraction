@@ -1,0 +1,140 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mapping">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mapping-type.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mapping">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mapping</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mapping"></a><a name="mapping"></a>
+
+
+<h1 class="topictitle1">mapping</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mapping</strong>命令用来配置业务实例与用户业务的映射。</p>
+<p><strong>undo mapping</strong>命令用来解除业务实例与用户业务的映射。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mapping</strong> { { <strong>interface</strong> <em>interface-type interface-number</em> [ <strong>vlan</strong> { <em>vlan-id1</em> [ <strong>to</strong> <em>vlan-id2</em> ] } &amp;&lt;1-10&gt; [<strong> priority</strong> <em>pri-value</em>] ] } | <strong>vlan</strong> <em>global-vlan-id</em> | { <strong>interface</strong> <em>interface-type interface-number</em> <strong>s-vlan </strong><em>vlan-id </em><strong>c-vlan </strong><em>vlan-id </em>} }</p>
+<p><strong>undo mapping</strong> { { <strong>interface</strong> <em>interface-type interface-number</em> [ <strong>vlan</strong> { <em>vlan-id1</em> [ <strong>to</strong> <em>vlan-id2</em> ] } &amp;&lt;1-10&gt; [<strong> priority</strong> <em>pri-value</em>] ] } | <strong>vlan</strong> <em>global-vlan-id</em> | { <strong>interface</strong> <em>interface-type interface-number</em> <strong>s-vlan </strong><em>vlan-id </em><strong>c-vlan </strong><em>vlan-id </em>} }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface </strong><em>interface-type interface-number</em>：指定需要被隔离的接口。</p>
+<p>其中：</p>
+<ul>
+<li><p><em>interface-type</em>表示接口的类型，包括以太网接口和Eth-Trunk接口。</p>
+</li>
+<li><p><em>interface-number</em>表示接口的编号。</p>
+</li>
+</ul>
+<p><em>vlan-id1</em>：指定代表用户业务的VLAN编号。整数形式，取值范围是1～4094。</p>
+<p><em>vlan-id2</em>：指定最后一个代表用户业务的VLAN的编号。<em>vlan-id2</em>为整数形式，取值范围是1～4094。<em>vlan-id2</em>必须大于<em>vlan-id1</em>，它和<em>vlan-id1</em>共同确定一个范围。</p>
+<p><strong>priority</strong><em> pri-value</em>：指定用户业务的优先级。整数形式，取值范围是0～7，值越大优先级越高。</p>
+<p><strong>vlan</strong> <em>global-vlan-id</em>：指定全局VLAN ID。整数形式，取值范围是1～4094。</p>
+<p><strong>s-vlan </strong><em>vlan-id</em>：指定用户业务的外层VLAN编号。整数形式，取值范围是1～4094。</p>
+<p><strong>c-vlan </strong><em>vlan-id</em>：指定用户业务的内层VLAN编号。整数形式，取值范围是1～4094。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>业务实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>用户业务与某一业务实例映射后才能在MAC Tunnel中传输。同一个业务实例只能与一种或一类用户业务形成映射关系。同一个用户业务，不能被多个业务实例同时映射。</p>
+<p>业务实例与用户业务的映射关系支持如下5种类型：</p>
+<ul>
+<li><p>基于接口的映射：由该接口进入的所有业务作为一个大的业务类型类映射到同一个业务实例上。</p>
+</li>
+<li><p>基于接口＋VLAN的映射：由接口进入的某一个VLAN标识的业务映射到业务实例，即业务实例映射的是某一具体的用户业务，如语音业务或数据业务。</p>
+</li>
+<li><p>基于接口＋VLAN组的映射：由某一接口进入的多个由不同VLAN标识的业务群组作为一个大的业务类型映射到业务实例。例如同一个企业的多个部门分别由不同的VLAN来划分，可以使用该映射方式来保证同一企业网的数据经过MAC Tunnel透明传输。</p>
+</li>
+<li><p>基于接口＋VLAN＋COS（Class of Service）的映射：该映射方式可以根据某一指定业务的服务等级与业务实例映射。该映射方式可以根据业务优先级来指定传输的MAC Tunnel。</p>
+</li>
+<li><p>基于全局VLAN的映射：将全局VLAN与业务实例映射。</p>
+</li>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>全局VLAN不能被二层组播使用。</p>
+</div></div>
+
+</ul>
+<p>对于点到点业务实例，在不同的业务实例映射模式下，可以配置的映射类型有：</p>
+<ul>
+<li><p>映射模式为<strong>transparent</strong>时，只可以配置基于接口的映射，由指定接口进入的全部业务作为一个业务大类与业务实例映射，全部的业务都将通过MAC Tunnel透明传输到对端。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>在<strong>transparent</strong>映射模式下，映射的接口不允许加入全局VLAN。</p>
+</div></div>
+<ul>
+<li><p>映射模式为<strong>s-tagged one-to-one</strong>时，可以配置基于&lt;接口＋VLAN&gt;的映射，只能配置映射一个用户。</p>
+</li>
+<li><p>映射模式为<strong>s-tagged bundling</strong>时，可以配置基于&lt;接口＋VLAN组&gt;、&lt;接口＋VLAN＋COS&gt;的映射，但是所有用户必须拥有相同的接口，而VLAN和COS可以不同。</p>
+</li>
+</ul>
+<p>对于多点到多点的业务实例，在不同的业务实例映射模式下，可以配置的映射类型有：</p>
+<ul>
+<li><p>映射模式为<strong>s-tagged one-to-one</strong>时，可以使用基于&lt;接口＋VLAN&gt;、基于全局VLAN的映射。</p>
+</li>
+<li><p>映射模式为<strong>s-tagged bundling</strong>时，可以配置基于&lt;接口＋VLAN&gt;、基于&lt;接口＋VLAN＋COS&gt;、基于全局VLAN的映射。</p>
+</li>
+</ul>
+<p>在<strong>s-tagged</strong>映射模式下，不能够配置基于接口的映射。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>用户业务与业务实例的映射不能存在包含关系，例如，在具有相同接口和VLAN的情况下，基于&lt;接口＋VLAN&gt;的映射与基于&lt;接口＋VLAN＋COS&gt;的映射，后者被前者所包含，这两种映射方式是互斥的，不允许同时与一个业务实例映射。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mapping__d92114e290"></a><a name="d92114e290"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置接口GE1/0/1与业务实例映射。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> service-instance instance-name <strong>mysi</strong></strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi]<strong> mapping-type transparent</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi]<strong> mapping interface<strong> gigabit</strong><strong>ethernet1/0/1</strong></strong></pre>
+<p># 配置由接口GE1/0/1进入的业务类型为VLAN 2的用户业务与业务实例mysi映射。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> service-instance instance-name mysi</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi]<strong> mapping-type s-tagged one-to-one</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi]<strong> mapping interface<strong> gigabit</strong><strong>ethernet1/0/1 vlan</strong> <strong>2</strong></strong></pre>
+<p># 配置全局VLAN 4与业务实例mysi映射。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> service-instance instance-name mysi</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi]<strong> mapping-type s-tagged bundling</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi]<strong> mapping vlan 4</strong></pre>
+<p># 配置外层VLAN ID为4、内层VLAN ID为1的用户业务与业务实例mysi映射。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> service-instance instance-name mysi</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi]<strong> mapping-type s-tagged bundling</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi]<strong> mapping gigabitethernet1/0/1 s-vlan 4 c-vlan 1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mapping-type.html">mapping-type</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

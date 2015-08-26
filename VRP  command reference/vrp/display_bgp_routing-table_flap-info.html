@@ -1,0 +1,243 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display bgp routing-table flap-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_bgp_routing-table_flap-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display bgp routing-table flap-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_bgp_routing-table_flap-info"></a><a name="display_bgp_routing-table_flap-info"></a>
+
+
+<h1 class="topictitle1">display bgp routing-table flap-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display bgp routing-table flap-info</strong>命令用来显示BGP的振荡统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display bgp</strong> [ <strong>vpnv4</strong> <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>routing-table flap-info</strong> [<strong> regular-expression</strong> <em>as-regular-expression</em> ]</p>
+<p><strong>display bgp</strong> [ <strong>vpnv4</strong> <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>routing-table flap-info</strong> [ <strong>as-path-filter</strong> <em>as-path-filter-number</em> | <em>network-address</em> [ { <em>mask</em> | <em>mask-length</em> } [ <strong>longer-match</strong> ] ] ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp ipv6 routing-table flap-info</strong> [ <strong>regular-expression</strong> <em>as-regular-expression</em> ]</p>
+<p><strong>display bgp ipv6 routing-table flap-info</strong> [ <strong>as-path-filter</strong> <em>as-path-filter-number</em> | <em>network-address</em> [ <em>prefix-length</em> [ <strong>longer-match</strong> ] ] ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display
+bgp vpnv6</strong> <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> <strong>routing-table flap-info</strong> [ <strong>regular-expression</strong> <em>as-regular-expression</em> ]</p>
+<p><strong>display bgp vpnv6</strong> <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> <strong>routing-table flap-info</strong> [ <strong>as-path-filter</strong> <em>as-path-filter-number</em> | <em>network-address</em> [ <em>prefix-length</em> [ <strong>longer-match</strong> ] ] ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpnv4 vpn-instance</strong> <em>vpn-instance-name</em>：显示指定VPN实例的振荡统计信息。</p>
+<p><strong>regular-expression</strong> <em>as-regular-expression</em>：显示匹配AS路径正则表达式的路由振荡统计信息。字符串类型，取值范围是1～80。</p>
+<p><strong>as-path-filter</strong> <em>as-path-filter-number</em>：指定匹配的AS路径过滤器号。</p>
+<p><em>network-address</em>：指定显示衰减信息的网络地址。</p>
+<p><em>mask</em> | <em>mask-length</em>：网络掩码/掩码长度。</p>
+<p><strong>longer-match</strong>：允许按更长的前缀长度匹配。</p>
+<p><em>prefix-length</em>：前缀长度。</p>
+<p><strong>vpnv6</strong>：查看VPNv6的BGP路由的振荡统计信息。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：显示指定IPv6 VPN实例BGP路由的振荡统计信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_bgp_routing-table_flap-info__d17364e314"></a><a name="d17364e314"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示BGP的振荡统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp routing-table flap-info</strong>
+
+ Total Number of Routes: 7
+
+ BGP Local router ID is 20.20.200.201
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed,
+               Origin codes: i - IGP, e - EGP, ? - incomplete
+
+     Network         From            Flaps  Duration     Reuse  Path/Ogn
+
+ d  129.1.1.0       20.20.200.200   5      00:00:36  00:40:47  600i
+ *&gt;  129.1.1.0       20.20.200.202   1      00:04:07            100?
+ d  129.1.2.0       20.20.200.200   5      00:00:36  00:40:47  600i
+ *&gt;  129.1.2.0       20.20.200.202   1      00:04:07            100?
+ d  129.1.3.0       20.20.200.200   5      00:00:36  00:40:47  600i
+ d  129.1.4.0       20.20.200.200   5      00:00:36  00:40:47  600i
+ d  129.1.5.0       20.20.200.200   5      00:00:36  00:40:47  600i</pre>
+
+<div class="tablenoborder"><a name="display_bgp_routing-table_flap-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_routing-table_flap-info__tb_01" frame="border" border="1" rules="all"><caption>表1 display bgp routing-table flap命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.20508944318468%" id="d17364e335"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.79491055681531%" id="d17364e339"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17364e335 "><p>Network</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17364e339 "><p>显示BGP路由表中的网络地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17364e335 "><p>From</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17364e339 "><p>接收路由的邻居IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17364e335 "><p>Flaps</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17364e339 "><p>振荡的总次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17364e335 "><p>Duration</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17364e339 "><p>振荡已经历的总时长</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17364e335 "><p>Reuse</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17364e339 "><p>重用值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17364e335 "><p>Path/Ogn</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17364e339 "><p>AS路径号及Origin属性</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示BGP4+路由振荡统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp ipv6 routing-table flap-info</strong>
+
+ Total Number of Routes: 3
+
+ BGP Local router ID is 53.53.53.53
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+  d  Network : 1:1:1::                                   PrefixLen : 96
+     From    : 1:1:1::1                                  Flaps     : 8
+     Duration: 00:02:11                                  Reuse     : 00:49:21
+     Path/Ogn: 100?
+
+  d  Network : 2::2                                      PrefixLen : 128
+     From    : 1:1:1::1                                  Flaps     : 5
+     Duration: 00:00:18                                  Reuse     : 00:41:06
+     Path/Ogn: 100?
+
+  d  Network : 2::3                                      PrefixLen : 128
+     From    : 1:1:1::1                                  Flaps     : 5
+     Duration: 00:00:18                                  Reuse     : 00:41:06
+     Path/Ogn: 100?</pre>
+<p># 显示VPNv6实例为1的路由振荡统计信息。</p>
+<pre class="screen">&lt; Quidway &gt; <strong>display bgp vpnv6 vpn6-instance 1 routing-table flap-info</strong>
+
+ Total routes of vpn6-instance 1: 1
+</pre>
+<pre class="screen"> BGP Local router ID is 1.1.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete</pre>
+<pre class="screen">
+  d  Network : 1::                                       PrefixLen : 64
+     From    : 1::1                                      Flaps     : 4
+     Duration: 00:00:29                                  Reuse     : 00:36:01</pre>
+<pre class="screen">     Path/Ogn: 200?</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_bgp_routing-table_flap-info__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_routing-table_flap-info__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d17364e447"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d17364e451"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d17364e447 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d17364e451 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

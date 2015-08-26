@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="rpr bind ring-if">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rpr_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_rpr_topoinfo_interface_ring-if.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rpr_bind_ring-if">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>rpr bind ring-if</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="rpr_bind_ring-if"></a><a name="rpr_bind_ring-if"></a>
+
+
+<h1 class="topictitle1">rpr bind ring-if</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>rpr bind ring-if</strong>命令用来将一个RPR接口绑定到逻辑接口的东向或者西向。</p>
+<p><strong>undo rpr bind</strong>命令用来删除绑定关系，不需要指定方向。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>rpr bind ring-if</strong> <em>interface-number </em>{ <strong>west</strong> | <strong>east</strong> }</p>
+<p><strong>undo rpr bind</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>west</strong>：本地节点的西向连接。</p>
+<p><strong>east</strong>：本地节点的东向连接。</p>
+<p><em>interface-number</em>：逻辑接口号。整数形式，取值范围是0～31。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>RPR物理接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>成功执行该命令，需要注意以下三点：</p>
+<ul>
+<li><p>待绑定的RPR物理接口存在；</p>
+</li>
+<li><p>RPR物理接口还没有绑定到任何一个RPR逻辑口；</p>
+</li>
+<li><p>同时指定RPR逻辑口的相应方向也没有绑定。</p>
+</li>
+</ul>
+<p>RPR物理接口只能存在于一个RPR环。</p>
+<p>如果只绑定一个物理接口，且逻辑口未执行<strong>shutdown</strong>命令进行关闭，节点会进入边状态。所以，建议先执行<strong>shutdown</strong>命令关闭逻辑口，再进行物理接口的绑定，最后执行<strong>undo shutdown</strong>命令启动该逻辑接口。</p>
+<p>如果一个RPR接口已经执行<strong>rpr bind ring-if</strong>命令并成功，就不能再通过<strong>rpr bind ring-if</strong>命令来修改绑定关系。必须先执行<strong>undo rpr bind</strong>命令，再通过<strong>rpr bind ring-if</strong>命令来修改绑定关系。</p>
+<p>另外，用户要保证绑定的物理口与实际Mate电缆连接情况一致。因为硬件无法检测到Mate电缆连接是否和配置一致，所以需要现场检测。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="rpr_bind_ring-if__d115183e107"></a><a name="d115183e107"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 绑定物理接口到逻辑接口。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface rpr 4/0/0</strong></pre>
+<pre class="screen">[Quidway-rpr4/0/0]<strong> shutdown</strong></pre>
+<pre class="screen">[Quidway-rpr4/0/0]<strong> rpr bind ring-if 4 west</strong></pre>
+<pre class="screen">[Quidway-rpr4/0/0]<strong> undo shutdown</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rpr_configuration_commands.html">RPR配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_rpr_topoinfo_interface_ring-if.html">display rpr topoinfo interface ring-if</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

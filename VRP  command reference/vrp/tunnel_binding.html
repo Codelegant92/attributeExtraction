@@ -1,0 +1,133 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="tunnel binding">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_tunnel_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_reserved-for-binding.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_select-seq.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="tunnel_binding">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>tunnel binding</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="tunnel_binding"></a><a name="tunnel_binding"></a>
+
+
+<h1 class="topictitle1">tunnel binding</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>tunnel binding</strong>命令用来把指定的隧道与目的IP地址进行绑定，从而限制该隧道只能承载特定的VPN业务。</p>
+<p><strong>undo tunnel binding</strong>命令用来撤销隧道与目的IP地址的绑定。</p>
+<p>缺省情况下，隧道不与任何IP地址进行绑定。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>tunnel binding
+destination</strong> <em>dest-ip-address</em> <strong>te</strong> { <strong>tunnel</strong> <em>interface-number</em> } &amp;&lt;1-6&gt; [ <strong>down-switch</strong> ]</p>
+<p><strong>undo tunnel binding destination</strong> <em>dest-ip-address</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>dest-ip-address</em>：隧道的目的地址。</p>
+<p><em>interface-number</em>：被绑定的隧道接口的编号。</p>
+<p><strong>down-switch</strong>：使能隧道切换功能。配置此参数后，当绑定的TE隧道不可用时，按照LSP、CR-LSP、GRE的优先顺序切换到其它可用的隧道。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>隧道策略视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置了VPN隧道绑定的隧道策略既可以应用到L2VPN，也可以应用到L3VPN，也可以同时应用到L2VPN和L3VPN。</p>
+<p>VPN应用隧道绑定的隧道策略后，该VPN到被绑定的目的IP地址的数据只能从被绑定的隧道传输。</p>
+<p>配置<strong>tunnel
+binding</strong>命令时注意：</p>
+<ul>
+<li><p>在配置所要绑定的MPLS TE隧道之前，首先应在该隧道接口视图下配置<a href="mpls_te_reserved-for-binding.html">mpls te reserved-for-binding</a>命令。</p>
+</li>
+<li><p>如果对隧道策略使用<a href="tunnel_select-seq.html">tunnel select-seq</a>命令配置隧道的优先级顺序和负载分担条数，那么该隧道策略不能再配置<strong>tunnel binding</strong>命令，反之亦然。</p>
+</li>
+<li><p>同一个隧道策略可以配置多个不同<em>dest-ip-address</em>的<strong>tunnel binding</strong>命令。</p>
+</li>
+
+<li><p>对于同一个隧道策略，同一个目的地址，最多可以绑定六个隧道。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="tunnel_binding__d126365e117"></a><a name="d126365e117"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 隧道策略视图下将对端PE的IP地址2.2.2.9与本端隧道接口Tunnel 1/0/0进行绑定。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>tunnel-policy tnlpolicyname</strong></pre>
+<pre class="screen">[Quidway-tunnel-policy-tnlpolicyname]<strong> tunnel binding destination 2.2.2.9 te tunnel 1/0/0</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="27.500000000000004%" id="d126365e144"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="72.5%" id="d126365e148"><p>修订记录</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+
+<td class="cellrowborder" valign="top" width="27.500000000000004%" headers="d126365e144 "><p>VRPV500R003C07B300</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="72.5%" headers="d126365e148 "><p>增加了<strong>down-switch</strong>关键字。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="27.500000000000004%" headers="d126365e144 "><p>VRPV500R005C02B140</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="72.5%" headers="d126365e148 "><p>隧道可绑定的Tunnel接口数量增加到6个。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpn_tunnel_management_configuration_commands.html">VPN隧道管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_te_reserved-for-binding.html">mpls te reserved-for-binding</a></div>
+<div><a href="tunnel_select-seq.html">tunnel select-seq</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

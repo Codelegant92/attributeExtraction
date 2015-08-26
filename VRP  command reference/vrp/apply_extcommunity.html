@@ -1,0 +1,73 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="apply extcommunity">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_policyconfiguration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="apply_extcommunity">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>apply extcommunity</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="apply_extcommunity"></a><a name="apply_extcommunity"></a>
+
+
+<h1 class="topictitle1">apply extcommunity</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>apply extcommunity</strong>命令用来为BGP路由指定扩展团体属性。</p>
+<p><strong>undo apply extcommunity</strong>命令用来取消该功能。</p>
+<p>缺省情况下，不设置BGP的扩展团体属性。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>apply extcommunity</strong> <strong>rt</strong> { <em>as-number</em> : <em>nn</em> | <em>ipv4-address</em> : <em>nn</em> } [ <strong>additive</strong> ] </p>
+<p><strong>undo apply extcommunity</strong> </p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>rt</strong>：指定Route Target（路由目标）扩展团体。</p>
+<p><em>as-number</em>：自治系统号。整数形式，取值范围0～65535。</p>
+<p><em>ipv4-address</em>：IPv4地址。</p>
+<p><em>nn</em>：一个整数。对于<em>as-number</em>，其取值范围为0～4294967295；对于<em>ipv4-address</em>，其取值范围为0～65535。</p>
+<p><strong>additive</strong>：允许给路由增加已有的团体属性。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Route-Policy视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>目前和VPNv4相关的BGP扩展团体有两种，一种是用于VPN的路由目标扩展团体，另一种是源站点扩展团体。目前，仅支持通过Route-Policy设置Route-Target扩展团体属性。如果命令中没有<strong>additive</strong>关键字，则是替换原有的扩展团体属性。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="apply_extcommunity__d1560e93"></a><a name="d1560e93"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将100:2添加到BGP的VPN Route-Target扩展团体属性中。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> route-policy policy permit node 10</strong></pre>
+<pre class="screen">[Quidway-route-policy]<strong> apply extcommunity rt 100:2 additive</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_policyconfiguration_commands.html">路由策略配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

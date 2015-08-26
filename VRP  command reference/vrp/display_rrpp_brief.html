@@ -1,0 +1,344 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rrpp brief">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rrpp_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_rrpp_verbose.html">
+<meta name="DC.Relation" scheme="URI" content="display_rrpp_verbose.html">
+<meta name="DC.Relation" scheme="URI" content="rrpp_ring-group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rrpp_brief">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rrpp brief</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rrpp_brief"></a><a name="display_rrpp_brief"></a>
+
+
+<h1 class="topictitle1">display rrpp brief</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display rrpp brief</strong>命令用来显示交换机上配置的所有RRPP域的摘要信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display rrpp brief</strong> <span>[ <strong>domain</strong> <em>domain-id</em> ]</span><span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>domain </strong><em>domain-id</em>：RRPP域ID，整数形式，取值范围是1～8。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="p">摘要信息包括：<ul>
+<li><p>RRPP协议使能状态</p>
+</li>
+<li><p>RRPP域的配置</p>
+</li>
+<li><p>域上配置的环的概要信息</p>
+</li>
+</ul>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rrpp_brief__d64816e110"></a><a name="d64816e110"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示RRPP的摘要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rrpp brief</strong></pre>
+<pre class="screen">Abbreviations for Switch Node Mode :</pre>
+<pre class="screen">M - Master , T - Transit , E - Edge , A - Assistant-Edge</pre>
+
+<pre class="screen">RRPP Protocol Status:  Enable</pre>
+<pre class="screen">RRPP Linkup Delay Timer: 0 sec(default is 0 sec)</pre>
+<pre class="screen">Number of RRPP Domains: 2</pre>
+
+<pre class="screen">Domain Index  : 1</pre>
+<pre class="screen">Control VLAN  : major 400    sub 401</pre>
+<pre class="screen">Protected VLAN : Reference Instance 0 to 2, 4</pre>
+<pre class="screen">Hello Timer   : 1 sec(default is 1 sec)  Fail Timer : 3 sec(default is 3 sec)</pre>
+<pre class="screen"> Ring   Ring    Node     Primary/Common             Secondary/Edge         Is</pre>
+<pre class="screen"> ID     Level   Mode     Port                       Port                   Enabled</pre>
+<pre class="screen"> ---------------------------------------------------------------------------------</pre>
+<pre class="screen"> 1      0       M        GigabitEthernet0/0/6       GigabitEthernet0/0/1   Yes</pre>
+
+<pre class="screen">Domain Index  : 2</pre>
+<pre class="screen">Control VLAN  : major 200    sub 201</pre>
+<pre class="screen">Protected VLAN: Reference Instance 0 to 2, 4</pre>
+<pre class="screen">Hello Timer   : 1 sec(default is 1 sec)  Fail Timer : 3 sec(default is 3 sec)</pre>
+<pre class="screen"> Ring   Ring    Node     Primary/Common            Secondary/Edge        Is</pre>
+<pre class="screen"> ID     Level   Mode     Port                      Port                  Enabled</pre>
+<pre class="screen"> -------------------------------------------------------------------------------</pre>
+<pre class="screen"> 1      0       M        GigabitEthernet0/0/3     GigabitEthernet0/0/4   No</pre>
+<pre class="screen"> 2      1       E        GigabitEthernet0/0/3     GigabitEthernet0/0/5   No</pre>
+<p># 显示域1的摘要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rrpp brief domain 1</strong></pre>
+<pre class="screen">Abbreviations for Switch Node Mode :
+M - Master , T - Transit , E - Edge , A - Assistant-Edge 
+
+RRPP Protocol Status: Enable
+RRPP Linkup Delay Timer: 0 sec(default is 0 sec)
+Number of RRPP Domains: 2
+
+Domain Index  : 1
+Control VLAN : major 5    sub 6
+Protected VLAN: Reference Instance 0 to 2, 4
+Hello Timer      : 1 sec(default is 1 sec)  Fail Timer : 3 sec(default is 3 sec)
+ Ring   Ring    Node     Primary/Common             Secondary/Edge          Is
+ ID     Level   Mode     Port                       Port                    Enabled
+-------------------------------------------------------------------------------------
+ 1      1       M        GigabitEthernet1/0/1       GigabitEthernet1/0/2    Yes
+</pre>
+
+<div class="tablenoborder"><a name="display_rrpp_brief__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rrpp_brief__tb_01" frame="border" border="1" rules="all"><caption>表1 display rrpp brief命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.801209372637945%" id="d64816e185"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.19879062736204%" id="d64816e189"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Abbreviations for Switch Node Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><div class="p">节点模式缩略语：<ul>
+<li><p>M-Master：主节点模式。</p>
+</li>
+<li><p>T-Transit：传输节点模式。</p>
+</li>
+<li><p>E-Edge：边缘节点模式。</p>
+</li>
+<li><p>A-Assistant Edge：辅助边缘节点模式。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>RRPP Protocol Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><div class="p">RRPP协议状态：<ul>
+<li><p>Enabled：RRPP协议处于使能状态。</p>
+</li>
+<li><p>Disabled：RRPP协议处于关闭状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>RRPP Linkup Delay Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><p>RRPP链路恢复时延定时器的值，单位为秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Number of RRPP Domains</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><p>配置的RRPP域的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Domain Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><p>RRPP域ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Control VLAN  : major 400    sub 401</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><p>RRPP Domain的控制VLAN ID。其中major表示主控制VLAN，sub表示子控制VLAN。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Protected VLAN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><p>RRPP域保护的VLAN列表，此处显示的是引用的MSTP实例。</p>
+<p>MSTP实例所映射的VLAN可以通过命令<a href="display_stp_region-configuration.html">display stp region-configuration</a>查看。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Hello Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><p>RRPP Domain的Hello定时器超时时间，单位是秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Fail Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><p>RRPP Domain的Fail定时器超时时间，单位是秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Ring ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><p>RRPP环的ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Ring Level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><div class="p">RRPP环的级别：<ul>
+<li><p>0级代表主环。</p>
+</li>
+<li><p>1级代表子环。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Node Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><p>RRPP节点模式，具体模式参见上面的&#8220;节点模式缩略语&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Primary/Common Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><p>当节点角色为主节点或传输节点时，该字段表示主端口；当节点角色为边缘节点或辅助边缘节点时，该字段表示公共端口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Secondary/Edge Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><p>当节点角色为主节点或传输节点时，该字段表示副端口；当节点角色为边缘节点或辅助边缘节点时，该字段表示边缘端口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.801209372637945%" headers="d64816e185 "><p>Is Enabled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.19879062736204%" headers="d64816e189 "><div class="p">标识环是否使能。<ul>
+<li><p>Yes：使能。</p>
+</li>
+<li><p>No：未使能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_rrpp_brief__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rrpp_brief__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d64816e429"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d64816e433"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d64816e429 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d64816e433 "><p>命令增加通配符：[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rrpp_commands.html">RRPP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_rrpp_verbose.html">display rrpp verbose</a></div>
+<div><a href="display_rrpp_verbose.html">display rrpp ring-group</a></div>
+<div><a href="rrpp_ring-group.html">rrpp ring-group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

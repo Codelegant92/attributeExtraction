@@ -1,0 +1,248 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display oam global configuration">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_enable_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_mac-tunnel_mip_trace_enable.html">
+<meta name="DC.Relation" scheme="URI" content="efm_enable.html">
+<meta name="DC.Relation" scheme="URI" content="ping_mac_enable.html">
+<meta name="DC.Relation" scheme="URI" content="trace_mac_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_oam_global_configuration">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display oam global configuration</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_oam_global_configuration"></a><a name="display_oam_global_configuration"></a>
+
+
+<h1 class="topictitle1">display oam global configuration</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display oam global configuration</strong>命令用来查看当前设备的以太网OAM全局配置，包括：</p>
+<ul>
+<li><p>以太网CFM功能的全局使能状态</p>
+</li>
+<li><p>通用MAC Ping功能的使能状态</p>
+</li>
+<li><p>通用MAC Trace功能的使能状态</p>
+</li>
+<li><p>MAC tunnel中间节点Trace回复功能的使能状态</p>
+</li>
+<li><p>EFM OAM功能的全局使能状态</p>
+</li>
+<li><p><span>draft7草案版本中</span>MIP的全局生成规则</p>
+</li>
+<li><p><span>draft7草案版本中</span>以太网CFM协议号</p>
+</li>
+<li><p>standard2007版本中以太网CFM版本信息</p>
+</li>
+</ul>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display oam global configuration</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如今，802．1ag协议分为draft7草案版本和standard2007标准版本。</p>
+<p><span>不同的版本上</span>在配置以太网OAM时，可使用本命令查看该以太网OAM功能是否已全局使能。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_oam_global_configuration__d54194e79"></a><a name="d54194e79"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看<span>draft7版本中</span>当前设备的以太网OAM全局配置。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display oam global configuration</strong></pre>
+<pre class="screen">global conf                                          value
+----------------------------------------------------------
+cfm status                                         enabled
+mip create-type                                    default
+ping mac status                                   disabled
+trace mac status                                  disabled
+cfm mac-tunnel mip trace status                   disabled
+efm status                                         enabled
+cfm protocol                                          bbb0
+</pre>
+
+<p>#
+查看standard2007版本中当前设备的以太网OAM全局配置。</p>
+<pre class="screen">global conf                                          value
+----------------------------------------------------------
+cfm status                                         enabled
+ping mac status                                   disabled
+trace mac status                                  disabled
+cfm mac-tunnel mip trace status                   disabled
+efm status                                         enabled
+cfm version                                       standard
+</pre>
+
+<div class="tablenoborder"><a name="display_oam_global_configuration__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_oam_global_configuration__tb_01" frame="border" border="1" rules="all"><caption>表1 display oam global configuration命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.93801965230537%" id="d54194e109"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.06198034769464%" id="d54194e113"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d54194e109 "><p>cfm status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d54194e113 "><div class="p">以太网CFM功能的全局使能状态。<ul>
+<li><p>disabled：以太网CFM功能处于全局禁止状态。</p>
+</li>
+<li><p>enabled：以太网CFM功能处于全局使能状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d54194e109 "><p>mip create-type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d54194e113 "><div class="p"><span>draft7版本中</span>MIP的全局生成规则。<ul>
+<li><p>default：如果指定接口不存在更高级别的MEP，并且不存在更低级别的MIP，则可以在该接口上创建MIP。</p>
+</li>
+<li><p>explicit：如果在指定接口下存在更低级的MEP但不存在更高级别的MEP，而且不存在更低级别的MIP，则可以创建MIP节点。</p>
+</li>
+<li><p>none：接口的MIP生成规则为none类型，即不自动创建MIP。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d54194e109 "><p>ping mac status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d54194e113 "><div class="p">通用MAC Ping功能的使能状态。<ul>
+<li><p>disabled：通用MAC Ping功能处于禁止状态。</p>
+</li>
+<li><p>enabled：通用MAC Ping功能处于使能状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d54194e109 "><p>trace mac status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d54194e113 "><div class="p">通用MAC Trace功能的使能状态。<ul>
+<li><p>disabled：通用MAC Trace功能处于禁止状态。</p>
+</li>
+<li><p>enabled：通用MAC Trace功能处于使能状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d54194e109 "><p>cfm mac-tunnel mip trace status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d54194e113 "><div class="p">MAC tunnel中间节点Trace回复功能的使能状态。<ul>
+<li><p>disabled：MAC tunnel中间节点Trace回复功能处于禁止状态。</p>
+</li>
+<li><p>enabled：MAC tunnel中间节点Trace回复功能处于使能状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d54194e109 "><p>efm status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d54194e113 "><div class="p">EFM OAM功能的全局使能状态。<ul>
+<li><p>disabled：EFM OAM功能处于全局禁止状态。</p>
+</li>
+<li><p>enabled：EFM OAM功能处于全局使能状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d54194e109 "><p>cfm protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d54194e113 "><p><span>draft7版本中</span>以太网CFM协议号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d54194e109 "><p>cfm version</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d54194e113 "><p>standard2007版本中以太网CFM版本信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_enable_system_view.html">cfm enable（系统视图）</a></div>
+<div><a href="cfm_mac-tunnel_mip_trace_enable.html">cfm mac-tunnel
+mip trace enable</a></div>
+<div><a href="efm_enable.html">efm enable</a></div>
+<div><a href="ping_mac_enable.html">ping mac enable</a></div>
+<div><a href="trace_mac_enable.html">trace mac enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

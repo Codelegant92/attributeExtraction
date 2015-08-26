@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer connect-interface（MSDP）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/msdp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="static-rpf-peer.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_connect-interface_msdp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer connect-interface（MSDP）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_connect-interface_msdp"></a><a name="peer_connect-interface_msdp"></a>
+
+
+<h1 class="topictitle1">peer connect-interface（MSDP）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer connect-interface</strong>命令用来配置MSDP对等体。</p>
+<p><strong>undo peer connect-interface</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，未配置此MSDP对等体。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer </strong><em>peer-address</em> <strong>connect-interface</strong> <em>interface-type interface-number</em></p>
+<p><strong>undo peer </strong><em>peer-address</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>peer-address</em>：表示远端MSDP对等体的地址。点分十进制形式。</p>
+<p><em>interface-type interface-number</em>：表示接口类型和编号，本地<span class="keyword">路由器</span>使用该接口的主地址作为源IP与远端MSDP对等体建立TCP连接。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>系统不向私网发布MTI接口上的路由，因此不要以MTI接口的地址建立MSPD
+Peer连接。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例MSDP视图、VPN实例MSDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行其他peer命令之前必须先执行<strong>peer connect-interface</strong>命令，否则系统提示peer不存在。</p>
+<p>重复使用命令<strong>peer</strong> <em>peer-address</em> <strong>connect-interface</strong> <em>interface-type interface-number</em>，可以为<span class="keyword">路由器</span>配置多个远端MSDP对等体。</p>
+<ul>
+<li><p>可以为不同的<em>peer-address</em>指定相同的<em>interface-type interface-number</em>，即为不同的远端对等体指定相同的本地接口。</p>
+</li>
+<li><p>可以为不同的<em>peer-address</em>指定不同的<em>interface-type interface-number</em>，即为不同的远端对等体指定不同的本地接口。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_connect-interface_msdp__d103346e110"></a><a name="d103346e110"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中，把使用IP地址125.10.7.6的<span class="keyword">路由器</span>配置成本地<span class="keyword">路由器</span>的MSDP对等体，GE1/0/0为本地连接端口。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> msdp</strong></pre>
+<pre class="screen">[Quidway-msdp]<strong> peer 125.10.7.6 connect-interface gigabitethernet 1/0/0</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/msdp_configuration_commands.html">MSDP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="static-rpf-peer.html">static-rpf-peer</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

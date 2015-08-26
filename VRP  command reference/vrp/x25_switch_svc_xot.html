@@ -1,0 +1,324 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="x25 switch svc xot">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_x25_switch-table_svc.html">
+<meta name="DC.Relation" scheme="URI" content="x25_switching.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="x25_switch_svc_xot">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>x25 switch svc xot</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="x25_switch_svc_xot"></a><a name="x25_switch_svc_xot"></a>
+
+
+<h1 class="topictitle1">x25 switch svc xot</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>x25 switch svc xot</strong>命令用来增加一条转发地址为XOT通道的X.25交换路由。</p>
+<p><strong>undo x25 switch svc xot</strong>命令用来删除指定的X.25交换路由。</p>
+<p>缺省情况下，未配置X.25交换路由。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>x25 switch svc </strong><em>x.121-address</em> [ <strong>sub-dest</strong> <em>destination-address</em> ] [ <strong>sub-source </strong><em>source-address</em> ]<strong> xot </strong><em>ip-address </em>&amp;&lt;1-6&gt; [ <em>xot-option</em> ]</p>
+<p><strong>undo x25 switch svc </strong><em>x.121-address</em> [ <strong>sub-dest</strong> <em>destination-address</em> ] [ <strong>sub-source </strong><em>source-address</em> ] [<strong> xot </strong><em>ip-address </em>&amp;&lt;1-6&gt; ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>x.121-address</em>：目的X.121地址。此参数为模式匹配字符串，长度为1～15个字符。关于模式匹配的具体说明请参见下面两个表。</p>
+
+<div class="tablenoborder"><a name="x25_switch_svc_xot__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="x25_switch_svc_xot__tb_01" frame="border" border="1" rules="all"><caption>表1 X.121模式匹配规则</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="14.222726127488034%" id="d130029e91"><p>通配符</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="44.646006550768455%" id="d130029e95"><p>匹配规则</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="14.285714285714288%" id="d130029e99"><p>举例</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="26.84555303602923%" id="d130029e103"><p>可匹配的字符串</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d130029e91 "><p>*</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.646006550768455%" headers="d130029e95 "><p>匹配前面字符的0个或多个字符</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="14.285714285714288%" headers="d130029e99 "><p>fo*</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="26.84555303602923%" headers="d130029e103 "><p>fo、foo、fooo</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d130029e91 "><p>+</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.646006550768455%" headers="d130029e95 "><p>匹配前面字符的0个或多个字符</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="14.285714285714288%" headers="d130029e99 "><p>fo+</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="26.84555303602923%" headers="d130029e103 "><p>fo、foo、fooo</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d130029e91 "><p>^</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.646006550768455%" headers="d130029e95 "><p>匹配输入字符串的开始</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="14.285714285714288%" headers="d130029e99 "><p>^hell</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="26.84555303602923%" headers="d130029e103 "><p>hell、hello、hellaaa</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d130029e91 "><p>$</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.646006550768455%" headers="d130029e95 "><p>匹配输入字符串的结尾</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="14.285714285714288%" headers="d130029e99 "><p>ar$</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="26.84555303602923%" headers="d130029e103 "><p>ar、car、hear</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d130029e91 "><p>\char</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.646006550768455%" headers="d130029e95 "><p>匹配由char指定的单个字符</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="14.285714285714288%" headers="d130029e99 "><p>b\+</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="26.84555303602923%" headers="d130029e103 "><p>b+</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d130029e91 "><p>.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.646006550768455%" headers="d130029e95 "><p>匹配任意单个字符</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="14.285714285714288%" headers="d130029e99 "><p>l.st</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="26.84555303602923%" headers="d130029e103 "><p>last、lbst、lost</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d130029e91 "><p>.*</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.646006550768455%" headers="d130029e95 "><p>匹配任意0个或多个字符</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="14.285714285714288%" headers="d130029e99 "><p>fo.*</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="26.84555303602923%" headers="d130029e103 "><p>fo、foo、fot</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d130029e91 "><p>.+</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.646006550768455%" headers="d130029e95 "><p>匹配任意1个或多个字符</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="14.285714285714288%" headers="d130029e99 "><p>fo.+</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="26.84555303602923%" headers="d130029e103 "><p>foo、fot、foot</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+<div class="tablenoborder"><a name="x25_switch_svc_xot__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="x25_switch_svc_xot__tb_02" frame="border" border="1" rules="all"><caption>表2 X.121地址模式匹配字符串的输入规则</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="25.724363819601916%" id="d130029e278"><p>字符</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="74.2756361803981%" id="d130029e282"><p>输入规则</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="25.724363819601916%" headers="d130029e278 "><p>*</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.2756361803981%" headers="d130029e282 "><p>不能置于字符串首部。不能置于符号^之后。不能置于符号+和*的前面和后面。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.724363819601916%" headers="d130029e278 "><p>+</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.2756361803981%" headers="d130029e282 "><p>不能置于字符串首部。不能置于符号^之后。不能置于符号+和*的前面和后面。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.724363819601916%" headers="d130029e278 "><p>\</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.2756361803981%" headers="d130029e282 "><p>不能置于字符串尾部。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.724363819601916%" headers="d130029e278 "><p>^</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.2756361803981%" headers="d130029e282 "><p>不能置于符号+和*之前。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p><strong>sub-dest</strong> <em>destination-address</em>：替换目的地址。</p>
+<p><strong>sub-source </strong><em>source-address</em>：替换源地址。</p>
+<p><em>ip-address</em>：XOT连接的目的IP地址，最多可以同时配置六个。</p>
+<p><em>xot-option</em>：XOT通道参数选项，具体配置请参见下表。</p>
+
+<div class="tablenoborder"><a name="x25_switch_svc_xot__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="x25_switch_svc_xot__tb_03" frame="border" border="1" rules="all"><caption>表3 XOT通道参数选项</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.297304106827916%" id="d130029e370"><p>选项</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.70269589317209%" id="d130029e374"><p>意义</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.297304106827916%" headers="d130029e370 "><p><strong>timer </strong><em>seconds</em></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.70269589317209%" headers="d130029e374 "><p>XOT连接的keepalive定时器的延时，定时器超时发送keepalive报文，以探测连接的可用性，取值范围是1～3600秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.297304106827916%" headers="d130029e370 "><p><strong>retry </strong><em>times</em></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.70269589317209%" headers="d130029e374 "><p>发送keepalive的最大失败次数，失败次数超过<em>times</em>时，断开XOT连接。取值范围是3～3600次。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.297304106827916%" headers="d130029e370 "><p><strong>source </strong><em>interface-type interface-number</em></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.70269589317209%" headers="d130029e374 "><p>发起XOT连接的接口。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>用户配置X.25 SVC的XOT交换命令后，可以从本端的X.25网跨越IP网实现和远端X.25网的互联。配置keepalive属性后，可支持XOT的链路检测。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="x25_switch_svc_xot__d130029e442"></a><a name="d130029e442"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将虚电路1交换到IP地址为10.1.1.1的目的地址。</p>
+<pre class="screen">&lt;Quidway&gt;<strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> x25 switch svc 1 xot 10.1.1.1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_x25_switch-table_svc.html">display x25 switch-table svc</a></div>
+<div><a href="x25_switching.html">x25 switching</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

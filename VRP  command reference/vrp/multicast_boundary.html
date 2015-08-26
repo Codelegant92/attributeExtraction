@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="multicast boundary">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_policy_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_multicast_boundary.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="multicast_boundary">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>multicast boundary</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="multicast_boundary"></a><a name="multicast_boundary"></a>
+
+
+<h1 class="topictitle1">multicast boundary</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>multicast boundary</strong>命令用来配置单一管理范围的组播转发边界。</p>
+<p><strong>undo multicast boundary</strong>命令用来删除配置的组播边界。</p>
+<p>缺省情况下，任何接口上都没有配置组播转发边界。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>multicast boundary</strong> <em>group-address</em> { <em>mask</em> | <em>mask-length</em> }</p>
+<p><strong>undo multicast boundary</strong> { <em>group-address</em> { <em>mask</em> | <em>mask-length</em> } | <strong>all</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>group-address</em>：表示组播组地址，用来指定一个组播组，配置该组对应的组播报文的转发范围。点分十进制形式，取值范围是224.0.0.0～239.255.255.255。</p>
+<p><em>mask</em>：表示组播组地址的掩码。点分十进制形式。</p>
+<p><em>mask-length</em>：表示组播组地址掩码长度。整数形式，取值范围是4～32。</p>
+<p><strong>all</strong>：删除接口上配置的所有组播转发边界。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>multicast boundary</strong>命令配置组播转发边界，可以划定组播报文的转发范围。</p>
+<p>可以在同一接口上多次使用该命令为不同组播组配置边界。</p>
+<p>如果A和B都是要配置的组播组范围的转发边界集合，而且B是A的子集，则接口如果已经配置了A，不允许再配置B。另一方面，如果接口已经配置了B，若再配置A，则原来已经配置的B会被替代。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="multicast_boundary__d98548e90"></a><a name="d98548e90"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置GE1/0/0接口是组播组239.2.0.0/16的边界。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interfcae gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>multicast boundary 239.2.0.0 16</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_policy_configuration_commands.html">IPv4组播路由管理命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_multicast_boundary.html">display multicast boundary</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

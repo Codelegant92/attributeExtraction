@@ -1,0 +1,476 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display bfd statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_bfd_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display bfd statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_bfd_statistics"></a><a name="display_bfd_statistics"></a>
+
+
+<h1 class="topictitle1">display bfd statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>bfd</strong> <strong>statistics</strong>命令用来查看BFD全局统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>bfd</strong> <strong>statistics</strong> [ <strong>slot</strong> <em>slot-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>slot</strong><em> slot-id</em>：指定接口板号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在与主控板建立会话的初始阶段，接口板不能正常的向主控板上报统计信息，因此会出现接口板和主控板上统计信息的差异。如果使用以不同的板号为参数的<strong>display bfd statistics</strong>命令可能发现这种差异，但会话稳定之后统计信息最终会相同。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_bfd_statistics__d14462e63"></a><a name="d14462e63"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看BFD统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display bfd statistics</strong></strong></pre>
+<pre class="screen">Current Display Board Number : Main ; Current Product Register Type:</pre>
+<pre class="screen">IP Multihop Destination Port : 3784</pre>
+<pre class="screen">Total Up/Down Session Number : 1/0
+Current Session Number :
+      Static session     : 0                Dynamic session        : 0
+      E_Dynamic session  : 0                STATIC_AUTO session    : 1
+      LDP_LSP session    : 0                STATIC_LSP session     : 0
+      TE_TUNNEL session  : 0                TE_LSP session         : 0
+      PW session         : 0                IP session             : 1
+      VSI PW session     : 0
+--------------------------------------------------------------------------------
+PAF/LCS Name                       Maxnum         Minnum         Create
+--------------------------------------------------------------------------------
+BFD_CFG_NUM                        8192           1              1
+BFD_IF_NUM                         512            1              1
+BFD_SESSION_NUM                    8192           1              1
+BFD_IO_SESSION_NUM                 512            1              0
+BFD_PER_TUNNEL_CFG_NUM             16             1              0
+--------------------------------------------------------------------------------
+IO Board Current Created Session Statistics Information :(slot/number)
+--------------------------------------------------------------------------------
+0 /0     1 /0     2 /0     3 /1     4 /0     5 /0     6 /0     7 /0
+8 /0     9 /0     10/0     11/0     12/0     13/0     14/0     15/0
+16/0     17/0     18/0     19/0     20/0     21/0     22/0     23/0
+24/0     25/0     26/0     27/0     28/0     29/0     30/0     31/0
+32/0     33/0     34/0     35/0     36/0     37/0
+--------------------------------------------------------------------------------
+Current Total Used Discriminator Num               : 1
+--------------------------------------------------------------------------------
+IO Board Reserved Sessions Number Information :(slot/number)
+--------------------------------------------------------------------------------
+0 /0     1 /0     2 /0     3 /0     4 /0     5 /0     6 /0     7 /0
+8 /0     9 /0     10/0     11/0     12/0     13/0     14/0     15/0
+16/0     17/0     18/0     19/0     20/0     21/0     22/0     23/0
+24/0     25/0     26/0     27/0     28/0     29/0     30/0     31/0
+32/0     33/0     34/0     35/0     36/0     37/0
+--------------------------------------------------------------------------------
+BFD HA Information :
+--------------------------------------------------------------------------------
+Core Current HA Status                             : Normal
+Shell Current HA Status                            : Normal
+--------------------------------------------------------------------------------
+BFD for LSP Information :
+--------------------------------------------------------------------------------
+Ability of auto creating BFD session on egress     : Disable
+Period of LSP Ping                                 : 60
+System Session Delay Up Timer                      : OFF
+--------------------------------------------------------------------------------</pre>
+
+<div class="tablenoborder"><a name="display_bfd_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bfd_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display bfd statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.01788863693626%" id="d14462e91"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.98211136306375%" id="d14462e95"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Current Display Board Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>当前显示信息所属的板号，&#8220;Main&#8221;表示显示主控板上的信息</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>IP Multihop Destination Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>BFD多跳会话报文的目的端口号，为3784或者4784</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Total Up/Down Session Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>当前所有处于UP/DOWN状态的BFD会话数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Current Product Register Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>当前产品的类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Current Session Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>当前的会话数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Static session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>静态会话数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Dynamic session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>动态会话数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>E_Dynamic session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>完全动态会话数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Static_Auto session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>静态自协商会话数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>LDP_LSP session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>检测 LDP LSP的会话数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>STATIC_LSP session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>检测静态LSP的会话数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>TE_TUNNEL session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>检测TE Tunnel的会话数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>TE_LSP session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>检测TE LSP的会话数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>PW session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>检测PW的会话数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>IP session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>BFD for IP的会话数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>VSI_PW session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>BFD for VSI_PW的会话数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>PAF/LCS Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>许可证文件中的项目名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>BFD_CFG_NUM </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p><span class="keyword">路由器</span>全局可以配置的BFD最大数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>BFD_IF_NUM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>每个接口最多绑定的BFD会话个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>BFD_SESSION_NUM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p><span class="keyword">路由器</span>全局可以建立BFD会话的最大数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>BFD_IO_SESSION_NUM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p><span class="keyword">路由器</span>每接口板上可以建立的BFD会话的最大数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>BFD_PER_TUNNEL_CFG_NUM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>每个TUNNEL上可以配置的BFD最大数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>IO Board Current Created Session Statistics Information : (slot/number):</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>接口板上创建会话的个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Current Total Used Discriminator Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>当前配置的标识符总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>IO Board Reserved Sessions Number Information : (slot/number)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>保留的绑定BFD会话的接口板数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>BFD HA Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>BFD HA 信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Core Current HA Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><div class="p">CORE中HA当前的状态，可能取值有：<ul>
+<li><p>Normal ：正常</p>
+</li>
+<li><p>Batch Backup Going：正在备份</p>
+</li>
+<li><p>Slave Not Ready：备板还没有准备好</p>
+</li>
+<li><p>Smooth Going ：正在进行平滑处理</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Shell Current HA Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><div class="p">SHELL中HA当前的状态，可能取值有：<ul>
+<li><p>Normal ：正常</p>
+</li>
+<li><p>Batch Backup Going：正在备份</p>
+</li>
+<li><p>Slave Not Ready：备板还没有准备好</p>
+</li>
+<li><p>Smooth Going ：正在进行平滑处理</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Ability of auto creating BFD session on egress</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>是否使能创建完全动态会话能力</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>Period of LSP Ping</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><p>动态BFD for LSP/PW会话发送LSP Ping报文的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d14462e91 "><p>System Session Delay Up Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d14462e95 "><div class="p">显示当前延迟UP定时器的状态<ul>
+<li>OFF：系统处于正常状态</li>
+<li>&times;s：表明X秒后系统恢复正常，BFD会话可以UP</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_bfd_statistics__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bfd_statistics__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+
+</thead>
+
+<tbody>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.595926577822475%"><p>VRPV500R005C02B091</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.404073422177525%"><div class="p"><ul>
+<li><p>Current session number信息中增加E_Dynamic session和VSI PW session字段</p>
+</li>
+<li><p>删除BFD Timer Information信息</p>
+</li>
+<li><p>增加BFD for LSP Information信息</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.595926577822475%"><p>VRPV500R006C02B111</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.404073422177525%"><p>增加IP Multihop Destination Port字段信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bfd_configuration_commands.html">BFD配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

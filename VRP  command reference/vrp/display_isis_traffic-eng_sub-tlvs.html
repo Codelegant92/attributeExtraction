@@ -1,0 +1,181 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis traffic-eng sub-tlvs">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="te-set-subtlv.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_traffic-eng_sub-tlvs">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis traffic-eng sub-tlvs</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_traffic-eng_sub-tlvs"></a><a name="display_isis_traffic-eng_sub-tlvs"></a>
+
+
+<h1 class="topictitle1">display isis traffic-eng sub-tlvs</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis traffic-eng sub-tlvs</strong>命令用来查看IS-IS TE扩展的sub-TLV信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis traffic-eng</strong> <strong>sub-tlvs</strong> [ <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：IS-IS进程号。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定IPv4 VPN的IS-IS多实例进程。<em>vpn-instance-name</em>为IPv4 VPN实例的名称，，区分大小写。</p>
+<p><strong>vpn-instance
+default</strong>：除IPv4 VPN实例外的所有IS-IS进程，即所有的IPv6 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：指定IPv6 VPN的IS-IS多实例进程。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn6-instance default</strong>：除IPv6 VPN实例外的所有IS-IS进程，即所有的IPv4
+VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_traffic-eng_sub-tlvs__d37501e150"></a><a name="d37501e150"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看IS-IS TE的子TLV信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis traffic-eng sub-tlvs</strong></pre>
+
+<pre class="screen">IS-IS(1) SubTlv Information</pre>
+<pre class="screen">---------------------------------</pre>
+<pre class="screen"> Unreserved sub-pool bandwidth sub-tlv value : 251</pre>
+<pre class="screen"> Bandwidth constraint sub-tlv value          : 252</pre>
+<pre class="screen"> LO multiplier sub-tlv value                 : 253</pre>
+
+<div class="tablenoborder"><a name="display_isis_traffic-eng_sub-tlvs__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_traffic-eng_sub-tlvs__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis traffic-eng sub-tlvs命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="53.51473922902494%" id="d37501e181"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="46.48526077097506%" id="d37501e185"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="53.51473922902494%" headers="d37501e181 "><p>IS-IS(1) SubTlv Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.48526077097506%" headers="d37501e185 "><p>IS-IS进程1的sub TLV信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="53.51473922902494%" headers="d37501e181 "><p>Unreserved sub-pool bandwidth sub-tlv value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.48526077097506%" headers="d37501e185 "><p>子池未预留带宽sub TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="53.51473922902494%" headers="d37501e181 "><p>Bandwidth constraint sub-tlv value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.48526077097506%" headers="d37501e185 "><p>带宽约束sub TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="53.51473922902494%" headers="d37501e181 "><p>LO multiplier sub-tlv value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.48526077097506%" headers="d37501e185 "><p>本地过预留倍数sub TLV</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_traffic-eng_sub-tlvs__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_traffic-eng_sub-tlvs__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d37501e251"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d37501e255"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d37501e251 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d37501e255 "><p>增加参数<strong>vpn-instance default</strong>，<strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> }。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d37501e251 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d37501e255 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="te-set-subtlv.html">te-set-subtlv</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

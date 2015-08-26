@@ -1,0 +1,474 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mac-address">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mac_address_table_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mac-address_static.html">
+<meta name="DC.Relation" scheme="URI" content="mac-address_static_vlan.html">
+<meta name="DC.Relation" scheme="URI" content="mac-address_static_vlanif.html">
+<meta name="DC.Relation" scheme="URI" content="mac-address_static_vsi.html">
+<meta name="DC.Relation" scheme="URI" content="mac-address_blackhole.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mac-address">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mac-address</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mac-address"></a><a name="display_mac-address"></a>
+
+
+<h1 class="topictitle1">display mac-address</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mac-address</strong>命令用来查看地址表项信息。</p>
+<p>如果不指定任何参数，将显示接口板的所有MAC地址表项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>mac-address</strong> [ <strong>blackhole</strong> | <em>mac-address</em> [ <strong>verbose</strong> ] ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display</strong> <strong>mac-address</strong> <strong>dynamic</strong> [ <em>slot-id</em> ] [ <strong>vlan</strong> <em>vlan-id</em> | <strong>vsi</strong> <em>vsi-name</em> | <strong>source-slot</strong> <em>source-slot-id</em> | <em>interface-type</em> <em>interface-number</em> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display</strong> <strong>mac-address</strong> <strong>static</strong> [ <strong>vlan</strong> <em>vlan-id</em> | <strong>vsi</strong> <em>vsi-name</em> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>mac-address</em>：单播MAC地址。</p>
+<p><strong>verbose</strong>：显示基于MAC地址的详细的统计信息。</p>
+<p><em>vlan-id</em>：VLAN ID，取值范围是1～4094。</p>
+<p><em>vsi-name</em>：VSI实例的名称。字符串形式，不支持空格，区分大小写，长度范围是1～31。</p>
+<p><strong>blackhole</strong>：黑洞表项，不被老化。配置并保存后，系统复位或接口板热插拔表项不丢失。</p>
+<p><strong>static</strong>：静态表项，不被老化。配置并保存后，系统复位或接口板热插拔表项不丢失。</p>
+<p><strong>dynamic</strong>：动态表项，可以被老化，系统复位或接口板热插拔后丢失。</p>
+<p><em>slot-id</em>：接口板的槽位号。</p>
+<p><strong>source-slot</strong> <em>source-slot-id</em>：出接口所在的槽位号。</p>
+<p><em>interface-type</em> <em>interface-number</em>：出接口类型和接口编号。允许的接口类型有Ethernet接口、GE接口和Eth-Trunk接口。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过本命令可以按照指定的MAC地址查看VLAN或VSI的MAC地址表项。也可按照blackhole、static、dynamic分类查看MAC地址表项。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mac-address__d38937e243"></a><a name="d38937e243"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看MAC地址为0000-0000-007c的表项信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> dispaly mac-address 0000-0000-007c</strong>
+The MAC address table of slot 1:
+---------------------------------------------------------------------------------
+MAC Address     VLAN/VSI   PEVLAN  CEVLAN  Port                 Type      Lsp
+---------------------------------------------------------------------------------
+0000-0000-007c  1000       -       -       GigabitEthernet1/0/0 dynamic   2/-
+---------------------------------------------------------------------------------
+Total: 1    Blackhole: 0    Static: 0    Dynamic: 1    Printed: 1
+
+The MAC address table of slot 16:
+---------------------------------------------------------------------------------
+MAC Address     VLAN/VSI   PEVLAN  CEVLAN  Port                  Type       Lsp
+---------------------------------------------------------------------------------
+0000-0000-007c  2000       -       -       GigabitEthernet16/0/1 blackhole  7/-
+0000-0000-007c  100        -       -       GigabitEthernet16/0/1 dynamic    8/-
+---------------------------------------------------------------------------------
+Total: 1    Blackhole: 0    Static: 0    Dynamic: 1    Printed: 1</pre>
+<p># 查看MAC地址为0011-2233-4455，VLAN为2的表项信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mac-address 0011-2233-4455 vlan 2</strong>
+The MAC address table of vlan 2 on slot 1 :
+---------------------------------------------------------------------------------
+MAC Address     VLAN      PEVLAN  CEVLAN  Port                 Type      Lsp
+---------------------------------------------------------------------------------
+0011-2233-4455  2          -       -      Ethernet1/0/1        static    3/-
+---------------------------------------------------------------------------------
+Total: 1  Printed: 1
+
+The MAC address table of vlan 2 on slot 3 :
+---------------------------------------------------------------------------------
+MAC Address     VLAN       PEVLAN  CEVLAN  Port                 Type      Lsp
+---------------------------------------------------------------------------------
+0011-2233-4455  2          -       -       Ethernet3/0/1        static    3/-
+---------------------------------------------------------------------------------
+Total: 1  Printed: 1</pre>
+<p># 查看MAC地址为0011-2233-4455，VSI名为aaa的表项信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mac-address 0011-2233-4455 vsi aaa</strong>
+The MAC address table of vsi aaa on slot 1 :
+---------------------------------------------------------------------------------
+MAC Address     VSI        PEVLAN  CEVLAN  Port                 Type      Lsp
+---------------------------------------------------------------------------------
+0011-2233-4455  2          -       -       Ethernet1/0/1        static    3/-
+---------------------------------------------------------------------------------
+Total: 1  Printed: 1
+
+The MAC address table of vsi aaa on slot 3 :
+---------------------------------------------------------------------------------
+MAC Address     VSI        PEVLAN  CEVLAN  Port                 Type      Lsp
+---------------------------------------------------------------------------------
+0011-2233-4455  2          -       -       Ethernet3/0/1        static    3/-
+---------------------------------------------------------------------------------
+Total: 1  Printed: 1</pre>
+<p># 查看所有MAC地址表项信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> dispaly mac-address</strong>
+---------------------------------------------------------------------------------
+MAC Address     VLAN/VSI   PEVLAN  CEVLAN  Port                  Type        Lsp
+---------------------------------------------------------------------------------
+0000-0000-0010  1          -       -       GigabitEthernet1/0/0  static      0/-
+0000-0000-0020  1          -       -       GigabitEthernet1/0/0  static      0/-
+0000-0000-0030  1          -       -       GigabitEthernet1/0/0  blackhole   0/-
+---------------------------------------------------------------------------------
+Total: 3    Blackhole: 1    Static: 2    Printed: 3
+</pre>
+<p># 查看所有黑洞表项信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> dispaly mac-address blackhole</strong>
+---------------------------------------------------------------------------------
+MAC Address     VLAN/VSI   PEVLAN  CEVLAN  Port                  Type        Lsp
+---------------------------------------------------------------------------------
+0000-0000-0030  1          -       -       GigabitEthernet1/0/0  blackhole   0/-
+---------------------------------------------------------------------------------
+Total: 1    Printed: 1
+</pre>
+<p># 查看所有静态MAC地址表项信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> dispaly mac-address static</strong>
+---------------------------------------------------------------------------------
+MAC Address     VLAN/VSI   PEVLAN  CEVLAN  Port                  Type        Lsp
+---------------------------------------------------------------------------------
+0000-0000-0010  1          -       -       GigabitEthernet1/0/0  static      0/-
+0000-0000-0020  1          -       -       GigabitEthernet1/0/0  static      0/-
+---------------------------------------------------------------------------------
+Total: 2    Printed: 2
+</pre>
+<p># 查看2号槽位上的动态表项信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> dispaly mac-address dynamic 2</strong>
+---------------------------------------------------------------------------------
+MAC Address     VLAN/VSI   PEVLAN  CEVLAN  Port                  Type        Lsp
+---------------------------------------------------------------------------------
+0000-0000-0010  10         -       -       GigabitEthernet1/0/0  dynamic      0/-
+0000-0000-0020  10         -       -       GigabitEthernet1/0/0  dynamic      0/-
+0000-0000-0030  10         -       -       GigabitEthernet1/0/0  dynamic      0/-
+---------------------------------------------------------------------------------
+Total: 3    Printed: 3
+</pre>
+<p># 查看VLAN 10 在2号槽位上动态表项信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> dispaly mac-address dynamic 2 vlan 10</strong>
+---------------------------------------------------------------------------------
+MAC Address     VLAN/VSI   PEVLAN  CEVLAN  Port                  Type        Lsp
+---------------------------------------------------------------------------------
+0000-0000-0010  10         -       -       GigabitEthernet1/0/0  dynamic      0/-
+0000-0000-0020  10         -       -       GigabitEthernet1/0/0  dynamic      0/-
+---------------------------------------------------------------------------------
+Total: 2
+</pre>
+<p># 查看MAC地址表。</p>
+<pre class="screen">[Quidway] <strong>display</strong> <strong>mac-address</strong>
+MAC address table of slot 1:
+--------------------------------------------------------------------------------
+MAC Address     VLAN/      PEVLAN  CEVLAN  Port                  Type        Lsp/
+                VSI/SI                                                       MAC-Tunnel
+--------------------------------------------------------------------------------
+0011-2233-4455  abc        1        -      GE1/0/1.10            static      2/-
+0002-0002-0002  2          -        -      GE2/0/0               static      -
+--------------------------------------------------------------------------------
+
+Total matching items on slot 1 displayed = 2
+
+MAC address table of slot 4:
+--------------------------------------------------------------------------------
+MAC Address     VLAN/      PEVLAN  CEVLAN  Port                  Type        Lsp
+                VSI/SI                                                       MAC-Tunnel
+--------------------------------------------------------------------------------
+0000-c102-0104  200        -       -       GE4/0/0               dynamic     -
+0000-c102-0105  200        -       -       GE4/0/0               dynamic     -
+0000-c102-0102  200        -       -       GE4/0/0               dynamic     -
+0000-c102-0106  200        -       -       GE4/0/0               dynamic     -
+0000-c102-0103  200        -       -       GE4/0/0               dynamic     -
+-------------------------------------------------------------------------------
+Total matching items on slot 4 displayed = 5
+</pre>
+<pre class="screen">[Quidway] <strong>display</strong> <strong>mac-address 1-1-1</strong>
+MAC address table of slot 0:
+-------------------------------------------------------------------------------
+MAC Address    VLAN/       PEVLAN CEVLAN Port            Type      LSP/
+               VSI/SI                                              MAC-Tunnel
+-------------------------------------------------------------------------------
+0001-0001-0001 b           -      -      GE4/1/6         static    4/-
+
+-------------------------------------------------------------------------------
+Total matching items on slot 0 displayed = 1
+</pre>
+<pre class="screen">[Quidway] <strong>display</strong> <strong>mac-address 1-1-1 verbose</strong>
+MAC address table of slot 0:
+-------------------------------------------------------------------------------
+MAC Address: 0001-0001-0001     VLAN/VSI/SI   : b
+Port       : GE4/1/6            Type          : static
+PEVLAN     : -                  CEVLAN        : -
+Aging time : -                  LSP/MAC_Tunnel: 4/0
+-------------------------------------------------------------------------------
+Total matching items on slot 0 displayed = 1    </pre>
+<p># 查看MAC地址表中的静态表项。</p>
+<pre class="screen">[Quidway] <strong>display</strong> <strong>mac-address</strong> <strong>static</strong>
+MAC address table of slot 1:
+--------------------------------------------------------------------------------
+MAC Address     VLAN/      PEVLAN  CEVLAN  Port                  Type        Lsp
+                VSI/SI                                                       MAC-Tunnel
+--------------------------------------------------------------------------------
+0011-2233-4455  abc        1       -       GE1/0/1.10            static      2/-
+0002-0002-0002  2          -       -       GE2/0/0               static      -
+--------------------------------------------------------------------------------
+
+Total matching items on slot 1 displayed = 2
+</pre>
+<p># 查看VLAN 20中的动态表项</p>
+<pre class="screen">[Quidway] <strong>display</strong> <strong>mac-address</strong> <strong>dynamic</strong> <strong>vlan</strong> <strong>200</strong>
+MAC address table of slot 4:
+--------------------------------------------------------------------------------
+MAC Address     VLAN/      PEVLAN  CEVLAN  Port                  Type        Lsp
+                VSI/SI                                                       MAC-Tunnel
+--------------------------------------------------------------------------------
+0000-c102-0104  200        -       -       GE4/0/0               dynamic     -
+0000-c102-0105  200        -       -       GE4/0/0               dynamic     -
+0000-c102-0102  200        -       -       GE4/0/0               dynamic     -
+0000-c102-0106  200        -       -       GE4/0/0               dynamic     -
+0000-c102-0103  200        -       -       GE4/0/0               dynamic     -
+-------------------------------------------------------------------------------
+Total matching items on slot 4 displayed = 5
+</pre>
+<p># 查看出接口为GE4/0/0的动态表项。</p>
+<pre class="screen">[Quidway] <strong>display</strong> <strong>mac-address</strong> <strong>dynamic</strong> <strong>gigabitethernet 4/0/0</strong>
+MAC address table of slot 4:
+--------------------------------------------------------------------------------
+MAC Address     VLAN/     PEVLAN   CEVLAN  Port                  Type        Lsp
+                VSI/SI                                                       MAC-Tunnel
+--------------------------------------------------------------------------------
+0000-c102-0104  200       -        -       GE4/0/0               dynamic     -
+0000-c102-0105  200       -        -       GE4/0/0               dynamic     -
+0000-c102-0102  200       -        -       GE4/0/0               dynamic     -
+0000-c102-0106  200       -        -       GE4/0/0               dynamic     -
+0000-c102-0103  200       -        -       GE4/0/0               dynamic     -
+-------------------------------------------------------------------------------
+Total matching items on slot 4 displayed = 5</pre>
+<p># 查看出接口在2号槽位的动态表项。</p>
+<pre class="screen">[Quidway] <strong>display</strong> <strong>mac-address</strong> <strong>dynamic</strong> <strong>source-slot</strong> <strong>2</strong>
+MAC address table of slot 2:
+--------------------------------------------------------------------------------
+MAC Address     VLAN/      PEVLAN  CEVLAN  Port                  Type        Lsp
+                VSI/SI                                                       MAC-Tunnel
+--------------------------------------------------------------------------------
+0000-c102-0104  200        -       -       GE2/0/0               dynamic     -
+0000-c102-0105  200        -       -       GE2/0/0               dynamic     -
+0000-c102-0102  200        -       -       GE2/0/0               dynamic     -
+0000-c102-0106  200        -       -       GE2/0/0               dynamic     -
+0000-c102-0103  200        -       -       GE2/0/0               dynamic     -
+-------------------------------------------------------------------------------
+Total matching items on slot 2 displayed = 5</pre>
+
+<div class="tablenoborder"><a name="display_mac-address__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mac-address__tb_01" frame="border" border="1" rules="all"><caption>表1 display mac-address命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="25.598387503149407%" id="d38937e406"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="74.4016124968506%" id="d38937e410"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="25.598387503149407%" headers="d38937e406 "><p>MAC Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.4016124968506%" headers="d38937e410 "><p>MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.598387503149407%" headers="d38937e406 "><p>VLAN/VSI/SI</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.4016124968506%" headers="d38937e410 "><p>出接口所在的VLAN或者所属的VSI。</p>
+<p>SI表示服务实例名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.598387503149407%" headers="d38937e406 "><p>PEVLAN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.4016124968506%" headers="d38937e410 "><p>QinQ应用中，用户外层VLAN的Tag值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.598387503149407%" headers="d38937e406 "><p>CEVLAN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.4016124968506%" headers="d38937e410 "><p>QinQ应用中，用户内层VLAN的Tag值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.598387503149407%" headers="d38937e406 "><p>Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.4016124968506%" headers="d38937e410 "><p>MAC地址所对应的出接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.598387503149407%" headers="d38937e406 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.4016124968506%" headers="d38937e410 "><div class="p">MAC地址的类型：<ul>
+<li><p><strong>static</strong>：静态表项，由用户配置，下发到各接口板。不被老化，系统复位或接口板热插拔后不丢失。</p>
+</li>
+<li><p><strong>blackhole</strong>：黑洞表项，用于丢弃含有特定目的MAC地址的数据帧，由用户配置，下发到各接口板。不被老化，系统复位或接口板热插拔后不丢失。</p>
+</li>
+<li><p><strong>dynamic</strong>：动态表项，由接口板学习存储。可以被老化，系统复位或接口板热插拔后丢失。</p>
+</li>
+
+
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.598387503149407%" headers="d38937e406 "><p>Aging time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.4016124968506%" headers="d38937e410 "><p>老化时间。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.598387503149407%" headers="d38937e406 "><p>LSP/MAC-Tunnel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.4016124968506%" headers="d38937e410 "><p>MPLS的LspToken。例如：&#8220;2/-&#8221;表示入标签为2，出标签为空。此项为VSI的MAC地址表中的字段。MAC-Tunnel表示遂道名<span>，该字段仅在NE40E、NE80E和NE5000E中显示。此项为SI的MAC地址表中的字段</span>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.598387503149407%" headers="d38937e406 "><p>Total matching items on slot 1 displayed =</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.4016124968506%" headers="d38937e410 "><p>符合查看条件的显示项总数。</p>
+</td>
+
+</tr>
+
+
+
+
+
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="display_mac-address__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mac-address__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d38937e557"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d38937e561"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d38937e557 "><p>VRPV500R003C07B330</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d38937e561 "><p><strong>display mac-address</strong> <em>mac-address</em> [ <strong>vlan</strong> <em>vlan-id</em> | <strong>vsi</strong> <em>vsi-name</em> ]命令中的VLAN和VSI由必选参数改为可选参数。</p>
+<p>新增<strong>display mac-address</strong> <em>mac-address</em> 的输出信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d38937e557 "><p>VRPV500R003C07B360</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d38937e561 "><p><strong>display mac-address</strong> <em>mac-address</em> <strong>vlan</strong> <em>vlan-id</em>和<strong>display mac-address</strong> <em>mac-address</em> <strong>vsi</strong> <em>vsi-name</em>命令输出信息格式改为横式表格，开始和结尾处增加虚线&#8220;-------------------------------------------------&#8221;。</p>
+<p>修改<strong>display
+mac-address</strong> [ <strong>blackhole</strong> | <strong>static</strong> ]命令输出信息格式，开始和结尾处增加虚线&#8220;-------------------------------------------------&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d38937e557 "><p>VRPV500R005C02B180</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d38937e561 "><p>修改原命令行关键字、参数及输出信息的显示格式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d38937e557 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d38937e561 "><p>命令增加通配符：[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mac_address_table_configuration_commands.html">MAC地址表配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mac-address_static.html">mac-address static</a></div>
+<div><a href="mac-address_static_vlan.html">mac-address static vlan</a></div>
+<div><a href="mac-address_static_vlanif.html">mac-address static vlanif</a></div>
+<div><a href="mac-address_static_vsi.html">mac-address static vsi</a></div>
+<div><a href="mac-address_blackhole.html">mac-address blackhole</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

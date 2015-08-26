@@ -1,0 +1,164 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ping mac-8021ag">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mep_mep-id.html">
+<meta name="DC.Relation" scheme="URI" content="remote-mep.html">
+<meta name="DC.Relation" scheme="URI" content="trace_mac-8021ag.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ping_mac-8021ag">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ping mac-8021ag</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ping_mac-8021ag"></a><a name="ping_mac-8021ag"></a>
+
+
+<h1 class="topictitle1">ping mac-8021ag</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ping mac-8021ag</strong>命令用来检测当前MA内本地MEP和远端MEP或MIP之间的连通性，这种检测称为802.1ag
+MAC Ping。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ping mac-8021ag</strong> { <strong>mac</strong> <em>mac-address</em> | <strong>remote-mep</strong> <strong>mep-id</strong> <em>mep-id </em>}
+[ <strong>-c</strong> <em>count</em> | <strong>interface</strong> <em>interface-type interface-number </em>| <strong>-s</strong> <em>packetsize</em> | <strong>-t</strong> <em>timeout</em> ]
+*</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>mac</strong> <em>mac-address</em>：指定目的节点所在设备的桥MAC地址。<em>mac-address</em>表示目的节点所在设备的桥MAC地址，格式为H-H-H，其中H为1至4位的十六进制数。不能为广播MAC地址或组播MAC地址。这里的目的节点可以是MEP，也可以是MIP。</p>
+<p><strong>remote-mep</strong> <strong>mep-id</strong> <em>mep-id</em>：指定RMEP的ID。<em>mep-id</em>表示RMEP的ID，整数形式，取值范围是1～8191。该RMEP在当前设备上必须已使用<a href="remote-mep.html">remote-mep</a>命令创建，且创建时指定了该RMEP所在设备的桥MAC地址。</p>
+<p><strong>-c</strong> <em>count</em>：指定Ping的次数。<em>count</em>表示Ping的次数，整数形式，取值范围是1～4294967295，缺省值是5。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：指定本设备发送Ping报文的出接口。<em>interface-type</em>表示接口类型，取值包括：ethernet、eth-trunk和gigabitethernet<em>。interface-number</em>表示接口编号。</p>
+<p><strong>-s</strong> <em>packetsize</em>：指定发送的Ping报文的大小。<em>packetsize</em>表示Ping报文的大小，整数形式，取值范围是95～1500，单位是字节，缺省值是95。该大小是指去掉二层报文头后的报文大小。</p>
+<p><strong>-t</strong> <em>timeout</em>：指定等待应答报文的超时时间。<em>timeout</em>表示等待应答报文的超时时间，整数形式，取值范围是1～65535，单位是ms，缺省值是2000ms。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>0：参观级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当需要手动检测两台或多台设备间的连通性时，可使用本命令。</p>
+<p>802.1ag MAC Ping操作由当前MA内的本地MEP发起，目的节点可以是MEP，也可以是MIP。</p>
+<p>进行802.1ag
+MAC Ping操作时：</p>
+<ul>
+<li><p>当前MA必须已关联了VLAN<span>或VSI</span>。</p>
+</li>
+<li><p>当前MA必须已配置了MEP。</p>
+</li>
+<li><p>如果指定出接口，则该接口不能是配置了inward型MEP的接口。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ping_mac-8021ag__d105997e165"></a><a name="d105997e165"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 从macustomer内的MEP ping桥MAC地址为0001-0300-0204的MIP，Ping两次，Ping报文的大小为112字节。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm enable</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm md mdcustomer</strong></pre>
+<pre class="screen">[Quidway-md-mdcustomer]<strong> <strong>ma macustomer</strong></strong></pre>
+<pre class="screen">[Quidway-md-mdcustomer-ma-macustomer]<strong> <strong>ping mac-8021ag mac 0001-0300-0204 -c 2 -s 112</strong></strong></pre>
+<pre class="screen">Reply from 0001-0300-0204: byte = 112 time = 9ms</pre>
+<pre class="screen">Reply from 0001-0300-0204: byte = 112 time = 11ms</pre>
+<pre class="screen">Packets：Sent = 2，Received = 2，Lost = 0 (0% Lost )</pre>
+<pre class="screen">Minimum = 11ms, Maximum = 9ms, Average = 10ms</pre>
+
+<div class="tablenoborder"><a name="ping_mac-8021ag__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="ping_mac-8021ag__tb_01" frame="border" border="1" rules="all"><caption>表1 ping mac-8021ag命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.93801965230537%" id="d105997e213"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.06198034769464%" id="d105997e217"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d105997e213 "><p>Reply from 0001-0300-0204: bytes = 112 time = 9ms</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d105997e217 "><p>目的设备回复的应答报文的大小和响应时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d105997e213 "><p>Packets：Sent = 2，Received = 2，Lost = 0  &lt;0% Lost
+&gt;</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d105997e217 "><p>发送Ping报文的数量；接收应答报文的数量；丢弃报文的数量和百分比。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d105997e213 "><p>Minimum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d105997e217 "><p>最小往返响应时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d105997e213 "><p>Maximum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d105997e217 "><p>最大往返响应时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d105997e213 "><p>Average</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d105997e217 "><p>平均往返响应时间。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mep_mep-id.html">mep mep-id</a></div>
+<div><a href="remote-mep.html">remote-mep</a></div>
+<div><a href="trace_mac-8021ag.html">trace mac-8021ag</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

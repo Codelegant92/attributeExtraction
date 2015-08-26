@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="rpr protection restore">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rpr_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_rpr_topoinfo_interface_ring-if.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rpr_protection_restore">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>rpr protection restore</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="rpr_protection_restore"></a><a name="rpr_protection_restore"></a>
+
+
+<h1 class="topictitle1">rpr protection restore</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>rpr protection restore</strong>命令用来配置本地节点的保护恢复模式，即在本地节点WTR超时后是否恢复到IDLE状态。</p>
+<p><strong>undo rpr protection restore</strong>命令用来恢复缺省值。</p>
+<p>缺省情况下，使用<strong>revertive</strong>恢复模式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>rpr protection restore</strong> { <strong>revertive</strong> | <strong>non-revertive</strong> }</p>
+<p><strong>rpr protection restore do-restore</strong> { <strong>west</strong> | <strong>east</strong> }</p>
+<p><strong>undo rpr protection restore</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>revertive</strong>：当环上的故障排除后，节点由保护模式恢复到IDLE状态。</p>
+<p><strong>non-revertive</strong>：当环上的故障排除后，节点的保护模式不变。即仍为保护模式，不返回到正常模式。</p>
+<p><strong>do-restore</strong>：用户强制恢复到正常模式。</p>
+<p><strong>west</strong>：本地节点的西向连接。</p>
+<p><strong>east</strong>：本地节点的东向连接。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>RPR逻辑接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>rpr protection restore revertive</strong>设定自动恢复模式。</p>
+<p>使用<strong>rpr protection restore non-revertive</strong>设定手动恢复模式。</p>
+<p>使用<strong>rpr protection restore do-restore</strong>来手动恢复保护模式。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="rpr_protection_restore__d115388e99"></a><a name="d115388e99"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将本地节点配置为可恢复模式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface ring-if 1</strong></pre>
+<pre class="screen">[Quidway-ring-if1]<strong> rpr protection restore revertive</strong></pre>
+<p># 将本地节点配置为不可恢复模式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface ring-if 1</strong></pre>
+<pre class="screen">[Quidway-ring-if1]<strong> rpr protection restore non-revertive</strong></pre>
+<p># 强制恢复本节点西向的保护模式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface ring-if 1</strong></pre>
+<pre class="screen">[Quidway-ring-if1]<strong> rpr protection restore do-restore west</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rpr_configuration_commands.html">RPR配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_rpr_topoinfo_interface_ring-if.html">display rpr topoinfo interface ring-if</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

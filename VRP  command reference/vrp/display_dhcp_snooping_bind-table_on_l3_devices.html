@@ -1,0 +1,145 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display dhcp snooping bind-table（三层设备）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_snooping_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_dhcp_snooping_bind-table_on_layer_3_devices">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display dhcp snooping bind-table（三层设备）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_dhcp_snooping_bind-table_on_layer_3_devices"></a><a name="display_dhcp_snooping_bind-table_on_layer_3_devices"></a>
+
+<h1 class="topictitle1">display dhcp snooping bind-table（三层设备）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>dhcp</strong> <strong>snooping</strong> <strong>bind-table</strong>命令用来显示DHCP Snooping绑定表的表项信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>dhcp</strong> <strong>snooping</strong> <strong>bind-table</strong> { <strong>ip-address </strong><em>ip-address</em> | <strong>mac-address </strong><em>mac-address</em> | <strong>interface</strong> <em>interface-type</em> <em>interface-number</em> |<span><strong> vsi </strong><em>vsi-name </em>|</span><strong> static</strong> | <strong>dynamic</strong> | <strong>all</strong> }<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口号。</p>
+<p><strong>static</strong>：静态的绑定表项。</p>
+<p><strong>dynamic</strong>：动态的绑定表项。</p>
+<p><strong>all</strong>：所有的绑定表项。</p>
+<p><strong>vsi </strong><em>vsi-name</em>：虚拟交换实例名。字符串形式，不支持空格，长度范围是1～31。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display</strong> <strong>dhcp</strong> <strong>snooping</strong> <strong>bind-table</strong>命令后，设备将显示绑定表的所有信息。</p>
+<p>当执行<strong>display dhcp snooping bind-table vsi</strong><em> vsi-name</em>命令，设备将显示指定VSI的DHCP Snooping动态绑定表的表项信息。当接口绑定的VSI不存在，则系统会提示配置错误。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_dhcp_snooping_bind-table_on_layer_3_devices__d22797e170"></a><a name="d22797e170"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示DHCP Snooping绑定表的静态表项信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display dhcp snooping bind-table static</strong></pre>
+<pre class="screen">bind-table:</pre>
+<pre class="screen">ifname         p/cvlan      mac-address      ip-address       tp lease</pre>
+<pre class="screen">ethernet6/1/0 0000/0000     0024-e801-8f01   192.168.010.002  S  2006-7-1</pre>
+<pre class="screen">--            0000/0000     0025-e811-8d23   192.168.010.003  S  2006-7-3</pre>
+
+<p># 显示指定VSI下DHCP Snooping绑定表的表项信息。</p>
+<p>&lt;Quidway&gt;<strong> display dhcp snooping bind-table vsi vsiname1</strong></p>
+<pre class="screen">bind-table:
+ifname     vrf  vsi  p/cvlan      mac-address      ip-address       tp lease
+-------------------------------------------------------------------------------
+GE1/1/1.1  0000  2   0000/0000    0024-e801-8f01   192.168.010.002  S  2008-7-1
+GE1/1/2.1  0000  2   0000/0000    0025-e811-8d23   192.168.010.003  D  2008-7-3
+</pre>
+
+<div class="tablenoborder"><a name="display_dhcp_snooping_bind-table_on_layer_3_devices__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_dhcp_snooping_bind-table_on_layer_3_devices__tb_01" frame="border" border="1" rules="all"><caption>表1 display dhcp snooping bind-table命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="28.865979381443296%" id="d22797e202"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="71.13402061855669%" id="d22797e205"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="28.865979381443296%" headers="d22797e202 "><p>Ifname</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.13402061855669%" headers="d22797e205 "><p>配置绑定的接口名称</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.865979381443296%" headers="d22797e202 "><p>vrf</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.13402061855669%" headers="d22797e205 "><p>L3VPN的标识，不绑定L3VPN时缺省值是0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.865979381443296%" headers="d22797e202 "><p>vsi</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.13402061855669%" headers="d22797e205 "><p>虚拟交换实例的名称</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.865979381443296%" headers="d22797e202 "><p>p/cvlan</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.13402061855669%" headers="d22797e205 "><p>Port VLAN和Client VLAN的值（Q-in-Q中使用的VLAN），对于三层应用此参数没有意义</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.865979381443296%" headers="d22797e202 "><p>mac-address</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.13402061855669%" headers="d22797e205 "><p>绑定的MAC 地址</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.865979381443296%" headers="d22797e202 "><p>ip-address</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.13402061855669%" headers="d22797e205 "><p>绑定的IP地址</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.865979381443296%" headers="d22797e202 "><p>tp</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.13402061855669%" headers="d22797e205 "><p>绑定表项类型，s是静态表项，d是动态表项</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.865979381443296%" headers="d22797e202 "><p>lease</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.13402061855669%" headers="d22797e205 "><p>租期，当到达这个租期后，分配给用户的IP地址将被回收</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_dhcp_snooping_bind-table_on_layer_3_devices__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_dhcp_snooping_bind-table_on_layer_3_devices__tb_02" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.338345864661655%" id="d22797e272"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d22797e275"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d22797e272 "><p>VRPV500R006C01B003</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d22797e275 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_snooping_configuration_commands.html">DHCP Snooping命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

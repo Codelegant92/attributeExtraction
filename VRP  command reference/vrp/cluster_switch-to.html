@@ -1,0 +1,120 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="cluster switch-to">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cluster_switch-to_administrator.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cluster_switch-to">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>cluster switch-to</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="cluster_switch-to"></a><a name="cluster_switch-to"></a>
+
+
+<h1 class="topictitle1">cluster switch-to</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>cluster switch-to</strong>命令用来从命令交换机telnet到指定的成员交换机。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>cluster switch-to</strong> { <em>member-number</em> | <strong>mac-address</strong> <em>mac-address</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>member-number</em>：成员交换机的成员编号，十进制整数形式，取值范围是1～255。</p>
+<p><strong>mac-address</strong> <em>mac-address</em>：成员交换机的MAC地址。<em>mac-address</em>是用16进制表示的成员交换机的MAC地址。格式为H-H-H，每个&#8220;H&#8221;代表4位16进制数。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>0：参观级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只能在命令交换机上执行。</p>
+<p>在成员交换机的用户视图下输入<strong>quit</strong>命令，则结束telnet，返回命令交换机。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="cluster_switch-to__d7634e64"></a><a name="d7634e64"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 从命令交换机上telnet到成员编号为1的成员交换机，再结束telnet，返回命令交换机。</p>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt;<strong> <strong>cluster switch-to 1</strong></strong></pre>
+<pre class="screen">Trying 10.0.0.2 ...</pre>
+<pre class="screen">Press CTRL+K to abort</pre>
+<pre class="screen">Connected to 10.0.0.2 ...</pre>
+<pre class="screen">***********************************************************</pre>
+<pre class="screen">*           All rights reserved (2000-2006)                     *</pre>
+<pre class="screen">*       Without the owner's prior written consent,            *</pre>
+<pre class="screen">* no decompiling or reverse-engineering shall be allowed.  *</pre>
+<pre class="screen">* Notice:                                                            *</pre>
+<pre class="screen">*      This is a private communication system.                 *</pre>
+<pre class="screen">*   Unauthorized access or use may lead to prosecution.     *</pre>
+<pre class="screen">***********************************************************</pre>
+<pre class="screen">Note: The max number of VTY users is 5, and the current number</pre>
+<pre class="screen">      of VTY users on line is 1.</pre>
+<pre class="screen">&lt;HUAWEI_1.Quidway&gt;<strong> <strong>quit</strong></strong></pre>
+<pre class="screen">Note: The max number of VTY users is 5, and the current number</pre>
+<pre class="screen">      of VTY users on line is 0.</pre>
+<pre class="screen">The connection was closed by the remote host!</pre>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt;</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="cluster_switch-to__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="cluster_switch-to__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d7634e125"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d7634e129"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d7634e125 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d7634e129 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cluster_switch-to_administrator.html">cluster
+switch-to administrator</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

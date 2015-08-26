@@ -1,0 +1,77 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="code（CT1接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ct1_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_controller_t1.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="code_ct1_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>code（CT1接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="code_ct1_interface_view"></a><a name="code_ct1_interface_view"></a>
+
+
+<h1 class="topictitle1">code（CT1接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>code</strong>命令用来设置CT1的线路编解码格式。</p>
+<p><strong>undo code</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，CT1接口的线路编解码格式为B8ZS。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>code</strong> { <strong>ami</strong> | <strong>b8zs</strong> }</p>
+<p><strong>undo code</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ami</strong>：Alternate Mark Inversion，交替传号反转码。</p>
+<p><strong>b8zs</strong>：Bipolar
+with 8-Zero Substitution，双极性8zero替换码。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>CT1接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>AMI码是一种基本的线路码，信号交替反转，编译码电路简单且便于观察误码情况，得到广泛应用。但是，当用AMI码来获取定时信息时，由于它可能出现连续多个&#8220;0&#8221;，会造成提取定时信号的困难。</p>
+<p>设置CT1使用的线路码型时，注意与对端设备保持一致。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="code_ct1_interface_view__d7760e61"></a><a name="d7760e61"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置CT1接口1/0/0的线路编解码格式为AMI。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> controller t1 1/0/0</strong></pre>
+<pre class="screen">[Quidway-T1 1/0/0]<strong> code ami</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ct1_interface_configuration_commands.html">CT1接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_controller_t1.html">display controller
+t1</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

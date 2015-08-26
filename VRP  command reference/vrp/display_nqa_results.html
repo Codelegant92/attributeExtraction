@@ -1,0 +1,864 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display nqa results">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="clear-records.html">
+<meta name="DC.Relation" scheme="URI" content="frequency.html">
+<meta name="DC.Relation" scheme="URI" content="records.html">
+<meta name="DC.Relation" scheme="URI" content="start.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_nqa_results">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display nqa results</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_nqa_results"></a><a name="display_nqa_results"></a>
+
+
+<h1 class="topictitle1">display nqa results</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display nqa results</strong>命令用来查看NQA测试的结果统计。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display nqa results</strong> [ <strong>collection</strong> | <strong>test-instance</strong> <em>admin-name test-name</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>collection</strong> ：显示累计的统计结果。</p>
+<p><strong>test-instance</strong>：指定NQA测试例。</p>
+<p><em>admin-name</em>：NQA测试例的管理者。</p>
+<p><em>test-name</em>：NQA测试例的测试例名。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定可选参数，将显示所有NQA测试例的结果统计。</p>
+<p>NQA的测试结果不会自动输出，必须通过<strong>display nqa results</strong>命令查看。</p>
+<p><strong>display nqa results</strong>命令只能查看正在运行或已经结束的测试例的测试结果。并且，不能查看测试组的结果。</p>
+<p><strong>display nqa results</strong>命令的输出信息分为两部分：</p>
+<ul>
+<li><p>通用的测试例执行结果，这部分内容不随测试例的类型变化</p>
+</li>
+<li><p>各测试例的具体统计信息，对于不同类型的测试例，提供的统计项目也有所差异</p>
+</li>
+</ul>
+<p><strong>display nqa results collection</strong> 命令显示所有累加表的统计信息。目前只有Jitter、ICMP Jitter、LSP Jitter<span>、接口板发包Jitter、接口板发包ICMP Jitter</span>支持累加结果表查询。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_nqa_results__d53486e91"></a><a name="d53486e91"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看ICMP类型的NQA测试例测试结果。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display nqa results admin icmp</strong>
+ NQA entry(admin, icmp) :testFlag is inactive ,testtype is icmp</pre>
+<pre class="screen">  1 . Test 1 result   The test is finished
+   Send operation times: 3                  Receive response times: 3</pre>
+<pre class="screen">   Completion:success                        RTD OverThresholds number: 0
+   Attempts number:1                         Drop operation number:0</pre>
+<pre class="screen">   Disconnect operation number:0          Operation timeout number:0
+   System busy operation number:0         Connection fail number:0</pre>
+<pre class="screen">   Operation sequence errors number:0    RTT Stats errors number:0
+   Destination ip address:10.1.1.2
+   Min/Max/Average Completion Time: 31/46/36</pre>
+<pre class="screen">   Sum/Square-Sum  Completion Time: 108/4038
+   Last Good Probe Time: 2006-8-2 10:7:11.4</pre>
+<pre class="screen">   Lost packet ratio: 0 % </pre>
+
+<div class="tablenoborder"><a name="display_nqa_results__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_nqa_results__tb_01" frame="border" border="1" rules="all"><caption>表1 display nqa results命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.094734189972286%" id="d53486e124"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.905265810027714%" id="d53486e128"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>NQA entry(admin, icmp)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><div class="p">NQA测试项，包括：<ul>
+<li><p>admin：NQA测试例的管理者标识。</p>
+</li>
+<li><p>icmp：NQA测试例的名称。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>testFlag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><div class="p">测试标志：<ul>
+<li><p>active：测试正在执行。执行中查看测试结果没有实际意义。</p>
+</li>
+<li><p>inactive：测试已经结束。此时显示的是实际测试结果。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>testtype</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>测试例的测试类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>1 . Test 1 result</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>测试结果的序号，按测试完成的时间顺序编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>The test is finished</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><div class="p">测试的状态：<ul>
+<li><p>finished：测试已经结束</p>
+</li>
+<li><p>running：测试正在运行</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Send operation times:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>发送的测试包数此字段表示发送的报文个数，不是测试次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Receive response times:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>收到的响应包数此字段接收的报文个数，不是测试次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Completion:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><div class="p">测试完成状态。<ul>
+<li><p>success：测试成功结束</p>
+</li>
+<li><p>no result：测试正在运行，还没有得到结果</p>
+</li>
+<li><p>failed：测试失败</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>RTD OverThresholds number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>超过双向延时阈值的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Attempts number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>测试次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Drop operation number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>分配系统资源失败的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Disconnect operation number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>对方强制断开连接的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Operation timeout number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>测试过程中超时的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>System busy operation number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>测试冲突的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Connection fail number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>和对方建立连接失败的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Operation sequence errors number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>收到的失序包数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>RTT Stats errors number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>RTT状态错误数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Destination ip address:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>测试的目的地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Min/Max/Average Completion Time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>最小/最大/平均完成时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Sum/Square-Sum  Completion Time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>完成时间的总和以及完成时间的平方和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Last Good Probe Time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>最近一次探测完成的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e124 "><p>Lost packet ratio:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e128 "><p>丢包率</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看Jitter类型的NQA测试例测试结果。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display nqa results test-instance admin jitter</strong></pre>
+<pre class="screen"> NQA entry(admin, jitter) :testflag is inactive ,testtype is jitter
+  1 . Test 2 result   The test is finished
+   SendProbe:60                         ResponseProbe:60
+   Completion:success                   RTD OverThresholds number:0
+   OWD OverThresholds SD number:0       OWD OverThresholds DS number:0
+   Min/Max/Avg/Sum RTT:1/1/1/60         RTT  Square Sum:60
+   NumOfRTT:60                          Drop operation number:0
+   Operation sequence errors number:0   RTT Stats errors number:0
+   System busy operation number:0       Operation timeout number:0
+   Min Positive SD:1                    Min Positive DS:1
+   Max Positive SD:1                    Max Positive DS:1
+   Positive SD Number:15                Positive DS Number:1
+   Positive SD Sum:15                   Positive DS Sum:1
+   Positive SD Square Sum:15            Positive DS Square Sum:1
+   Min Negative SD:1                    Min Negative DS:1
+   Max Negative SD:1                    Max Negative DS:1
+   Negative SD Number:15                Negative DS Number:1
+   Negative SD Sum:15                   Negative DS Sum:1
+   Negative SD Square Sum:15            Negative DS Square Sum:1
+   Min Delay SD:0                       Min Delay DS:0
+   Max Delay SD:1                       Max Delay DS:1
+   Delay SD Square Sum:27               Delay DS Square Sum:1
+   Packet Loss SD:0                     Packet Loss DS:0
+   Packet Loss Unknown:0                Average of Jitter:1
+   Average of Jitter SD:1               Average of Jitter DS:1
+   jitter out value:0.0312500           jitter in value:0.0020833
+   NumberOfOWD:60                       Packet Loss Ratio: 0%
+   OWD SD Sum:27                        OWD DS Sum:1
+   ICPIF value: 0                       MOS-CQ value: 0</pre>
+
+<div class="tablenoborder"><a name="display_nqa_results__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_nqa_results__tb_02" frame="border" border="1" rules="all"><caption>表2 display nqa results命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.094734189972286%" id="d53486e445"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.905265810027714%" id="d53486e449"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>NQA entry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><div class="p">NQA测试项，包括：<ul>
+<li><p>admin：NQA测试例的管理者标识</p>
+</li>
+<li><p>icmp：NQA测试例的名称</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>testFlag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><div class="p">测试标志：<ul>
+<li><p>active：测试正在执行。执行中查看测试结果没有实际意义。</p>
+</li>
+<li><p>inactive：测试已经结束。此时显示的是实际测试结果。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>testtype</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>测试例的测试类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>SendProbe</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>发送的探针的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>ResponseProbe</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>接收到回应探针的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Completion:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><div class="p">测试完成状态。<ul>
+<li><p>success：测试成功结束</p>
+</li>
+<li><p>no result：测试正在运行，还没有得到结果</p>
+</li>
+<li><p>failed：测试失败</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>RTD OverThresholds number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>超过双向延时阈值的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>OWD OverThresholds SD number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>超过源到目的的单向阈值的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>OWD OverThresholds DS number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>超过目的到源的单向阈值的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Min/Max/Avg/Sum RTT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>探针往返时间的最小值、最大值、平均值和总和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>RTT  Square Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>探针往返时间的平方和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>NumOfRTT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>RTT值的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Drop operation number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>分配系统资源失败的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Operation sequence errors number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>客户端收到错误报文的顺序号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>System busy operation number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>测试冲突的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Operation timeout number:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>测试过程中超时的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Min Positive SD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的的最小正向抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Min Positive DS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的最小正向抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Max Positive SD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的的最大正向抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Max Positive DS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的最大正向抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Positive SD Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的的正向抖动次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Positive DS Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的正向抖动次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Positive SD Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的正向抖动值之和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Positive DS Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的正向抖动值之和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Positive SD Square Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的正向抖动值平方和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Positive DS Square Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的正向抖动值平方和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Min Negative SD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的的最小负向抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Min Negative DS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的最小负向抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Max Negative SD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的的最大负向抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Max Negative DS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的的最大负向抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Negative SD Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的的负向抖动次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Negative DS Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的负向抖动次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Negative SD Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的负向抖动值之和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Negative DS Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的负向抖动值之和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Negative SD Square Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的的负向抖动平方和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Negative DS Square Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的负向抖动平方和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Max Delay SD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的最大延时</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Max Delay DS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的最大延时</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Packet Loss SD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的方向的最大丢包数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Packet Loss DS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源方向的最大丢包数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Packet Loss Unknown</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>未知方向的丢包数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Average of Jitter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>平均抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Average of Jitter SD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的的平均抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Average of Jitter DS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的平均抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>jitter out value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>发送报文的抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>jitter in value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>接收报文的抖动值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>NumberOfOWD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>单向延时报文的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>OWD SD Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从源到目的的单向延时总和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>OWD DS Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>从目的到源的单向延时总和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d53486e445 "><p>Packet Loss Ratio:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d53486e449 "><p>丢包率</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nqa_configuration_commands.html">NQA配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="clear-records.html">clear-records</a></div>
+<div><a href="frequency.html">frequency</a></div>
+<div><a href="records.html">records</a></div>
+<div><a href="start.html">start</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,376 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te rrvpn-tunnel(qos)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_qos_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_vpn-binding_vpn-instance_flow-queue.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_rrvpn-tunnel_qos">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te rrvpn-tunnel(qos)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_rrvpn-tunnel_qos"></a><a name="display_mpls_te_rrvpn-tunnel_qos"></a>
+
+
+<h1 class="topictitle1">display mpls te rrvpn-tunnel(qos)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls te rrvpn-tunnel</strong>命令用来查看为VPN分配资源的情况。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te rrvpn-tunnel</strong> [ <strong>tunnel</strong> <em>tunnel-number</em> ] [ <strong>auto-bypass-tunnel</strong> <em>tunnel-name</em> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>tunnel</strong><em> interface-number</em>：指定隧道接口。如果指定隧道接口，只显示使用该隧道的VPN占用资源的情况。</p>
+<p><strong>auto-bypass-tunnel</strong> <em>tunnel-name</em>：指定auto-bypass隧道名称。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置资源隔离VPN后，可使用该命令验证配置结果。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_rrvpn-tunnel_qos__d49202e118"></a><a name="d49202e118"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定隧道的资源被VPN占用的情况。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te rrvpn-tunnel tunnel 1/0/0</strong></pre>
+<pre class="screen">Tunnel Name       Interface Id  Status    Token      L3RRVPN   VLLRRVPN   VPLSRRVPN</pre>
+<pre class="screen">Tunnel1/0/0       0x505         up      0xc086041d   1                    </pre>
+<pre class="screen">---------------------------------------------------------------------</pre>
+
+<pre class="screen">*********L3RRVPN*********</pre>
+
+<pre class="screen">  Vpn Name            :vpna</pre>
+<pre class="screen">  Vpn Type            :L3RRVPN</pre>
+<pre class="screen">  Sub Tunnel Id       :0x60018001</pre>
+<pre class="screen">  Traff Behavior Name : -</pre>
+<pre class="screen">  Qos Policy          :-</pre>
+<pre class="screen">  Qos Policy Value    :-</pre>
+<pre class="screen">  Cir Bandwidth       :500</pre>
+<pre class="screen">  Pir Bandwidth       :800</pre>
+<pre class="screen">  Flow Queue Id       : 1</pre>
+<pre class="screen">  Group Queue Id        : -</pre>
+<pre class="screen">  Qos Token           : 0x60c18000</pre>
+<pre class="screen">  Backup Qos Token     : -</pre>
+<pre class="screen">  Modify Cir Bandwidth: - 
+  Modify Pir Bandwidth: -  
+  Modify Flow Queue Id: -  
+</pre>
+<pre class="screen">  Modify Group Queue Id : -</pre>
+<pre class="screen">  Modify Qos Token    : - </pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_rrvpn-tunnel_qos__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_rrvpn-tunnel_qos__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te rrvpn-tunnel命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="26.73217435122197%" id="d49202e178"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="73.26782564877804%" id="d49202e182"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Tunnel Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>隧道接口名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Interface Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>隧道接口的ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>第一个&#8220;Staus&#8221;表示主隧道的接口状态，其他的&#8220;Status&#8221;表示子隧道接口的接口状态。up：表示该隧道可用。down：表示该隧道不可用。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Token</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>该隧道的Token值。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>L3RRVPN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>使用该隧道的L3VPN的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>VLLRRVPN  </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>使用该隧道的VLL VPN的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>VPLSRRVPN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>使用该隧道的VPLS VPN的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Vpn Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>VPN实例的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Vpn Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>绑定MPLS TE隧道的VPN类型，包括 L3RRVPN,VLLRRVPN,VPLSRRVPN。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Sub Tunnel Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>主隧道的子隧道Tunnel ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Traff Behavior Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>应用于VPN的流行为名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Qos Policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>应用于VPN的QoS策略。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Qos Policy Value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>如果Qos Policy为&#8220;Qos Local Id&#8221;，则<span>Qos</span> Policy Value指的是qos-local-id的值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Cir Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>该VPN的承诺信息速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Pir Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>该VPN的突发信息速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Flow Queue Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>该VPN的流队列ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Group Queue Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>该VPN对应的Group Queue的ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Qos Token</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>子Tunnel的转发Token。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Backup Qos Token</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>子Tunnel的备份转发token。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Modify Cir Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>修改的承诺信息速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Modify Pir Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>修改的突发信息速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Modify Flow Queue Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>修改的流队列ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Modify Group Queue Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>修改的该VPN对应的Group Queue的ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d49202e178 "><p>Modify Qos Token</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d49202e182 "><p>修改的子Tunnel的转发Token。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_te_rrvpn-tunnel_qos__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_rrvpn-tunnel_qos__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d49202e471"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d49202e475"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d49202e471 "><p>VRPV500R005C02B040</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d49202e475 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d49202e471 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d49202e475 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpn_qos_configuration_commands.html">VPN QoS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_te_vpn-binding_vpn-instance_flow-queue.html">mpls te vpn-binding vpn-instance flow-queue</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

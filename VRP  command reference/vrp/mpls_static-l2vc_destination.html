@@ -1,0 +1,98 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls static-l2vc destination">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_static-l2vc.html">
+<meta name="DC.Relation" scheme="URI" content="display_l2vpn_ccc-interface_vc-type.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_static-l2vc_destination">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls static-l2vc destination</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_static-l2vc_destination"></a><a name="mpls_static-l2vc_destination"></a>
+
+
+<h1 class="topictitle1">mpls static-l2vc destination</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls static-l2vc destination</strong>命令用于在连接不同PE设备的CE间创建静态VC连接。</p>
+<p><strong>undo mpls static-l2vc</strong>命令用来删除CE接口的静态连接。</p>
+<p>缺省情况下，系统没有在连接不同PE设备的CE间创建静态VC连接。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls</strong> <strong>static-l2vc</strong> <strong>destination</strong> <em>destination-lsr-id</em> <strong>transmit-vpn-label</strong> <em>transmit-label-value</em> <strong>receive-vpn-label</strong> <em>receive-label-value</em> [ <strong>tunnel-policy</strong> <em>tnl-policy-name</em> | [ <strong>control-word</strong> | <strong>no-control-word</strong> ] | [ <strong>raw</strong> | <strong>tagged</strong> | <strong>ip-interworking</strong>] ] *</p>
+<p><strong>undo mpls static-l2vc</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>destination-lsr-id</em>：对端PE的LSR ID。</p>
+<p><strong>transmit-vpn-label</strong><em> transmit-label-value</em>：发送的VPN路由的标签值，是静态二层VC的出标签。十进制整数形式，取值范围是16～1023。</p>
+<p><strong>receive-vpn-label</strong><em> receive-label-value</em>：接收的VPN路由的标签值，是静态二层VC的入标签。十进制整数形式，取值范围是16～1023。</p>
+<p><strong>tunnel-policy</strong><em> policy-name</em>：VC使用的隧道策略名称。</p>
+<p><strong>control-word</strong>：使能控制字（Control Word）特性。</p>
+<p><strong>no-control-word</strong>：禁止控制字（Control Word）特性。</p>
+<p><strong>ip-interworking</strong>：使能Martini方式L2VPN的IP异种介质互通功能。</p>
+<p><strong>raw</strong>：指定封装类型为不带VLAN Tag。</p>
+<p><strong>tagged</strong>：指定封装类型为带VLAN Tag。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>同一个接口不能既作为L2VPN的AC（Attachment Circuit）接口又作为L3VPN的AC接口。当某个接口绑定L2VPN后，该接口上配置的IP地址、路由协议等三层特性会全部变为无效。如果一个接口同时绑定L2VPN和L3VPN，只有L2VPN可用。删除该L2VPN后，绑定的L3VPN会重新变得可用。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>当子接口配置了与VLL的绑定关系时，必须先删除子接口和VLL的绑定关系，才能删除子接口。</p>
+</li>
+<li><p>当子接口配置了与VLL的绑定关系时，不允许改变主接口的封装协议类型。</p>
+</li>
+</ul>
+</div></div>
+<p>执行<strong>mpls static-l2vc destination</strong>命令后，缺省的策略为只选用LSP，且负载分担个数为1。如果未指定隧道策略名，采用缺省的策略。如果隧道策略名已指定，但未配置策略，仍采用缺省策略。</p>
+<p>两端的PE设备均需创建静态VC连接。其中，目的地址是对端PE设备的LSR ID。两端PE设备的传输标签和接收标签互为对端的接收标签和传输标签。</p>
+<p>配置静态VC连接时需要注意：<span class="keyword">VRP</span>发送和接收的VPN标签值的范围只能在16～1023之间，不在此范围内的标签将被丢弃。</p>
+<p>只有在以太类型的链路上，该命令中才会出现参数<strong>raw</strong>和<strong>tagged</strong>。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_static-l2vc_destination__d95340e160"></a><a name="d95340e160"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在两台PE设备间创建静态VC连接，PE设备的名称分别为Quidway1和Quidway2，LSR-ID分别为2.2.2.2和1.1.1.1。</p>
+<pre class="screen">&lt;Quidway1&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway1-GigabitEthernet1/0/0]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway1-GigabitEthernet1/0/0]<strong> mpls static-l2vc destination 1.1.1.1 transmit-vpn-label 111 receive-vpn-label 222 tunnel-policy pol1</strong></pre>
+
+<pre class="screen">&lt;Quidway2&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway2-GigabitEthernet1/0/0]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway2-GigabitEthernet1/0/0]<strong> mpls static-l2vc destination 2.2.2.2 transmit-vpn-label 222 receive-vpn-label 111 tunnel-policy pol1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_static-l2vc.html">display mpls static-l2vc</a></div>
+<div><a href="display_l2vpn_ccc-interface_vc-type.html">display l2vpn ccc-interface vc-type</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

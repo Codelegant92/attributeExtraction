@@ -1,0 +1,91 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="interface-status-change mac-withdraw enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="npe-upe_mac-withdraw_enable.html">
+<meta name="DC.Relation" scheme="URI" content="upe-npe_mac-withdraw_enable.html">
+<meta name="DC.Relation" scheme="URI" content="upe-upe_mac-withdraw_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="interface-status-change_mac-withdraw_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>interface-status-change mac-withdraw enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="interface-status-change_mac-withdraw_enable"></a><a name="interface-status-change_mac-withdraw_enable"></a>
+
+
+<h1 class="topictitle1">interface-status-change mac-withdraw enable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>interface-status-change mac-withdraw enable</strong>命令用来使能PE在绑定VSI的AC接口状态发生变化时向所有PEER发送LDP
+MAC-Withdraw消息。</p>
+<p><strong>undo interface-status-change mac-withdraw
+enable</strong>命令用来去PE在绑定VSI的AC接口状态发生变化时向所有PEER发送LDP MAC-Withdraw消息。</p>
+<p>缺省情况下，VSI不发送LDP MAC-Withdraw消息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>interface-status-change mac-withdraw enable</strong></p>
+<p><strong>undo interface-status-change mac-withdraw enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VSI-LDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令用在城域以太网ME（Metro Ethernet）中，使与NPE相连的PE-AGG设备在NPE侧接口状态发生变化时向所有PEER发送LDP
+MAC-Withdraw消息。本端发送MAC-withdraw消息会导致远端VSI清除本地MAC并重新学习MAC。</p>
+<div class="p">执行命令使能后，如果发生如下事件，PE向所有PEER发送LDP
+MAC-Withdraw消息：<ul>
+<li>VSI绑定的接口状态由Down变为Up</li>
+<li>VSI绑定的接口状态由Up变为Down</li>
+</ul>
+</div>
+<p>该命令目前只在NE40E/80E/5000E产品上支持。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="interface-status-change_mac-withdraw_enable__d82932e58"></a><a name="d82932e58"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能PE在绑定VSI的AC接口状态发生变化时向所有PEER发送LDP MAC-Withdraw消息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>vsi v1 static</strong>
+[Quidway-vsi-v1] <strong>pwsignal ldp</strong>
+[Quidway-vsi-v1-ldp] <strong>interface-status-change mac-withdraw enable</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="npe-upe_mac-withdraw_enable.html">npe-upe mac-withdraw
+enable</a></div>
+<div><a href="upe-npe_mac-withdraw_enable.html">upe-npe mac-withdraw
+enable</a></div>
+<div><a href="upe-upe_mac-withdraw_enable.html">upe-upe mac-withdraw
+enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

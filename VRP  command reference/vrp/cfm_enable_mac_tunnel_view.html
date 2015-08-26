@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="cfm enable（MAC Tunnel视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_bind.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_enable_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="efm_bind_service-instance.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cfm_enable_mac_tunnel_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>cfm enable（MAC Tunnel视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="cfm_enable_mac_tunnel_view"></a><a name="cfm_enable_mac_tunnel_view"></a>
+
+
+<h1 class="topictitle1">cfm enable（MAC Tunnel视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>cfm</strong> <strong>enable</strong>命令用来使能当前MAC tunnel的CFM功能。</p>
+<p><strong>undo cfm</strong> <strong>enable</strong>命令用来禁止当前MAC tunnel的CFM功能。</p>
+<p>缺省情况下，MAC tunnel的CFM功能处于禁止状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>cfm</strong> [ <strong>ccm-interval</strong> <em>interval </em>] <strong>enable</strong></p>
+<p><strong>undo cfm enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interval</em>：表示发送或探测CCM消息的时间间隔。字符串形式，不支持空格，取值包括：10、20、30、50、100、1000、10000，单位是ms。缺省值是10ms。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MAC Tunnel视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当MAC tunnel的CFM功能使能后，设备开始通过该MAC tunnel发送CCM消息。</p>
+<p>当MAC tunnel的CFM功能处于禁止状态时，设备不向该MAC tunnel对端的设备发送CCM消息，并且也不接收该MAC tunnel对端发来的CCM消息。</p>
+<p>当需要对MAC tunnel进行连通性故障检测时，可使用本命令。</p>
+<p>在系统视图下使用<a href="cfm_enable_system_view.html">cfm enable（系统视图）</a>命令全局使能设备的CFM功能后才能使用本命令。</p>
+<p>MAC tunnel的目的虚拟MAC地址、骨干VLAN、接口三个属性都已经配置完整后，执行本命令才能成功。</p>
+<p>如果当前MAC tunnel已有业务实例配置了和以太网CFM或EFM OAM联动，则不能禁止当前MAC tunnel的CFM功能。如需禁止，首先需使用<strong>undo cfm bind</strong>命令或<strong>undo efm bind service-instance</strong>命令解除该MAC
+tunnel的业务实例和CFM或EFM的联动关系。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="cfm_enable_mac_tunnel_view__d6131e82"></a><a name="d6131e82"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能MAC tunnel MacCustomer的CFM功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>mac-tunnel tunnel-name MacCustomer</strong></strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-MacCustomer]<strong> <strong>cfm enable</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_bind.html">cfm bind</a></div>
+<div><a href="cfm_enable_system_view.html">cfm enable（系统视图）</a></div>
+<div><a href="efm_bind_service-instance.html">efm bind</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="standby threshold">
+<meta name="DC.Relation" scheme="URI" content="../vrp/interface_backup_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="standby_interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="standby_threshold">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>standby threshold</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="standby_threshold"></a><a name="standby_threshold"></a>
+
+
+<h1 class="topictitle1">standby threshold</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>standby threshold</strong>命令用来设置接口或逻辑通道的备份负载分担。</p>
+<p><strong>undo standby
+threshold</strong>命令用来取消接口或逻辑通道的备份负载分担配置。</p>
+<p>缺省情况下，没有配置备份负载分担。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>standby threshold</strong> <em>enable-threshold disable-threshold</em></p>
+<p><strong>undo
+standby threshold</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>enable-threshold</em>：启用备份接口和逻辑通道的上限百分比。取值范围是1～99。参数<em>enable-threshold</em>必须大于参数<em>disable-threshold</em>。</p>
+<p><em>disable-threshold</em>：关闭备份接口和逻辑通道的下限百分比。取值范围是1～99。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>备份负载分担功能在备份中心的主接口上配置。</p>
+<ul>
+<li><p>当备份中心所有活动接口的流量总和达到设定的门限上限时，系统将启动一个优先级最高的可用备份接口。</p>
+</li>
+<li><p>当备份中心所有活动接口的流量总和小于设定的门限下限时，系统将关闭一个优先级别最低的备份接口。</p>
+</li>
+</ul>
+<p>当使用<strong>undo standby threshold</strong>命令时，如果已经有备份接口被启动，将关闭所有的备份接口，只保留主接口。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="standby_threshold__d120317e76"></a><a name="d120317e76"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口Pos2/0/0上配置备份负载分担。</p>
+<pre class="screen">&lt;uidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface pos 2/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos2/0/0]<strong> standby threshold 80 50</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/interface_backup_configuration_commands.html">接口备份配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="standby_interface.html">standby interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

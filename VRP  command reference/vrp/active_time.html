@@ -1,0 +1,93 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="active time">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_md.html">
+<meta name="DC.Relation" scheme="URI" content="ma.html">
+<meta name="DC.Relation" scheme="URI" content="remote-mep_ccm-receive_enable.html">
+<meta name="DC.Relation" scheme="URI" content="ccm-interval.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="active_time">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>active time</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="active_time"></a><a name="active_time"></a>
+
+
+<h1 class="topictitle1">active time</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>active time</strong>命令用来配置RMEP激活时间。</p>
+<p><strong>undo active time</strong>命令用来取消配置的RMEP激活时间。</p>
+<p>缺省情况下，RMEP激活时间为0秒。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>active time</strong> <em> time</em></p>
+<p><strong>undo active time</strong> </p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>time </strong><em>time</em>：RMEP激活时间。取值范围是0～600，单位是秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MA视图、Mac-tunnel隧道视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>现如今，802.1ag协议分为draft7草案版本和standard2007标准版本，本命令只支持standard2007标准版本使用。</p>
+<div class="p">当在本端设备上执行<a href="remote-mep_ccm-receive_enable.html">remote-mep ccm-receive enable</a>命令使能接收某个RMEP发送的CCM消息功能后，<ul>
+<li><p>如果通过CC探测发现本端MEP与该RMEP之间出现连通性故障，则本端设备上提示RMEP连通性告警。</p>
+</li>
+<li><p>如果本端MEP与RMEP之间物理连通正常，但是由于对端设备没有及时配置MEP或者MEP配置延后，此时进行CC探测，若本端MEP连续3个CCM发送周期没有接收到远端MEP发送的CCM消息，则认为和远端MEP之间发生了连通性故障，在本端设备上提示RMEP连通性告警。</p>
+<p>可以看出，此告警为误告警。为了解决这个问题，提出了RMEP激活时间这个概念。</p>
+</li>
+</ul>
+</div>
+<p>若设备配置了RMEP激活时间，当在本端设备上使能接收某个RMEP发送的CCM消息功能后，等待配置的RMEP激活时间到达后，本端设备开始接收CCM报文。也就是说RMEP激活时间是预留给用户对远端MEP配置的时间。</p>
+<p>如果配置的RMEP激活时间到达后，本端设备上的MEP连续3个CCM周期内没有收到CCM报文，则认为MEP之间发生了连通性故障，本端设备上才提示RMEP连通性告警。</p>
+<p>如果本端设备上配置RMEP激活时间采用缺省值，说明只要设备上使能了接收某个RMEP发送的CCM消息功能，便无需等待，本端设备上的MEP会立即接收对端MEP发送的CCM报文。</p>
+<div class="p"><div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody">如果MA或MAC Tunnel内配置了RMEP，就不能够再配置RMEP激活时间。</div></div>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="active_time__d510e80"></a><a name="d510e80"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置RMEP激活时间为30s。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm md md1</strong></pre>
+<pre class="screen">[Quidway-md-md1]<strong> ma ma1</strong></pre>
+<pre class="screen">[Quidway-md-md1-ma-ma1]<strong> active time 30</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_md.html">cfm md</a></div>
+<div><a href="ma.html">ma</a></div>
+<div><a href="remote-mep_ccm-receive_enable.html">remote-mep ccm-receive enable</a></div>
+<div><a href="ccm-interval.html">ccm-interval</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

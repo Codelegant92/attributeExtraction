@@ -1,0 +1,466 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mac-tunnel protection">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="aps_enable.html">
+<meta name="DC.Relation" scheme="URI" content="protection_hold-off.html">
+<meta name="DC.Relation" scheme="URI" content="protection_mac-tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="protection_mode.html">
+<meta name="DC.Relation" scheme="URI" content="protection_restore.html">
+<meta name="DC.Relation" scheme="URI" content="protect-switch_mac_tunnel_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mac-tunnel_protection">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mac-tunnel protection</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mac-tunnel_protection"></a><a name="display_mac-tunnel_protection"></a>
+
+
+<h1 class="topictitle1">display mac-tunnel protection</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mac-tunnel protection</strong>命令用来查看指定工作隧道的保护组信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mac-tunnel protection</strong> <em>tunnel-name</em> [ <strong>verbose</strong> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>tunnel-name</em>：指定MAC Tunnel的名字。</p>
+<p><strong>verbose</strong>：查看MAC Tunnel保护组的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong> exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>输入的隧道是APS保护组的工作隧道的名字。该命令的查看不需要启动协议。</p>
+<p>如果不输入<strong>verbose</strong>参数，则只显示待查看保护组的配置信息。</p>
+<p>如果输入<strong>verbose</strong>参数，则显示当前保护组的配置信息、协议信息、缺陷信息。</p>
+<p>各种类型的信息包含的内容有：</p>
+<ul>
+<li><p>配置信息：工作隧道、保护隧道、协议类型、保护属性、恢复时间、延迟时间、倒换命令（没有就显示NULL）、协议报文发送时间间隔、协议启停状态；</p>
+</li>
+<li><div class="p">保护组信息：<ul>
+<li><p>对于APS保护组，显示当前最新的本地请求、倒换状态、桥接状态；当前最新的远端请求、远端倒换状态、远端桥接状态。</p>
+</li>
+<li><p>对于同源异宿型保护组，则显示当前保护隧道的故障状态、本地请求，以及当前倒换状态。</p>
+</li>
+</ul>
+</div>
+</li>
+<li><p>缺陷信息：只对APS型保护组有效，显示当前是否存在1:1或1+1保护类型失配、主备通道配置失配、倒换桥接状态失配、长时间收不到对端的协议报文。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mac-tunnel_protection__d39571e132"></a><a name="d39571e132"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看工作隧道为Tu1的保护组信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mac-tunnel protection tu1</strong></pre>
+<pre class="screen">Work-tunnel     : tu1</pre>
+<pre class="screen">Protect-tunnel  : tu2</pre>
+<pre class="screen">Protocol        : aps</pre>
+<pre class="screen">Protect-mode    : 1:1 bidirectional</pre>
+<pre class="screen">Aps-interval    : 3.3(ms)</pre>
+<pre class="screen">Protocol enable : disable</pre>
+<pre class="screen">Revertive-mode  : revertive</pre>
+<pre class="screen">Wtr-time        : 5</pre>
+<pre class="screen">Hold-off-time   : 0</pre>
+<pre class="screen">Switch command  : null</pre>
+<pre class="screen">Switch-result   : work-tunnel</pre>
+<p># 查看工作隧道为Tu1的类型为1:1的保护组详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mac-tunnel protection tu1 verbose</strong></pre>
+<pre class="screen">Work-tunnel          : tu1</pre>
+<pre class="screen">Protect-tunnel       : tu2</pre>
+<pre class="screen">Protocol             : aps</pre>
+<pre class="screen">Protect-mode         : 1:1 bidirectional</pre>
+<pre class="screen">Aps-interval         : 3.3(ms)</pre>
+<pre class="screen">Protocol enable      : disable</pre>
+<pre class="screen">Revertive-mode       : revertive</pre>
+<pre class="screen">Wtr-time             : 5</pre>
+<pre class="screen">Hold-off-time        : 0</pre>
+<pre class="screen">Switch command       : null</pre>
+<pre class="screen">Switch-result        : work-tunnel</pre>
+<pre class="screen">Aps received         : 0</pre>
+<pre class="screen">Work-status          : non-defect</pre>
+<pre class="screen">Protect-status       : non-defect</pre>
+<pre class="screen">Local-Request        : NR</pre>
+<pre class="screen">B-mismatch           : no</pre>
+<pre class="screen">R-mismatch           : no</pre>
+<pre class="screen">Tunnel-mismatch      : no</pre>
+<pre class="screen">Bridged-mismatch     : no</pre>
+<pre class="screen">Far-request          : NULL</pre>
+<pre class="screen">Far-requested-state  : null</pre>
+<pre class="screen">Far-Bridged-state    : null</pre>
+<pre class="screen">Far protect-mode     : null</pre>
+<pre class="screen">Far revertive-mode   : null  </pre>
+<p># 查看工作隧道为Tu1的保护类型为1+1的保护组详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mac-tunnel protection tu1 verbose</strong></pre>
+<pre class="screen">Work-tunnel        : tu1</pre>
+<pre class="screen">Protect-tunnel     : tu2</pre>
+<pre class="screen">Protocol           : aps</pre>
+<pre class="screen">Protect-mode       : 1+1 unidirectional</pre>
+<pre class="screen">Protocol enable    : enable</pre>
+<pre class="screen">Revertive-mode     : non-revertive</pre>
+<pre class="screen">Wtr-time           : 5</pre>
+<pre class="screen">Hold-off-time      : 0</pre>
+<pre class="screen">Switch command     : null</pre>
+<pre class="screen">Switch-result      : protection-tunnel</pre>
+<pre class="screen">Work-status        : defect</pre>
+<pre class="screen">Protect-status     : non-defect</pre>
+<pre class="screen">Local-Request      : SF_W</pre>
+<pre class="screen">B-mismatch         : no</pre>
+<pre class="screen">R-mismatch         : no</pre>
+<pre class="screen">Tunnel-mismatch    : no</pre>
+<pre class="screen">Bridged-mismatch   : no </pre>
+
+<div class="tablenoborder"><a name="display_mac-tunnel_protection__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mac-tunnel_protection__tb_01" frame="border" border="1" rules="all"><caption>表1 display mac-tunnel protection命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.37288989669942%" id="d39571e268"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.62711010330058%" id="d39571e272"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Work-tunnel  </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>工作隧道名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Protection-tunnel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>保护隧道名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><div class="p">保护组协议类型（是否使能APS协议）<ul>
+<li><p>enable：使能APS协议</p>
+</li>
+<li><p>disable：禁止APS协议</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Protection mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><div class="p">APS保护模式，包括：<ul>
+<li><p>1:1 bidirectional：1:1双向倒换模式</p>
+</li>
+<li><p>1+1 bidirectional：1+1双向倒换模式</p>
+</li>
+<li><p>1+1 unidirectional：1+1单向倒换模式</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Aps-interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>APS报文发送时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Protocol enable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><div class="p">协议是否使能。<ul>
+<li><p>enable：APS协议已经使能</p>
+</li>
+<li><p>disable：APS协议没有使能</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Revertive-mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><div class="p">隧道回切模式<ul>
+<li><p>revertive：回切</p>
+</li>
+<li><p>non-Revertive：不回切</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Wtr-time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>回切等待时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Hold-off-time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>倒换延迟时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Switch command</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><div class="p">保护倒换配置：<ul>
+<li><p>clear：清除所有的保护倒换命令</p>
+</li>
+<li><p>force：强制将业务切换到保护隧道</p>
+</li>
+<li><p>lock：将业务锁定在工作隧道，不允许切换到保护隧道</p>
+</li>
+<li><p>manual：当工作隧道和保护隧道均完好的时候手动将业务切换到保护隧道</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Switch-result</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><div class="p">保护倒换后的结果，业务将切换到工作和保护隧道。<ul>
+<li><p>work-tunnel ：工作隧道</p>
+</li>
+<li><p>protection-tunnel：保护隧道</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Aps received</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>收到的APS报文数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Work-status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>工作隧道状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Protect-status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>保护隧道状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Local-Request</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>本端请求。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>B-mismatch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>保护模式状态失配。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>R-mismatch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>回切模式状态失配。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Tunnel-mismatch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>隧道状态失配。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Bridged-mismatch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>倒换桥接状态失配。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Far-request</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>远端请求。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Far-requested-state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>远端倒换状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Far-Bridged-state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>远端桥接状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Far Protection mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>远端倒换模式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d39571e268 "><p>Far Revertive-mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d39571e272 "><p>远端回切模式。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mac-tunnel_protection__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mac-tunnel_protection__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d39571e630"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d39571e634"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d39571e630 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d39571e634 "><p>命令增加通配符： [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="aps_enable.html">aps enable</a></div>
+<div><a href="protection_hold-off.html">protection hold-off</a></div>
+<div><a href="protection_mac-tunnel.html">protection mac-tunnel</a></div>
+<div><a href="protection_mode.html">protection mode</a></div>
+<div><a href="protection_restore.html">protection restore</a></div>
+<div><a href="protect-switch_mac_tunnel_view.html">protect-switch（MAC Tunnel视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

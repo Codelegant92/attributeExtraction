@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ssh client">
+<meta name="DC.Relation" scheme="URI" content="../vrp/telnet_and_ssh_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ssh_client_first-time_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ssh_client">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ssh client</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ssh_client"></a><a name="ssh_client"></a>
+
+
+<h1 class="topictitle1">ssh client</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"> <p><strong>ssh client </strong><em>server-name</em><strong> assign rsa-key</strong> <em>key-name</em>命令用来给SSH服务器分配RSA公钥的，<em>key-name</em>必须是SSH客户端已经配置好的SSH服务器的RSA公钥。</p>
+ <p><strong>undo ssh client </strong><em>server-name</em><strong> assign rsa-key</strong>命令用来取消SSH服务器与RSA公钥的绑定关系。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"> <p><strong>ssh client </strong><em>server-name</em><strong> assign rsa-key </strong><em>key-name</em></p>
+ <p><strong>undo ssh client </strong><em>server-name</em><strong> assign rsa-key</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"> <p><em>server-name</em>：SSH服务器的主机名或IP地址，字符串形式，长度范围为1～46。</p>
+ <p><em>key-name</em>：RSA公钥名，字符串形式，长度范围为1～30。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"> <p>如果SSH客户端是第一次连接SSH服务器且SSH客户端没有使能首次认证，则必须为SSH服务器分配对端RSA公钥。只有这样，SSH客户端对SSH服务器的RSA公钥验证才会通过，SSH客户端第一次连接服务器才会成功。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ssh_client__d119944e83"></a><a name="d119944e83"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"> <p># 为SSH服务器&#8220;sshserver1&#8221;分配RSA公钥。</p>
+ <pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+ <pre class="screen">[Quidway]<strong> ssh client sshserver1 assign rsa-key 222</strong></pre>
+ <div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>SSH客户端的RSA公钥<strong>222</strong>，应该是根据SSH服务器<strong>sshserver1</strong>的本地RSA公钥配置的<strong>peer-public-key,</strong>否则SSH客户端对SSH服务器的RSA公钥验证失败。</p>
+</div></div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/telnet_and_ssh_commands.html">Telnet及SSH命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ssh_client_first-time_enable.html">ssh client first-time enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,265 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display saved-configuration">
+<meta name="DC.Relation" scheme="URI" content="../vrp/file_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="startup_saved-configuration.html">
+<meta name="DC.Relation" scheme="URI" content="reset_saved-configuration.html">
+<meta name="DC.Relation" scheme="URI" content="display_current-configuration.html">
+<meta name="DC.Relation" scheme="URI" content="display_startup.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_saved-configuration">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display saved-configuration</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_saved-configuration"></a><a name="display_saved-configuration"></a>
+
+
+<h1 class="topictitle1">display saved-configuration</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>saved-configuration</strong>命令用来显示<span class="keyword">路由器</span>下次上电启动时所用的配置文件，即，通过<a href="startup_saved-configuration.html">startup saved-configuration</a>命令指定的配置文件。</p>
+<p><strong>display saved-configuration</strong> <strong>last</strong>命令用来显示上次保存的系统配置信息，即，本次启动时使用的配置文件。</p>
+<p><strong>display saved-configuration</strong> <strong>time</strong>命令用来显示上次保存的系统配置的时间。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>saved-configuration</strong> [ <strong>last</strong> |<strong> time</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>last</strong>：显示上次保存的系统配置信息。</p>
+<p><strong>time</strong>：最近的一次手工或者系统自动保存配置的时间。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果<span class="keyword">路由器</span>上电之后工作不正常，可以执行<strong>display</strong> <strong>saved-configuration</strong>命令查看<span class="keyword">路由器</span>的启动配置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_saved-configuration__d65557e88"></a><a name="d65557e88"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示<span class="keyword">路由器</span>下次上电启动时所用的配置文件，</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display saved-configuration</strong></pre>
+<pre class="screen">#</pre>
+<pre class="screen"> sysname <span class="keyword">Router</span></pre>
+<pre class="screen">#</pre>
+<pre class="screen">interface GigabitEthernet1/0/0</pre>
+<pre class="screen"> description Don't Shutdown! It's Management Port!</pre>
+<pre class="screen"> ip address 100.1.1.200 255.255.255.0</pre>
+<pre class="screen"> speed auto</pre>
+<pre class="screen"> duplex auto</pre>
+<pre class="screen">#</pre>
+<pre class="screen">aaa</pre>
+<pre class="screen"> local-user ftp password simple ftp</pre>
+<pre class="screen"> local-user ftp service-type ftp</pre>
+<pre class="screen"> local-user ftp ftp-directory cfcard:/</pre>
+<pre class="screen"> authentication-scheme default</pre>
+<pre class="screen"> #</pre>
+<pre class="screen"> authorization-scheme default</pre>
+<pre class="screen"> #</pre>
+<pre class="screen"> accounting-scheme default</pre>
+<pre class="screen"> #</pre>
+<pre class="screen"> domain default</pre>
+<pre class="screen">#</pre>
+<pre class="screen">user-interface maximum-vty 15</pre>
+<pre class="screen">user-interface con 0</pre>
+<pre class="screen">user-interface aux 0</pre>
+<pre class="screen">user-interface vty 0 14</pre>
+<pre class="screen"> user privilege level 3</pre>
+<pre class="screen"> set authentication password cipher XR=I]<strong> ,PKZR[Q=^Q`MAF4&lt;1!!</strong></pre>
+<pre class="screen"> idle-timeout 0 0</pre>
+<pre class="screen">#</pre>
+<pre class="screen">Return</pre>
+
+<div class="tablenoborder"><a name="display_saved-configuration__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_saved-configuration__tb_01" frame="border" border="1" rules="all"><caption>表1 display saved-configuration命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="43.32325522801713%" id="d65557e175"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="56.67674477198287%" id="d65557e179"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>sysname</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p><span class="keyword">路由器</span>的主机名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p>接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>ip address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p>IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>speed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p>异步接口的速度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>duplex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p>双工</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>aaa</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p>认证、授权、计费</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>local-user ftp password</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p>本地用户使用密码认证</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>local-user ftp service-type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p>本地用户的服务类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>local-user ftp ftp-directory</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p>指定的ftp客户端可以访问的范围</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>authentication-scheme default</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p>默认超时授权的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>user-interface maximum-vty</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p>可以支持用户通过VTY方式登录的最大数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.32325522801713%" headers="d65557e175 "><p>idle-timeout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.67674477198287%" headers="d65557e179 "><p>用户空闲的时间</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_saved-configuration__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_saved-configuration__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="36.70949861426052%" id="d65557e335"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63.29050138573948%" id="d65557e339"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36.70949861426052%" headers="d65557e335 "><p>VRPV500R003C07B180</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.29050138573948%" headers="d65557e339 "><p>缺省级别由&#8220;1：监控级&#8221;变更为&#8220;3：管理级&#8221;。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/file_management_configuration_commands.html">管理配置文件命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="startup_saved-configuration.html">startup saved-configuration</a></div>
+<div><a href="reset_saved-configuration.html">reset saved-configuration</a></div>
+<div><a href="display_current-configuration.html">display current-configuration</a></div>
+<div><a href="display_startup.html">display startup</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

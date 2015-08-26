@@ -1,0 +1,110 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="jitter-codec">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="nqa.html">
+<meta name="DC.Relation" scheme="URI" content="test-type.html">
+<meta name="DC.Relation" scheme="URI" content="adv-factor.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="jitter-codec">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>jitter-codec</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="jitter-codec"></a><a name="jitter-codec"></a>
+
+
+<h1 class="topictitle1">jitter-codec</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>jitter-codec</strong>命令用来配置NQA Jitter测试例的模拟语音测试的编码类型。</p>
+<p><strong>undo jitter-codec</strong>用来删除NQA Jitter测试例的模拟语音测试的编码类型。</p>
+<p>缺省情况下，NQA Jitter测试例为非模拟语音测试。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>jitter-codec </strong>{<strong> g711a </strong>| <strong>g711u </strong>|<strong> g729a </strong>}</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>g711a</strong>：指定模拟语音测试编码类型为g711alaw。</p>
+<p><strong>g711u</strong>：指定模拟语音测试编码类型为g711ulaw。</p>
+<p><strong>g729a</strong>：指定模拟语音测试编码类型为g729a。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>NQA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>jitter-codec</strong>命令只能在Jitter测试例中配置。对于接口板发包的Jitter试例中，可以配置该命令，但在测试例执行时，不会对该值进行统计。</p>
+<p>g711a、g711u和g729a指的是VOIP应用中，针对语音模拟信号和数字信号之间转换，所采用的编解码方式。用户可以根据被测试的VOIP应用中，实际编解码方式的不同，而选用不同的编码方式。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="jitter-codec__d87628e67"></a><a name="d87628e67"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置模拟语音测试编码类型为g711alaw。</p>
+<pre class="screen">&lt;Quidway&gt; <strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway] <strong> <strong>nqa test-instance admin jitter</strong></strong></pre>
+<pre class="screen">[Quidway-nqa-admin-Jitter] <strong> <strong>jitter-codec g711a</strong></strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="jitter-codec__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="jitter-codec__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.5%" id="d87628e100"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.5%" id="d87628e104"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.5%" headers="d87628e100 "><p>VRPV500R005C02B270</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.5%" headers="d87628e104 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nqa_configuration_commands.html">NQA配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="nqa.html">nqa</a></div>
+<div><a href="test-type.html">test-type</a></div>
+<div><a href="adv-factor.html">adv-factor</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

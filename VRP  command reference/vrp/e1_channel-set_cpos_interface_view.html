@@ -1,0 +1,228 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="e1 channel-set（CPOS接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cpos_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="e1_unframed_cpos_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="default_interface-description_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="e1_channel-set_cpos_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>e1 channel-set（CPOS接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="e1_channel-set_cpos_interface_view"></a><a name="e1_channel-set_cpos_interface_view"></a>
+
+<h1 class="topictitle1">e1 channel-set（CPOS接口视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>e1 channel-set</strong>命令用来对E1通道的时隙进行捆绑。</p>
+<p><strong>undo e1 channel-set</strong>命令用来取消指定的捆绑。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>e1</strong><em> e1-number </em><strong>channel-set</strong><em> set-number </em><strong>timeslot-list </strong><em>slot-list</em></p>
+<p><strong>undo e1</strong><em> e1-number </em><strong>channel-set</strong><em> set-number</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>e1-number</em>：CPOS的E1通道号。整数形式，取值范围是1～63。</p>
+<p><em>set-number</em>：捆绑集的编号。整数形式，取值范围是0～30。</p>
+<p><em>slot-list</em>：用于捆绑的时隙编号或时隙范围。取值范围是1～31。指定捆绑时隙时，可以指定单个时隙，也可以指定时隙范围。使用&#8220;,&#8221;分隔多个时隙，使用&#8220;-&#8221;表示时隙范围。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>CPOS接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当CPOS的E1应用在通道化模式（Channelized）时，除时隙0用于同步外，其它31个时隙可任意捆绑为一个或多个串口。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>为保证系统处理能力，一个CPOS物理端口上最多可以捆绑256个串口。</p>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="e1_channel-set_cpos_interface_view__d74361e64"></a><a name="d74361e64"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 对E1通道63进行捆绑。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> controller cpos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Cpos1/0/0] <strong>e1 63 channel-set 1 timeslot-list 1-31</strong></pre>
+<p># 进入捆绑后形成的串口的视图。</p>
+<pre class="screen">[Quidway-Cpos1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0/63:1</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0/63:1]</pre>
+<div class="p"># 查看捆绑后形成的串口信息。<pre class="screen">&lt;Quidway&gt;<strong> display interface serial 1/0/0/63:1</strong></pre>
+<pre class="screen">Serial1/0/0/63:1 current state : UP</pre>
+<pre class="screen">Line protocol current state : DOWN</pre>
+<pre class="screen">Route Port,The Maximum Transmit Unit is 1500, Holder timer is 10(sec)</pre>
+<pre class="screen">Derived from Cpos1/0/0 e1 63,  Timeslot(s) Used: 1-31,  baudrate is 1984000 bps</pre>
+<pre class="screen">Internet protocol processing : disabled</pre>
+<pre class="screen">Link layer protocol is PPP</pre>
+<pre class="screen">LCP initial</pre>
+<pre class="screen">Physical layer is channelized STM-1/OC-3</pre>
+<pre class="screen">TUAIS: OK    LPRDI: OK    LPRFI: OK</pre>
+<pre class="screen">    Last 300 seconds input rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Last 300 seconds output rate 1 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Input: 154221 packets, 14580666 bytes</pre>
+<pre class="screen">           6 errors, 0 giants, 6 CRC</pre>
+<pre class="screen">    Output:156108 packets, 14617780 bytes</pre>
+<pre class="screen">           0 errors, 0 underruns, 0 aborts</pre>
+</div>
+
+<div class="tablenoborder"><a name="e1_channel-set_cpos_interface_view__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="e1_channel-set_cpos_interface_view__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface serial命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="34%" id="d74361e135"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="66%" id="d74361e138"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>Serial1/0/0/63:1 current state :</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><div class="p">串口当前的物理状态：<ul><li>UP：接口的物理层处于正常启动的状态。</li><li>DOWN：接口的物理层出现故障。</li><li>Administratively down：如果网络管理员在该接口执行shutdown命令，将显示状态为Administratively down。</li></ul>
+</div>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>Line protocol current state : </p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><div class="p">显示该接口的链路协议状态：<ul><li>UP：接口的链路协议处于正常的启动状态。</li><li>DOWN：接口的链路协议层出现故障，或者没有在此接口配置IP地址。</li></ul>
+</div>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>The Maximum Transmit Unit is </p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>接口的最大传输单元（MTU）。例如串口缺省值是1500字节。长度大于MTU的报文，将会被分片后再发送。如果设置了不准分片，会被丢弃。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>Hold timer is</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>报文的生命周期。报文如果在生命周期内没有被送出去，则将丢弃。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>Derived from </p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>形成串口的CPOS接口号和E1通道号。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>Timeslot(s) Used:</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>形成串口的时隙号。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>baudrate is</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>串口的带宽。波特率。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>Internet protocol processing : disabled</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>接口没有配置IP地址。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>Link layer protocol is</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>串口的数据链路层协议。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>LCP initial</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>LCP初始化。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>Physical layer is</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>物理层链路信息。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>Last 300 seconds input rate </p>
+<p>Last 300 seconds output rate</p>
+<p>errors</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>这一字段显示了在前300秒内通过接口发送和接收的字节速率和报文速率。在物理层检测时发现的错误报文数目。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>Input</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>接口收到的总报文数和总字节数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>giants</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>接收到长度大于规定长度的报文数目。此接口接收报文的最大长度为1500字节。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>errors</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>在物理层检测时发现的错误报文数目。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>CRC</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>收到了长度正常但CRC校验错误的报文数目。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>giants</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>接收到长度大于规定长度的报文数目。此接口接收报文的最大长度为1500字节。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>CRC</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>收到了长度正常但CRC校验错误的报文数目。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>overruns</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>接收的报文速度大于转发处理能力导致无法处理的报文。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>aborts</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>接收报文的异常错误。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>Output:</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>接口发送的报文数和总字节数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="34%" headers="d74361e135 "><p>underruns</p>
+</td>
+<td class="cellrowborder" valign="top" width="66%" headers="d74361e138 "><p>因为接口读取内存的速度小于转发的速度而无法发送报文数目。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="e1_channel-set_cpos_interface_view__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="e1_channel-set_cpos_interface_view__tb_02" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="45.962967628164755%" id="d74361e320"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="54.037032371835245%" id="d74361e323"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="45.962967628164755%" headers="d74361e320 "><p>VRPV500R005C05B003</p>
+</td>
+<td class="cellrowborder" valign="top" width="54.037032371835245%" headers="d74361e323 "><p>缺省情况下，系统不显示接口默认描述信息。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/cpos_interface_configuration_commands.html">CPOS接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="e1_unframed_cpos_interface_view.html">e1 unframed（CPOS接口视图）</a></div>
+<div><a href="default_interface-description_enable.html">default interface-description enable</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

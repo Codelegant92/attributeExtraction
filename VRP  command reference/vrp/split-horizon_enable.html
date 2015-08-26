@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="split-horizon enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="mac-tunnel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="split-horizon_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>split-horizon enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="split-horizon_enable"></a><a name="split-horizon_enable"></a>
+
+
+<h1 class="topictitle1">split-horizon enable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>split-horizon enable</strong>命令用来使能MAC Tunnel的水平分割功能。</p>
+<p><strong>undo split-horizon enable</strong>命令用来关闭MAC Tunnel的水平分割功能。</p>
+<p>缺省情况下，隧道的水平分割功能处于使能状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>split-horizon enable</strong></p>
+<p><strong>undo split-horizon enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MAC Tunnel视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2 ：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>水平分割功能用来禁止同一台设备上的不同MAC Tunnel之间互通。</p>
+<p>只有当两条MAC Tunnel上都使能水平分割的时候，它们之间的流量才不能互通。如果有一条MAC Tunnel未使能水平分割功能，则该隧道可以接收到其他隧道的流量。</p>
+<p>如果MAC Tunnel配置了保护组，保护隧道的水平分割属性与工作隧道保持一致，即工作隧道的水平分割属性变化，保护隧道将同步更新。</p>
+<p>本命令只在工作隧道上有效。</p>
+<p>在多条隧道绑定同一个SI时，必须使能水平分割功能，确保各隧道之间的流量不会互通。而绑定不同SI的隧道之间，即使没有使能水平分割功能，各隧道之间的流量也不会互通。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>PBB-TE隧道不支持在端口上配置STP/RRPP来防止网络环路。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="split-horizon_enable__d119849e57"></a><a name="d119849e57"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能当前隧道的水平分割属性功能。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>mac-tunnel tunnel-name mytunnel</strong></pre>
+<pre class="screen">[Quidway-mac-tunnel-mytunnel] <strong>split-horizon enable</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mac-tunnel.html">display mac-tunnel</a></div>
+<div><a href="mac-tunnel.html">mac-tunnel</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

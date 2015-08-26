@@ -1,0 +1,96 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te protect-switch">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_te_protection_tunnel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_protect-switch">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te protect-switch</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_protect-switch"></a><a name="mpls_te_protect-switch"></a>
+
+
+<h1 class="topictitle1">mpls te protect-switch</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls</strong> <strong>te</strong> <strong>protect-switch</strong>命令用来在指定隧道上手工配置倒换请求。</p>
+<p><strong>mpls</strong> <strong>te</strong> <strong>protect-switch chear</strong>命令用来在取消指定隧道上手工配置倒换请求。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls</strong> <strong>te</strong> <strong>protect-switch</strong><span> { <strong>force</strong> | <strong>lock</strong> | <strong>manual</strong> { <strong>protect-lsp</strong> | <strong>work-lsp</strong> } }</span></p>
+<p><strong>mpls</strong> <strong>te</strong> <strong>protect-switch clear</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>force</strong>：将数据流强制倒换到保护隧道上传输。</p>
+<p><strong>lock</strong>：将数据流强制锁定在主隧道传输，即使主隧道故障也不倒换到保护隧道。</p>
+<p><strong>manual</strong>：下发手工倒换（Manual Switch）请求。</p>
+<p><strong>protect-lsp</strong>：对保护隧道进行手工倒换，将数据流倒换到主隧道传输。</p>
+<p><strong>work-lsp</strong>：对主隧道进行手工倒换，将数据流倒换到保护隧道传输。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>除了所检测的LSP故障会触发保护组的流量倒换，也可以通过手工输入命令下发倒换请求。</p>
+<p>MPLS OAM能够处理具有多种倒换请求。不同的倒换请求具有不同的优先级，只有当新的倒换请求优先级高于保护组的当前请求优先级时，新的倒换请求才会被执行。</p>
+<p>按照优先级从高到低的顺序，各种倒换请求依次是：</p>
+<ul>
+<li><p>Force Switch（强制倒换）：具有最高优先级。当存在强制倒换请求时，即使满足回切条件，流量也不会倒换回主隧道。<strong>mpls</strong> <strong>te</strong> <strong>protect-switch</strong>命令中的<strong>force</strong>和<strong>lock</strong>都属于强制倒换请求，并且，<strong>lock</strong>的优先级高于<strong>force</strong>。</p>
+</li>
+<li><p>Signal Failure：指由于所检测的LSP故障自动触发的倒换。</p>
+</li>
+<li><p>Manual Switch（手工倒换）：包括手工倒换到主隧道和手工倒换到保护隧道两种。</p>
+</li>
+<li><p>WTR：等待WTR超时后将流量回切到主隧道。这种状态下，如果手工下发倒换命令，将立即执行倒换。</p>
+</li>
+</ul>
+<p>对于Force Switch和Manual Switch下发的倒换请求，可以通过<strong>mpls te protect-switch
+clear</strong>命令清除。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_protect-switch__d96734e151"></a><a name="d96734e151"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在Tunnel1/0/0上手动将流量倒换到保护隧道。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te protect-switch protect-lsp</strong></pre>
+<p># 在Tunnel 1/0/0上取消将流量倒换到保护隧道。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>interface tunnel 1/0/0</strong>
+[Quidway-Tunnel1/0/0] <strong>mpls te protect-switch clear</strong>
+[Quidway-Tunnel1/0/0] <strong>mpls te commit</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_oam_configuration_commands.html">MPLS OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_te_protection_tunnel.html">display
+mpls te protection tunnel</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

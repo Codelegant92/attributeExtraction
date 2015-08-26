@@ -1,0 +1,703 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display cpu-usage">
+<meta name="DC.Relation" scheme="URI" content="../vrp/update_and_maintenance.html">
+<meta name="DC.Relation" scheme="URI" content="set_cpu-usage_threshold.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_cpu-usage">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display cpu-usage</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_cpu-usage"></a><a name="display_cpu-usage"></a>
+
+
+<h1 class="topictitle1">display cpu-usage</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display cpu-usage</strong>命令用来查看CPU占用率的统计信息和配置信息<strong>。</strong></p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display cpu-usage</strong> [ <strong>slave</strong> | <strong>slot</strong> <em>slot-id</em> ]</p>
+<p><strong>display cpu-usage</strong> <em>entry-number</em> [ <em>offset</em> ] [ <strong>verbose</strong> ] [ <strong>slave</strong> | <strong>slot</strong> <em>slot-id</em> ] [ <strong>history</strong> ]</p>
+<p><strong>display
+cpu-usage</strong> <strong>configuration</strong> [ <strong>slave</strong> | <strong>slot</strong> <em>slot-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>slave</strong>：显示备用主控板CPU占用率的相关信息。</p>
+<p><strong>slot</strong><em> slot-id</em>：指定接口板号。</p>
+<p><em>entry-number</em>：指定每次要显示的条目数。整数形式，取值范围是1～60。</p>
+<p><em>offset</em>：从最近一条记录之前的某个条目开始显示。整数形式，取值范围是0～59。</p>
+<p><strong>verbose</strong>：显示每条记录的详细信息。</p>
+<p><strong>history</strong>：显示CPU占用率的历史记录。</p>
+<p><strong>configuration</strong>：显示配置信息所消耗的CPU占用率。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行该命令后，可以查看主控板及指定接口板的CPU占用率的相关信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_cpu-usage__d21599e118"></a><a name="d21599e118"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看当前主控板的CPU占用率统计信息，包括各个任务的CPU占用率。&#8220;VIDL&#8221;任务表示的是空闲CPU。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display cpu-usage</strong></pre>
+<pre class="screen">CPU Usage Stat. Cycle: 33 (Second)</pre>
+<pre class="screen">CPU Usage: 1% Max: 99%</pre>
+<pre class="screen">CPU Usage Stat. Time: 2005-11-28  20:22:32</pre>
+<pre class="screen">CPU Usage Stat. Tick: 0x45(CPU Tick High) 0x9a2d12b2(CPU Tick Low)</pre>
+<pre class="screen">Actual Stat. Cycle: 0x0(CPU Tick High) 0x423a7659(CPU Tick Low)</pre>
+<pre class="screen">CPU utilization for five seconds: 1%; one minute: 2%; five minutes: 2%</pre>
+<pre class="screen">TaskName        CPU        Runtime(CPU Tick High/CPU Tick Low)</pre>
+<pre class="screen">BUFM             0%               0/  1ddb47</pre>
+<pre class="screen">VIDL            94%               0/71b20c17
+TICK             0%               0/  57fe3b
+ Ecm             0%               0/   daebc
+IPCR             0%               0/   e5abf
+ ARQ             0%               0/  4016f6
+RTMR             0%               0/  7640a2
+IPCQ             0%               0/  3a8fb2
+  VP             0%               0/     52f
+RPCQ             0%               0/   3b669
+VMON             0%               0/     4bb
+STND             0%               0/  3b2571
+ CFA             0%               0/   3f39b
+INFO             0%               0/    7a12
+ RPR             0%               0/  3c3c58
+L2IF             0%               0/   732f7 </pre>
+<pre class="screen">MFLP             0%               0/    c584
+MINM             0%               0/   68869
+ APS             0%               0/   691c0
+FIB6             0%               0/  1009bc
+ BFD             0%               0/  4b6812
+ROUT             0%               0/  a9bf7f
+LSPM             0%               0/  8f593e
+ OAM             0%               0/   d4d6b
+ LDP             0%               0/   25549
+RSVP             0%               0/   cfff6
+CSPF             0%               0/  396cda
+TNLM             0%               0/   6bf26
+SNPG             0%               0/   dc452
+ADPT             0%               0/     d81
+ SRM             0%               0/  621dbd
+LOAD             0%               0/   104c7
+DIAG             0%               0/  100300
+ CAN             0%               0/   4a603
+RFIB             0%               0/   1d08c
+FTPS             0%               0/  5c5015
+VRRP             0%               0/    23e0
+ vt0             0%               0/   3bb18
+EOAM             0%               0/    e139
+ FIB             0%               0/   41701
+SOCK             0%               0/   92158  </pre>
+<pre class="screen">VTYD             0%               0/   b9cd7
+IPSP             0%               0/    1346
+ IKE             0%               0/    23be
+L2TP             0%               0/   18952
+TUNN             0%               0/   a6665
+TRAP             0%               0/  370a71
+MDMT             0%               0/  357606
+NTPT             0%               0/  75a630
+ TAC             0%               0/   d0533
+ UCM             0%               0/    3074
+HS2M             0%               0/    afc4
+MSTP             0%               0/    fbf7
+RRPP             0%               0/   237d5
+COPS             0%               0/   1b7d0
+TEST             0%               0/    90f7
+TSTA             0%               0/   e0c94
+NE50             0%               0/   32432
+DEFD             0%               0/    2153
+DHCP             0%               0/   1fc14
+RMON             0%               0/   105ad
+ HOT             0%               0/  4d1e1e
+ vt1             0%               0/  2e7225
+ vt2             0%               0/   32bb3
+ vt3             0%               0/   344a5
+  OS             6%               0/       0 </pre>
+<p># 显示当前主控板的CPU占用率的配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>sytem-view</strong> </strong></pre>
+<pre class="screen">[Quidway]<strong> display cpu-usage configuration</strong></pre>
+<pre class="screen">CPU usage monitor is turned on.</pre>
+<pre class="screen">Current monitor cycle is 60 seconds.</pre>
+<pre class="screen">Current monitor threshold is 100%.</pre>
+
+<div class="tablenoborder"><a name="display_cpu-usage__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cpu-usage__tb_01" frame="border" border="1" rules="all"><caption>表1 display cpu-usage命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.9244142101285%" id="d21599e179"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.0755857898715%" id="d21599e183"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>CPU usage monitor</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>CPU情况使用监控开关的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>Current monitor cycle</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>对CPU进行监控的周期</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>Current monitor threshold</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>监控极限情况</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>BUFM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>输出调试信息的任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>VIDL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>空闲任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>TICK</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>Tick任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>TSTA</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>测试任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>IPCR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>IPC报文接收处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>VPS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>VP报文发送处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>Ecm</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>板间ECM报文接收处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>IPCQ</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>IPC报文发送处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>VP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>VP报文接收处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>RPCQ</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>RPC报文接收处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>VMON</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>VOS监控任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>STND</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>通过事件放弃控制权的调度任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>CFA</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>配置代理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>INFO</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>信息中心任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>RPR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>RPR任务</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>L2IF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>二层接口任务</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>BFD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>双向转发检测</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>ROUT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>路由处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>OAM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>MPLS OAM任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>RSVP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>RSVP处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>RCSPF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>CSPF任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>TNLM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>隧道管理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>SRM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>设备管理处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>LOAD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>加载处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>DIAG</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>诊断检测处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>CAN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>总线处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>RFIB</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>RFIB处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>FIB</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>FIB处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>SOCK</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>报文转发任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>VTYD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>VTY守护任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>IPSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>IPSec任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>IKE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>IKE</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>L2TP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>L2TP协议服务处理</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>TRAP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>告警</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>MDMT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>MODEM任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>NTPT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>NTP时间系统</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>TAC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>TACAS任务处理</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>UCM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>用户控制管理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>HS2M</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>热备份任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>MSTP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>MSTP处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>RRPP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>RRPP处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>COPS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>COPS任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>NE50</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>QoS的任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>ARQ</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>总线ARP报文处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>VRRP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>虚拟路由冗余任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>DHCP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>动态主机配置任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>RMON</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>定时器超时队列处理任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>HOT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>热插拔任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>FTPS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>FTP服务器任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>vt0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>虚拟端口任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>OS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>系统任务</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.9244142101285%" headers="d21599e179 "><p>IFNT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.0755857898715%" headers="d21599e183 "><p>接口管理任务</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_cpu-usage__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cpu-usage__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d21599e810"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d21599e814"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d21599e810 "><p>VRPV500R005C01B050</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d21599e814 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/update_and_maintenance.html">升级维护</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="set_cpu-usage_threshold.html">set cpu-usage threshold</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

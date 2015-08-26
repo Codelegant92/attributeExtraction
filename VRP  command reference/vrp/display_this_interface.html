@@ -1,0 +1,559 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display this interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/interface_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_interface.html">
+<meta name="DC.Relation" scheme="URI" content="display_interface_brief.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_this_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display this interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_this_interface"></a><a name="display_this_interface"></a>
+
+
+
+<h1 class="topictitle1">display this interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display this interface</strong>命令用来显示当前接口视图下的接口信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>this interface</strong><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>|</strong>：使用正则表达式过滤输出的显示信息。</p>
+<p><strong>begin</strong>：显示以包含指定正则表达式的行开始的配置信息。</p>
+<p><strong>exclude</strong>：显示不包含指定正则表达式的行的配置信息。</p>
+<p><strong>include</strong>：显示包含指定正则表达式的行的配置信息。</p>
+<p><em>regular-expression</em>：正则表达式。字符串形式，支持空格，区分大小写。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当在接口视图下，如果希望快速看到该接口的状态信息或报文统计信息，可以使用该命令。</p>
+<p><strong>display this interface</strong>命令的缺省级别虽然为监控级，但是该命令必须在接口视图下执行，因此要执行该命令，用户级别应该为配置级或更高级别。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_this_interface__d68866e79"></a><a name="d68866e79"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示<span class="keyword">路由器</span>当前接口POS1/0/0的接口信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> display this interface</strong></pre>
+<pre class="screen">Pos1/0/0 current state : UP
+Line protocol current state : UP</pre>
+<pre class="screen">Last line protocol up time: 2007-11-03, 15:27:37</pre>
+<pre class="screen"><span>Description:HUAWEI, Quidway Series, Pos1/0/0 Interface
+</span><span>Route Port,The Maximum Transmit Unit is 4470</span>, Hold timer is 10(sec)
+Internet Address is 10.1.1.1/24
+Link layer protocol is PPP
+LCP Opened，IPCP Opened
+Physical layer is POS over STM-1
+Scramble enabled, crc 32, clock slave, loopback not set
+Port 0 :
+ Hardware is POS155
+ VendorName    : AGILENT
+ Compliance    : OC3-SM-INTER REACH
+ PartNumber    : HFCT-5760T
+ Mode          : SingleMode
+ LaserwaveLen  : 1310
+ Length for 9/125um :    15000m
+Output queue : (Urgent queue : Size/Length/Discards)  0/50/0
+Output queue : (Protocol queue : Size/Length/Discards) 0/1000/0
+Output queue : (FIFO queuing : Size/Length/Discards)  0/256/0
+    SDH alarm:
+        section layer:  none
+        line    layer:  none
+        path    layer:  none
+        C2(Rx): 0x16  C2(Tx): 0x16
+        J0(Rx): 0x00  J0(Tx): 0x00
+        J1(Rx): 0x00  J1(Tx):0x00
+    SDH error:
+        section layer:  B1 0
+        line    layer:  B2 0  REI 0
+        path    layer:  B3 0  
+  Traffic statistics:
+    Last 300 seconds input rate 6 bits/sec, 12 packets/sec
+    Last 300 seconds output rate 17 bits/sec, 23 packets/sec
+    Input: 2247 packets, 143808 bytes
+           0 errors, 0 CRC, 0 packets too long
+    Output:5637 packets, 360768 bytes, 0 underruns
+           0 CRC, 0 aborted sequences, 0 packets too long</pre>
+
+<div class="tablenoborder"><a name="display_this_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_this_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display this interface命令在物理接口视图下的输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="37.66691861929957%" id="d68866e120"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="62.33308138070043%" id="d68866e124"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>Pos1/0/0 current state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><div class="p">出接口的物理链路状态。<ul>
+<li><p>UP：接口处于正常启动的状态。</p>
+</li>
+<li><p>DOWN：接口在物理上出现故障。</p>
+</li>
+<li><p>Administratively down：如果网络管理员在该接口执行<a href="shutdown_interface_view.html">shutdown（接口视图）</a>命令，将显示状态为Administratively down。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>Line protocol current state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><div class="p">链路层协议状态。<ul>
+<li><p>UP：接口的链路协议处于正常的启动状态。</p>
+</li>
+<li><p>UP(BFD status down)：与接口绑定的BFD会话状态变为down。</p>
+</li>
+<li><p>UP(Main BFD status down)：与主接口绑定的BFD会话状态down，并且联动子接口状态。只能在子接口显示该状态。</p>
+</li>
+<li><p>DOWN：接口的链路协议不正常，或者没有在此接口配置IP地址。其中damping表示该接口因为频繁震荡而被抑制。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>Last line protocol up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>接口的协议状态最近一次变为Up的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>Description</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>接口的描述。支持空格，区分大小写，最多可输入242个字符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>The Maximum Transmit Unit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>接口的MTU值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>Internet Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>接口的IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>Hold timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>接口的轮询时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>Link layer protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>链路层运行的协议。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>LCP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>LCP协商状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>Physical layer is POS over STM-1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>传输封装类型：SONET或SDH。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>Scramble</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>是否使能加扰：disabled或enabled。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>CRC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>CRC校验字长度。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>clock</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>时钟工作模式：slave或master。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>loopback</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>环回功能模式：内部自环、外部环回或不使能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>Hardware</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>POS接口的类型。有155M、2.5G和10G等类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>section layer:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>段。B1表示进行比特间插奇偶校验后错误的报文，其检测是对整个STM-N帧信号进行传输误码检测。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>line    layer:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>复用。</p>
+<ul>
+<li>B2表示比特间插奇偶校验N&times;24位的（BIP-N&times;24）字节，其检测是对STM-N帧中的每一个STM-1帧的传输误码情况进行监测。</li>
+<li>REI（Remote Error Indication）表示线路远端错误指示。</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.66691861929957%" headers="d68866e120 "><p>path    layer:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.33308138070043%" headers="d68866e124 "><p>通道。B3：通道BIP-8，B3字节负责监测VC4在STM-N帧中传输的误码性能，也就是监测140Mbit/s的信号在STM&#8212;N帧中传输的误码性能。监测机理与B1、B2相类似，不过B3是对VC4帧进行BIP-8校验。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示<span class="keyword">路由器</span>当前接口Eth-Trunk0的接口信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>interface Eth-Trunk 0</strong>
+[Quidway-Eth-Trunk0] <strong>display this interface</strong>
+Eth-Trunk0 current state : DOWN
+Line protocol current state : DOWN
+Description:HUAWEI, Quidway Series, Eth-Trunk0 Interface,
+Route Port,Hash arithmetic : According to flow,The Maximum Transmit Unit is 1500
+Internet protocol processing : disabled
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 00e0-fc8f-8b84
+Physical is ETH_TRUNK
+    Last 300 seconds input rate 0 bits/sec, 0 packets/sec
+    Last 300 seconds output rate 0 bits/sec, 0 packets/sec
+    Realtime 5 seconds input rate 0 bits/sec, 0 packets/sec
+    Realtime 5 seconds output rate 0 bits/sec, 0 packets/sec
+    Input: 0 packets,0 bytes,
+           0 unicast,0 broadcast,0 multicast
+           0 errors,0 drops,0 unknownprotocol
+    Output:0 packets,0 bytes,
+           0 unicast,0 broadcast,0 multicast
+           0 errors,0 drops
+-----------------------------------------------------
+PortName                Status              Weight
+-----------------------------------------------------
+-----------------------------------------------------
+The Number of Ports in Trunk : 0
+The Number of UP Ports in Trunk : 0
+</pre>
+
+<div class="tablenoborder"><a name="display_this_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_this_interface__tb_02" frame="border" border="1" rules="all"><caption>表2 display this interface命令在逻辑接口视图下的输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d68866e404"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d68866e408"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>Eth-Trunk0 current state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>Eth-Trunk接口的物理链路状态。</p>
+<ul>
+<li>UP：接口处于正常启动的状态。</li>
+<li>DOWN：接口在物理上出现故障。</li>
+<li>Administratively down：如果网络管理员在该接口执行<a href="shutdown_interface_view.html">shutdown（接口视图）</a>命令，将显示状态为Administratively down。</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>Line protocol current state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>链路层协议状态。</p>
+<ul>
+<li>UP：接口的链路协议处于正常的启动状态。</li>
+<li>UP(BFD status down)：与接口绑定的BFD会话状态变为Down。</li>
+<li>UP(Main BFD status down)：与主接口绑定的BFD会话状态为Down，并且联动子接口状态。只能在子接口显示该状态。</li>
+<li>DOWN：接口的链路协议不正常，或者没有在此接口配置IP地址。其中damping表示该接口因为频繁震荡而被抑制。</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>Hash arithmetic</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>依据路由器端口的Hash算法。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>The Maximum Transmit Unit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>接口的MTU值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>Internet protocol processing</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>IP协议处理功能使能状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>IP Sending Frames' Format</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>IP发送帧格式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>Hardware address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>接口硬件地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>Last 300 seconds input rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>300秒的平均输入速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>Last 300 seconds output rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>300秒的平均输出速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>Realtime 5 seconds input rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>5秒的实时输入速率，且这个显示时间会随两次display命令的间隔变化。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>Realtime 5 seconds output rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>5秒的实时输出速率，且这个显示时间会随两次display命令的间隔变化。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>PortName </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>Eth－Trunk成员接口名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>Status </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>成员接口状态。</p>
+<ul>
+<li>UP：接口处于正常启动的状态。</li>
+<li>DOWN：接口在物理上出现故障。</li>
+<li>Administratively down：如果网络管理员在该接口执行<a href="shutdown_interface_view.html">shutdown（接口视图）</a>命令，将显示状态为Administratively down。</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>Weight</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>成员接口权重。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>The Number of Ports in Trunk</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>该Eth－Trunk接口的成员接口数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e404 "><p>The Number of UP Ports in Trunk</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d68866e408 "><p>该Eth－Trunk接口的成员接口中接口状态为UP的接口数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_this_interface__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_this_interface__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="27%" id="d68866e648"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="73%" id="d68866e652"><p>修订记录</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="27%" headers="d68866e648 "><p>VRPV500R005C02B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73%" headers="d68866e652 "><p>除在链路协议状态处显示具有spoofing特性的接口和Trunk成员接口外，所有协议是Up状态的三层接口都增加显示接口的协议状态最近一次变为Up的时间。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/interface_management_configuration_commands.html">接口基础配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_interface.html">display interface</a></div>
+<div><a href="display_interface_brief.html">display interface brief</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

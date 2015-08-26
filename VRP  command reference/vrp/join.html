@@ -1,0 +1,99 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="join">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_nqa-agent.html">
+<meta name="DC.Relation" scheme="URI" content="destination-address.html">
+<meta name="DC.Relation" scheme="URI" content="destination-port.html">
+<meta name="DC.Relation" scheme="URI" content="source-address.html">
+<meta name="DC.Relation" scheme="URI" content="source-port.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="join">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>join</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="join"></a><a name="join"></a>
+
+
+<h1 class="topictitle1">join</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>join</strong>命令用来将当前测试例加入指定的NQA测试组。</p>
+<p><strong>undo join</strong>命令用来将测试例从测试组中退出。</p>
+<p>缺省情况下，测试例不属于任何测试组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>join group nqa </strong><em>admin-name test-name</em></p>
+<p><strong>undo join group nqa </strong><em>admin-name test-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>admin-name</em>：指定NQA测试组的管理者。字符串形式，长度范围是1～32。</p>
+<p><em>test-name</em>：指定NQA测试组的测试例名。字符串形式，长度范围是1～32。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>NQA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有和测试组的测试类型相同的测试例，才能加入测试组中。并且，一个测试例只能加入一个测试组中。</p>
+<p>一旦加入测试组后：</p>
+<ul>
+<li><p>不能更改测试例的测试类型，只能更改测试组的测试类型。</p>
+</li>
+<li><p>测试例加入组前，如果配置的报文大小是非缺省值，则加入组后此值保持不变，如果报文的大小是缺省值，则采用测试组的配置。</p>
+</li>
+<li><p>测试例加入测试组前，如果配置了VPN实例，则加入测试组后，VPN实例保持不变；如果没有配置VPN实例，则加入测试组后，采用测试组配置的VPN实例。</p>
+</li>
+<li><p>组员测试例只能配置目的地址、目的端口号、源地址、源端口号。</p>
+</li>
+<li><p>对于测试例不支持的配置，在加入组后，采用测试组的配置。</p>
+</li>
+</ul>
+<p>组员测试例退出测试组后，其源地址、源端口、目的地址、目的端口保持在组中的配置，其他的参数都恢复为缺省值。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="join__d87682e82"></a><a name="d87682e82"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置测试例user test加入已创建的测试组user group1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>nqa test-instance user group1</strong></strong></pre>
+<pre class="screen">[Quidway-nqa-user-group1]<strong> switch-to group</strong></pre>
+<pre class="screen">[Quidway-nqa-user-group1]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>nqa test-instance user test</strong></strong></pre>
+<pre class="screen">[Quidway-nqa-user-test]<strong> join group nqa user group1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nqa_configuration_commands.html">NQA配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_nqa-agent.html">display nqa-agent</a></div>
+<div><a href="destination-address.html">destination-address</a></div>
+<div><a href="destination-port.html">destination-port</a></div>
+<div><a href="source-address.html">source-address</a></div>
+<div><a href="source-port.html">source-port</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

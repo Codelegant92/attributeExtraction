@@ -1,0 +1,281 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ip netstream">
+<meta name="DC.Relation" scheme="URI" content="../vrp/netstream_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_aggregation.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_export_host.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_export_manager_version.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_export_source.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_export_version.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_max-entry.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_timeout_active.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_timeout_inactive.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_sampler.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ip_netstream">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ip netstream</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ip_netstream"></a><a name="display_ip_netstream"></a>
+
+
+<h1 class="topictitle1">display ip netstream</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ip netstream</strong>命令用来显示NetStream的配置信息。可以显示单个接口下的NetStream配置信息，可以显示系统视图下和聚合视图下的NetStream配置信息。也可以显示系统中所有的NetStream配置信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ip netstream</strong> { <strong>all</strong> | <strong>global</strong> | <strong>interface</strong> <em>interface-type interface-number</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：显示NetStream流统计的所有配置信息。包括系统视图下的流统计配置信息、聚合视图下的流统计配置信息和接口视图下的流统计配置信息。</p>
+<p><strong>global</strong>：显示系统视图下流统计的配置信息和聚合视图下的流统计配置信息。</p>
+<p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口编号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有接口配置了NetStream采样相关的配置才会显示出来，否则不会显示该接口。</p>
+<p>显示的内容有IPv4、IPv4组播、MPLS、IPv6、IPv6组播、RPF/URPF的入出采样使能，采样模式和采样报文间隔，如果是二层接口，显示二层接口所属的VLAN ID。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ip_netstream__d31097e66"></a><a name="d31097e66"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示接口Ethernet 1/0/0的NetStream配置信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ip netstream interface Ethernet 1/0/0
+</strong> ip netstream inbound
+ ip netstream outbound
+ ip netstream sampler inbound 10
+ ip netstream sampler outbound 10
+ ip netstream urpf enable
+</pre>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption>表1 display ip netstream命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.5%" id="d31097e87"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.5%" id="d31097e91"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e87 "><p>ip netstream inbound</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e91 "><p>使能了NetStream入统计功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e87 "><p>ip netstream outbound</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e91 "><p>使能了NetStream出统计功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e87 "><p>ip netstream sampler inbound</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e91 "><p>接口下配置NetStream入统计的采样报文的间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e87 "><p>ip netstream sampler outbound</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e91 "><p>接口下配置NetStream出统计的采样报文的间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e87 "><p>ip netstream urpf enable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e91 "><p>使能NetStream统计URPF报文的功能</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示全局和聚合的netstream配置信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ip netstream global
+</strong> ip netstream export version 9 peer-as
+  ip netstream export manager version 0 
+  ip netstream sampler inbound 12
+  ip netstream aggregation as
+  enable
+  ip netstream export source 2.2.22.2
+  ip netstream host 1.1.1.1 5555
+</pre>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption>表2 display ip netstream命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.5%" id="d31097e176"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.5%" id="d31097e180"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e176 "><p>ip netstream export version 9 peer-as</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e180 "><p>输出v9报文的自治系统号为对端自治系统号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e176 "><p>ip netstream export manager version 0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e180 "><p>输出给网管的报文格式是原有的报文格式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e176 "><p>ip netstream sampler inbound</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e180 "><p>全局下配置的入统计的采样间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e176 "><p>ip netstream sampler outbound</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e180 "><p>NetStream出统计的采样报文的间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e176 "><p>ip netstream aggregation as</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e180 "><p>NetStream按照AS号进行聚合</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e176 "><p>ip netstream export source</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e180 "><p>输出NetStream报文的源接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e176 "><p>ip netstream host</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e180 "><p>NetStream报文输出的目的主机地址</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.5%" id="d31097e279"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.5%" id="d31097e283"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.5%" headers="d31097e279 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.5%" headers="d31097e283 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/netstream_configuration_commands.html">NetStream配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ip_netstream_aggregation.html">ip netstream aggregation</a></div>
+<div><a href="ip_netstream_export_host.html">ip netstream export host</a></div>
+<div><a href="ip_netstream_export_manager_version.html">ip netstream export manager version</a></div>
+<div><a href="ip_netstream_export_source.html">ip netstream export source</a></div>
+<div><a href="ip_netstream_export_version.html">ip netstream export version</a></div>
+<div><a href="ip_netstream_max-entry.html">ip netstream max-entry</a></div>
+<div><a href="ip_netstream_timeout_active.html">ip netstream timeout active</a></div>
+<div><a href="ip_netstream_timeout_inactive.html">ip netstream timeout inactive</a></div>
+<div><a href="ip_netstream_sampler.html">ip netstream sampler</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

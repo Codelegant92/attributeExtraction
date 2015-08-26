@@ -1,0 +1,153 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display fib overload state">
+<meta name="DC.Relation" scheme="URI" content="../vrp/interface_board_intermixing_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="recover_fib_overload_suspend.html">
+<meta name="DC.Relation" scheme="URI" content="recover_fib_overload_forward.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_fib_overload_state">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display fib overload state</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_fib_overload_state"></a><a name="display_fib_overload_state"></a>
+
+
+<h1 class="topictitle1">display fib overload state</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display fib overload state</strong>命令用来查看接口板IPv4 FIB模块的当前工作状态以及超限处理模式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display fib overload state slot</strong><em> slot-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>slot</strong> <em>slot</em>-<em>number</em>：需要查看IPv4 FIB模块状态信息的接口板编号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行命令<strong>display fib overload state</strong>，可以查看接口板IPv4 FIB模块的当前工作状态和超限处理模式。</p>
+<p>工作状态包括正常工作状态、超限挂起状态和超限转发状态。超限处理模式包括超限挂起和超限转发。</p>
+<p>当接口板应用的IPv4 FIB策略路由前缀总数超过接口板的IPv4 FIB路由前缀容量时，接口板就会进入超限处理模式。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_fib_overload_state__d24459e54"></a><a name="d24459e54"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看2号接口板上IPv4 FIB模块当前的工作状态和超限处理模式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display fib overload state slot 2</strong></pre>
+<pre class="screen">  Overload mode:</pre>
+<pre class="screen">    Overload suspend mode.</pre>
+<pre class="screen">  Overload state:</pre>
+<pre class="screen">    Normal state.</pre>
+
+<div class="tablenoborder"><a name="display_fib_overload_state__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fib_overload_state__tb_01" frame="border" border="1" rules="all"><caption>表1 display fib overload state输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="20.693943539360777%" id="d24459e82"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="79.30605646063923%" id="d24459e86"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="20.693943539360777%" headers="d24459e82 "><p>Overload mode:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.30605646063923%" headers="d24459e86 "><div class="p">本接口板IPv4 FIB模块应用的超限处理模式。可能的处理模式有：<ul>
+<li>Overload suspend mode：超限挂起模式</li>
+<li>Overload forward mode：超限转发模式</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="20.693943539360777%" headers="d24459e82 "><p>Overload state:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.30605646063923%" headers="d24459e86 "><div class="p">本接口IPv4 FIB模块当前的工作状态。可能的工作状态有：<ul>
+<li>Normal state：正常工作状态</li>
+<li>Overload suspend state：超限挂起状态</li>
+<li>Overload forward state：超限转发状态</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_fib_overload_state__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fib_overload_state__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d24459e149"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d24459e153"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d24459e149 "><p>VRPV500R005C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d24459e153 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/interface_board_intermixing_configuration_commands.html">接口板混插配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="recover_fib_overload_suspend.html">recover fib overload suspend</a></div>
+<div><a href="recover_fib_overload_forward.html">recover fib overload forward</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

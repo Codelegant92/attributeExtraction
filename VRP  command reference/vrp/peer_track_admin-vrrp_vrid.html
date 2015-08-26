@@ -1,0 +1,90 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer track admin-vrrp vrid">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_convergence_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_track_admin-vrrp_vrid">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer track admin-vrrp vrid</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_track_admin-vrrp_vrid"></a><a name="peer_track_admin-vrrp_vrid"></a>
+
+<h1 class="topictitle1">peer track admin-vrrp vrid</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer track admin-vrrp vrid</strong>命令用来把业务VSI的PW与管理VRRP进行绑定。</p>
+<p><strong>undo peer track admin-vrrp vrid</strong>命令用来删除业务VSI的PW与管理VRRP的绑定关系。</p>
+<p>缺省情况下，没有配置业务VSI的PW与任何管理VRRP的绑定。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong><em> peer-address </em>[ <strong>negotiation-vc-id</strong><em> vc-id </em>] <strong>track admin-vrrp interface</strong><em> interface-type interface-number</em><strong> vrid</strong><em> virtual-router-id </em></p>
+<p><strong>undo peer</strong> <em>peer-address</em> [ <strong>negotiation-vc-id</strong> <em>vc-id </em>] <strong>track admin-vrrp</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>peer</strong><em> peer-address</em>：对等体的IPv4地址，通常指定为对端的Loopback地址。</p>
+<p><strong>negotiation-vc-id</strong><em> vc-id</em>：虚电路的唯一标识，一般用于两端VSI ID不同但要求互通的情况。参数<em>vc-id</em>不能与本端其他VSI配置的VSI ID相同，也不能与本端其他<strong>negotiate-vc-id</strong>指定的VSI ID相同，即<em>vc-id</em>是没有被用过的虚电路号，十进制整数形式，取值范围是1～4294967295。</p>
+<p><strong>vrid</strong><em> virtual-router-id</em>：管理VRRP备份组号。十进制整数形式，取值范围是1～255。</p>
+<p><strong>interface</strong><em> interface-type interface-number</em>：配置了管理VRRP的接口类型和编号。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VSI-LDP视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>peer track admin-vrrp vrid</strong>命令前，需要先使用<strong>peer</strong>命令，配置VSI的对等体。</p>
+<p><strong>peer track admin-vrrp vrid</strong>命令只能在业务VSI中使用，不能在管理VSI中使用。</p>
+<p>一个业务VSI只能绑定到一个管理VRRP中。</p>
+<p>业务VSI的PW与管理VRRP接口不能配置在不同的接口板，而必须配置在同一物理接口的不同子接口，否则管理VRRP的状态不能反映PW的真实状态。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_track_admin-vrrp_vrid__d104775e110"></a><a name="d104775e110"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置VRRP备份组100，虚拟IP为192.168.0.100。并配置该VRRP备份组为管理VRRP。指定的VC ID为100，在NPE上配置VRRP和业务VSI中的PW绑定。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> ip address 192.168.0.1 255.255.255.0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> vrrp vrid 100 virtual-ip 192.168.0.100</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> admin-vrrp vrid 100</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> mpls l2vpn </strong></pre>
+<pre class="screen">[Quidway-l2vpn]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> vsi v100 static</strong></pre>
+<pre class="screen">[Quidway-vsi-v100]<strong> pwsignal ldp</strong></pre>
+<pre class="screen">[Quidway-vsi-v100-ldp]<strong> peer 192.168.0.1 negotiation-vc-id 100 </strong></pre>
+<pre class="screen">[Quidway-vsi-v100-ldp]<strong> peer 192.168.0.1 negotiation-vc-id 100 track admin-vrrp interface gigabitethernet 1/0/0 vrid 100</strong></pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="peer_track_admin-vrrp_vrid__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="peer_track_admin-vrrp_vrid__tb_01" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.338345864661655%" id="d104775e168"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d104775e171"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d104775e168 "><p>VRPV500R005C02B020</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d104775e171 "><p>首次发布</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_convergence_configuration_commands.html">VPLS汇聚配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

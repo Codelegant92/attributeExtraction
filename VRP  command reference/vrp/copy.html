@@ -1,0 +1,90 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="copy">
+<meta name="DC.Relation" scheme="URI" content="../vrp/file_system_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="dir_user_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="copy">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>copy</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="copy"></a><a name="copy"></a>
+
+
+<h1 class="topictitle1">copy</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"> <p><strong>copy</strong>命令用来复制文件。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"> <p><strong>copy</strong><em> source-filename destination-filename</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"> <p><em>source-filename</em>：源文件名。字符串形式，格式为[ <em>path</em> ][ <em>file-name </em>]，取值范围是1～64。</p>
+ <p><em>destination-filename</em>：目标文件名。字符串形式，取值范围是1～64。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"> <p>如果目标文件名为已经存在的目录名，则源文件会拷贝到该指定目录，新生成的文件名与源文件同名；若目标文件名与已经存在的文件名重名，将提示是否覆盖。</p>
+<p>如果目标文件是PAF、License或者配置文件，则当执行copy操作时，系统会要求用户确认是否覆盖目标文件。建议目标文件的路径、文件名不要与当前Startup中设置的启动文件相同，否则，系统不仅需要用户确认是否覆盖，还会再次要求用户确认是否要覆盖系统正在使用的文件。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="copy__d8641e60"></a><a name="d8641e60"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"> <p># 将文件sample.txt从hda1中拷贝到flash:/中。</p>
+ <pre class="screen">&lt;Quidway&gt;<strong> pwd</strong></pre>
+ <pre class="screen">flash:/</pre>
+  <pre class="screen">&lt;Quidway&gt;<strong> dir</strong></pre>
+ <pre class="screen">Directory of flash:/</pre>
+  <pre class="screen">Idx  Attr  Size(Byte)  Date        Time       FileName</pre>
+ <pre class="screen">   0   -rw-         4  Sep 12 2000 21:46:45   snmpboots</pre>
+ <pre class="screen">   1   -rw-   7094868  Aug 24 2000 00:54:53   vrp3.cc</pre>
+ <pre class="screen">   2   -rw-      1122  May 13 2004 14:20:33   vrpcfg.cfg</pre>
+  <pre class="screen">7493 KB total (442 KB free)</pre>
+  <pre class="screen">&lt;Quidway&gt;<strong> copy hda1:/sample.txt flash:/</strong></pre>
+  <pre class="screen">Copy hda1:/sample.txt to flash:/sample.txt ?[Y/N]<strong> :Y</strong></pre>
+  <pre class="screen">100%  complete</pre>
+ <pre class="screen">Info:Copiedfile hda1:/sample.txt to flash:/sample.txt...Done</pre>
+  <pre class="screen">&lt;Quidway&gt;<strong> dir</strong></pre>
+ <pre class="screen">Directory of flash:/</pre>
+  <pre class="screen">Idx  Attr  Size(Byte)  Date        Time       FileName</pre>
+ <pre class="screen">   0   -rw-         4  Sep 12 2000 21:46:45   snmpboots</pre>
+ <pre class="screen">   1   -rw-   7094868  Aug 24 2000 00:54:53   vrp3.cc</pre>
+ <pre class="screen">   2   -rw-      1122  May 13 2004 14:20:33   vrpcfg.cfg</pre>
+ <pre class="screen">   3   -rw-        10  May 13 2004 15:16:49   sample.txt</pre>
+  <pre class="screen">7493 KB total (442 KB free)</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/file_system_configuration_commands.html">文件系统命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="dir_user_view.html">dir（用户视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="label-retention">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="label-distribution.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="label-retention">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>label-retention</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="label-retention"></a><a name="label-retention"></a>
+
+
+<h1 class="topictitle1">label-retention</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>label-retention</strong>命令用来配置标签保持方式。</p>
+<p><strong>undo label-retention</strong>命令恢复缺省配置。</p>
+<p>缺省情况下，标签保持方式为自由标签保持方式（liberal）。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>label-retention </strong><span>{ <strong>conservative</strong> | <strong>liberal</strong> }</span></p>
+<p><strong>undo label-retention</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>conservative</strong>：保守标签保持方式。这种方式下，LSR只保留路由表中下一跳邻居发布的标签映射。</p>
+<p><strong>liberal</strong>：自由标签保持方式。这种方式下，不论发来标签映射（Mapping）的LSR是否是所发布映射中的下一跳，都将保留此标签映射。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>MPLS-LDP-VPN实例视图、MPLS-LDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>标签保持方式在建立LSP之前配置，并且，只有在相应视图中使能了MPLS LDP后，该配置才会生效。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><div class="p">建议用户不要轻易更改标签保持方式的配置，如需更改，请了解以下事项：<ul>
+<li><p>当从保守方式改为自由方式时，由于DU模式下的标签重发布特性，将影响标签映射表项；</p>
+</li>
+<li><p>当从自由方式改为保守方式时，原自由方式的标签映射表项不会被删除。这种情况下，如果改变LSP的配置，LDP中LSP的内容将不可预期。</p>
+</li>
+<li><p>建立LSP时，推荐采用的组合是：du＋ordered＋liberal。</p>
+</li>
+</ul>
+</div>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="label-retention__d88734e79"></a><a name="d88734e79"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置标签保持方式为自由方式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> mpls ldp</strong></pre>
+<pre class="screen">[Quidway-mpls-ldp]<strong> label-retention liberal</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="label-distribution.html">label-distribution</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

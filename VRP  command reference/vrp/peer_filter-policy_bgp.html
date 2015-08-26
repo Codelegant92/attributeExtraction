@@ -1,0 +1,96 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer filter-policy (BGP)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_filter-policy_bgp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer filter-policy (BGP)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_filter-policy_bgp"></a><a name="peer_filter-policy_bgp"></a>
+
+
+<h1 class="topictitle1">peer filter-policy (BGP)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer filter-policy</strong>命令用来设置对等体/对等体组的过滤策略。</p>
+<p><strong>undo peer filter-policy</strong>命令用来取消已有的设置。</p>
+<p>缺省情况下，对等体/对等体组无过滤策略。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> { <em>group-name</em> | <em>ipv4-address</em> | <em>ipv6-address</em> } <strong>filter-policy</strong> { <em>acl-number</em> | <em>acl6-number</em> } { <strong>import</strong> | <strong>export</strong> }</p>
+<p><strong>undo peer</strong> { <em>group-name</em> | <em>ipv4-address</em> | <em>ipv6-address</em> } <strong>filter-policy</strong> { <em>acl-number</em> | <em>acl6-number</em> } { <strong>import</strong> | <strong>export</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>group-name</em>：对等体组的名称。不区分大小写。</p>
+<p><em>ipv4-address</em>：对等体的IPv4地址。</p>
+<p><em>ipv6-address</em>：对等体的IPv6地址。</p>
+<p><em>acl-number</em>：基本ACL编号。</p>
+<p><em>acl6-number</em>：基本ACL6访问列表号。</p>
+<p><strong>import</strong>：对接收的路由进行过滤。</p>
+<p><strong>export</strong>：对发布的路由进行过滤。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p><em>ipv4-address</em>和<em>acl-number</em>参数仅在BGP视图、BGP-IPv4单播地址族视图、BGP-IPv6单播地址族视图、BGP-VPN实例视图、BGP-VPNv4地址族视图和BGP-VPNv6地址族视图下生效。</p>
+</li>
+<li><p><em>ipv6-address</em>和<em>acl6-number</em>参数仅在BGP-IPv6单播地址族视图和BGP-VPN6实例视图下生效。</p>
+</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP视图、BGP-IPv4单播地址族视图、BGP-IPv6单播地址族视图、BGP-VPN实例视图、BGP-VPN6实例视图、BGP-VPNv4地址族视图、BGP-VPNv6地址族视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>请根据对等体/组的地址族类型正确选择基本ACL或ACL6访问列表。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_filter-policy_bgp__d103652e143"></a><a name="d103652e143"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置对等体的过滤策略（IPv4）。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> acl 2000</strong></pre>
+<pre class="screen">[Quidway -acl-basic-2000]<strong> rule permit</strong></pre>
+<pre class="screen">[Quidway -acl-basic-2000]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> peer 1.1.1.2 as-number 200</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> ipv4-family unicast</strong></pre>
+<pre class="screen">[Quidway-bgp-af-ipv4]<strong> peer 1.1.1.2 filter-policy 2000 import</strong></pre>
+<p># 设置对等体的过滤策略（IPv6）。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> acl ipv6 2001</strong></pre>
+<pre class="screen">[Quidway -acl6-basic-2001]<strong> rule permit</strong></pre>
+<pre class="screen">[Quidway -acl6-basic-2001]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> ipv6-family unicast</strong></pre>
+<pre class="screen">[Quidway-bgp-af-ipv6]<strong> peer 1:2::3:4 filter-policy 2001 export</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

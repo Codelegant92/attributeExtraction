@@ -1,0 +1,210 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qos cql protocol">
+<meta name="DC.Relation" scheme="URI" content="../vrp/congestion_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="qos_cql_default-queue.html">
+<meta name="DC.Relation" scheme="URI" content="qos_cql_inbound-interface.html">
+<meta name="DC.Relation" scheme="URI" content="qos_cql_queue.html">
+<meta name="DC.Relation" scheme="URI" content="qos_cql_queue_serving.html">
+<meta name="DC.Relation" scheme="URI" content="qos_cq.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qos_cql_protocol">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qos cql protocol</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qos_cql_protocol"></a><a name="qos_cql_protocol"></a>
+
+
+<h1 class="topictitle1">qos cql protocol</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qos cql protocol</strong>命令用来配置基于协议的分类规则。</p>
+<p><strong>undo qos cql protocol</strong>命令用来删除相应的分类规则。</p>
+<p>缺省情况下，不配置任何分类规则。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qos cql</strong> <em>cql-index</em> <strong>protocol</strong> <em> protocol-name queue-key key-value </em> <strong>queue</strong><em> queue-number</em></p>
+<p><strong>undo qos cql</strong> <em>cql-index </em><strong>protocol</strong> <em>protocol-name queue-key key-value </em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>cql-index</em>：定制列表的组号，取值范围是1～16。</p>
+<p><em>queue-number</em>：队列号，取值范围是1～16。</p>
+<p><em>protocol-name</em>：协议名，可以为IP或MPLS。当<em>protocol-name</em>为IP时，<em>queue-key</em>和<em>key-value</em>的取值见下表：</p>
+
+<div class="tablenoborder"><a name="qos_cql_protocol__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="qos_cql_protocol__tb_01" frame="border" border="1" rules="all"><caption>表1 协议为IP和MPLS时的queue-key和key-value的取值</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="18.49332325522802%" id="d109395e89"><p>protocol-name</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="16.830435878054924%" id="d109395e93"><p>queue-key</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="29.037540942302847%" id="d109395e97"><p>key-value</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="35.638699924414205%" id="d109395e101"><p>意义</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" rowspan="7" valign="top" width="18.49332325522802%" headers="d109395e89 "><p>ip</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="16.830435878054924%" headers="d109395e93 "><p>acl</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d109395e97 "><p>access-list-number（2000～3999）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="35.638699924414205%" headers="d109395e101 "><p>符合某访问控制列表定义的IP报文就进入队列</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="16.830435878054924%" headers="d109395e93 "><p>fragments</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d109395e97 "><p>空</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="35.638699924414205%" headers="d109395e101 "><p>只要是分片的IP报文就进入队列</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="16.830435878054924%" headers="d109395e93 "><p>greater-than</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d109395e97 "><p>长度值（0～65535）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="35.638699924414205%" headers="d109395e101 "><p>长度大于某个计数值的IP报文进入队列</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="16.830435878054924%" headers="d109395e93 "><p>less-than</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d109395e97 "><p>长度值（0～65535）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="35.638699924414205%" headers="d109395e101 "><p>长度小于某个计数值的IP报文进入队列</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="16.830435878054924%" headers="d109395e93 "><p>tcp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d109395e97 "><p>端口号（0～65535）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="35.638699924414205%" headers="d109395e101 "><p>只要IP报文的源或目的TCP端口号为指定的端口号，就进入队列</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="16.830435878054924%" headers="d109395e93 "><p>udp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d109395e97 "><p>端口号（0～65535）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="35.638699924414205%" headers="d109395e101 "><p>只要IP报文的源或目的UDP端口号为指定的端口号，就进入队列</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="16.830435878054924%" headers="d109395e93 "><p>空</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d109395e97 "><p>空</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="35.638699924414205%" headers="d109395e101 "><p>所有IP报文进入队列</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="18.49332325522802%" headers="d109395e89 "><p>mpls</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="16.830435878054924%" headers="d109395e93 "><p>exp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="29.037540942302847%" headers="d109395e97 "><p>0～7</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="35.638699924414205%" headers="d109395e101 "><p>-</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>系统是以规则被配置的顺序来匹配数据包，如果发现数据包与某个规则匹配，便结束整个查找过程。</p>
+<p>对于同一个<em>cql-index</em>，该命令可以重复使用，为IP数据包建立多种分类规则。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qos_cql_protocol__d109395e259"></a><a name="d109395e259"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定CQ规则5，使得匹配访问控制列表2100的IP报文进入队列3。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>qos cql 5 protocol ip acl 2100 queue 3</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/congestion_management_configuration_commands.html">拥塞管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="qos_cql_default-queue.html">qos cql default-queue</a></div>
+<div><a href="qos_cql_inbound-interface.html">qos cql inbound-interface</a></div>
+<div><a href="qos_cql_queue.html">qos cql queue</a></div>
+<div><a href="qos_cql_queue_serving.html">qos cql queue serving</a></div>
+<div><a href="qos_cq.html">qos cq</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

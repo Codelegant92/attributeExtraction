@@ -1,0 +1,63 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="x25 switch svc hunt-group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_x25_switch-table_svc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="x25_switch_svc_hunt-group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>x25 switch svc hunt-group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="x25_switch_svc_hunt-group"></a><a name="x25_switch_svc_hunt-group"></a>
+
+<h1 class="topictitle1">x25 switch svc hunt-group</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>x25 switch svc hunt-group</strong>命令用来增加一条转发地址为搜索群的X.25交换路由。</p>
+<p><strong>undo x25 switch svc hunt-group</strong>命令用来删除指定的X.25交换路由。</p>
+<p>缺省情况下，未配置X.25交换路由。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>x25 switch svc </strong><em>x.121-address</em> [ <strong>sub-dest </strong><em>destination-address</em> ] [ <strong>sub-source </strong><em>source-address</em> ] <strong>hunt-group</strong> <em>hunt-group-name</em></p>
+<p><strong>undo x25 switch svc </strong><em>x.121-address</em> [ <strong>sub-dest</strong> <em>destination-address</em> ] [ <strong>sub-source </strong><em>source-address</em> ]<strong> hunt-group</strong> <em>hunt-group-nam</em>e </p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>x.121-address</em>：目的X.121地址。此参数为模式匹配字符串，长度为1～15个字符。</p>
+<p><strong>sub-dest</strong> <em>destination-address</em>：替换目的地址。</p>
+<p><strong>sub-source </strong><em>source-address</em>：替换源地址。</p>
+<p><em>hunt-group-name</em>：搜索群名称，字符串形式，长度为1～30。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置转发地址为搜索群的X.25交换路由后，相应的X.25的呼叫请求分组将被转发到指定搜索群内的不同接口或XOT通道之上，从而实现X.25协议下的负载分担。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="x25_switch_svc_hunt-group__d129991e94"></a><a name="d129991e94"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 增加一条目的地址为8888，转发地址为搜索群hg1的X.25交换路由，同时将目的地址替换为9999。</p>
+<pre class="screen">&lt;Quidway&gt;<strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> x25 switch svc 8888 sub-dest 9999 hunt-group hg1</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_x25_switch-table_svc.html">display x25 switch-table svc</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

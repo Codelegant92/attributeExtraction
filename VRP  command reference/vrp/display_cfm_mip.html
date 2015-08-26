@@ -1,0 +1,177 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display cfm mip">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mip_create-type_md_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_cfm_mip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display cfm mip</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_cfm_mip"></a><a name="display_cfm_mip"></a>
+
+
+<h1 class="topictitle1">display cfm mip</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display cfm mip</strong>命令用来查看MIP的信息，包括：</p>
+<ul>
+<li><p>所在接口名称</p>
+</li>
+<li><p>级别</p>
+</li>
+</ul>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display cfm mip</strong> [ <strong>interface</strong> <em>interface-type interface-number</em> | <strong>level</strong> <em>level</em> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>level</strong> <em>level</em>：表示查看指定级别的MIP。<em>level</em>表示MIP的级别，整数形式，取值范围是0～7，值越大级别越高。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：表示查看指定接口上的MIP的信息。<em>interface-type</em>表示接口类型，取值包括：<strong>ethernet</strong>、<strong>eth-trunk</strong>和<strong>gigabitethernet</strong>。<em>interface-number</em>表示接口编号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如需要了解当前设备上有哪些MIP、MIP所在接口和MIP的级别时可使用本命令。</p>
+<p>既不输入<strong>level</strong> <em>level</em>参数，也不输入<strong>interface</strong> <em>interface-type interface-number</em>参数时，表示查看本设备上所有MIP的信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_cfm_mip__d19133e150"></a><a name="d19133e150"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有MIP。</p>
+<pre class="screen">&lt;Quidway&gt;<strong><strong> display cfm mip</strong></strong></pre>
+<pre class="screen">Interface Name                Level
+-----------------------------------
+GigabitEthernet2/0/4          0
+Eth-Trunk10                   0
+GigabitEthernet2/0/9          0
+GigabitEthernet2/0/2          0
+</pre>
+<p># 查看级别为7的MIP。</p>
+<pre class="screen">&lt;Quidway&gt;<strong><strong> display cfm mip level 7</strong></strong></pre>
+<pre class="screen">Interface Name                Level
+-----------------------------------
+GigabitEthernet2/0/2          7
+Eth-Trunk5                    7
+GigabitEthernet2/0/1          7
+</pre>
+<p># 查看接口GigabitEthernet1/0/1上的MIP（该接口上创建了MIP）。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display cfm mip interface gigabitethernet1/0/1</strong></pre>
+<pre class="screen">Interface Name                Level
+-----------------------------------
+GigabitEthernet1/0/1          0
+</pre>
+<p># 查看接口GigabitEthernet3/0/1上的MIP（该接口上没创建MIP）。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display cfm mip interface gigabitethernet3/0/1</strong></pre>
+<pre class="screen">Interface Name                Level
+-----------------------------------
+GigabitEthernet3/0/1          --
+</pre>
+
+<div class="tablenoborder"><a name="display_cfm_mip__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cfm_mip__tb_01" frame="border" border="1" rules="all"><caption>表1 display cfm mip命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.93801965230537%" id="d19133e198"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.06198034769464%" id="d19133e202"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19133e198 "><p>Interface Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19133e202 "><p>MIP所在接口的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19133e198 "><p>Level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19133e202 "><p>MIP的级别，范围是0～7。如果指定接口上未创建MIP，本字段显示为&#8220;--&#8221;。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_cfm_mip__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cfm_mip__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35%" id="d19133e246"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65%" id="d19133e250"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35%" headers="d19133e246 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65%" headers="d19133e250 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mip_create-type_md_view.html">mip create-type（MD视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

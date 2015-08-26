@@ -1,0 +1,114 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="tracert">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ping_and_tracert_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ping.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="tracert">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>tracert</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="tracert"></a><a name="tracert"></a>
+
+
+<h1 class="topictitle1">tracert</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>tracert</strong>命令用来测试数据包从发送主机到目的地所经过的网关，主要用于检查网络连接是否可达，以及分析网络什么地方发生了故障。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>tracert</strong> [ <strong>-a</strong><em> source-ip-address </em> | <strong>-f</strong><em> first-ttl </em> | <strong>-m</strong><em> max-ttl </em> | <strong>-name</strong> | <strong>-p</strong><em> port </em> | <strong>-q</strong><em> nqueries </em> | <strong>-vpn-instance</strong><em> vpn-instance-name </em> | <strong>-w</strong><em> timeout</em> ] * <em>host</em></p>
+<p><strong>tracert</strong> <strong>ipv6</strong> [ <strong>-f</strong><em> first-ttl </em> | <strong>-m</strong> <em>max-ttl</em> | <strong>-p</strong><em> port </em> | <strong>-q</strong><em> nqueries</em> | <strong>-vpn6-instance</strong><em> vpn6-instance-name</em> |<strong>-w</strong><em> timeout</em> ] * <em>ipv6-host</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>-a </strong><em>source-ip-address</em>：指明本次<strong>tracert</strong>命令配置的报文源地址，<em>source-ip-address</em>本地接口的IP地址，点分十进制形式。</p>
+<p><strong>-f </strong><em>first-TTL</em>：初始TTL。<em>first-TTL</em>取值范围是1～<em>max-TTL</em>，缺省值是1。</p>
+<p><strong>-m </strong><em>max-TTL</em>：最大TTL。<em>max-TTL</em>取值范围是<em>first-TTL</em>～255，缺省值是30。</p>
+<p><strong>-name</strong>：使能显示每一跳的主机名。</p>
+<p><strong>-p </strong><em>port</em>：目的主机的UDP端口号。取值范围是0～65535，缺省值是33434。</p>
+<p><strong>-q </strong><em>nqueries</em>：每次发送的探测数据包个数。取值范围是1～65535，缺省值是3。</p>
+<p><strong>-vpn-instance</strong> <em>vpn-instance-name</em>：本次Tracert目的地址的VPN属性，即关联的<em>vpn-instance</em>的名称。字符串形式，不支持空格，长度范围是1～31。</p>
+<p><strong>-w</strong> <em>timeout</em>：等待响应报文的超时时间。单位是毫秒，取值范围是0～65535，缺省值是5000毫秒。</p>
+<p><em>host</em>：目的主机的域名或IP地址。</p>
+<p><strong>ipv6</strong>：对使用IPv6协议的主机进行Tracert测试。</p>
+<p><strong>-vpn6-instance</strong> <em>vpn6-instance-name</em>: IPv6 VPN实例名称。字符串形式，长度范围是1～31。</p>
+<p><em>ipv6-host</em>: 目的主机的域名或IPv6地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>0：参观级</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p><strong>tracert ipv6</strong>命令的缺省级别是1（监控级）。</p>
+</div></div>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当用<strong>ping</strong>命令测试发现网络出现故障后，可以用<strong>tracert</strong>测试网络何处有故障。</p>
+<p>执行<strong>tracert</strong>命令发现网络出现故障可能输出以下信息：</p>
+<ul>
+<li>!H代表主机不可达</li>
+<li>!N代表网络不可达</li>
+<li>!代表端口不可达</li>
+<li>!P代表协议类型错误</li>
+<li>!F代表报文分片错误</li>
+<li>!S代表源路由错误</li>
+</ul>
+<p><strong>tracert</strong>命令中<strong>-name</strong>用于使能在每一跳的IP地址后显示对应的主机名。若主机名没有查询到，则以IP地址填充。</p>
+<p><strong>tracert</strong>命令的输出信息包括到达目的地所有网关的IP地址，如果某网关超时，则输出&#8220;*  *  * &#8221;。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p><strong>tracert ipv6</strong>命令的详细介绍请参考&#8220;IP业务命令&#8221;。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="tracert__d125041e256"></a><a name="d125041e256"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看从本地主机到18.26.0.115所经过的网关。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> tracert 18.26.0.115</strong></pre>
+<pre class="screen">traceroute to 18.26.0.115 (18.26.0.115), 30 hops max</pre>
+<pre class="screen">1 128.3.112.1		10 ms	10 ms	10 ms
+2 128.32.216.1		19 ms	19 ms	19 ms
+3 128.32.216.1		39 ms	19 ms	19 ms
+4 128.32.136.23		19 ms	39 ms	39 ms
+5 128.32.168.22		20 ms	39 ms	39 ms
+6 128.32.197.4		59 ms	119 ms	39 ms
+7 131.119.2.5		59 ms	59 ms	39 ms
+8 129.140.70.13		80 ms	79 ms	99 ms
+9 129.140.71.6		139 ms	139 ms	159 ms
+10 129.140.1.7		199 ms	180 ms	300 ms
+11 129.140.7.2		300 ms	239 ms	239 ms
+12 * * *
+13 128.11.4.72		59 ms	499 ms	279 ms
+14 * * *
+15 * * *
+16 * * *
+17 * * *
+18 18.26.0.115 (18.26.0.115) 339 ms 279 ms 279 ms</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ping_and_tracert_commands.html">Ping和Tracert</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ping.html">ping</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

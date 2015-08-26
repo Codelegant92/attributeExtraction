@@ -1,0 +1,145 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="nssa">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="nssa">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>nssa</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="nssa"></a><a name="nssa"></a>
+
+
+<h1 class="topictitle1">nssa</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>nssa</strong>命令用来配置一个区域为NSSA区域。</p>
+<p><strong>undo nssa</strong>命令用来取消该功能。</p>
+<p>缺省情况下，使能translator-interval。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>nssa</strong> [ <strong>default-route-advertise</strong> | <strong>flush-waiting-timer</strong> <em>interval-value</em> | <strong>no-import-route</strong> | <strong>no-summary</strong> | <strong>set-n-bit</strong> | <strong>suppress-forwarding-address</strong> | <strong>translator-always</strong> | <strong>translator-interval</strong> <em>interval-value</em> | <strong>zero-address-forwarding</strong> ] <sup>*</sup></p>
+<p><strong>undo nssa</strong> [ <strong>flush-waiting-timer</strong> <em>time</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>default-route-advertise</strong>：在ABR或者ASBR上配置产生缺省的Type-7 LSA到NSSA区域。</p>
+<p><strong>flush-waiting-timer</strong> <em>interval-value</em>：指定ASBR发送老化Type5 LSA的时间。整数形式，取值范围是1～40，单位是秒。此配置仅生效一次。</p>
+<p><strong>no-import-route</strong>：不向NSSA区域引入外部路由。</p>
+<p><strong>no-summary</strong>：禁止ABR向NSSA区域内发送Summary LSAs。</p>
+<p><strong>set-n-bit</strong>：在DD报文中设置N-bit位的标志。</p>
+<p><strong>suppress-forwarding-address</strong>：将通过该NSSA ABR转换后生成的Type5 LSA的FA（Aaddress Forwarding）设置为0.0.0.0。</p>
+<p><strong>translator-always</strong>：在NSSA区域的ABR中，指定转换路由器。允许将NSSA区域中的多个ABR配置成转换路由器。</p>
+<p><strong>translator-interval</strong> <em>interval-value</em>：指定转换路由器的失效时间。整数形式，取值范围是1～120，单位是秒。缺省值是40秒。</p>
+<p><strong>zero-address-forwarding</strong>：在NSSA区域的ABR上引入外部路由时，将生成的NSSA LSA的FA置为0.0.0.0。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>OSPF区域视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>所有连接到NSSA区域的路由器，必须使用<strong>nssa</strong>命令将该区域配置成NSSA属性。</p>
+<p><strong>default-route-advertise</strong>用来产生缺省的Type-7 LSA，在ABR上无论路由表中是否存在路由0.0.0.0，都会产生Type-7 LSA缺省路由，在ASBR上当路由表中存在路由0.0.0.0，才会产生Type-7 LSA缺省路由。</p>
+<p>当ASBR所在的区域被配置成NSSA时，在LSA洪泛区域中的其他路由器上仍会保留已经没用的Type-5 LSA，这些LSA必须等到老化时间到达3600秒后才会被删除。由于大量的LSA会占用路由器内存，所以对设备的性能造成了一定影响。<strong>flush-waiting-timer</strong>用来产生老化时间被置为最大值3600秒的Type-5 LSA，以达到及时清除其他路由器上已经没用的Type-5 LSA的目的。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>当LSA报文头部的LS age（老化时间）达到3600秒时，该LSA会被删除。</p>
+</li>
+<li><p>当ASBR同时还是ABR时，<strong>flush-waiting-timer</strong>功能不会生效。不能生效的目的是为了防止删除非NSSA区域的Type-5 LSA。</p>
+</li>
+</ul>
+</div></div>
+<p>当ASBR同时还是ABR时，通过<strong>no-import-route</strong>可以使得OSPF通过<strong>import-route</strong>命令引入的外部路由不被通告到NSSA区域。</p>
+<p>为了继续减少发送到NSSA区域的LSA的数量，可以配置ABR的<strong>no-summary</strong>属性，禁止ABR向NSSA区域内发送Summary LSA（Type-3）。</p>
+<p>设置了<strong>set-n-bit</strong>关键字后，路由器会和本NSSA区域内的相邻路由器重新建立邻居关系。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="nssa__d100342e175"></a><a name="d100342e175"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将区域1配置成NSSA区域。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ospf 1</strong></pre>
+<pre class="screen">[Quidway-ospf-1]<strong> area 1</strong></pre>
+<pre class="screen">[Quidway-ospf-1-area-0.0.0.1]<strong> nssa</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="nssa__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="nssa__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d100342e207"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d100342e211"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d100342e207 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d100342e211 "><p>增加可选关键字<strong>set-n-bit</strong>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d100342e207 "><p>VRPV500R005C02B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d100342e211 "><p>命令行中增加可选关键字<strong>flush-waiting-timer</strong>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d100342e207 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d100342e211 "><div class="p">新增可选关键字：<ul>
+<li><strong>translator-always</strong></li>
+<li><strong>translator-interval</strong></li>
+<li><strong>zero-address-forwarding</strong></li>
+<li><strong>suppress-forwarding-address</strong></li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

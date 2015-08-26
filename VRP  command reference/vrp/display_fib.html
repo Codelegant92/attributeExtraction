@@ -1,0 +1,653 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display fib">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_performance_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_fib">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display fib</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_fib"></a><a name="display_fib"></a>
+
+
+<h1 class="topictitle1">display fib</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display fib</strong>命令用来查看转发信息表的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display fib</strong> [ <em>slot-id </em>] [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] [ <strong>verbose</strong> ] [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>slot-id</em>：槽位号。根据路由设备硬件的不同而具有不同的取值范围。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例的名称。字符串形式，区分大小写，长度范围是1～31。</p>
+<p><strong>verbose</strong>：查看转发信息表的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对于<strong>display</strong> <strong>fib</strong> [ <em>slot-id </em>] <strong>|</strong> <strong>begin</strong> <em>regular-expression</em>：显示从包含字符串<em>regular-expression</em>的那一行开始到缓冲区结束的所有行。</p>
+<p>对于<strong>display</strong> <strong>fib</strong> [ <em>slot-id </em>] <strong>|</strong> <strong>exclude</strong><em> regular-expression</em>：显示不包含字符串<em>regular-expression</em>的行。</p>
+<p>对于<strong>display</strong> <strong>fib</strong> [ <em>slot-id </em>] <strong>|</strong> <strong>include</strong><em> regular-expression</em>：只显示包含字符串<em>regular-expression</em>的行。</p>
+<p>该命令以列表的方式输出转发信息表，每一行代表一条路由。</p>
+<p><strong>display fib</strong>命令以列表的方式输出转发信息表，每一行代表一条路由。</p>
+<p><strong>display fib verbose</strong>命令显示转发表的详细信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_fib__d24020e173"></a><a name="d24020e173"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示转发信息表摘要信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display fib</strong></pre>
+<pre class="screen"> FIB Table:</pre>
+<pre class="screen"> Total number of Routes : 3</pre>
+
+<pre class="screen">Destination/Mask  Nexthop   Flag  TimeStamp  Interface  TunnelID</pre>
+<pre class="screen">169.254.0.0/16    2.1.1.1    U    t[0]       GE1/0/0     0x0</pre>
+<pre class="screen">2.0.0.0/16        2.1.1.1    U    t[0]       GE1/0/0     0x0</pre>
+<pre class="screen">127.0.0.0/8       127.0.0.1  U    t[0]       InLoop0     0x0</pre>
+<p># 显示从包含字符串&#8220;169.254.0.0&#8221;那一行开始的所有行：</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display fib | begin 169.254.0.0</strong></pre>
+<pre class="screen">Destination/Mask  Nexthop   Flag  TimeStamp  Interface   TunnelID</pre>
+<pre class="screen">169.254.0.0/16    2.1.1.1   U     t[0]       GE1/0/0     0x0</pre>
+<pre class="screen">2.0.0.0/16        2.1.1.1   U     t[0]       GE1/0/0     0x0</pre>
+<pre class="screen">127.0.0.0/8       127.0.0.1 U     t[0]       InLoop0     0x0</pre>
+<p># 显示包含字符串&#8220;GE1/0/0&#8221;的所有行：</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display fib | include GE1/0/0</strong></pre>
+<pre class="screen">Destination/Mask  Nexthop   Flag  TimeStamp  Interface  TunnelID</pre>
+<pre class="screen">169.254.0.0/16    2.1.1.1   U     t[0]       GE1/0/0    0x0</pre>
+<pre class="screen">2.0.0.0/16        2.1.1.1   U     t[0]       GE1/0/0    0x0</pre>
+<p># 显示不包含字符串&#8220;169.254.0.0&#8221;的所有行：</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display fib | exclude 169.254.0.0</strong></pre>
+<pre class="screen">Destination/Mask  Nexthop   Flag  TimeStamp  Interface  TunnelID</pre>
+<pre class="screen">2.0.0.0/16        2.1.1.1   U     t[0]       GE1/0/0     0x0</pre>
+<pre class="screen">127.0.0.0/8       127.0.0.1 U     t[0]       InLoop0     0x0</pre>
+
+<div class="tablenoborder"><a name="display_fib__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fib__tb_01" frame="border" border="1" rules="all"><caption>表1 display fib命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d24020e244"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d24020e248"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24020e244 "><p>Destination/Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24020e248 "><p>目的地址/掩码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24020e244 "><p>Nexthop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24020e248 "><p>下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24020e244 "><p>Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24020e248 "><div class="p">当前标志，G、H、U、S、D、B、T的组合。<ul>
+<li><p>G（Gateway网关路由）：表示下一跳是网关。</p>
+</li>
+<li><p>H（Host主机路由）：表示下一跳为主机。</p>
+</li>
+<li><p>U（Up可用路由）：表示该路由状态是Up。</p>
+</li>
+<li><p>S（Static静态路由）</p>
+</li>
+<li><p>D（Dynamic动态路由）</p>
+</li>
+<li><p>B（Black Hole黑洞路由）：表示下一跳是空接口。</p>
+</li>
+<li><p>T（该路由已被LSPM添加了token值）</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24020e244 "><p>TimeStamp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24020e248 "><p>时间戳，表示FIB生成时间与系统启动时间的相对值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24020e244 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24020e248 "><p>到目的地址的出接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24020e244 "><p>TunnelID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24020e248 "><p>表示转发表项索引。用于连接上行板和下行板之间的转发表项。该值不为0时，表示匹配该项的报文通过MPLS隧道转发。该值为0时，表示报文不通过MPLS隧道转发。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示FIB的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display fib verbose</strong></pre>
+<pre class="screen">FIB Table:
+ Total number of Routes : 4
+
+ Destination : 127.0.0.1    Mask      : 255.255.255.255 
+ Nexthop     : 127.0.0.1    OutIf     : InLoopBack0 
+ LocalAddr   : 127.0.0.1    LocalMask : 0.0.0.0 
+ Flags       : HU           Age       : 760sec 
+ ATIndex     : 0            Slot      : 6 
+ LspFwdFlag  : 0            LspToken  : 0x0 
+ InLabel     : NULL         OriginAs  : 0 
+ BGPNextHop  : 0.0.0.0      PeerAs    : 0 
+ QosInfo     : 0x0          OriginQos : 0x0 
+ NexthopBak  : 0.0.0.0      OutIfBak  : [No Intf] 
+ LspTokenBak : 0x0          InLabelBak: NULL
+ LspToken_ForInLabelBak     : 0x0 
+ EntryRefCount : 1 
+ VlanId   : 0x0 
+ LspType         : 0        Label_ForLspTokenBak   : 0
+ MplsMtu         : 0        Gateway_ForLspTokenBak : 0
+ NextToken       : 0        IfIndex_ForLspTokenBak : 0
+ Label_NextToken : 0        Label : 0
+ LspBfdState     : 0                           
+
+ Destination : 127.0.0.0    Mask      : 255.0.0.0 
+ Nexthop     : 127.0.0.1    OutIf     : InLoopBack0 
+ LocalAddr   : 127.0.0.1    LocalMask : 0.0.0.0 
+ Flags       : U            Age       : 760sec 
+ ATIndex     : 0            Slot      : 6 
+ LspFwdFlag  : 0            LspToken  : 0x0 
+ InLabel     : NULL         OriginAs  : 0 
+ BGPNextHop  : 0.0.0.0      PeerAs    : 0 
+ QosInfo     : 0x0          OriginQos : 0x0 
+ NexthopBak  : 0.0.0.0      OutIfBak  : [No Intf] 
+ LspTokenBak : 0x0          InLabelBak : NULL
+ LspToken_ForInLabelBak     : 0x0 
+ EntryRefCount : 1 
+ VlanId   : 0x0 
+ LspType         : 0        Label_ForLspTokenBak   : 0
+ MplsMtu         : 0        Gateway_ForLspTokenBak : 0
+ NextToken       : 0        IfIndex_ForLspTokenBak : 0
+ Label_NextToken : 0        Label : 0
+ LspBfdState     : 0                            
+
+ Destination : 169.254.1.1  Mask      : 255.255.255.255 
+ Nexthop     : 127.0.0.1    OutIf     : InLoopBack0 
+ LocalAddr   : 127.0.0.1    LocalMask : 0.0.0.0 
+ Flags       : HU           Age       : 611sec 
+ ATIndex     : 0            Slot      : 6 
+ LspFwdFlag  : 0            LspToken  : 0x0 
+ InLabel     : NULL         OriginAs  : 0 
+ BGPNextHop  : 0.0.0.0      PeerAs    : 0 
+ QosInfo     : 0x0          OriginQos : 0x0 
+ NexthopBak  : 0.0.0.0      OutIfBak  : [No Intf] 
+ LspTokenBak : 0x0          InLabelBak: NULL
+ LspToken_ForInLabelBak    : 0x0 
+ EntryRefCount : 1 
+ VlanId   : 0x0
+ LspType         : 0        Label_ForLspTokenBak   : 0
+ MplsMtu         : 0        Gateway_ForLspTokenBak : 0
+ NextToken       : 0        IfIndex_ForLspTokenBak : 0
+ Label_NextToken : 0        Label : 0
+ LspBfdState     : 0                            
+
+
+ Destination : 169.254.0.0  Mask      : 255.255.0.0 
+ Nexthop     : 169.254.1.1  OutIf     : GE1/0/0
+ LocalAddr   : 169.254.1.1  LocalMask : 0.0.0.0 
+ Flags       : U            Age       : 611sec 
+ ATIndex     : 0            Slot      : 6 
+ LspFwdFlag  : 0            LspToken  : 0x0 
+ InLabel     : NULL         OriginAs  : 0 
+ BGPNextHop  : 0.0.0.0      PeerAs    : 0 
+ QosInfo     : 0x0          OriginQos : 0x0 
+ NexthopBak  : 0.0.0.0      OutIfBak  : [No Intf] 
+ LspTokenBa  : 0x0          InLabelBak: NULL
+ LspToken_ForInLabelBak    : 0x0 
+ EntryRefCount : 1 
+ VlanId   : 0x0
+ LspType         : 0        Label_ForLspTokenBak   : 0
+ MplsMtu         : 0        Gateway_ForLspTokenBak : 0
+ NextToken       : 0        IfIndex_ForLspTokenBak : 0
+ Label_NextToken : 0        Label : 0
+ LspBfdState     : 0                            
+ OutIfSpeed(Kbits/sec) : 1000000
+</pre>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><caption>表2 display fib verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="47%" id="d24020e375"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53%" id="d24020e379"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>目的地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>Nexthop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>OutIf</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>LocalAddr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>本地地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>LocalMask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>本地地址掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>当前标志，G、H、U、S、D、B的组合。</p>
+<ul>
+<li>G（Gateway网关路由）：表示下一跳是网关。</li>
+<li>H（Host主机路由）：表示下一跳为主机。</li>
+<li>U（UP可用路由）：表示该路由状态是UP。</li>
+<li>S（Static静态路由）。</li>
+<li>D（Dynamic动态路由）。</li>
+<li>B（Black Hole黑洞路由）：表示下一跳是空接口。</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>Age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>表示该路由存在的时间，单位为秒</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>ATIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>本地与网关之间的虚连接索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>Slot</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>出接口槽位号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>LspFwdFlag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>LSP转发标志</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>LspToken</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>LSP转发ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>InLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>VPN-LSP内层标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>OriginAs</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>起始自治域号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>BGPNextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>BGP下一跳地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>PeerAs</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>相邻自治域号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>QosInfo</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>服务质量信息号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>OriginQos</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>起始服务质量信息号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>NexthopBak</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>下一跳备份</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>OutIfBak</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>出接口备份</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>LspTokenBak</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>LSP ID备份</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>InLabelBak</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>VPN-LSP内层标签备份</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>LspToken_ForInLabelBak</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>VPN-LSP内层标签备份的LSP ID备份</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>EntryRefCount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>引用计数</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>VlanId</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>VLAN ID</p>
+</td>
+
+</tr>
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>LspType</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>LSP的类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>Label_ForLspTokenBak</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>LSP的备份标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>MplsMtu</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>MPLS TE隧道的MTU值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>Gateway_ForLspTokenBak </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>LSP的备份下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>NextToken</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>隧道的Token</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>IfIndex_ForLspTokenBak</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>LSP的备份出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>Label_NextToken </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>隧道的标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>当前LSP的标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>LspBfdState </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>通过检测LSP得到的BFD会话状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47%" headers="d24020e375 "><p>OutIfSpeed(Kbits/sec)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53%" headers="d24020e379 "><p>出接口带宽，单位是千比特/秒。</p>
+<div class="note"><span class="notetitle"> 说明： </span><div class="notebody">只有全局使能了非等价负载分担功能，且出接口支持非等价负载分担时，才会显示该字段。</div></div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="31%" id="d24020e808"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69%" id="d24020e812"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="31%" headers="d24020e808 "><p>VRPV500R006</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69%" headers="d24020e812 "><p>修改了<strong>display fib verbose</strong>的输出信息：若系统使能了UCMP功能，且出接口支持UCMP功能，则在显示FIB表的详细信息时，增加出接口带宽信息字段。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_performance_configuration_commands.html">IP性能配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,115 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="domain-id">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="domain-id">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>domain-id</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="domain-id"></a><a name="domain-id"></a>
+
+
+<h1 class="topictitle1">domain-id</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>domain-id</strong>命令用来配置OSPF域标识符。</p>
+<p><strong>undo domain-id</strong>命令用来恢复缺省值。</p>
+<p>缺省情况下，域标识符的值为NULL。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>domain-id</strong> { <strong>null</strong> | <em>domain-id</em> [ <strong>type</strong> <em>type</em> <strong>value</strong> <em>value</em> | <strong>secondary</strong> ] <sup>*</sup> }</p>
+<p><strong>undo domain-id</strong> [ <em>domain-id</em> [ <strong>type</strong> <em>type</em> <strong>value</strong> <em>value</em> ] ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>domain-id</em>：OSPF域标识符。可以采用整数形式或点分十进制形式。如果采用整数形式，取值范围是0～4294967295，输出时会转化成点分十进制显示，以256为进位；如果采用点分十进制形式，则按输入的内容显示。</p>
+<p><strong>null</strong>：指定OSPF域的标识符为空。</p>
+<p><strong>type</strong> <em>type</em>：指定OSPF域标识符的类型。取值范围是0005，0105，0205，8005。缺省值是0005。</p>
+<p><strong>value</strong> <em>value</em>：指定OSPF域标识符类型的值。十六进制，取值范围是0～FFFF，缺省值是0。</p>
+<p><strong>secondary</strong>：指定次级域标识符。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+
+<li><p>域标识符的值为0和NULL表示两个不同的值。</p>
+</li>
+<li><p>域标识符的值为0时不能配置<strong>secondary</strong>参数。</p>
+</li>
+<li><p>每个OSPF进程上<strong>domain-id secondary</strong>的最大条目数是1000条。不同的产品，<strong>domain-id secondary</strong>的最大条数可能会不同。</p>
+</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>OSPF视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通常情况下，从PE路由器引入的路由将会作为External-LSA发布出去。但对属于同一个OSPF域不同节点的目的地，这样的路由应该作为Type-3 LSA（区域内路由）发布，这就需要为同一个OSPF域使用相同的域标识符。</p>
+<p>执行<strong>undo domain-id</strong>命令时，如果不指定参数，将删除主域标识符（primary domain id）。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="domain-id__d74137e140"></a><a name="d74137e140"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置OSPF VPN扩展中的VPN域标识符。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>ospf 1</strong></pre>
+<pre class="screen">[Quidway-ospf-1]<strong> domain-id 234</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="domain-id__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="domain-id__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d74137e167"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d74137e171"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d74137e167 "><p>VRPV500R005C02B680</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d74137e171 "><p>命令行变更为：<strong>domain-id</strong> { <strong>null</strong> | <em>domain-id</em> [ <strong>type</strong> <em>type</em> <strong>value</strong> <em>value</em> | <strong>secondary</strong> ] * }</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

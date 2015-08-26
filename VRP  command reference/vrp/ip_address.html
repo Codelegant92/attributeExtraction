@@ -1,0 +1,87 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ip address">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_address_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ip_interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ip_address">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ip address</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ip_address"></a><a name="ip_address"></a>
+
+
+<h1 class="topictitle1">ip address</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ip address</strong>命令用来配置接口的IP地址。</p>
+<p><strong>undo ip address</strong>命令用来删除接口的IP地址。</p>
+<p>缺省情况下，在接口上没有配置IP地址。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ip</strong> <strong>address</strong> <em>ip-address</em> { <em>mask</em> | <em>mask-length </em>} [ <strong>sub</strong> ]</p>
+<p><strong>undo ip address</strong> <em>ip-address</em> { <em>mask</em> | <em>mask-length </em>} [ <strong>sub</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：指定接口IP地址。点分十进制格式。</p>
+<p><em>mask</em>：指定子网掩码。点分十进制格式。</p>
+<p><em>mask-length</em>：指定掩码长度。整数形式，取值范围是0～32。</p>
+<p><strong>sub</strong>：配置从IP地址。为了实现一个接口下的多个子网之间能够通信，需要在接口上配置从IP地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>ip address</strong>命令用来给路由设备上的接口配置IP地址和掩码，实现和网络的互连。有时为了使路由设备的一个接口能够与多个子网相连，可以在一个接口上配置多个IP地址，其中一个为主IP地址，其余为从IP地址。当配置主IP地址时，如果接口上已经有主IP地址，则原主IP地址被删除，新配置的IP地址成为主IP地址。</p>
+<p><strong>undo</strong> <strong>ip address</strong>命令不带任何参数表示删除该接口的所有IP地址。<strong>undo</strong> <strong>ip address</strong><em> ip-address</em> <em>mask</em>表示删除主IP地址，<strong>undo</strong> <strong>ip address</strong> <em>ip-address</em> <em>mask</em> <strong>sub</strong>表示删除从IP地址。在删除主IP地址前必须先删除完所有的从IP地址。</p>
+<p><span class="keyword">VRP</span>支持同一设备网段地址的空间重叠，以节约地址空间。</p>
+<ul>
+<li>在同一设备不同接口上可以配置网段重叠但不能完全相同的IP地址。例如，设备上某接口配置了地址20.1.1.1/16后，另一接口若配置20.1.1.2/24，此时会有提示信息，但配置仍然成功；若另一接口配置20.1.1.2/16，系统会提示地址冲突，配置失败。</li>
+<li>同一接口的主从IP地址之间可以配置网段重叠的IP地址。例如，在接口上配置了主IP地址20.1.1.1/24后，若配置从IP地址20.1.1.2/16
+sub，此时会有提示信息，但配置仍然成功。</li>
+<li>同一设备不同接口的主从IP地址之间可以配置网段重叠但不能完全相同的IP地址。例如，设备上某接口配置了地址20.1.1.1/16后，另一接口若配置20.1.1.2/24
+sub，此时会有提示信息，但配置仍然成功。</li>
+</ul>
+<p>关于IP地址的详细介绍，请参见《<span class="keyword">VRP</span><span class="keyword">  </span>配置指南 IP业务》&#8220;01 IP地址配置&#8221;。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ip_address__d83511e146"></a><a name="d83511e146"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 为接口POS1/0/0配置主IP地址为129.102.0.1，从IP地址为202.38.160.1，子网掩码都为255.255.255.0。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0] <strong>ip address 129.102.0.1 255.255.255.0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0] <strong>ip address 202.38.160.1 255.255.255.0 sub</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_address_configuration_commands.html">IP地址配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ip_interface.html">display ip interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

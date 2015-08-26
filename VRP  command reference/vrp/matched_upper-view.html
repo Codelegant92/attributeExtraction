@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="matched upper-view">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="quit_all_views.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="matched_upper-view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>matched upper-view</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="matched_upper-view"></a><a name="matched_upper-view"></a>
+
+
+<h1 class="topictitle1">matched upper-view</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>matched upper-view</strong>命令用来配置允许<strong>undo</strong>命令自动到上一级视图进行匹配，并回退到上一级视图。</p>
+<p><strong>undo matched upper-view</strong>命令用来禁止<strong>undo</strong>命令自动到上一级视图进行匹配。</p>
+<p>缺省情况下，不允许<strong>undo</strong>命令自动到上一级视图进行匹配。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>matched upper-view</strong></p>
+<p><strong>undo matched</strong> <strong>upper-view</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果允许<strong>undo</strong>命令自动到上一级视图进行匹配，当用户在某个视图下执行非本视图注册的<strong>undo</strong>命令时，系统将自动在上一级视图搜索该<strong>undo</strong>命令，如果搜索成功，则执行上一级视图中的<strong>undo</strong>命令；当上级视图也没有该<strong>undo</strong>命令后，会向更上一级视图进行匹配；匹配一直进行到系统视图，不再向上匹配。</p>
+<p>执行<strong>matched upper-view</strong>命令会造成一定的安全隐患，例如，当用户在接口视图下执行<strong>undo ospf</strong>命令时，由于这条命令不是在接口视图下注册的，系统会自动到上一级视图，即系统视图下搜索，从而删除全局配置的OSPF特性。</p>
+<p><strong>matched upper-view</strong>命令只对执行此命令的当前登录用户有效。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="matched_upper-view__d92208e85"></a><a name="d92208e85"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 允许<strong>undo</strong>命令到上一级视图匹配。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> matched upper-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> undo ftp server</strong></pre>
+<pre class="screen">Info: Succeeded in closing the FTP server.</pre>
+<p># 不允许<strong>undo</strong>命令到上一级视图匹配。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> undo matched upper-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> undo ftp server</strong></pre>
+<pre class="screen">                                    ^</pre>
+<pre class="screen">Error: Unrecognized command found at '^' position.</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_configuration_commands.html">基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="quit_all_views.html">quit（所有视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

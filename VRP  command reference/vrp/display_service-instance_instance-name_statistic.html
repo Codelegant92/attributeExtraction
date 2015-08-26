@@ -1,0 +1,211 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display service-instance instance-name statistic">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_service-instance_instance-name_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="service-instance_instance-name.html">
+<meta name="DC.Relation" scheme="URI" content="statistics_enable_si_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_service-instance_instance-name_statistic">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display service-instance instance-name statistic</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_service-instance_instance-name_statistic"></a><a name="display_service-instance_instance-name_statistic"></a>
+
+
+<h1 class="topictitle1">display service-instance instance-name statistic</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display service-instance instance-name statistic</strong>命令用来查看业务实例的流量统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display service-instance instance-name</strong> <em>service-instance-name</em> <strong>statistic</strong><span> [<strong> | count</strong> ]</span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>instance-name </strong><em>service-instance-name</em>：指定业务实例的名字。长度范围是1～31个字符。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong> exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>业务实例的统计信息是从启动流量统计开关（<a href="statistics_enable_si_view.html"><strong>statistics enable（业务实例视图）</strong></a>）到执行该命令这段时间段内的用户侧的流量信息统计，包括各个业务实例的收、发包数、收、发字节数。</p>
+<p>在查看业务实例的统计信息之前，流量统计开关必须打开。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_service-instance_instance-name_statistic__d65904e99"></a><a name="d65904e99"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看业务实例mysi的流量统计信息</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display service-instance instance-name mysi statistic</strong></pre>
+<pre class="screen">Interface             Vlan  Priority  In-pkts   In-octets  Out-pkts   Out-octets</pre>
+<pre class="screen">-----------------------------------------------------------------------------------</pre>
+<pre class="screen">GigabitEthernet1/0/1  2     1         35781245  41255638   120458792  124578963</pre>
+<pre class="screen">GigabitEthernet1/0/2  2     2         35741289  41255177   120458133  124578345</pre>
+<pre class="screen">GigabitEthernet1/0/3  2     3         35641281  41259344   120458133  124578345</pre>
+<pre class="screen">GigabitEthernet1/0/4  2     5         35741223  41251087   120458133  124578345</pre>
+<pre class="screen">GigabitEthernet1/0/1  3     4         35731247  41255243   120458133  124578345</pre>
+<pre class="screen">GigabitEthernet1/0/2  3     7         35941225  41255117   120458133  124578345</pre>
+
+<pre class="screen">Total: </pre>
+<pre class="screen">Inbound-Packets   : 214577510</pre>
+<pre class="screen">Inbound-Octets    : 247531606</pre>
+<pre class="screen">Outbound-Packets  : 722749457</pre>
+<pre class="screen">Outbound-Octets   : 747470688</pre>
+
+<div class="tablenoborder"><a name="display_service-instance_instance-name_statistic__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_service-instance_instance-name_statistic__tb_01" frame="border" border="1" rules="all"><caption>表1 display service-instance instance-name statistic命令的输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.37288989669942%" id="d65904e146"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.62711010330058%" id="d65904e150"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d65904e146 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d65904e150 "><p>业务实例映射的用户接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d65904e146 "><p>Vlan</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d65904e150 "><p>业务实例映射的用户业务VLAN。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d65904e146 "><p>Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d65904e150 "><p>业务实例映射的用户业务的优先级。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d65904e146 "><p>In-pkts</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d65904e150 "><p>接口接收的字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d65904e146 "><p>In-octets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d65904e150 "><p>接口接收的报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d65904e146 "><p>Out-pkts</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d65904e150 "><p>接口发送的字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d65904e146 "><p>Out-octets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d65904e150 "><p>接口发送的报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d65904e146 "><p>Inbound-Octets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d65904e150 "><p>业务实例接收的字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d65904e146 "><p>Inbound-Packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d65904e150 "><p>业务实例接收的报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d65904e146 "><p>Outbound-Octets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d65904e150 "><p>业务实例发送的字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.37288989669942%" headers="d65904e146 "><p>Outbound-Packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.62711010330058%" headers="d65904e150 "><p>业务实例发送的报文数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_service-instance_instance-name_statistics.html">reset service-instance instance-name statistics</a></div>
+<div><a href="service-instance_instance-name.html">service-instance instance-name</a></div>
+<div><a href="statistics_enable_si_view.html">statistics enable(业务实例视图)</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

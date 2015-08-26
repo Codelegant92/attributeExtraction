@@ -1,0 +1,363 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis traffic-eng link">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="traffic-eng.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_traffic-eng_link">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis traffic-eng link</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_traffic-eng_link"></a><a name="display_isis_traffic-eng_link"></a>
+
+
+<h1 class="topictitle1">display isis traffic-eng link</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis traffic-eng link</strong>命令用来查看IS-IS的TE链路信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display
+isis traffic-eng</strong> <strong>link</strong> [ <strong>level-1</strong> | <strong>level-2</strong> | <strong>level-1-2</strong> ] [ <strong>verbose</strong> ] [ <em>process-id</em> | [<strong> vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>level-1</strong>：Level-1路由器的TE链路信息。</p>
+<p><strong>level-2</strong>：Level-2路由器的TE链路信息。</p>
+<p><strong>level-1-2</strong>：Level-1-2路由器的TE链路信息。</p>
+<p><strong>verbose</strong>：查看TE链路的详细信息。</p>
+<p><em>process-id</em>：IS-IS进程号。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定IPv4 VPN的IS-IS多实例进程。<em>vpn-instance-name</em>为IPv4 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn-instance default</strong>：除IPv4 VPN实例外的所有IS-IS进程，即所有的IPv6 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：指定IPv6 VPN的IS-IS多实例进程。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn6-instance default</strong>：除IPv6 VPN实例外的所有IS-IS进程，即所有的IPv4
+VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定级别，将显示Level-1-2的TE链路信息。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_traffic-eng_link__d37236e182"></a><a name="d37236e182"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看IS-IS TE的链路信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display isis traffic-eng link</strong></pre>
+<pre class="screen">                           TE information for ISIS(1)</pre>
+<pre class="screen">                           --------------------------</pre>
+<pre class="screen">Level-2 Link Information</pre>
+<pre class="screen">------------------------</pre>
+<pre class="screen"> 0000.0000.0001.00--&gt; 0000.0000.0001.01    Type: MULACC  LinkID: 10.1.1.1</pre>
+<pre class="screen"> 0000.0000.0002.00--&gt; 0000.0000.0003.00    Type: P2P     LinkID: 3.3.3.9</pre>
+<pre class="screen"> 0000.0000.0002.00--&gt; 0000.0000.0001.01    Type: MULACC  LinkID: 10.1.1.1</pre>
+<pre class="screen"> 0000.0000.0003.00--&gt; 0000.0000.0002.00    Type: P2P     LinkID: 2.2.2.9</pre>
+<pre class="screen"> 0000.0000.0003.00--&gt; 0000.0000.0004.01    Type: MULACC  LinkID: 30.1.1.2</pre>
+<pre class="screen"> 0000.0000.0004.00--&gt; 0000.0000.0004.01    Type: MULACC  LinkID: 30.1.1.2</pre>
+<pre class="screen"> Total Number of TE Links in Level-2 Area: 6, Num Active: 6</pre>
+
+<div class="tablenoborder"><a name="display_isis_traffic-eng_link__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_traffic-eng_link__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis traffic-eng link命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="48.61426051902242%" id="d37236e224"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="51.38573948097758%" id="d37236e228"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e224 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e228 "><p>链路类型，&#8220;MULACC&#8221;表示多点访问链路，&#8220;P2P&#8221;表示点到点链路</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e224 "><p>LinkID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e228 "><p>TE链路ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e224 "><p>Total Number of TE Links in Level-2 Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e228 "><p>Level-2区域中的TE链路总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e224 "><p>Num Active</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e228 "><p>活跃TE链路的数量</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看IS-IS TE链路的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display isis traffic-eng link verbose</strong>
+                           TE information for ISIS(1)
+                           --------------------------
+
+Level-2 Link Information
+------------------------
+ Link Status In CSPF : INACTIVE
+ 0000.0000.0001.00--&gt;0000.0000.0002.00        Type: P2P     LinkID: 2.2.2.2
+          Process ID       :  1          Router ID        :  2.2.2.1
+          Area ID          :  2          Admin Group      :  0
+          Te Cost          :  10         Igp Cost         :  10
+          Max Bandwidth    :  0          Max Res Bandwidth:  0
+          Shared Risk Link Group: 20
+          BC Model         :  RDM
+          DS-TE Mode       :  Non-standard IETF DS-TE Mode
+
+ Link Status In CSPF : INACTIVE
+ 0000.0000.0002.00--&gt;0000.0000.0001.00        Type: P2P     LinkID: 2.2.2.1
+          Process ID       :  1          Router ID        :  2.2.2.2
+          Area ID          :  2          Admin Group      :  0
+          Te Cost          :  10         Igp Cost         :  10
+          Max Bandwidth    :  0          Max Res Bandwidth:  0
+          BC Model         :  RDM
+          DS-TE Mode       :  Non-standard IETF DS-TE Mode
+
+ Total Number of TE Links in Level-2 Area: 2, Num Active: 0      </pre>
+
+<div class="tablenoborder"><a name="display_isis_traffic-eng_link__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_traffic-eng_link__tb_02" frame="border" border="1" rules="all"><caption>表2 display isis traffic-eng link verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="48.61426051902242%" id="d37236e302"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="51.38573948097758%" id="d37236e306"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>Link Status In CSPF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>CSPF计算中的链路状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>Process ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>IS-IS进程号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>Router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>路由器ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>Area ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>区域ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>Admin Group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>管理组</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>Te Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>TE开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>Igp Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>IGP开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>Max Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>最大带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>Max Res Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>最大预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>Shared Risk Link Group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>共享风险链路组</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>BC Model</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>带宽限制模型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.61426051902242%" headers="d37236e302 "><p>DS-TE Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.38573948097758%" headers="d37236e306 "><p>DS-TE模式，分为标准和非标准两种</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_traffic-eng_link__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_traffic-eng_link__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d37236e460"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d37236e464"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d37236e460 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d37236e464 "><p>增加参数<strong>vpn-instance default</strong>，<strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> }</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d37236e460 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d37236e464 "><p>使用<strong>verbose</strong>参数时增加了DS-TE显示信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d37236e460 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d37236e464 "><p>增加了SRLG显示信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d37236e460 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d37236e464 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="traffic-eng.html">traffic-eng</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

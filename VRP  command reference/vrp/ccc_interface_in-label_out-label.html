@@ -1,0 +1,98 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ccc interface in-label out-label">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_vll_ccc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ccc_interface_in-label_out-label">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ccc interface in-label out-label</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ccc_interface_in-label_out-label"></a><a name="ccc_interface_in-label_out-label"></a>
+
+
+<h1 class="topictitle1">ccc interface in-label out-label</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ccc interface in-label out-label</strong>命令用来在连接不同PE的CE间创建一条远程CCC连接，两个PE设备上均需配置。</p>
+<p><strong>undo ccc</strong>命令用来删除CCC连接。</p>
+<p>缺省情况下，系统没有创建任何CCC远程连接。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ccc</strong> [ <strong>ip-interworking</strong> ] <em>ccc-connection-name</em>  <strong>interface</strong> <em>interface-type1 interface-number1 </em><strong>in-label</strong> <em>in-label-value</em> <strong>out-label</strong> <em>out-label-value</em> { <strong>nexthop</strong> <em>nexthop-address</em> | <strong>out-interface</strong> <em>interface-type2 interface-number2</em> } [ <strong>control-word</strong> | <strong>no-control-word</strong> ]</p>
+<p><strong>undo ccc</strong> <em>ccc-connection-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ip-interworking</strong>：使能CCC远程连接的IP异种介质互通功能。</p>
+<p><em>ccc-connection-name</em>：CCC连接名，唯一标识PE上的一个CCC连接。字符串形式，不支持空格，区分大小写，长度范围是1～20。</p>
+<p><strong>interface</strong> <em>interface-type1 interface-number1</em>：数据流量的入接口的接口类型和编号。</p>
+<p><strong>in-label</strong> <em>in-label-value</em>：入标签值。十进制整数形式，取值范围是16～1023。</p>
+<p><strong>out-label</strong> <em>out-label-value</em>：出标签值。十进制整数形式，取值范围是0～1048575。</p>
+<p><strong>nexthop</strong> <em>nexthop-address</em>：指定下一跳的IP地址。</p>
+<p><strong>out-interface</strong> <em>interface-type2 interface-number2</em>：数据流量的出接口的接口类型和编号。</p>
+<p><strong>control-word</strong>：使能控制字（Control Word）特性。</p>
+<p><strong>no-control-word</strong>：禁止控制字（Control Word）特性。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>同一个接口不能既作为L2VPN的AC（Attachment Circuit）接口又作为L3VPN的AC接口。当某个接口绑定L2VPN后，该接口上配置的IP地址、路由协议等三层特性会全部变为无效。如果一个接口同时绑定L2VPN和L3VPN，只有L2VPN可用。删除该L2VPN后，绑定的L3VPN会重新变得可用。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>出接口为广播（如Ethernet）或P2MP（如FR、ATM）类型接口时，必须使用<strong>nexthop</strong>参数指定下一跳IP地址。在运营商的核心设备P（Provider device）上配置静态LSP时，如果出接口为广播或P2MP类型接口，如Ethernet，也需指定下一跳IP地址。</p>
+</li>
+
+<li><p>对于NE40E、NE80E、NE5000E产品，数据流量的入接口和出接口都不支持VLANIF接口。</p>
+</li>
+
+<li><p>当子接口配置了与VLL的绑定关系时，必须先删除子接口和VLL的绑定关系，才能删除子接口。</p>
+</li>
+<li><p>当子接口配置了与VLL的绑定关系时，不允许改变主接口的封装协议类型。</p>
+</li>
+</ul>
+</div></div>
+<p>PE使用连接名标识不同的CCC连接，不同PE上同一CCC连接使用的连接名可以不同。当P和PE相连时，必须在二者之间配置静态LSP。不要配置名称为type的CCC连接，否则无法通过<span><strong>display vll ccc</strong> <em>ccc-name</em></span>命令，查看该CCC连接的信息。要注意设备之间的标签对应关系，即前一个设备的出标签是下一个设备的入标签。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ccc_interface_in-label_out-label__d5775e171"></a><a name="d5775e171"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在连接不同PE设备的CE间创建远程CCC连接。</p>
+<pre class="screen">&lt;Quidway1&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway1] <strong>ccc ccc-connection-1 interface pos 1/0/0 in-label 100 out-label 200 out-interface pos 1/0/1</strong></pre>
+
+<pre class="screen">&lt;Quidway2&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway2] <strong>ccc ccc-connection-1 interface pos 1/0/1 in-label 200 out-label 100 out-interface pos 1/0/0</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_vll_ccc.html">display vll ccc</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

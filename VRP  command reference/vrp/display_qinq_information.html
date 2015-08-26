@@ -1,0 +1,185 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display qinq information">
+<meta name="DC.Relation" scheme="URI" content="../vrp/qinq_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="qinq_stacking_vid.html">
+<meta name="DC.Relation" scheme="URI" content="qinq_termination_pe-vid_ce-vid.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_qinq_information_1">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display qinq information</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_qinq_information_1"></a><a name="display_qinq_information_1"></a>
+
+
+<h1 class="topictitle1">display qinq information</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display qinq information</strong>命令用来查看配置了QinQ终结或者Stacking的所有接口的名称以及这些接口下QinQ和VLAN-Group的数量。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display qinq information</strong> { <strong>termination</strong> | <strong>stacking</strong> } [ <strong>interface</strong> <em>interface-type interface-number</em> [.<em>subinterface-number</em> ] ]<span> [<strong> | count</strong> ]</span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface</strong><em> interface-type interface-number</em>：指定接口的类型和编号。</p>
+<p><em>subinterface-number</em>：指定子接口的编号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong> exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置完QinQ终结和Stacking后，可以使用<strong>display qinq information</strong>命令来查看哪些接口配置了QinQ终结和Stacking，以及QinQ终结和Stacking的相关配置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_qinq_information_1__d61094e112"></a><a name="d61094e112"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查询配置了QinQ终结的所有子接口。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display qinq information termination</strong></pre>
+<pre class="screen">  GigabitEthernet1/0/0.1</pre>
+<pre class="screen">    Total QinQ Num: 1</pre>
+<pre class="screen">      qinq termination pe-vid 100 ce-vid 10 to 20</pre>
+<pre class="screen">    Total vlan-group Num: 0</pre>
+<pre class="screen">    control-vid 1 qinq-termination</pre>
+<pre class="screen">  GigabitEthernet1/0/0.2</pre>
+<pre class="screen">    Total QinQ Num: 1</pre>
+<pre class="screen">      qinq termination pe-vid 200 ce-vid 10 to 20</pre>
+<pre class="screen">    Total vlan-group Num: 0</pre>
+<pre class="screen">    control-vid 2 qinq-termination dynamic</pre>
+<p># 查询配置了QinQ stacking的所有子接口。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display qinq information stacking</strong></pre>
+<pre class="screen">GigabitEthernet1/0/0.1</pre>
+<pre class="screen">    pwe3/vll/vpls bound</pre>
+<pre class="screen">    qinq 8021p-mode trust pe-vid-8021p</pre>
+<pre class="screen">    Total QinQ Num: 2</pre>
+<pre class="screen">      qinq stacking vid 1 to 200 pe-vid 100 vlan-group 1</pre>
+<pre class="screen">      qinq stacking vid 300 vlan-group 1</pre>
+<pre class="screen">    Total vlan-group: 1</pre>
+<pre class="screen">      vlan-group 1</pre>
+
+<div class="tablenoborder"><a name="display_qinq_information_1__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_qinq_information_1__tb_01" frame="border" border="1" rules="all"><caption>表1 display qinq information命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.31556449585114%" id="d61094e174"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.68443550414887%" id="d61094e178"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61094e174 "><p>GigabitEthernet1/0/0.1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61094e178 "><p>终结子接口的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61094e174 "><p>pwe3/vll/vpls bound</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61094e178 "><p>终结子接口绑定的业务类型，可以是L3VPN bound、VLL/PWE3 bound或VPLS bound。如果没有绑定任何业务，则不显示此项内容。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61094e174 "><p>Total QinQ Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61094e178 "><p>终结子接口对用户报文终结的规则数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61094e174 "><p>Total vlan-group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61094e178 "><p>终结子接口下配置的用户VLAN组的数量。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>除表中所列内容外，其他显示信息均为终结子接口的配置内容，与具体配置有关。</p>
+</div></div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_qinq_information_1__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_qinq_information_1__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d61094e247"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d61094e251"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d61094e247 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d61094e251 "><p>命令增加通配符： [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/qinq_configuration_commands.html">QinQ配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="qinq_stacking_vid.html">qinq stacking vid</a></div>
+<div><a href="qinq_termination_pe-vid_ce-vid.html">qinq termination pe-vid ce-vid</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="label-type">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="local-pw-type.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="label-type">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>label-type</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="label-type"></a><a name="label-type"></a>
+
+
+<h1 class="topictitle1">label-type</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>label-type</strong>命令用来在NQA视图下配置报文的封装类型。</p>
+<p><strong>undo label-type</strong>命令用来取消在NQA视图下配置的报文封装类型。</p>
+<p>缺省情况下，报文封装类型使用控制字control-word方式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>label-type</strong> { <strong>control-word</strong> | <strong>label-alert</strong> | <strong>normal</strong> }</p>
+<p><strong>undo label-type</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>control-word</strong>：指定在报文中封装control word控制字信息。</p>
+<p><strong>label-alert</strong>：指定在报文中封装router alert标签。</p>
+<p><strong>normal</strong>：普通方式，MPLS echo request报文不封装control word和router alert选项。只能用在NQA PWE3 Tracet中。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>NQA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>label-type</strong>命令前，需要先在NQA视图下配置NQA测试例的测试类型为PWE3trace或者PWE3ping，否则无法配置<strong>label-type</strong>命令。</p>
+<p>封装control word后，多跳的情况下，在switch节点，如果标签TTL值不超时，则MPLS echo request报文不会被上送CPU处理。这种方式下，源端获得的PW信息较少，但对设备的性能影响较小，并且源端看不到该switch节点的下游信息。当报文多的时候，推荐用此方式。</p>
+<p>封装router alert后，多跳的情况下，在switch节点，MPLS echo request报文被上送CPU处理。这种方式下，源端获得的PW信息较多，但如果报文太多是，对设备的性能影响较大。如果测试例比较少时，推荐采用此方式，以获取switch节点的详细信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="label-type__d88760e76"></a><a name="d88760e76"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在NQA视图下配置报文的封装类型为label-alert。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> nqa test-instance admin  pwe3</strong></pre>
+<pre class="screen">[Quidway-admin-pwe3]<strong> test-type  pwe3trace</strong></pre>
+<pre class="screen">[Quidway-admin-pwe3]<strong> label-type label-alert</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nqa_configuration_commands.html">NQA配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="local-pw-type.html">local-pw-type</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

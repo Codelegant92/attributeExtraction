@@ -1,0 +1,109 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display logfile">
+<meta name="DC.Relation" scheme="URI" content="../vrp/information_center.html">
+<meta name="DC.Relation" scheme="URI" content="display_logbuffer.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_logfile">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display logfile</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_logfile"></a><a name="display_logfile"></a>
+
+
+<h1 class="topictitle1">display logfile</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display logfile</strong>命令用来显示日志文件信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display logfile</strong> <em>driver</em> <em>path</em> <em>file-name</em> [ <em>offset</em> | <em>hex</em> ] * </p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>driver</em>：日志文件的盘符。</p>
+<p><em>path</em>：日志文件的路径。</p>
+<p><em>file-name</em>：日志文件名。</p>
+<p><em>offset</em>：设置待显示文件的偏移（字节）。</p>
+<p><em>hex</em>：16进制形式显示日志文件。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在不选择hex显示方式时，缺省的显示方式是文本显示方式。</p>
+<p>日志的时间显示采用基准时间＋偏移时间的方式。当使用offset进行偏移显示时，出现&#8220;%0-0-0 00:00:00&#8221;时间是属正常现象，因为所选择的offset位置不一定是基准时间，所以在没有基准时间的情况下，偏移时间没有意义，时间都显示为&#8220;%0-0-0 00:00:00&#8221;。</p>
+<p>日志文件中保存的版本信息和设备版本信息不一致时，按十六进制形式显示。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_logfile__d38750e75"></a><a name="d38750e75"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><div class="p"># 显示指定路径的日志文件中保存的日志信息。<pre class="screen">&lt;Quidway&gt; <strong>display logfile hda1:/logfile/2009_01.blg</strong>
+%Dec 31 19:48:12 2006 NE08-2 HSC/5/LOG:VIU2 power off, in board reset
+%Dec 31 19:48:13 2006 NE08-2 HSC/5/LOG:VIU2 power on, in board reset
+%Dec 31 19:48:13 2006 NE08-2 HSC/5/LOG:In IntProcess, int type is VIU2 undefine
+%Dec 31 19:48:13 2006 NE08-2 HSC/5/LOG:In IntProcess, int type is VIU2 undefine
+%Dec 31 19:57:54 2006 NE08-2 HSC/5/LOG: VIU board in slot 2 doesn't start up till now!</pre>
+</div>
+<div class="p"># 进入到目录下直接显示日志文件中保存的日志信息。<pre class="screen">&lt;Quidway&gt; <strong>cd hda1:/logfile/</strong>
+&lt;Quidway&gt; <strong>display logfile 2009_01.blg</strong>
+%Dec 31 19:48:12 2006 NE08-2 HSC/5/LOG:VIU2 power off, in board reset
+%Dec 31 19:48:13 2006 NE08-2 HSC/5/LOG:VIU2 power on, in board reset
+%Dec 31 19:48:13 2006 NE08-2 HSC/5/LOG:In IntProcess, int type is VIU2 undefine
+%Dec 31 19:48:13 2006 NE08-2 HSC/5/LOG:In IntProcess, int type is VIU2 undefine
+%Dec 31 19:57:54 2006 NE08-2 HSC/5/LOG: VIU board in slot 2 doesn't start up till now!</pre>
+</div>
+<div class="p"># 日志文件版本和系统版本不一致时提示无法解析。<pre class="screen">&lt;Quidway&gt;<strong> display logfile flash:/logfile/2009_01.blg</strong>
+Error: Failed to parse the binary log file because the version in the log file was different from the version of the existing device.
+</pre>
+</div>
+<div class="p"># 以16进制形式显示日志文件中保存的日志信息。<pre class="screen">&lt;Quidway&gt;<strong> display logfile flash:/logfile/2009_01.blg hex</strong>
+0d 0a 23 0d 0a 20 73 79 73 6e 61 6d 65 20 7a 75 6f 67 61 6e
+67 2d 30 37 2d 30 34 2d 32 30 0d 0a 23 0d 0a 20 46 54 50 20
+73 65 72 76 65 72 20 65 6e 61 62 6c 65 0d 0a 23 0d 0a 20 72
+6f 75 74 65 72 20 69 64 20 31 31 31 2e 35 2e 35 2e 35 20 0d
+0a 23 0d 0a 20 6d 75 6c 74 69 63 61 73 74 20 72 6f 75 74 69
+6e 67 2d 65 6e 61 62 6c 65 0d 0a 23 0d 0a 20 62 66 64 0d 0a
+23 0d 0a 20 6d 70 6c 73 20 6c 73 72 2d 69 64 20 31 31 31 2e
+35 2e 35 2e 35 0d 0a 20 6d 70 6c 73 0d 0a 20 20 6d 70 6c 73
+20 74 65 0d 0a 20 20 6c 61 62 65 6c 20 61 64 76 65 72 74 69
+73 65 20 6e 6f 6e 2d 6e 75 6c 6c 0d 0a 20 20 6c 73 70 2d 74
+72 69 67 67 65 72 20 61 6c 6c 20 0d 0a 20 20 6d 70 6c 73 20
+72 73 76 70 2d 74 65 0d 0a 20 20 6d 70 6c 73 20 74 65 20 63
+73 70 66 0d 0a 23 0d 0a 6d 70 6c 73 20 6c 64 70 0d 0a 23 0d
+0a 69 73 69 73 20 35 34 0d 0a 20 6e 65 74 77 6f 72 6b 2d 65
+6e 74 69 74 79 20 38 36 2e 30 30 30 31 2e 31 31 31 30 2e 30
+35 30 30 2e 35 30 30 35 2e 30 30 0d 0a 23 0d 0a 69 73 69 73</pre>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/information_center.html">信息中心命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_logbuffer.html">display logbuffer</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

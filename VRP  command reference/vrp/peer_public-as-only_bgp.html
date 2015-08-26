@@ -1,0 +1,94 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer public-as-only (BGP)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_public-as-only_bgp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer public-as-only (BGP)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_public-as-only_bgp"></a><a name="peer_public-as-only_bgp"></a>
+
+
+<h1 class="topictitle1">peer public-as-only (BGP)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer public-as-only</strong>命令用来配置发送BGP更新报文时不携带私有自治系统号，仅携带公有AS号。</p>
+<p><strong>undo peer public-as-only</strong>命令用来配置发送BGP更新报文时携带私有自治系统号。</p>
+<p>缺省情况下，发送BGP更新报文时，可以携带私有自治系统号。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> {<em> group-name</em> | <em>ipv4-address</em> | <em>ipv6-address</em> } <strong>public-as-only</strong></p>
+<p><strong>undo</strong> <strong>peer</strong> { <em>group-name</em> | <em>ipv4-address</em> | <em>ipv6-address</em> } <strong>public-as-only</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>group-name</em>：对等体组的名称。</p>
+<p><em>ipv4-address</em>：对等体的IPv4地址。</p>
+<p><em>ipv6-address</em>：对等体的IPv6地址。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p><em>ipv4-address</em>参数仅在BGP视图、BGP-IPv4单播地址族视图、BGP-IPv6单播地址族视图、BGP-VPNv4地址族视图、BGP-VPNv6地址族视图和BGP-VPN实例视图下生效。</p>
+</li>
+<li><p><em>ipv6-address</em>参数仅在BGP-IPv6单播地址族视图和BGP-VPN6实例视图下生效。</p>
+</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP视图、BGP-IPv4单播地址族视图、BGP-VPN实例视图、BGP-VPN6实例视图、BGP-VPNv4地址族视图、BGP-VPNv6地址族视图、BGP-IPv6单播地址族视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令只能应用于EBGP对等体。</p>
+<p>一般情况下，BGP在发送BGP更新报文时都是携带该自治系统号的（可能是公有的AS号，也可能是私有的AS号）。</p>
+<p>配置此命令后，如果BGP路由信息的AS路径属性中只包含私有AS号，BGP就会删除这些私有AS号，然后再将路由信息发布出去。</p>
+<p>以下两种情况，配置该命令后，BGP不会删除私有AS号：</p>
+<ul>
+<li><p>路由的As_Path属性中含有对端的AS号时。这种情况下删除私有AS号，可能会造成路由环路。</p>
+</li>
+<li><p>As_Path列表中同时含有公有AS号和私有AS号。该列表表明路由已经经过了公网，如果删除私有AS号，可能会造成转发错误。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_public-as-only_bgp__d104206e114"></a><a name="d104206e114"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置向对等体发送BGP更新报文时不携带私有自治系统号。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> peer 1.1.1.2 as-number 200</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> ipv4-family unicast</strong></pre>
+<pre class="screen">[Quidway-bgp-af-ipv4]<strong> peer 1.1.1.2 public-as-only</strong></pre>
+<p># 配置向对等体组test发送BGP更新报文时不携带私有自治系统号。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> ipv6-family</strong></pre>
+<pre class="screen">[Quidway-bgp-af-ipv6]<strong> peer test public-as-only</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

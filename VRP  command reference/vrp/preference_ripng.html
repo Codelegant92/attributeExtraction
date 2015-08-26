@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="preference (RIPng)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ripng_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="preference_ripng">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>preference (RIPng)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="preference_ripng"></a><a name="preference_ripng"></a>
+
+
+<h1 class="topictitle1">preference (RIPng)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>preference</strong>命令用来指定RIPng路由优先级的值。</p>
+<p><strong>undo preference</strong>命令用来恢复RIPng路由优先级的缺省值。</p>
+<p>RIPng路由优先级的缺省值是100。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>preference </strong>{ <em>preference</em> | <strong>route-policy </strong><em>route-policy-name</em> } <sup>*</sup></p>
+<p><strong>undo preference</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>route-policy</strong>：指定路由策略，对满足特定条件的路由设置优先级。</p>
+<p><em>route-policy</em>-<em>name</em>：路由策略名称。字符串形式，不支持空格，区分大小写，长度范围是1～40。</p>
+<p><em>prefrence</em>：RIPng路由优先级的值。整数形式，取值范围是1～255。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>RIPng视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过路由策略可改变指定路由的优先级。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="preference_ripng__d108056e71"></a><a name="d108056e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置RIPng路由优先级为120。</p>
+<pre class="screen">[Quidway] <strong>ripng 100</strong></pre>
+<pre class="screen">[Quidway-ripng-100]<strong> preference 120</strong></pre>
+<p># 使用路由策略改变路由的优先级。</p>
+<pre class="screen">[Quidway-ripng-100]<strong> preference route-policy policy1 60</strong></pre>
+<p># 恢复RIPng路由优先级的缺省值。</p>
+<pre class="screen">[Quidway-ripng-100]<strong> undo preference </strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ripng_configuration_commands.html">RIPng配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

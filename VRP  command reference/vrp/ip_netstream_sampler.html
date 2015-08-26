@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ip netstream sampler">
+<meta name="DC.Relation" scheme="URI" content="../vrp/netstream_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ip_netstream_sampler">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ip netstream sampler</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ip_netstream_sampler"></a><a name="ip_netstream_sampler"></a>
+
+
+<h1 class="topictitle1">ip netstream sampler</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ip netstream sampler</strong> { <strong>fix-packet</strong> <em>fix-packet-number</em> | <strong>random-packet</strong> <em>random-packet-number</em> | <strong>fix-time</strong> <em>fix-time-value</em> | <strong>random-time</strong> <em>random-time-value</em> } {<strong> inbound</strong> | <strong>outbound</strong> }命令用来使能NetStream入或出统计的采样功能。</p>
+<p><strong>undo
+ip netstream sampler</strong> {<strong> inbound </strong>|<strong> outbound </strong>}命令用来禁止NetStream入或出统计的采样功能。</p>
+<p>缺省情况下，禁止NetStream入或出统计的采样功能，对报文逐个进行统计。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ip netstream sampler </strong>{<strong> inbound </strong>|<strong> outbound </strong>} <em>packet-interval </em></p>
+<p><strong>undo ip netstream sampler</strong> {<strong> inbound </strong>|<strong> outbound </strong>}</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>fix-packet-number</em>：固定报文采样的报文间隔。</p>
+<p><em>random-packet-number</em>：随机报文采样的最大报文间隔。</p>
+<p><em>fix-time-value</em>：固定时间采样的时间间隔。</p>
+<p><em>random-time-value</em>：随机时间采样的最大时间间隔。</p>
+<p><strong>inbound</strong>：对报文的入采样。</p>
+<p><strong>outbound</strong>：对报文的出采样。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图，接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>系统视图下定义的采样优先级低于接口视图下定义的采样优先级。系统视图下设置了采样功能，若接口下没有设置，但该接口使能了NetStream入或出统计功能，则该接口启动采样功能，且采用系统视图下的设置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ip_netstream_sampler__d84225e120"></a><a name="d84225e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口上定义NetStream入统计每隔1000个报文进行一次采样。</p>
+<pre class="screen">&lt;Quidway&gt; <strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>ip netstream sampler fix-packet 1000</strong> <strong>inbound</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/netstream_configuration_commands.html">NetStream配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

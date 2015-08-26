@@ -1,0 +1,69 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="import-route (OSPFv3)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospfv3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="filter-policy_export_ospfv3.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="import-route_ospfv3">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>import-route (OSPFv3)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="import-route_ospfv3"></a><a name="import-route_ospfv3"></a>
+
+<h1 class="topictitle1">import-route (OSPFv3)</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>import-route</strong>命令用来引入外部路由信息，在执行引入外部路由前，要求引入路由的OSPFV3进程是active的。</p>
+<p><strong>undo import-route</strong>命令用来取消对外部路由信息的引入。</p>
+<p>缺省情况下，不引入其它协议的路由信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>import-route </strong><em>protocol</em> [ <em>process-id</em> ] [<strong> cost</strong> <em>cost</em> | <strong>type</strong> <em>type</em> | <strong>route-policy </strong><em>route-policy-name </em>] <sup>*</sup></p>
+<p><strong>undo import-route</strong> <em>protocol</em> [ <em>process-id</em> ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>protocol</em>：可引入的源路由协议，目前可为<strong>direct</strong>、<strong>bgp</strong>、<strong>static</strong>、<strong>ripng</strong>、<strong>isis</strong>或<strong>ospfv3</strong>。</p>
+<p><em>process-id</em>：引入的源路由协议进程号，当引入路由协议为<strong>ripng</strong>、<strong>isis</strong>或<strong>ospfv3</strong>时，需要指定该值。</p>
+<p><strong>cost</strong> <em>cost</em>：引入路由的开销值。整数形式，取值范围是0～16777214。</p>
+<p><strong>type</strong> <em>type</em>：引入路由的类型，可以取1或2。</p>
+<p><strong>route-policy</strong> <em>route-policy-name</em>：指定路由策略名称，只有满足指定匹配条件的路由才被引入。字符串形式，长度范围是1～40个字符。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>OSPFv3视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="import-route_ospfv3__d82181e123"></a><a name="d82181e123"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定引入RIPng路由为第二类路由，且路由开销值为50。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ospfv3 1</strong></pre>
+<pre class="screen">[Quidway-ospfv3-1] <strong>import-route ripng 1 type 2 cost 50</strong></pre>
+<p># OSPFv3进程100引入OSPFv3进程160发现的路由。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>ospfv3 100</strong></pre>
+<pre class="screen">[Quidway-ospfv3-100] <strong>import-route ospfv3 160</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospfv3_configuration_commands.html">OSPFv3配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="filter-policy_export_ospfv3.html">filter-policy export (OSPFv3)</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

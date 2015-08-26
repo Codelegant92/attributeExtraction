@@ -1,0 +1,426 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ipv6 routing-table">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ipv6_routing-table">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ipv6 routing-table</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ipv6_routing-table"></a><a name="display_ipv6_routing-table"></a>
+
+
+<h1 class="topictitle1">display ipv6 routing-table</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ipv6 routing-table</strong>命令用来显示IPv6路由表的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ipv6 routing-table</strong> [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ipv6
+routing-table acl</strong> <em>acl6-number</em> [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ipv6 routing-table</strong> <em>ipv6-address</em> <em>prefix-length</em>  [ <strong>longer-match</strong> ] [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ipv6 routing-table</strong> <em>ipv6-address1 </em><em> prefix-length1</em> <em>ipv6-address2</em> <em>prefix-length2</em> [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ipv6 routing-table ipv6-prefix</strong> <em>ipv6-prefix-name</em> [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>verbose</strong>：显示当前路由表中所有路由的详细信息，包括激活和未激活的路由信息。</p>
+<p><strong>acl</strong>：使用ACL6对输出的信息进行过滤。如果指定的ACL6不存在，将显示所有激活路由的信息。</p>
+<p><em>acl6-number</em>：基本访问控制列表ACL6的编号。</p>
+<p><strong>longer-match</strong>：仅显示与特定网络/掩码匹配的路由。</p>
+<p><em>ipv6-address</em>：IPv6目的地址。</p>
+<p><em>prefix-length</em>：前缀长度。</p>
+<p><em>ipv6-address1</em> / <em>ipv6-address2</em>：IPv6地址。<em>ipv6-address1</em>和<em>ipv6-address2</em>共同决定一个地址范围，只有在此范围内的路由才会被显示。</p>
+<p><em>prefix-length1</em>/<em>prefix-length2</em>：前缀长度。</p>
+<p><strong>ipv6-prefix</strong> <em>ipv6-prefix-name</em>：指定IPv6前缀列表的名称。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>显示内容包括目的地址、前缀长度、协议类型、优先级、度量值、下一跳和输出接口、隧道ID、路由携带的标签值、路由生成的时间、路由状态。</p>
+<p>该命令（不含<strong>verbose</strong>参数）只能显示当前使用的路由，即最佳路由。</p>
+<p>在使用<strong>display ipv6 routing-table</strong> <em>ipv6-address</em> <em>prefix-length </em>[ <strong>longer-match</strong> ] [ <strong>verbose</strong> ]显示路由信息时，可通过调整参数组合显示所需信息：</p>
+<ul>
+<li><p>指定参数<em>ipv6-address</em> <em>prefix-length</em>：显示与目的地址精确匹配的IPv6路由。</p>
+</li>
+<li><p>指定参数<em>ipv6-address</em> <em>prefix-length </em><strong>longer-match</strong>：显示与目的地址在输入的前缀范围内匹配的IPv6路由。前缀长度为0时，显示IPv6路由表中所有路由。</p>
+</li>
+</ul>
+<p>例如路由表中有4条路由，2000::20/128、2000::/100、2000::/64和1000::/64。</p>
+<ul>
+<li><p>如果使用带前缀长度的精确匹配<strong>display ipv6 routing-table 2000:: 64</strong>，只有路由2000::/64会显示。</p>
+</li>
+<li><p>如果使用不带前缀长度的精确匹配<strong>display ipv6 routing-table 2000::</strong>，只有路由2000::/100会显示。</p>
+</li>
+<li><p>如果使用前缀长度非零的longer-match匹配<strong>display ipv6 routing-table 2000:: 127 longer-match</strong>，只有路由2000::/100和2000::/64会显示。</p>
+</li>
+<li><p>如果使用前缀长度为零的longer-match匹配<strong>display ipv6 routing-table 2000:: 0 longer-match</strong>，则4条路由都会显示。</p>
+</li>
+</ul>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ipv6_routing-table__d34226e367"></a><a name="d34226e367"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示当前路由表的概要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipv6 routing-table</strong>
+Routing Table : Public
+         Destinations : 2        Routes : 2
+ Destination  : ::1                                     PrefixLength : 128
+ NextHop      : ::1                                     Preference   : 0
+ Interface    : InLoopBack0                             Protocol     : Direct
+ State        : Active NoAdv                            Cost         : 0
+ Tunnel ID    : 0x0                                     Label        : NULL
+ Age          : 266224sec
+
+ Destination  : 2001::                                  PrefixLength : 64
+ NextHop      : ::                                      Preference   : 60
+ Interface    : NULL0                                   Protocol     : Static
+ State        : Active Adv                              Cost         : 0
+ Tunnel ID    : 0x0                                     Label        : NULL
+ Age          : 266236sec</pre>
+<p># 显示路由表的详细路由信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipv6 routing-table verbose</strong>
+Routing Table : Public
+         Destinations : 1        Routes : 1
+
+ Destination  : ::1                                     PrefixLength : 128
+ NextHop      : ::1                                     Preference   : 0
+ RelayNextHop : ::                                      Tag          : 0H
+ Neighbour    : ::                                      ProcessID    : 0
+ Interface    : InLoopBack0                             Protocol     : Direct
+ State        : Active NoAdv                            Cost         : 0
+ Tunnel ID    : 0x0                                     Label        : NULL
+ Entry ID     : 1                                       Flags        : 80010050H
+ Refernce Cnt : 1                                       Age          : 8336sec</pre>
+<p># 显示通过编号为2000的标准ACL6过滤的激活路由的概要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipv6 routing-table acl 2000</strong>
+Routes Matched by Access list  2000  :
+Summary Count : 2
+
+ Destination  : ::1                                     PrefixLength : 128
+ NextHop      : ::1                                     Preference   : 0
+ Interface    : InLoopBack0                             Protocol     : Direct
+ State        : Active NoAdv                            Cost         : 0
+ Tunnel ID    : 0x0                                     Label        : NULL
+ Age          : 459sec
+
+ Destination  : 2001::                                  PrefixLength : 64
+ NextHop      : ::                                      Preference   : 60
+ Interface    : NULL0                                   Protocol     : Static
+ State        : Active Adv                              Cost         : 0
+ Tunnel ID    : 0x0                                     Label        : NULL
+ Age          : 93sec</pre>
+<p># 显示指定路由的概要信息。在掩码范围内有一条匹配路由。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipv6 routing-table 4::1 32</strong>
+Routing Table : Public
+Summary Count 1
+
+ Destination: 4::                                 PrefixLength : 32
+ NextHop: 3::1                                    Preference   : 60
+ Interface   : GigabitEthernet6/0/0               Protocol     : Static
+ State: Active Adv                                Cost         : 0
+ Tunnel ID    : 0x0                               Label        : NULL
+ Age          : 93sec</pre>
+<p># 显示指定范围内的IPv6路由信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipv6 routing-table 3:: 32 4:4:: 64</strong>
+Routing Table :Public
+Summary Count 4
+
+ Destination : 3::                               PrefixLength : 32
+ NextHop     : 3::1                              Preference   : 0
+ Interface   : GigabitEthernet6/0/0              Protocol     : Direct
+ State       : Active Adv                        Cost         : 0
+ Tunnel ID   : 0x0                               Label        : NULL
+ Age          : 266701secsec
+
+ Destination : 3::1                              PrefixLength : 128
+ NextHop     : ::1                               Preference   : 0
+ Interface   : InLoopBack0                       Protocol     : Direct
+ State       : Active NoAdv                      Cost         : 0
+ Tunnel ID   : 0x0                               Label        : NULL
+ Age          : 266852sec
+
+ Destination : 4::                               PrefixLength : 32
+ NextHop     : 3::1                              Preference   : 60
+ Interface   : GigabitEthernet6/0/0              Protocol     : Static
+ State       : Active Adv                        Cost         : 0
+ Tunnel ID   : 0x0                               Label        : NULL
+ Age          : 266224secsec
+
+ Destination : 4:4::                             PrefixLength : 64
+ NextHop     : 3::1                              Preference   : 60
+ Interface   : GigabitEthernet6/0/0              Protocol     : Static
+ State       : Active Adv                        Cost         : 0
+ Tunnel ID   : 0x0                               Label        : NULL
+ Age          : 266317secsec</pre>
+<p># 显示通过前缀列表abc2过滤的激活路由的概要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipv6 routing-table ipv6-prefix abc2</strong>
+Routes matched by prefix-list : abc2
+Summary count: 3
+
+  Destination : 3::                                     PrefixLength : 32
+  NextHop     : 3::1                                    Preference   : 0
+  Interface   : GigabitEthernet6/0/0                    Protocol     : Direct
+  State       : Active Adv                              Cost         : 0
+
+  Destination : 3::1                                    PrefixLength : 128
+  NextHop     : ::1                                     Preference   : 0
+  Interface   : InLoopBack0                             Protocol     : Direct
+  State       : Active NoAdv                            Cost         : 0
+
+  Destination : 4::                                     PrefixLength : 32
+  NextHop     : 3::1                                    Preference   : 60
+  Interface   : GigabitEthernet6/0/0                    Protocol     : Static
+  State       : Active Adv                              Cost         : 0</pre>
+
+<div class="tablenoborder"><a name="display_ipv6_routing-table__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_routing-table__tb_01" frame="border" border="1" rules="all"><caption>表1 display ipv6 routing-table命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.20508944318468%" id="d34226e423"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.79491055681531%" id="d34226e427"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>目的网络/主机的地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>PrefixLength</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>前缀长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>下一跳IPv6地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Preference</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>RelayNextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>迭代的下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Tag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>路由管理标识</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Neighbour</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>邻居的接口IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>ProcessID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>路由协议的进程号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>下一跳可达的出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>路由协议名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>该路由的当前状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>路由开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>隧道ID，值为0x0表示没有使用隧道或隧道建立不成功</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>路由携带的标签值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Entry ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>路由在路由表中检索的关键字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>路由标志位信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Refernce Cnt</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>路由被引用的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d34226e423 "><p>Age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d34226e427 "><p>路由生成时间</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ipv6_routing-table__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_routing-table__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d34226e647"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d34226e651"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d34226e647 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d34226e651 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_basic_configuration_commands.html">IP路由表显示命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

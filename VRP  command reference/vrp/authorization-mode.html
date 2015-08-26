@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="authorization-mode">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aaa_and_user_management_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="authorization-mode">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>authorization-mode</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="authorization-mode"></a><a name="authorization-mode"></a>
+
+
+<h1 class="topictitle1">authorization-mode</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>authorization-mode</strong>命令用来配置当前授权方案中的授权模式。</p>
+<p>缺省情况下，采用本地授权模式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>authorization-mode</strong> { <strong>hwtacacs</strong> |<strong> if-authenticated</strong> | <strong>local</strong> }*
+[ <strong>none</strong> ] </p>
+<p><strong>authorization-mode none</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>hwtacacs</strong>：使用HWTACACS授权模式。</p>
+<p><strong>local</strong>：本地授权模式。</p>
+<p><strong>if-authenticated</strong>：使用if-authenticated授权模式。如果用户通过了认证，同时使用的认证模式不是none，则使用户授权通过，否则授权不通过。</p>
+<p><strong>None</strong>：直接使其授权通过。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>授权方案视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果在一个授权方案中使用多次授权，授权模式的执行顺序按照配置的先后，只有在当前授权模式没有响应时，才会尝试下一个授权模式，如果授权失败则将不会再进行授权。</p>
+<p>如果选用了直接授权（<strong>none</strong>），它必须做为最后一种授权模式。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="authorization-mode__d3363e74"></a><a name="d3363e74"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置名为scheme1的授权方案采用本地授权模式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> aaa</strong></pre>
+<pre class="screen">[Quidway-aaa] <strong>authorization-scheme scheme1</strong></pre>
+<pre class="screen">[Quidway-aaa-author-scheme1]<strong> authorization-mode local</strong></pre>
+<p>#
+配置名为scheme2的授权方案首先使用if-authenticated的授权模式，然后是本地授权，再然后使用hwtacacs，如果前面这三种授权模式都没有响应，则直接使用户授权通过。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> aaa</strong></pre>
+<pre class="screen">[Quidway-aaa] <strong>authorization-scheme scheme2</strong></pre>
+<pre class="screen">[Quidway-aaa-author-scheme2] <strong>authorization-mode if-authenticated local hwtacacs none</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/aaa_and_user_management_configuration_commands.html">AAA及用户管理配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

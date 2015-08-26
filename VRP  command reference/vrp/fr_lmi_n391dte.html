@@ -1,0 +1,64 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="fr lmi n391dte">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frame_relay_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="fr_interface-type.html">
+<meta name="DC.Relation" scheme="URI" content="timer_hold_fr_interface_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="fr_lmi_n391dte">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>fr lmi n391dte</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="fr_lmi_n391dte"></a><a name="fr_lmi_n391dte"></a>
+
+<h1 class="topictitle1">fr lmi n391dte</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>fr lmi n391dte</strong>命令用来配置DTE侧N391参数。</p>
+<p><strong>undo fr lmi n391dte</strong>命令用来恢复到缺省值。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>fr lmi n391dte</strong><em> n391-value</em></p>
+<p><strong>undo</strong> <strong>fr lmi n391dte</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>n391-value</em>：请求PVC状态的计数器值。整数形式，取值范围是1～255。缺省值是6。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>帧中继接口视图、MFR接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>DTE设备每隔一定的时间（间隔由T391决定）要发送一个状态请求报文（Status-Enquiry报文）。状态请求报文有两种类型：链路完整性验证报文和链路状态查询报文。参数N391定义两种报文的发送比例，即，链路完整性验证报文数：链路状态查询报文数＝（N391－1）：1。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="fr_lmi_n391dte__d77314e42"></a><a name="d77314e42"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置帧中继接口Serial1/0/0:0工作在DTE方式，请求PVC状态的计数器值为10。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0:0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> link-protocol fr</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> fr interface-type dte</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> fr lmi n391dte 10</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/frame_relay_configuration_commands.html">帧中继配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="fr_interface-type.html">fr interface-type</a></div>
+<div><a href="timer_hold_fr_interface_view.html">timer hold（帧中继接口视图）</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

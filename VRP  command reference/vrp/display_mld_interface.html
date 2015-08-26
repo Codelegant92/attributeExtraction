@@ -1,0 +1,365 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mld interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mld_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mld_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mld interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mld_interface"></a><a name="display_mld_interface"></a>
+
+
+<h1 class="topictitle1">display mld interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mld interface</strong>命令用来查看接口上MLD的参数信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mld interface</strong> [ <em>interface-type interface-number</em> | <strong>up</strong> | <strong>down</strong> ] [ <strong>verbose</strong> ]<span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type interface-number</em>：指定接口类型和编号。</p>
+<p><strong>up</strong>：MLD接口的协议状态是Up，MLD处于Active状态。</p>
+<p><strong>down</strong>：MLD接口的协议状态是Down，MLD处于Inactive状态。</p>
+<p><strong>verbose</strong>：显示所有运行MLD的接口或指定接口的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display mld interface</strong>命令时：</p>
+<ul>
+<li><p>指定<em>interface-type interface-number</em>参数，则仅显示该接口上MLD的参数信息，如果该接口未使能MLD，则出现提示信息。</p>
+</li>
+<li><p>如果指定<strong>up</strong>，则仅显示所有MLD协议状态为Active的MLD接口参数。</p>
+</li>
+<li><p>如果指定<strong>down</strong>，则仅显示所有MLD协议状态为Inactive的MLD接口参数。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mld_interface__d41312e148"></a><a name="d41312e148"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示接口GE1/0/0的MLD配置和运行的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mld interface gigabitethernet 1/0/0 verbose</strong>
+Interface information
+ GigabitEthernet1/0/0(FE80::2E0:B4FF:FE35:FF01):
+   MLD is enabled
+   Current MLD version is 2
+   MLD state: up
+   MLD group policy: none
+   Value of query interval for MLD (negotiated): 125 s
+   Value of query interval for MLD (configured): 125 s
+   Value of other querier timeout for MLD: 0 s
+   Value of maximum query response time for MLD: 10 s
+   Value of last listener query time: 2 s
+   Value of last listener query interval: 1 s
+   Value of startup query interval: 31 s
+   Value of startup query count: 2
+   General query timer expiry (hours:minutes:seconds): 00:00:28
+   Querier for MLD: FE80::2E0:B4FF:FE35:FF01 (this router)
+   MLD activity: 0 joins, 0 dones
+   Robustness (negotiated): 2
+   Robustness (configured): 2
+   Require-router-alert: disabled
+   Send-router-alert: enabled
+   Prompt-leave: disabled
+   SSM-Mapping: disabled
+   Startup-query-timer-expiry: on
+   Other-querier-present-timer-expiry: off
+</pre>
+
+<div class="tablenoborder"><a name="display_mld_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mld_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display mld interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="55.37011084214549%" id="d41312e169"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="44.6298891578545%" id="d41312e173"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>GigabitEthernet1/0/0(FE80::2E0:B4FF:FE35:FF01)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>接口的链路本地地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Current MLD version is 2</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>当前接口上配置的MLD版本号为2。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>MLD state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>MLD接口状态，up或down。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>MLD group policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>MLD组策略的ACL编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Value of query interval for MLD (negotiated)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>经协商后系统实际采用的MLD查询消息发送间隔，单位是秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Value of query interval for MLD (configured):</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>用户配置的MLD查询消息的发送间隔，单位是秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Value of other querier timeout for MLD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>MLD查询器超时间隔，单位是秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Value of maximum query response time for MLD </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>MLD查询消息的最大响应时间，单位是秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Value of last listener query time </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>最后侦听者查询时间，单位是秒。最后侦听者查询时间=最后侦听者查询时间间隔&times;健壮系数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Value of last listener query interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>查询器发送最后侦听者查询消息（即指定组查询消息）的时间间隔，单位是秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Value of startup query interval </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>查询器启动时发送查询消息的时间间隔，单位是秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Value of startup query count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>启动时查询消息的发送次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>General query timer expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>普遍查询定时器的超时间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Querier for MLD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>MLD查询器的链路本地地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>MLD activity</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>MLD的活动统计信息（加入或离开）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Robustness</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>查询器的健壮系数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Require-router-alert</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>是否丢弃不包含Router-Alert选项的MLD报文。disabled表示可接收处理不包含Router-Alert选项的MLD报文；enabled表示忽略不包含Router-Alert选项的MLD报文。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Send-router-alert</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>发送的MLD报文是否包含Router-Alert选项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Prompt-leave</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>是否使能快速离开机制。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>SSM-Mapping</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><p>是否使能了SSM映射。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Startup-query-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><div class="p">启动时该接口作为查询器的查询间隔定时器状态：<ul>
+<li>off：查询消息发送完毕。</li>
+<li>on：查询消息未发送完毕。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.37011084214549%" headers="d41312e169 "><p>Other-querier-present-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.6298891578545%" headers="d41312e173 "><div class="p">其他查询器的存在时间定时器状态：<ul>
+<li>off：接口认为自己是查询器，不存在其他查询器。</li>
+<li>on：接口不是查询器，存在其他查询器。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mld_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mld_interface__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d41312e453"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d41312e457"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d41312e453 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d41312e457 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mld_configuration_commands.html">MLD配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

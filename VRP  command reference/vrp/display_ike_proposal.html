@@ -1,0 +1,124 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ike proposal">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="authentication-method.html">
+<meta name="DC.Relation" scheme="URI" content="ike_proposal.html">
+<meta name="DC.Relation" scheme="URI" content="encryption-algorithm.html">
+<meta name="DC.Relation" scheme="URI" content="authentication-algorithm.html">
+<meta name="DC.Relation" scheme="URI" content="dh.html">
+<meta name="DC.Relation" scheme="URI" content="sa_duration_ike_proposal_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ike_proposal">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ike proposal</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ike_proposal"></a><a name="display_ike_proposal"></a>
+
+<h1 class="topictitle1">display ike proposal</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>ike</strong> <strong>proposal</strong>命令用来查看每个IKE提议配置的参数。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>ike</strong> <strong>proposal</strong> </p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display</strong> <strong>ike</strong> <strong>proposal</strong>命令可以观察到的信息包括：</p>
+<ul><li><p>IKE提议的优先级</p>
+</li><li><p>IKE提议使用的认证方法</p>
+</li><li><p>IKE提议使用的认证算法</p>
+</li><li><p>IKE提议使用的加密算法</p>
+</li><li><p>Diffie-Hellman（DH）组标识</p>
+</li><li><p>IKE提议使用的ISAKMP SA存活时间</p>
+</li></ul>
+<p>IKE提议按照优先级的先后顺序显示。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ike_proposal__d27135e70"></a><a name="d27135e70"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 下面是一个配置了两条IKE提议后显示的例子。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ike proposal</strong></pre>
+<pre class="screen">priority authentication authentication encryption Diffie-Hellman duration</pre>
+<pre class="screen">              method       algorithm    algorithm     group       (seconds)</pre>
+<pre class="screen">--------------------------------------------------------------------</pre>
+<pre class="screen"> 23       PRE_SHARED     SHA            AES_CBC    MODP_768       86400</pre>
+<pre class="screen"> default  PRE_SHARED     SHA            DES_CBC    MODP_768       86400</pre>
+
+<div class="tablenoborder"><a name="display_ike_proposal__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ike_proposal__tb_01" frame="border" border="1" rules="all"><caption>表1 display ike proposal命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="32.464096749811034%" id="d27135e95"><p>主要字段</p>
+</th>
+<th class="cellrowborder" valign="top" width="67.53590325018897%" id="d27135e98"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="32.464096749811034%" headers="d27135e95 "><p>Protection suite priority</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.53590325018897%" headers="d27135e98 "><p>IKE提议的优先级，可以是1～100之间的任意一个整数。priority值越大，优先级越低。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.464096749811034%" headers="d27135e95 "><p>encryption algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.53590325018897%" headers="d27135e98 "><p>IKE提议使用的加密算法</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.464096749811034%" headers="d27135e95 "><p>authentication algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.53590325018897%" headers="d27135e98 "><p>IKE提议使用的认证算法</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.464096749811034%" headers="d27135e95 "><p>authentication method</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.53590325018897%" headers="d27135e98 "><p>IKE提议使用的认证方式</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.464096749811034%" headers="d27135e95 "><p>Diffie-Hellman group</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.53590325018897%" headers="d27135e98 "><p>Diffie-Hellman（DH）组标识</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.464096749811034%" headers="d27135e95 "><p>sa duration</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.53590325018897%" headers="d27135e98 "><p>IKE提议使用的ISAKMP SA存活时间</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.464096749811034%" headers="d27135e95 "><p>Default protection suite</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.53590325018897%" headers="d27135e98 "><p>缺省的IKE提议，缺省情况下或配置的IKE提议都不匹配的时候，采用此IKE提议，该提议优先级最低。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="authentication-method.html">authentication-method</a></div>
+<div><a href="ike_proposal.html">ike proposal</a></div>
+<div><a href="encryption-algorithm.html">encryption-algorithm</a></div>
+<div><a href="authentication-algorithm.html">authentication-algorithm</a></div>
+<div><a href="dh.html">dh</a></div>
+<div><a href="sa_duration_ike_proposal_view.html">sa duration（IKE提议视图）</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

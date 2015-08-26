@@ -1,0 +1,215 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mfr">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frame_relay_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="link-protocol_fr_mfr.html">
+<meta name="DC.Relation" scheme="URI" content="interface_mfr.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mfr">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mfr</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mfr"></a><a name="display_mfr"></a>
+
+<h1 class="topictitle1">display mfr</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p>命令<strong>display mfr</strong>用来查看多链路帧中继捆绑和捆绑链路的配置和统计信息。如果不指定捆绑或捆绑链路，将显示所有捆绑和捆绑链路的信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mfr</strong> [ <strong>interface </strong><em>interface-type interface-number</em> | <strong>verbose</strong> ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口编号，三维形式：槽号/卡号/接口号。</p>
+<p><strong>verbose</strong>：使用该参数将显示详细统计信息，包括发送和接收的控制报文数。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mfr__d40578e48"></a><a name="d40578e48"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有帧中继捆绑和帧中继捆绑链路的配置和状态信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mfr</strong></pre>
+<pre class="screen">Bundle interface:MFR4/0/2, Bundle State = up, Bundle Class = A</pre>
+<pre class="screen">    fragment disabled</pre>
+<pre class="screen">    Bundle name = MFR1/0/0</pre>
+<pre class="screen">    Bundle links:</pre>
+<pre class="screen">Serial1/0/0:0, PHY state = up, link state = up, Link name = Serial1/0/0:0</pre>
+<p># 查看所有帧中继捆绑链路的详细状态信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mfr verbose</strong></pre>
+<pre class="screen">Bundle interface:MFR4/0/2, Bundle state = up,  Bundle class = A,</pre>
+<pre class="screen">    fragment disabled</pre>
+<pre class="screen">    Bundle name = MFR4/0/2</pre>
+<pre class="screen">    Bundle links:</pre>
+<pre class="screen">    LID : Serial4/0/2:21   Peer LID: Serial11/0/2:21</pre>
+<pre class="screen">    Bound to MFR4/0/2(BID:MFR4/0/2)</pre>
+<pre class="screen">    Physical state: up, link state: up,</pre>
+<pre class="screen">    Bundle Link statistics:</pre>
+<pre class="screen">        Hello(TX/RX):         3/3    Hello_ack(TX/RX):       3/3</pre>
+<pre class="screen">        Add_link(TX/RX):      0/0    Add_link_ack(TX/RX):    0/0</pre>
+<pre class="screen">        Add_link_rej(TX/RX):  0/0</pre>
+<pre class="screen">        Remove_link(TX/RX):   0/0    Remove_link_ack(TX/RX):  0/0</pre>
+<pre class="screen">        Pkts dropped(in/out): 0/0</pre>
+<pre class="screen">        Timer: ACK  4, Hello  10</pre>
+<pre class="screen">        Retry: Max  2, Current 0</pre>
+<pre class="screen">        Cause code: none</pre>
+<pre class="screen">    LID : Serial4/0/2:22   Peer LID: Serial11/0/2:22</pre>
+<pre class="screen">    Bound to MFR4/0/2(BID:MFR4/0/2)</pre>
+<pre class="screen">    Physical state: up, link state: up,</pre>
+<pre class="screen">    Bundle Link statistics:</pre>
+<pre class="screen">        Hello(TX/RX):         2/2    Hello_ack(TX/RX):       2/2</pre>
+<pre class="screen">        Add_link(TX/RX):      0/0    Add_link_ack(TX/RX):    0/0</pre>
+<pre class="screen">        Add_link_rej(TX/RX):  0/0</pre>
+<pre class="screen">        Remove_link(TX/RX):   0/0    Remove_link_ack(TX/RX):  0/0</pre>
+<pre class="screen">        Pkts dropped(in/out): 0/0</pre>
+<pre class="screen">        Timer: ACK  4, Hello  10</pre>
+<pre class="screen">        Retry: Max  2, Current 0</pre>
+<pre class="screen">        Cause code: none</pre>
+
+<div class="tablenoborder"><a name="display_mfr__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mfr__tb_01" frame="border" border="1" rules="all"><caption>表1 display mfr命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="28.50844041320232%" id="d40578e135"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="71.49155958679768%" id="d40578e138"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Bundle interface</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>捆绑接口。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Bundle state</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>捆绑接口运行状态。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Bundle class</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>Class A表示如果有一个捆绑链路为Up状态，则捆绑接口的状态就是Up，且只有所有的捆绑链路都为Down时，捆绑状态才是Down。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Bundle links</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>每条捆绑链路的物理接口信息。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>LID</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>捆绑链路标识，缺省为当前捆绑链路的接口名称。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Peer LID</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>对端捆绑标识符，缺省为对端捆绑链路的接口名称。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Physical state</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>物理接口的运行状态。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>link state</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>捆绑链路线路协议的运行状态。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Bundle Link statistics:</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>捆绑链路的报文统计信息。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Hello(TX/RX)</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>发送和接收的Hello报文的数量。Hello报文用来维持链路状态。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Hello_ack(TX/RX)</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>发送和接收的Hello应答报文的数量。Hello_ack报文用来通报对端Hello消息已经接收到。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Add_link(TX/RX)</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>发送和接收的Add_link报文的数目。Add_link报文用来通报对端本地结点已准备好处理帧。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Add_link_ack(TX/RX)</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>发送和接收的Add_link响应报文的数量。Add_link_ack报文用来通报对端一个Add_link报文被收到。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Add_link_rej(TX/RX)</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>发送和接收的Add_link拒绝报文的数量。Add_link_rej报文用来通报对端一个Add_link报文被拒绝。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Remove_link(TX/RX)</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>发送和接收的Remove_link报文的数目。Remove_link报文用来通报对端本地结点正从捆绑中删除一条捆绑链路。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Remove_link_ack(TX/RX)</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>发送和接收的Remove_link响应报文的数量。Remove_link_ack报文用来通报对端Remove_link报文已经被接收。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Pkts dropped(in/out)</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>接收和发送丢弃的报文数目。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Timer: Ack 4</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>捆绑链路在收到应答消息前重发一个hello消息、或重发一个用于初始同步的add_link消息前等待hello应答消息的时间。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Hello 10</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>捆绑链路发送hello消息的间隔。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Retry: max 2</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>捆绑链路在等待hello应答消息前重发hello消息或重发用于初始同步的Add_link的最大重试次数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Current 0</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>已经重试的次数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d40578e135 "><p>Cause code</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d40578e138 "><p>捆绑链路处于当前状态的原因。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/frame_relay_configuration_commands.html">帧中继配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="link-protocol_fr_mfr.html">link-protocol fr mfr</a></div>
+<div><a href="interface_mfr.html">interface mfr</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

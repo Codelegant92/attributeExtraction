@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="wred">
+<meta name="DC.Relation" scheme="URI" content="../vrp/class-based_qos_configuration_commmands.html">
+<meta name="DC.Relation" scheme="URI" content="traffic_behavior.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="wred">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>wred</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="wred"></a><a name="wred"></a>
+
+
+<h1 class="topictitle1">wred</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>wred</strong>命令用来配置丢弃方式为加权随机早期检测。</p>
+<p><strong>undo</strong> <strong>wred</strong>命令用来取消该配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>wred</strong> [ <strong>dscp</strong> | <strong>ip-precedence</strong> ]</p>
+<p><strong>undo
+wred</strong> [ <strong>dscp</strong> | <strong>ip-precedence</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>dscp</strong>：表明在为一个包计算丢弃概率时使用的是DSCP值。</p>
+<p><strong>ip-precedence</strong>：表明在为一个包计算丢弃概率时使用的是IP优先级值，作为缺省配置。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>流行为视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令必须在配置了<strong>queue af</strong>和<strong>queue wfq</strong>后使用。<strong>wred</strong>和<strong>queue-length</strong>这两个命令不能同时有效。取消该配置时将删除WRED相关的其他配置。当接口上应用了配置WRED的策略后，原有的接口级的WRED配置失效。</p>
+<p>与缺省类default-class关联的行为，可以配<strong>ip-precedence</strong>或者<strong>dscp</strong>。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="wred__d129340e87"></a><a name="d129340e87"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置采用加权早期检测方式，丢弃概率以IP优先级计算。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> traffic behavior database</strong></pre>
+<pre class="screen">[Quidway-behavior-database]<strong> wred</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/class-based_qos_configuration_commmands.html">基于类的QoS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="traffic_behavior.html">traffic behavior</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

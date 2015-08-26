@@ -1,0 +1,299 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te session-entry">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_session-entry">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te session-entry</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_session-entry"></a><a name="display_mpls_te_session-entry"></a>
+
+
+<h1 class="topictitle1">display mpls te session-entry</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls te session-entry</strong>用来查看Session Entry数据结构的详细信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te session-entry</strong> [ <em>ingress-lsr-id
+tunnel-id egress-lsr-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ingress-lsr-id</em>：入节点的LSR ID，点分十进制格式。</p>
+<p><em>tunnel-id</em>：隧道标识符。整数形式，取值范围是0～65535。</p>
+<p><em>egress-lsr-id</em>：出节点的LSR ID，点分十进制格式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_session-entry__d49401e51"></a><a name="d49401e51"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 标准DS-TE模式下，查看SessionEntry数据结构的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls te session-entry</strong></pre>
+<pre class="screen">
+  Ingress-ID                :  1.1.1.1
+  Tunnel-ID                 :  100
+  Egress-ID                 :  2.2.2.2
+  Crlsp num                 :  1
+  First TunnelTable index   :  0
+  LSP No.     :  1
+  LSP ID      :  1.1.1.1:100:1
+  In/Out IF   :  -/S1/0/0
+  Bandwidth(Kbit/sec):
+    CT0 : 100         CT1 : 0
+    CT2 : 0           CT3 : 0
+    CT4 : 0           CT5 : 0
+    CT6 : 0           CT7 : 0</pre>
+<p># 非标准DS-TE模式下，查看SessionEntry数据结构的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls te session-entry</strong></pre>
+<pre class="screen">
+  Ingress-ID                :  1.1.1.1
+  Tunnel-ID                 :  100
+  Egress-ID                 :  2.2.2.2
+  Crlsp num                 :  1
+  First TunnelTable index   :  0
+  LSP No.     :  1
+  LSP ID      :  1.1.1.1:100:1
+  In/Out IF   :  -/S1/0/0
+  Bandwidth(Kbit/sec):
+    CT0 : 100         CT1 : 0 </pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_session-entry__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_session-entry__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te session-entry命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.86722096245906%" id="d49401e81"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.13277903754094%" id="d49401e85"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>Ingress-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>入节点的LSR ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>Tunnel-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>隧道标识符，也称为会话标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>Egress-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>出节点的LSR ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>Crlsp num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>该Session Entry的CR-LSP的数目</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>First TunnelTable index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>该Session Entry的第一条CR-LSP的隧道表项索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>LSP No</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>LSP的编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>LSP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>LSP标识，用三元组&lt;Ingress-LSR-ID、Tunnel-ID、Local-LSP-ID&gt;唯一标识</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>In/Out IF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>该隧道在本地节点经过的入/出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>Bandwidth(Kbit/sec)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>该隧道的带宽信息（单位是Kbit/sec）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>CT0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>CT0的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>CT1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>CT1的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>CT2</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>CT2的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>CT3</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>CT3的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>CT4</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>CT4的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>CT5</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>CT5的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>CT6</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>CT6的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.86722096245906%" headers="d49401e81 "><p>CT7</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.13277903754094%" headers="d49401e85 "><p>CT7的带宽值</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_te_session-entry__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_session-entry__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d49401e294"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d49401e298"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d49401e294 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d49401e298 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,123 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="snmp-agent trap enable feature-name l3vpn">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_mpls_ip_vpn_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_snmp-agent_trap_feature-name_l3vpn_all.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="snmp-agent_trap_enable_feature-name_l3vpn">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>snmp-agent trap enable feature-name l3vpn</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="snmp-agent_trap_enable_feature-name_l3vpn"></a><a name="snmp-agent_trap_enable_feature-name_l3vpn"></a>
+
+
+<h1 class="topictitle1">snmp-agent trap enable feature-name l3vpn</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>snmp-agent trap enable feature-name l3vpn</strong>命令用来打开L3VPN相关事件的告警开关。</p>
+<p><strong>undo snmp-agent trap enable feature-name l3vpn</strong>命令用来关闭L3VPN相关事件的告警开关。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>snmp-agent trap enable feature-name l3vpn </strong>{ <strong>non-excessive all</strong> | <strong>trap-name</strong> { <span><strong>l3vpn_mib_trap_mid_thresh_exceed</strong> |</span>  <strong>l3vpn_mib_trap_thresh_cleared</strong> | <strong>l3vpn_mib_trap_thresh_exceed</strong> | <strong>l3vpn_mib_trap_vrf_down</strong> | <strong>l3vpn_mib_trap_vrf_up</strong> } }</p>
+<p><strong>undo snmp-agent trap enable feature-name l3vpn</strong> { <strong>all</strong> | <strong>non-excessive all</strong> | <strong>trap-name</strong> { <span><strong>l3vpn_mib_trap_mid_thresh_exceed</strong> |</span>  <strong>l3vpn_mib_trap_thresh_cleared</strong> | <strong>l3vpn_mib_trap_thresh_exceed</strong> | <strong>l3vpn_mib_trap_vrf_down</strong> | <strong>l3vpn_mib_trap_vrf_up</strong> } }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>non-excessive all</strong>：打开L3VPN所有非海量事件的告警开关。</p>
+<p><strong>trap-name</strong>：打开指定类型L3VPN事件的告警开关。</p>
+<p><strong>l3vpn_mib_trap_mid_thresh_exceed</strong>：打开私网路由数量超过私网路由表的路由中限事件的告警开关。该路由中限值是由命令<a href="routing-table_limit_vpn_instance_view.html">routing-table limit（VPN实例视图）</a>或者命令<a href="prefix_limit_vpn_instance_view.html">prefix limit</a>设定的。</p>
+<p><strong>l3vpn_mib_trap_thresh_cleared</strong>：打开私网路由数量降低到门限值事件的告警开关。该门限值是由命令<a href="routing-table_limit_vpn_instance_view.html">routing-table limit（VPN实例视图）</a>或者命令<a href="prefix_limit_vpn_instance_view.html">prefix limit</a>设定的。</p>
+<p><strong>l3vpn_mib_trap_thresh_exceed</strong>：打开私网路由数量超过私网路由表的路由上限事件的告警开关。该上限是由命令<a href="routing-table_limit_vpn_instance_view.html">routing-table limit（VPN实例视图）</a>或者命令<a href="prefix_limit_vpn_instance_view.html">prefix limit</a>设定的。</p>
+<p><strong>l3vpn_mib_trap_vrf_down</strong>：打开VRF Down事件的告警开关。</p>
+<p><strong>l3vpn_mib_trap_vrf_up</strong>：打开VRF Up事件的告警开关。</p>
+<p><strong>all</strong>: 关闭L3VPN模块所有的告警开关。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>目前定义的L3VPN非海量事件有：<span><strong>l3vpn_mib_trap_mid_thresh_exceed</strong>、</span><strong>l3vpn_mib_trap_thresh_cleared</strong>、<strong>l3vpn_mib_trap_thresh_exceed</strong>、<strong>l3vpn_mib_trap_vrf_down</strong>、<strong>l3vpn_mib_trap_vrf_up</strong>。</p>
+<p>当用户希望打开L3VPN模块所有非海量事件的告警开关时，可以选定<strong>non-excessive all</strong>批量处理；当用户希望打开某个或几个事件的告警开关时，可以指定<strong>type-name</strong>。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="snmp-agent_trap_enable_feature-name_l3vpn__d118712e167"></a><a name="d118712e167"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在系统视图下打开VRF Down事件的告警开关。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway] <strong>snmp-agent trap enable feature-name l3vpn trap-name l3vpn_mib_trap_vrf_down</strong></pre>
+<p># 在系统视图下关闭VRF Down事件的告警开关。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> undo snmp-agent trap enable feature-name l3vpn trap-name l3vpn_mib_trap_vrf_down</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="snmp-agent_trap_enable_feature-name_l3vpn__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="snmp-agent_trap_enable_feature-name_l3vpn__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d118712e198"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d118712e202"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d118712e198 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d118712e202 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d118712e198 "><p>VRPV500R006C02B232</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d118712e202 "><p>增加了参数<strong>l3vpn_mib_trap_mid_thresh_exceed</strong>，打开私网路由数量超过私网路由表的路由中限事件的告警开关。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_mpls_ip_vpn_configuration_commands.html">BGP/MPLS IP VPN配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_snmp-agent_trap_feature-name_l3vpn_all.html">display snmp-agent trap feature-name l3vpn all</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,180 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display arp learning strict">
+<meta name="DC.Relation" scheme="URI" content="../vrp/arp_security_commands.html">
+<meta name="DC.Relation" scheme="URI" content="arp_learning_strict_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="arp_learning_strict_interface_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_arp_learning_strict">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display arp learning strict</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_arp_learning_strict"></a><a name="display_arp_learning_strict"></a>
+
+
+<h1 class="topictitle1">display arp learning strict</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display arp learning strict</strong>命令用来查看所有接口上的ARP严格学习情况。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display arp learning strict</strong><span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用此命令可以查看所有接口ARP严格学习的具体情况。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_arp_learning_strict__d12902e81"></a><a name="d12902e81"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有接口上的ARP严格学习情况。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display arp learning strict</strong></pre>
+<pre class="screen">The global configuration:</pre>
+<pre class="screen"> interface                           LearningStrictState</pre>
+<pre class="screen">------------------------------------------------------------</pre>
+<pre class="screen"> GigabitEthernet2/0/3                force-disable</pre>
+<pre class="screen"> GigabitEthernet2/0/1                force-enable</pre>
+<pre class="screen">------------------------------------------------------------</pre>
+<pre class="screen"> Total:2</pre>
+<pre class="screen"> force-enable:1</pre>
+<pre class="screen"> force-disable:1</pre>
+
+<div class="tablenoborder"><a name="display_arp_learning_strict__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_arp_learning_strict__tb_01" frame="border" border="1" rules="all"><caption>表1 display arp packet statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.52426452099572%" id="d12902e119"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.47573547900427%" id="d12902e123"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12902e119 "><p>interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12902e123 "><p>接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12902e119 "><p>LearningStrictState</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12902e123 "><p>ARP严格学习状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12902e119 "><p>Total</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12902e123 "><p>应用ARP严格学习策略的接口总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12902e119 "><p>force-enable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12902e123 "><p>使能ARP严格学习的接口数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12902e119 "><p>force-disable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12902e123 "><p>去使能ARP严格学习的接口数目</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_arp_learning_strict__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_arp_learning_strict__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d12902e200"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d12902e204"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d12902e200 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d12902e204 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/arp_security_commands.html">ARP安全命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="arp_learning_strict_system_view.html">arp learning strict（系统视图）</a></div>
+<div><a href="arp_learning_strict_interface_view.html">arp learning strict（接口视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

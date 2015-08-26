@@ -1,0 +1,93 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="l2-multicast protection protect-vlan">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="l2-multicast_protection_oam-bind_cfm.html">
+<meta name="DC.Relation" scheme="URI" content="display_l2-multicast_protection.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="l2-multicast_protection_protect-vlan">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>l2-multicast protection protect-vlan</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="l2-multicast_protection_protect-vlan"></a><a name="l2-multicast_protection_protect-vlan"></a>
+
+
+<h1 class="topictitle1">l2-multicast protection protect-vlan</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>l2-multicast protection protect-vlan</strong>命令用来配置本组播VLAN和指定VLAN构成保护组。</p>
+<p><strong>undo</strong> <strong>l2-multicast protection</strong>命令用来解除本组播VLAN和指定VLAN构成的保护组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>l2-multicast protection protect-vlan </strong><em>vlan-id</em> [<strong>hold-off </strong><em>milliseconds</em> | <strong>restore </strong>{<strong>revertive </strong>[ <strong>wtr </strong><em>minutes</em>] | <strong>non-revertive </strong>} ]<strong>*</strong></p>
+<p><strong>undo l2-multicast protection</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>protect-vlan</strong><em> vlan-id</em>：表示保护VLAN的编号。整数形式，取值范围是1～4094。</p>
+<p><strong>hold-off </strong><em>milliseconds</em>：表示倒换延迟时间。整数形式，取值范围是0～100，单位是0.1秒。缺省值是0。</p>
+<p><strong>restore</strong>：表示指定保护组的故障恢复模式。</p>
+<p><strong>revertive</strong>：表示保护组的故障恢复模式为恢复式。</p>
+<p><strong>wtr</strong><em> minutes</em>：表示等待恢复时间。整数形式，取值范围是5～12，单位是分钟。缺省值是5分钟。</p>
+<p><strong>non-revertive</strong>：表示保护组的故障恢复模式为非恢复式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VLAN视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>先配置这条命令后，才能配置组播VLAN保护组的其他命令。保护VLAN继承主VLAN的各项IGMP-Snooping属性，保护vlan中的接口可以配置静态成员端口表项，但是不起作用。除状态检测命令外不能再配置其他相关命令。</p>
+<p>在双发节点，组播流通过跨VLAN复制转发到两个用户VLAN；在选收接口，两个VLAN只有一个VLAN的流可以复制到用户VLAN，另一个VLAN的组播数据备丢弃。</p>
+<p>配置组播保护组应遵循以下条件：</p>
+<ul>
+<li><p>主用VLAN必须是组播VLAN。</p>
+</li>
+<li><p>保护VLAN内不能存在用户VLAN。</p>
+</li>
+<li><p>一个VLAN只能加入一个保护组。</p>
+</li>
+</ul>
+<p>删除组播保护组只能在工作VLAN视图下执行该命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="l2-multicast_protection_protect-vlan__d88413e119"></a><a name="d88413e119"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置VLAN 10和VLAN 20构成保护组，VLAN 10是工作VLAN，VLAN 20是保护VLAN。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> igmp-snooping enable </strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 10</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> igmp-snooping enable </strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> multicast-vlan enable</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> l2-multicast protection protect-vlan 20</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="l2-multicast_protection_oam-bind_cfm.html">l2-multicast protection oam-bind cfm</a></div>
+<div><a href="display_l2-multicast_protection.html">display l2-multicast protection</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,71 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="pim ipv6 silent">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_pim_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="pim_ipv6_silent">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>pim ipv6 silent</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="pim_ipv6_silent"></a><a name="pim_ipv6_silent"></a>
+
+
+<h1 class="topictitle1">pim ipv6 silent</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>pim ipv6 silent</strong>命令用来在指定接口上使能PIM Silent功能。</p>
+<p><strong>undo pim ipv6 silent</strong>命令用来在指定接口上取消PIM Silent功能。</p>
+<p>缺省情况下，接口未使能PIM Silent功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>pim ipv6 silent</strong></p>
+<p><strong>undo pim ipv6 silent</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在接入层上，<span class="keyword">路由器</span>直连用户的接口上需要使能PIM协议，在该接口上可以建立PIM邻居，处理各类PIM协议报文。此配置同时存在着安全隐患：当恶意主机大量发送模拟的PIM Hello报文时，有可能导致<span class="keyword">路由器</span>瘫痪。</p>
+<p>为了避免这样的情况发生，可以在该接口上执行<a href="pim_ipv6_silent.html">pim ipv6 silent</a>命令，将接口设置为PIM消极模式。当接口进入消极状态后，将禁止接收和转发任何PIM协议报文，删除该接口上的所有PIM邻居以及PIM状态机，并自动成为DR。同时，该接口上的MLD功能不受影响。</p>
+<p>PIM silent仅适用于与用户主机网段直连的接口，且该网段上只能连接一台PIM路由器。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="pim_ipv6_silent__d105437e59"></a><a name="d105437e59"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能接口GE1/0/0的PIM Silent功能。。</p>
+<pre class="screen">&lt;RouteA&gt;<strong> system-view</strong></pre>
+<pre class="screen">[RouteA]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[RouterA-GigabitEthernet1/0/0]<strong> <strong>pim ipv6 silent</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_pim_configuration_commands.html">IPv6 PIM配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

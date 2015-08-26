@@ -1,0 +1,98 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="cost-style">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="isis_cost.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cost-style">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>cost-style</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="cost-style"></a><a name="cost-style"></a>
+
+
+<h1 class="topictitle1">cost-style</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>cost-style</strong>命令用来设置IS-IS路由器接收和发送路由的开销类型。</p>
+<p><strong>undo
+cost-style</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，路由的开销类型为<strong>narrow</strong>。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>cost-style</strong> { <strong>narrow</strong> | <strong>wide</strong> | <strong>wide-compatible</strong> }</p>
+<p><strong>cost-style</strong> { <strong>compatible</strong> | <strong>narrow-compatible</strong> } [<strong> relax-spf-limit</strong> ]</p>
+<p><strong>undo cost-style</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>narrow</strong>：接收或发送开销类型为narrow的路由。</p>
+<p><strong>wide</strong>：接收或发送开销类型为wide的路由。</p>
+<p><strong>wide-compatible</strong>：可以接收开销类型为narrow和wide的路由，但却只发送wide的路由。</p>
+<p><strong>compatible</strong>：可以接收或发送开销类型为narrow和wide的路由。</p>
+<p><strong>narrow-compatible</strong>：可以接收开销类型为narrow和wide的路由，但却只发送narrow的路由。</p>
+<p><strong>relax-spf-limit</strong>：表示允许接收开销值大于1023的路由。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>relax-spf-limit</strong>参数只在设置开销类型为compatible和narrow-compatible时有效。</p>
+<ul>
+<li><p>不设置relax-spf-limit参数：</p>
+<ul>
+<li><p>如果路由开销值小于等于1023，且该路由经过的所有接口的链路开销值都小于等于63：</p>
+<p>这条路由的开销值按照实际值接收，即路由的开销值为该路由所经过的所有接口的链路开销总和。</p>
+</li>
+<li><p>如果路由开销值小于等于1023，但该路由经过的所有接口中有的接口链路开销值大于63：</p>
+<p>路由器只能学到该接口所在路由器的其他接口的直连路由和该接口所引入的路由，路由的开销值按照实际值接收，路由此后要经过的接口将丢弃该路由。此接口之后的路由将被丢弃。</p>
+</li>
+<li><p>如果路由开销值大于1023：</p>
+<p>路由器只能学到路由开销值第一次超过1023的那个接口（该接口之前的所有接口的链路开销值小于等于63）的路由。该接口所在网段的路由和引入的路由均可以被学习到，路由的开销值按照1023接收，该接口之后的路由将被丢弃。</p>
+</li>
+</ul>
+</li>
+<li><p>设置relax-spf-limit参数：</p>
+<p>对接口的链路开销值和路由开销值均没有限制，按照实际的路由开销值正常接收该路由。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="cost-style__d8700e128"></a><a name="d8700e128"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置IS-IS路由器只发送narrow型的报文，但是可以接受narrow型和wide型的报文。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>isis </strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>cost-style narrow-compatible</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="isis_cost.html">isis cost</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,62 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="tunnel ipv4-ipv6 hop-limit">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4_over_ipv6_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="tunnel_ipv4-ipv6_hop-limit">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>tunnel ipv4-ipv6 hop-limit</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="tunnel_ipv4-ipv6_hop-limit"></a><a name="tunnel_ipv4-ipv6_hop-limit"></a>
+
+<h1 class="topictitle1">tunnel ipv4-ipv6 hop-limit</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>tunnel ipv4-ipv6 hop-limit</strong>命令用来设置跳数限制值。</p>
+<p><strong>undo tunnel ipv4-ipv6 hop-limit</strong>命令用来使跳数限制值恢复为缺省值。</p>
+<p>缺省情况下，跳数限制值为64。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>tunnel ipv4-ipv6 hop-limit</strong> <em>hop-limit</em></p>
+<p><strong>undo tunnel ipv4-ipv6 hop-limit</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>hop-limit</em>：跳数限制值。整数形式，取值范围是1～255。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p><span>系统视图、</span>Tunnel接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>设置隧道跳数限制值可以使IPv6隧道中出现路由循环时能快速终止报文传输。为了使IPv6隧道报文能够到达隧道的出口点，隧道跳数限制值不能过小。</p>
+<p>在隧道接口视图下配置该命令则仅对当前隧道接口生效。目前，在系统视图下虽然可以配置该命令，但是配置并不生效。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="tunnel_ipv4-ipv6_hop-limit__d126467e46"></a><a name="d126467e46"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置指定Tunnel接口的跳数限制值为100。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> tunnel ipv4-ipv6 hop-limit 100</strong></pre>
+<p># 设置本设备所有隧道接口的跳数限制值为100。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> tunnel ipv4-ipv6 hop-limit 100</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv4_over_ipv6_configuration_commands.html">IPv4 over IPv6隧道配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

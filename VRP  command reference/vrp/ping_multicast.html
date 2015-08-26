@@ -1,0 +1,346 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ping multicast">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4_multicast_network_test_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ping_multicast">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ping multicast</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ping_multicast"></a><a name="ping_multicast"></a>
+
+
+<h1 class="topictitle1">ping multicast</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ping multicast</strong>命令可以用来检测网段中的保留组成员；或构造普通组流量、触发分发树的建立，从而检验网络能否正常承载组播业务。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ping</strong> <strong>multicast</strong> [ <strong>-i</strong> <em>interface-type interface-number</em> ] [ <strong>-c</strong> <em>count</em> | <strong>-h</strong> <em>ttl-value</em> | <strong>-m</strong> <em>time</em> | <strong>-p</strong> <em>pattern</em> | <strong>-q</strong> | <strong>-s</strong> <em>packetsize</em> | <strong>-t</strong> <em>timeout</em> | <strong>-tos</strong> <em>tos-value</em> | <strong>-v</strong> ]
+* <em>host</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>-i</strong> <em>interface-type interface-number</em>：设置发送ICMP-Echo-Request报文的出接口。当mping目的组地址为保留组播组时必须指定<strong>-i</strong>参数，当mping目的组地址为普通组播地址时不能指定-<strong>i</strong>参数。</p>
+<p><strong>-c</strong> <em>count</em>：设置发送ICMP-Echo-Request报文的次数，取值范围是1～65535。缺省值为5。</p>
+<p><strong>-h</strong> <em>ttl-value</em>：设置ICMP-Echo-Request报文的TTL，取值范围是1～255。缺省值为255。</p>
+<p><strong>-m</strong> <em>time</em>：设置ICMP-Echo-Request报文的发送间隔，单位是ms，取值范围是1～10000。缺省值为2000。</p>
+<p><strong>-p</strong> <em>pattern</em>：设置ICMP-Echo-Request报文填充字节，格式为16进制，范围是&lt;0～FFFFFFFF&gt;。缺省填充方式为从0x01开始，递增至0x0F，然后循环。</p>
+<p><strong>-q</strong>：设置只显示统计信息。缺省情况下，显示全部信息。</p>
+<p><strong>-s </strong><em>packetsize</em>：设置ICMP-Echo-Request报文长度（不包括IP和ICMP报文头）。单位是byte，取值范围是20～8100。缺省值是56。</p>
+<p><strong>-t</strong><em> timeout</em>：为发送完ICMP-Echo-Request后，等待ECHO-RESPONSE的超时时间，单位是ms，取值范围是0～65535。缺省值是2000。</p>
+<p><strong>-tos</strong> <em>tos-value</em>：指定发送ICMP-Echo-Request报文的TOS值，取值范围是0～255，缺省值为196。</p>
+<p><strong>-v</strong>：显示接收到的非ICMP-Echo-Reply的ICMP报文。缺省情况下，只显示ICMP-Echo-Reply报文。</p>
+<p><em>host</em>：ICMP-Echo-Request报文的目的地址，也称为mping目的组播组地址。包括保留组地址和普通组地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>ping multicast</strong>命令有两种使用方法：</p>
+<ul>
+<li><p>配置目的组地址<em>host</em>为保留组地址，则<strong>ping multicast</strong>命令可以检查出接口所在网段上存在哪些保留组成员。</p>
+<p>这种情况下不能设置ICMP-Echo-Request报文的TTL。</p>
+<p>保留组播组标识了符合特定条件的一组网络设备（即保留组成员）。当保留组成员接收到目的地址为保留组地址的ICMP-Echo-Request报文时，回复ICMP-Echo-Reply。常用的保留组地址有：</p>
+<ul>
+<li><p>224.0.0.1：子网上的所有系统</p>
+</li>
+<li><p>224.0.0.2：子网上的所有路由器</p>
+</li>
+<li><p>224.0.0.5：OSPF IGP路由器</p>
+</li>
+<li><p>224.0.0.13：PIM路由器</p>
+</li>
+</ul>
+</li>
+<li><div class="p">配置目的组地址<em>host</em>为普通组地址，则<strong>ping multicast</strong>命令可以实现以下功能：<ul>
+<li><p>构造组播流量，触发一系列的协议过程。通过查看<span class="keyword">路由器</span>上的组播路由信息，检查协议运行状态是否正常，确认组播分发树是否正确建立。</p>
+</li>
+<li><p>（此用途要求主机支持mping特性）通过对目的主机反馈的ICMP-Echo-Reply报文进行统计处理，检查网络中存在的组成员，计算从mping发起者到组成员的TTL、响应时间等。按照一定时间间隔连续执行多次mping，计算网络时延和路由抖动。</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>主机或<span class="keyword">路由器</span>能否回应ICMP-Echo-Reply报文，与其安装的操作系统及版本有关。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ping_multicast__d106183e232"></a><a name="d106183e232"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p>按照目的组地址为普通组地址或保留组地址分别举例。</p>
+<ul>
+<li><p>保留组地址</p>
+</li>
+</ul>
+<p># 执行mping，指定保留组播组224.0.0.5，出接口GE1/0/0，检测网段内的OSPF IGP路由器。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> ping multicast &#8211;i gigabitethernet 1/0/0 224.0.0.5</strong></pre>
+<pre class="screen">MULTICAST PING 224.0.0.5 : 56 databytes, press Ctrl+C to break</pre>
+<pre class="screen">Reply from 110.1.1.5 : bytes=56 Sequence=1 TTL=255 time = 30ms</pre>
+<pre class="screen">Reply from 110.1.1.5 : bytes=56 Sequence=1 TTL =255 time = 10ms</pre>
+<pre class="screen">Request time out</pre>
+<pre class="screen">Reply from 110.1.1.5 : bytes=56 Sequence=1 TTL =255 time = 20ms</pre>
+<pre class="screen">Reply from 110.1.1.5 : bytes=56 Sequence=1 TTL =255 time = 10ms</pre>
+<pre class="screen">Destination multicast address 224.0.0.5</pre>
+<pre class="screen">--- Multicast ping statistics &#8212;--</pre>
+<pre class="screen">5 Request packets transmitted</pre>
+<pre class="screen">4 Reply packets received</pre>
+<pre class="screen">20.00% packet loss</pre>
+<pre class="screen">Round-trip min/avg/max = 10/14/30 ms</pre>
+
+<p>#
+指定<strong>-p</strong>填充字段。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> ping multicast &#8211;i gigabitethernet 1/0/0 &#8211;p 12345678 224.0.0.5</strong></pre>
+<pre class="screen">MULTICAST PING 224.0.0.5 : 56 databytes, press Ctrl+C to break</pre>
+<pre class="screen">The padding string: 12345678</pre>
+<pre class="screen">Reply from 110.1.1.5 : bytes=56 Sequence=0 TTL=255 time=30ms</pre>
+<pre class="screen">Reply from 110.1.1.5 : bytes=56 Sequence=1 TTL =255 time=10ms</pre>
+<pre class="screen">Reply from 110.1.1.5 : bytes=56 Sequence=2 TTL =255 time=10ms</pre>
+<pre class="screen">Reply from 110.1.1.5 : bytes=56 Sequence=3 TTL =255 time=20ms</pre>
+<pre class="screen">Reply from 110.1.1.5 : bytes=56 Sequence=4 TTL =255 time=10ms</pre>
+<pre class="screen">Destination multicast address 224.0.0.5</pre>
+<pre class="screen">--- Multicast ping statistics &#8212;--</pre>
+<pre class="screen">5 Request packets transmitted</pre>
+<pre class="screen">5 Reply packets received</pre>
+<pre class="screen">0.00% packet loss</pre>
+<pre class="screen">Round-trip min/avg/max = 10/16/40 ms</pre>
+
+<ul>
+<li><p>普通组地址</p>
+</li>
+</ul>
+<p># 执行mping，指定普通组播组225.0.0.1。用户主机支持mping功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> ping multicast 225.0.0.1</strong></pre>
+<pre class="screen">MULTICAST PING 225.0.0.1 : 56 databytes, press Ctrl+C to break</pre>
+<pre class="screen">Reply from 110.1.1.2 : bytes=56 Sequence=1 TTL =252 time = 10ms</pre>
+<pre class="screen">Reply from 120.1.1.2 : bytes=56 Sequence=1 TTL =250 time = 30ms</pre>
+<pre class="screen">Reply from 110.1.1.2 : bytes=56 Sequence=1 TTL =252 time = 10ms</pre>
+<pre class="screen">Reply from 120.1.1.2 : bytes=56 Sequence=1 TTL =250 time = 30ms</pre>
+<pre class="screen">Reply from 110.1.1.2 : bytes=56 Sequence=1 TTL =252 time = 20ms</pre>
+<pre class="screen">Reply from 120.1.1.2 : bytes=56 Sequence=1 TTL =250 time = 30ms</pre>
+<pre class="screen">Reply from 110.1.1.2 : bytes=56 Sequence=1 TTL =252 time = 10ms</pre>
+<pre class="screen">Reply from 120.1.1.2 : bytes=56 Sequence=1 TTL =250 time = 40ms</pre>
+<pre class="screen">Reply from 110.1.1.2 : bytes=56 Sequence=1 TTL =252 time = 10ms</pre>
+<pre class="screen">Reply from 120.1.1.2 : bytes=56 Sequence=1 TTL =250 time = 30ms</pre>
+<pre class="screen">Destination multicast address 225.0.0.1</pre>
+<pre class="screen">--- Multicast ping statistics &#8212;--</pre>
+<pre class="screen">5 packets transmitted</pre>
+<pre class="screen">10 packets received</pre>
+<pre class="screen">0% packet loss</pre>
+<pre class="screen">Round-trip min/avg/max = 10/22/40 ms</pre>
+
+<p># 指定<strong>-v</strong>，显示详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> ping multicast -v 225.0.0.1</strong></pre>
+<pre class="screen">MULTICAST PING 225.0.0.1 : 56 databytes, press Ctrl+C to break</pre>
+<pre class="screen">The number of reply packet received is more than 100</pre>
+<pre class="screen">Reply from 110.1.1.1 : bytes=56 Sequence=0 TTL=255 time=30ms Duplicates=1</pre>
+<pre class="screen">Reply from 110.1.1.2 : bytes=56 Sequence=0 TTL=255 time=30ms Duplicates=0</pre>
+<pre class="screen">......</pre>
+<pre class="screen">Reply from 110.1.1.100 : bytes=56 Sequence=0 TTL=255 time=30ms Duplicates=0</pre>
+<pre class="screen">The sequence of the reply packet can not match ours</pre>
+<pre class="screen">The sequence of the reply packet can not match ours</pre>
+<pre class="screen">The sequence of the reply packet can not match ours</pre>
+<pre class="screen">The reply packet does not reply to our request</pre>
+<pre class="screen">Destination multicast address 225.0.0.1</pre>
+<pre class="screen">--- Multicast ping statistics &#8212;--</pre>
+<pre class="screen">5 Request packets transmitted</pre>
+<pre class="screen">120 Reply packets received</pre>
+<pre class="screen">1 repeated packet(s)</pre>
+<pre class="screen">80.00% packet loss</pre>
+<pre class="screen">Round-trip min/avg/max = 10/16/40 ms</pre>
+<pre class="screen">Failed to send 0 request packet(s)</pre>
+<pre class="screen">Receive 106 reply packet(s) successfully</pre>
+<pre class="screen">Receive 4 packet(s) with error</pre>
+<pre class="screen">Lost 4 reply packet(s) for the list was full!</pre>
+
+<p>#
+执行mping，指定普通组播组225.0.0.1。用户主机不支持mping功能。</p>
+<pre class="screen">&lt;RTE&gt;<strong> ping multicast 225.0.0.1</strong></pre>
+<pre class="screen">  MULTICAST PING 225.0.0.1 : 56  data bytes, press CTRL+C to break</pre>
+<pre class="screen">  Request time out</pre>
+<pre class="screen">  Request time out</pre>
+<pre class="screen">  Request time out</pre>
+<pre class="screen">  Request time out</pre>
+<pre class="screen">  Request time out</pre>
+<pre class="screen">  Destination multicast address 225.0.0.1</pre>
+<pre class="screen">  --- Multicast ping statistics ---</pre>
+<pre class="screen">  5 Request packet(s) transmitted</pre>
+<pre class="screen">  0 Reply packet(s) received</pre>
+<pre class="screen">  100.00% packet loss</pre>
+<pre class="screen">  Round-trip min/avg/max = 0/0/0 ms</pre>
+
+<div class="tablenoborder"><a name="ping_multicast__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="ping_multicast__tb_01" frame="border" border="1" rules="all"><caption>表1 mping命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.18997228521038%" id="d106183e450"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.81002771478963%" id="d106183e454"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>MULTICAST PING 224.0.0.5</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><p>mping的目的组地址为224.0.0.5</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>56 data bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><p>发送的ICMP-Echo-Request报文的长度为56</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>press CTRL+C to break</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><p>键盘操作&lt;CTRL + C&gt;将中止正在进行的mping测试</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>The padding string: 12345678</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><p>填充字符串：12345678如果未指定了-<strong>p</strong>填充字段，则不显示此字段</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>Reply from 110.1.1.5: bytes=56 Sequence=0 TTL=255 time=30ms</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><div class="p">接收到从110.1.1.5发来的ICMP-Echo-Reply报文，包含信息如下：<ul>
+<li><p>bytes=56：ICMP-Echo-Reply报文的长度</p>
+</li>
+<li><p>Sequence=0：ICMP-Echo-Reply报文的序号</p>
+</li>
+<li><p>TTL=255：ICMP-Echo-Reply报文的TTL</p>
+</li>
+<li><p>time=30ms：响应时间，以毫秒为单位。如果超时后没有收到ICMP-Echo-Reply报文，则显示&#8220;Request time out&#8221;。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>Destination multicast address 224.0.0.5</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><p>目的组地址为224.0.0.5</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>Multicast ping statistics5 Request packets transmitted5 Reply packets received0.00% packet lossRound-trip min/avg/max = 10/16/40 ms</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><div class="p">对目的主机进行Ping测试的统计结果，包括：<ul>
+<li><p>发送的ICMP-Echo-Request报文数目：5</p>
+</li>
+<li><p>接收到的ICMP-Echo-Reply报文数目：5</p>
+</li>
+<li><p>未响应的报文数占总报文数的百分比：0.00％</p>
+</li>
+<li><p>响应时间的最小值为10 ms、平均值为16 ms、最大值为40ms</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>Request time out</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><p>查询超时</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>Failed to send 0 request packet(s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><p>发送ICMP-Echo-Request报文失败的次数是0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>Receive 106 reply packet(s) successfully</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><p>成功接收106个ICMP-Echo-Reply报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>Receive 4 packet(s) with error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><p>收到4个错误报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d106183e450 "><p>Lost 4 reply packet(s) for the list was full!</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d106183e454 "><p>由于列表满丢失4个ICMP-Echo-Reply报文</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv4_multicast_network_test_commands.html">IPv4组播网络测试命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

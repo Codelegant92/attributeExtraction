@@ -1,0 +1,104 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="undo l2-multicast dynamic-group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4_multicast_cac_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="undo_l2-multicast_dynamic-group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>undo l2-multicast dynamic-group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="undo_l2-multicast_dynamic-group"></a><a name="undo_l2-multicast_dynamic-group"></a>
+
+
+<h1 class="topictitle1">undo l2-multicast dynamic-group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>undo l2-multicast dynamic-group</strong>命令用于删除指定的动态组播组。</p>
+<p>缺省情况下，不删除动态组播组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>undo l2-multicast dynamic-group group-address</strong> <em>group-address</em> {<strong> vlan</strong> <em>vlan-id </em>[ <strong>interface</strong> { <em>interface-type interface-number</em> } ] | <strong>vsi</strong><em> vsi-name </em>{<strong> interface</strong> { <em>interface-type interface-number</em> } | <strong>remote-peer</strong> <em>ip-address</em> [<strong> negotiation-vc-id</strong> <em>vc-id </em>] | <strong>remote-site</strong><em> remote-site-id</em> } }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>group-address</strong> <em>group-address</em>：所要删除的组播组地址。采用点分十进制形式表示。</p>
+<p><strong>vlan</strong> <em>vlan-id</em>：VLAN号。整数形式，取值范围是1～4094。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：端口的接口类型和编号。支持的接口类型有Ethernet接口、GigabitEthernet接口、Eth-Trunk接口。</p>
+<p><strong>vsi</strong><em> vsi-name</em>：VSI名称。字符串形式，大小写敏感，取值范围是1～31。</p>
+<p><strong>remote-peer</strong> <em>ip-address</em>：指定VPLS中远端IP地址。点分十进制形式。</p>
+<p><strong>negotiation-vc-id</strong> <em>vc-id</em>：PW信令为LDP时的对端协商VC-ID。整数形式，取值范围是1～4294967295。</p>
+<p><strong>remote-site</strong><em> remote-site-id</em>：PW信令为BGP时的协商站点号。整数形式，取值范围是0～65534。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2 ：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>此命令既可以删除某指定组播或某指定端口的组播组，也可以删除VLAN下的某个组播组。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="undo_l2-multicast_dynamic-group__d126710e128"></a><a name="d126710e128"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 删除VLAN 1中端口GigabitEthernet1/0/0上的组播组225.1.1.1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>undo l2-multicast dynamic-group group-address 225.1.1.1 vlan 1 interface GigabitEthernet1/0/0</strong></strong></pre>
+
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="undo_l2-multicast_dynamic-group__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="undo_l2-multicast_dynamic-group__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.43854526148128%" id="d126710e154"><p>版本Release</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.56145473851871%" id="d126710e158"><p>修订内容Modification</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.43854526148128%" headers="d126710e154 "><p>VRPV500R006C01B070</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.56145473851871%" headers="d126710e158 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv4_multicast_cac_configuration_commands.html">IPv4组播CAC配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

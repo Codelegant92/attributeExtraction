@@ -1,0 +1,143 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ospfv3 request-list">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospfv3_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ospfv3_request-list">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ospfv3 request-list</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ospfv3_request-list"></a><a name="display_ospfv3_request-list"></a>
+
+<h1 class="topictitle1">display ospfv3 request-list</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ospfv3 request-list</strong>命令用来显示OSPFv3中请求列表的信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ospfv3</strong> [ <em>process-id </em>] <strong>request-list</strong> [ <strong>statistics</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：OSPFv3进程号。整数形式，取值范围是1～65535。</p>
+<p><strong>statistics</strong>：显示OSPFv3中请求列表的统计信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令的显示信息可以用来帮助进行故障诊断。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ospfv3_request-list__d57937e101"></a><a name="d57937e101"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示OSPFv3中的请求列表的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ospfv3 request-list</strong></pre>
+<pre class="screen">                                                                         </pre>
+<pre class="screen">    OSPFv3 Process (1)                                                  </pre>
+<pre class="screen">    Interface  Eth0        Area-ID   0.0.0.1                            </pre>
+<pre class="screen">    Nbr-ID   245.254.255.255                                              </pre>
+<pre class="screen">    LS-Type               LS-ID           AdvRouter       SeqNum       Age  </pre>
+<pre class="screen">    Link-LSA              0.0.2.2         245.254.255.255 0x80000001   151 </pre>
+<pre class="screen">    Router-LSA            0.0.0.0         245.254.255.255 0x80000005   46 </pre>
+<pre class="screen">    Intra-Area-Prefix-LSA 0.0.0.1         245.254.255.255 0x80000001   45 </pre>
+<pre class="screen">    AS-External-LSA       0.0.0.1         245.254.255.255 0x80000001   113 </pre>
+<pre class="screen">    AS-External-LSA       0.0.0.2         245.254.255.255 0x80000001   113</pre>
+
+<div class="tablenoborder"><a name="display_ospfv3_request-list__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospfv3_request-list__tb_01" frame="border" border="1" rules="all"><caption>表1 display ospfv3 request-list命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="23.154446963970777%" id="d57937e136"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="76.84555303602923%" id="d57937e139"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d57937e136 "><p>Interface</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d57937e139 "><p>与邻居相连的接口</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d57937e136 "><p>Area-ID</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d57937e139 "><p>接口所属的区域ID</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d57937e136 "><p>Nbr-ID</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d57937e139 "><p>邻居路由器ID</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d57937e136 "><p>LS-Type</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d57937e139 "><div class="p">LSA类型<ul><li><p>Link-LSA：路由器为每一条链路生成一个Link-LSA，在本地链路范围内传播。</p>
+</li><li><p>Router-LSA：由每个路由器生成，描述本路由器的链路状态和花费，只在路由器所处区域内传播。</p>
+</li><li><p>Intra-Area-Prefix-LSA：由区域边界路由器ABR生成，在与该LSA相关的区域内传播。</p>
+</li><li><p>AS-External-LSA：由自治系统边界路由器ASBR生成，描述到达其它AS的路由，传播到整个AS（Stub区域除外）。</p>
+</li></ul>
+</div>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d57937e136 "><p>LS-ID</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d57937e139 "><p>Link State链路状态ID（来自LSA报文头）</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d57937e136 "><p>AdvRouter</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d57937e139 "><p>发布路由器（来自LSA报文头）</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d57937e136 "><p>SeqNum</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d57937e139 "><p>序列号（来自LSA报文头）</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d57937e136 "><p>Age</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d57937e139 "><p>老化时间（来自LSA报文头）</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ospfv3_request-list__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospfv3_request-list__tb_03" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.386747291509195%" id="d57937e219"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d57937e222"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d57937e219 "><p>VRPV500R006C01B010</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d57937e222 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospfv3_configuration_commands.html">OSPFv3配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

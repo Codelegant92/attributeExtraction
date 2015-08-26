@@ -1,0 +1,241 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display l2-multicast protection">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="multicast-vlan_enable.html">
+<meta name="DC.Relation" scheme="URI" content="l2-multicast_protection_protect-vlan.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_l2-multicast_protection">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display l2-multicast protection</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_l2-multicast_protection"></a><a name="display_l2-multicast_protection"></a>
+
+
+<h1 class="topictitle1">display l2-multicast protection</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display l2-multicast protection</strong>命令用来查看保护组的详细信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display l2-multicast protection vlan</strong> [ <em>vlan-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vlan </strong><em>vlan-id</em>：表示VLAN的编号。整数形式，取值范围是1～4094。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置了组播VLAN 1＋1保护组的情况下，命令中加上<em>vlan-id</em>用来查看指定VLAN所在保护组的详细信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_l2-multicast_protection__d37870e48"></a><a name="d37870e48"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有组播组的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display l2-multicast protection vlan</strong>
+PG    Main   Prot   Rest   Wtr   Hold   Main    Prot   Prot      FM   Switch  Group
+Indx  vlan   vlan   mode   time  time   state   state  enable    board  cmd   state
+------------------------------------------------------------------------------
+1     1000   2000   Rev    5     100     OK      OK     Yes      3     none     normal
+</pre>
+
+<div class="tablenoborder"><a name="display_l2-multicast_protection__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_l2-multicast_protection__tb_01" frame="border" border="1" rules="all"><caption>表1 display l2-multicast protection命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.64348702443941%" id="d37870e69"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.35651297556059%" id="d37870e73"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>PG Indx</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><p>保护组索引。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>Main vlan</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><p>工作VLAN的编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>Prot vlan</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><p>保护VLAN的编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>Rest mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><div class="p">恢复模式：<ul>
+<li><p>Rev：代表恢复式。</p>
+</li>
+<li><p>No：非恢复式。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>Wtr time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><p>等待恢复时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>Hold time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><p>倒换延迟时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>Main state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><div class="p">工作VLAN状态：<ul>
+<li><p>OK：正常</p>
+</li>
+<li><p>DE：异常</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>Prot state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><p>保护VLAN状态：</p>
+<div class="p"><ul>
+<li><p>OK：正常</p>
+</li>
+<li><p>DE：异常</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>Prot enable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><p>保护协议使能标志。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>FM board</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><p>状态机所在单板。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>Switch cmd</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><div class="p">倒换控制命令。<ul>
+<li><p>lock：强制从主用VLAN接收组播数据</p>
+</li>
+<li><p>force：强制从保护VLAN接收组播数据</p>
+</li>
+<li><p>manual：当工作VLAN和保护VLAN都正常的时候，强制从保护VLAN接收组播数据</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d37870e69 "><p>Group state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d37870e73 "><div class="p">保护组状态。<ul>
+<li><p>wtr：用于&#8220;恢复&#8221;模式下，倒换之后，如果主用VLAN恢复了，则进入该状态，而不是立刻回切到主用VLAN</p>
+</li>
+<li><p>dnr：用于&#8220;非恢复&#8221;模式，倒换之后，如果主用VLAN恢复了，则进入此状态，并且业务不会回切到主用VLAN</p>
+</li>
+<li><p>normal：当前主用VLAN和保护VLAN都是正常。业务工作在主用VLAN上</p>
+</li>
+<li><p>sf_p：表示备链路故障</p>
+</li>
+<li><p>sf_w：表示主链路故障,备链路无故障</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="multicast-vlan_enable.html">multicast-vlan enable</a></div>
+<div><a href="l2-multicast_protection_protect-vlan.html">l2-multicast protection protect-vlan</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

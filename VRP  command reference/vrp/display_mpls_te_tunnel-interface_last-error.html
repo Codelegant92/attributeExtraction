@@ -1,0 +1,275 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te tunnel-interface last-error">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_tunnel-interface_last-error">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te tunnel-interface last-error</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_tunnel-interface_last-error"></a><a name="display_mpls_te_tunnel-interface_last-error"></a>
+
+
+<h1 class="topictitle1">display mpls te tunnel-interface last-error</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls te tunnel-interface last-error</strong>命令用来查看本地节点的隧道接口最近发生的错误。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te tunnel-interface last-error</strong> [ <em>tunnel-name</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>tunnel-name</em>：只显示指定隧道接口的最新错误信息。<em>tunnel-name</em>为字符串形式，不支持空格，区分大小写，不支持缩写形式。以Tunnel1/0/0为例，输入格式必须是Tunnel1/0/0，不能是Tunnel
+1/0/0或者tunnel1/0/0，也不能是T1/0/0或tun 1/0/0。</p>
+<p>|：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="p"><strong>display mpls te tunnel-interface last-error</strong>命令可用来在Ingress节点查看本节点发生的错误或者下游节点发送的PathErr消息携带的错误，包括：<ul>
+<li>CSPF计算失败；</li>
+<li><p>RSVP超时；</p>
+</li>
+<li>RSVP GR平滑过程中删除LSP；</li>
+<li>老化过程中删除LSP；</li>
+<li>触发RSVP GR出错。</li>
+</ul>
+</div>
+<p>该命令针对每条TE隧道记录最近5次错误的信息，并细分出错的是主CR-LSP、Modified LSP还是备份CR-LSP。</p>
+<p>若是下游PathErr消息携带的错误，显示信息的&#8220;Error
+Info&#8221;字段会提示下游发生错误的节点的IP地址并给出错误原因，若是Ingress发生错误则只记录错误原因。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_tunnel-interface_last-error__d49895e114"></a><a name="d49895e114"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看隧道接口Tunnel1/0/0最近的错误信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls te tunnel-interface last-error Tunnel1/0/0</strong></pre>
+<pre class="screen">  Tunnel Name :  Tunnel1/0/0
+    Error Num.:  1
+    LSP Type  :  Primary LSP        LSP ID         :  1.1.1.1:100:1
+    Error Code:  0x180005               Occur Time     :  2008/01/18 15:43:20
+    Error Info:  error node = 10.1.2.2
+    Routing Problem:No route available toward destination.
+
+    Error No. :  2
+    LSP Type  :  Primary LSP        LSP ID         :  1.1.1.1:100:1
+</pre>
+<pre class="screen">    Error Code:  0x3e8               Occur Time     :  2008/01/17 17:55:59
+    Error Info:  Cspf failed to calculate a path for Tunnel.
+
+    Error Num :  3
+    No error recorded.
+
+    Error Num :  4
+    No error recorded.
+
+    Error Num :  5
+    No error recorded.</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_tunnel-interface_last-error__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_tunnel-interface_last-error__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te tunnel-interface last-err命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d49895e138"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d49895e142"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e138 "><p>Tunnel Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e142 "><p>隧道的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e138 "><p>Error Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e142 "><p>错误的编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e138 "><p>LSP Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e142 "><p>LSP的类型：</p>
+<ul>
+<li>Modified LSP：处于Modified状态的LSP</li>
+<li>Primary LSP：主LSP</li>
+<li>Backup LSP：备份LSP</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e138 "><p>LSP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e142 "><p>LSP的ID，格式为Ingress-LSR-ID/Tunnel-ID/Local LSP ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e138 "><p>Error Code</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e142 "><p>错误码，十六进制整数，用于唯一标识一类错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e138 "><p>Occur Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e142 "><p>错误产生的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e138 "><p>Error Info</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e142 "><p>错误的描述信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e138 "><p>error node</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e142 "><p>发生错误的节点</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e138 "><p>Routing Problem</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e142 "><p>表示从收到的RSVP PathErr消息得知的错误，常见的有：</p>
+<ul>
+<li>No route available toward destination：表示没有到隧道目的地址的路由</li>
+<li>Bad EXPLICT_ROUTE object：表示收到无法识别的EXPLICT_ROUTE对象</li>
+<li>bad strict node：找不到严格显示路径中指定的某一节点</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e138 "><p>Traffic Control Error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e142 "><p>流量控制参数错误，常见的有：</p>
+<ul>
+<li>Service conflict：业务冲突，即试图合并两个不兼容的资源请求</li>
+<li>Bad Tspec value：不合理或无法识别的资源请求</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e138 "><p>Cspf failed to calculate a path for Tunnel.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d49895e142 "><p>CSPF计算失败</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_te_tunnel-interface_last-error__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_tunnel-interface_last-error__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="36%" id="d49895e315"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64%" id="d49895e319"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36%" headers="d49895e315 "><p>VRPV500R003C07B340</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64%" headers="d49895e319 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36%" headers="d49895e315 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64%" headers="d49895e319 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

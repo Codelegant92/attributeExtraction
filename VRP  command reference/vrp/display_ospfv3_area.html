@@ -1,0 +1,215 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ospfv3 area">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospfv3_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ospfv3_area">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ospfv3 area</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ospfv3_area"></a><a name="display_ospfv3_area"></a>
+
+
+<h1 class="topictitle1">display ospfv3 area</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ospfv3 area</strong>命令用来查看OSPFv3的区域信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ospfv3 area</strong> [ <em>process-id</em> ] <strong>area</strong> [ <em>area-id</em> ]<span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：指定OSPFv3的进程号。整数形式。</p>
+<p><strong>area</strong> <em>area-id</em>：指定所要显示区域的区域号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ospfv3_area__d57216e110"></a><a name="d57216e110"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示OSPFv3的区域信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospfv3 area</strong></pre>
+<pre class="screen">OSPFv3 Process (1)
+ Area BACKBONE(0) Status: down
+       Number of interfaces in this area is 0
+       SPF algorithm executed 0 times
+       Number of LSA 0. Checksum Sum 0x0000
+       Number of Unknown LSA 0
+       Area Bdr Router count: 0
+       Area ASBdr Router count: 0
+ Area 0.0.0.1 Status: up
+       Number of interfaces in this area is 1
+       SPF algorithm executed 3 times
+       Number of LSA 4. Checksum Sum 0x23AC8
+       Number of Unknown LSA 0
+       Area Bdr Router count: 0
+       Area ASBdr Router count: 1
+ Area 0.0.0.2 Status: down
+       Number of interfaces in this area is 0
+       SPF algorithm executed 0 times
+       Number of LSA 0. Checksum Sum 0x0000
+       Number of Unknown LSA 0
+       Area Bdr Router count: 0
+       Area ASBdr Router count: 0</pre>
+
+<div class="tablenoborder"><a name="display_ospfv3_area__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospfv3_area__tb_01" frame="border" border="1" rules="all"><caption>表1 display ospfv3 area命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d57216e132"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d57216e136"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57216e132 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57216e136 "><p>区域的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57216e132 "><p>Number of interfaces in this area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57216e136 "><p>区域的接口个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57216e132 "><p>SPF algorithem executed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57216e136 "><p>区域中SPF计算次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57216e132 "><p>Number of LSA</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57216e136 "><p>区域中LSA数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57216e132 "><p>Checksum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57216e136 "><p>区域的检验和。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57216e132 "><p>Number of unknown LSA</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57216e136 "><p>区域中未知LSA的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57216e132 "><p>Number of Bdr router</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57216e136 "><p>区域中ABR的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57216e132 "><p>Number of ASBdr router</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57216e136 "><p>区域中ASBR的数量。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ospfv3_area__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospfv3_area__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d57216e246"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d57216e250"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d57216e246 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d57216e250 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospfv3_configuration_commands.html">OSPFv3配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

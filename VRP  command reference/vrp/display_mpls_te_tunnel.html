@@ -1,0 +1,842 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te tunnel">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_tunnel">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te tunnel</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_tunnel"></a><a name="display_mpls_te_tunnel"></a>
+
+
+<h1 class="topictitle1">display mpls te tunnel</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls te tunnel</strong>命令用来查看隧道信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te tunnel</strong> [ <strong>destination</strong> <em>ip-address</em> ]
+[ <strong>lsp-id</strong> <em>ingress-lsr-id session-id local-lsp-id</em>] [<strong>lsr-role</strong> { <strong>all</strong> | <strong>egress</strong> | <strong>ingress</strong> | <strong>remote</strong> | <strong>transit</strong> } ] [ <strong>name</strong> <em>tunnel-name</em> ] [ { <strong>incoming-interface</strong> | <strong>interface</strong> | <strong>outgoing-interface</strong> } <em>interface-type
+interface-number</em> ]<span> [ <strong>te-class0</strong> | <strong>te-class1</strong> | <strong>te-class2</strong> | <strong>te-class3</strong> | <strong>te-class4</strong> | <strong>te-class 5</strong> | <strong>te-class6</strong> | <strong>te-class7</strong> ]</span> [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display mpls te tunnel</strong> { <strong>stale-incoming-interface</strong> | <strong>stale-interface</strong> | <strong>stale-outgoing-interface</strong> } <em>interface-index</em> [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>destination</strong> <em>ip-address</em>：只显示目的地址为指定IP地址的隧道。</p>
+<p><strong>lsp-id</strong>：显示指定LSP标识的隧道。</p>
+<p><em>ingress-lsr-id</em>：入节点的LSR-ID，点分十进制格式。</p>
+<p><em>session-id</em>：会话标识。整数形式，取值范围是<span>0</span>～<span>65535</span>。</p>
+<p><em>local-lsp-id</em>：本地LSP标识号。整数形式，取值范围是0～<span>65535</span>。</p>
+<p><strong>lsr-role</strong>：以本设备在隧道中担任的角色来显示隧道信息。</p>
+<p><strong>all</strong>：显示所有隧道。</p>
+<p><strong>egress</strong>：显示以本设备为出节点的隧道，即，在本设备终止的隧道。</p>
+<p><strong>ingress</strong>：显示以本设备为入节点的隧道，即，本设备发起的隧道。</p>
+<p><strong>remote</strong>：显示非本设备发起的隧道，即，在本设备终止或穿过本地的隧道。</p>
+<p><strong>transit</strong>：显示以本设备为中间节点的隧道，即，穿过本设备的隧道。</p>
+<p><strong>name</strong> <em>tunnel-name</em>：显示具有指定名称的隧道，<em>tunnel-name</em>为字符串形式，长度为1～<span>255</span>。<em>tunnel-name</em>的取值必须是已经存在的隧道名称，并且，该名称的形式必须与配置文件中的名称形式完全一致，包括大小写和空格。例如，如果配置文件中的Tunnel接口信息为&#8220;interface
+Tunnel1/0/0&#8221;，此处指定隧道名称时，只能用&#8220;Tunnel1/0/0&#8221;，不能更改大小写或增加空格，&#8220;tunnel1/0/0&#8221;或&#8220;Tunnel
+1/0/0&#8221;都是错误的写法。隧道名称应当包含在信令消息中，这样所有的跳都可以获得。</p>
+<p><strong>incoming-interface</strong> <em>interface-type
+interface-number</em>：显示使用指定入接口的所有隧道。</p>
+<p><strong>outgoing-interface</strong> <em>interface-type
+interface-number</em>：显示使用指定出接口的所有隧道。</p>
+<p><strong>interface</strong> <em>interface-type
+interface-number</em>：显示使用指定类型和编号的接口作为出接口或入接口的所有隧道。</p>
+<p><strong>te-class0</strong> ～ <strong>te-class7</strong>：显示指定TE-Class的隧道。</p>
+<p><strong>verbose</strong>：显示详细信息。</p>
+<p><strong>stale-incoming-interface</strong>：显示处于stale状态的指定入接口的隧道信息。</p>
+<p><strong>stale-interface</strong>：显示处于stale状态的隧道的信息。</p>
+<p><strong>stale-outcoming-interface</strong>：显示处于stale状态的指定出接口的隧道信息。</p>
+<p><em>interface-index</em>：指定stale接口的索引号。十六进制整数形式，取值范围是1～FFFFFFFF。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果使用<strong>verbose</strong>参数，根据隧道使用的信令协议不同，显示信息也有所不同。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_tunnel__d49986e324"></a><a name="d49986e324"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看MPLS TE隧道信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te tunnel</strong>
+LSP-Id                    Destination            In/Out-If
+1.1.1.1:100:1             3.3.3.3                -/GE1/0/0
+1.1.1.1:100:2             3.3.3.3                -/Pos2/0/0</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_tunnel__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_tunnel__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te tunnel命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d49986e345"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d49986e349"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e345 "><p>LSP-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e349 "><p>隧道入口配置的LSP ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e345 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e349 "><p>目的地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e345 "><p>In/Out-IF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e349 "><p>入接口/出接口</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看入节点为1.1.1.9、会话标识为1和LSP标识为1的MPLS TE隧道信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls te tunnel lsp-id 1.1.1.9 1 1</strong>
+LSP-Id                     Destination            In/Out-If
+1.1.1.9:1:1                2.2.2.9                -/P1/0/0</pre>
+<p># 查看MPLS TE隧道的详细信息。</p>
+<pre class="screen">[Quidway] <strong> display mpls te tunnel verbose</strong>
+    No                      :  1
+    Tunnel-Name             :  Tunnel1/0/0
+    TunnelIndex             :  0           LSP Index         :  1024
+    Session ID              :  100         LSP ID            :  1
+    Lsr Role                :  Ingress
+    Ingress LSR ID          :  1.1.1.1
+    Egress LSR ID           :  2.2.2.2
+    In-Interface            :  -
+    Out-Interface           :  P1/0/0
+    Sign-Protocol           :  Static CR   Resv Style        :
+    IncludeAnyAff           :  0x0         ExcludeAnyAff     :  0x0
+    IncludeAllAff           :  0x0
+    ER-Hop Table Index      :  -           AR-Hop Table Index:  -
+    C-Hop Table Index       :  -
+    PrevTunnelIndexInSession:  -           NextTunnelIndexInSession:  -
+    PSB Handle              :  0
+    Created Time            :  2008/04/03 19:31:14
+    --------------------------------
+              DS-TE Information
+    --------------------------------
+    Bandwidth Reserved Flag :  Unreserved
+    CT0 Bandwidth(Kbit/sec) :  0           CT1 Bandwidth(Kbit/sec):  0
+    CT2 Bandwidth(Kbit/sec) :  0           CT3 Bandwidth(Kbit/sec):  0
+    CT4 Bandwidth(Kbit/sec) :  0           CT5 Bandwidth(Kbit/sec):  0
+    CT6 Bandwidth(Kbit/sec) :  0           CT7 Bandwidth(Kbit/sec):  0
+    Setup-Priority          :  0           Hold-Priority          :  0
+    --------------------------------
+                FRR Information
+    --------------------------------
+    Primary LSP Info
+    TE Attribute Flag       :  0xe3        Protected Flag    : 0x04
+    Bypass In Use           :  Not Exists
+    Bypass Tunnel Id        :  -
+    BypassTunnel            :  -
+    Bypass Lsp ID           :  -           FrrNextHop        :  -
+    ReferAutoBypassHandle   :  -
+    FrrPrevTunnelTableIndex :  -           FrrNextTunnelTableIndex:  -
+    Bypass Attribute(Not configured)
+    Setup Priority          :  -           Hold Priority     :  -
+    HopLimit                :  -           Bandwidth         :  -
+    IncludeAnyGroup         :  -           ExcludeAnyGroup   :  -
+    IncludeAllGroup         :  -
+    Bypass Unbound Bandwidth Info(Kbit/sec)
+    CT0 Unbound Bandwidth   :  -         CT1 Unbound Bandwidth:  -
+    CT2 Unbound Bandwidth   :  -         CT3 Unbound Bandwidth:  -
+    CT4 Unbound Bandwidth   :  -         CT5 Unbound Bandwidth:  -
+    CT6 Unbound Bandwidth   :  -         CT7 Unbound Bandwidth:  -
+    --------------------------------
+               BFD Information
+    --------------------------------
+    NextSessionTunnelIndex  :  -           PrevSessionTunnelIndex:  -
+    NextLspId               :  -           PrevLspId         :  - 
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_tunnel__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_tunnel__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls te tunnel verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d49986e419"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d49986e423"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>No</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>表项的编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Tunnel-Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>隧道的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>TunnelIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>隧道的索引号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>LSP Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>LSP的索引号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Session ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>会话标识符，也称为Tunnel ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>LSP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>该LSP的标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Lsr Role</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><div class="p">该LSR的角色：<ul>
+<li>Ingress：本节点为该隧道的入节点</li>
+<li>Egress：本节点为该隧道的出节点</li>
+<li>Transit：本节点为该隧道的中间节点</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Ingress LSR ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>该LSP的入节点标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Egress LSR ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>该LSP的出节点标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>In-Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>该LSP在本节点的入接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Out-Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>该LSP在本节点的出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Sign-Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><div class="p">隧道协议：<ul>
+<li>Static CR：静态CR-LSP</li>
+<li>RSVP TE：以RSVP TE为信令</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Resv Style</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>隧道的资源预留风格。如果是静态CR-LSP，则没有预留风格；如果是RSVP信令，则显示为SE和FF</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>IncludeAnyAff</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>生效的亲和属性掩码，缺省值是0x0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>ExcludeAnyAff</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>未生效的亲和属性，缺省值是0x0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>IncludeAllAff</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>生效的亲和属性，缺省值是0x0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>ER-Hop Table Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>显式路由表的索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>AR-Hop Table Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>实际路由表的索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>C-Hop Table Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>CSPF计算出的路由表索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>PrevTunnelIndexInSession</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>同一个会话中前一个隧道表项的索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>NextTunnelIndexInSession</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>同一个会话中下一个隧道表项的索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>PSB Handle</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>链路状态块PSB（Path State Block）的句柄</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Created Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>该隧道创建时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Bandwidth Reserved Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><div class="p">带宽预留标识：<ul>
+<li>Unreserved：没有给任何CT预留带宽</li>
+<li>Reserved：给一个或多个CT预留了带宽</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>CT0 Bandwidth(Kbit/sec)～CT7 Bandwidth(Kbit/sec)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>给CT0～CT7预留的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Setup-Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>隧道的建立优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Hold-Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>隧道的保持优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Primary LSP Info</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>主LSP的相关信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>TE Attribute Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>TE隧道属性的需求标识</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Protected Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>保护主隧道的需求标识</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Bypass In Use</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>与该主隧道绑定的旁路隧道。&#8220;Not Exists&#8221;表示该主隧道还没有绑定任何旁路隧道</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Bypass Tunnel Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>旁路隧道的隧道标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>BypassTunnel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>旁路隧道的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Bypass Lsp ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>旁路隧道的LSP标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>FrrNextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>重路由的下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>ReferAutoBypassHandle</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>对应的自动旁路隧道句柄</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>FrrPrevTunnelTableIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>FRR前一个隧道表项的索引值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>FrrNextTunnelTableIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>FRR下一个隧道表项的索引值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Bypass Attribute</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>旁路隧道的属性。&#8220;(Not configured)&#8221;表示用户没有配置旁路隧道属性，旁路隧道继承主隧道的属性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Setup Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>旁路隧道的建立优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Hold Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>旁路隧道的保持优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>HopLimit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>旁路隧道的最大路径跳数限制值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>IncludeAnyGroup</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>生效的旁路隧道亲和属性掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>ExcludeAnyGroup</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>未生效的旁路隧道亲和属性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>IncludeAllGroup</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>生效的旁路隧道亲和属性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>Bypass Unbound Bandwidth Info</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>旁路隧道未绑定的带宽信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>CT0 Unbound Bandwidth～CT7 Unbound Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>未预留但可预留给CT0～CT7的带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>NextSessionTunnelIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>旁路隧道表项的前一个索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>PrevSessionTunnelIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>旁路隧道表项的后一个索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>NextLspId</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>Bypass LSP ID的下一个表项值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d49986e419 "><p>PrevLspId</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d49986e423 "><p>Bypass LSP ID的前一个表项值</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看stale接口上的MPLS TE隧道信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong>display mpls te tunnel stale-interface 18000106</strong>
+LSP-Id                  Destination     In/Out-If
+1.1.1.1:1:1             4.4.4.4         -/0x18000106
+1.1.1.1:1:2             4.4.4.4         -/0x18000106</pre>
+<p># 查看stale接口上的MPLS
+TE隧道详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong>display mpls te tunnel stale-interface 18000106 verbose</strong></pre>
+<pre class="screen">    No                      :  1
+    Tunnel-Name             :  Tunnel1/0/0
+    TunnelIndex             :  0           LSP Index         :  1024
+    Session ID              :  100         LSP ID            :  1
+    Lsr Role                :  Ingress
+    Ingress LSR ID          :  1.1.1.1
+    Egress LSR ID           :  2.2.2.2
+    In-Interface            :  -
+    Out-Interface           :  P1/0/0
+    Sign-Protocol           :  Static CR   Resv Style        :
+    IncludeAnyAff           :  0x0         ExcludeAnyAff     :  0x0
+    IncludeAllAff           :  0x0
+    ER-Hop Table Index      :  -           AR-Hop Table Index:  -
+    C-Hop Table Index       :  -
+    PrevTunnelIndexInSession:  -           NextTunnelIndexInSession:  -
+    PSB Handle              :  0
+    Created Time            :  2008/04/03 19:31:14
+    --------------------------------
+              DS-TE Information
+    --------------------------------
+    Bandwidth Reserved Flag :  Unreserved
+    CT0 Bandwidth(Kbit/sec) :  0           CT1 Bandwidth(Kbit/sec):  0
+    CT2 Bandwidth(Kbit/sec) :  0           CT3 Bandwidth(Kbit/sec):  0
+    CT4 Bandwidth(Kbit/sec) :  0           CT5 Bandwidth(Kbit/sec):  0
+    CT6 Bandwidth(Kbit/sec) :  0           CT7 Bandwidth(Kbit/sec):  0
+    Setup-Priority          :  0           Hold-Priority     :  0
+    --------------------------------
+                FRR Information
+    --------------------------------
+    Primary LSP Info
+    TE Attribute Flag       :  0xe3        Protected Flag    : 0x04
+    Bypass In Use           :  Not Exists
+    Bypass Tunnel Id        :  -
+    BypassTunnel            :  -
+    Bypass Lsp ID           :  -           FrrNextHop        :  -
+    ReferAutoBypassHandle   :  -
+    FrrPrevTunnelTableIndex :  -           FrrNextTunnelTableIndex:  -
+    Bypass Attribute(Not configured)
+    Setup Priority          :  -           Hold Priority     :  -
+    HopLimit                :  -           Bandwidth         :  -
+    IncludeAnyGroup         :  -           ExcludeAnyGroup   :  -
+    IncludeAllGroup         :  -
+    Bypass Unbound Bandwidth Info(Kbit/sec)
+    CT0 Unbound Bandwidth   :  -         CT1 Unbound Bandwidth:  -
+    CT2 Unbound Bandwidth   :  -         CT3 Unbound Bandwidth:  -
+    CT4 Unbound Bandwidth   :  -         CT5 Unbound Bandwidth:  -
+    CT6 Unbound Bandwidth   :  -         CT7 Unbound Bandwidth:  -
+    --------------------------------
+               BFD Information
+    --------------------------------
+    NextSessionTunnelIndex  :  -           PrevSessionTunnelIndex:  -
+    NextLspId               :  -           PrevLspId         :  - </pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_te_tunnel__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_tunnel__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d49986e1048"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d49986e1052"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d49986e1048 "><p>VRPV500R005C02B050</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d49986e1052 "><p>修改参数ExcludeAnyAff</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d49986e1048 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d49986e1052 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d49986e1048 "><p>VRPV500R006C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d49986e1052 "><p>命令行增加关键字&#8220;<strong>te-class0</strong>&#8221;～&#8220;<strong>te-class7</strong>&#8221;，并增加DS-TE相关显示信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d49986e1048 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d49986e1052 "><p>将参数<em>tunnel-name</em>的字符串长度上限由63改为255</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d49986e1048 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d49986e1052 "><p>将参数<em>session-id</em>的字符串长度上下限由1改为0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d49986e1048 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d49986e1052 "><p>将参数<em>session-id</em>和<em>local-lsp-id</em>的字符串长度上限由65534改为65535</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d49986e1048 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d49986e1052 "><p>修改显示信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

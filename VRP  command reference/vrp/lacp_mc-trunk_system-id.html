@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="lacp mc-trunk system-id">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_eth-trunk.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="lacp_mc-trunk_system-id">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>lacp mc-trunk system-id</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="lacp_mc-trunk_system-id"></a><a name="lacp_mc-trunk_system-id"></a>
+
+
+<h1 class="topictitle1">lacp mc-trunk system-id</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>lacp mc-trunk system-id</strong>命令用来配置MC-Trunk的LACP系统ID。</p>
+<p><strong>undo lacp mc-trunk system-id</strong>命令用来删除MC-Trunk的LACP系统ID。</p>
+<p>缺省情况下，LACP系统ID在系统视图下的缺省值为主控板的以太口MAC地址。在Eth-Trunk接口视图下的缺省值为系统视图下的当前值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>lacp mc-trunk system-id </strong><em>mac-address</em></p>
+<p><strong>undo lacp mc-trunk system-id</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>system-id </strong><em>mac-address</em>：MC-Trunk的LACP系统ID。格式为H-H-H，其中H为4位的十六进制数，可以输入1～4位，如00e0、fc01。当输入不足4位时，表示前面的几位为0，如：输入e0，等同于00e0。系统ID不能为全0或全F。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图、Eth-Trunk接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令用来配置MC-Trunk的LACP系统ID。如果配置了系统ID，MC-Trunk中的成员Eth-Trunk端口发送LACP协议报文时，采用配置的系统ID。否则，使用原有系统ID，即主控板的以太口MAC地址。</p>
+<p>MC-Trunk中主备两台设备的LACP系统ID需要保持一致。</p>
+<p>当设备上配置多个MC-Trunk时，不同聚合组的LACP系统ID可以不同，此时需要在Eth-Trunk接口视图下配置LACP系统ID。</p>
+<p>在系统视图下配置的LACP系统ID对所有Eth-Trunk接口有效。在Eth-Trunk接口视图下配置的LACP系统ID仅对该Eth-Trunk接口有效。对于指定的Eth-Trunk接口，如果已经在系统视图下执行了本命令，又在指定的Eth-Trunk接口视图下执行本命令，则以Eth-Trunk接口视图下配置的值为准。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="lacp_mc-trunk_system-id__d88826e58"></a><a name="d88826e58"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置MC-Trunk的LACP系统ID为00E0-FC00-0000。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> lacp mc-trunk system-id 00E0-FC00-0000</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_eth-trunk.html">display eth-trunk</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

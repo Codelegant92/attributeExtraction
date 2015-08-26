@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="accounting realtime">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aaa_and_user_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_accounting-scheme.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="accounting_realtime">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>accounting realtime</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="accounting_realtime"></a><a name="accounting_realtime"></a>
+
+
+<h1 class="topictitle1">accounting realtime</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>accounting realtime</strong>命令用来配置当前计费方案启用实时计费及实时计费间隔。</p>
+<p><strong>undo accounting realtime</strong>命令用来关闭实时计费功能。</p>
+<p>缺省情况下，计费间隔为5分钟。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>accounting realtime</strong> <em>interval</em></p>
+<p><strong>undo accounting realtime</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interval</em>：实时计费的时间间隔，单位是分钟，取值范围是3～60。缺省情况下，计费间隔为5分钟。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>计费方案视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>accounting realtime</strong>命令配置在计费方案中，用以启用实时计费，同时确定实时计费的间隔时间。</p>
+<p>实时计费的间隔时间的大小，应当根据网络的具体情况来确定。间隔时间过小，会增大网络中数据的流量，同时使接收实时计费报文的设备负担加大。如果间隔过大，会造成计费不准确。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="accounting_realtime__d317e55"></a><a name="d317e55"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 对名为scheme1的计费方案，启用实时计费，并配置计费间隔为10分钟。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> aaa</strong></pre>
+<pre class="screen">[Quidway-aaa]<strong> accounting-scheme scheme1</strong></pre>
+<pre class="screen">[Quidway-aaa-accounting-scheme1]<strong> accounting</strong> <strong>realtime</strong> <strong>10</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/aaa_and_user_management_configuration_commands.html">AAA及用户管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_accounting-scheme.html">display accounting-scheme</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,159 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="control-vid">
+<meta name="DC.Relation" scheme="URI" content="../vrp/qinq_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mode_user-termination.html">
+<meta name="DC.Relation" scheme="URI" content="dot1q_termination_vid.html">
+<meta name="DC.Relation" scheme="URI" content="qinq_termination_pe-vid_ce-vid.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="control-vid_1">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>control-vid</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="control-vid_1"></a><a name="control-vid_1"></a>
+
+
+<h1 class="topictitle1">control-vid</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>control-vid</strong>命令用来指定控制VLAN和终结子接口的对应关系，从而区分同一主接口下不同终结子接口。</p>
+<p><strong>undo control-vid</strong>命令用来取消指定的控制VLAN和终结子接口的对应关系。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>control-vid</strong> <em>vid</em> <strong>dot1q-termination</strong> [<strong> rt-protocol</strong> ]</p>
+<p><strong>control-vid</strong> <em>vid</em> <strong>qinq-termination</strong> [ <strong>local-switch</strong> | [ <strong>rt-protocol</strong> | <strong>dynamic</strong> ] * ]</p>
+<p><strong>undo control-vid</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vid</em>：控制VLAN的ID，十进制整数形式，取值范围是1～4094。</p>
+<p><strong>dot1q-termination</strong>：配置子接口的封装方式为dot1q终结。</p>
+<p><strong>qinq-termination</strong>：配置子接口的封装方式为QinQ终结。</p>
+<p><strong>rt-protocol</strong>：配置子接口支持路由协议。</p>
+<p><strong>local-switch</strong>：配置子接口支持本地交换。</p>
+<p><strong>dynamic</strong>：配置子接口支持动态QinQ。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>Ethernet子接口视图、GE子接口视图、Eth-Trunk子接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当在以太网主接口上配置了<a href="mode_user-termination.html"><strong>mode user-termination</strong></a>命令后，以太网子接口上不能使用<strong>vlan-type dot1q</strong>命令来区分同一主接口下的不同子接口，此时就需要使用<strong>control-vid</strong>命令来区分同一主接口下的不同子接口。</p>
+<p>在以太子网接口上配置<strong>control-vid</strong>命令前，应先在该子接口对应的主接口下配置<strong>mode user-termination</strong>命令，否则系统会提示配置错误。</p>
+<p>如果终结子接口需要支持单播路由协议，则可以使用参数<strong>rt-protocol</strong>。</p>
+<ul>
+<li><p>使用了参数<strong>rt-protocol</strong>后，再使用<a href="dot1q_termination_vid.html"><strong>dot1q termination vid</strong></a>命令时，终结的一层Tag报文的Tag只能是单个值，而不能是一个Tag范围段。</p>
+</li>
+<li><p>使用了参数<strong>rt-protocol</strong>后，再使用<a href="qinq_termination_pe-vid_ce-vid.html"><strong>qinq termination pe-vid ce-vid</strong></a>命令时，终结的二层Tag报文的内层Tag只能是单个值，而不能是一个Tag范围段。</p>
+</li>
+</ul>
+<p><strong>local-switch</strong>参数用来配置QinQ终结子接口支持本地连接功能，此功能适用的网络具有如下特征：</p>
+<ul>
+<li><p>不同的CE接入同一个PE的相同VSI中。</p>
+</li>
+<li><p>CE发送到PE的报文带有两层Tag且外层Tag相同。</p>
+</li>
+<li><p>CE之间需要实现互通。</p>
+</li>
+</ul>
+<p>需要注意的是：如果终结子接口下使用了<strong>local-switch</strong>参数，那么与该终结子接口连接的对端设备需要关闭MAC地址学习功能并清空MAC表中的所有地址表项。否则对端设备可能在两个不同的接口学习到相同的MAC地址，进而导致转发不正确。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="control-vid_1__d8225e167"></a><a name="d8225e167"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置dot1q终结子接口GE1/0/0.1上的控制VLAN，其ID为1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mode user-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0.1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> control-vid 1 dot1q-termination</strong></pre>
+<p># 配置QinQ终结子接口GE1/0/0.2上的控制VLAN，其ID为2支持动态QinQ。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mode user-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0.1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> control-vid 2 qinq-termination dynamic</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="control-vid_1__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="control-vid_1__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.453859693236105%" id="d8225e233"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.54614030676389%" id="d8225e237"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.453859693236105%" headers="d8225e233 "><p>VRPV500R003C07B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.54614030676389%" headers="d8225e237 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.453859693236105%" headers="d8225e233 "><p>VRPV500R003C07B191</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.54614030676389%" headers="d8225e237 "><p>增加<strong>local-switch</strong>参数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.453859693236105%" headers="d8225e233 "><p>VRPV500R005C02B040</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.54614030676389%" headers="d8225e237 "><p>增加<strong>dynamic</strong>参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/qinq_configuration_commands.html">QinQ配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mode_user-termination.html">mode user-termination</a></div>
+<div><a href="dot1q_termination_vid.html">dot1q termination vid</a></div>
+<div><a href="qinq_termination_pe-vid_ce-vid.html">qinq termination pe-vid ce-vid</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

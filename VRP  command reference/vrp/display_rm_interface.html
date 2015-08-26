@@ -1,0 +1,445 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rm interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rm_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rm interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rm_interface"></a><a name="display_rm_interface"></a>
+
+
+<h1 class="topictitle1">display rm interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display rm interface</strong>命令用来显示接口的路由管理信息，包括物理接口和逻辑接口的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display rm interface</strong> [ <em>interface-type interface-number</em> | <strong>vpn-instance</strong> <em>vpn-instance-name</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em> <em>interface-number</em>：接口类型和接口号。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例名。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令可以查看接口的路由管理信息，包括物理接口和逻辑接口的信息。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rm_interface__d63492e116"></a><a name="d63492e116"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示接口的路由管理信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rm interface</strong>
+
+Name: LoopBack1
+Physical IF Info:
+ IfnetIndex: 0x100
+ State: UP LOOP P2P MULT
+ Slot: 0(Logic Slot: 0)
+ IntType: 26, PriLog: 3, MTU: 1500, Reference Count 2
+ Bandwidth: 0, Baudrate: 0, Delay: 0, Reliability: 0, Load: 0
+ LDP-ISIS sync capability: disabled
+ LDP-OSPF sync capability: disabled
+ InstanceID: 0, Instance Name: Public
+Logical IF Info:
+ IfnetIndex: 0x100, PhyIndex: 3 Logical Index : 3,
+ Dest: 1.1.1.9, Mask: 255.255.255.255
+ State: UP LOOP PRM P2P MULT , Reference Count 1
+
+Name: InLoopBack0
+Physical IF Info:
+ IfnetIndex: 0x40
+ State: UP LOOP MULT
+ Slot: 0(Logic Slot: 0)
+ IntType: 26, PriLog: 1, MTU: 1500, Reference Count 6
+ Bandwidth: 0, Baudrate: 0, Delay: 0, Reliability: 0, Load: 0
+ LDP-ISIS sync capability: disabled
+ LDP-OSPF sync capability: disabled
+ InstanceID: 0, Instance Name: Public
+Logical IF Info:
+ IfnetIndex: 0x40, PhyIndex: 1 Logical Index : 1,
+ Dest: 127.0.0.1, Mask: 255.0.0.0
+ State: UP LOOP PRM MULT , Reference Count 5
+
+Name: Tunnel1/0/0
+Physical IF Info:
+ IfnetIndex: 0x800145
+ State: DOWN P2P MULT
+ Slot: 1(Logic Slot: 1)
+ IntType: 32, PriLog: 8, MTU: 1500, Reference Count 2
+ Bandwidth: 64000, Baudrate: 64000, Delay: 0, Reliability: 0, Load: 0
+ LDP-ISIS sync capability: disabled
+ LDP-OSPF sync capability: disabled
+ InstanceID: 0, Instance Name: Public
+Logical IF Info:
+ IfnetIndex: 0x800145, PhyIndex: 5 Logical Index : 8,
+ Dest: 1.1.1.9, Mask: 255.255.255.255
+ State: DOWN PRM BOR P2P MULT , Reference Count 1
+
+Name: NULL0
+Physical IF Info:
+ IfnetIndex: 0x86
+ State: UP NBMA MULT
+ Slot: 0(Logic Slot: 0)
+ IntType: 27, PriLog: 2, MTU: 1500, Reference Count 2
+ Bandwidth: 0, Baudrate: 0, Delay: 0, Reliability: 0, Load: 0
+ LDP-ISIS sync capability: disabled
+ LDP-OSPF sync capability: disabled
+ InstanceID: 0, Instance Name: Public
+Logical IF Info:
+ IfnetIndex: 0x86, PhyIndex: 2 Logical Index : 2,
+ Dest: 0.0.0.0, Mask: 255.255.255.255
+ State: UP PRM NBMA MULT , Reference Count 1
+
+Name: Ethernet1/0/0
+Physical IF Info:
+ IfnetIndex: 0x800082
+ State: UP BCA MULT
+ Hardware Address: 00E0-FA5D-2301
+ Slot: 1(Logic Slot: 1)
+ IntType: 1, PriLog: 7, MTU: 1500, Reference Count 7
+ Bandwidth: 100000000, Baudrate: 100000000, Delay: 0, Reliability: 0, Load: 0
+ LDP-ISIS sync capability: disabled
+ LDP-OSPF sync capability: disabled
+ InstanceID: 0, Instance Name: Public
+Logical IF Info:
+ IfnetIndex: 0x800082, PhyIndex: 4 Logical Index : 7,
+ Dest: 10.1.1.1, Mask: 255.255.255.0
+ State: UP PRM BCA MULT , Reference Count 6
+
+Name: Tunnel1/0/1
+Physical IF Info:
+ IfnetIndex: 0x800185
+ State: DOWN P2P MULT
+ Slot: 1(Logic Slot: 1)
+ IntType: 32, PriLog: 0, MTU: 1500, Reference Count 1
+ Bandwidth: 64000, Baudrate: 64000, Delay: 0, Reliability: 0, Load: 0
+ LDP-ISIS sync capability: disabled
+ LDP-OSPF sync capability: disabled
+ InstanceID: 0, Instance Name: Public</pre>
+<p># 显示接口Serial6/0/0的路由管理信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rm interface serial 6/0/0</strong>
+Name: Serial6/0/0
+Physical IF Info:
+ IfnetIndex: 0x18000286
+ State: UP P2P MULT
+ IntType: 3, Slot: 6, PriLog: 6, MTU: 1500, Reference Count 5
+ Bandwidth: 64000, Baudrate: 64000, Delay: 0, Reliability: 0, Load: 0
+ LDP-ISIS sync capability: disabled
+ LDP-OSPF sync capability: disabled
+ InstanceID: 0, Instance Name: Public
+Logical IF Info:
+ IfnetIndex: 0x18000286, PhyIndex: 4 Logical Index : 6,
+ Dest: 15.1.1.1, Mask: 255.255.255.0
+ State: UP PRM P2P MULT , Reference Count 2
+VLink IF Info:
+ IfnetIndex: 0x18000286, PhyDBIndex: 4, VLinkIndex: 0x60001, VLinkDBIndex: 1
+ Peer: 15.1.1.2,
+ State: UP P2P MULT , Reference count 2
+ Dest Instance ID: 0, Dest Instance Name: Public
+</pre>
+
+<div class="tablenoborder"><a name="display_rm_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rm_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display rm interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.20508944318468%" id="d63492e144"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.79491055681531%" id="d63492e148"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Physical IF Info</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>物理接口信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>IfnetIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>接口网段索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>接口状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Hardware Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>接口MAC地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>IntType</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>接口类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Slot</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>槽位号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>PriLog</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>主要逻辑接口的索引值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>接口的最大传输单元</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Reference Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>接口被引用的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Baudrate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>波特率</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Delay</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>延迟</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Reliability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>可靠性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Load</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>链路负载</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>LDP-ISIS sync capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><div class="p">使能LDP和IS-IS同步功能的情况，包括以下两种：<ul>
+<li>enabled：使能同步。</li>
+<li>disabled：没有使能同步。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>LDP-OSPF sync capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><div class="p">使能LDP和OSPF同步功能的情况，包括以下两种：<ul>
+<li>enabled：使能同步。</li>
+<li>disabled：没有使能同步。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>InstanceID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>实例的ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>PhyIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>物理接口索引。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Logical Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>逻辑接口索引。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>VLinkIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>虚拟链路索引。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Dest Instance ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>目的实例ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d63492e144 "><p>Dest Instance Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d63492e148 "><p>目的实例名称。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_rm_interface__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rm_interface__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d63492e439"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d63492e443"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d63492e439 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d63492e443 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_basic_configuration_commands.html">IP路由表显示命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

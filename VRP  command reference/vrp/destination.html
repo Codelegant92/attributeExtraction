@@ -1,0 +1,97 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="destination">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_over_ipv4_tunnel_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_tunnel_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="interface_tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="source.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="destination">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>destination</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="destination"></a><a name="destination"></a>
+
+
+<h1 class="topictitle1">destination</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>destination</strong>命令用来对隧道指定目的端IP地址。</p>
+<p><strong>undo destination</strong>命令用来删除隧道的目的地址。</p>
+<p>缺省情况下，隧道没有目的地址。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>destination</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <em>dest-ip-address</em></p>
+<p><strong>undo destination</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p> <strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定隧道的目的地址所属的VPN实例的名称。只有封装模式为GRE时才可指定参数<strong>vpn-instance</strong> <em>vpn-instance-name</em>。</p>
+<p><em>dest-ip-address</em>：Tunnel的目的地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置GRE隧道（包括IPv6 over IPv4 GRE隧道）、MPLS
+TE和IPv4 over IPv6, IPv6 over IPv4手动隧道时，需要创建Tunnel接口，并使用<strong>destination</strong>命令配置该隧道接口的目的地址。</p>
+<p>对于GRE，IPv4 over IPv6，和IPv6 over IPv4隧道，指定隧道目的地址就是指定对端实际接收报文的接口的IP地址，该地址必须与对端Tunnel接口指定的源地址相同，并且要保证到对端实际接收报文的接口的路由可达。不能对两个或两个以上使用同种封装协议的Tunnel接口配置完全相同的源地址和目的地址。</p>
+<p>配置GRE时，可在该命令带参数<strong>vpn-instance</strong> <em>vpn-instance-name</em>，表示GRE隧道的目的地址属于指定的VPN实例，用于通过GRE隧道接入VPN的情况。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="destination__d10226e86"></a><a name="d10226e86"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在<span class="keyword">路由器</span>Quidway1的POS1/0/0接口（IP地址193.101.1.1）和Quidway2的POS1/0/0接口（IP地址192.100.1.1）间建立IPv6
+over IPv4隧道。</p>
+<pre class="screen">&lt;Quidway1&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway1]<strong> <strong>interface tunnel 1/0/0</strong></strong></pre>
+<pre class="screen">[Quidway1-Tunnel1/0/0]<strong> tunnel-protocol ipv6-ipv4</strong></pre>
+<pre class="screen">[Quidway1-Tunnel1/0/0]<strong><strong> source 193.101.1.1</strong></strong></pre>
+<pre class="screen">[Quidway1-Tunnel1/0/0]<strong> <strong>destination 192.100.1.1</strong></strong></pre>
+
+<pre class="screen">&lt;Quidway2&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway2]<strong> <strong>interface tunnel 1/0/0</strong></strong></pre>
+<pre class="screen">[Quidway2-Tunnel1/0/0]<strong> tunnel-protocol ipv6-ipv4</strong></pre>
+<pre class="screen">[Quidway2-Tunnel1/0/0]<strong> <strong>source 192.100.1.1</strong></strong></pre>
+<pre class="screen">[Quidway2-Tunnel1/0/0]<strong> destination 193.101.1.1</strong></pre>
+<p># 指定GRE隧道Tunnel1/0/0的目的地址为VPN1的192.1.1.1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> <strong>tunnel-protocol gre</strong></strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> destination vpn-instance vpn1 192.1.1.1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_over_ipv4_tunnel_configuration_commands.html">IPv6 over IPv4隧道配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="interface_tunnel.html">interface tunnel</a></div>
+<div><a href="source.html">source</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

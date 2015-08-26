@@ -1,0 +1,177 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display pim grafts">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_pim_grafts">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display pim grafts</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_pim_grafts"></a><a name="display_pim_grafts"></a>
+
+
+<h1 class="topictitle1">display pim grafts</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display pim grafts</strong>命令用来查看未确认的PIM-DM嫁接信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display pim</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>all-instance</strong> ] <strong>grafts</strong><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>all-instance</strong>：指定所有实例。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在PIM-DM中，当<span class="keyword">路由器</span>发出嫁接消息，需要等待上游回复确认消息。</p>
+<p>使用<strong>display pim grafts</strong>命令可以查看已发出但未收到确认的PIM-DM嫁接信息。</p>
+<p>若不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>，则只显示公网实例的相关信息。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_pim_grafts__d59070e133"></a><a name="d59070e133"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示公网实例未确认的PIM-DM嫁接信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display pim grafts</strong>
+VPN-Instance: public net
+Source                      Group                    Expire   RetransmitIn
+20.0.5.200                 226.3.3.3                 00:02:52 00:00:02
+</pre>
+
+<div class="tablenoborder"><a name="display_pim_grafts__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_grafts__tb_01" frame="border" border="1" rules="all"><caption>表1 display pim grafts命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.65129755605946%" id="d59070e154"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.34870244394054%" id="d59070e158"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d59070e154 "><p>VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d59070e158 "><p>Graft消息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d59070e154 "><p>Source</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d59070e158 "><p>组播源地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d59070e154 "><p>Group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d59070e158 "><p>组播组地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d59070e154 "><p>Expire</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d59070e158 "><p>（S，G）表项超时时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d59070e154 "><p>RetransmitIn</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d59070e158 "><p>嫁接启动下次传输的等候时间。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_pim_grafts__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_grafts__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d59070e235"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d59070e239"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d59070e235 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d59070e239 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

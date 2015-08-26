@@ -1,0 +1,82 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ppp lqc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ppp_and_mp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="link-protocol_ppp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ppp_lqc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ppp lqc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ppp_lqc"></a><a name="ppp_lqc"></a>
+
+
+<h1 class="topictitle1">ppp lqc</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ppp lqc</strong>命令用来使能PPP链路质量监测功能。</p>
+<p><strong>undo ppp lqc</strong>命令用来禁用PPP链路质量监测功能。</p>
+<p>缺省情况下，禁用PPP链路质量监测功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ppp lqc</strong> <em>close-percentage</em> [ <em>resume-percentage</em> ]</p>
+<p><strong>undo ppp lqc</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>close-percentage</em>：禁用链路质量百分比，取值范围是0～100。</p>
+<p><em>resume-percentage</em>：恢复链路质量百分比，取值范围是0～100，该值不能小于<em>close-percentage</em>的值，缺省与<em>close-percentage</em>的值相同。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>ppp lqc</strong>命令用于对低速链路进行质量监测，仅在串口等低速接口视图下可用，对于POS等高速接口，不能使用该命令。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>MP-Group接口不支持本配置。</p>
+</div></div>
+<p>当使能或去使能PPP链路质量监测功能后，必须重新启动接口才能使配置生效。</p>
+<p>PPP链路质量监测用于实时对PPP链路（包括绑定在MP中的PPP链路）的质量进行监测。当链路的质量低于禁用链路质量百分比时，链路会被禁用；当链路质量恢复到恢复链路质量百分比时，链路会被自动重新启用。</p>
+<p>一般情况下，不建议在链路两端同时使用链路质量监测功能。如果在PPP链路两端同时启用链路质量监测，两端的配置参数必须相等。</p>
+<p>不建议在拨号线路上使用PPP链路质量监测。如果在拨号线路上启用链路质量监测，由于拨号线路的特点，一旦链路被禁用，DCC模块就会挂断拨号线路，导致链路质量监测不能正常运行。只有当有数据需要传输时，DCC模块把拨号线路重新呼起，链路质量监测才能恢复正常。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ppp_lqc__d107160e78"></a><a name="d107160e78"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><div class="p"># 在接口Serial1/0/0:0上启用PPP链路质量监测功能，禁用链路质量百分比为90%，恢复链路质量百分比为95%。<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface serial 1/0/0:0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> ppp lqc 90 95</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0] <strong>shutdown</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> undo shutdown</strong></pre>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ppp_and_mp_configuration_commands.html">PPP和MP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="link-protocol_ppp.html">link-protocol ppp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

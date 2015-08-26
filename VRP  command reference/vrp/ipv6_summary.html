@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ipv6 summary">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipv6_summary">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ipv6 summary</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipv6_summary"></a><a name="ipv6_summary"></a>
+
+
+<h1 class="topictitle1">ipv6 summary</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ipv6 summary</strong>命令用来设置IS-IS生成IPv6聚合路由。</p>
+<p><strong>undo
+ipv6 summary</strong>命令用来取消聚合。</p>
+<p>缺省情况下，系统不做路由聚合。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ipv6 summary </strong><em>ipv6-address prefix-length</em> [ <strong>avoid-feedback</strong> | <strong>generate_null0_route</strong> | <strong>tag</strong> <em>tag</em> | [<strong> level-1</strong> | <strong>level-1-2</strong> | <strong>level-2</strong> ] ] <sup>*</sup></p>
+<p><strong>undo ipv6 summary </strong><em>ipv6-address
+prefix-length</em> [ <strong>level-1</strong> | <strong>level-1-2</strong> | <strong>level-2</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ipv6-address</em>：需要聚合IPv6路由的地址范围。</p>
+<p><em>prefix-length</em>：IPv6路由的地址前缀长度。</p>
+<p><strong>avoid-feedback</strong>：避免通过路由计算学习到聚合路由。</p>
+<p><strong>generate_null0_route</strong>：为防止路由循环而生成NULL0路由。</p>
+<p><strong>tag</strong> <em>tag</em>：管理标签号。整数形式，取值范围是1～4294967295。</p>
+<p><strong>level-1</strong>：只对Level-1区域的路由进行聚合。</p>
+<p><strong>level-1-2</strong>：对Level-1区域以及Level-2区域的路由都进行聚合。</p>
+<p><strong>level-2</strong>：只对Level-2区域的路由进行聚合。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果命令中没有指定Level，缺省为<strong>level-2</strong>。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>可以将有相同下一跳的路由聚合为一条路由，这样一方面减小路由表规模，另外可以减少本路由器生成的LSP报文大小和LSDB的规模。其中，被聚合的路由可以是IS-IS协议发现的路由，也可以是被引入的IPv6路由。另外，聚合后路由的开销值取所有被聚合路由中学到IPv6路由的最小开销值。</p>
+<p>使用此命令前，必须先使能IS-IS进程的IPv6能力。配置过程请参见<a href="isis_ipv6_enable.html"><strong>isis ipv6 enable</strong></a>命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ipv6_summary__d86567e129"></a><a name="d86567e129"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置一条2002::/32的聚合路由。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>isis</strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>ipv6 summary 2002:: 32</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

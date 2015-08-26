@@ -1,0 +1,371 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display vrrp binding member-pw">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_convergence_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_vrrp_binding_member-pw">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display vrrp binding member-pw</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_vrrp_binding_member-pw"></a><a name="display_vrrp_binding_member-pw"></a>
+
+
+<h1 class="topictitle1">display vrrp binding member-pw</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display vrrp binding member-pw</strong>命令用来显示管理VRRP备份组与成员PW的绑定关系。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display vrrp binding admin-vrrp</strong> [<strong> interface </strong><em>interface-type1 interface-number1 </em>] [ <strong>vrid </strong><em>virtual-router-id </em>]<strong> member-pw</strong><span> [<strong> | count</strong> ] </span><span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display vrrp binding admin-vrrp</strong> [<strong> interface </strong><em>interface-type1 interface-number1</em> ] [ <strong>vrid </strong><em>virtual-router-id</em> ]<strong> member-pw</strong> <strong>vc</strong> <strong>interface </strong><em>interface-type2 interface-number2</em></p>
+<p><strong>display vrrp binding admin-vrrp</strong> [<strong> interface </strong><em>interface-type1 interface-number1 </em>] [ <strong>vrid </strong><em>virtual-router-id </em>]<strong> member-pw</strong> <strong>vsi </strong><em>vsi-name </em><strong>peer</strong><em> ip-address </em>[ <strong>negotiation-vc-id</strong> <em>vc-id1 </em>]</p>
+<p><strong>display vrrp binding admin-vrrp</strong> [ <strong>interface </strong><em>interface-type1 interface-number1 </em>] [ <strong>vrid </strong><em>virtual-router-id </em>]<strong> member-pw
+vc switch-vc peer</strong><em> ip-address vc-id2</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface</strong> <em>interface-type1 interface-number1</em>：管理VRRP备份组所在的接口类型和接口编号。</p>
+<p><strong>vrid </strong><em>virtual-router-id</em>：管理VRRP备份组号。十进制整数形式，取值范围是1～255。</p>
+<p><strong>member-pw</strong>：查看指定的成员PW信息。</p>
+<p><strong>interface</strong> interface-type2 interface-number2：业务PW所在的接口类型和接口编号。</p>
+<p><strong>vc</strong>：查看业务VLL的PW与管理VRRP进行绑定。</p>
+<p><strong>vsi</strong>：查看业务VSI的PW与管理VRRP进行绑定。</p>
+<p><strong>switch-vc</strong>：查看交换VLL的PW与管理VRRP进行绑定。</p>
+<p><em>vsi-name</em>：要显示的VSI实例的名称。字符串形式，不支持空格，区分大小写，取值范围是1～31。</p>
+<p><strong>negotiation-vc-id</strong><em> vc-id</em>：虚电路的唯一标识，一般用于两端VSI ID不同但要求互通的情况。参数<em>vc-id</em>不能与本端其他VSI配置的VSI ID相同，也不能与本端其他<strong>negotiation-vc-id</strong>指定的VSI ID相同，即<em>vc-id</em>是没有被用过的虚电路号，十进制整数形式，取值范围是1～4294967295。</p>
+<p><strong>peer</strong><em> ip-address</em>：PW对端设备的MPLS LSR ID。</p>
+<p><em>vc-id2</em>：交换VLL的二层虚电ID。十进制整数形式，取值范围是1～4294967295。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display vrrp binding member-pw</strong>命令时，如果不指定管理VRRP备份组号和成员PW的VC ID，则显示所有管理VRRP备份组和成员PW的绑定信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_vrrp_binding_member-pw__d72719e233"></a><a name="d72719e233"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示接口GE1/0/0.1下的管理VRRP备份组和业务VSI中的PW的绑定关系，其中VSI的名称是v1，对等体是1.1.1.1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display vrrp binding admin-vrrp interface gigabitethernet 1/0/0.1 member-pw vsi v1 peer 1.1.1.1</strong></strong></pre>
+
+<pre class="screen">interface: GigabitEthernet1/0/0.1,  admin-vrrp vrid: 100, state:Master</pre>
+<pre class="screen">VSI PW number: 1</pre>
+<pre class="screen">  VSI name: v1, peer router ID: 1.1.1.1, vcid: 101, state: Up      </pre>
+<pre class="screen"> </pre>
+<p># 显示接口GE1/0/0.1下的管理VRRP备份组业务VLL中的PW的绑定关系，其中业务VLL中的PW所在的接口是GE1/0/1.1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display vrrp binding admin-vrrp interface gigabitethernet 1/0/0.1 member-pw vc</strong> <strong>interface gigabitethernet 1/0/1.1</strong></strong></pre>
+<pre class="screen">Interface: GigabitEthernet1/0/0.1, admin-vrrp vrid: 1, state: Master</pre>
+<pre class="screen">VC number: 1</pre>
+<pre class="screen">  Interface name: GigabitEthernet1/0/1.5, type: VLAN, state: Up</pre>
+<pre class="screen"> </pre>
+<p># 显示接口GE1/0/0.1下的管理VRRP备份组和交换VLL中的PW的绑定关系。其中交换PW的对端设备的LSR ID是1.1.1，VC ID是100。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> displa vrrp binding admin-vrrp interface gigabitethernet1/0/0.1 member-pw vc switch-vc peer 1.1.1.1 100</strong></pre>
+<pre class="screen">Interface: GigabitEthernet1/0/0.1, admin-vrrp vrid: 1, state: Master</pre>
+<pre class="screen">Switch VC number: 1</pre>
+<pre class="screen">  Peer router ID: 1.1.1.1, vcid: 100, type: Ethernet, state: Up</pre>
+<pre class="screen"> </pre>
+<p># 显示和接口GE1/0/0.1下的管理VRRP备份组绑定的所有PW的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vrrp binding admin-vrrp interface gigabitethernet 1/0/0.1 member-pw</strong></pre>
+<pre class="screen">Interface: GigabitEthernet1/0/1.1, admin-vrrp vrid: 1, state: Master</pre>
+<pre class="screen">VSI PW number: 1</pre>
+<pre class="screen">  VSI name: v1, peer router ID: 1.1.1.1, vcid: 101, state: Up</pre>
+<pre class="screen">VC number: 3</pre>
+<pre class="screen">  Interface name: GigabitEthernet1/0/1.2, type: VLAN, state: Up</pre>
+<pre class="screen">  Interface name: GigabitEthernet1/0/1.3, type: IP-interworking, state: Up</pre>
+<pre class="screen">  Interface name: GigabitEthernet1/0/1.4, type: IP-layer2, state: Up</pre>
+<pre class="screen">Switch VC number: 1</pre>
+<pre class="screen">  Peer router ID: 192.168.1.1, vcid: 200, type: Ethernet, state: Up</pre>
+<pre class="screen"> </pre>
+<p># 显示所有管理VRRP和PW的绑定关系。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vrrp binding admin-vrrp member-pw</strong></pre>
+<pre class="screen">Interface: GigabitEthernet1/0/0.1, admin-vrrp vrid: 1, state: Master</pre>
+<pre class="screen">VSI PW number: 1</pre>
+<pre class="screen">  VSI name: v1, peer router ID: 1.1.1.1, vcid: 101, state: Up</pre>
+<pre class="screen">VC number: 3</pre>
+<pre class="screen">  Interface name: GigabitEthernet1/0/1.2, type: VLAN, state: Up</pre>
+<pre class="screen">  Interface name: GigabitEthernet1/0/1.3, type: IP-interworking, state: Up</pre>
+<pre class="screen">  Interface name: GigaibtEthernet1/0/1.4, type: IP-layer2, state: Up</pre>
+<pre class="screen">  Switch VC number: 1</pre>
+<pre class="screen">  peer router ID: 192.168.1.1, vcid: 200, type: Ethernet, state: Up</pre>
+<pre class="screen"> </pre>
+<pre class="screen">Interface: GigabitEthernet1/0/0.2, admin-vrrp vrid: 2, state: master</pre>
+<pre class="screen">VSI PW number: 1</pre>
+<pre class="screen">  VSI name: v2, peer router ID: 2.2.2.2, vcid: 201, state: Up</pre>
+<pre class="screen">VC number: 1</pre>
+<pre class="screen">  Interface name: GigabitEthernet1/0/2.2, type: VLAN, state: Up</pre>
+<pre class="screen">Switch VC number: 1</pre>
+<pre class="screen">  peer router ID: 192.168.2.1, vcid: 300, type: Ethernet, state: Up</pre>
+<pre class="screen"> </pre>
+
+<div class="tablenoborder"><a name="display_vrrp_binding_member-pw__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vrrp_binding_member-pw__tb_01" frame="border" border="1" rules="all"><caption>表1 display vrrp binding member-pw命令的输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.64348702443941%" id="d72719e365"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.35651297556059%" id="d72719e369"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>管理VRRP备份组所在的接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>admin-vrrp vrid</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>管理VRRP备份组号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><div class="p">管理VRRP的状态：<ul>
+<li><p>master</p>
+</li>
+<li><p>slave</p>
+</li>
+<li><p>initialize</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>VSI PW number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>与管理VRRP绑定的业务VSI的PW数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>VSI name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>与管理VRRP绑定的业务VSI的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>peer router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>与管理VRRP绑定的业务VSI的PW的对端地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>vcid</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>与管理VRRP绑定的业务VSI ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><div class="p">与管理VRRP绑定的业务VSI的状态<ul>
+<li><p>Up</p>
+</li>
+<li><p>Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>VC number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>与管理VRRP绑定的业务VLL的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>Interface name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>与管理VRRP绑定的业务VLL的接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>与管理VRRP绑定的业务VLL的封装类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><div class="p">与管理VRRP绑定的业务VLL的状态<ul>
+<li><p>Up</p>
+</li>
+<li><p>Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>Switch VC number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>与管理VRRP绑定的交换VLL的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>peer router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>与管理VRRP绑定的交换VLL的PW的对端地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>vcid</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>与管理VRRP绑定的交换VLL的VC ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><p>与管理VRRP绑定的交换VLL的封装类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.64348702443941%" headers="d72719e365 "><p>state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.35651297556059%" headers="d72719e369 "><div class="p">与管理VRRP绑定的交换VLL的状态<ul>
+<li><p>Up</p>
+</li>
+<li><p>Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_vrrp_binding_member-pw__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vrrp_binding_member-pw__tb_04" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.0047871000252%" id="d72719e622"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.99521289997481%" id="d72719e626"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d72719e622 "><p>VRPV500R005C02B020</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d72719e626 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d72719e622 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d72719e626 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_convergence_configuration_commands.html">VPLS汇聚配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

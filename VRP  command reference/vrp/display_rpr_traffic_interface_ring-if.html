@@ -1,0 +1,361 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rpr traffic interface ring-if">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rpr_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_rpr_traffic_interface_ring-if.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rpr_traffic_interface_ring-if">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rpr traffic interface ring-if</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rpr_traffic_interface_ring-if"></a><a name="display_rpr_traffic_interface_ring-if"></a>
+
+
+<h1 class="topictitle1">display rpr traffic interface ring-if</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display rpr traffic interface ring-if</strong>命令用来查看本地节点发送和接收帧的统计信息和错误信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display rpr traffic interface ring-if</strong> <em>interface-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-number</em>：接口编号。整数形式，取值范围是0～31。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rpr_traffic_interface_ring-if__d64594e42"></a><a name="d64594e42"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看RPR接口0下的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rpr traffic interface ring-if 0</strong></pre>
+<pre class="screen">Rpr-West-Span physical interface is rpr4/0/0</pre>
+<pre class="screen">Traffic statistics for this span:</pre>
+<pre class="screen">Host-Received</pre>
+<pre class="screen">  ClassA                               Packets                Bytes(Mbit/s)</pre>
+<pre class="screen">         Unicast：                      1214/                   79357</pre>
+<pre class="screen">         Multicast：                   36738/                   221489737</pre>
+<pre class="screen">  ClassB-CIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-EIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassC</pre>
+<pre class="screen">         Unicast：                         3949/                   389985</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">Ring-Received</pre>
+<pre class="screen">  ClassA                                Packets                Bytes(Mbit/s)</pre>
+<pre class="screen">         Unicast：                         1286/                   93482</pre>
+<pre class="screen">         Multicast：                       36738/                   221636689</pre>
+<pre class="screen">  ClassB-CIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-EIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassC</pre>
+<pre class="screen">         Unicast：                        4078/                418609</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">Host-Send</pre>
+<pre class="screen">  ClassA                               Packets                Bytes(Mbit/s)</pre>
+<pre class="screen">         Unicast：                         2303/                   171804</pre>
+<pre class="screen">         Multicast：                      7446/                   46419471</pre>
+<pre class="screen">  ClassB-CIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-EIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassC</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+
+<pre class="screen">Ring-Send</pre>
+<pre class="screen">  ClassA                               Packets                Bytes(Mbit/s)</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-CIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-EIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassC</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+
+<pre class="screen">Transitted</pre>
+<pre class="screen">  ClassA                               Packets                Bytes(Mbit/s)</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-CIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-EIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassC</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+
+<pre class="screen">Input Errors</pre>
+<pre class="screen">BadFCS 0, CRC 0</pre>
+<pre class="screen">Output Errors</pre>
+<pre class="screen">BadFCS 0, CRC 0</pre>
+
+<pre class="screen">Rpr-East-Span physical interface is rpr3/0/0</pre>
+<pre class="screen">Traffic statistics for this span:</pre>
+
+<pre class="screen">Host-Received</pre>
+<pre class="screen">  ClassA                               Packets                Bytes(Mbit/s)</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-CIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-EIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassC</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">Ring-Received</pre>
+<pre class="screen">  ClassA                                Packets                Bytes(Mbit/s)</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-CIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-EIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassC</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+
+
+<pre class="screen">Host-Send</pre>
+<pre class="screen">  ClassA                               Packets                Bytes(Mbit/s)</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-CIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-EIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassC</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+
+<pre class="screen">Ring-Send</pre>
+<pre class="screen">  ClassA                               Packets                Bytes(Mbit/s)</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-CIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-EIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassC</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+
+<pre class="screen">Transitted</pre>
+<pre class="screen">  ClassA                               Packets                Bytes(Mbit/s)</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-CIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassB-EIR</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+<pre class="screen">  ClassC</pre>
+<pre class="screen">         Unicast：                        0/                   0</pre>
+<pre class="screen">         Multicast：                      0/                   0</pre>
+
+<pre class="screen">Input Errors</pre>
+<pre class="screen">BadFCS 0, CRC 0</pre>
+<pre class="screen">Output Errors</pre>
+<pre class="screen">BadFCS 0, CRC 0</pre>
+
+<div class="tablenoborder"><a name="display_rpr_traffic_interface_ring-if__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rpr_traffic_interface_ring-if__tb_01" frame="border" border="1" rules="all"><caption>表1 display rpr traffic interface ring-if命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.521038044847568%" id="d64594e356"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.47896195515243%" id="d64594e360"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.521038044847568%" headers="d64594e356 "><p>Unicast：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.47896195515243%" headers="d64594e360 "><p>单播的包数和字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.521038044847568%" headers="d64594e356 "><p>Multicast：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.47896195515243%" headers="d64594e360 "><p>组播的包数和字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.521038044847568%" headers="d64594e356 "><p>Host-Received</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.47896195515243%" headers="d64594e360 "><p>上送主机的流量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.521038044847568%" headers="d64594e356 "><p>Host-Send</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.47896195515243%" headers="d64594e360 "><p>主机发送的流量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.521038044847568%" headers="d64594e356 "><p>Ring-Received</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.47896195515243%" headers="d64594e360 "><p>从环上接收的流量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.521038044847568%" headers="d64594e356 "><p>Ring-Send</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.47896195515243%" headers="d64594e360 "><p>从环上发送的流量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.521038044847568%" headers="d64594e356 "><p>Transitted</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.47896195515243%" headers="d64594e360 "><p>过环流量（Transitted =Ring-Received- Host-Received）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.521038044847568%" headers="d64594e356 "><p>ClassA</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.47896195515243%" headers="d64594e360 "><div class="p">服务类：<ul>
+<li><p>最小时延</p>
+</li>
+<li><p>最小抖动</p>
+</li>
+<li><p>保留的业务带宽</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.521038044847568%" headers="d64594e356 "><p>ClassB-CIR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.47896195515243%" headers="d64594e360 "><div class="p">服务类：<ul>
+<li><p>绑定的时延和抖动</p>
+</li>
+<li><p>在契约速率范围内的业务保证传输</p>
+</li>
+<li><p>契约范围的尽力传输</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.521038044847568%" headers="d64594e356 "><p>ClassB-EIR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.47896195515243%" headers="d64594e360 "><p>服务类：指超出契约范围的流量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.521038044847568%" headers="d64594e356 "><p>ClassC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.47896195515243%" headers="d64594e360 "><div class="p">服务类：<ul>
+<li><p>最大限度的利用带宽</p>
+</li>
+<li><p>尽力传输</p>
+</li>
+</ul>
+</div>
+<p>不同节点根据权重分享剩余带宽，不存在一个节点0带宽的情况。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rpr_configuration_commands.html">RPR配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_rpr_traffic_interface_ring-if.html">reset rpr traffic interface ring-if</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

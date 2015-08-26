@@ -1,0 +1,449 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mtrace">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4_multicast_network_test_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mtrace">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mtrace</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mtrace"></a><a name="mtrace"></a>
+
+
+<h1 class="topictitle1">mtrace</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"> <p><strong>mtrace</strong>命令用来追踪从组播源到查询者或者目的主机的组播路径或者RPF信息，并输出逐跳信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"> <p><strong>mtrace</strong> [ <strong>-g</strong> <em>group</em> | [ <strong>-gw</strong> <em>last-hop-router</em> | <strong>-d</strong> ] <strong>-r</strong> <em>receiver</em> | [ <strong>-gw</strong> <em>last-hop-router</em> | <strong>-b</strong> | <strong>-d</strong> ] <strong>-r</strong> <em>receiver</em> <strong>-g</strong> <em>group</em> ] [ { <strong>-mr</strong> | <strong>-ur</strong> <em>resp-dest</em> } | <strong>-a</strong> <em>source-ip-address</em> | <strong>-l</strong> [ <em>stat-times</em> ] [ <strong>-st</strong> <em>stat-int</em> ] | <strong>-m</strong> <em>max-ttl</em> | <strong>-q</strong> <em>nqueries</em> | <strong>-ts</strong> <em>ttl</em> | <strong>-tr</strong> <em>ttl</em> | <strong>-v</strong> | <strong>-w</strong> <em>timeout</em> ] * <strong>source</strong> <em>source-address</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"> <p><strong>-g</strong> <em>group</em>：指定被追踪的组播组地址，不能是保留组地址。</p>
+ <p><strong>-r</strong> <em>receiver</em>：指定目的主机地址。</p>
+ <p><strong>&#8211;gw</strong> <em>last-hop-router</em>：指定最后一跳<span class="keyword">路由器</span>地址，确定当前<span class="keyword">路由器</span>与最后一跳<span class="keyword">路由器</span>之间单播报文可达。配置该参数后，mtrace发起方式被限定为&#8220;last-hop&#8221;。</p>
+ <p><strong>-d</strong>：确定当前<span class="keyword">路由器</span>与目的主机之间单播报文可达。配置该参数后，mtrace发起方式被限定为&#8220;destination&#8221;。</p>
+ <p><strong>-b</strong>：确定当前<span class="keyword">路由器</span>与目的主机直接相连但并不确定就是最后一跳路由器。配置该参数后，mtrace发起方式被限定为&#8220;all-router&#8221;。</p>
+ <p><strong>-mr</strong>：指定回应地址为被追踪的组播组地址，只适用于查询者位于组播分发树上的情况。</p>
+ <p><strong>-ur</strong> <em>resp-dest</em>：指定回应地址为单播地址。<em>resp-dest</em>必须是本地接口地址。</p>
+ <div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果既不指定<strong>-mr</strong>，又不指定<strong>-ur</strong> <em>resp-dest</em>，则采用组播地址224.0.1.32作为回应地址。</p>
+</div></div>
+ <p><strong>-a</strong> <em>source-ip-address</em>：指定IGMP-Tracert-Query报文的源地址。<em>source-ip-address</em>必须是本地接口地址。当检测从组播源到当前<span class="keyword">路由器</span>的组播路径或RPF路径时，不支持<strong>-a</strong>参数。</p>
+ <p><strong>-l</strong>：设置循环进行mtrace追踪，打印流量统计和速率，采用详细显示模式，忽略<strong>-v</strong>的设置。如果不指定<strong>-l</strong>，则只执行一次简单的组播Trace追踪。</p>
+ <p><em>stat-times</em>：表示进行mtrace追踪的循环次数。整数形式，取值范围是2～65535。如果设置<strong>-l</strong>却不指定循环次数，则在65535次后停止。</p>
+ <p><strong>-st</strong> <em>stat-int</em>：设置循环查询时统计速率的时间间隔，单位为秒，取值范围是10～60，缺省值是10。配置<strong>-st</strong>之前必须先配置<strong>-l</strong>，且循环次数必须大于等于2。</p>
+ <p><strong>-m</strong> <em>max-ttl</em>：指定跟踪的最大跳数。取值范围是1～255，缺省值为255。</p>
+ <p><strong>-q</strong> <em>nqueries</em>：设置mtrace的重试次数。取值范围是1～65535，缺省值为3。</p>
+ <p><strong>-ts</strong> <em>ttl</em>：设置hop-by-hop模式时追踪的最大跳数。取值范围是1～255，缺省值为30。当max-hop模式的mtrace失败后会自动转入hop-by-hop模式，每次追踪的hops值增1。</p>
+ <p><strong>-tr</strong> <em>ttl</em>：指定mtrace以组播方式发送IGMP-Tracert-Response报文时TTL。取值范围是1～255，缺省值是30。</p>
+ <p><strong>-v</strong>：设置详细模式，输出时间和统计信息。</p>
+ <p><strong>-w</strong> <em>timeout</em>：设置等待IGMP-Tracert-Response报文的超时时间。单位是秒，取值范围是1～60，缺省值是3。</p>
+  <p><strong>source</strong> <em>source-address</em>：指定组播源地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"> <p><strong>mtrace</strong>可以沿4种路径进行追踪：</p>
+ <ul>
+<li><p>从组播源到当前<span class="keyword">路由器</span>的RPF路径</p>
+</li>
+<li><p>从组播源到当前<span class="keyword">路由器</span>的组播路径</p>
+</li>
+<li><p>从组播源到目的主机的RPF路径</p>
+</li>
+<li><p>从组播源到目的主机的组播路径</p>
+</li>
+</ul>
+ <p><strong>mtrace</strong>命令主要有以下几种用途。</p>
+ <ul>
+<li><p>在组播故障处理和日常维护中使用<strong>mtrace</strong>命令，有助于定位故障结点、减少配置错误。</p>
+</li>
+<li><p>执行<strong>mtrace</strong>命令，在追踪过程中收集流量信息。循环执行追踪过程，可以统计组播流速率。</p>
+</li>
+</ul>
+ <p>实际使用中，不同的测试目的，使用不同的<strong>mtrace</strong>命令格式。</p>
+  <p>根据draft-fenner-traceroute-ipm-01，单播发送IGMP-Tracert-Query报文到目的地址和组播回应IGMP-Tracert-Response报文时，需要带Router Alert选项，目前各厂商在该问题上不统一。<span class="keyword">VRP</span>的实现携带Router Alert选项，如果需要与没有携带该选项的设备互通，请在命令行中用<strong>-gw</strong>指定最后一跳地址、用<strong>-ur</strong>指定单播回应地址。</p>
+ <ul>
+<li><p>检测从组播源到当前<span class="keyword">路由器</span>的RPF路径：执行命令<strong>mtrace</strong> <strong>source</strong> <em>source-address</em>。</p>
+</li>
+<li><p>根据网络具体情况，可以选择在<strong>source</strong>前添加如下参数：[ <strong>-ur</strong> <em>resp-dest</em> | <strong>-l</strong> [ <em>stat-times</em> ] [ <strong>-st</strong> <em>stat-int</em> ] | <strong>-m</strong> <em>max-ttl</em> | <strong>-q</strong> <em>nqueries</em> | <strong>-ts</strong> <em>ttl</em> | <strong>-tr</strong> <em>ttl</em> | <strong>-v</strong> | <strong>-w</strong> <em>timeout</em> ] *</p>
+</li>
+<li><p>检测从组播源到当前<span class="keyword">路由器</span>的组播路径：执行命令<strong>mtrace</strong> <strong>-g</strong> <em>group</em> <strong>source</strong> <em>source-address</em></p>
+</li>
+<li><p>要求当前<span class="keyword">路由器</span>上存在相应的（S，G）表项。</p>
+</li>
+<li><p>根据网络具体情况，可以选择在<strong>source</strong>前添加如下参数：[ { <strong>-mr</strong> | <strong>-ur</strong> <em>resp-dest</em> } | <strong>-l</strong> [ <em>stat-times</em> ] [ <strong>-st</strong> <em>stat-int</em> ] | <strong>-m</strong> <em>max-ttl</em> | <strong>-q</strong> <em>nqueries</em> | <strong>-ts</strong> <em>ttl</em> | <strong>-tr</strong> <em>ttl</em> | <strong>-v</strong> | <strong>-w</strong> <em>timeout</em> ] *</p>
+</li>
+<li><p>检测从组播源到目的主机的RPF路径：执行命令<strong>mtrace</strong> [ <strong>-gw</strong> <em>last-hop-router</em> | <strong>-d</strong> ] <strong>-r</strong> <em>receiver</em> <strong>source</strong> <em>source-address</em>。</p>
+</li>
+<li><p>当前<span class="keyword">路由器</span>与目的主机直接相连，或者能够单播ping通最后一跳<span class="keyword">路由器</span>或者目的主机。</p>
+</li>
+<li><p>当存在多台<span class="keyword">路由器</span>与指定主机相连时，从不同的<span class="keyword">路由器</span>发起的RPF路径可能不同。通过<strong>-gw</strong> <em>last-hop-router</em>指定最后一跳<span class="keyword">路由器</span>，可以唯一确定一条RPF路径。</p>
+</li>
+<li><p>根据网络具体情况，可以选择在<strong>source</strong>前添加如下参数：[ <strong>-ur</strong> <em>resp-dest</em> | <strong>-a</strong> <em>source-ip-address</em> | <strong>-l</strong> [ <em>stat-times</em> ] [ <strong>-st</strong> <em>stat-int</em> ] | <strong>-m</strong> <em>max-ttl</em> | <strong>-q</strong> <em>nqueries</em> | <strong>-ts</strong> <em>ttl</em> | <strong>-tr</strong> <em>ttl</em> | <strong>-v</strong> | <strong>-w</strong> <em>timeout</em> ] *</p>
+</li>
+<li><p>检测从组播源到目的主机的组播路径：执行命令<strong>mtrace</strong> [ <strong>-b</strong> | <strong>-gw</strong> <em>last-hop-router</em> | <strong>-d</strong> ] <strong>-r</strong> <em>receiver</em> <strong>-g</strong> <em>group</em> <strong>source</strong> <em>source-address</em>。</p>
+</li>
+</ul>
+ <div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>当前<span class="keyword">路由器</span>必须存在相应的（S，G）表项，而且必须满足以下条件之一：</p>
+<ul>
+<li><p>与目的主机直接相连。</p>
+</li>
+<li><p>能够单播ping通最后一跳<span class="keyword">路由器</span>或者目的主机。</p>
+</li>
+<li><p>在从组播源到目的主机的组播路径上，例如第一跳<span class="keyword">路由器</span>。</p>
+</li>
+</ul>
+</div></div>
+ <ul>
+<li><p>根据网络具体情况正确指定<strong>-gw</strong> <em>last-hop-router</em>、<strong>-b</strong>或<strong>-d</strong>，有助于准确快速的进行追踪。</p>
+</li>
+<li><p><strong>-b</strong>：确定当前<span class="keyword">路由器</span>与目的主机直接相连。</p>
+</li>
+<li><p><strong>&#8211;gw</strong> <em>last-hop-router</em>：已知最后一跳<span class="keyword">路由器</span>地址且确定单播报文可达。</p>
+</li>
+<li><p><strong>-d</strong>：确定当前<span class="keyword">路由器</span>与目的主机之间单播报文可达。</p>
+</li>
+<li><p>以上都不选，则除非当前<span class="keyword">路由器</span>在从组播源到目的主机的组播路径上，否则mtrace失败。</p>
+</li>
+<li><p>根据网络具体情况，可以选择在<strong>source</strong>前添加如下参数：[ { <strong>-mr</strong> | <strong>-ur</strong> <em>resp-dest</em> }| <strong>-a</strong> <em>source-ip-address</em> | <strong>-l</strong> [ <em>stat-times</em> ] [ <strong>-st</strong> <em>stat-int</em> ] | <strong>-m</strong> <em>max-ttl</em> | <strong>-q</strong> <em>nqueries</em> | <strong>-ts</strong> <em>ttl</em> | <strong>-tr</strong> <em>ttl</em> | <strong>-v</strong> | <strong>-w</strong> <em>timeout</em> ] *</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mtrace__d97666e873"></a><a name="d97666e873"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"> <ul>
+<li><p>检测从组播源到当前<span class="keyword">路由器</span>的RPF路径</p>
+</li>
+</ul>
+ <p># 检测从源（11.1.0.1）到达当前<span class="keyword">路由器</span>（11.1.5.1）的RPF路径。</p>
+ <pre class="screen">&lt;Quidway&gt;<strong> mtrace source 11.1.0.1</strong></pre>
+ <pre class="screen"> Press Ctrl+C to break multicast traceroute facility</pre>
+ <pre class="screen"> From the receiver(11.1.5.1), trace reverse path to source (11.1.0.1) according</pre>
+ <pre class="screen">to RPF rules</pre>
+ 
+ <pre class="screen"> Num  Reverse-Path    FwdTTL Protocol</pre>
+ <pre class="screen">  0   11.1.5.1</pre>
+ <pre class="screen"> -1   11.1.5.1        1      PIM</pre>
+ <pre class="screen"> -2   11.1.2.1        1      PIM</pre>
+ <pre class="screen"> -3   11.1.0.1        1      PIM</pre>
+ <pre class="screen">  In maximum-hop mode, received the response message, and multicast traceroute f</pre>
+ <pre class="screen">inished.</pre>
+ <ul>
+<li><p>检测从源到达当前<span class="keyword">路由器</span>的组播路径</p>
+</li>
+</ul>
+ <p># 检测从源（11.1.0.1）到达当前<span class="keyword">路由器</span>（11.1.5.1）的组播路径，组地址是225.0.0.1，循环次数为2，统计速率的时间间隔为10s。</p>
+ <pre class="screen">&lt;Quidway&gt;<strong> mtrace -g 225.0.0.1 -l 2 -st 10 source 11.1.0.1</strong></pre>
+ <pre class="screen"> Press Ctrl+C to break multicast traceroute facility</pre>
+ <pre class="screen"> From the receiver(11.1.5.1), trace (11.1.0.1, 225.0.0.1)'s reverse path accordi</pre>
+ <pre class="screen">ng to multicast routing-table</pre>
+ <pre class="screen"> In calculating-rate mode, current statistic times is: 1</pre>
+ 
+ <pre class="screen"> -1 11.1.5.1</pre>
+ <pre class="screen">   Incoming Interface Address: 11.1.5.1 Input packets rate: 0</pre>
+ <pre class="screen">   Outgoing Interface Address: 0.0.0.0 Output packets rate: 0xffffffff</pre>
+ <pre class="screen">   Forwarding Cache (11.1.0.1, 225.0.0.1) Forwarding packets rate: 0</pre>
+ <pre class="screen">   The packet loss rate of (11.1.0.1, 225.0.0.1) is 0.00%</pre>
+ 
+ <pre class="screen"> -2 11.1.2.1</pre>
+ <pre class="screen">   Incoming Interface Address: 11.1.2.1 Input packets rate: 0</pre>
+ <pre class="screen">   Outgoing Interface Address: 11.1.5.2 Output packets rate: 0</pre>
+ <pre class="screen">   Forwarding Cache (11.1.0.1, 225.0.0.1) Forwarding packets rate: 0</pre>
+ <pre class="screen">   The packet loss rate of (11.1.0.1, 225.0.0.1) is 0.00%</pre>
+ 
+ <pre class="screen"> -3 11.1.0.1</pre>
+ <pre class="screen">   Incoming Interface Address: 11.1.0.1 Input packets rate: 0</pre>
+ <pre class="screen">   Outgoing Interface Address: 11.1.2.2 Output packets rate: 0</pre>
+ <pre class="screen">   Forwarding Cache (11.1.0.1, 225.0.0.1) Forwarding packets rate: 0</pre>
+ <pre class="screen"> ********************************************************</pre>
+ <pre class="screen">  In calculating-rate mode, reach the demanded number of statistic,and multicast</pre>
+ <pre class="screen"> traceroute finished.</pre>
+ <ul>
+<li><p>检测从源到达目的主机的RPF路径</p>
+</li>
+</ul>
+ <p># 检测从源（11.1.0.1）到达目的主机（11.1.6.4）的RPF路径，最后一跳地址为11.1.6.3且单播报文可达，详细输出时间和统计信息。</p>
+ <pre class="screen">&lt;Quidway&gt;<strong> mtrace -gw 11.1.6.3 -r 11.1.6.4 -v source 11.1.0.1</strong></pre>
+ <pre class="screen"> Press Ctrl+C to break multicast traceroute facility</pre>
+ <pre class="screen"> From the receiver(11.1.6.4), trace reverse path to source (11.1.0.1) according</pre>
+ <pre class="screen">to RPF rules</pre>
+ 
+ <pre class="screen"> Num  Reverse-Path    FwdTTL Protocol</pre>
+ <pre class="screen">  0   11.1.6.4</pre>
+ <pre class="screen"> -1   11.1.5.1        1      PIM</pre>
+ <pre class="screen">   Incoming Interface Address: 11.1.5.1</pre>
+ <pre class="screen">   Outgoing Interface Address: 11.1.6.3</pre>
+ <pre class="screen">   Previous-Hop Router Address: 11.1.5.2</pre>
+ <pre class="screen">   Input packet count on incoming interface: 0</pre>
+ <pre class="screen">   Output packet count on outgoing interface: 0</pre>
+ <pre class="screen">   Total number of packets for this source-group pair: 0xffffffff</pre>
+ <pre class="screen">   Forwarding TTL: 1</pre>
+ <pre class="screen">   Forwarding Code: NO_ERROR</pre>
+ <pre class="screen"> -2   11.1.2.1        1      PIM</pre>
+ <pre class="screen">   Incoming Interface Address: 11.1.2.1</pre>
+ <pre class="screen">   Outgoing Interface Address: 11.1.5.2</pre>
+ <pre class="screen">   Previous-Hop Router Address: 11.1.2.2</pre>
+ <pre class="screen">   Input packet count on incoming interface: 0</pre>
+ <pre class="screen">   Output packet count on outgoing interface: 0</pre>
+ <pre class="screen">   Total number of packets for this source-group pair: 0xffffffff</pre>
+ <pre class="screen">   Forwarding TTL: 1</pre>
+ <pre class="screen">   Forwarding Code: NO_ERROR</pre>
+ <pre class="screen"> -3   11.1.0.1        1      PIM</pre>
+ <pre class="screen">   Incoming Interface Address: 11.1.0.1</pre>
+ <pre class="screen">   Outgoing Interface Address: 11.1.2.2</pre>
+ <pre class="screen">   Previous-Hop Router Address: 0.0.0.0</pre>
+ <pre class="screen">   Input packet count on incoming interface: 0</pre>
+ <pre class="screen">   Output packet count on outgoing interface: 0</pre>
+ <pre class="screen">   Total number of packets for this source-group pair: 0xffffffff</pre>
+ <pre class="screen">   Forwarding TTL: 1</pre>
+ <pre class="screen">   Forwarding Code: NO_ERROR</pre>
+ <pre class="screen">  In maximum-hop mode, received the response message, and multicast traceroute f</pre>
+ <pre class="screen">inished.</pre>
+ <ul>
+<li><p>检测从源到达目的主机的组播路径</p>
+</li>
+</ul>
+ <p># 检测从源到达目的主机的组播路径：（11.1.0.1, 225.0.0.1），目的主机地址为11.1.6.4，当前<span class="keyword">路由器</span>与目的主机直连，回应地址使用缺省值224.0.1.32，Response报文TTL为5。</p>
+ <pre class="screen">&lt;Quidway&gt;<strong> mtrace -b -r 11.1.6.4 -g 225.0.0.1 -tr 5 source 11.1.0.1</strong></pre>
+ <pre class="screen"> Press Ctrl+C to break multicast traceroute facility</pre>
+ <pre class="screen"> From the receiver(11.1.6.4), trace (11.1.0.1, 225.0.0.1)'s reverse path accordi</pre>
+ <pre class="screen">ng to multicast routing-table</pre>
+ 
+ <pre class="screen"> Num  Reverse-Path    FwdTTL Protocol</pre>
+ <pre class="screen">  0   11.1.6.4</pre>
+ <pre class="screen"> -1   11.1.5.1        1      PIM</pre>
+ <pre class="screen"> -2   11.1.2.1        1      PIM</pre>
+ <pre class="screen"> -3   11.1.0.1        1      PIM</pre>
+ <pre class="screen">  In maximum-hop mode, received the response message, and multicast traceroute f</pre>
+ <pre class="screen">inished.</pre>
+ <p># 检测从源到达目的主机的组播路径：（11.1.0.1，225.0.0.1），目的主机地址为11.1.6.4，最后一跳地址为11.1.6.3且单播报文可达，循环次数为2，统计速率的时间间隔为12s。</p>
+ <pre class="screen">&lt;Quidway&gt;<strong> mtrace -gw 11.1.6.3 -r 11.1.6.4 -g 225.0.0.1 -l 2 -st 12 source 11.1.0.</strong></pre>
+ <pre class="screen">1</pre>
+ <pre class="screen"> Press Ctrl+C to break multicast traceroute facility</pre>
+ <pre class="screen"> From the receiver(11.1.6.4), trace (11.1.0.1, 225.0.0.1)'s reverse path accordi</pre>
+ <pre class="screen">ng to multicast routing-table</pre>
+ <pre class="screen"> In calculating-rate mode, current statistic times is: 1</pre>
+ 
+ <pre class="screen"> -1 11.1.5.1</pre>
+ <pre class="screen">   Incoming Interface Address: 11.1.5.1 Input packets rate: 0</pre>
+ <pre class="screen">   Outgoing Interface Address: 11.1.6.3 Output packets rate: 0</pre>
+ <pre class="screen">   Forwarding Cache (11.1.0.1, 225.0.0.1) Forwarding packets rate: 0</pre>
+ <pre class="screen">   The packet loss rate of (11.1.0.1, 225.0.0.1) is 0.00%</pre>
+ 
+ <pre class="screen"> -2 11.1.2.1</pre>
+ <pre class="screen">   Incoming Interface Address: 11.1.2.1 Input packets rate: 0</pre>
+ <pre class="screen">   Outgoing Interface Address: 11.1.5.2 Output packets rate: 0</pre>
+ <pre class="screen">   Forwarding Cache (11.1.0.1, 225.0.0.1) Forwarding packets rate: 0</pre>
+ <pre class="screen">   The packet loss rate of (11.1.0.1, 225.0.0.1) is 0.00%</pre>
+ 
+ <pre class="screen"> -3 11.1.0.1</pre>
+ <pre class="screen">   Incoming Interface Address: 11.1.0.1 Input packets rate: 0</pre>
+ <pre class="screen">   Outgoing Interface Address: 11.1.2.2 Output packets rate: 0</pre>
+ <pre class="screen">   Forwarding Cache (11.1.0.1, 225.0.0.1) Forwarding packets rate: 0</pre>
+ <pre class="screen"> ********************************************************</pre>
+ <pre class="screen">  In calculating-rate mode, reach the demanded number of statistic,and multicast</pre>
+ <pre class="screen"> traceroute finished.</pre>
+ 
+<div class="tablenoborder"><a name="mtrace__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mtrace__tb_01" frame="border" border="1" rules="all"><caption>表1 mtrace命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.18997228521038%" id="d97666e1280"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.81002771478963%" id="d97666e1284"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>Press Ctrl+C to break multicast traceroute facility</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><p>键盘操作&lt;CTRL + C&gt;将中止正在进行的mtrace测试。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>From the receiver(11.1.6.4), trace reverse path to source (11.1.0.1) according to RPF rules</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><p>检测从目的主机（11.1.6.4）到源（11.1.0.1）的RPF路径。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>From the receiver(11.1.6.4), trace (11.1.0.1, 225..0.0.1)'s reverse path viamulticast routing-table</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><p>检测从目的主机到源的组播路径：(11.1.0.1, 225..0.0.1)，目的主机地址为11.1.6.4。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><p>跟踪的倒数跳数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>Reverse-Path</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><p>组播流量反向的路径。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>FwdTTL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><p>组播转发最小TTL值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><div class="p"><ul>
+<li><p>路由器使用的组播路由协议。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>-111.1.5.1 1PIM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><div class="p"><ul>
+<li><p>倒数第一跳且地址为11.1.5.1，组播转发最小TTL值为1，路由器使用的组播路由协议为PIM协议。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>In calculating-rate mode, current statistic times is: 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><p>计算速率模式，当前为第一次统计。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>-1 11.1.5.1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><p>计算速率模式中，倒数第一跳且地址为11.1.5.1。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>Incoming Interface Address: 11.1.5.1 Input packets rate: 0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><p>计算速率模式中，组播入接口地址和入接口的所有入包速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>Outgoing Interface Address: 0.0.0.0 Output packets rate: 0xffffffff</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><p>计算速率模式中，组播出接口地址和出接口的所有出包速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>Forwarding Cache (11.1.0.1, 225.0.0.1) Forwarding packets rate: 11</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><p>计算速率模式中，路由器对（S,G）的包转发速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>In maximum-hop mode, received the response message, and multicast traceroute finished.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><div class="p"><ul>
+<li><p>在最大跳数追踪模式中，收到IGMP-Tracert-Response报文，组播追踪结束。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d97666e1280 "><p>In calculating-rate mode, reach the demanded statistic times,and multicast traceroute finished.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d97666e1284 "><div class="p"><ul>
+<li><p>在计算速率模式中，达到要求的统计次数，组播追踪结束。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv4_multicast_network_test_commands.html">IPv4组播网络测试命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

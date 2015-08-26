@@ -1,0 +1,105 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="l2-multicast limit channel max-entry">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4_multicast_cac_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="l2-multicast_limit_channel_max-entry">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>l2-multicast limit channel max-entry</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="l2-multicast_limit_channel_max-entry"></a><a name="l2-multicast_limit_channel_max-entry"></a>
+
+
+<h1 class="topictitle1">l2-multicast limit channel max-entry</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>l2-multicast limit channel max-entry</strong>命令用来配置VSI、端口及子接口下的节目组内组播组的数量限制。</p>
+<p><strong>undo l2-multicast limit channel max-entry</strong>命令用来取消VSI、端口及子接口下的节目组内组播组的数量限制。</p>
+<p>缺省情况下，不对任何VSI、端口及子接口下的节目组内组播组进行数量限制。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>l2-multicast limit channel</strong> <em>channel-name</em> <strong>max-entry</strong> <em>count</em> </p>
+<p><strong>undo l2-multicast limit channel</strong> <em>channel-name</em> <strong>max-entry</strong> </p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>channel</strong> <em>channel-name</em>：节目组名。字符串形式，大小写敏感，取值范围是1～31。</p>
+<p><strong>max-entry</strong><em> count</em>：节目组内组播组的限制数量。整数形式，取值范围是1～8000。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VSI视图、Ethernet接口视图、GigabitEthernet接口视图、Eth-Trunk子接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2 ：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>此命令为覆盖式命令。执行此命令后，VSI和子接口下节目组内组播组的数量将被限制在指定范围内。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="l2-multicast_limit_channel_max-entry__d88133e74"></a><a name="d88133e74"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将VSI 100的节目组内组播组的数量限制配置为100。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vsi 100</strong></pre>
+<pre class="screen">[Quidway-vsi-100]<strong> l2-multicast limit channel cn max-entry 100 </strong></pre>
+<p># 将子接口GigabitEthernet2/0/1.1的节目组内组播组的数量限制配置为100。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface GigabitEthernet2/0/1.1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet2/0/1.1]<strong> <strong>l2-multicast limit channel cn max-entry 100</strong> </strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="l2-multicast_limit_channel_max-entry__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="l2-multicast_limit_channel_max-entry__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.43854526148128%" id="d88133e118"><p>版本Release</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.56145473851871%" id="d88133e122"><p>修订内容Modification</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.43854526148128%" headers="d88133e118 "><p>VRPV500R006C01B070</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.56145473851871%" headers="d88133e122 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv4_multicast_cac_configuration_commands.html">IPv4组播CAC配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,121 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="bfd bind peer-ip default-ip vsi">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_convergence_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="admin-vsi.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="bfd_bind_peer-ip_default-ip_vsi">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>bfd bind peer-ip default-ip vsi</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="bfd_bind_peer-ip_default-ip_vsi"></a><a name="bfd_bind_peer-ip_default-ip_vsi"></a>
+
+
+<h1 class="topictitle1">bfd bind peer-ip default-ip vsi</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>bfd bind peer-ip default-ip vsi</strong>命令用来创建基于VSI PW的BFD会话。</p>
+<p><strong>undo bfd</strong> <em>cfg-name</em>命令用来删除指定的BFD会话，同时取消BFD的绑定配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>bfd</strong> <em>cfg-name</em><strong> bind</strong> <strong>peer-ip default-ip</strong> <strong>vsi</strong> <em>vsi-name</em><strong> peer</strong> <em>peer-address</em> [<strong> vc-id</strong> <em>vc-id</em> ]</p>
+<p><strong>undo bfd</strong> <em>cfg-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>cfg-name</em>：BFD配置名，不区分大小写，字符串类型，长度范围是1～15。</p>
+<p><strong>peer-ip</strong> <strong>default-ip</strong>：BFD会话绑定默认组播IP。</p>
+<p><strong>vsi</strong><em> vsi-name</em>：VSI实例的名称，不区分大小写，字符串类型，长度范围是1～31。</p>
+<p><strong>peer</strong><em> peer-address</em>：VSI的PW对端IP地址，点分十进制形式。</p>
+<p><strong>vc-id</strong><em> vc-id</em>：虚电路的唯一标识，一般用于两端VSI ID不同但要求互通的情况。参数<em>vc-id</em>不能与本端其他VSI配置的VSI ID相同，也不能与本端其他negotiate-vc-id指定的VSI ID相同，即<em>vc-id</em>是没有被用过的虚电路号，十进制整数形式，取值范围为1～4294967295。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>创建基于VSI PW的BFD会话时，必须全局使能BFD，而且VSI PW必须已经存在。其中<strong>bfd bind peer-ip default-ip vsi</strong>命令中指定的VSI必须是管理VSI，否则无法创建基于VSI PW的BFD会话。</p>
+<p>创建基于VSI PW的BFD会话后，设备之间的BFD报文可以通过VSI进行转发。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="bfd_bind_peer-ip_default-ip_vsi__d4269e114"></a><a name="d4269e114"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建基于VSI v100的BFD会话。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>mpls l2vpn </strong></pre>
+<pre class="screen">[Quidway-l2vpn] <strong>quit</strong></pre>
+<pre class="screen">[Quidway] <strong>vsi v100 static</strong></pre>
+<pre class="screen">[Quidway-vsi-v100] <strong>pwsignal ldp</strong></pre>
+<pre class="screen">[Quidway-vsi-v100-ldp] <strong>vsi-id 100</strong></pre>
+<pre class="screen">[Quidway-vsi-v100-ldp] <strong>quit</strong></pre>
+<pre class="screen">[Quidway-vsi-v100] <strong>admin-vsi</strong></pre>
+<pre class="screen">[Quidway-vsi-v100] <strong>quit</strong></pre>
+<pre class="screen">[Quidway]<strong> bfd</strong></pre>
+<pre class="screen">[Quidway-bfd] <strong>quit</strong></pre>
+<pre class="screen">[Quidway]<strong> bfd bfd1 bind peer-ip default-ip vsi v100 peer 3.3.3.3</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="bfd_bind_peer-ip_default-ip_vsi__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="bfd_bind_peer-ip_default-ip_vsi__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d4269e177"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d4269e181"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d4269e177 "><p>VRPV500R005C02B040</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d4269e181 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bfd_configuration_commands.html">BFD配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="admin-vsi.html">admin-vsi</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,456 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display hotkey">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="hotkey.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_hotkey">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display hotkey</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_hotkey"></a><a name="display_hotkey"></a>
+
+
+<h1 class="topictitle1">display hotkey</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display hotkey</strong>命令用来查看已定义、未定义和系统保留的快捷键的情况。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>hotkey</strong> <span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在任何允许输入命令的地方都可以键入快捷键，系统执行时，会将该快捷键对应的命令显示在屏幕上，如同输入了完整的命令一样。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_hotkey__d25670e85"></a><a name="d25670e85"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示快捷键的使用情况。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display hotkey</strong></pre>
+<pre class="screen">----------------- HOTKEY -----------------</pre>
+<pre class="screen">            =Defined hotkeys=</pre>
+<pre class="screen">Hotkeys Command</pre>
+<pre class="screen">CTRL_G  display current-configuration</pre>
+<pre class="screen">CTRL_L  display ip routing-table</pre>
+<pre class="screen">CTRL_O  undo debug all</pre>
+<pre class="screen">           =Undefined hotkeys=</pre>
+<pre class="screen">Hotkeys Command</pre>
+<pre class="screen">CTRL_T  NULL</pre>
+<pre class="screen">            =System hotkeys=</pre>
+<pre class="screen">Hotkeys Function</pre>
+<pre class="screen">CTRL_A  Move the cursor to the beginning of the current line.</pre>
+<pre class="screen">CTRL_B  Move the cursor one character left.</pre>
+<pre class="screen">CTRL_C  Stop current command function.</pre>
+<pre class="screen">CTRL_D  Erase current character.</pre>
+<pre class="screen">CTRL_E  Move the cursor to the end of the current line.</pre>
+<pre class="screen">CTRL_F  Move the cursor one character right.</pre>
+<pre class="screen">CTRL_H  Erase the character left of the cursor.</pre>
+<pre class="screen">CTRL_K  Kill outgoing connection.</pre>
+<pre class="screen">CTRL_N  Display the next command from the history buffer.</pre>
+<pre class="screen">CTRL_P  Display the previous command from the history buffer.</pre>
+<pre class="screen">CTRL_R  Redisplay the current line.</pre>
+<pre class="screen">CTRL_U   Delete all characters up to the cursor.</pre>
+<pre class="screen">CTRL_V  Paste text from the clipboard.</pre>
+<pre class="screen">CTRL_W  Delete the word left of the cursor.</pre>
+<pre class="screen">CTRL_X  Delete all characters up to the cursor.</pre>
+<pre class="screen">CTRL_Y  Delete all characters after the cursor.</pre>
+<pre class="screen">CTRL_Z  Return to the user view.</pre>
+<pre class="screen">CTRL_]<strong> Kill incoming connection or redirect connection.</strong></pre>
+<pre class="screen">ESC_B   Move the cursor one word back.</pre>
+<pre class="screen">ESC_D   Delete remainder of word.</pre>
+<pre class="screen">ESC_F   Move the cursor forward one word.</pre>
+<pre class="screen">ESC_N   Move the cursor down a line.</pre>
+<pre class="screen">ESC_P   Move the cursor up a line.</pre>
+<pre class="screen">ESC_&lt;   Specify the beginning of clipboard.</pre>
+<pre class="screen">ESC_&gt;<strong> Specify the end of clipboard.</strong></pre>
+
+<div class="tablenoborder"><a name="display_hotkey__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_hotkey__tb_01" frame="border" border="1" rules="all"><caption>表1 display hotkey命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.67422524565382%" id="d25670e181"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.32577475434619%" id="d25670e185"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>HOTKEY</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>热键</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>Defined hotkeys</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>已经定义的热键</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+G</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>显示当前配置</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+L</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>显示IP路由表</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+O</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>取消所有调试信息的输出</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>Undefined hotkeys</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>未定义的热键</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+T</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>未定义</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+U</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>未定义</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>System hotkeys</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>系统保留热键</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+A</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>光标移动到当前行的开头</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+B</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>光标向左移动一个字符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+C</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>停止当前正在执行的功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+D</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>删除当前光标所在位置的字符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+E</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>光标移动到当前行的末尾</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+F</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>光标向右移动一个字符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+H</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>删除光标左侧的一个字符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+K</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>停止呼出的连接</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+N</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>显示历史命令缓冲区中的后一条命令</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+P</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>显示历史命令缓冲区中的前一条命令.</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+R</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>重新显示当前行信息.</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+V</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>粘贴剪贴板的内容</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+W</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>删除光标左侧的字.</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+X</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>删除光标左侧所有的字符.</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+Y</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>删除光标右侧所有的字符.</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+Z</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>回到用户视图.</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>CTRL+ ] </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>终止呼入的连接或重定向连接</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>ESC+B</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>光标向左移动一个字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>ESC+D</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>删除光标右侧的字</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>ESC+F</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>光标向右移动一个字.</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>ESC+N</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>光标向下移动一行.</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>ESC+P</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>光标向上移动一行.</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>ESC+&lt;</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>将光标所在位置指定为剪贴板的开始位置</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.67422524565382%" headers="d25670e181 "><p>ESC+&gt;</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.32577475434619%" headers="d25670e185 "><p>将光标所在位置指定为剪贴板的结束位置</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_hotkey__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_hotkey__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d25670e570"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d25670e574"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d25670e570 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d25670e574 "><p>增加通配符<span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_configuration_commands.html">基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="hotkey.html">hotkey</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

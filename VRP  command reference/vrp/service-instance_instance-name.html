@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="service-instance instance-name">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_service-instance.html">
+<meta name="DC.Relation" scheme="URI" content="display_service-instance_instance-name_statistic.html">
+<meta name="DC.Relation" scheme="URI" content="mac-tunnel_si_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="service-instance_instance-name">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>service-instance instance-name</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="service-instance_instance-name"></a><a name="service-instance_instance-name"></a>
+
+
+<h1 class="topictitle1">service-instance instance-name</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>service-instance instance-name</strong>命令用来创建一个业务实例并指定其类型。如果业务实例已经存在，则直接进入该业务实例视图。</p>
+<p><strong>undo service-instance instance-name</strong>命令用来删除指定的业务实例。</p>
+<p>缺省情况下，业务实例的状态为Down，类型为多点到多点（<strong>MP2MP</strong>）类型。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>service-instance</strong> <strong>instance-name</strong> <em>service-instance-name</em> [ <strong>service-type</strong> { <strong>mp2mp </strong>| <strong>p2p</strong> } ]</p>
+<p><strong>undo service-instance</strong> <strong>instance-name </strong><em>service-instance-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>instance-name </strong><em>service-instance-name</em>：指定业务实例名称。长度范围是1～31个字符，首位不能是空格，名称中间不能有空格、&#8220;?&#8221;和&#8220;-&#8221;。</p>
+<p><strong>service-type</strong>：指定业务实例的类型。</p>
+<p><strong>mp2mp</strong>：指定业务实例为多点到多点的类型。</p>
+<p><strong>p2p</strong>：指定业务实例为点到点的类型。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>业务实例是关联用户业务与MAC Tunnel的实体，业务实例在设备上体现用户的特定业务。数据业务必须首先与业务实例绑定，然后才能在MAC Tunnel中传输。</p>
+<p>创建新的业务实例，必须保证已有的业务实例的数量没有达到最大值。业务实例创建以后，就不允许再更改其类型。</p>
+<p>执行命令<strong>undo service-instance instance-name</strong>删除一个业务实例，则该业务实例下原有的所有配置也将全部被清除，而且与该业务实例相关的静态、动态和黑洞MAC表项也会被清除。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="service-instance_instance-name__d117067e93"></a><a name="d117067e93"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建业务实例，取名mysi。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>service-instance instance-name mysi</strong></pre>
+<p># 创建点到点类型业务实例，取名myp2psi。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>service-instance instance-name myp2psi service-type p2p</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_service-instance.html">display service-instance</a></div>
+<div><a href="display_service-instance_instance-name_statistic.html">display service-instance instance-name statistic</a></div>
+<div><a href="mac-tunnel_si_view.html">mac-tunnel（业务实例视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

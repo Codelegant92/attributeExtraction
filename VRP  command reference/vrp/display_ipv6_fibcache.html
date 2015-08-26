@@ -1,0 +1,155 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ipv6 fibcache">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ipv6_fibcache">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ipv6 fibcache</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ipv6_fibcache"></a><a name="display_ipv6_fibcache"></a>
+
+<h1 class="topictitle1">display ipv6 fibcache</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ipv6 fibcache</strong>命令用来查看FIB缓存中的路由信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ipv6 fibcache</strong> <em>slot-id</em> [<strong> vpn6-instance</strong> <em>vpn6-instance-name</em> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>slot-id</em>：接口板的槽位号，仅在分布式环境中有效。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：IPv6 VPN实例的名称，用来查看指定IPv6 VPN实例的FIB缓存中的路由总数。字符串形式，区分大小写，长度范围是1～31。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>需要先使用<a href="ipv6_fibcache.html"><strong>ipv6 fibcache</strong></a>命令使能IPv6 VPN FIB缓存功能后，执行<strong>display ipv6 fibcache vpn6-instance</strong>命令才有显示信息。执行命令<strong>reset ipv6 fibcache</strong>可清空FIB缓存表项。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ipv6_fibcache__d33760e103"></a><a name="d33760e103"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示FIB缓存中的信息</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ipv6 fibcache 6</strong></pre>
+<pre class="screen">FIB Cache:</pre>
+<pre class="screen">Total number of Routes : 2
+
+Destination:    2001::1                                 FIB PrefixLength : 64
+NextHop    :    2001::2                                 FIB Flag         : U
+Label      :    NULL                                    Tunnel ID    : 0
+TimeStamp  :    Date- 14:8:2008, Time- 14:44:45         reference    : 0
+Interface  :    Ethernet6/0/0
+IP6Token   :    0x0
+
+Destination:    2001::2                                 FIB PrefixLength : 128
+NextHop    :    ::1                                     FIB Flag         : HU
+Label      :    NULL                                    Tunnel ID    : 0
+TimeStamp  :    Date- 14:8:2008, Time- 14:44:45         reference    : 0
+Interface  :    InLoopBack0
+IP6Token   :    0x0
+</pre>
+
+<div class="tablenoborder"><a name="display_ipv6_fibcache__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_fibcache__tb_01" frame="border" border="1" rules="all"><caption>表1 display ipv6 fibcache命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="18.79566641471403%" id="d33760e122"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="81.20433358528597%" id="d33760e125"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="18.79566641471403%" headers="d33760e122 "><p>Destination</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.20433358528597%" headers="d33760e125 "><p>目的地</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="18.79566641471403%" headers="d33760e122 "><p>FIB PrefixLength</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.20433358528597%" headers="d33760e125 "><p>目的地网络地址前缀的长度</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="18.79566641471403%" headers="d33760e122 "><p>NextHop</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.20433358528597%" headers="d33760e125 "><p>转发报文的下一跳路由设备</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="18.79566641471403%" headers="d33760e122 "><p>FIB Flag</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.20433358528597%" headers="d33760e125 "><div class="p">描述路由的符号，有以下几种情况：<ul><li>B表示BlackHole</li><li>D表示Dynamic</li><li>G表示Gateway</li><li>H表示Host</li><li>S表示Static</li><li>U表示Up </li></ul>
+</div>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="18.79566641471403%" headers="d33760e122 "><p>Label</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.20433358528597%" headers="d33760e125 "><p>标签值。如果数据到下一跳需通过MPLS转发，应携带标签。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="18.79566641471403%" headers="d33760e122 "><p>Tunnel ID</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.20433358528597%" headers="d33760e125 "><p>隧道标识符。如果报文到下一跳需通过MPLS转发，其Tunnel ID不为0。如果报文通过IP转发，其Tunnel ID为0。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="18.79566641471403%" headers="d33760e122 "><p>Time Stamp</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.20433358528597%" headers="d33760e125 "><p>FIB缓存内部使用的，指的是添加路由到缓存的时间</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="18.79566641471403%" headers="d33760e122 "><p>reference</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.20433358528597%" headers="d33760e125 "><p>目前该字段无意义，其值始终为0。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="18.79566641471403%" headers="d33760e122 "><p>Interface</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.20433358528597%" headers="d33760e125 "><p>转发报文的出接口</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="18.79566641471403%" headers="d33760e122 "><p>IP6Token</p>
+</td>
+<td class="cellrowborder" valign="top" width="81.20433358528597%" headers="d33760e125 "><p>目前该字段无意义，其值始终为0。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ipv6_fibcache__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_fibcache__tb_02" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.338345864661655%" id="d33760e219"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d33760e222"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d33760e219 "><p>VRPV500R006C01B003</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d33760e222 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_basic_configuration_commands.html">IPv6基础配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

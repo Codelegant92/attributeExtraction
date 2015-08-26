@@ -1,0 +1,87 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset mld group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mld_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mld_group.html">
+<meta name="DC.Relation" scheme="URI" content="reset_mld_group_ssm-mapping.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_mld_group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset mld group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_mld_group"></a><a name="reset_mld_group"></a>
+
+
+<h1 class="topictitle1">reset mld group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset mld group</strong>命令用来删除接口动态加入的MLD组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset mld group all</strong></p>
+<p><strong>reset mld group interface</strong> <em>interface-type interface-number </em>{ <strong>all </strong>| <em>ipv6-group-address </em>[<em> ipv6-group-mask-length </em>] [ <em>ipv6-source-address </em>[ <em>ipv6-source-mask-length</em> ]
+] }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：删除各接口动态加入的所有MLD组。</p>
+<p><em>interface-type interface-number</em>：指定接口类型和编号。</p>
+<p><strong>all</strong>：删除指定接口动态加入的所有MLD组。</p>
+<p><em>ipv6-group-address</em>：指定组播组地址。十六制形式，取值范围是FF00::～FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF。</p>
+<p><em>ipv6-group-mask-length</em>：指定组播组地址的掩码长度。整数形式，取值范围是8～128。</p>
+<p><em>ipv6-source-address</em>：指定组播源的IPv6单播地址。</p>
+<p><em>ipv6-source-mask-length</em>：指定组播源地址的掩码长度。整数形式，取值范围是0～128。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只对动态加入的MLD组有效，并且只能删除执行<a href="display_mld_group.html">display mld group</a>命令能查看的组，即：</p>
+<ul>
+<li><p>对于MLDv1组播组，执行该命令只能删除ASM范围的组，不能删除SSM范围的组。</p>
+</li>
+<li><p>如果删除SSM范围内MLDv1组播组，需执行<a href="reset_mld_group_ssm-mapping.html">reset mld group ssm-mapping</a>命令。</p>
+</li>
+<li><p>对于MLDv2组播组，执行该命令可以删除所有动态加入的MLD组播组。</p>
+</li>
+</ul>
+<p>组的删除不影响其再次加入。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_mld_group__d112762e107"></a><a name="d112762e107"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 删除接口GE1/0/0上组范围是FF03::101:0～FF03::101:FFFF的组。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset mld group interface gigabitethernet 1/0/0 ff03::101:0 112</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mld_configuration_commands.html">MLD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mld_group.html">display mld group</a></div>
+<div><a href="reset_mld_group_ssm-mapping.html">reset mld group ssm-mapping</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

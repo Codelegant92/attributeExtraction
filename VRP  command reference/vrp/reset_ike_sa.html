@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset ike sa">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ike_sa.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_ike_sa">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset ike sa</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_ike_sa"></a><a name="reset_ike_sa"></a>
+
+<h1 class="topictitle1">reset ike sa</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset ike sa</strong>命令用来删除IKE建立的安全隧道。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset</strong> <strong>ike</strong> <strong>sa</strong> [<em> connection-id</em> ] </p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>connection-id</em>：指定要删除的安全隧道的连接ID号。取值范围是1～9999。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>用户视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果要删除通过IKE协商建立的IPSec安全通道，需要执行<strong>reset ike sa</strong> [ <em>connection-id</em> ]命令删除用于协商的IKE SA。</p>
+<p>IKE SA分为两种，阶段1的IKE SA用于IKE本身的协商，阶段2的IKE SA在阶段1的IKE SA保护下建立真正保护数据流的IPSec SA。</p>
+<ul><li><p>如果指定的<em>connection-id</em>对应阶段1的IKE SA，此IKE SA被删除后会在阶段2的IKE SA保护下自动协商，重新建立阶段1的IKE SA；</p>
+</li><li><p>如果指定的<em>connection-id</em>对应阶段2的IKE SA，此IKE SA被删除后不会再自动协商。只有数据流再次命中安全策略中的ACL时，才会重新协商建立阶段2的IKE SA；</p>
+</li><li><p>如果未指定<em>connection-id</em>，则删除所有阶段1的IKE SA，与第一种情况相同。</p>
+</li></ul>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_ike_sa__d112237e69"></a><a name="d112237e69"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 删除一个到202.38.0.2的安全通道。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> reset</strong> <strong>ike</strong> <strong>sa</strong></pre>
+<pre class="screen">conn-id      peer          vpn      flag         phase     doi</pre>
+<pre class="screen">----------------------------------------------------------</pre>
+<pre class="screen">1            202.38.0.2     ss      RD|ST        1         IPSEC</pre>
+<pre class="screen">2            202.38.0.2     ss      RD|ST        2         IPSEC</pre>
+<pre class="screen">flag meaning:</pre>
+<pre class="screen">RD--READY ST--STAYALIVE RL--REPLACED FD&#8212;FADING TO--TIMEOUT</pre>
+<pre class="screen">&lt;Quidway&gt;<strong> reset ike sa 2</strong></pre>
+<pre class="screen">[Quidway]<strong> display ike sa</strong></pre>
+<pre class="screen">conn-id      remote      vpn  flag           phase      doi</pre>
+<pre class="screen">1            202.38.0.2  ss   RD|ST          1          IPSEC</pre>
+<pre class="screen">flag meaning:</pre>
+<pre class="screen">RD--READY ST--STAYALIVE RL--REPLACED FD&#8212;FADING TO&#8212;TIMEOUT</pre>
+<div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>如果先删除阶段1的SA，那么在删除阶段2的SA时，就无法通知对方清除相应的SA。</p>
+</div></div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ike_sa.html">display ike sa</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

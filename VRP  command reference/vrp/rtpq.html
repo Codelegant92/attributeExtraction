@@ -1,0 +1,61 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="rtpq">
+<meta name="DC.Relation" scheme="URI" content="../vrp/fr_qos_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rtpq">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>rtpq</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="rtpq"></a><a name="rtpq"></a>
+
+<h1 class="topictitle1">rtpq</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>rtpq</strong>命令用来配置应用RTP优先队列（Realtime Transport Protocol Priority Queue）。</p>
+<p><strong>undo rtpq</strong>命令用来取消应用。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>rtpq start-port </strong><em>min-rtp-port-number</em><strong> end-port </strong><em>max-rtp-port-number</em><strong> bandwidth </strong><em>bandwidth </em>[ <strong>cbs</strong> <em>cbs</em> ]</p>
+<p><strong>undo rtpq</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>min-rtp-port-number</em>：目的UDP端口的下限。取值范围是2000～65535。</p>
+<p><em>max-rtp-port-number</em>：目的UDP端口的上限。取值范围是2000～65535。</p>
+<p><em>bandwidth</em>：RTP队列的带宽，单位是kbit/s，取值范围是8～1000000。</p>
+<p><em>cbs</em>：承诺突发尺寸，取值范围是1500～2000000bytes，缺省值为1500 bytes。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>FR-Class视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令创建一个严格优先队列，只有在RTP指定的<em>start-port</em>和<em>end-port</em>端口范围内、且目的端口号为偶数的UDP报文才能进入RTP优先队列。</p>
+<p>将配置了RTPQ的帧中继class应用到PVC上，将在该PVC上创建一个严格优先队列，目的UDP端口在RTPQ指定的端口范围内的报文将进入RTPQ优先队列。虚电路发生拥塞时，该队列的报文绝对优先发送，但不超过配置的带宽；虚电路没有发生拥塞时，指定端口范围内的RTP报文可以占用虚电路上可用带宽。一般可将VoIP使用的UDP端口范围配置为[16384，32767]。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="rtpq__d115852e74"></a><a name="d115852e74"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在名为test1的帧中继class上配置RTP优先队列，带宽为20kbit/s。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>fr class test1</strong></strong></pre>
+<pre class="screen">[Quidway-fr-class-test1]<strong> <strong>rtpq start-pot 16383 end-port 16384 bandwidth 20</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/fr_qos_configuration_commands.html">帧中继QoS命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,109 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ike sa">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ike_proposal.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ike_sa">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ike sa</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ike_sa"></a><a name="display_ike_sa"></a>
+
+<h1 class="topictitle1">display ike sa</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>ike</strong> <strong>sa</strong>命令用来查看当前由IKE建立的安全隧道。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>ike</strong> <strong>sa </strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display</strong> <strong>ike</strong> <strong>sa</strong>命令可以观察到的信息包括：</p>
+<ul><li><p>安全通道的标识符</p>
+</li><li><p>安全联盟的对端的IP地址</p>
+</li><li><p>VPN实例名称</p>
+</li><li><p>SA所属阶段</p>
+</li><li><p>SA所属解释域</p>
+</li><li><p>此安全联盟的状态</p>
+</li></ul>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ike_sa__d27198e67"></a><a name="d27198e67"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示当前由IKE建立的安全通道。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ike sa</strong></pre>
+<pre class="screen">conn-id      peer          vpn  flag         phase     doi</pre>
+<pre class="screen">---------------------------------------------------------</pre>
+<pre class="screen">1            202.38.0.2     ss  RD|ST        1         IPSEC</pre>
+<pre class="screen">2            202.38.0.2     ss  RD|ST        2         IPSEC</pre>
+<pre class="screen">flag meaning:</pre>
+<pre class="screen">RD--READY ST--STAYALIVE RL--REPLACED FD&#8212;FADING TO--TIMEOUT</pre>
+
+<div class="tablenoborder"><a name="display_ike_sa__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ike_sa__tb_01" frame="border" border="1" rules="all"><caption>表1 display ike sa命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="16.98160745779794%" id="d27198e94"><p>主要字段</p>
+</th>
+<th class="cellrowborder" valign="top" width="83.01839254220206%" id="d27198e97"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="16.98160745779794%" headers="d27198e94 "><p>conn-id</p>
+</td>
+<td class="cellrowborder" valign="top" width="83.01839254220206%" headers="d27198e97 "><p>安全通道的标识符</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="16.98160745779794%" headers="d27198e94 "><p>Peer</p>
+</td>
+<td class="cellrowborder" valign="top" width="83.01839254220206%" headers="d27198e97 "><p>此安全联盟的对端的IP地址</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="16.98160745779794%" headers="d27198e94 "><p>VPN</p>
+</td>
+<td class="cellrowborder" valign="top" width="83.01839254220206%" headers="d27198e97 "><p>VPN实例名称</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="16.98160745779794%" headers="d27198e94 "><p>flag</p>
+</td>
+<td class="cellrowborder" valign="top" width="83.01839254220206%" headers="d27198e97 "><p>显示此安全联盟的状态：RD（READY）：表示此SA已建立成功；ST（STAYALIVE）：表示此端是通道协商发起方；RL（REPLACED）：表示此通道已经被新的通道代替，一段时间后将被删除；FD（FADING）：表示此通道已发生过一次软超时，目前还在使用，在硬超时时会删除此通道；TO（TIMEOUT）：表示此SA在上次keepalive超时发生后还没有收到keepalive报文，如果在下次keepalive超时发生时仍没有收到keepalive报文，此SA将被删除。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="16.98160745779794%" headers="d27198e94 "><p>phase</p>
+</td>
+<td class="cellrowborder" valign="top" width="83.01839254220206%" headers="d27198e97 "><p>此SA所属阶段：Phase 1：建立安全通道进行通信的阶段，此阶段建立ISAKMP SA；Phase 2：协商安全服务的阶段，此阶段建立IPSec SA。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="16.98160745779794%" headers="d27198e94 "><p>doi</p>
+</td>
+<td class="cellrowborder" valign="top" width="83.01839254220206%" headers="d27198e97 "><p>SA所属解释域</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ike_proposal.html">ike proposal</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,197 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display channel">
+<meta name="DC.Relation" scheme="URI" content="../vrp/information_center.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_channel">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display channel</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_channel"></a><a name="display_channel"></a>
+
+
+<h1 class="topictitle1">display channel</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display channel</strong>命令用来显示信息通道的内容。</p>
+<p><strong>display channel</strong>不带参数表示显示所有通道的设置情况。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display channel</strong> [ <em>channel-number</em> | <em>channel-name</em> ] <span>[<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>channel-number</em>：通道号可以取的值为0～9，即系统可以有10个通道。</p>
+<p><em>channel-name</em>：通道名。</p>
+<p>|：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行命令<strong>display channel</strong>可以显示，日志、告警和debugging信息是否允许从指定的通道通过和允许通过信息的级别。在不指定任何的参数情况下，显示日志、告警和debugging信息在所有通道中的是否允许通过和允许通过信息的级别。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_channel__d19449e101"></a><a name="d19449e101"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示0号信息通道的内容。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display channel 0</strong>
+channel number:0, channel name:console
+MODU_ID  NAME     ENABLE LOG_LEVEL     ENABLE TRAP_LEVEL    ENABLE DEBUG_LEVEL
+ffff0000 default  Y      warning       Y      debugging     Y      debugging  </pre>
+
+<div class="tablenoborder"><a name="display_channel__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_channel__tb_01" frame="border" border="1" rules="all"><caption>表1 display channel命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="25.124716553287985%" id="d19449e122"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="74.87528344671203%" id="d19449e126"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="25.124716553287985%" headers="d19449e122 "><p>MODU_ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.87528344671203%" headers="d19449e126 "><p>模块号，ffff0000表示缺省的条目。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.124716553287985%" headers="d19449e122 "><p>NAME</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.87528344671203%" headers="d19449e126 "><p>模块名，default表示缺省的模块。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.124716553287985%" headers="d19449e122 "><p>ENABLE（first）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.87528344671203%" headers="d19449e126 "><p>日志信息的使能状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.124716553287985%" headers="d19449e122 "><p>LOG_LEVEL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.87528344671203%" headers="d19449e126 "><p>允许输出的日志信息的级别。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.124716553287985%" headers="d19449e122 "><p>ENABLE（second）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.87528344671203%" headers="d19449e126 "><p>告警信息的使能状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.124716553287985%" headers="d19449e122 "><p>TRAP_LEVEL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.87528344671203%" headers="d19449e126 "><p>允许输出的告警信息的级别。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.124716553287985%" headers="d19449e122 "><p>ENABLE（third）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.87528344671203%" headers="d19449e126 "><p>调试信息的使能状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.124716553287985%" headers="d19449e122 "><p>DEBUG_LEVEL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.87528344671203%" headers="d19449e126 "><p>允许输出的调试信息的级别。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_channel__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_channel__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d19449e236"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d19449e240"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d19449e236 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d19449e240 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/information_center.html">信息中心命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

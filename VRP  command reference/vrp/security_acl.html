@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="security acl">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_local.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_remote.html">
+<meta name="DC.Relation" scheme="URI" content="sa_duration_security_policy_view.html">
+<meta name="DC.Relation" scheme="URI" content="proposal.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="security_acl">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>security acl</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="security_acl"></a><a name="security_acl"></a>
+
+<h1 class="topictitle1">security acl</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>security</strong> <strong>acl</strong>命令用来设置安全策略引用的访问控制列表。</p>
+<p><strong>undo</strong> <strong>security</strong> <strong>acl</strong>命令用来取消安全策略引用的访问控制列表。</p>
+<p>缺省情况安全策略没有指定访问控制列表。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>security</strong> <strong>acl</strong> <em>acl-number</em></p>
+<p><strong>undo security acl</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>acl-number</em>：指定安全策略所引用的访问控制列表号，取值范围是3000～3999。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>安全策略视图、安全策略模板视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>安全策略所保护的数据流由此命令指定的acl来定义。</p>
+<p>在实施IPSec安全策略时，系统首先检查通过接口的报文是否与acl中的规则匹配，如果匹配且是被访问控制列表允许（<strong>permit</strong>）的报文，则系统对报文进行IPsec保护后再发送。如果不匹配，或者访问控制列表拒绝（<strong>deny</strong>）的报文，则直接发送报文。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="security_acl__d116880e62"></a><a name="d116880e62"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置安全策略引用3101号访问控制列表。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> acl number 3101</strong></pre>
+<pre class="screen">[Quidway-acl-adv-3101]<strong> rule permit tcp source 10.1.1.1 0.0.0.255 destination 10.1.1.2 0.0.0.255</strong></pre>
+<pre class="screen">[Quidway]<strong> ipsec policy beijing 100 manual</strong></pre>
+<pre class="screen">[Quidway-ipsec-policy-manual-beijing-100]<strong> security acl 3101</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipsec_policy_system_view.html">ipsec policy（系统视图）</a></div>
+<div><a href="ipsec_policy_interface_view.html">ipsec policy（接口视图）</a></div>
+<div><a href="tunnel_local.html">tunnel local</a></div>
+<div><a href="tunnel_remote.html">tunnel remote</a></div>
+<div><a href="sa_duration_security_policy_view.html">sa duration（安全策略视图）</a></div>
+<div><a href="proposal.html">proposal</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

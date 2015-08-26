@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mld timer other-querier-present">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mld_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mld_interface.html">
+<meta name="DC.Relation" scheme="URI" content="timer_other-querier-present_mld_view.html">
+<meta name="DC.Relation" scheme="URI" content="mld_timer_query.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mld_timer_other-querier-present">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mld timer other-querier-present</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mld_timer_other-querier-present"></a><a name="mld_timer_other-querier-present"></a>
+
+
+<h1 class="topictitle1">mld timer other-querier-present</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mld timer other-querier-present</strong>命令用来设置其他MLD查询器的存活时间。</p>
+<p><strong>undo mld timer other-querier-present</strong>命令用来恢复其他MLD查询器的存活时间为缺省值。</p>
+<p>缺省情况下，其他MLD查询器的存活时间的计算公式是：其他MLD查询器的存活时间 = 健壮系数 &times; MLD普遍查询消息发送间隔 +（1/2）&times; MLD查询消息的最大响应时间。当健壮系数、MLD查询消息发送间隔和MLD查询消息最大响应时间都取缺省值时，其他MLD查询器的存活时间的值为255秒。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mld timer other-querier-present </strong><em>interval</em></p>
+<p><strong>undo mld timer other-querier-present</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interval</em>：指定&#8220;其他MLD查询器的存活时间&#8221;。整数形式，取值范围是60～300，单位是秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当一个网段中连接了多台组播<span class="keyword">路由器</span>时，从中选出一台作为查询器，负责向该网段周期性发送查询消息。如果非查询器在&#8220;其他MLD查询器的存活时间&#8221;内没有接收到查询消息，就认为查询器故障，由自己来充当查询器。经过竞选后，最终由共享网段上IPv6的Link-local地址最小的<span class="keyword">路由器</span>充当查询器。</p>
+<p>如果接口视图和MLD视图下都配置了此命令，优先取接口视图下的值。</p>
+<p>如果配置的&#8220;其他MLD查询器的存活时间&#8221;小于&#8220;MLD查询消息发送间隔&#8221;，将导致网络上查询器的重复改变。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mld_timer_other-querier-present__d93403e60"></a><a name="d93403e60"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口GE1/0/0上设置MLD查询器的超时时间是200秒。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mld timer other-querier-present 200</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mld_configuration_commands.html">MLD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mld_interface.html">display mld interface</a></div>
+<div><a href="timer_other-querier-present_mld_view.html">timer other-querier-present</a></div>
+<div><a href="mld_timer_query.html">mld timer query</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

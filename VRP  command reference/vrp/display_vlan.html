@@ -1,0 +1,270 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display vlan">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vlan_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="port.html">
+<meta name="DC.Relation" scheme="URI" content="vlan.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_vlan">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display vlan</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_vlan"></a><a name="display_vlan"></a>
+
+
+<h1 class="topictitle1">display vlan</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>vlan</strong>命令用来查看所有VLAN的状态，包括是否使能VLAN、是否使能MAC地址学习、是否使能广播等。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>vlan</strong> [ <em>vlan-id </em>[ <strong>verbose</strong> ] ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vlan-id</em>：VLAN ID，取值范围是1～4094。</p>
+<p><strong>verbose</strong>：显示VLAN的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>指定<em>vlan-id</em>将显示VLAN包含的端口，包括对报文打标签的端口（Tagged）和不对报文打标签的端口（Untagged）。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_vlan__d71312e105"></a><a name="d71312e105"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定VLAN的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vlan 10</strong></pre>
+<pre class="screen">VLAN ID Type    Status   MAC Learning Broadcast/Multicast/Unicast Property</pre>
+<pre class="screen">---------------------------------------------------------------</pre>
+<pre class="screen">10      common  enable   enable       forward   forward   forward default</pre>
+<pre class="screen">----------------</pre>
+<pre class="screen">Untagged   Port: gigabitethernet1/1/0               gigabitethernet1/1/1</pre>
+
+<pre class="screen">---------------- </pre>
+<pre class="screen">Interface                   Physical</pre>
+<pre class="screen">gigabitethernet1/1/0               UP</pre>
+<pre class="screen">gigabitethernet1/1/1               UP </pre>
+<p># 查看指定VLAN的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vlan 2 verbose</strong></pre>
+<pre class="screen">  VLAN ID      : 2</pre>
+<pre class="screen">  VLAN Type    : Super</pre>
+<pre class="screen">  Description  : VLAN 0002</pre>
+<pre class="screen">  Status       : Enable</pre>
+<pre class="screen">  Broadcast    : Enable</pre>
+<pre class="screen">  MAC learning : Enable</pre>
+<pre class="screen">  Statistics   : Disable</pre>
+<pre class="screen">---------------</pre>
+<pre class="screen">sub-VLAN List: 1         3</pre>
+<p># 查看所有VLAN的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vlan</strong></pre>
+<pre class="screen">The total number of vlans is : 10
+VLAN ID Type    Status   MAC Learning Broadcast/Multicast/Unicast Property
+--------------------------------------------------------------------------------
+1       sub     enable   enable       forward   forward   forward default 
+2       super   enable   enable       forward   forward   forward default 
+3       sub     enable   enable       forward   forward   forward default 
+4       common  enable   enable       forward   forward   forward default 
+5       common  enable   enable       forward   forward   forward default 
+6       common  enable   enable       forward   forward   forward default 
+7       common  enable   enable       forward   forward   forward default 
+8       common  enable   enable       forward   forward   forward default 
+9       common  enable   enable       forward   forward   forward default 
+10      common  enable   enable       forward   forward   forward default </pre>
+
+<div class="tablenoborder"><a name="display_vlan__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vlan__tb_01" frame="border" border="1" rules="all"><caption>表1 display vlan命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="23.167044595616026%" id="d71312e176"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="76.83295540438397%" id="d71312e180"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="23.167044595616026%" headers="d71312e176 "><p>VLAN ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.83295540438397%" headers="d71312e180 "><p>VLAN号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.167044595616026%" headers="d71312e176 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.83295540438397%" headers="d71312e180 "><div class="p">VLAN类型。有三种：<ul>
+<li><p>sub：sub-VLAN</p>
+</li>
+<li><p>super：super-VLAN</p>
+</li>
+<li><p>common：普通VLAN</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.167044595616026%" headers="d71312e176 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.83295540438397%" headers="d71312e180 "><div class="p">vlan状态。<ul>
+<li><p>disable：vlan处于去使能状态（使用<strong>shutdown vlan</strong>命令可以去使能vlan）。</p>
+</li>
+<li><p>enable：vlan处于使能状态 （使用<strong>undo shutdown vlan</strong>命令可以使能vlan）。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.167044595616026%" headers="d71312e176 "><p>MAC Learning</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.83295540438397%" headers="d71312e180 "><div class="p">是否使能地址学习功能。<ul>
+<li><p>disable：去使能地址学习功能</p>
+</li>
+<li><p>enable：使能地址学习功能</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.167044595616026%" headers="d71312e176 "><p>Broadcast</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.83295540438397%" headers="d71312e180 "><div class="p">是否使能广播功能。<ul>
+<li><p>disable：去使能广播功能</p>
+</li>
+<li><p>enable：使能广播功能</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.167044595616026%" headers="d71312e176 "><p>Untagged Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.83295540438397%" headers="d71312e180 "><p>出方向不带Tag的端口。端口配置<a href="port_hybrid_untagged_vlan.html">port hybrid untagged vlan</a>和<a href="port_default_vlan.html">port default vlan</a>后，报文从此端口出去时不带Tag。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.167044595616026%" headers="d71312e176 "><p>Tagged Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.83295540438397%" headers="d71312e180 "><p>出方向带Tag的端口。端口配置<a href="port_trunk_allow-pass.html">port trunk allow-pass</a>，报文从此端口出去时带Tag。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.167044595616026%" headers="d71312e176 "><p>Description</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.83295540438397%" headers="d71312e180 "><p>对VLAN的描述。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_vlan__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vlan__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d71312e349"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d71312e353"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d71312e349 "><p>VRPV500R005C01B050</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d71312e353 "><p>修改了命令的输出内容。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d71312e349 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d71312e353 "><p>命令增加通配符：[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vlan_configuration_commands.html">VLAN配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="port.html">port</a></div>
+<div><a href="vlan.html">vlan</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

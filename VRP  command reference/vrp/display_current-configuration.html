@@ -1,0 +1,229 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display current-configuration">
+<meta name="DC.Relation" scheme="URI" content="../vrp/file_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="save.html">
+<meta name="DC.Relation" scheme="URI" content="reset_saved-configuration.html">
+<meta name="DC.Relation" scheme="URI" content="display_saved-configuration.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_current-configuration">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display current-configuration</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_current-configuration"></a><a name="display_current-configuration"></a>
+
+
+<h1 class="topictitle1">display current-configuration</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display current-configuration</strong>命令用来显示<span class="keyword">路由器</span>当前生效的配置参数。</p>
+<p>对于某些正在生效的配置参数，如果与缺省工作参数相同，则不显示。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>current-configuration</strong> [ <strong>all</strong> | <strong>unavailable-card</strong> | <strong>configuration</strong> [ <em>configuration-type</em> ] | <strong>controller</strong> | <strong>interface</strong> <em>interface-type</em> [<em> interface-number</em> ] ] [<strong> |</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> | <strong>feature </strong><em>feature-name</em> [<strong> filter </strong><em>filter-expression </em>] |  <strong>filter </strong><em>filter-expression</em> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>|</strong>：使用正则表达式过滤输出的显示信息。</p>
+<p><strong>all</strong>：所有板卡的配置信息，包括不在位的板卡的配置信息。</p>
+<p><strong>begin</strong>：显示以指定正则表达式开头的配置信息。</p>
+<p><strong>exclude</strong>：显示不含指定正则表达式的配置信息。</p>
+<p><strong>include</strong>：显示包含指定正则表达式的配置信息。</p>
+<p><em>regular-expression</em>：正则表达式字符串。</p>
+<p><strong>configuration</strong>：显示指定的配置信息。</p>
+<p><em>configuration-type</em>：配置类型，依赖于系统当前已有的配置，可以显示AAA配置、系统配置、用户界面配置及配置输出。</p>
+<p><strong>controller</strong>：显示控制器接口的配置信息，如E1控制器接口。</p>
+<p><strong>feature</strong>：显示特性的配置信息。</p>
+<p><em>feature-name</em>：指定特性名称。</p>
+<p><strong>filter</strong>：显示过滤后的配置信息。</p>
+<p><em>filter-expression</em>：表示过滤条件的第一个匹配字段。</p>
+<p><strong>interface</strong>：显示指定接口的配置。</p>
+<p><em>interface-type</em>：接口类型。</p>
+<p><strong>unavailable-card</strong>：不在位的板卡的配置信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当用户完成一组配置之后，需要验证是否配置正确，则可以执行<strong>display current-configuration</strong>命令来查看当前生效的参数，对于某些参数，虽然用户已经配置，但如果这些参数所在的功能如果没有生效，则不予显示，如：某接口链路层封装X.25，这时用户可以在该接口上配置PPP参数，但执行<strong>display current-configuration</strong>时看不到该接口上的PPP配置信息。</p>
+<p>当配置信息比较多时，可以使用正则表达式对输出信息进行过滤。正则表达式的规则请参考《<span class="keyword">VRP</span><span class="keyword">  </span>配置指南 基础配置》的命令行介绍部分。</p>
+<p>当用户需要查看当前所有板卡的配置信息，包括不在位不生效的板卡的配置信息时，可以执行<strong>display current-configuration
+all</strong>命令。</p>
+<p>当用户需要查看当前不在位的板卡的配置信息时，可以执行<strong>display current-configuration unavailable-card</strong>命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_current-configuration__d21816e209"></a><a name="d21816e209"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示<span class="keyword">路由器</span>当前生效的配置参数。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display current-configuration</strong></pre>
+<pre class="screen">#</pre>
+<pre class="screen"> sysname Quidway</pre>
+<pre class="screen">#</pre>
+<pre class="screen"> super password level 3 simple 123456</pre>
+<pre class="screen">#</pre>
+<pre class="screen">interface GigabitEthernet1/0/0</pre>
+<pre class="screen">#</pre>
+<pre class="screen">interface Pos2/0/0</pre>
+<pre class="screen"> link-protocol ppp</pre>
+<pre class="screen">#</pre>
+<pre class="screen">user-interface con 0</pre>
+<pre class="screen"> set authentication password simple 123456</pre>
+<pre class="screen"> history-command max-size 30</pre>
+<pre class="screen">user-interface aux 0</pre>
+<pre class="screen">user-interface vty 0 4</pre>
+<pre class="screen">#</pre>
+<pre class="screen">return</pre>
+<p># 查看以字符串&#8220;user&#8221;开始的所有配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display current-configuration | begin user</strong></pre>
+<pre class="screen">user-interface con 0</pre>
+<pre class="screen">user-interface aux 0</pre>
+<pre class="screen">user-interface vty 0 4</pre>
+<pre class="screen"> authentication-mode none</pre>
+<pre class="screen"> user privilege level 3</pre>
+<pre class="screen"> idle-timeout 0 0</pre>
+<pre class="screen">#</pre>
+<pre class="screen">return</pre>
+<p># 查看包含字符串&#8220;user&#8221;的所有配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display current-configuration | include user</strong></pre>
+<pre class="screen">user-interface con 0</pre>
+<pre class="screen">user-interface aux 0</pre>
+<pre class="screen">user-interface vty 0 4</pre>
+<pre class="screen">user privilege level 3</pre>
+
+<div class="tablenoborder"><a name="display_current-configuration__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_current-configuration__tb_01" frame="border" border="1" rules="all"><caption>表1 display current-configuration命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="23.721340388007057%" id="d21816e302"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="76.27865961199295%" id="d21816e306"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="23.721340388007057%" headers="d21816e302 "><p>user-interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.27865961199295%" headers="d21816e306 "><div class="p">用户界面：<ul>
+<li><p>Console（CON）口</p>
+</li>
+<li><p>Auxiliary（AUX）口</p>
+</li>
+<li><p>虚拟线路（VTY）</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.721340388007057%" headers="d21816e302 "><p>user privilege level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.27865961199295%" headers="d21816e306 "><div class="p">用户优先级<ul>
+<li><p>0 参观级</p>
+</li>
+<li><p>1 监控级</p>
+</li>
+<li><p>2 配置级</p>
+</li>
+<li><p>3 管理级</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_current-configuration__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_current-configuration__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d21816e382"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d21816e386"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d21816e382 "><p>VRPV500R005C02B011</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d21816e386 "><p>增加参数<strong>filter</strong><em>filter-expression</em>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d21816e382 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d21816e386 "><p>增加通配符<span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d21816e382 "><p>VRPV500R006C02B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d21816e386 "><p>增加参数<strong>all</strong>和<strong>unavailable-card</strong>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/file_management_configuration_commands.html">管理配置文件命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="save.html">save</a></div>
+<div><a href="reset_saved-configuration.html">reset saved-configuration</a></div>
+<div><a href="display_saved-configuration.html">display saved-configuration</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

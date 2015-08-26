@@ -1,0 +1,829 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display bgp vpnv6 routing-table">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_bgp_vpnv6_routing-table">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display bgp vpnv6 routing-table</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_bgp_vpnv6_routing-table"></a><a name="display_bgp_vpnv6_routing-table"></a>
+
+
+<h1 class="topictitle1">display bgp vpnv6 routing-table</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display bgp vpnv6 routing-table</strong>命令用来查看BGP VPNv6的路由信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display bgp vpnv6</strong> { <strong>all</strong> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> | <strong>route-distinguisher</strong> <em>route-distinguisher</em> } <strong>routing-table</strong> [ <em>dest-ipv6-address</em> [ <em>prefix-length</em> ] ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv6</strong> { <strong>all</strong> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> | <strong>route-distinguisher</strong> <em>route-distinguisher</em> } <strong>routing-table</strong> <strong>as-path-filter</strong> <em>as-path-filter-number</em><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv6</strong> { <strong>all</strong> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> | <strong>route-distinguisher</strong> <em>route-distinguisher</em> } <strong>routing-table</strong> <strong>community</strong> [ <em>community-number</em> | <em>aa:nn</em> ] &amp;&lt;1-13&gt; [ <strong>internet</strong> | <strong>no-advertise</strong> | <strong>no-export</strong> | <strong>no-export-subconfed</strong> ] * [ <strong>whole-match</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv6</strong> { <strong>all</strong> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> | <strong>route-distinguisher</strong> <em>route-distinguisher</em> } <strong>routing-table</strong> <strong>community-filter</strong> { { <em>community-filter-name</em> | <em>basic-community-filter-number</em> } [ <strong>whole-match</strong> ] | <em>advanced-community-filter-number</em> }<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv6</strong> {<strong>all</strong> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> | <strong>route-distinguisher</strong> <em>route-distinguisher</em> } <strong>routing-table</strong> <strong>different-origin-as</strong><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv6</strong> { <strong>all</strong> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> | <strong>route-distinguisher</strong> <em>route-distinguisher</em> } <strong>routing-table</strong> <strong>regular-expression</strong> <em>as-regular-expression</em></p>
+<p><strong>display
+bgp vpnv6</strong> <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> <strong>routing-table peer</strong> <em>ipv6-address</em> { <strong>advertised-routes</strong> | <strong>received-routes</strong><span> [ <strong>active</strong> ]</span> }<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：查看所有VPNv6的BGP路由统计信息。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：显示本端指定IPv6 VPN实例的BGP VPNv6路由信息。</p>
+<p><strong>route-distinguisher</strong> <em>route-distinguisher</em>：显示指定RD的BGP路由信息。</p>
+<p><strong>as-path-filter</strong> <em>as-path-filter-number</em>：指定匹配的AS路径过滤器号。</p>
+<p><strong>regular-expression</strong> <em>as-regular-expression</em>：为匹配的AS正则表达式。字符串类型，取值范围是1～80。</p>
+<p><strong>different-origin-as</strong>：用来显示具有相同目的地址但不同源AS号的路由。</p>
+<p><strong>community-filter</strong>：用来显示匹配指定的BGP团体属性过滤器的路由信息。</p>
+<p><em>community-filter-name</em>：团体属性过滤器名称。</p>
+<p><em>basic-community-filter-number</em>：指定基本团体属性过滤器号。</p>
+<p><em>advanced-community-filter-number</em>：指定高级团体属性过滤器号。</p>
+<p><strong>community</strong>：用来查看路由表中指定BGP团体的路由信息。</p>
+<p><em>community-number</em>：指定的团体号。</p>
+<p><em>aa:nn</em>：指定的团体号。最多可以设置13个团体号。</p>
+<p><strong>internet</strong>：显示带有Internet团体属性的BGP路由。</p>
+<p><strong>no-advertise</strong>：显示带有No-Advertise团体属性的BGP路由。</p>
+<p><strong>no-export</strong>：显示带有No-Export团体属性的BGP路由。</p>
+<p><strong>no-export-subconfed</strong>：显示带有No-Export-Subconfed团体属性的BGP路由。</p>
+<p><strong>whole-match</strong>：精确匹配。</p>
+<p><strong>peer</strong> <em>ipv6-address</em>：显示指定BGP对等体的路由信息。</p>
+<p><strong>advertised-routes</strong>：显示发布给指定对等体的路由信息。</p>
+<p><strong>received-routes</strong>：显示从指定对等体收到的路由信息。</p>
+<p><strong>active</strong>：显示从指定对等体收到的活跃路由信息。</p>
+<p><em>ipv6-address</em>：指定要显示的对等体的IPv6地址。</p>
+<p><em>prefix-length</em>：指定IPv6地址的前缀长度。</p>
+<p><em>dest-ipv6-address</em>：只显示指定的目的IPv6地址的路由信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过指定不同的参数可以只查看特定的路由信息。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_bgp_vpnv6_routing-table__d17924e530"></a><a name="d17924e530"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有BGP VPNv6路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv6 all routing-table</strong>
+
+ BGP Local router ID is 2.2.2.2
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+ Total number of routes from all PE: 2
+ Route Distinguisher: 1:1
+
+
+ *&gt;i Network  : 200::                                    PrefixLen : 100
+     NextHop  : ::FFFF:1.1.1.1                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15360
+     Path/Ogn : ?
+
+ *&gt;i Network  : 2000::                                   PrefixLen : 100
+     NextHop  : ::FFFF:1.1.1.1                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15361
+     Path/Ogn : i
+
+ Total routes of vpn6-instance vpn1: 2
+
+ *&gt;i Network  : 200::                                    PrefixLen : 100
+     NextHop  : ::FFFF:1.1.1.1                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15360
+     Path/Ogn : ?
+
+ *&gt;i Network  : 2000::                                   PrefixLen : 100
+     NextHop  : ::FFFF:1.1.1.1                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15361
+     Path/Ogn : i </pre>
+
+<div class="tablenoborder"><a name="display_bgp_vpnv6_routing-table__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_vpnv6_routing-table__tb_01" frame="border" border="1" rules="all"><caption>表1 display bgp vpnv6 all routing-table命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.20508944318468%" id="d17924e551"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.79491055681531%" id="d17924e555"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17924e551 "><p>BGP Local router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17924e555 "><p>本地BGP路由器的ID号，其格式与IPv4地址一样</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17924e551 "><p>Total number of routes from all PE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17924e555 "><p>本路由器从所有对等体PE收到的BGP VPNv6的路由总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17924e551 "><p>Network</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17924e555 "><p>该路由的目的网络地址/主机地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17924e551 "><p>PrefixLen</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17924e555 "><p>该路由的目的网络地址/主机的地址的掩码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17924e551 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17924e555 "><p>本端为了将报文发送到目的地址所要经过的紧邻的下一跳IPv6地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17924e551 "><p>LocPrf</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17924e555 "><p>该BGP路由的本地优先级，默认值为100</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17924e551 "><p>MED</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17924e555 "><p>该路由的度量值，默认值为0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17924e551 "><p>PrefVal</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17924e555 "><p>该路由的协议首选值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17924e551 "><p>Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17924e555 "><p>本端发往该路由目的网段/主机的数据应携带的标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17924e551 "><p>Path/Ogn</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17924e555 "><p>该路由的AS路径属性及Origin属性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.20508944318468%" headers="d17924e551 "><p>Total routes of vpn6-instance vpn1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.79491055681531%" headers="d17924e555 "><p>从本地CE收到的vpn1的路由信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看本端名为vpn1的IPv6 VPN实例的路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv6 vpn6-instance vpn1 routing-table</strong>
+
+ Total Number of Routes: 5
+
+ BGP Local router ID is 1.1.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+ *&gt;  Network  : 2000::                                   PrefixLen : 64
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15360/NULL
+     Path/Ogn : ?
+
+ *&gt;  Network  : 2000::1                                  PrefixLen : 128
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    :
+     Path/Ogn : ?
+
+ *&gt;i Network  : 2001::                                   PrefixLen : 64
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : NULL/15360
+     Path/Ogn : ?
+
+ *&gt;i Network  : 3000::1                                  PrefixLen : 128
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : NULL/15361
+     Path/Ogn : 65420 ?
+
+ *&gt;  Network  : FE80::                                   PrefixLen : 10
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    :
+     Path/Ogn : ?</pre>
+<p># 只显示目的地址为2000::1的IPv6网段路由。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp vpnv6 route-distinguisher 1:1 routing-table 2000::1</strong>
+
+ BGP local router ID : 2.2.2.2
+ Local AS number : 100
+
+ Total routes of Route Distinguisher(1:1): 1
+
+ BGP routing table entry information of 2000::/100:
+ Label information (Received/Applied): 15361/NULL
+ From: 1.1.1.1 (1.1.1.1)
+ Original nexthop: ::FFFF:1.1.1.1
+ Ext-Community: &lt;1 : 1&gt;
+ AS-path Nil, origin igp, MED 0, localpref 100, pref-val 0, valid, internal, best, pre 255
+ Not advertised to any peer yet
+
+
+ Total routes of vpn6-instance vpn1: 1
+
+ BGP routing table entry information of 2000::/100:
+ Label information (Received/Applied): 15361/NULL
+ From: 1.1.1.1 (1.1.1.1)
+ Relay Nexthop: ::
+ Original nexthop: ::FFFF:1.1.1.1
+ Ext-Community: &lt;1 : 1&gt;
+ AS-path Nil, origin igp, MED 0, localpref 100, pref-val 0, valid, internal, best, pre 255
+ Not advertised to any peer yet</pre>
+
+<div class="tablenoborder"><a name="display_bgp_vpnv6_routing-table__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_vpnv6_routing-table__tb_02" frame="border" border="1" rules="all"><caption>表2 display bgp vpnv6 route-distinguisher routing-table命令的描述信息</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.171023249704454%" id="d17924e713"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82897675029555%" id="d17924e717"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>BGP Local Router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>本地BGP路由器的ID号，其格式与IPv4地址一样</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>Local AS Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>本地自治系统号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>Total routes of Route Distinguisher(1:1)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>指定RD的BGP VPNv6路由总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>BGP routing table entry information of 2000::/100:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>表示下面的信息是BGP的路由表项信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>Label information (Received/Applied)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>标签信息(接收的标签/发布的标签)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>From</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>路由发布者的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>Original nexthop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>原始的下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>Ext-Community</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>BGP扩展团体属性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>AS-path</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>AS路径属性，&#8220;Nil&#8221;表示属性值为空</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>Origin</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><div class="p">该BGP路由的源(Origin)属性。它有以下3种类型：<ul>
+<li><p>IGP：比如用network命令注入到BGP路由表的路由，其Origin属性为IGP</p>
+</li>
+<li><p>EGP：通过EGP得到的路由信息，其Origin属性为EGP</p>
+</li>
+<li><p>Incomplete：表示路由的来源无法确定。比如BGP通过<a href="import-route_bgp.html">import-route</a>命令引入的路由，其Origin属性为Incomplete</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>MED</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>MED(Multi-Exit-Discriminator)：判断流量进入AS时的最佳路由。在其它条件相同的情况下，将优先选择MED值较小者作为最佳路由。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>Localpref </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>该BGP路由的本地优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>pref-val</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>协议首选值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>valid</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>该BGP路由为有效路由</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>internal</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>该BGP路由为内部路由</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>best</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>该BGP路由是最优路由</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>Pre 255</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>BGP路由优先级为255</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.171023249704454%" headers="d17924e713 "><p>Not advertised to any peer yet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82897675029555%" headers="d17924e717 "><p>该BGP路由尚未向任何对等体发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看指定目的地址的IPv6 VPN实例的BGP路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv6 vpn6-instance vpn1 routing-table 2000::1</strong>
+
+ BGP local router ID : 1.1.1.1
+ Local AS number : 100
+ Paths:   1 available, 1 best
+
+ BGP routing table entry information of 2000::1/128:
+ Imported route.
+ From: :: (0.0.0.0)
+ Original nexthop: ::
+ Ext-Community: &lt;1 : 1&gt;
+ AS-path Nil, origin incomplete, MED 0, pref-val 0, valid, local, best, pre 0
+ Not advertised to any peer yet</pre>
+<p># 查看AS路径属性中包含65420的所有BGP VPNv6路由信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> ip as-path-filter 1 permit 65420*</strong>
+[Quidway]<strong> display bgp vpnv6 all routing-table as-path-filter 1</strong>
+
+ Total number of routes from all PE: 1
+
+
+ BGP Local router ID is 1.1.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+ Route Distinguisher: 100:1
+
+
+ *&gt;i Network  : 3000::1                                  PrefixLen : 128
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15361
+     Path/Ogn : 65420 ?
+
+ Total routes of vpn6-instance vpn6: 1
+
+ *&gt;i Network  : 3000::1                                  PrefixLen : 128
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : NULL/15361
+     Path/Ogn : 65420 ?
+
+ Total routes of vpn6-instance vpn1: 0</pre>
+<p># 查看名为vpn6的IPv6 VPN实例的BGP路由表中，AS路径属性中包含65420的路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>ip as-path-filter 1 permit 65420*</strong>
+[Quidway] <strong>display bgp vpnv6 vpn6-instance vpn6 routing-table as-path-filter 1</strong>
+
+ Total routes of vpn6-instance vpn6: 1
+
+ BGP Local router ID is 1.1.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+ *&gt;i Network  : 3000::1                                  PrefixLen : 128
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : NULL/15361
+     Path/Ogn : 65420 ?</pre>
+<p># 查看指定RD的BGP路由表中，AS路径属性中包含65420的路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>ip as-path-filter 1 permit 65420*</strong>
+[Quidway] <strong>display bgp vpnv6 route-distinguisher 100:1 routing-table as-path-filter 1</strong>
+
+ Total number of routes from all PE: 1
+
+ Route Distinguisher: 100:1
+
+ BGP Local router ID is 1.1.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+ *&gt;i Network  : 3000::1                                  PrefixLen : 128
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15361
+     Path/Ogn : 65420 ?
+
+ Total routes of vpn6-instance vpn6: 1
+
+ *&gt;i Network  : 3000::1                                  PrefixLen : 128
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : NULL/15361
+     Path/Ogn : 65420 ?</pre>
+<p># 查看本路由器发布给对等体3.3.3.3的BGP VPNv6路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv6 all routing-table peer 3.3.3.3 advertised-routes</strong>
+
+Total Number of Routes: 1
+
+ BGP Local router ID is 100.2.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+
+ *&gt;  Network  : 2001::                                   PrefixLen : 64
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    : NULL
+     Path/Ogn : ?</pre>
+<p># 查看本路由器从对等体3.3.3.3收到的BGP VPNv6路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv6 all routing-table peer 3.3.3.3 received-routes</strong>
+
+
+ Total Number of Routes: 2
+
+ BGP Local router ID is 100.2.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+ Route Distinguisher: 100:3
+
+
+ *&gt;i Network  : 2003::                                   PrefixLen : 64
+     NextHop  : ::FFFF:3.3.3.3                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15360
+     Path/Ogn : i
+
+ *&gt;i Network  : 2004::                                   PrefixLen : 64
+     NextHop  : ::FFFF:3.3.3.3                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15362
+     Path/Ogn : 65420 ?</pre>
+<p># 查看本端指定团体列表的所有BGP VPNv6路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>ip community-filter 1 permit internet</strong>
+[Quidway] <strong>display bgp vpnv6 all routing-table community-filter 1 whole-match</strong>
+
+ Total number of routes from all PE: 2
+
+
+ BGP Local router ID is 1.1.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+ Route Distinguisher: 100:1
+
+
+ *&gt;i Network  : 2001::                                   PrefixLen : 64
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15360
+
+ *&gt;i Network  : 3000::1                                  PrefixLen : 128
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15361
+
+ Total routes of vpn6-instance vpn6: 5
+
+ *&gt;  Network  : 2000::                                   PrefixLen : 64
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15360/NULL
+
+ *&gt;  Network  : 2000::1                                  PrefixLen : 128
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    :
+
+ *&gt;i Network  : 2001::                                   PrefixLen : 64
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : NULL/15360
+ *&gt;i Network  : 3000::1                                  PrefixLen : 128
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : NULL/15361
+
+ *&gt;  Network  : FE80::                                   PrefixLen : 10
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    :
+
+ Total routes of vpn6-instance vpn1: 0</pre>
+<p># 查看本端指定团体列表，且名为vpn6的IPv6 VPN实例的BGP路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv6 vpn6-instance vpn1 routing-table community-filter 1 whole-match</strong>
+ Total routes of vpn6-instance vpn1: 5
+
+ BGP Local router ID is 1.1.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+ *&gt;  Network  : 2000::                                   PrefixLen : 64
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15360/NULL
+
+ *&gt;  Network  : 2000::1                                  PrefixLen : 128
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    :
+
+ *&gt;i Network  : 2001::                                   PrefixLen : 64
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : NULL/15360
+
+ *&gt;i Network  : 3000::1                                  PrefixLen : 128
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : NULL/15361
+
+ *&gt;  Network  : FE80::                                   PrefixLen : 10
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    :</pre>
+<p># 查看IPv6 VP实例vpn6中与指定的AS路径正则表达式匹配的所有BGP路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv6 vpn6-instance vpn6 routing-table regular-expression ^65420</strong>
+
+ BGP Local router ID is 1.1.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+ Routes of vpn6-instance vpn6:
+ *&gt;i Network  : 3000::1                                  PrefixLen : 128
+     NextHop  : ::FFFF:2.2.2.2                           LocPrf    : 100
+     MED      : 0                                        PrefVal   : 0
+     Label    : NULL/15361
+     Path/Ogn : 65420 ?</pre>
+<p># 查看本端从私网对等体2000::1收到的vpn1的BGP路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv6 vpn6-instance vpn1 routing-table peer 2000::1 received-routes</strong>
+
+ Total Number of Routes: 2
+
+ BGP Local router ID is 1.1.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+ *   Network  : 200::                                    PrefixLen : 100
+     NextHop  : 2000::1                                  LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    :
+     Path/Ogn : 65410 ?
+
+ *   Network  : 2000::                                   PrefixLen : 100
+     NextHop  : 2000::1                                  LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    :
+     Path/Ogn : 65410 ?</pre>
+<p># 查看本端发送给私网对等体2000::1的BGP路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bgp vpnv6 vpn6-instance vpn1 routing-table peer 2000::1 advertised-routes</strong>
+ Total Number of Routes: 2
+
+ BGP Local router ID is 1.1.1.1
+ Status codes: * - valid, &gt; - best, d - damped,
+               h - history,  i - internal, s - suppressed, S - Stale
+               Origin : i - IGP, e - EGP, ? - incomplete
+
+ *&gt;  Network  : 200::                                    PrefixLen : 100
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15360/NULL
+     Path/Ogn : ?
+
+ *&gt;  Network  : 2000::                                   PrefixLen : 100
+     NextHop  : ::                                       LocPrf    :
+     MED      : 0                                        PrefVal   : 0
+     Label    : 15361/NULL
+     Path/Ogn : i </pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_bgp_vpnv6_routing-table__tb_05"></a><a name="tb_05"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_vpnv6_routing-table__tb_05" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d17924e1055"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d17924e1059"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d17924e1055 "><p>VRPV500R005C02B101</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d17924e1059 "><p>增加<strong>regular-expression</strong> <em>as-regular-expression</em>参数的提示信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d17924e1055 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d17924e1059 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d17924e1055 "><p>VRPV500R006C02B210</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d17924e1059 "><p>增加参数[ <strong>active</strong> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,119 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="multicast limit channel out">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4_multicast_cac_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="multicast-channel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="multicast_limit_channel_out">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>multicast limit channel out</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="multicast_limit_channel_out"></a><a name="multicast_limit_channel_out"></a>
+
+
+<h1 class="topictitle1">multicast limit channel out</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>multicast limit channel out</strong>命令用来配置指定的节目组以当前接口为出接口的最大PIM表项数和带宽限制。</p>
+<p><strong>undo multicast limit channel out</strong>命令用来删除指定节目组的出接口加入状态和带宽限制。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>multicast limit channel</strong> <em>channel-name</em> <strong>out</strong> { <strong>max-entry</strong> <em>limit</em> | <strong>bandwidth </strong><em>traffic-rate</em> }*</p>
+<p><strong>undo multicast limit channel</strong> <em>channel-name</em><strong> out</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>channel-name</em>：指定节目组的名称。</p>
+<p><strong>max-entry</strong><em> limit</em>：指定节目组以该当前接口为出接口的PIM表项的最大个数。整数形式，取值范围是1～16384。</p>
+<p><strong>bandwidth</strong> <em>traffic-rate</em>：指定节目组在当前接口的最大可用带宽。单位是kbit/s，取值范围是1～10485760。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行该命令前必须已经配置相关节目组。</p>
+<p>配置该限制策略后，当接口的可用带宽小于组播组的预留带宽或PIM路由表项个数达到最大值时，将不能创建新的PIM路由表项。</p>
+<p>系统统计PIM路由表项个数的方法如下：</p>
+<ul>
+<li><p>ASM组范围：对同一组播组G，无论有多少个（*，G）或（S，G），都计为一条。</p>
+</li>
+<li><p>SSM组范围：一个（S，G）计为一条。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="multicast_limit_channel_out__d98775e96"></a><a name="d98775e96"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 对于节目组SDTV来说，以GE1/0/0为出接口的最大PIM表项个数是100，总带宽限制是10000kbit/s。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway] <strong>multicast routing-enable</strong>
+[Quidway] <strong>multicast-channel</strong>
+[Quidway-multicast-channel]<strong> channel SDTV type asm</strong>
+[Quidway-multicast-channel-SDTV]<strong> quit</strong>
+[Quidway-multicast-channel]<strong> quit</strong>
+[Quidway]<strong> interface gigabitethernet1/0/0</strong>
+[Quidway-GigabitEthernet1/0/0]<strong> multicast limit channel SDTV out max-entry 100 bandwidth 10000</strong>
+</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="multicast_limit_channel_out__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="multicast_limit_channel_out__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d98775e137"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d98775e141"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d98775e137 "><p>VRPV500R006C01B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d98775e141 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv4_multicast_cac_configuration_commands.html">IPv4组播CAC配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="multicast-channel.html">multicast-channel</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,70 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="map ppp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/atm_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="map_bridge.html">
+<meta name="DC.Relation" scheme="URI" content="map_ip.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="map_ppp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>map ppp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="map_ppp"></a><a name="map_ppp"></a>
+
+<h1 class="topictitle1">map ppp</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>map ppp</strong>命令用来在PVC视图下创建PVC上的PPPoA映射。</p>
+<p><strong>undo map ppp</strong>命令用来删除该映射。</p>
+<p>缺省情况下，不配置任何映射。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>map ppp virtual-template</strong> <em>vt-number</em></p>
+<p><strong>undo map ppp</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vt-number</em>：PPPoA对应的虚拟模板（VT）接口编号，要求事先创建。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>ATM-PVC视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在使用本命令以前，首先应保证该VT已经创建。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="map_ppp__d92020e42"></a><a name="d92020e42"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p>下面这个例子展示了一个完整的PPPoA配置过程。</p>
+<p># 首先创建一个编号为10的VT接口并配置IP地址。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface virtual-template 10</strong></pre>
+<pre class="screen">[Quidway-Virtual-Template10]<strong> ip address 202.38.160.1 255.255.255.0</strong></pre>
+<pre class="screen">[Quidway-Virtual-Template10]<strong> quit</strong></pre>
+<p># 接下来创建ATM接口Atm1/0/0下的PVC 1/101。</p>
+<pre class="screen">[Quidway]<strong> interface atm 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Atm1/0/0]<strong> pvc 1/101</strong></pre>
+<p># 并使用刚创建好的VT接口来创建PPPoA映射。</p>
+<pre class="screen">[Quidway-atm-pvc-Atm1/0/0-1/101]<strong> map ppp virtual-template 10</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/atm_configuration_commands.html">ATM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="map_bridge.html">map bridge</a></div>
+<div><a href="map_ip.html">map ip</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

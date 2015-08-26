@@ -1,0 +1,377 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="BGP配置命令">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aggregate_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/as-path-limit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/as-split-horizon.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bestroute_as-path-neglect_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bestroute_med-confederation_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bestroute_med-none-as-maximum_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/check-first-as.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/compare-different-as-med_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/confederation_id.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/confederation_nonstandard.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/confederation_peer-as.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dampening_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/default_ipv4-unicast.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/default_local-preference_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/default_med_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/default-route_imported_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_bfd_session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_group.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_ipv6_routing-table.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_ipv6_routing-table_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_network.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_paths.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_peer.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_routing-table.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_routing-table_dampened.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_routing-table_dampening_parameter.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_routing-table_flap-info.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_routing-table_label.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_routing-table_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_vpnv4_brief.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_vpnv4_routing-table.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_vpnv4_routing-table_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_vpnv6_routing-table.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_vpnv6_routing-table_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ip_as-path-filter.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ip_bgp-accounting_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ip_community-filter.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ip_extcommunity-filter.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ebgp-interface-sensitive.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/filter-policy_export_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/filter-policy_import_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/graceful-restart_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/graceful-restart_timer_restart.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/graceful-restart_timer_wait-for-rib.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/group.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/import-route_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_as-path-filter.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_bgp-accounting.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_community-filter.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_extcommunity-filter.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4-family.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6-family.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/load-balancing_as-path-ignore.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/maximum_load-balancing_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/maximum_load-balancing_eibgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/network_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_advertise-community_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_advertise-ext-community_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_allow-as-loop_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_as-number.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_as-path-filter_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_bfd.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_bfd_block.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_bfd_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_capability-advertise.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_connect-interface_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_default-originate_vpn-instance.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_default-route-advertise_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_description_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_discard-ext-community_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_ebgp-max-hop.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_enable_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_fake-as.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_filter-policy_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_group_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_ignore.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_ip-prefix_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_keep-all-routes_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_label-route-capability_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_listen-only.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_log-change.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_next-hop-invariable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_next-hop-local_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_password.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_preferred-value_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_public-as-only_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_reflect-client_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_route-limit_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_route-policy_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_route-update-interval_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_substitute-as.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_timer.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_tnl-policy.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_upe.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_valid-ttl-hops.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/policy_vpn-target.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/preference_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reflect_between-clients_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reflector_cluster-id_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/refresh_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_bgp_dampening.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_bgp_flap-info.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_bgp_flapping-count.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_ip_bgp-accounting.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/router-id_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rr-filter.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/summary_automatic_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/timer_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/undo_synchronization_bgp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="bgp_configuration_commands">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>BGP配置命令</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="bgp_configuration_commands"></a><a name="bgp_configuration_commands"></a>
+
+
+<h1 class="topictitle1">BGP配置命令</h1>
+
+<div>
+<div class="section"><h4 class="sectiontitle">功能描述</h4><p>主要介绍BGP的配置命令。</p>
+<p>为方便配置，BGP-IPv4单播地址族视图下的命令可以在BGP视图下执行，但在配置文件中这些命令仍位于BGP-IPv4单播地址族视图下。</p>
+</div>
+
+<div class="section"><h4 class="sectiontitle">相关链接</h4></div>
+
+</div>
+
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="../vrp/aggregate_bgp.html">aggregate (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/as-path-limit.html">as-path-limit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/as-split-horizon.html">as-split-horizon</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/bestroute_as-path-neglect_bgp.html">bestroute as-path-neglect (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/bestroute_med-confederation_bgp.html">bestroute med-confederation (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/bestroute_med-none-as-maximum_bgp.html">bestroute med-none-as-maximum (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/bgp.html">bgp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/check-first-as.html">check-first-as</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/compare-different-as-med_bgp.html">compare-different-as-med (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/confederation_id.html">confederation id</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/confederation_nonstandard.html">confederation nonstandard</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/confederation_peer-as.html">confederation peer-as</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/dampening_bgp.html">dampening (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/default_ipv4-unicast.html">default ipv4-unicast</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/default_local-preference_bgp.html">default local-preference (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/default_med_bgp.html">default med (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/default-route_imported_bgp.html">default-route imported (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_bfd_session.html">display bgp bfd session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_group.html">display bgp group</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_ipv6_routing-table.html">display bgp ipv6 routing-table</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_ipv6_routing-table_statistics.html">display bgp ipv6 routing-table statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_network.html">display bgp network</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_paths.html">display bgp paths</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_peer.html">display bgp peer</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_routing-table.html">display bgp routing-table</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_routing-table_dampened.html">display bgp routing-table dampened</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_routing-table_dampening_parameter.html">display bgp routing-table dampening parameter</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_routing-table_flap-info.html">display bgp routing-table flap-info</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_routing-table_label.html">display bgp routing-table label</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_routing-table_statistics.html">display bgp routing-table statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_vpnv4_brief.html">display bgp vpnv4 brief</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_vpnv4_routing-table.html">display bgp vpnv4 routing-table</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_vpnv4_routing-table_statistics.html">display bgp vpnv4 routing-table statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_vpnv6_routing-table.html">display bgp vpnv6 routing-table</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_vpnv6_routing-table_statistics.html">display bgp vpnv6 routing-table statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ip_as-path-filter.html">display ip as-path-filter</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ip_bgp-accounting_interface.html">display ip bgp-accounting interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ip_community-filter.html">display ip community-filter</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ip_extcommunity-filter.html">display ip extcommunity-filter</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ebgp-interface-sensitive.html">ebgp-interface-sensitive</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/filter-policy_export_bgp.html">filter-policy export (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/filter-policy_import_bgp.html">filter-policy import (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/graceful-restart_bgp.html">graceful-restart (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/graceful-restart_timer_restart.html">graceful-restart timer restart</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/graceful-restart_timer_wait-for-rib.html">graceful-restart timer wait-for-rib</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/group.html">group</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/import-route_bgp.html">import-route (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ip_as-path-filter.html">ip as-path-filter</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ip_bgp-accounting.html">ip bgp-accounting</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ip_community-filter.html">ip community-filter</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ip_extcommunity-filter.html">ip extcommunity-filter</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv4-family.html">ipv4-family</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6-family.html">ipv6-family</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/load-balancing_as-path-ignore.html">load-balancing as-path-ignore</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/maximum_load-balancing_bgp.html">maximum load-balancing (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/maximum_load-balancing_eibgp.html">maximum load-balancing eibgp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/network_bgp.html">network (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_advertise-community_bgp.html">peer advertise-community (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_advertise-ext-community_bgp.html">peer advertise-ext-community (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_allow-as-loop_bgp.html">peer allow-as-loop (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_as-number.html">peer as-number</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_as-path-filter_bgp.html">peer as-path-filter (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_bfd.html">peer bfd</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_bfd_block.html">peer bfd block</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_bfd_enable.html">peer bfd enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_capability-advertise.html">peer capability-advertise</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_connect-interface_bgp.html">peer connect-interface (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_default-originate_vpn-instance.html">peer default-originate vpn-instance</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_default-route-advertise_bgp.html">peer default-route-advertise (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_description_bgp.html">peer description (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_discard-ext-community_bgp.html">peer discard-ext-community (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_ebgp-max-hop.html">peer ebgp-max-hop</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_enable_bgp.html">peer enable (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_fake-as.html">peer fake-as</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_filter-policy_bgp.html">peer filter-policy (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_group_bgp.html">peer group (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_ignore.html">peer ignore</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_ip-prefix_bgp.html">peer ip-prefix (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_keep-all-routes_bgp.html">peer keep-all-routes (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_label-route-capability_bgp.html">peer label-route-capability (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_listen-only.html">peer listen-only</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_log-change.html">peer log-change</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_next-hop-invariable.html">peer next-hop-invariable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_next-hop-local_bgp.html">peer next-hop-local (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_password.html">peer password</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_preferred-value_bgp.html">peer preferred-value (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_public-as-only_bgp.html">peer public-as-only (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_reflect-client_bgp.html">peer reflect-client (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_route-limit_bgp.html">peer route-limit (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_route-policy_bgp.html">peer route-policy (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_route-update-interval_bgp.html">peer route-update-interval (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_substitute-as.html">peer substitute-as</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_timer.html">peer timer</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_tnl-policy.html">peer tnl-policy</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_upe.html">peer upe</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_valid-ttl-hops.html">peer valid-ttl-hops</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/policy_vpn-target.html">policy vpn-target</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/preference_bgp.html">preference (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reflect_between-clients_bgp.html">reflect between-clients (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reflector_cluster-id_bgp.html">reflector cluster-id (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/refresh_bgp.html">refresh bgp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_bgp.html">reset bgp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_bgp_dampening.html">reset bgp dampening</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_bgp_flap-info.html">reset bgp flap-info</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_bgp_flapping-count.html">reset bgp flapping-count</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_ip_bgp-accounting.html">reset ip bgp-accounting</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/router-id_bgp.html">router-id (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/rr-filter.html">rr-filter</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/summary_automatic_bgp.html">summary automatic (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/timer_bgp.html">timer (BGP)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/undo_synchronization_bgp.html">undo synchronization (BGP)</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_commands.html">IP路由命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

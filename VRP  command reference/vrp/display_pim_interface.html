@@ -1,0 +1,552 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display pim interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_pim_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display pim interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_pim_interface"></a><a name="display_pim_interface"></a>
+
+
+<h1 class="topictitle1">display pim interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display pim interface</strong>命令用来查看接口上的PIM信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display pim</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>all-instance</strong> ] <strong>interface</strong> [ <em>interface-type interface-number</em> | <strong>up</strong> | <strong>down</strong> ] [ <strong>verbose</strong> ]<span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>all-instance</strong>：指定所有实例。</p>
+<p><em>interface-type</em> <em>interface-number</em>：表示<span class="keyword">路由器</span>的接口类型和接口号。</p>
+<p><strong>up</strong>：PIM接口的IP协议状态是Up。</p>
+<p><strong>down</strong>：PIM接口的IP协议状态是Down。</p>
+<p><strong>verbose</strong>：表示PIM的接口详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display pim interface</strong>命令时：</p>
+<ul>
+<li><p>如果不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>，则只显示公网实例的相关信息。</p>
+</li>
+<li><p>如果指定<em>interface-type</em> <em>interface-number</em>，则仅显示该接口下的各种PIM状态参数。如果该接口未使能PIM则出现提示信息。</p>
+</li>
+<li><p>如果不指定<em>interface-type</em> <em>interface-number</em>，则列举当前实例下所有运行PIM的接口上的状态参数。</p>
+</li>
+<li><p>如果指定<strong>up</strong>，则仅显示所有状态为Up的PIM接口参数。</p>
+</li>
+<li><p>如果指定<strong>down</strong>，则仅显示所有状态为Down的PIM接口参数。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_pim_interface__d59123e203"></a><a name="d59123e203"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看公网实例所有接口的PIM信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display pim interface</strong>
+VPN-Instance: public net
+ Interface      State   NbrCnt   HelloInt   DR-Pri     DR-Address
+ GE1/3/0        up       1         30          1       10.1.1.2
+ GE1/3/1        up       0         30          1       172.168.0.2    (local)
+ GE1/3/2        up       1         30          1       20.1.1.2
+ Loopback0      up       0         30          1       1.1.1.1         (local)
+</pre>
+
+<div class="tablenoborder"><a name="display_pim_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display pim interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.81279919375158%" id="d59123e224"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.18720080624843%" id="d59123e228"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e224 "><p>VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e228 "><p>PIM接口信息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e224 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e228 "><p>PIM接口名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e224 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e228 "><p>PIM接口的状态，Up或Down。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e224 "><p>NbrCnt</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e228 "><p>该接口上的PIM邻居个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e224 "><p>HelloInt</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e228 "><p>发送Hello报文的间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e224 "><p>DR-Pri</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e228 "><p>DR优先级。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e224 "><p>DR-Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e228 "><p>DR地址。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看GE1/3/0接口的PIM详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display pim interface gigabitethernet1/3/0 verbose</strong>
+VPN-Instance: public net
+ Interface: GigabitEthernet1/3/0, 10.1.1.1
+     PIM version: 2
+     PIM mode: Sparse
+     PIM state: up
+     PIM DR: 10.1.1.2
+     PIM DR Priority (configured): 1
+     PIM neighbor count: 1
+     PIM hello interval: 30 s
+     PIM LAN delay (negotiated): 500 ms
+     PIM LAN delay (configured): 500 ms
+     PIM hello override interval (negotiated): 2500 ms
+     PIM hello override interval (configured): 2500 ms 
+     PIM Silent: disabled 
+     PIM neighbor tracking (negotiated): disabled
+     PIM neighbor tracking (configured): disabled
+     PIM generation ID: 0XF5712241 
+     PIM require-GenID: disabled   
+     PIM hello hold interval: 105 s
+     PIM assert hold interval: 180 s
+     PIM triggered hello delay: 5 s
+     PIM J/P interval: 60 s
+     PIM J/P hold interval: 210 s 
+     PIM state-refresh capability on link: non-capable 
+     PIM BSR domain border: disabled
+     PIM BFD: enabled
+     PIM BFD min-tx-interval: 10 ms
+     PIM BFD min-rx-interval: 10 ms
+     PIM BFD detect-multiplier: 3
+     PIM dr-switch-delay timer : 20 s
+     Number of routers on link not using DR priority: 0
+     Number of routers on link not using LAN delay: 0
+     Number of routers on link not using neighbor tracking: 2
+</pre>
+
+<div class="tablenoborder"><a name="display_pim_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_interface__tb_02" frame="border" border="1" rules="all"><caption>表2 display pim interface verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.81279919375158%" id="d59123e335"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.18720080624843%" id="d59123e339"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>PIM接口信息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>PIM接口的名称和地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM version</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>接口上启动的PIM协议的版本号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>启动的PIM协议的模式是Dense或Sparse。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>PIM接口的状态，up或down。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM DR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>该接口上DR的地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM DR Priority (configured)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>接口上配置的DR优先级。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM neighbor count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>在接口上的PIM邻居个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM hello interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>PIM Hello报文的发送间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM LAN delay (negotiated)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>接口上经协商的传播报文延时。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM LAN delay (configured)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>接口上配置的传播报文延时。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM hello override interval (negotiated)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>接口上经协商的否决间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM hello override interval (configured)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>接口上配置的否决间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM Silent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>接口上是否使能PIM Silent功能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM neighbor tracking (negotiated)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>经协商后，接口是否使能邻居跟踪功能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM neighbor tracking (configured)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>接口是否配置邻居跟踪功能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM generation ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>接口上的generation ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM require-GenID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>是否使能了拒绝接收无Generation ID参数的Hello消息的功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM hello hold interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>Hello报文的接收者保持该邻居可达的时间间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM hello assert interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>发送Assert报文的间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM triggered hello delay</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>发送触发的Hello报文前的随机延时最大值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM J/P interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>该接口发送Join/Prune报文的间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM J/P hold interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>该接口Join/Prune状态的保持时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM BSR domain border</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>该接口上是否配置了BSR域边界。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM BFD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>是否使能了PIM BFD。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM BFD min-tx-interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>PIM BFD最小发送时间间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM BFD min-rx-interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>PIM BFD最小接收时间间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM BFD detect-multiplier</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>PIM BFD检测时间倍数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>PIM dr-switch-delay timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>DR切换延迟时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>Number of routers on link not using DR priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>该接口所在网段上未使用DR优先级的<span class="keyword">路由器</span>个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>Number of routers on link not using LAN delay</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>该接口所在网段上未使用传播报文延时的路由器个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d59123e335 "><p>Number of routers on link not using neighbor tracking</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d59123e339 "><p>该接口所在网段上未使能邻居跟踪的路由器个数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_pim_interface__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_interface__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d59123e716"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d59123e720"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d59123e716 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d59123e720 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

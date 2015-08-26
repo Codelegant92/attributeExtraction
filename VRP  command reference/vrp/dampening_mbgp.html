@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dampening（MBGP）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mbgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dampening_mbgp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dampening（MBGP）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dampening_mbgp"></a><a name="dampening_mbgp"></a>
+
+
+<h1 class="topictitle1">dampening（MBGP）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dampening</strong>命令用来使能MBGP路由衰减或修改各种MBGP路由衰减参数。</p>
+<p><strong>undo dampening</strong>命令用来取消路由衰减。</p>
+<p>缺省情况下，没有配置路由衰减。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dampening</strong> [ <em>half-life-reach <span>half-life-unreach </span> reuse suppress ceiling</em> | <strong>route-policy</strong> <em>route-policy-name</em> ] *</p>
+<p><strong>undo dampening</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>half-life-reach</em>：指定可达路由的半衰期。整数形式，取值范围是1～45，单位是分钟。缺省值是15分钟。</p>
+<p><em>half-life-unreach</em>：指定不可达路由的半衰期。整数形式，取值范围是1～45，单位是分钟。缺省值是15分钟。</p>
+<p><em>reuse</em>：指定路由解除抑制状态的阈值。整数形式，取值范围是1～20000。缺省值是750。当惩罚降低到该值以下，路由就被再使用。</p>
+<p><em>suppress</em>：指定路由进入抑制状态的阈值。当惩罚超过该极限时，路由受到抑制。</p>
+<p><em>ceiling</em>：惩罚上限值。整数形式，取值范围是1001～20000。实际配置的值必须大于<em>suppress</em>。</p>
+<p><strong>route-policy</strong> <em>route-policy-name</em>：路由策略名称。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP-IPv4组播地址族视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>若未配置参数，将取各个参数的缺省值。衰减的<span>五</span>个参数都是相互依存的，因此如果使用了以上参数中的任何一种，那么所有参数都必须指定。</p>
+<p>配置BGP路由衰减时，</p>
+<ul>
+<li><p>所指定的<em>reuse</em>、<em>suppress</em>、<em>ceiling</em>三个阈值是依次增大的，即必须满足：<em>reuse</em>&lt;<em>suppress</em>&lt;<em>ceiling</em>。</p>
+</li>
+<li><p>根据公式MaxSuppressTime=<em>half-life-reach</em>&times;60&times;(ln(<em>ceiling</em>/<em>reuse</em>)/ln(2))，如果MaxSuppressTime小于1就不能抑制。所以要保证MaxSuppressTime大于等于1，即必须满足：<em>ceiling</em>/<em>reuse</em>足够大。</p>
+</li>
+</ul>
+<p>BGP衰减使用惩罚值来衡量一条路由的稳定性，惩罚值越高则说明路由越不稳定。路由每发生一次振荡，即<span class="keyword">路由器</span>收到该路由的Withdraw报文时，BGP便会给此路由增加一定的惩罚值（1000）。当惩罚值超过抑制阈值时，此路由被抑制，不加入到IP路由表中，<span class="keyword">路由器</span>也不再向其他BGP对等体发布更新报文。</p>
+<p>BGP会将该路由的best标志去掉。如果该路由被打上d标志，说明<span class="keyword">路由器</span>最后收到的是Update报文；如果该路由被打上h标志，说明<span class="keyword">路由器</span>最后收到的是Withdraw报文。惩罚值增加到一定程度之后，便不会再增加，这个值称为惩罚上限值。</p>
+<p>同时，被抑制的路由每经过一段时间，惩罚值便会减少一半。如果是d标志的路由，当惩罚值降到再使用阈值时，此路由会被去掉d标记，变为可用并被加入到IP路由表中，同时向其他BGP对等体发布更新报文。如果是h标志的路由，当惩罚值降为0时，此路由会从BGP路由表中删除。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p><strong>dampening</strong>命令只对EBGP路由生效。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dampening_mbgp__d9088e158"></a><a name="d9088e158"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能MBGP组播路由衰减并配置衰减参数。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> ipv4-family multicast</strong></pre>
+<pre class="screen">[Quidway-bgp-af-multicast]<strong> dampening 25 25 1000 2000 2005</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mbgp_configuration_commands.html">MBGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,87 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="arp static">
+<meta name="DC.Relation" scheme="URI" content="../vrp/arp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_arp_interface.html">
+<meta name="DC.Relation" scheme="URI" content="display_arp_slot.html">
+<meta name="DC.Relation" scheme="URI" content="display_arp_vpn-instance.html">
+<meta name="DC.Relation" scheme="URI" content="reset_arp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="arp_static">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>arp static</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="arp_static"></a><a name="arp_static"></a>
+
+<h1 class="topictitle1">arp static</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>arp static</strong>命令用来配置静态ARP映射表。</p>
+<p><strong>undo arp static</strong>命令用来取消ARP映射表中对应地址的静态映射项。</p>
+<p>缺省情况下，系统ARP映射表为空，由动态ARP获取地址映射。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>arp static </strong><em>ip-address mac-address </em>[<strong> vpn-instance</strong><em> vpn-instance-name </em>]</p>
+<p><strong>arp</strong> <strong>static</strong> <em>ip-address</em> <em>mac-address</em> [ <strong>vpn-instance </strong><em>vpn-instance-name</em> ] <strong>vid</strong> <em>vlan-id</em></p>
+<p><strong>arp</strong> <strong>static</strong> <em>ip-address</em> <em>mac-address</em> <strong>vid</strong> <em>vlan-id</em> <strong>interface</strong> <em>interface-type interface-number</em></p>
+<p><strong>undo arp static</strong> <em>ip-address </em>[ <em>vpn-instance-name </em>| <strong>vid</strong> <em>vlan-id</em>  ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：ARP映射项的IP地址。为点分十进制格式。在设备上同时配置静态ARP和VRRP时，不能将Dot1q终结子接口、QinQ终结子接口或VLANIF接口下所配置的VRRP备份组的虚拟IP地址作为该静态ARP表项中的IP地址，否则会生成错误的主机路由，影响正常转发。</p>
+<p><em>mac-address</em>：ARP映射项的以太网MAC地址。形式是H-H-H，其中H为1至4位的十六进制数。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例的名称。字符串形式，长度范围是1～31。此参数用于对MPLS VPN特性的支持。在指定该参数时，表示该ARP表项是相应VPN实例内的ARP表项。</p>
+<p><strong>vid</strong> <em>vlan-id</em>：IP地址所对应的VLAN ID。整数形式，取值范围是1～4094。如果不配置此参数，认为VLAN ID为0。在指定该参数时，表示该ARP表项是相应VLAN内的ARP表项。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：指定ARP报文的出接口。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>静态ARP映射项中的IP地址和MAC地址之间有固定的映射关系，主机和路由设备不能动态调整此映射关系。静态ARP表项在路由设备正常工作时一直有效。</p>
+<p>命令的具体使用情况如下所示：</p>
+<ul><li><p>配置普通静态ARP表项时，执行命令<strong>arp static</strong> <em>ip-address mac-address </em>[ <strong>vpn-instance</strong><em> vpn-instance-name </em>]。</p>
+</li><li><p>为子接口配置静态ARP表项时，执行命令<strong>arp static</strong><em> ip-address mac-address</em> [ <strong>vpn-instance</strong><em> vpn-instance-name</em> ] <strong>vid</strong><em> vlan-id。</em></p>
+</li><li><p>为VLANIF配置静态ARP表项时，执行命令<strong>arp static</strong> <em>ip-address mac-address</em> <strong>vid</strong> <em>vlan-id</em> <strong>interface</strong> <em>interface-type interface-number</em>。</p>
+</li></ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul><li><p>配置的ip-address应保证和通过参数interface指定出接口的地址在同一个网段。</p>
+</li><li><p>ARP映射表只用于局域网内，对于广域网的地址解析，有其它的配置或获取方法（如帧中继的逆向地址解析）。</p>
+</li></ul>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="arp_static__d2729e195"></a><a name="d2729e195"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置IP地址129.102.0.1对应的MAC地址为00e0-fc01-0000。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>arp static 129.102.0.1 e0-fc01-0</strong></pre>
+<p># 配置一条ARP静态映射，IP地址为1.1.1.1，对应的MAC地址为0efc-0505-86e3，此条ARP静态映射属于VLAN 10。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>arp static 1.1.1.1 0efc-0505-86e3 vid 10</strong></pre>
+<p># 配置一条ARP静态映射，IP地址为1.1.1.1，对应的MAC地址为0efc-0505-86e3，此ARP静态映射属于VPN实例vpn1，且属于VLAN 10。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>arp static 1.1.1.1 0efc-0505-86e3 vpn-instance vpn1 vid 10</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/arp_configuration_commands.html">ARP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_arp_interface.html">display arp interface</a></div>
+<div><a href="display_arp_slot.html">display arp slot</a></div>
+<div><a href="display_arp_vpn-instance.html">display arp vpn-instance</a></div>
+<div><a href="reset_arp.html">reset arp</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

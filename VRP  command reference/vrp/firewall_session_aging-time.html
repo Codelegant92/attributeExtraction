@@ -1,0 +1,97 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="firewall session aging-time">
+<meta name="DC.Relation" scheme="URI" content="../vrp/firewall_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="firewall_session_aging-time">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>firewall session aging-time</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="firewall_session_aging-time"></a><a name="firewall_session_aging-time"></a>
+
+
+<h1 class="topictitle1">firewall session aging-time</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>firewall session aging-time</strong>命令用来设置建立的会话表项的有效时间。</p>
+<p>缺省情况下，<strong>tcp</strong>有效时间为240秒，<strong>udp</strong>为40秒，<strong>icmp</strong>为20秒，<strong>fragment</strong>为5秒，<strong>fin-rst</strong>为10秒，<strong>syn</strong>为5秒，<strong>h225</strong>和<strong>h245</strong>为10800秒，<strong>h323-rtcp</strong> 和<strong>h323-rtp</strong>为120秒，<strong>h323-t120</strong>为10800秒，<strong>netbios-name</strong>、<strong>netbios-session</strong>和<strong>netbios-data</strong>为120秒，<strong>ftp</strong>为600秒，<strong>ftp</strong>数据为240秒，<strong>hwcc</strong>为120秒，<strong>ras</strong>为600秒，<strong>ils</strong> 为600秒，<strong>http</strong>为600秒，<strong>smtp</strong>为600秒，<strong>rtsp</strong>为600秒，<strong>rtcp</strong>为120秒，<strong>rtp</strong>为120秒，<strong>telnet</strong>为600秒，<strong>dns</strong>为120秒，<strong>pptp</strong>为600秒，<strong>qq</strong>为120秒，<strong>msn</strong>为240秒。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>firewall session aging-time </strong>{<strong> default</strong> | { <strong>dns</strong> | <strong>fin-rst</strong> | <strong>fragment</strong> | <strong>ftp</strong> | <strong>ftp-data</strong> | <strong>h225</strong> | <strong>h245</strong> | <strong>h323-rtcp</strong> | <strong>h323-rtp</strong> | <strong>h323-t120</strong> | <strong>http</strong> | <strong>hwcc</strong> | <strong>icmp</strong> | <strong>ils</strong> | <strong>msn</strong> | <strong>netbios-name</strong> | <strong>netbios-data</strong> | <strong>netbios-session</strong> | <strong>pptp</strong> | <strong>qq</strong> | <strong>ras</strong> | <strong>rtcp</strong> | <strong>rtp</strong> | <strong>rtsp</strong> | <strong>smtp</strong> | <strong>syn</strong> | <strong>tcp </strong>| <strong>telnet</strong> | <strong>udp </strong>} <em>time-value</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>time-value</em>：为一个时间值，单位是秒，取值范围是<strong>1～65535</strong>。</p>
+<p><strong>tcp</strong>：TCP连接的超时时间。</p>
+<p><strong>udp</strong>：UDP连接的超时时间。</p>
+<p><strong>icmp</strong>：ICMP协议的超时时间。</p>
+<p><strong>fragment</strong>：分片报文的超时时间。</p>
+<p><strong>fin-rst</strong>：tcp协议的fin 和 rst报文的超时时间。</p>
+<p><strong>syn</strong>：tcp的syn报文的超时时间。</p>
+<p><strong>h225：</strong>h225协议的超时时间。</p>
+<p><strong>h245：</strong>h224协议的超时时间。</p>
+<p><strong>h323-rtcp：</strong>h323协议的rtcp报文的超时时间。</p>
+<p><strong>h323-rtp：</strong>h323协议的rtp报文的超时时间。</p>
+<p><strong>h323-t120：</strong>h323协议的t120报文的超时时间。</p>
+<p><strong>netbios-name：</strong>netbios协议的name报文的超时时间。</p>
+<p><strong>netbios-session：</strong>netbios协议的session报文的超时时间。</p>
+<p><strong>netbios-data：</strong>netbios协议的data报文的超时时间。</p>
+<p><strong>ftp</strong>：ftp协议的超时时间。</p>
+<p><strong>hwcc：</strong>hwcc协议的超时时间。</p>
+<p><strong>ras：</strong>ras协议的超时时间。</p>
+<p><strong>ils：</strong>ils协议的超时时间。</p>
+<p><strong>http：</strong>http协议的超时时间。</p>
+<p><strong>smtp：</strong>smtp协议的超时时间。</p>
+<p><strong>rtsp：</strong>rtsp协议的超时时间。</p>
+<p><strong>rtcp：</strong>rtcp协议的超时时间。</p>
+<p><strong>rtp：</strong>rtp协议的超时时间。</p>
+<p><strong>telnet：</strong>telnet协议的超时时间。</p>
+<p><strong>dns：</strong>dns协议的超时时间。</p>
+<p><strong>pptp：</strong>pptp协议的超时时间。</p>
+<p><strong>qq：</strong>qq协议的超时时间。</p>
+<p><strong>msn：</strong>msn协议的超时时间。</p>
+<p><strong>default</strong>：恢复所有的时间设定值为系统的缺省默认值。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>firewall session aging-time</strong>命令设置会话表项连接的有效时间，针对不同的协议类型设定不同的时间。单位是秒。</p>
+<p>由于目前的会话表项最多支持同时存在500000个连接，因此所建立的会话表项不能永久存在，该命令支持用户可为TCP、UDP、ICMP（Internet
+Control Message Protocol）等协议分别设置会话表项的有效时间，若在设定的时间内未使用该会话表项，该会话将失效。比如，某个IP地址为10.110.10.10的用户利用端口2000进行了一次对外TCP连接，但是若在一定时间内它一直未再使用这个TCP连接，系统将把这个连接删除。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="firewall_session_aging-time__d76627e345"></a><a name="d76627e345"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设定TCP协议的连接有效时间为600秒。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> firewall session aging-time tcp 600</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/firewall_configuration_commands.html">防火墙配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

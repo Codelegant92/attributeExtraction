@@ -1,0 +1,94 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="set-overload">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="set-overload">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>set-overload</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="set-overload"></a><a name="set-overload"></a>
+
+
+<h1 class="topictitle1">set-overload</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>set-overload</strong>命令用来设置非伪节点LSP的过载标志位。</p>
+<p><strong>undo set-overload</strong>命令用来清除过载标志位。</p>
+<p>缺省情况下，不设置过载标志位。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>set-overload</strong> [ <strong>on-startup</strong> [ <em>timeout1</em> | <strong>start-from-nbr</strong> <em>system-id </em>[ <em>timeout1</em> [ <em>timeout2</em> ] ] | <strong>wait-for-bgp </strong>[ <em>timeout1</em> ] ] ] [ <strong>allow</strong> {<strong> interlevel</strong> | <strong>external</strong> } <sup>*</sup> ]</p>
+<p><strong>undo set-overload</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>on-startup</strong>：路由器重启或者出现故障时，过载标志位在配置的时间内将保持被置位状态。</p>
+<p><em>timeout1</em>：系统启动后维持过载标志位的时间。取值范围是5～86400，单位是秒，缺省值是600秒。</p>
+<p><strong>start-from-nbr</strong> <em>system-id</em>：根据system ID指定的邻居的状态，配置系统保持过载标志位时长。</p>
+<p><em>timeout1</em> [ <em>timeout2</em> ]：设置与邻居状态相关的过载标志位置位的时间。</p>
+<ul>
+<li><p>如果指定的邻居在<em>timeout2</em>超时前没有正常Up，则系统过载标志位维持时间为<em>timeout2</em>。<em>timeout2</em>的取值范围是5～86400，单位是秒，缺省值为1200秒（20分钟）。</p>
+</li>
+<li><p>如果指定的邻居在<em>timeout2</em>超时前正常Up，系统过载标志位将继续维持<em>timeout1</em>时长。<em>timeout1</em>的取值范围是5～86400，单位是秒，缺省值是600秒（10分钟）。</p>
+</li>
+</ul>
+<p><strong>wait-for-bgp</strong>：根据BGP收敛的状态，设置系统保持过载标志位时长。</p>
+<p><strong>allow</strong>：允许发布地址前缀。缺省情况下，当系统进入过载状态时不允许发布地址前缀。</p>
+<p><strong>interlevel</strong>：当配置<strong>allow</strong>时，允许发布从不同层次IS-IS学来的IP地址前缀。</p>
+<p><strong>external</strong>：当配置<strong>allow</strong>时，允许发布从其它协议学来的IP地址前缀。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>虽然设置了过载标志位的LSP会在网络中扩散，但是在计算通过超载路由器的路由时不会被采用。即，对路由器设置过载位后，其它路由器在进行SPF计算时不会考虑这台路由器。但该路由器的直连路由不会被忽略。</p>
+<p>如果需要本路由器不被其他路由器计算SPF使用，用户应在本路由器上配置<strong>set-overload</strong>命令，不指定<strong>on-startup</strong>关键字。这样，系统会立即在其发送的LSP报文中设置过载标志位，并且只能通过执行<strong>undo set-overload</strong>命令取消此过载标志位。</p>
+<p>如果需要在本路由器重启或发生故障时不被其他路由器计算SPF使用，用户应在本路由器上配置<strong>set-overload</strong>命令，并指定<strong>on-startup</strong>关键字。</p>
+<p>当路由器内存不足时，系统自动在发送的LSP报文中设置过载标志位，与用户是否配置了<strong>set-overload</strong>命令无关。</p>
+<p>通过设置过载位，还可以解决BGP和IGP收敛速度不一致而导致的网络流量丢失问题。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="set-overload__d117230e179"></a><a name="d117230e179"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 为IS-IS进程1设置过载标志位。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>isis</strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>set-overload</strong></pre>
+<p># 设置IS-IS进程1在启动时进入过载状态，并指定当邻居0000.0000.0002在系统启动1000秒内正常Up后再继续维持过载状态300秒。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>isis</strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>set-overload on-startup start-from-nbr 0000.0000.0002 300 1000</strong></pre>
+<p># 设置IS-IS进程1在启动时进入过载状态，允许发布从不同层次IS-IS学来的IP地址前缀但禁止发布从其它协议学来的IP地址前缀。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>isis</strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>set-overload on-startup allow interlevel</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

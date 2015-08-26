@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="min-tx-interval">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="detect-multiplier.html">
+<meta name="DC.Relation" scheme="URI" content="min-rx-interval.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="min-tx-interval">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>min-tx-interval</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="min-tx-interval"></a><a name="min-tx-interval"></a>
+
+
+<h1 class="topictitle1">min-tx-interval</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>min-tx-interval</strong>命令用来配置BFD控制报文期望发送间隔。</p>
+<p><strong>undo</strong> <strong>min-tx-interval</strong>命令用来恢复BFD控制报文发送间隔的缺省值。</p>
+<p>缺省情况下，BFD控制报文发送间隔是1000毫秒。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>min-tx-interval</strong> <em>interval</em></p>
+<p><strong>undo min-tx-interval</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interval</em>：BFD控制报文期望发送间隔。取值范围是100～1000，单位是毫秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BFD会话视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>为降低对系统资源的占用，一旦检测到BFD会话Down，系统自动将本端的发送间隔调整为一个较大的随机值，该随机值在不同的产品上有差异，介于2000毫秒～3000毫秒或10000～15000毫秒之间，当BFD会话的状态重新变为Up后，再恢复成用户配置的时间间隔。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>取值范围最小值请以产品实际显示的提示信息为准。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="min-tx-interval__d92960e57"></a><a name="d92960e57"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置BFD控制报文发送间隔为500毫秒。</p>
+<pre class="screen">[Quidway]<strong> bfd pos0</strong></pre>
+<pre class="screen">[Quidway-bfd-session-pos0]<strong> min-tx-interval 500</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bfd_configuration_commands.html">BFD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="detect-multiplier.html">detect-multiplier</a></div>
+<div><a href="min-rx-interval.html">min-rx-interval</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

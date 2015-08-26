@@ -1,0 +1,210 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ip netstream tal">
+<meta name="DC.Relation" scheme="URI" content="../vrp/netstream_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_aggregation.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ip_netstream_tal">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ip netstream tal</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ip_netstream_tal"></a><a name="display_ip_netstream_tal"></a>
+
+
+<h1 class="topictitle1">display ip netstream tal</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ip netstream tal</strong>命令用来显示TAL信息，可以通过选择过滤条件来显示需要的TAL信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ip netstream tal</strong> [ <strong>label </strong><em>label</em> | <strong> l3vpn</strong> | <strong>kompella</strong> | <strong> pwe3</strong> | <strong>pwe3-switch</strong> |<strong> vpls</strong> | <strong>public-lsp</strong> | <strong>multicast-vpn</strong> | <strong>vpn-interface</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>label</strong><em> label</em>：显示该label对应的TAL信息。整数形式，取值范围是：16～1048575。</p>
+<p><strong>l3vpn</strong>：显示L3VPN私网标签对应的TAL信息。</p>
+<p><strong>kompella</strong>：显示Kompella的VLL私网标签对应的TAL信息。</p>
+<p><strong>pwe3</strong>：显示PWE3对应的TAL信息。</p>
+<p><strong>pwe3-switch</strong>：显示PWE3交换对应的TAL信息。</p>
+<p><strong>vpls</strong>：显示VPLS对应的TAL信息。</p>
+<p><strong>public-lsp</strong>：显示MBGP
+Egress节点或者MPLS的公网标签对应的TAL信息。</p>
+<p><strong>multicast-vpn</strong>：显示组播VPN对应的TAL信息。</p>
+<p><strong>vpn-interface</strong>：VPN和接口的绑定的TAL信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图下</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ip_netstream_tal__d31446e103"></a><a name="d31446e103"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有的TAL信息</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display ip netstream tal </strong></strong>
+Application Label Information
+ -----------------------------------------------------------------
+ VPLS LDP TAL amount                    : 20
+ VPLS BGP TAL amount                    : 10
+ SVC/PWE3 TAL amount                    : 10
+ PWE3 Switch TAL amount                 : 0
+ Kompella TAL amount                    : 0
+ Kompella CE TAL amount                 : 0
+ Kompella remote information TAL amount : 0
+ MPLS public TAL amount                 : 0
+ Multicast VPN TAL amount               : 0
+ L3VPN TAL amount                       : 0
+ VPN interface TAL amount               : 100
+ -----------------------------------------------------------------  
+</pre>
+
+<div class="tablenoborder"><a name="display_ip_netstream_tal__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_netstream_tal__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls label-space命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.583432233562775%" id="d31446e126"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.41656776643721%" id="d31446e130"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31446e126 "><p>VPLS LDP TAL amount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31446e130 "><p>VPLS LDP TAL的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31446e126 "><p>VPLS BGP TAL amount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31446e130 "><p>VPLS BGP TAL的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31446e126 "><p>SVC/PWE3 TAL amount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31446e130 "><p>SVC/PWE3 TAL的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31446e126 "><p>PWE3 Switch TAL amount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31446e130 "><p>PWE3 Switch TAL的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31446e126 "><p>Kompella TAL amount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31446e130 "><p>Kompella TAL的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31446e126 "><p>Kompella CE TAL amount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31446e130 "><p>Kompella CE TAL的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31446e126 "><p>Kompella remote information TAL amount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31446e130 "><p>Kompella remote information TAL的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31446e126 "><p>MPLS public TAL amount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31446e130 "><p>MPLS public TAL的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31446e126 "><p>Multicast VPN TAL amount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31446e130 "><p>Multicast VPN TAL的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31446e126 "><p>L3VPN TAL amount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31446e130 "><p>L3VPN TAL的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31446e126 "><p>VPN interface TAL amount</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31446e130 "><p>VPN interface TAL的总数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/netstream_configuration_commands.html">NetStream配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ip_netstream_aggregation.html">ip netstream aggregation</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

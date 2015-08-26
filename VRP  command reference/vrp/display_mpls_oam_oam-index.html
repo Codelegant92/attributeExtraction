@@ -1,0 +1,388 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls oam oam-index">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_oam_egress.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_oam_ingress.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_oam_oam-index">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls oam oam-index</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_oam_oam-index"></a><a name="display_mpls_oam_oam-index"></a>
+
+
+<h1 class="topictitle1">display mpls oam oam-index</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>mpls</strong> <strong>oam</strong> <strong>oam-index</strong>命令用来通过OAM索引查看OAM信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>mpls</strong> <strong>oam</strong> <strong>oam-index</strong> <em>index-value</em> [ <strong>slot</strong> <em>slot-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>index-value</em>：OAM索引，整数形式，取值范围是1～4294967294。</p>
+<p><strong>slot</strong> <em>slot-id</em>：接口板号。指定该参数后，只显示指定接口板的OAM信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定参数<em>slot-id</em>，显示OAM的简要信息。</p>
+<p>执行命令<strong>display
+mpls oam</strong> { <strong>ingress</strong> | <strong>egress</strong> } { <strong>all</strong> | <strong>tunnel</strong> <em>interface-number</em> } [ <strong>slot</strong> <em>slot-id</em> | <strong>verbose</strong> ]，可获得隧道的OAM索引值。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_oam_oam-index__d45046e106"></a><a name="d45046e106"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看OAM索引值为512的OAM简要信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls oam oam-index 512</strong></pre>
+<pre class="screen">--------------------------------------------------------------------------------
+
+No. Tunnel-name       Ttsi                  Type    Frequency  Status
+--------------------------------------------------------------------------------
+
+1   Tunnel2/0/0       1.1.1.1 : 200         CV        1 s      Start/Non-defect </pre>
+
+<div class="tablenoborder"><a name="display_mpls_oam_oam-index__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_oam_oam-index__tb_01" frame="border" border="1" rules="all"><caption>表1 <strong>display</strong> <strong>mpls</strong> <strong>oam</strong> <strong>oam-index</strong>命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d45046e139"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d45046e143"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e139 "><p>Tunnel-name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e143 "><p>接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e139 "><p>Ttsi</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e143 "><p>TTSI，包括LSR ID和Tunnel ID两部分。冒号左侧是LSR ID，冒号右侧是Tunnel
+ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e139 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e143 "><p>OAM报文检测类型</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e139 "><p>Frequency</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e143 "><p>OAM检测频率</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e139 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e143 "><div class="p">检查状态和缺陷状态，包括：<ul>
+<li>Start/No-defect：检测到没有故障</li>
+<li>Start/In-defect：检测到处于故障状态</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<div class="p"># 查看OAM索引值为512的OAM详细信息。<pre class="screen">&lt;Quidway&gt; <strong>display mpls oam oam-index 512 slot 6</strong>
+
+--------------------------------------------------------------------------------
+
+Verbose information about NO.1 oam at the egress
+--------------------------------------------------------------------------------
+
+
+lsp basic information:                    oam basic information:
+---------------------------------------   --------------------------------------
+Tunnel-name         : Tunnel2/0/0         Oam-Index           : 512
+Lsp signal status   : Up                  Oam select board    : 6
+Lsp establish type  : Static lsp          Enable-state        : Manual enable
+Lsp ingress lsr-id  : 1.1.1.1             Ttsi/lsr-id         : 1.1.1.1
+Lsp tnl-id/Lsp-id   : 200/2               Ttsi/tunnel-id      : 200
+
+oam detect information:                   oam backward information:
+---------------------------------------   --------------------------------------
+Type                : CV                  Share attribute     : Share
+Frequency           : 1 s                 Lsp-name            : --
+Detect-state        : Start               Lsp ingress lsr-id  : --
+Defect-state        : Non-defect          Lsp tnl-id/lsp id   : --/--
+Available-state     : Available           Lsp-inLabel         : --
+Unavailable time (s): 0                   Lsp signal status   : -- </pre>
+</div>
+
+<div class="tablenoborder"><a name="display_mpls_oam_oam-index__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_oam_oam-index__tb_02" frame="border" border="1" rules="all"><caption>表2 <strong>display oam oam-index slot</strong>命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d45046e238"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d45046e242"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Tunnel-name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>隧道名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Lsp signal status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>信令协议的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Lsp establish type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>被检测的LSP的类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Lsp ingress lsr-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>LSP的入节点LSR ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Lsp tnl-id/Lsp-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>与LSP绑定的Tunnel ID/LSP ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Oam-Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>OAM索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Oam select board</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>被检测的LSP所在的接口板</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Enable-state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>OAM的使能状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Ttsi/lsr-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>TTSI中的LSR ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Ttsi/tunnel-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>TTSI中的Tunnel ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>OAM报文检测类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Frequency</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>OAM检测频率</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Detect state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>OAM检测状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Defect-state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><div class="p">缺陷状态：<ul>
+<li>&#8220;No-defect&#8221;表示隧道无故障</li>
+<li>&#8220;dLocv&#8221;表示隧道故障</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Available state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>隧道是否可用</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Unavailable time (s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>不可用时长，单位为秒</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Share attribute</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>反向通道使用方式，包括共享模式（Share）和独占模式（Private）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Lsp ingress lsr-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>反向LSP信令状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Lsp tnl-id/lsp id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>反向LSP的Tunnel ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Lsp-inLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>反向LSP的入标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45046e238 "><p>Lsp signal status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45046e242 "><p>反向LSP的信令协议状态</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_oam_configuration_commands.html">MPLS OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_oam_egress.html">display mpls oam
+egress</a></div>
+<div><a href="display_mpls_oam_ingress.html">display mpls oam
+ingress</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,115 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls l2vpn oam-mapping">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_l2vc_oam-mapping.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_l2vpn_oam-mapping.html">
+<meta name="DC.Relation" scheme="URI" content="oam_fr.html">
+<meta name="DC.Relation" scheme="URI" content="oam_hdlc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_l2vpn_oam-mapping">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls l2vpn oam-mapping</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_l2vpn_oam-mapping"></a><a name="mpls_l2vpn_oam-mapping"></a>
+
+<h1 class="topictitle1">mpls l2vpn oam-mapping</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls</strong> <strong>l2vpn</strong> <strong>oam-mapping</strong>命令用来使能AC侧状态和PSN(Packet Switching Network)侧状态的映射功能。</p>
+<p><strong>undo</strong> <strong>mpls</strong> <strong>l2vpn</strong> <strong>oam-mapping</strong>命令用来禁用AC侧状态和PSN侧状态的映射功能。</p>
+<p>缺省情况下，系统没有使能AC侧状态和PSN侧状态的映射功能。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls</strong> <strong>l2vpn</strong> <strong>oam-mapping </strong>[<strong> auto </strong>]</p>
+<p><strong>mpls l2vpn oam-mapping</strong> { <strong>1ag</strong> <strong>md</strong> <em>md-name</em> <strong>ma</strong> <em>ma-name</em> | <strong>3ah</strong> }</p>
+<p><strong>undo mpls l2vpn oam-mapping</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>auto</strong>：自动使能故障检测和故障通告功能，此参数只有在PPP、<span>FR、</span>HDLC类型的接口下才可以配置。</p>
+<p><strong>1ag</strong>：使能通过IEEE802.1ag协议进行的故障检测和故障通告的功能，此参数只有在Ethernet子接口视图、GE子接口视图、Eth-Trunk子接口视图下才可以配置。</p>
+<p><strong>md</strong> <em>md-name</em>：维护域名称。字符串形式，不支持空格，区分大小写，长度范围是1～43。</p>
+<p><strong>ma</strong> <em>ma-name</em>：维护联盟名称。字符串形式，不支持空格，区分大小写，长度范围是1～43。</p>
+<p><strong>3ah</strong>：使能通过IEEE802.3ah协议进行的故障检测和故障通告的功能，此参数只有在Ethernet接口视图、GE接口视图下才可以配置。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置<strong>mpls</strong> <strong>l2vpn</strong> <strong>oam-mapping</strong>命令后，系统建立AC状态和PSN侧状态的映射表，以实现AC侧故障通告给远端PE，及PSN故障通告给本地CE。</p>
+<ul><li><p>只有在PPP、<span>FR或</span>HDLC类型的接口上配置了VLL或者PWE3，才能在该接口上配置<strong>mpls</strong> <strong>l2vpn</strong> <strong>oam-mapping </strong>[<strong> auto </strong>]命令。</p>
+</li><li><p>只有以太类型的接口上配置了VLL或者PWE3并且使能了以太OAM，才能在该接口下配置<strong>mpls l2vpn oam-mapping</strong> { <strong>1ag</strong> <strong>m</strong>d <em>md-name</em> <strong>ma</strong> <em>ma-name</em> | <strong>3ah </strong>}命令。</p>
+</li></ul>
+<p>使能了AC侧状态和PSN侧状态的映射后，当本地AC侧发生故障时：</p>
+<ul><li><p>如果使能了BFD for PW，则通过BFD通告AC故障给对端PE。</p>
+</li><li><p>如果没有使能BFD for PW，则通过信令通告AC故障给对端PE。</p>
+</li></ul>
+<p>如果配置了<strong>auto</strong>参数后，无需使用<strong>oam</strong>命令配置接口的OAM故障检测和OAM故障通告。系统根据AC链路的类型自动配置OAM故障检测和OAM故障通告。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_l2vpn_oam-mapping__d94022e180"></a><a name="d94022e180"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在HDLC类型的接口上，使能故障检测和故障通告功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface pos 1/0/0</strong></strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> <strong>link-protocol hdlc</strong></strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> <strong>mpls l2vc 1.1.1.1 100</strong></strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> <strong>mpls l2vpn oam-mapping auto</strong></strong></pre>
+<p># 在以太类型的接口上，使能通过IEEE802.3ah协议进行的故障检测和故障通告的功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>efm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong><strong> interface gigabitethernet 1/0/0</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> <strong>efm enable</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> <strong>mpls l2vc 1.1.1.1 101</strong></strong></pre>
+<pre class="screen">[Quidway-GgiabitEthernet1/0/0]<strong> <strong>mpls l2vpn oam-mapping 3ah</strong></strong></pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_l2vpn_oam-mapping__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_l2vpn_oam-mapping__tb_01" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.338345864661655%" id="d94022e257"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d94022e260"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d94022e257 "><p>VRPV500R005C01B120</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d94022e260 "><p>首次发布</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d94022e257 "><p>VRPV500R005C02B130</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d94022e260 "><p>增加参数<strong>1ag</strong>和<strong>3ah</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_l2vc_oam-mapping.html">display mpls l2vc oam-mapping</a></div>
+<div><a href="display_mpls_l2vpn_oam-mapping.html">display mpls l2vpn oam-mapping</a></div>
+<div><a href="oam_fr.html">oam(FR)</a></div>
+<div><a href="oam_hdlc.html">oam(HDLC)</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

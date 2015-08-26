@@ -1,0 +1,69 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="if-match route-type">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_policyconfiguration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_route-policy.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="if-match_route-type">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>if-match route-type</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="if-match_route-type"></a><a name="if-match_route-type"></a>
+
+<h1 class="topictitle1">if-match route-type</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>if-match route-type</strong>命令用来设置一个基于路由类型的匹配规则。</p>
+<p><strong>undo if-match route-type</strong>命令用来删除匹配的路由类型。</p>
+<p>缺省情况下，没有配置基于路由类型的匹配规则。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>if-match route-type</strong> { <strong>external</strong>-<strong>type1</strong> | <strong>external-type1or2</strong> | <strong>external-type2</strong> | <strong>internal</strong> | <strong>is-is-level-1</strong> | <strong>is-is-level-2</strong> | <strong>nssa-external-type1 </strong>| <strong>nssa-external-type1or2</strong> | <strong>nssa-external-type2</strong> }</p>
+<p><strong>undo if-match route-type</strong> { <strong>external</strong>-<strong>type1</strong> | <strong>external-type1or2</strong> | <strong>external-type2</strong> | <strong>internal</strong> | <strong>is-is-level-1</strong> | <strong>is-is-level-2</strong> | <strong>nssa-external-type1</strong> | <strong>nssa-external-type1or2</strong> | <strong>nssa-external-type2</strong> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>external-type1</strong>：OSPF Type1的外部路由。</p>
+<p><strong>external-type1or2</strong>：OSPF外部路由。</p>
+<p><strong>external-type2</strong>：OSPF Type2的外部路由。</p>
+<p><strong>internal</strong>：内部路由（包括OSPF区域间和区域内路由）。</p>
+<p><strong>is-is-level-1</strong>：IS-IS的Level-1路由。</p>
+<p><strong>is-is-level-2</strong>：IS-IS的Level-2路由。</p>
+<p><strong>nssa-external-type1</strong>：OSPF NSSA Type1的外部路由。</p>
+<p><strong>nssa-external-type1or2</strong>：OSPF NSSA的外部路由。</p>
+<p><strong>nssa-external-type2</strong>：OSPF NSSA Type2的外部路由。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Route-Policy视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对于同一个Route-policy节点，在匹配的过程中，各个<strong>if-match route-type</strong>子句间是&#8220;或&#8221;的关系，即路由信息只要匹配条件之一，就可以执行apply子句的动作。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="if-match_route-type__d80642e136"></a><a name="d80642e136"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 定义一条规则，用来匹配指定的路由类型。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> route-policy policy permit node 10</strong></pre>
+<pre class="screen">[Quidway-route-policy]<strong> if-match route-type nssa-external-type1</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_policyconfiguration_commands.html">路由策略配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_route-policy.html">display route-policy</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

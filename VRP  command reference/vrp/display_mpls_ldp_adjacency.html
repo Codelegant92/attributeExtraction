@@ -1,0 +1,324 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls ldp adjacency">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_ldp_peer.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_ldp_adjacency">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls ldp adjacency</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_ldp_adjacency"></a><a name="display_mpls_ldp_adjacency"></a>
+
+
+<h1 class="topictitle1">display mpls ldp adjacency</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls ldp adjacency</strong>命令用来查看LDP邻接体的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls ldp adjacency</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] [ <strong>interface</strong> <em>interface-type interface-number</em> | <strong>remote</strong> ] [ <strong>peer</strong> <em>peer-id</em> ] [ <strong>verbose</strong> ] </p>
+<p><strong>display mpls ldp
+adjacency</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] [ <strong>interface</strong> <em>interface-type interface-number</em> | <strong>remote</strong> ] [ <strong>peer</strong> <em>peer-id</em> ] [<strong> | </strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：显示指定VPN实例的LDP邻接体信息。字符串形式，不支持空格，区分大小写，长度范围是1～31。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em> ：显示指定接口名称的LDP邻接体信息。</p>
+<p><strong>remote peer</strong> <em>peer-id</em>：显示指定远端对等体的LDP邻接体信息。</p>
+<p><strong>peer</strong> <em>peer-id</em>：显示指定对等体的LDP邻接体信息。</p>
+<p><strong>verbose</strong>：显示LDP邻接体的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行此命令可以查看邻接体相关的实时信息，例如收到的hello消息的个数。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_ldp_adjacency__d43618e152"></a><a name="d43618e152"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看LDP邻接体的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls ldp adjacency</strong></pre>
+<pre class="screen">
+ LDP Adjacency Information
+ ------------------------------------------------------------------------------
+ SN   PeerID         VrfID  CreateDate  CreateTime  AdjType
+ ------------------------------------------------------------------------------
+ 1    2.2.2.9        0      2008-09-02  14:50:12    L
+ 2    3.3.3.9        0      2008-09-02  14:51:54    R
+ ------------------------------------------------------------------------------</pre>
+<pre class="screen"> TOTAL: 2 Record(s) found.</pre>
+<pre class="screen"> R: Remote Adjacency.
+ L: Local Adjacency.                               </pre>
+
+<div class="tablenoborder"><a name="display_mpls_ldp_adjacency__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_ldp_adjacency__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls ldp adjacency命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.18997228521038%" id="d43618e178"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.81002771478963%" id="d43618e182"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e178 "><p>SN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e182 "><p>序列号</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e178 "><p>PeerID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e182 "><p>LDP对等体的LSR ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e178 "><p>VrfID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e182 "><p>VPN实例ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e178 "><p>CreateDate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e182 "><p>LDP邻接体的创建日期</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e178 "><p>CreateTime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e182 "><p>LDP邻接体的创建时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e178 "><p>AdjType</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e182 "><p>LDP邻接体的类型：</p>
+<ul>
+<li><p>L：本地LDP邻接体</p>
+</li>
+<li><p>R：远端LDP邻接体</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+
+
+
+</tbody>
+
+</table>
+</div>
+<p># 查看远端对等体的LSR ID为3.3.3.9/32的LDP邻接体信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls ldp adjacency remote peer 3.3.3.9 verbose</strong></pre>
+<pre class="screen">
+ LDP Adjacency Information
+ ------------------------------------------------------------------------------
+                           LDP Peer ID : 3.3.3.9
+                      VPNInstance name : -
+                            CreateDate : 2008-09-02
+                            CreateTime : 14:51:54
+                         AdjacencyType : Remote Adjacency
+                       DiscoverySource : -
+                           Sequence No.: 0
+   Configuration Hello Hold Timer(sec) : 45
+ ------------------------------------------------------------------------------</pre>
+<pre class="screen"> TOTAL: 2 Record(s) found.</pre>
+
+<div class="tablenoborder"><a name="display_mpls_ldp_adjacency__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_ldp_adjacency__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls ldp adjacency remote peer命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.18997228521038%" id="d43618e291"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.81002771478963%" id="d43618e295"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e291 "><p>LDP Peer ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e295 "><p>LDP对等体的LSR ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e291 "><p>VPNInstance name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e295 "><p>VPN实例名称</p>
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e291 "><p>AdjacencyType</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e295 "><p>LDP邻接体的类型：</p>
+<ul>
+<li><p>Local Adjacency：本地邻接体</p>
+</li>
+<li><p>Remote Adjacency：远端邻接体</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e291 "><p>DiscoverySource</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e295 "><p>LDP邻接体的发现源。</p>
+<ul>
+<li><p>本地LDP邻接体的发现源为接口</p>
+</li>
+<li><p>远端LDP邻接体的发现源为空</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e291 "><p>Sequence No</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e295 "><p>收到的hello消息中携带的序列号，缺省值为0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.18997228521038%" headers="d43618e291 "><p>Configuration Hello Hold Timer(sec)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.81002771478963%" headers="d43618e295 "><p>对端配置的Hello保持定时器的值，单位是秒</p>
+<ul>
+<li><p>链路Hello保持定时器用于维护本地LDP邻接体，缺省值为15秒</p>
+</li>
+<li><p>目标Hello保持定时器用于维护远端LDP邻接体，缺省值为45秒</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_ldp_adjacency__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_ldp_adjacency__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42%" id="d43618e413"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.99999999999999%" id="d43618e417"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42%" headers="d43618e413 "><p>VRPV500R006C02B081</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="d43618e417 "><p>首次发布</p>
+</td>
+
+</tr>
+
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_ldp_peer.html">display mpls ldp peer</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

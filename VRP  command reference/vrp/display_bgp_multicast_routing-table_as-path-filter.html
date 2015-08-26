@@ -1,0 +1,196 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display bgp multicast routing-table as-path-filter">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mbgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_bgp_multicast_routing-table_as-path-filter">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display bgp multicast routing-table as-path-filter</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_bgp_multicast_routing-table_as-path-filter"></a><a name="display_bgp_multicast_routing-table_as-path-filter"></a>
+
+
+<h1 class="topictitle1">display bgp multicast routing-table as-path-filter</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display bgp multicast routing-table as-path-filter</strong> 命令用来查看与过滤列表相匹配的路由信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display bgp multicast routing-table as-path-filter</strong> <em>as-path-filter-number</em><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>as-path-filter-number</em>：指定匹配的AS路径过滤列表号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_bgp_multicast_routing-table_as-path-filter__d15870e97"></a><a name="d15870e97"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示与AS路径过滤列表号1相匹配的路由信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp multicast routing-table as-path-filter 1</strong></pre>
+<pre class="screen">BGP local router ID is 14.14.14.9</pre>
+<pre class="screen"> Status codes: * - valid, &gt; - best, d - damped,</pre>
+<pre class="screen">               h - history,  i - internal, s - suppressed, S - Stale</pre>
+<pre class="screen">               Origin : i - IGP, e - EGP, ? - incomplete</pre>
+<pre class="screen">      Network            NextHop        MED        LocPrf    PrefVal Path/Ogn</pre>
+
+<pre class="screen"> *&gt;i  3.3.3.3/32         10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  7.1.1.0/24         10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  10.1.13.0/24       10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  10.2.1.0/24        10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  10.2.13.0/24       10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  10.2.13.1/32       10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  13.13.13.9/32      10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  15.15.15.13/32     10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  20.2.13.0/24       10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  20.2.13.1/32       10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  172.11.13.0/24     10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  172.11.13.100/32   10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  172.13.41.0/24     10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  192.13.14.2/32     10.2.1.1        0          100        0      1?</pre>
+<pre class="screen"> *&gt;i  201.1.1.1/32       10.2.1.1        0          100        0      1?</pre>
+
+<div class="tablenoborder"><a name="display_bgp_multicast_routing-table_as-path-filter__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_multicast_routing-table_as-path-filter__tb_01" frame="border" border="1" rules="all"><caption>表1 display bgp multicast routing-table as-path-filter命令输出信息描述
+  </caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d15870e158"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d15870e162"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d15870e158 "><p>Network</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d15870e162 "><p>显示MBGP路由表中的网络地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d15870e158 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d15870e162 "><p>报文发送的下一跳地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d15870e158 "><p>MED</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d15870e162 "><p>路由度量值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d15870e158 "><p>LocPrf</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d15870e162 "><p>本地优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d15870e158 "><p>PrefVal</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d15870e162 "><p>协议首选值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d15870e158 "><p>Path/Ogn</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d15870e162 "><p>显示AS路径号及Origin属性</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_bgp_multicast_routing-table_as-path-filter__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_multicast_routing-table_as-path-filter__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d15870e250"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d15870e254"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d15870e250 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d15870e254 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mbgp_configuration_commands.html">MBGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

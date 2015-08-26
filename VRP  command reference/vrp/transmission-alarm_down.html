@@ -1,0 +1,153 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="transmission-alarm down">
+<meta name="DC.Relation" scheme="URI" content="../vrp/transmission_alarm_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_transmission-alarm.html">
+<meta name="DC.Relation" scheme="URI" content="transmission-alarm_damping.html">
+<meta name="DC.Relation" scheme="URI" content="transmission-alarm_threshold.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="transmission-alarm_down">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>transmission-alarm down</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="transmission-alarm_down"></a><a name="transmission-alarm_down"></a>
+
+
+<h1 class="topictitle1">transmission-alarm down</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>transmission-alarm down</strong>命令用来定制告警配置，即指定哪些告警产生可以触发接口的物理层状态变为Down。</p>
+<p><strong>undo transimission-alarm down</strong>命令取消定制告警配置。</p>
+<p>缺省情况下，使能LAIS、LOF和LOS告警，不使能其他告警触发接口Down功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>transmission-alarm down</strong> {<strong> auais</strong> | <strong>b3tca</strong> | <strong>lais</strong> | <strong>lcd</strong> | <strong>lof</strong> | <strong>lom</strong> | <strong>lop</strong> | <strong>los</strong> | <strong>lrdi</strong> | <strong>lrei</strong> | <strong>oof</strong> | <strong>pais</strong> | <strong>prdi</strong> | <strong>prei</strong> | <strong>pplm</strong> | <strong>puneq</strong> | <strong>rdool</strong> | <strong>rrool</strong> | <strong>sdbere</strong> | <strong>sfbere</strong> | <strong>trool</strong> }
+*</p>
+<p><strong>undo</strong> <strong>transmission-alarm down</strong> { <strong>auais</strong> | <strong>b3tca</strong> | <strong>lais</strong> | <strong>lcd</strong> | <strong>lof</strong> | <strong>lom</strong> | <strong>lop</strong> | <strong>los</strong> | <strong>lrdi</strong> | <strong>lrei</strong> | <strong>oof</strong> | <strong>pais</strong> | <strong>prdi</strong> | <strong>prei</strong> | <strong>pplm</strong> | <strong>puneq</strong> | <strong>rdool</strong> | <strong>rrool</strong> | <strong>sdbere</strong> | <strong>sfbere</strong> | <strong>trool</strong> }
+*</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>auais</strong>：Administrative Unit Alarm Indication Signal，高阶告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>b3tca</strong>：B3 Threshold Crossing Alarm，B3超越门限值告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>lais</strong>：Line Alarm Indication Signal，线路告警指示。缺省情况下，打开该告警。</p>
+<p><strong>lcd</strong>：Loss of Code
+Group Synchronization，同步码丢失告警指示。缺省情况下，关闭该告警。该告警只能在10GE-WAN接口上配置。</p>
+<p><strong>lof</strong>：Loss of Frame，帧丢失告警指示。一般是因为物理链路不好或时钟不准确。缺省情况下，打开该告警。</p>
+<p><strong>lom</strong>：Loss of Tributary Multiframe，支路单元复帧丢失告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>lop</strong>：Loss of Pointer，指针失步告警指示。指J1位置的指针在连续收到的8帧中，都是无效值。缺省情况下，关闭该告警。</p>
+<p><strong>los</strong>：Loss
+of Signal，信号失步告警指示。也就是没有接收信号，一般是物理链路不好。缺省情况下，打开该告警。</p>
+<p><strong>lrdi</strong>：Line Remote Defect Indication，线路远端缺陷告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>lrei</strong>：Line Remote Error Indication，复用段远端误块告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>oof</strong>：Out of Frame，帧失步告警指示。也就是连续5帧收不到正确的定帧字符。缺省情况下，关闭该告警。</p>
+<p><strong>pais</strong>：Path
+Alarm Indication Signal，通道级告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>prdi</strong>：Path Remote Defect Indication，通道级远端缺陷告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>prei</strong>：Path Remote Error Indication，通道远端误块告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>pslm</strong>：Path Signal Label Mismatch，通道信号标签不匹配告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>pplm</strong>：Path
+Payload Mismatch，通道信号标签不匹配告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>puneq</strong>：Path Unequipped Indication，通道信号标签不确定告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>rdool</strong>：Receive Data Out of Lock，接收数据失锁告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>rrool</strong>：Receive Reference Out of Lock，接收参考时钟失锁告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>sdbere</strong>：Signal
+Degrade Threshold Alarm，信号损耗门限告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>sfbere</strong>：Signal Fail Threshold Alarm，信号失效门限告警指示。缺省情况下，关闭该告警。</p>
+<p><strong>trool</strong>：Transmit Reference Out of Lock，发送参考时钟失锁告警指示。缺省情况下，关闭该告警。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>LAIS、LOF和LOS三类告警对链路状态变化提供告警，如果去使能这三类告警会影响业务数据的准确转发，所以建议使能这三类告警。</p>
+</div></div>
+<p>支持的接口类型有ATM、POS、<span>CPOS、E1/CE1、T1/CT1、E3/CE3、T3/CT3、</span>10GE-WAN及基于SONET和SDH的RPR接口。设备上支持的具体接口类型由产品决定。</p>
+<p>由于硬件支持的告警类型不同，并不是所有接口都支持这些告警。如果配置了接口不支持的告警类型，则配置失败，并会提示该接口不支持配置哪些告警类型。</p>
+<p>执行命令<strong>transmission-alarm down</strong>后，只有本次指定的告警会引起接口状态变为Down，之前使用该命令进行的配置将被删除。</p>
+<p>执行命令<strong>undo</strong> <strong>transmission-alarm
+down</strong>后，则设置本次指定的告警不会引起接口状态变为Down。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>只有10GE-WAN类型的接口支持告警wlnk(WAN Interface Link Stauts Alarm)。该告警只支持查看，不支持通过命令行配置。该告警永远是打开状态的，且可以触发接口的物理层状态变为Down。该告警的状态和统计信息通过命令<a href="display_transmission-alarm.html">display transmission-alarm</a>可以查看到。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="transmission-alarm_down__d125729e290"></a><a name="d125729e290"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在POS1/0/0接口上设置los、lof、oof告警可以引起接口状态变为Down。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> transmission-alarm down los lof oof </strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="transmission-alarm_down__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="transmission-alarm_down__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d125729e317"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d125729e321"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d125729e317 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d125729e321 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d125729e317 "><p>VRPV500R005C02B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d125729e321 "><p>把告警名称pslm(Path Signal Label Mismatch)修改为pplm(Path Payload Mismatch)；新增了告警lcd、puneq和wlnk可以触发接口的物理层状态变为Down。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/transmission_alarm_configuration_commands.html">传输告警配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_transmission-alarm.html">display transmission-alarm</a></div>
+<div><a href="transmission-alarm_damping.html">transmission-alarm damping</a></div>
+<div><a href="transmission-alarm_threshold.html">transmission-alarm threshold</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

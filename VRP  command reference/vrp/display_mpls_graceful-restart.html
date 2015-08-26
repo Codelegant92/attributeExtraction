@@ -1,0 +1,191 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls graceful-restart">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="graceful-restart_mpls-ldp_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dislay_mpls_graceful-restart">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls graceful-restart</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dislay_mpls_graceful-restart"></a><a name="dislay_mpls_graceful-restart"></a>
+
+
+<h1 class="topictitle1">display mpls graceful-restart</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls graceful-restart</strong>命令用来查看与MPLS相关的所有协议GR信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls graceful-restart</strong><span> [<strong> | count</strong> ]</span> [<strong> | </strong>{ <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong> | </strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="climode"><h2 class="sectiontitle">模式</h2>
+<div class="climodebody"><p>所有视图</p>
+</div></div>
+
+<div class="clilevel"><h2 class="sectiontitle">级别</h2>
+<div class="clilevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dislay_mpls_graceful-restart__d41687e80"></a><a name="d41687e80"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看各协议的GR相关信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls graceful-restart</strong></pre>
+<pre class="screen">Protocol       GR state       GR start time            GR type
+LDP            Normal         -                        -
+CRLDP          Normal         -                        -
+RSVP           Normal         -                        -
+BGP            Normal         -                        -
+L3VPN          Normal         -                        -
+STATIC         Normal         -                        -
+CRSTATIC       Normal         -                        -
+BGP IPV6       Normal         -                        -
+STATIC HA      Normal         -                        -
+L3VPN IPV6     Normal         -                        - </pre>
+
+<div class="tablenoborder"><a name="dislay_mpls_graceful-restart__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="dislay_mpls_graceful-restart__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls graceful-restart命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.5%" id="d41687e102"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.5%" id="d41687e106"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.5%" headers="d41687e102 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.5%" headers="d41687e106 "><p>协议类型。包括： </p>
+<p>LDP、CRLDP、RSVP、BGP、L3VPN、STATIC、CRSTATIC、BGP
+IPV6、STATIC HA和L3VPN IPV6。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.5%" headers="d41687e102 "><p>GR state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.5%" headers="d41687e106 "><p>GR的状态。包括：</p>
+<ul>
+<li>Restarting：正在进行GR。</li>
+<li>Normal：未执行GR。</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.5%" headers="d41687e102 "><p>GR start time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.5%" headers="d41687e106 "><p>GR的开始时间。</p>
+<p>如果GR没有开始，此处显示为&#8220;-&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.5%" headers="d41687e102 "><p>GR type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.5%" headers="d41687e106 "><p>GR的类型。包括：</p>
+<ul>
+<li>System restart：系统级GR。</li>
+<li>Protocol restart：协议级GR。</li>
+</ul>
+<p>如果GR没有开始，此处显示为&#8220;-&#8221;。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="dislay_mpls_graceful-restart__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="dislay_mpls_graceful-restart__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.5%" id="d41687e194"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.5%" id="d41687e198"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.5%" headers="d41687e194 "><p>VRPV500R003C07B290</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.5%" headers="d41687e198 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.5%" headers="d41687e194 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.5%" headers="d41687e198 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="graceful-restart_mpls-ldp_view.html">graceful-restart（MPLS-LDP视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,397 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ospf peer">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="peer_ospf.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ospf_peer">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ospf peer</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ospf_peer"></a><a name="display_ospf_peer"></a>
+
+
+<h1 class="topictitle1">display ospf peer</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ospf peer</strong>命令用来显示OSPF中各区域邻居的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ospf</strong>[ <em>process-id </em>] <strong>peer </strong>[ [ <em>interface-type interface-number</em> ] <em>neighbor-id</em> | <strong>brief</strong> | <strong>last-nbr-down</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：OSPF进程号。整数形式，取值范围是1～65535。</p>
+<p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口号。</p>
+<p><em>neighbor-id</em>：邻居ID。</p>
+<p><strong>brief</strong>：显示OSPF各区域中邻居的概要信息。</p>
+<p><strong>last-nbr-down</strong>：显示OSPF区域中最后进入Down状态的邻居的概要信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>此命令输出了OSPF的邻居信息，有助于OSPF故障诊断并可验证OSPF邻居的配置效果。同时可查看邻居是否进行了Graceful Restart。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ospf_peer__d56414e135"></a><a name="d56414e135"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示OSPF邻居信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf peer</strong></pre>
+
+<pre class="screen">         OSPF Process 1 with Router ID 10.1.1.2</pre>
+<pre class="screen">                 Neighbors</pre>
+
+<pre class="screen"> Area 0.0.0.0 interface 10.1.1.2(GigabitEthernet1/0/0)'s neighbors</pre>
+<pre class="screen"> Router ID: 10.1.1.1         Address: 10.1.1.1         GR State: Normal</pre>
+<pre class="screen">   State: Full  Mode:Nbr is  Slave  Priority: 1</pre>
+<pre class="screen">   DR: 10.1.1.1  BDR: None   MTU: 0</pre>
+<pre class="screen">   Dead timer due in 35  sec</pre>
+<pre class="screen">   Neighbor is up for 00:00:05</pre>
+<pre class="screen">   Authentication Sequence: [ 0 ]</pre>
+
+<div class="tablenoborder"><a name="display_ospf_peer__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_peer__tb_01" frame="border" border="1" rules="all"><caption>表1 display ospf peer命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.08616780045352%" id="d56414e175"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.91383219954649%" id="d56414e179"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><p>邻居所属的区域。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><p>与邻居相连的接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>Router Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><p>邻居路由器ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><p>邻居接口地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>GR State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><div class="p">使能OSPF GR后，显示GR状态：<ul>
+<li><p>Normal：正常状态，没有进行GR操作。</p>
+</li>
+<li><p>Doing GR：正在进行GR操作。</p>
+</li>
+<li><p>Complete GR：GR操作已经完成。</p>
+</li>
+<li><p>Helper：在进行GR操作时，邻居是Helper。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><div class="p">邻居状态。<ul>
+<li><p>Down：该状态为邻居的初始状态。表示没有邻居收到任何信息。在NBMA网络上，Hello报文在该状态时仍然可以收发，周期为Poll Interval（Hello Interval&lt;Poll Interval）。</p>
+</li>
+<li><p>Attempt：该状态只存在于NBMA网络上，表明正在尝试建立邻居关系。此时，Hello报文的收发周期为Hello Interval（Hello Interval&lt;Poll Interval）。</p>
+</li>
+<li><p>Init：该状态表明已经接收到了从邻居发送来的Hello报文。</p>
+</li>
+<li><p>2-Way：该状态表明已经接收到了从邻居发送过来的Hello报文，并且该Hello报文的Neighbor List中包含本地Router ID，即双方可以互通。</p>
+</li>
+<li><p>ExStart：该状态为建立Adjacency的第一步，进行主从关系、DD Sequence Number的协商。</p>
+</li>
+<li><p>Exchange：从该状态开始，进行LSDB同步操作，交互的报文有DD报文、LSR报文、LSU报文。</p>
+</li>
+<li><p>Loading：LSDB正在进行同步操作，交互的报文有LSR报文和LSU报文。</p>
+</li>
+<li><p>Full：该状态说明，邻居的LSDB已经同步完成，双方建立了Full邻接关系。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><div class="p">DD交换进程中的作用为Master或Slave。<ul>
+<li><p>Nbr is Master：邻居是Master，主动发送DD报文。</p>
+</li>
+<li><p>Nbr is Slave：邻居是Slave，配合Master发送DD报文。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><p>邻居路由器的优先值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>DR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><p>指定路由器。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>BDR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><p>备份指定路由器。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><p>邻居接口的MTU值。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e175 "><p>Authentication Sequence</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e179 "><p>认证序列号。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示OSPF邻居的概要信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ospf 1 peer brief</strong>
+         OSPF Process 1 with Router ID 1.1.1.1
+                   Peer Statistic Informations
+ -------------------------------------------------------------------
+ Area Id         Interface                  Neighbor id      State
+ 0.0.0.0         GigabitEthernet3/0/2       3.3.3.3          Full               </pre>
+<p># 显示OSPF最近Down掉的邻居的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ospf 1 peer last-nbr-down</strong>
+
+          OSPF Process 1 with Router ID 1.1.1.1
+
+                         Last Down OSPF Peer
+
+         Neighbor Ip Address : 20.2.1.2
+         Neighbor Area   Id  : 0.0.0.0
+         Neighbor Router Id  : 2.2.2.2
+         Interface           : Pos6/0/0
+         Immediate Reason    : Neighbor Down Due to Kill Neighbor
+         Primary Reason      : Logical Interface State Change
+         Down Time           : [2008/5/12] 17:17:7</pre>
+
+<div class="tablenoborder"><a name="display_ospf_peer__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_peer__tb_02" frame="border" border="1" rules="all"><caption>表2 display ospf peer last-nbr-down命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.08616780045352%" id="d56414e410"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.91383219954649%" id="d56414e414"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e410 "><p>Neighbor Ip Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e414 "><p>邻居接口地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e410 "><p>Neighbor Area Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e414 "><p>邻居所属的区域。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e410 "><p>Neighbor Router Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e414 "><p>邻居路由器ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e410 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e414 "><p>与邻居相连的接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e410 "><p>Immediate Reason</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e414 "><p>邻居Down掉的直接原因。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e410 "><p>Primary Reason</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e414 "><p>邻居Down掉的根本原因。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d56414e410 "><p>Down Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d56414e414 "><p>邻居Down掉的时间。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ospf_peer__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_peer__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.20786092214664%" id="d56414e513"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.79213907785336%" id="d56414e517"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.20786092214664%" headers="d56414e513 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.79213907785336%" headers="d56414e517 "><p>命令行中增加可选关键字&#8220;<strong>brief</strong>&#8221;和&#8220;<strong>last-nbr-down</strong>&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.20786092214664%" headers="d56414e513 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.79213907785336%" headers="d56414e517 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="peer_ospf.html">peer (OSPF)</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

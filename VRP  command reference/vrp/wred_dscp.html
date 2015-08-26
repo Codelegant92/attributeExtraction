@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="wred dscp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/class-based_qos_configuration_commmands.html">
+<meta name="DC.Relation" scheme="URI" content="traffic_behavior.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="wred_dscp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>wred dscp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="wred_dscp"></a><a name="wred_dscp"></a>
+
+
+<h1 class="topictitle1">wred dscp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>wred dscp</strong>命令用来设置WRED各DSCP的下限、上限和丢弃概率分母。</p>
+<p><strong>undo wred
+dscp</strong>命令用来取消该配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>wred dscp </strong><em>dscp-value</em><strong> low-limit</strong><em> low-limit </em><strong>high-limit</strong><em> high-limit </em>[ <strong>discard-probability</strong><em> discard-prob</em> ]</p>
+<p><strong>undo wred dscp</strong><em> dscp-value</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>dscp-value</em>：DSCP值，取值范围是0～63，或可以是如下关键字<strong>ef</strong>，<strong>af11</strong>，<strong>af12</strong>，<strong>af13</strong>，<strong>af21</strong>，<strong>af22</strong>，<strong>af23</strong>，<strong>af31</strong>，<strong>af32</strong>，<strong>af33</strong>，<strong>af41</strong>，<strong>af42</strong>，<strong>af43</strong>，<strong>cs1</strong>，<strong>cs2</strong>，<strong>cs3</strong>，<strong>cs4</strong>,<strong>cs5</strong>，<strong>cs6</strong>，<strong>cs7</strong>或<strong>default</strong>。</p>
+<p><em>low-limit</em>：下限，取值范围是1～1024，缺省值为10。</p>
+<p><em>high-limit</em>：上限，取值范围是1～1024，缺省值为30。</p>
+<p><em>discard-prob</em>：丢弃概率的分母，取值范围是1～255，缺省值为10。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>流行为视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>需已用<strong>wred</strong>使能了基于DSCP的WRED丢弃方式。</p>
+<p>取消<strong>wred</strong>配置，<strong>wred
+dscp</strong>配置同时被取消。</p>
+<p>取消<strong>queue af</strong>配置，丢弃参数的配置同时被取消。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="wred_dscp__d129358e155"></a><a name="d129358e155"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置DSCP为3的报文的队列下限为20，上限为40，丢弃概率分母为15。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> traffic behavior database</strong></pre>
+<pre class="screen">[Quidway-behavior-database]<strong> queue af bandwidth 200</strong></pre>
+<pre class="screen">[Quidway-behavior-database]<strong> wred dscp</strong></pre>
+<pre class="screen">[Quidway-behavior-database]<strong> wred dscp 3 low-limit 20 high-limit 40 discard-probability 15</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/class-based_qos_configuration_commmands.html">基于类的QoS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="traffic_behavior.html">traffic behavior</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

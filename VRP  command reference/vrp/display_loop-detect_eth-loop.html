@@ -1,0 +1,200 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display loop-detect eth-loop">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="loop-detect_eth-loop_loop-times_vsi_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_loop-detect_eth-loop">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display loop-detect eth-loop</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_loop-detect_eth-loop"></a><a name="display_loop-detect_eth-loop"></a>
+
+
+<h1 class="topictitle1">display loop-detect eth-loop</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display loop-detect eth-loop</strong>命令用来显示以太环路检测命令的配置结果。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display loop-detect eth-loop</strong> [ <strong>vlan</strong> <em>vlan-id</em> | <strong>vsi</strong> <em>vsi-name </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vlan </strong><em>vlan-id</em>：用于显示指定VLAN下的以太环路检测配置信息。十进制整数形式，取值范围是1～4094。</p>
+<p><strong>vsi </strong><em>vsi-name</em>：用于显示指定VSI实例的以太环路检测配置信息。字符串形式，不支持空格，区分大小写，取值范围是1～31。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用可选参数<em>vlan-id</em>或<em>vsi-name</em>可以选择只显示某一VLAN或某一VSI的以太环路检测配置信息和阻断了哪些接口或PW。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_loop-detect_eth-loop__d38774e66"></a><a name="d38774e66"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有以太环路检测配置信息。</p>
+<pre class="screen">&lt;Quiway&gt;<strong><strong> display loop-detect eth-loop</strong></strong></pre>
+<pre class="screen">VLAN/VSI         LTimes  DCycle    Cycles Retry   Action         BPolicy </pre>
+<pre class="screen">------------------------------------------------------------------------------  </pre>
+<pre class="screen">1                      10      10        1      1       Block 100s    AC-first </pre>
+<pre class="screen">                                                                                </pre>
+<pre class="screen">Total Items = 1                                                                 </pre>
+<pre class="screen">                                                                                </pre>
+<pre class="screen">Blocked Port:                                                                   </pre>
+<pre class="screen">---------------                                                                 </pre>
+<pre class="screen">1                               GE2/0/5.1</pre>
+
+<p># 查看基于VSI <strong>vsi 1</strong>的以太环路检测配置信息。</p>
+<pre class="screen">&lt;Quiway&gt;<strong><strong> display loop-detect eth-loop vsi 1</strong></strong></pre>
+<pre class="screen">VLAN/VSI         LTimes  DCycle    Cycles Retry   Action         BPolicy        </pre>
+<pre class="screen">------------------------------------------------------------------------------  </pre>
+<pre class="screen">1                     10      10        1      1       Block 100s     PW-first        </pre>
+<pre class="screen">                                                                                </pre>
+<pre class="screen">Total Items = 1                                                                 </pre>
+<pre class="screen">                                                                                </pre>
+<pre class="screen">Blocked Port:                                                                   </pre>
+<pre class="screen">---------------                                                                 </pre>
+<pre class="screen">1                               1.1.1.9</pre>
+
+<p># 查看基于VLAN 77的以太环路检测配置信息。</p>
+<pre class="screen">&lt;Quiway&gt;<strong> display loop-detect eth-loop vlan 77</strong></pre>
+<pre class="screen">VLAN/VSI         LTimes  D-Cycle  Cycles  Retry   Action         BPolicy</pre>
+<pre class="screen">-----------------------------------------------------------------------------------VLAN 77          1       2         3      --      Alarm-only     --</pre>
+
+<pre class="screen">Total Items = 1</pre>
+
+<pre class="screen">Blocked Port:</pre>
+<pre class="screen">---------------</pre>
+
+<div class="tablenoborder"><a name="display_loop-detect_eth-loop__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_loop-detect_eth-loop__tb_01" frame="border" border="1" rules="all"><caption>表1 display loop-detect eth-loop命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="20.975056689342406%" id="d38774e153"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="79.02494331065759%" id="d38774e157"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="20.975056689342406%" headers="d38774e153 "><p>VLAN/VSI</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.02494331065759%" headers="d38774e157 "><p>使能了以太环路检测功能的VLAN的编号或VSI的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="20.975056689342406%" headers="d38774e153 "><p>LTimes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.02494331065759%" headers="d38774e157 "><p>配置的环回次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="20.975056689342406%" headers="d38774e153 "><p>D-Cycle</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.02494331065759%" headers="d38774e157 "><p>配置的检测周期</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="20.975056689342406%" headers="d38774e153 "><p>Cycles</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.02494331065759%" headers="d38774e157 "><p>配置的检测几个检测周期才执行阻断操作</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="20.975056689342406%" headers="d38774e153 "><p>Retry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.02494331065759%" headers="d38774e157 "><p>配置的重试次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="20.975056689342406%" headers="d38774e153 "><p>Action</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.02494331065759%" headers="d38774e157 "><p>配置的在判断出环路后是否进行阻断以及阻断多长时间，还是只记录日志和向网管发告警不进行阻断</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="20.975056689342406%" headers="d38774e153 "><p>BPolicy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.02494331065759%" headers="d38774e157 "><p>配置的阻断策略</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="20.975056689342406%" headers="d38774e153 "><p>Total Items</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.02494331065759%" headers="d38774e157 "><p>总共在多少VLAN和VSI内配置了以太环路检测功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="20.975056689342406%" headers="d38774e153 "><p>Blocked Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="79.02494331065759%" headers="d38774e157 "><p>被阻断的接口或PW</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="loop-detect_eth-loop_loop-times_vsi_view.html">loop-detect eth-loop loop-times(VSI视图)</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

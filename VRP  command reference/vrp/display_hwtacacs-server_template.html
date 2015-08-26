@@ -1,0 +1,301 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display hwtacacs-server template">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aaa_and_user_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_hwtacacs-server_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_hwtacacs-server_template">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display hwtacacs-server template</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_hwtacacs-server_template"></a><a name="display_hwtacacs-server_template"></a>
+
+
+<h1 class="topictitle1">display hwtacacs-server template</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display hwtacacs-server template</strong>命令用来查看HWTACACS服务器的配置情况。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display hwtacacs-server template</strong> [ <em>template-name</em> [ <strong>verbose</strong> ] ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>template-name</em>：HWTACACS服务器模板名，字符串形式，长度范围是1～32，不区分大小写。</p>
+<p><strong>verbose</strong>：在配置认证、授权、计费等功能后，使用此参数将显示详细的HWTACACS服务器统计信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在查看配置或进行HWTACACS故障处理的时候，可以使用<strong>display display hwtacacs-server template</strong>命令来查看HWTACACS服务器的配置情况。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_hwtacacs-server_template__d25855e53"></a><a name="d25855e53"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有HWTACACS服务器的配置情况。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display hwtacacs-server template</strong></pre>
+<pre class="screen">  -----------------------------------------------------------</pre>
+<pre class="screen">  HWTACACS-server template name   : 123</pre>
+<pre class="screen">  Primary-authentication-server   : 0.0.0.0:0:-
+  Primary-authorization-server    : 0.0.0.0:0:-
+  Primary-accounting-server       : 0.0.0.0:0:-
+  Secondary-authentication-server : 0.0.0.0:0:-
+  Secondary-authorization-server  : 0.0.0.0:0:-
+  Secondary-accounting-server     : 0.0.0.0:0:-
+  Current-authentication-server   : 0.0.0.0:0:-
+  Current-authorization-server    : 0.0.0.0:0:-
+  Current-accounting-server       : 0.0.0.0:0:-</pre>
+<pre class="screen">  Source-IP-address               : 0.0.0.0</pre>
+<pre class="screen">  Shared-key                      : -</pre>
+<pre class="screen">  Quiet-interval(min)             : 5</pre>
+<pre class="screen">  Response-timeout-Interval(sec)  : 5</pre>
+<pre class="screen">  Domain-included                 : Yes</pre>
+<pre class="screen">  Traffic-unit                    : B</pre>
+<pre class="screen">  -------------------------------------------------------------</pre>
+<pre class="screen">  Are you sure to display more information (y/n)[y]<strong>:y</strong></pre>
+<pre class="screen">  -------------------------------------------------------------</pre>
+<pre class="screen">  HWTACACS-server template name   : test1</pre>
+<pre class="screen">  Primary-authentication-server   : 1.1.11.1:49:vpna
+  Primary-authorization-server    : 0.0.0.0:0:-
+  Primary-accounting-server       : 1.1.1.1:49:vpna
+  Secondary-authentication-server : 0.0.0.0:0:-
+  Secondary-authorization-server  : 1.1.1.1:12:vpna
+  Secondary-accounting-server     : 0.0.0.0:0:-
+  Current-authentication-server   : 1.1.11.1:49:vpna
+  Current-authorization-server    : 1.1.1.1:12:vpna
+  Current-accounting-server       : 1.1.1.1:49:vpna</pre>
+<pre class="screen">  Source-IP-address               : 1.1.1.1</pre>
+<pre class="screen">  Shared-key                      : -</pre>
+<pre class="screen">  Quiet-interval(min)             : 5   </pre>
+<pre class="screen">  Response-timeout-Interval(sec)  : 5</pre>
+<pre class="screen">  Domain-included                 : Yes</pre>
+<pre class="screen">  Traffic-unit                    : B</pre>
+<pre class="screen">  -------------------------------------------------------------</pre>
+<pre class="screen">  Total 2,2 printed</pre>
+
+<div class="tablenoborder"><a name="display_hwtacacs-server_template__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_hwtacacs-server_template__tb_01" frame="border" border="1" rules="all"><caption>表1 display hwtacacs-server template命令显示信息说明</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.76895943562611%" id="d25855e119"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.2310405643739%" id="d25855e123"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>HWTACACS-server template name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>HWTACACS服务器的模板名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Primary-authentication-server</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>主认证服务器IP地址、端口号及绑定的VPN实例</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Primary-authorization-server</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>主授权服务器IP地址、端口号及绑定的VPN实例</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Primary-accounting-server</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>主计费服务器IP地址、端口号及绑定的VPN实例</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Secondary-authentication-server</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>次认证服务器IP地址、端口号及绑定的VPN实例</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Secondary-authorization-server</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>次授权服务器IP地址、端口号及绑定的VPN实例</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Secondary-accounting-server  </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>次计费服务器IP地址、端口号及绑定的VPN实例</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Current-authentication-server</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>现在运行的认证服务器IP地址、端口号及绑定的VPN实例</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Current-authorization-server</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>现在运行的授权服务器IP地址、端口号及绑定的VPN实例</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Current-accounting-server  </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>现在运行的计费服务器IP地址、端口号及绑定的VPN实例</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Source-IP-address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>HWTACACS服务器的源IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Shared-key</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>HWTACACS服务器的密钥</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Quiet-interval(min)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>HWTACACS主服务器恢复激活状态的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Response-timeout-Interval(sec)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>HWTACACS服务器应答超时时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Domain-included</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>HWTACACS服务器的用户名格式是否带域名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.76895943562611%" headers="d25855e119 "><p>Traffic-unit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2310405643739%" headers="d25855e123 "><p>HWTACACS服务器的流量单位</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_hwtacacs-server_template__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_hwtacacs-server_template__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="22%" id="d25855e321"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="78%" id="d25855e325"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="22%" headers="d25855e321 "><p>VRPV500R005C02B650</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="78%" headers="d25855e325 "><p>显示服务器配置信息时，增加显示服务器绑定的VPN实例名称。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/aaa_and_user_management_configuration_commands.html">AAA及用户管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_hwtacacs-server_statistics.html">reset hwtacacs-server statistics</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

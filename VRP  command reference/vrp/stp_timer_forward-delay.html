@@ -1,0 +1,68 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="stp timer forward-delay">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mstp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="stp_timer_hello.html">
+<meta name="DC.Relation" scheme="URI" content="stp_timer_max-age.html">
+<meta name="DC.Relation" scheme="URI" content="stp_bridge-diameter.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="stp_timer_forward-delay">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>stp timer forward-delay</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="stp_timer_forward-delay"></a><a name="stp_timer_forward-delay"></a>
+
+<h1 class="topictitle1">stp timer forward-delay</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>stp timer forward-delay</strong>命令用来配置交换机的Forward Delay时间。</p>
+<p><strong>undo stp timer forward-delay</strong>命令用来恢复交换机的Forward Delay时间的缺省值。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>stp timer forward-delay</strong> <em>forward-delay</em></p>
+<p><strong>undo stp</strong> <strong>timer forward-delay</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>forward-delay</em>：Forward Delay时间。取值范围是400～3000，单位为厘秒，步长为100。缺省值是1500厘秒。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在根交换机上配置的Forward Delay时间将做为整个生成树内所有交换机的Forward Delay时间。</p>
+<p>根交换机的Hello Time、Forward Delay以及Max Age三个时间参数取值之间应该满足如下公式，否则网络会频繁震荡。</p>
+<ul><li><p>2 &times; (Forward Delay －1.0 second) &gt;= Max Age</p>
+</li><li><p>Max Age &gt;= 2 &times; (Hello Time+ 1.0 second)</p>
+</li></ul>
+<p>建议使用<a href="stp_bridge-diameter.html">stp bridge-diameter</a>命令配置网络直径，交换机会自动根据网络直径计算出Hello Time、Forward Delay以及Max Age三个时间参数的较优值。不建议直接使用本命令配置Forward Delay时间。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="stp_timer_forward-delay__d122164e57"></a><a name="d122164e57"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置交换机的Forward Delay时间为2000厘秒。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> stp timer forward-delay 2000</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mstp_configuration_commands.html">MSTP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="stp_timer_hello.html">stp timer hello</a></div>
+<div><a href="stp_timer_max-age.html">stp timer max-age</a></div>
+<div><a href="stp_bridge-diameter.html">stp bridge-diameter</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

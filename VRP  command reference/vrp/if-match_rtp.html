@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="if-match rtp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/class-based_qos_configuration_commmands.html">
+<meta name="DC.Relation" scheme="URI" content="traffic_classifier.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="if-match_rtp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>if-match rtp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="if-match_rtp"></a><a name="if-match_rtp"></a>
+
+
+<h1 class="topictitle1">if-match rtp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>if-match rtp</strong>命令用来定义RTP协议端口匹配规则。</p>
+<p><strong>undo if-match rtp</strong>命令用来删除RTP协议端口匹配规则。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>if-match</strong> [ <strong>not </strong>]<strong> rtp start-port </strong><em>min-rtp-port-number</em> <strong>end-port</strong><em> max-rtp-port-number</em></p>
+<p><strong>undo if-match</strong> [ <strong>not</strong> ] <strong>rtp start-port </strong><em>min-rtp-port-number</em><strong> end-port</strong><em> max-rtp-port-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>min-rtp-port-number</em>：指定发起RTP报文的最小的UDP目的端口号，取值范围是2000～65535。</p>
+<p><em>max-rtp-port-number</em>：指定发起RTP报文的最大的UDP目的端口号，取值范围是2000～65535。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>流分类视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令用来匹配落在指定RTP端口号范围内的RTP报文，即匹配所有在<em>min-rtp-port-number</em>与<em> max-rtp-port-number</em>之间的偶数UDP端口号的报文。</p>
+<p>在同一个类下多次重复使用该命令，新的配置并不覆盖以前的配置，所有的配置都将生效。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="if-match_rtp__d80667e83"></a><a name="d80667e83"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 定义类class1的匹配规则为：匹配RTP端口号在16384和32767之间的偶数UDP端口号的报文。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> traffic classifier class1</strong></pre>
+<pre class="screen">[Quidway-classifier-class1]<strong> if-match rtp start-port 16384 end-port 32767</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/class-based_qos_configuration_commmands.html">基于类的QoS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="traffic_classifier.html">traffic classifier</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

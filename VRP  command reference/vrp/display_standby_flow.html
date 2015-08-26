@@ -1,0 +1,170 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display standby flow">
+<meta name="DC.Relation" scheme="URI" content="../vrp/interface_backup_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="standby_bandwidth.html">
+<meta name="DC.Relation" scheme="URI" content="standby_threshold.html">
+<meta name="DC.Relation" scheme="URI" content="standby_timer_flow-check.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_standby_flow">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display standby flow</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_standby_flow"></a><a name="display_standby_flow"></a>
+
+
+<h1 class="topictitle1">display standby flow</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display standby flow</strong>命令用来显示参与备份负载分担的主接口的流量统计数据。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display standby flow</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当主接口参与负载分担时，备份中心将自动检测主接口的流量，执行命令<strong>display standby flow</strong>将显示一段内的主接口的流量统计信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_standby_flow__d67487e40"></a><a name="d67487e40"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 先指定接口Pos1/0/0和Tunnel2/0/0作为接口Pos3/0/0的备份接口。在接口Pos3/0/0上配置备份负载分担</p>
+<pre class="screen">&lt;uidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface pos 3/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos3/0/0]<strong> standby interface pos 1/0/0 10</strong></pre>
+<pre class="screen">[Quidway-Pos3/0/0]<strong> standby interface tunnel 2/0/0 20</strong></pre>
+<pre class="screen">[Quidway-Pos3/0/0]<strong> standby threshold 80 50</strong></pre>
+<pre class="screen">[Quidway-Pos3/0/0]<strong> standby timer flow-check 100</strong></pre>
+<pre class="screen">[Quidway-Pos3/0/0]<strong> standby bandwidth 9</strong></pre>
+<p># 查看参与备份负载分担的主接口的流量统计数据。</p>
+<pre class="screen">[Quidway-Pos3/0/0]<strong> display standby flow</strong></pre>
+<pre class="screen">Interfacename      : Pos3/0/0</pre>
+<pre class="screen">Flow-interval(s)   : 100</pre>
+<pre class="screen">LastInOctets       : 868168</pre>
+<pre class="screen">LastOutOctets      : 1818667</pre>
+<pre class="screen">InFlow(Octets)     : 50070</pre>
+<pre class="screen">OutFlow(Octets)    : 100088</pre>
+<pre class="screen">BandWidth(b/s)     :9000</pre>
+<pre class="screen">UsedBandWidth(b/s) : 8000</pre>
+
+<div class="tablenoborder"><a name="display_standby_flow__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_standby_flow__tb_01" frame="border" border="1" rules="all"><caption>表1 display standby flow命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="40.27462836986647%" id="d67487e106"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="59.72537163013354%" id="d67487e110"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d67487e106 "><p>Flow-interval(s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d67487e110 "><p>检测主接口流量的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d67487e106 "><p>LastInOctets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d67487e110 "><p>上一次检测时间点主接口累计的接收字节数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d67487e106 "><p>LastOutOctets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d67487e110 "><p>上一次检测时间点主接口累计的发送字节数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d67487e106 "><p>InFlow(Octets)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d67487e110 "><p>上一个时间间隔内主接口累计接收字节数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d67487e106 "><p>OutFlow(Octets)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d67487e110 "><p>上一个时间间隔内主接口累计发送字节数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d67487e106 "><p>BandWidth(b/s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d67487e110 "><p>主接口带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d67487e106 "><p>UsedBandWidth(b/s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d67487e110 "><p>上一个时间间隔内接口实际带宽</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/interface_backup_configuration_commands.html">接口备份配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="standby_bandwidth.html">standby bandwidth</a></div>
+<div><a href="standby_threshold.html">standby threshold</a></div>
+<div><a href="standby_timer_flow-check.html">standby timer flow-check</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

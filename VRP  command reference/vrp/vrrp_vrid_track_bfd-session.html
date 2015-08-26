@@ -1,0 +1,119 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="vrrp vrid track bfd-session">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vrrp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_convergence_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="vrrp_vrid_track_bfd-session">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>vrrp vrid track bfd-session</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="vrrp_vrid_track_bfd-session"></a><a name="vrrp_vrid_track_bfd-session"></a>
+
+
+<h1 class="topictitle1">vrrp vrid track bfd-session</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>vrrp vrid</strong> <strong>track bfd-session</strong>命令用来配置VRRP通过监视BFD会话状态来实现主备快速切换的功能。</p>
+<p><strong>undo vrrp vrid</strong> <strong>track bfd session</strong>命令用来取消VRRP通过监视BFD会话状态来实现主备快速切换的功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>vrrp vrid</strong> <em>virtual-router-id</em> <strong>track bfd-session</strong> <em>bfd-session-id</em> [ <strong>peer</strong> | <strong>link</strong> ]</p>
+<p><strong>vrrp vrid</strong> <em>virtual-router-id</em> <strong>track bfd-session</strong> <em>bfd-session-id</em> [ <strong>increased</strong> <em>value-increased</em> | <strong>reduced</strong> <em>value-reduced</em> ]</p>
+<p><strong>undo vrrp vrid</strong> <em>virtual-router-id</em> <strong>track bfd-session</strong> <em>bfd-session-id</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vrid</strong> <em>virtual-router-id</em>：VRRP备份组号。十进制整数形式，取值范围是1～255。</p>
+<p><strong>bfd-session</strong><em> bfd-session-id</em>：被监视的BFD session的本地标识符。</p>
+<p><strong>peer</strong>：监视的BFD会话是Peer BFD。</p>
+<p><strong>link</strong>：监视的BFD会话是Link BFD。</p>
+<p><strong>increased</strong> <em>value-increased</em>：设置当被监视的BFD session状态变为Down时，优先级增加的数值。取值范围是1～255。优先级最高可以达到254。只有VRRP备份组的状态为Backup时，该参数才生效。</p>
+<p><strong>reduced</strong> <em> value-reduced</em>：设置当被监视的BFD session状态变为Down时，优先级降低的数值。取值范围1～255。优先级最低可以降至1。缺省情况下，当被监视的BFD session变为Down时，优先级的数值降低10。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet接口视图、Ethernet子接口视图、GE接口视图、GE子接口视图、Eth-Trunk接口视图、Eth-Trunk子接口视图、VE接口视图和VE子接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>VRRP可以对BFD session的状态进行监视。</p>
+<p>使用VRRP监视BFD session功能，在BFD session状态改变后通知VRRP模块。VRRP模块根据配置降低或增加优先级，实现VRRP快速切换。</p>
+<p>当被监视的BFD session状态恢复时，<span class="keyword">路由器</span>在备份组中的优先级将恢复原来的值。</p>
+<p>在以太城域网中，NPE之间运行VRRP协议。NPE之间运行的BFD叫做Peer BFD，NPE与UPE之间运行的BFD叫做Link BFD。Peer BFD用来检测NPE和NPE之间的链路和设备故障，Link BFD用来检测NPE和UPE之间的链路和设备故障。</p>
+<p>参数<strong>peer</strong>和<strong>link</strong>是可选的，如果都不选择时，则是VRRP监视普通BFD的配置。Peer BFD和Link BFD则不修改备份组优先级，而是直接影响备份组的状态。由于这个原因，在非抢占模式下，配置Peer
+BFD、Link BFD后可能出现Backup的优先级大于Master的情况。</p>
+<p>如果要配置VRRP备份组监视的BFD为peer或link类型，请确保该VRRP是管理VRRP。</p>
+<p>配置VRRP监视BFD的类型后，类型不可更改。如果确实需要更改，需要删除原来的配置。</p>
+<p>如果VRRP同时监视BFD会话和监视接口，所监视的BFD会话和接口的总数最多为8个。如果配置监视BFD会话和监视接口时全部是增加优先级，只有监视的BFD会话或接口全部Down时，VRRP的优先级增加的总和可以超过Master端的优先级。如果一个或其中几个BFD会话或接口Down，VRRP优先级重新增加计算就已经超过对端，则其他BFD会话或接口Down时VRRP优先级增加就没有意义。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>当<span class="keyword">路由器</span>为IP地址拥有者时，不允许对其配置监视接口。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="vrrp_vrid_track_bfd-session__d129127e162"></a><a name="d129127e162"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口GE1/0/0，配置备份组1监视BFD，其BFD类型为peer。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface gigabitethernet 1/0/0</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> <strong>vrrp vrid 1 track bfd-session 1 peer</strong></strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="vrrp_vrid_track_bfd-session__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="vrrp_vrid_track_bfd-session__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d129127e195"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d129127e199"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d129127e195 "><p>VRPV500R005C02B020</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d129127e199 "><p>增加<strong>peer</strong>和<strong>link</strong>参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vrrp_configuration_commands.html">VRRP配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

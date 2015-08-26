@@ -1,0 +1,170 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display pim mib-notification interval">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_network_management_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_pim_mib-notification_interval">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display pim mib-notification interval</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_pim_mib-notification_interval"></a><a name="display_pim_mib-notification_interval"></a>
+
+
+<h1 class="topictitle1">display pim mib-notification interval</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display pim mib-notification interval</strong>用来查看发送PIM告警的时间间隔。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display pim mib-notification interval</strong><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置或修改了<strong>pim mib-notification interval</strong>发送间隔的值后，用<strong>display pim mib-notification interval</strong>命令来查看设置的间隔。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_pim_mib-notification_interval__d60012e86"></a><a name="d60012e86"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看PIM notification的设置间隔。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display pim mib-notification interval</strong>
+Neighbor loss notification interval      : 0 s
+Invalid Join-Prune notification interval : 50 s
+RP-MAPPING change notification interval  : 100 s
+Interface election notification interval : 2000 s
+Invalid register notification interval   : 60000 s
+</pre>
+
+<div class="tablenoborder"><a name="display_pim_mib-notification_interval__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_mib-notification_interval__tb_01" frame="border" border="1" rules="all"><caption>表1 display pim mib-notification interval命令显示信息说明</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="47.2411186696901%" id="d60012e107"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="52.758881330309904%" id="d60012e111"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d60012e107 "><p>Neighbor loss notification interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d60012e111 "><p>邻居丢失告警发送时间间隔。</p>
+ </td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d60012e107 "><p>Invalid Join-Prune notification interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d60012e111 "><p>无效Join/Prune报文告警发送时间间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d60012e107 "><p>RP-MAPPING change notification interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d60012e111 "><p>RP-Mapping-Change告警发送时间间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d60012e107 "><p>Interface election notification interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d60012e111 "><p>接口当选告警发送时间间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d60012e107 "><p>Invalid register notification interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d60012e111 "><p>无效注册报文告警发送时间间隔。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_pim_mib-notification_interval__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_mib-notification_interval__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d60012e189"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d60012e193"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d60012e189 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d60012e193 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_network_management_commands.html">组播网管功能配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

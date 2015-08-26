@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer capability-advertise">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_capability-advertise">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer capability-advertise</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_capability-advertise"></a><a name="peer_capability-advertise"></a>
+
+
+<h1 class="topictitle1">peer capability-advertise</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer capability-advertise</strong>命令用来使能BGP向对等体发布路由刷新功能或常规路由器功能。</p>
+<p><strong>undo peer capability-advertise</strong>命令用来取消向对等体发布的功能。</p>
+<p>缺省情况下，使能BGP路由刷新功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> { <em>group-name</em> | <em>ipv4-address</em> | <em>ipv6-address</em> } <strong>capability-advertise</strong> { <strong>route-refresh</strong> | <strong>conventional</strong> }</p>
+<p><strong>undo</strong> <strong>peer</strong> { <em>group-name</em> | <em>ipv4-address</em> | <em>ipv6-address</em> } <strong>capability-advertise</strong> { <strong>route-refresh</strong> | <strong>conventional</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>group-name</em>：对等体组的名称。</p>
+<p><em>ipv4-address</em>：对等体的IPv4地址。</p>
+<p><em>ipv6-address</em>：对等体的IPv6地址。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p><em>ipv4-address</em>参数仅在BGP视图和BGP-VPN实例视图下生效。</p>
+</li>
+<li><p><em>ipv6-address</em>参数仅在BGP视图和BGP-VPN6实例视图下生效。</p>
+</li>
+</ul>
+</div></div>
+<p><strong>route-refresh</strong>：路由刷新功能。</p>
+<p><strong>conventional</strong>：常规路由器功能。对于IPv6对等体，此参数不可见。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP视图、BGP-VPN实例视图、BGP-VPN6实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在<strong>conventional</strong>模式下，路由器不具备所有扩展功能（如路由刷新功能、GR能力及多地址族协商），以便于向前兼容版本较早的路由器。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_capability-advertise__d103284e123"></a><a name="d103284e123"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能BGP路由刷新功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> peer 160.89.2.33 as-number 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> peer 160.89.2.33 capability-advertise route-refresh</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

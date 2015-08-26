@@ -1,0 +1,490 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rpr topoinfo interface ring-if">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rpr_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="rpr_fairness_weight.html">
+<meta name="DC.Relation" scheme="URI" content="rpr_mac-address.html">
+<meta name="DC.Relation" scheme="URI" content="rpr_protection_mode.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rpr_topoinfo_interface_ring-if">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rpr topoinfo interface ring-if</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rpr_topoinfo_interface_ring-if"></a><a name="display_rpr_topoinfo_interface_ring-if"></a>
+
+
+<h1 class="topictitle1">display rpr topoinfo interface ring-if</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display rpr topoinfo interface ring-if</strong>命令用来查看拓扑数据库信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display rpr topoinfo interface ring-if</strong> <em>interface-number </em>[ <strong>ringinfo</strong> | <strong>local</strong> | <strong>topoentry</strong> [ <strong>rid</strong> <em>ring-id</em> <strong>hops</strong> <em>hops-value</em> [ <strong>verbose </strong>] ] ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-number</em>：逻辑接口编号。整数形式，取值范围是0～31。</p>
+<p><strong>ringinfo</strong>：显示拓扑数据库中描述整个环的信息。</p>
+<p><strong>local</strong>：显示拓扑数据库中的描述本地节点的配置信息。</p>
+<p><strong>topoentry：</strong>显示拓扑数据库其他节点信息。</p>
+<p><em>ring-id</em>：环的标识值，0表示0环，1表示1环。</p>
+<p><em>hops-value</em>：距离本地节点的跳数。整数形式，取值范围是1～255。</p>
+<p><strong>verbose</strong>：强制显示指定站点信息，无论信息是否有效。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>用户可以选择显示整个环的配置和拓扑信息，也可以选择显示本机和环上任意节点的配置和拓扑信息。</p>
+<p>如果查看环上其它节点的拓扑信息，需要指定环标识和节点距离本机的跳数。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rpr_topoinfo_interface_ring-if__d64365e93"></a><a name="d64365e93"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示描述整个环的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rpr topoinfo interface ring-if 1 ringinfo</strong></pre>
+<pre class="screen">Current ring is a open ring</pre>
+<pre class="screen">  Number of stations on the ring is 1</pre>
+<pre class="screen">  The Maximum Transmit Unit of the ring is 9216 bytes</pre>
+<pre class="screen">  Ring Supports jumbo frames. Do not support bad fcs frames.</pre>
+
+<pre class="screen">  Ring0:</pre>
+<pre class="screen">    Upstream stations 0, downstream stations 0, Unreserved rate 0 MB/S</pre>
+<pre class="screen">  Ring1:</pre>
+<pre class="screen">    Upstream stations 0, downstream stations 0, Unreserved rate 0 MB/S</pre>
+
+<div class="tablenoborder"><a name="display_rpr_topoinfo_interface_ring-if__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rpr_topoinfo_interface_ring-if__tb_01" frame="border" border="1" rules="all"><caption>表1 display rpr topoinfo命令显示整个环的输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.04308390022676%" id="d64365e130"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.95691609977325%" id="d64365e134"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64365e130 "><p>Current ring </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64365e134 "><div class="p">共有以下两种状态：<ul>
+<li><p>open ring：环上至少有一处生成边。</p>
+</li>
+<li><p>close ring：环上没有生成边</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64365e130 "><p>Number of stations on the ring</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64365e134 "><p>表示环上站点数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64365e130 "><p>The Maximum Transmit Unit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64365e134 "><p>最大传输单元。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64365e130 "><p>Ring Supports jumbo frames</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64365e134 "><p>是否支持jumbo帧。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64365e130 "><p>support bad fcs frames</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64365e134 "><p>是否支持bad fcs 帧。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64365e130 "><p>Upstream stations</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64365e134 "><p>上游站点个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64365e130 "><p>downstream stations</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64365e134 "><p>下游站点个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64365e130 "><p>Unreserved</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64365e134 "><p>可用带宽。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示本地节点的拓扑信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rpr topoinfo interface ring-if 1 local</strong></pre>
+<pre class="screen">Local information of interface ring-if1</pre>
+<pre class="screen">Local station name is NULL</pre>
+<pre class="screen">MAC address is 0102-0304-0506</pre>
+<pre class="screen">Protection mode is steering</pre>
+<pre class="screen">Local Supports jumbo frames,Do not support bad fcs frames</pre>
+<pre class="screen">Fairness algorithm supports aggressive mode</pre>
+<pre class="screen">Internet address type is Ipv4, address is 0.0.0.0 primary</pre>
+
+<pre class="screen">Protocol report static is up[0]</pre>
+<pre class="screen">Protocol workmode is normal, Topology stable,valid</pre>
+<pre class="screen">Protocol run slot is 4,error code ：1, event last : LINK_STATUS_IDLE on ring 1</pre>
+
+<pre class="screen">West-span info:</pre>
+<pre class="screen">    Protection state is IDLE, edge state is false</pre>
+<pre class="screen">    West last known Neighbor's MAC address is 0802-0802-0802</pre>
+<pre class="screen">    Weight value is 1, reserved rate(A0) is 0 MB/S, B0 is 0 MB/S</pre>
+
+<pre class="screen">East-span info:</pre>
+<pre class="screen">    Protection state is IDLE, edge state is false</pre>
+<pre class="screen">    East last known Neighbor's MAC address is 0801-0801-0801</pre>
+<pre class="screen">    Weight value is 1, reserved rate(A0) is 0 MB/S, B0 is 0 MB/S</pre>
+
+<div class="tablenoborder"><a name="display_rpr_topoinfo_interface_ring-if__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rpr_topoinfo_interface_ring-if__tb_02" frame="border" border="1" rules="all"><caption>表2 display rpr topoinfo命令显示本地节点的拓扑信息的输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.4167296548249%" id="d64365e300"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.58327034517511%" id="d64365e304"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e300 "><p>Local information of interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e304 "><p>指定接口的本地信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e300 "><p>Local station name is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e304 "><p>本地站点的名字。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e300 "><p>MAC address is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e304 "><p>本地站点的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e300 "><p>Protection mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e304 "><div class="p">保护模式共有两种：<ul>
+<li><p>steering</p>
+</li>
+<li><p>wrapping</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e300 "><p>Fairness algorithm support</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e304 "><div class="p">公平算法支持：<ul>
+<li><p>aggressive</p>
+</li>
+<li><p>conservative</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e300 "><p>Protocol Running static</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e304 "><div class="p">协议运行状态：<ul>
+<li><p>Up</p>
+</li>
+<li><p>Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e300 "><p>Protocol workmode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e304 "><div class="p">协议工作模式：<ul>
+<li><p>wrap on</p>
+</li>
+<li><p>wrap off</p>
+</li>
+</ul>
+</div>
+<p>此显示信息的具体内容和协议工作模式都和产品有关。例如<span class="keyword">VRP</span>的协议工作模式是：wrap 、normal、steering和passthrough。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e300 "><p>West-span info:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e304 "><p>西向环信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e300 "><p>Protection state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e304 "><div class="p">保护状态。共有六种：<ul>
+<li><p>IDLE：idle，闲置状态。</p>
+</li>
+<li><p>WTR：Wait To Restore，等待恢复。</p>
+</li>
+<li><p>MS：Manual Switch，手工倒换。</p>
+</li>
+<li><p>SD：Signal Degrade，信号衰减。</p>
+</li>
+<li><p>SF：Signal Fail，信号失败。</p>
+</li>
+<li><p>FS：Forced Switch，强制倒换。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e300 "><p>Weight value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e304 "><p>链路权重：链路的权重会影响公平算法的计算，使得权重值高的链路上帧的流量大。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e300 "><p>reserved rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e304 "><p>保留带宽，不可回收的，它用于保证某些帧的实时传输，预留带宽只能应用于subclassA0子类。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示其它节点的拓扑信息0环1跳。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rpr topoinfo interface ring-if 1 topoentry rid 0 hops 1</strong></pre>
+<pre class="screen">display rpr topoinfo topoentry rid 0 hops 1</pre>
+<pre class="screen">The station name is NULL</pre>
+<pre class="screen">MAC address is 0801-0801-0801</pre>
+<pre class="screen">Protection mode is steering</pre>
+<pre class="screen">Supports normal frames,Do not support bad fcs frames</pre>
+<pre class="screen">Fairness algorithm supports aggressive mode</pre>
+<pre class="screen">Internet address type is Ipv4, address is 1.0.0.3 primary</pre>
+<pre class="screen">Station is invalid,unreachable</pre>
+
+<pre class="screen">West-span info:</pre>
+<pre class="screen">  Protection state is IDLE, edge state is false</pre>
+<pre class="screen">  Weight value is 0, reserved rate is 0 MB/S</pre>
+<pre class="screen">East-span info:</pre>
+<pre class="screen">  Protection state is IDLE, edge state is false</pre>
+<pre class="screen">Weight value is 0, reserved rate is 0 MB/S</pre>
+
+<div class="tablenoborder"><a name="display_rpr_topoinfo_interface_ring-if__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rpr_topoinfo_interface_ring-if__tb_03" frame="border" border="1" rules="all"><caption>表3 display rpr topoinfo命令显示其他节点的拓扑信息的输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.4167296548249%" id="d64365e554"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.58327034517511%" id="d64365e558"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e554 "><p>The station name is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e558 "><p>站点的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e554 "><p>Protocol Running static</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e558 "><div class="p">协议运行状态：<ul>
+<li><p>Up</p>
+</li>
+<li><p>Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e554 "><p>Station invalid, unreachable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e558 "><p>表示站点是否有效，是否可达。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e554 "><p>Protection state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e558 "><div class="p">保护状态共有六种：<ul>
+<li><p>IDLE：idle，闲置状态。</p>
+</li>
+<li><p>WTR：Wait To Restore，等待恢复。</p>
+</li>
+<li><p>MS：Manual Switch，手工倒换。</p>
+</li>
+<li><p>SD：Signal Degrade，信号衰减。</p>
+</li>
+<li><p>SF：Signal Fail，信号失败。</p>
+</li>
+<li><p>FS：Forced Switch，强制倒换。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e554 "><p>edge state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e558 "><div class="p">表示是否生成边：<ul>
+<li><p>true：生成边。</p>
+</li>
+<li><p>false：没有边。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e554 "><p>Weight value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e558 "><p>链路权重：链路的权重会影响公平算法的计算，使得权重值高的链路上帧的流量大。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.4167296548249%" headers="d64365e554 "><p>reserved rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.58327034517511%" headers="d64365e558 "><p>保留带宽，不可回收的，它用于保证某些帧的实时传输，预留带宽只能应用于subclassA0子类。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rpr_configuration_commands.html">RPR配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="rpr_fairness_weight.html">rpr fairness weight</a></div>
+<div><a href="rpr_mac-address.html">rpr mac-address</a></div>
+<div><a href="rpr_protection_mode.html">rpr protection mode</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="auto-execute command">
+<meta name="DC.Relation" scheme="URI" content="../vrp/user_management_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="auto-execute_command">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>auto-execute command</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="auto-execute_command"></a><a name="auto-execute_command"></a>
+
+
+<h1 class="topictitle1">auto-execute command</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"> <p><strong>auto-execute command</strong>命令用来设置自动执行命令。</p>
+ <p><strong>undo auto-execute command</strong>命令用来取消自动执行命令。</p>
+ <p>缺省情况下，取消自动执行命令。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"> <p><strong>auto-execute command </strong><em>command</em></p>
+ <p><strong>undo auto-execute command</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"> <p><em>command</em>：需要自动执行的某条命令。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>用户界面视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>auto-execute command</strong>命令使用时有如下的限制：</p>
+<ul>
+<li><p>如果<span class="keyword">路由器</span>上只有一个Console口或只有一个AUX口（Console口和AUX口共一个口），那么这个口将不支持该命令。</p>
+</li>
+<li><p>如果<span class="keyword">路由器</span>上有一个Console口和一个AUX口（共两个口），则Console口不支持该命令，AUX口支持该命令。</p>
+</li>
+<li><p>对其它类型的接口，该命令不作限制。</p>
+</li>
+</ul>
+<p>用户在登录时自动执行某条在该终端上用<strong>auto-execute command</strong>配置好的命令，命令执行结束后自动断开用户连接。</p>
+<p>通常的用法是在终端用<strong>auto-execute command</strong>配置Telnet命令，使用户自动连接到指定的主机。</p>
+<p>该命令的使用将导致不能使用该用户界面对本系统进行常规的配置，需谨慎使用。</p>
+<div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>在配置<strong>auto-execute command</strong>命令并保存配置（执行<strong>save</strong>操作）之前，要确保可以通过其它手段登录系统以去掉此配置。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="auto-execute_command__d3561e101"></a><a name="d3561e101"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"> <p># 配置用户从AUX接口登录后，自动执行telnet 10.110.100.1命令。</p>
+ <pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+ <pre class="screen">[Quidway]<strong> <strong>user-interface aux 0</strong></strong></pre>
+ <pre class="screen">[Quidway-ui-aux0]<strong> auto-execute command telnet 10.110.100.1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/user_management_commands.html">用户管理命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

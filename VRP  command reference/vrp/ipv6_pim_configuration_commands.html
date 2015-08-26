@@ -1,0 +1,220 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="IPv6 PIM配置命令">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_multicast_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bsr-policy_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_hash-length_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_holdtime_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_interval_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-bsr_priority_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-rp_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-rp_advertisement-interval_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-rp_holdtime_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/crp-policy_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/c-rp_priority_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_ipv6_bsr-info.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_ipv6_claimed-route.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_ipv6_control-message_counters.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_ipv6_grafts.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_ipv6_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_ipv6_neighbor.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_ipv6_routing-table.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_pim_ipv6_rp-info.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/embedded-rp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hello-option_dr-priority_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hello-option_holdtime_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hello-option_lan-delay_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hello-option_neighbor-tracking_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hello-option_override-interval_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/holdtime_assert_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/holdtime_join-prune_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_bsr-boundary.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim-ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_dm.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_hello-option_dr-priority.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_hello-option_holdtime.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_hello-option_lan-delay.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_hello-option_neighbor-tracking.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_hello-option_override-interval.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_holdtime_assert.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_holdtime_join-prune.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_require-genid.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_silent.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_sm.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_state-refresh-capable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_timer_dr-swich-delay.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_timer_graft-retry.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_timer_hello.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_timer_join-prune.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv6_triggered-hello-delay.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/probe-interval_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/register-policy_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/register-suppression-timeout_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_pim_ipv6_control-message_counters.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/source-lifetime_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/source-policy_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/spt-switch-threshold_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ssm-policy_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/state-refresh-interval_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/state-refresh-rate-limit_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/state-refresh-ttl_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/static-rp_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/timer_hello_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/timer_join-prune_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/timer_spt-switch_ipv6.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipv6_pim_configuration_commands">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>IPv6 PIM配置命令</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipv6_pim_configuration_commands"></a><a name="ipv6_pim_configuration_commands"></a>
+
+
+<h1 class="topictitle1">IPv6 PIM配置命令</h1>
+
+<div></div>
+
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="../vrp/bsr-policy_ipv6.html">bsr-policy（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_ipv6.html">c-bsr（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_hash-length_ipv6.html">c-bsr hash-length（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_holdtime_ipv6.html">c-bsr holdtime（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_interval_ipv6.html">c-bsr interval（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-bsr_priority_ipv6.html">c-bsr priority（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-rp_ipv6.html">c-rp（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-rp_advertisement-interval_ipv6.html">c-rp advertisement-interval（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-rp_holdtime_ipv6.html">c-rp holdtime（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/crp-policy_ipv6.html">crp-policy（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/c-rp_priority_ipv6.html">c-rp priority（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_ipv6_bsr-info.html">display pim ipv6 bsr-info</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_ipv6_claimed-route.html">display pim ipv6 claimed-route</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_ipv6_control-message_counters.html">display pim ipv6 control-message counters</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_ipv6_grafts.html">display pim ipv6 grafts</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_ipv6_interface.html">display pim ipv6 interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_ipv6_neighbor.html">display pim ipv6 neighbor</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_ipv6_routing-table.html">display pim ipv6 routing-table</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_pim_ipv6_rp-info.html">display pim ipv6 rp-info</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/embedded-rp.html">embedded-rp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hello-option_dr-priority_ipv6.html">hello-option dr-priority（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hello-option_holdtime_ipv6.html">hello-option holdtime（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hello-option_lan-delay_ipv6.html">hello-option lan-delay（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hello-option_neighbor-tracking_ipv6.html">hello-option neighbor-tracking（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/hello-option_override-interval_ipv6.html">hello-option override-interval（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/holdtime_assert_ipv6.html">holdtime assert（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/holdtime_join-prune_ipv6.html">holdtime join-prune（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_bsr-boundary.html">pim ipv6 bsr-boundary</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim-ipv6.html">pim-ipv6</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_dm.html">pim ipv6 dm</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_hello-option_dr-priority.html">pim ipv6 hello-option dr-priority</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_hello-option_holdtime.html">pim ipv6 hello-option holdtime</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_hello-option_lan-delay.html">pim ipv6 hello-option lan-delay</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_hello-option_neighbor-tracking.html">pim ipv6 hello-option neighbor-tracking</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_hello-option_override-interval.html">pim ipv6 hello-option override-interval</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_holdtime_assert.html">pim ipv6 holdtime assert</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_holdtime_join-prune.html">pim ipv6 holdtime join-prune</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_require-genid.html">pim ipv6 require-genid</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_silent.html">pim ipv6 silent</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_sm.html">pim ipv6 sm</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_state-refresh-capable.html">pim ipv6 state-refresh-capable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_timer_dr-swich-delay.html">pim ipv6 timer dr-swich-delay</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_timer_graft-retry.html">pim ipv6 timer graft-retry</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_timer_hello.html">pim ipv6 timer hello</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_timer_join-prune.html">pim ipv6 timer join-prune</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/pim_ipv6_triggered-hello-delay.html">pim ipv6 triggered-hello-delay</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/probe-interval_ipv6.html">probe-interval（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/register-policy_ipv6.html">register-policy（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/register-suppression-timeout_ipv6.html">register-suppression-timeout（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_pim_ipv6_control-message_counters.html">reset pim ipv6 control-message counters</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/source-lifetime_ipv6.html">source-lifetime（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/source-policy_ipv6.html">source-policy（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/spt-switch-threshold_ipv6.html">spt-switch-threshold（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ssm-policy_ipv6.html">ssm-policy（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/state-refresh-interval_ipv6.html">state-refresh-interval（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/state-refresh-rate-limit_ipv6.html">state-refresh-rate-limit（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/state-refresh-ttl_ipv6.html">state-refresh-ttl（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/static-rp_ipv6.html">static-rp（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/timer_hello_ipv6.html">timer hello（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/timer_join-prune_ipv6.html">timer join-prune（IPv6）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/timer_spt-switch_ipv6.html">timer spt-switch（IPv6）</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_multicast_commands.html">IP组播命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="aggregate（MBGP）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mbgp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="summary_automatic_mbgp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="aggregate_mbgp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>aggregate（MBGP）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="aggregate_mbgp"></a><a name="aggregate_mbgp"></a>
+
+
+<h1 class="topictitle1">aggregate（MBGP）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>aggregate</strong>命令用来在MBGP路由表中创建一条组播聚合记录。这条聚合路由在本地的出接口为NULL0，当其他<span class="keyword">路由器</span>收到聚合路由后会自动加上出接口。</p>
+<p><strong>undo aggregate</strong>命令用来关闭该功能。</p>
+<p>缺省情况下，不进行路由聚合。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>aggregate</strong> <em>ip-address</em> { <em>mask</em> | <em>mask-length</em> } [ <strong>as-set</strong> | <strong>attribute-policy</strong> <em>route-policy-name1</em> | <strong>detail-suppressed</strong> |<strong> origin-policy</strong> <em>route-policy-name2</em> | <strong>suppress-policy</strong> <em>route-policy-name3</em> ] *</p>
+<p><strong>undo aggregate</strong> <em>ip-address</em> { <em>mask</em> | <em>mask-length</em> } [ <strong>as-set</strong> | <strong>attribute-policy</strong> <em>route-policy-name1</em> | <strong>detail-suppressed</strong> | <strong>origin-policy</strong> <em>route-policy-name2</em> | <strong>suppress-policy</strong> <em>route-policy-name3</em> ] *</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：聚合路由的IP地址。点分十进制形式。</p>
+<p><em>mask</em>：聚合路由的网络掩码。点分十进制形式。</p>
+<p><em>mask-length</em>：表示IPv4网络地址的掩码长度。</p>
+<p><strong>as-set</strong>：生成具有AS-SET的路由。若需聚合较多AS路径时，请慎用此参数。</p>
+<p><strong>attribute-policy</strong> <em>route-policy-name1</em>：设置聚合后路由的属性。<em>route-policy-name1</em>是路由策略名称。</p>
+<p><strong>detail-suppressed</strong>：仅通告聚合路由。</p>
+<p><strong>origin-policy</strong> <em>route-policy-name2</em>：设置允许生成聚合路由的策略名称。<em>route-policy-name2</em>是路由策略名称。</p>
+<p><strong>suppress-policy</strong> <em>route-policy-name3</em>：设置抑制指定路由通告的策略名称。<em>route-policy-name3</em>是路由策略名称。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP-IPv4组播地址族视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="aggregate_mbgp__d831e165"></a><a name="d831e165"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在MBGP路由表中创建一条组播聚合记录，并设置该聚合路由的地址为192.213.0.0。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> ipv4-family multicast</strong></pre>
+<pre class="screen">[Quidway-bgp-af-multicast]<strong><strong> aggregate 192.213.0.0 255.255.0.0</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mbgp_configuration_commands.html">MBGP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="summary_automatic_mbgp.html">summary automatic</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

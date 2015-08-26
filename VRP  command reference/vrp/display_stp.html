@@ -1,0 +1,609 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display stp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mstp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_stp_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="stp.html">
+<meta name="DC.Relation" scheme="URI" content="stp_process.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_stp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display stp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_stp"></a><a name="display_stp"></a>
+
+
+<h1 class="topictitle1">display stp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display stp</strong>命令用来显示生成树实例的状态信息和统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display stp</strong> [ <strong>process</strong> <em>process-id</em> ] [ <strong>instance</strong> <em>instance-id</em> ] [ <strong>interface</strong> { <em>interface-type interface-number</em> [ <strong>to</strong> <em>interface-number</em> ] } &amp;&lt;1-10&gt; ] [ <strong>brief</strong> ] <span>[<strong> | count</strong> ] </span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+<p><strong>display stp</strong> [ <strong>process</strong> <em>process-id</em> ] [ <strong>instance</strong> <em>instance-id</em> ] [ <strong>slot</strong> <em>slot-id</em> ] [ <strong>brief</strong> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>process</strong> <em>process-id</em>：MSTP进程的ID值。十进制整数形式，取值范围是1～256。</p>
+<p><strong>instance </strong><em>instance-id</em>：表示显示指定生成树实例的状态信息与统计信息。<em>instance-id</em>表示生成树实例的编号。整数形式，取值范围是0～48，取值为0表示的是CIST。</p>
+<p><strong>interface </strong><em>interface-type interface-number</em>：显示生成树实例在指定端口上的信息。端口类型，取值包括Ethernet、Eth-Trunk、GigabitEthernet和Virtual-Ethernet。</p>
+<p><strong>brief</strong>：表示只显示状态信息的摘要信息。</p>
+<p><strong>slot</strong> <em>slot-id</em>：端口所在的槽号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定生成树实例和端口，则显示所有实例在所有端口上的生成树信息，显示顺序按照端口号的顺序排列。</p>
+<p>如果指定生成树实例，但不指定端口，则显示该生成树实例在所有端口上的生成树信息，按照端口编号顺序显示。</p>
+<p>如果指定端口，但不指定生成树实例，则显示所有生成树实例在该端口上的生成树信息。</p>
+<p>如果既指定生成树实例又指定端口，则显示指定生成树实例在指定端口上的生成树信息。</p>
+<ul>
+<li><p>在系统视图中使用本命令，如果不指定MSTP进程的ID，则默认显示MSTP进程0的相关信息，否则显示指定ID的MSTP进程信息。</p>
+</li>
+<li><p>在MSTP进程视图中使用本命令，如果不指定MSTP进程的ID，则默认显示所在视图MSTP进程的信息，否则显示指定ID的MSTP进程信息。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>关于MSTP进程0的内容，请参见<a href="stp_process.html">stp process</a>命令。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_stp__d67804e212"></a><a name="d67804e212"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 当未执行<strong>stp enble</strong>命令时，显示STP的状态和统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display stp</strong></pre>
+<pre class="screen">Protocol Status:disabled</pre>
+<pre class="screen">Protocol Std.:IEEE 802.1s</pre>
+<pre class="screen">Version:3</pre>
+<pre class="screen">CIST Bridge-Prio.:32768</pre>
+<pre class="screen">MAC address:00e0-fc90-1014</pre>
+<pre class="screen">Max age(s):14</pre>
+<pre class="screen">Forward delay(s):10</pre>
+<pre class="screen">Hello time(s):2</pre>
+<pre class="screen">Max hops:20</pre>
+
+<div class="tablenoborder"><a name="display_stp__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_stp__tb_01" frame="border" border="1" rules="all"><caption>表1 display stp命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.316399848733145%" id="d67804e253"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.68360015126686%" id="d67804e257"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.316399848733145%" headers="d67804e253 "><p>Protocol Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.68360015126686%" headers="d67804e257 "><p>协议状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.316399848733145%" headers="d67804e253 "><p>Protocol Std.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.68360015126686%" headers="d67804e257 "><p>协议标准。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.316399848733145%" headers="d67804e253 "><p>Version</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.68360015126686%" headers="d67804e257 "><div class="p">协议版本。<ul>
+<li><p>0：STP</p>
+</li>
+<li><p>2：RSTP</p>
+</li>
+<li><p>3：MSTP</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.316399848733145%" headers="d67804e253 "><p>CIST Bridge-Prio.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.68360015126686%" headers="d67804e257 "><p>交换机在CIST中的优先级。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.316399848733145%" headers="d67804e253 "><p>MAC address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.68360015126686%" headers="d67804e257 "><p>交换机的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.316399848733145%" headers="d67804e253 "><p>Max age(s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.68360015126686%" headers="d67804e257 "><p>BPDU最大生存时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.316399848733145%" headers="d67804e253 "><p>Forward delay(s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.68360015126686%" headers="d67804e257 "><p>端口状态迁移的延时。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.316399848733145%" headers="d67804e253 "><p>Hello time(s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.68360015126686%" headers="d67804e257 "><p>根交换机发送BPDU的周期。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.316399848733145%" headers="d67804e253 "><p>Max hops</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.68360015126686%" headers="d67804e257 "><p>MST域中的最大跳数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示生成树实例0在端口GE1/0/0上的状态信息与统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display stp instance 0 interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">-------[CIST Global Info][Mode MSTP]-------</pre>
+<pre class="screen">CIST Bridge         :32768.00e0-fc0e-a421</pre>
+<pre class="screen">Bridge Times        :Hello 2s MaxAge 20s FwDly 15s MaxHop 20</pre>
+<pre class="screen">CIST Root/ERPC      :32768.00e0-fc0e-a421 / 0</pre>
+<pre class="screen">CIST RegRoot/IRPC   :32768.00e0-fc0e-a421 / 0</pre>
+<pre class="screen">CIST RootPortId     :0.0</pre>
+<pre class="screen">BPDU-Protection     :disabled</pre>
+<pre class="screen">TC or TCN received  :8</pre>
+<pre class="screen">STP Converge Mode   :Fast</pre>
+<pre class="screen">Time since last TC  :0 days 23h:9m:30s</pre>
+<pre class="screen">----[Port3(GigabitEthernet1/0/0)][FORWARDING]----</pre>
+<pre class="screen"> Port Protocol       :enabled</pre>
+<pre class="screen"> Port Role           :CIST Designated Port</pre>
+<pre class="screen"> Port Priority       :128</pre>
+<pre class="screen"> Port Cost(Dot1T )   :Config=auto / Active=199999</pre>
+<pre class="screen"> Desg. Bridge/Port   :32768.00e0-fc0e-a421 / 128.1229</pre>
+<pre class="screen"> Port Edged          :Config=disabled / Active=disabled</pre>
+<pre class="screen"> Point-to-point      :Config=auto / Active=true</pre>
+<pre class="screen"> Transit Limit       :3 packets/hello-time</pre>
+<pre class="screen"> Protection Type     :None</pre>
+<pre class="screen"> Config-digest-snoop :snooped=false</pre>
+<pre class="screen"> Port Protocol Type  :Config=auto / Active=dot1s</pre>
+<pre class="screen"> PortTimes           :Hello 2s MaxAge 20s FwDly 15s RemHop 0</pre>
+<pre class="screen"> BPDU Sent           :147</pre>
+<pre class="screen">          TCN: 0, Config: 0, RST: 0, MST: 147</pre>
+<pre class="screen"> BPDU Received       :0</pre>
+<pre class="screen">          TCN: 0, Config: 0, RST: 0, MST: 0    </pre>
+
+<div class="tablenoborder"><a name="display_stp__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_stp__tb_02" frame="border" border="1" rules="all"><caption>表2 display stp instance命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.322499370118415%" id="d67804e453"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.67750062988159%" id="d67804e457"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>CIST Global Info</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>CIST全局信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Mode MSTP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>运行模式为MSTP。默认运行模式是MSTP，相关命令请参考<a href="stp_mode_system_view.html">stp mode（系统视图）</a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>CIST Bridge</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>CIST桥ID。前16位是交换机在CIST中的优先级，后48位是本交换机的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Bridge Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><div class="p">桥协议信息中各时间值：<ul>
+<li><p>Hello：BPDU发送的周期。</p>
+</li>
+<li><p>MaxAge：BPDU的最大生存期。</p>
+</li>
+<li><p>FwDly：端口状态迁移的延时时间。</p>
+</li>
+<li><p>MaxHop：MST域的最大跳数。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>CIST Root/ERPC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>CIST总根交换机ID/外部路径开销（从本交换机到CIST总根交换机的路径开销）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>CIST RegRoot/IRPC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>CIST域根桥ID/内部路径开销（从本交换机到CIST域根交换机的路径开销）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>CIST RootPortId</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>CIST根端口的ID。&#8220;0.0&#8221;表示交换机是根交换机，没有根端口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>BPDU-Protection</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><div class="p">BPDU保护功能：<ul>
+<li><p>disabled：未使能BPDU保护。</p>
+</li>
+<li><p>enabled：使能BPDU保护。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>TC or TCN received</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>收到的TC或者TCN报文数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>STP Converge Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>STP收敛方式。它有两种收敛方式：fast和normal。相关命令请参考<a href="stp_converge.html"><strong>stp converge</strong></a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Time since last TC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>从上次拓扑变化到现在经过的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Port3</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>端口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>FORWARDING</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><div class="p">端口状态，分别有：<ul>
+<li><p>DOWN，端口物理状态为Down。</p>
+</li>
+<li><p>DISABLED，端口被阻断，不能参与转发。</p>
+</li>
+<li><p>FORWARDING，生成树拓扑稳定后用于转发流量的端口。Forwarding状态的端口既转发用户流量又接收或发送BPDU报文。</p>
+</li>
+<li><p>LEARNING，端口正在学习MAC地址表。Learning状态的端口接收或发送BPDU报文，不转发用户流量。</p>
+</li>
+<li><p>DISCARDING，生成树拓扑稳定后被阻塞的端口。Discarding状态的端口只接收BPDU报文，不转发用户流量。</p>
+</li>
+<li><p>INACTIVE，端口不可用或正在拓扑计算过程中。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Port Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><div class="p">端口协议状态信息：<ul>
+<li><p>enable：端口使能STP</p>
+</li>
+<li><p>disable：端口去使能STP</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Port Role</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><div class="p">端口角色。在CIST域中，有4种端口角色：<ul>
+<li><p>CIST Root Port</p>
+</li>
+<li><p>CIST Designated Port</p>
+</li>
+<li><p>CIST Alternate Port</p>
+</li>
+<li><p>CIST Backup Port</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Port Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>端口优先级。相关命令请参考<a href="stp_port_priority.html"><strong>stp port priority</strong></a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Port Cost(Dot1T )</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>端口路径开销（采用的是dot1t的计算方法），config是指手工配置的路径开销，active是实际使用的路径开销。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Desg. Bridge/Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>指定交换机的ID和指定端口ID。交换机ID前16位是交换机在CIST中的优先级，后48位是本交换机的MAC地址。端口ID前8位表示优先级，后8位表示端口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Port Edged</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><div class="p">边缘端口（由管理员指定）。<ul>
+<li><p>enabled：使能边缘端口</p>
+</li>
+<li><p>disabled：未使能边缘端口</p>
+</li>
+</ul>
+Config表示通过<a href="stp_edged-port.html"><strong>stp edged-port</strong></a>命令配置的值，Active表示实际值。</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Point-to-point</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>指定端口的链路类型。Config表示通过<a href="stp_point-to-point.html"><strong>stp point-to-point</strong></a>命令配置的链路类型，Active表示实际的链路类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Transit Limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>当前端口在每个Hello Time时间内发送BPDU的最大数目。相关命令请参考<a href="stp_transmit-limit.html"><strong>stp transmit-limit</strong></a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Protection Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><div class="p">保护类型。端口的保护类型有：<ul>
+<li><p>root-protection：只在指定端口上生效。</p>
+</li>
+<li><p>loop-protection：只在根端口或Alternate端口上有效。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Config-digest-snoop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><div class="p">端口是否使能配置摘要监听功能。此行信息仅在配置了<a href="stp_config-digest-snoop.html">stp config-digest-snoop</a>命令，使能端口上的配置摘要监听功能后显示。如果端口上没有使能该功能，则不显示。<ul>
+<li><p>snooped=false：对端设备报文的配置摘要与本设备报文的配置摘要相同。</p>
+</li>
+<li><p>snooped=true：对端设备报文的配置摘要与本设备报文的配置摘要不同。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>Port Protocol Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><div class="p">端口收发报文的格式。可以为：<ul>
+<li><p>auto</p>
+</li>
+<li><p>legacy</p>
+</li>
+<li><p>dot1s</p>
+</li>
+</ul>
+缺省值为auto。Config表示通过<a href="stp_compliance.html">stp compliance</a>命令配置的报文格式，Active表示实际的报文格式。</div>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>BPDU Sent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><div class="p">BPDU发送信息统计：<ul>
+<li><p>TCN：拓扑变化通知报文</p>
+</li>
+<li><p>Config：STP报文</p>
+</li>
+<li><p>RST：RSTP报文</p>
+</li>
+<li><p>MST：MSTP报文</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.322499370118415%" headers="d67804e453 "><p>BPDU Received</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.67750062988159%" headers="d67804e457 "><p>BPDU接收信息统计。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_stp__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_stp__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d67804e940"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d67804e944"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d67804e940 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d67804e944 "><p>命令增加通配符：[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mstp_configuration_commands.html">MSTP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_stp_statistics.html">reset stp statistics</a></div>
+<div><a href="stp.html">stp</a></div>
+<div><a href="stp_process.html">stp process</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

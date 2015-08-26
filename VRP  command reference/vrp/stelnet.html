@@ -1,0 +1,123 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="stelnet">
+<meta name="DC.Relation" scheme="URI" content="../vrp/telnet_and_ssh_commands.html">
+<meta name="DC.Relation" scheme="URI" content="stelnet_server_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="stelnet">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>stelnet</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="stelnet"></a><a name="stelnet"></a>
+
+
+<h1 class="topictitle1">stelnet</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>stelnet</strong>命令用来连接SSH服务器，连接成功后可对服务器执行相应的操作。</p>
+<p>缺省情况，该命令只指定IPv4或IPv6主机名，不指定其他可选项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>stelnet </strong>{ [ <strong>-a </strong><em>source-address</em> ] <em>host-ipv4</em> [ <em>port</em> ] [ <strong>prefer_kex</strong> { <strong>dh_group1</strong> | <strong>dh_exchange_group </strong>} ] [ <strong>prefer_ctos_cipher</strong> { <strong>des</strong> | <strong>3des</strong> | <strong>aes128</strong> } ] [ <strong>prefer_stoc_cipher</strong> { <strong>des</strong> | <strong>3des</strong> | <strong>aes128</strong> } ] [ <strong>prefer_ctos_hmac</strong> { <strong>sha1</strong> | <strong>sha1_96</strong> | <strong>md5</strong> | <strong>md5_96</strong> } ] [ <strong>prefer_stoc_hmac </strong>{<strong> sha1</strong> | <strong>sha1_96</strong> | <strong>md5</strong> | <strong>md5_96</strong> } ] [ <strong>-vpn-instance</strong> <em>vpn-instance-name </em>]</p>
+<p><strong>stelnet ipv6 </strong>[<strong> -a</strong> <em>source-address</em> ] <em>host-ipv6</em> [ <strong>-i</strong> <em>interface-type</em>  <em>interface-number</em> ] } [ <em>port</em> ] [ <strong>prefer_kex</strong> { <strong>dh_group1</strong> | <strong>dh_exchange_group </strong>} ] [ <strong>prefer_ctos_cipher</strong> { <strong>des</strong> | <strong>3des</strong> | <strong>aes128</strong> } ] [ <strong>prefer_stoc_cipher</strong> { <strong>des</strong> | <strong>3des</strong> | <strong>aes128</strong> } ] [ <strong>prefer_ctos_hmac</strong> { <strong>sha1</strong> | <strong>sha1_96</strong> | <strong>md5</strong> | <strong>md5_96</strong> } ] [ <strong>prefer_stoc_hmac </strong>{<strong> sha1</strong> | <strong>sha1_96</strong> | <strong>md5</strong> | <strong>md5_96</strong> }]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>source-address</em>：表示指定STelnet的源地址。</p>
+<p><em>host-ipv4</em>：远程系统的IP地址或主机名，字符串形式，长度范围为1～20。</p>
+<p><em>host-ipv6</em>：远程系统的IPv6地址或主机名，字符串形式，长度范围为1～46。</p>
+<p><em>interface-type</em> <em>interface-number</em>：只有<em>host-ipv6</em>是链路本地型的IPv6地址时，必须指定该链路本地地址所对应的接口名，其他类型的IPv6地址无需指定出接口名。</p>
+<p><em>port</em>：SSH服务器正在监听的端口号，整数形式，取值范围是22或1025～55535。默认值是协议标准端口号22。</p>
+<p><strong>prefer_kex</strong>：密钥交换首选算法，目前支持dh-group1和dh-exchange-group两种算法，缺省算法为dh-group1。</p>
+<p><strong>prefer_ctos_cipher</strong>：客户端到服务器端的首选加密算法，目前支持des、3des和aes128三种加密算法，缺省算法为aes128。</p>
+<p><strong>prefer_stoc_cipher</strong>：服务器端到客户端的首选加密算法，目前支持des、3des和aes128三种加密算法，缺省算法为aes128。</p>
+<p><strong>prefer_ctos_hmac</strong>：客户端到服务器端的首选HMAC算法，目前支持sha1、sha1-96、md5、md5-96四种HMAC算法，缺省算法为sha1-96。</p>
+<p><strong>prefer_stoc_hmac</strong>：服务器端到客户端的首选HMAC算法，目前支持sha1、sha1-96、md5、md5-96四种HMAC算法，缺省算法为sha1-96。</p>
+<p><strong>-vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例名。字符串形式，长度范围是1～<span>31</span>个字符。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>stelnet</strong>命令连接SSH服务器之前，SSH服务器端的STelnet服务必须使能。</p>
+<p>只有当服务器正在监听的端口号是22时，SSH客户端登录时可以不指定端口号，否则如果是其他监听端口号，SSH客户端登录时必须指定端口号。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="stelnet__d121224e269"></a><a name="d121224e269"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># SSH服务器名是IPv6的链路本地型地址，必须指定出接口，且STelnet客户端选择加密算法、HMAC算法及交换算法。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> stelnet ipv6 fe80::100 -i Ethernet 2/2/0 perfer_ctos_cipher 3des perfer_stoc_cipher des perfer_ctos_hmac md5_96 perfer_stoc_hmac md5_96 perfer_kex dh_exchange_group</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="stelnet__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="stelnet__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d121224e292"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d121224e296"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d121224e292 "><p>VRPV500R005C02B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d121224e296 "><p>参数<strong>vpn-instance</strong> 修改为 <strong>-vpn-instance</strong>。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d121224e292 "><p>VRPV500R006C01B035</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d121224e296 "><p>将参数<em>vpn-instance-name</em>的长度范围修改成1～31。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/telnet_and_ssh_commands.html">Telnet及SSH命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="stelnet_server_enable.html">stelnet server enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,145 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ip pool">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aaa_and_user_management_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ip_pool">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ip pool</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ip_pool"></a><a name="display_ip_pool"></a>
+
+
+<h1 class="topictitle1">display ip pool</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ip pool</strong>命令主要用来查看地址池中地址的配置和使用情况。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ip pool </strong>{ <strong>global</strong> | <strong>domain </strong><em>domain-name </em>}</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>global</strong>：全局下的地址池。</p>
+<p><em>domain-name</em>：显示指定域下的地址池。字符串新式，长度范围是1～20，不区分大小写。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果参数为<strong>global</strong>，则显示在AAA视图下的址址池的情况，AAA视图下的地址池是为default域的用户以及不认证的用户分配地址使用的。</p>
+<p>如果参数为<strong>domain</strong> <em>domain-name</em>则显示该域下的地址池的配置和使用情况，一个PPP用户如果通过了认证并且不在default域下，则使用相应域下的地址池。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ip_pool__d31666e63"></a><a name="d31666e63"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看全局下的地址池使用情况。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip pool global</strong></pre>
+<pre class="screen">------------------------------------------------------------------ </pre>
+<pre class="screen">Pool-number Pool-start-addr Pool-end-addr Pool-length  Used-addr-number</pre>
+<pre class="screen">-------------------------------------------------------------------- </pre>
+<pre class="screen">0           190.1.1.2        190.1.1.100     99              0             </pre>
+<pre class="screen">--------------------------------------------------------------------</pre>
+<pre class="screen"> Total pool number:    1  </pre>
+<p># 查看域huawei下的地址池使用情况。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip pool domain huawei</strong></pre>
+<pre class="screen">------------------------------------------------------------------</pre>
+<pre class="screen">Pool-number Pool-start-addr Pool-end-addr Pool-length  Used-addr-number </pre>
+<pre class="screen">-------------------------------------------------------------------- </pre>
+<pre class="screen">1        180.1.10.1        180.1.13.254        1022           1           </pre>
+<pre class="screen">2        180.1.14.1        180.1.16.254        766            0                       </pre>
+<pre class="screen">--------------------------------------------------------------------</pre>
+<pre class="screen"> Total pool number:    2</pre>
+
+<div class="tablenoborder"><a name="display_ip_pool__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_pool__tb_01" frame="border" border="1" rules="all"><caption>表1 display ip pool命令显示信息说明</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.5930964978584%" id="d31666e115"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.4069035021416%" id="d31666e119"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d31666e115 "><p>Pool-number  </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d31666e119 "><p>地址池编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d31666e115 "><p>Pool-start-addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d31666e119 "><p>地址池起始地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d31666e115 "><p>Pool-end-addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d31666e119 "><p>地址池结束地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d31666e115 "><p>Pool-length  </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d31666e119 "><p>地址池中包含的地址数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d31666e115 "><p>Used-addr-number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d31666e119 "><p>地址池中被使用的地址数量</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/aaa_and_user_management_configuration_commands.html">AAA及用户管理配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

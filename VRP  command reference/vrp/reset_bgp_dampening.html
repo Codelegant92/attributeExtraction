@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset bgp dampening">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="dampening_bgp.html">
+<meta name="DC.Relation" scheme="URI" content="display_bgp_routing-table_dampened.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_bgp_dampening">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset bgp dampening</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_bgp_dampening"></a><a name="reset_bgp_dampening"></a>
+
+
+<h1 class="topictitle1">reset bgp dampening</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset bgp dampening</strong>命令用来清除路由的衰减信息并释放被抑制的路由。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset bgp</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>dampening</strong> [ <em>ipv4-address</em> [ <em>mask</em> | <em>mask-length</em> ] ]</p>
+<p><strong>reset bgp</strong> { <strong>ipv6</strong> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> } <strong>dampening</strong> [ <em>ipv6-address</em> <em>prefix-length</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：清除指定VPN实例的路由衰减信息。</p>
+<p><em>ipv4-address</em>：指定IPv4网络地址。</p>
+<p><em>mask</em> | <em>mask-length</em>：指定网络掩码（点分十进制形式）或掩码长度。如果没有指定掩码，则按有类地址处理。</p>
+<p><strong>ipv6</strong>：清除IPv6路由的衰减信息并释放被抑制的路由。</p>
+<p><em>ipv6-address</em>：要清除衰减信息的网络IPv6地址。</p>
+<p><em>prefix-length</em>：IPv6前缀的长度，是十进制数字，指定地址中有多少连续的位组成前缀，即地址中的网络地址部分。</p>
+<p><strong>vpn6-instance dampening</strong>：清除BGP IPv6 VPN对等体连接的BGP路由衰减信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>不指定<em>ipv6-address prefix-length</em>时，执行命令<strong>reset bgp</strong> { <strong>ipv6</strong> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> }<strong> dampening</strong>将清除整个BGP路由表中的IPv6路由衰减信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_bgp_dampening__d111533e128"></a><a name="d111533e128"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 清除20.1.0.0网段路由的衰减信息并释放被抑制的路由。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset bgp dampening 20.1.0.0 255.255.0.0</strong></pre>
+<p># 清除到2345::0的路由衰减信息并释放被抑制的路由。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset bgp ipv6 dampening 2345:: 64</strong></pre>
+<p># 清除VPNv6实例1的路由衰减信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset bgp vpn6-instance 1 dampening</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="dampening_bgp.html">dampening</a></div>
+<div><a href="display_bgp_routing-table_dampened.html">display bgp routing-table dampened</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

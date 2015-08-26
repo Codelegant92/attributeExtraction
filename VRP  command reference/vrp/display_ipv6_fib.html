@@ -1,0 +1,217 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ipv6 fib">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ipv6_fib">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ipv6 fib</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ipv6_fib"></a><a name="display_ipv6_fib"></a>
+
+
+<h1 class="topictitle1">display ipv6 fib</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ipv6 fib</strong>命令用来查看路由设备的FIB（Forwarding Information Base）表项。</p>
+<p><span>在分布式环境中，</span>可以通过指定槽位号来显示主控板或特定接口板上的FIB表项。</p>
+<p>缺省情况下，仅显示主控板的FIB表项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p>在NE40、NE80、NE40E、NE80E、NE5000E上，该命令格式如下：</p>
+<p><strong>display ipv6 fib</strong> [ [ <strong>spt</strong> <em>slot-id</em> | <em>slot-id</em> ] [ <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> ] ] [ <strong>|</strong> { <strong>begin </strong>| <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+<p>在其他设备上，该命令格式如下：</p>
+<p><strong>display ipv6 fib</strong> [ <em>slot-id</em> ] [ <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> ] [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>spt</strong>：查看下一跳的信息。</p>
+<p><em>slot-id</em>：指定槽位号<span>，仅在分布式环境中可见</span>。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：IPv6 VPN实例的名称，用来查看指定IPv6 VPN实例的FIB表项。字符串形式，区分大小写，长度范围是1～31。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：指定对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ipv6_fib__d33591e142"></a><a name="d33591e142"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示主控板上的全部FIB表项。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ipv6 fib</strong></pre>
+<pre class="screen"> FIB Table:                                                                     
+ Total number of Routes : 4                                                     
+                                                                                
+Destination:    ::1                                     PrefixLength : 128      
+NextHop    :    ::1                                     Flag         : HU       
+Label      :    NULL                                    Tunnel ID    : 0        
+TimeStamp  :    Date- 14:8:2008, Time- 14:41:26         reference    : 1        
+Interface  :    InLoopBack0                                                     
+IP6Token   :    0x0                                                             
+                                                                                
+Destination:    FE80::                                  PrefixLength : 10       
+NextHop    :    ::                                      Flag         : BU       
+Label      :    NULL                                    Tunnel ID    : 0        
+TimeStamp  :    Date- 14:8:2008, Time- 14:44:34         reference    : 1        
+Interface  :    NULL0                                                           
+IP6Token   :    0x0                                                             
+                                                                                
+Destination:    2001::2                                 PrefixLength : 128      
+NextHop    :    ::1                                     Flag         : HU       
+Label      :    NULL                                    Tunnel ID    : 0        
+TimeStamp  :    Date- 14:8:2008, Time- 14:44:36         reference    : 1        
+Interface  :    InLoopBack0                                                     
+IP6Token   :    0x0                                                             
+                                                                                
+Destination:    2001::                                  PrefixLength : 64       
+NextHop    :    2001::2                                 Flag         : U        
+Label      :    NULL                                    Tunnel ID    : 0        
+TimeStamp  :    Date- 14:8:2008, Time- 14:44:36         reference    : 1        
+Interface  :    Ethernet6/0/0                                                   
+IP6Token   :    0x0                                                             
+                                                                                </pre>
+
+<div class="tablenoborder"><a name="display_ipv6_fib__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_fib__tb_01" frame="border" border="1" rules="all"><caption>表1 display ipv6 fib命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="24.16225749559083%" id="d33591e164"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="75.83774250440918%" id="d33591e168"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="24.16225749559083%" headers="d33591e164 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.83774250440918%" headers="d33591e168 "><p>路由目的地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.16225749559083%" headers="d33591e164 "><p>PrefixLength</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.83774250440918%" headers="d33591e168 "><p>发送到目的地址的前缀长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.16225749559083%" headers="d33591e164 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.83774250440918%" headers="d33591e168 "><p>向目的地址转发报文的下一跳路由设备</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.16225749559083%" headers="d33591e164 "><p>Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.83774250440918%" headers="d33591e168 "><p>使用S/U/G/H/B/D来描述路由特征，例如S- Static，U- Up，G-Gateway，H-Host，B-BlackHole和D-Dynamic</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.16225749559083%" headers="d33591e164 "><p>Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.83774250440918%" headers="d33591e168 "><p>标签值。如果数据到下一跳需通过MPLS转发，应携带标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.16225749559083%" headers="d33591e164 "><p>Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.83774250440918%" headers="d33591e168 "><p>隧道标识符。如果报文到下一跳需通过MPLS转发，其Tunnel ID不为0。如果报文通过IP转发，其Tunnel ID为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.16225749559083%" headers="d33591e164 "><p>TimeStamp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.83774250440918%" headers="d33591e168 "><p>FIB中生成路由的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.16225749559083%" headers="d33591e164 "><p>reference</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.83774250440918%" headers="d33591e168 "><p>用于FIB6消息合并或FIB6老化</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.16225749559083%" headers="d33591e164 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.83774250440918%" headers="d33591e168 "><p>转发报文的出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.16225749559083%" headers="d33591e164 "><p>IP6Token</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.83774250440918%" headers="d33591e168 "><p>当路由为Gateway路由时，系统为适配模块分配的ND表项的索引。</p>
+<p>当路由为非Gateway路由时，该字段取值为0。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_basic_configuration_commands.html">IPv6基础配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

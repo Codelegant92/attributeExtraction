@@ -1,0 +1,609 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display vsi">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_vsi_remote.html">
+<meta name="DC.Relation" scheme="URI" content="vsi.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_vsi">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display vsi</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_vsi"></a><a name="display_vsi"></a>
+
+
+<h1 class="topictitle1">display vsi</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display vsi</strong>命令用于显示VSI实例的信息。缺省参数的情况下，将显示所有VSI实例的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display vsi</strong> [ <strong>name</strong> <em>vsi-name</em> ] [ <strong>verbose</strong> ]<span> [<strong> | count</strong> ] </span><span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>name</strong> <em>vsi-name</em>：要显示的VSI实例的名称。字符串形式，不支持空格，区分大小写，取值范围是1～31。</p>
+<p><strong>verbose</strong>：显示VSI实例的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display vsi</strong>命令时，</p>
+<ul>
+<li><p>如果指定参数<em>vsi-name</em>，则显示特定VSI实例信息。</p>
+</li>
+<li><p>如果未指定参数<em>vsi-name</em>，则显示所有VSI实例信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_vsi__d72996e121"></a><a name="d72996e121"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示名称为company1的VSI实例的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vsi name company1</strong></pre>
+<pre class="screen">Vsi                             Mem    PW   Mac       Encap     Mtu   Vsi</pre>
+<pre class="screen">Name                            Disc   Type Learn     Type      Value State</pre>
+<pre class="screen">company1                       auto   bgp  unqualify vlan      1500  up</pre>
+
+<div class="tablenoborder"><a name="display_vsi__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vsi__tb_01" frame="border" border="1" rules="all"><caption>表1 display vsi命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.76820357772739%" id="d72996e147"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.23179642227262%" id="d72996e151"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d72996e147 "><p>Vsi Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d72996e151 "><p>VSI名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d72996e147 "><p>Mem Disc</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d72996e151 "><p>成员发现方式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d72996e147 "><p>PW Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d72996e151 "><p>PW的类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d72996e147 "><p>Mac Learn</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d72996e151 "><p>MAC地址的学习方式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d72996e147 "><p>Encap Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d72996e151 "><p>封装方式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d72996e147 "><p>Mtu Value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d72996e151 "><p>最大传输单元</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d72996e147 "><p>Vsi State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d72996e151 "><p>VSI的状态</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示所有VSI实例的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display vsi verbose</strong></pre>
+<pre class="screen">***VSI Name               : ldpvsi
+    Administrator VSI      : no
+    Isolate Spoken         : disable
+    VSI Index              : 0
+    PW Signaling           : ldp
+    Member Discovery Style : static
+    PW MAC Learn Style     : unqualify
+    Encapsulation Type     : vlan
+    MTU                    : 1500
+    Diffserv Mode          : uniform
+    Service Class          : --
+    Color                  : --
+    DomainId               : 255
+    Domain Name            :
+    Create Time            : 0 days, 3 hours, 30 minutes, 31 seconds
+    VSI State              : up
+
+    VSI ID                 : 10
+   *Peer Router ID         : 2.2.2.2
+    VC Label               : 23552
+    Peer Type              : dynamic
+    Session                : up
+    Tunnel ID              : 0x10002000
+
+    Interface Name         : Ethernet2/0/1.1
+    State                  : up
+    Last Up Time           : 2008/08/15 15:41:59
+    Total Up Time          : 0 days, 0 hours, 1 minutes, 2 seconds
+
+   **PW Information:
+
+   *Peer Ip Address        : 2.2.2.2
+    PW State               : up
+    Local VC Label         : 23552
+    Remote VC Label        : 23552
+    PW Type                : label
+    Tunnel ID              : 0x10002000
+</pre>
+<pre class="screen">    FIB Link-ID            : 1</pre>
+<pre class="screen">    PW Last Up Time        : 2008/08/15 15:41:59
+    PW Total Up Time       : 0 days, 0 hours, 1 minutes, 3 seconds</pre>
+
+<div class="tablenoborder"><a name="display_vsi__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vsi__tb_02" frame="border" border="1" rules="all"><caption>表2 display vsi verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.86898463088939%" id="d72996e263"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.1310153691106%" id="d72996e267"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>VSI Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>VSI名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>VSI Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>VSI的索引值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>PW Signaling</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>PW的信令类型。分为LDP和BGP两种方式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Member Discovery Style</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>成员发现方式。分为动态发现和静态发现两种方式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>PW MAC Learn Style</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>PW的MAC地址学习方式。分为unqualify和qualify两种方式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Encapsulation Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>VSI的封装形式，即报文在VC上的封装形式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>最大传输单元。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Create Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>VSI的创建时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>VSI State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>VSI的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>BGP RD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>即Route Distinguisher，在以BGP为信令的VPLS中用来标识PE上的一个VSI实例，是本端设备的标志符。此信息只有配置了Kompella方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>SiteID/Range/Offset</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>本端设备上VSI实例的Site ID、VSI实例中的标签范围（Site的个数）和初始Site
+ID的偏差值。此信息只有配置了Kompella方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Import vpn target</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>来自目的VPN的入方向扩展团体属性。此信息只有配置了Kompella方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Export vpn target</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>到目的VPN的出方向扩展团体属性。此信息只有配置了Kompella方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Remote Label Block</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>远端标签块的起始值、标签范围和初始Site ID的偏差值。此信息只有配置了Kompella方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Local Label Block</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>本端标签块的起始值、标签范围和初始Site ID的偏差值。此信息只有配置了Kompella方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>VSI ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>VSI实例的ID。此信息只有配置了Martini方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Peer Router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>对端设备的ID。此信息只有配置了Martini方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>VC所使用的标签值。此信息只有配置了Martini方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Peer Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>对端的PW类型，分为动态和静态两种。此信息只有配置了Martini方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>本端与对端的会话的状态。分为Up和Down两种状态。此信息只有配置了Martini方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>Tunnel的ID。此信息只有配置了Martini方式的VPLS时，才会显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Interface Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>绑定了该VSI实例的接口名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>与VSI绑定的AC当前状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Last Up Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>AC接口最后一次UP的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Total Up Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>AC接口UP的总时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>PW Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>PW相关的信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Peer Ip Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>对等体的IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>PW State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>PW的当前状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Local VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>本地分发的VC标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Remote VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>对等体分发的VC标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>PW Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>伪线的类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>隧道标志符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>PW Last Up Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>PW最后一次UP的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>PW Total Up Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>PW UP的总时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d72996e263 "><p>FIB Link-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d72996e267 "><p>PW对应的FIB Link-ID</p>
+<p>该值非0，表示FIB表项创建成功，该值为0，表示FIB表项创建失败</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="31%" id="d72996e676"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69%" id="d72996e680"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="31%" headers="d72996e676 "><p>VRPV500R005C05B041</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69%" headers="d72996e680 "><div class="p"><ul>
+<li>增加显示AC接口Up的时间信息：Last Up Time和Total Up Time</li>
+<li>增加显示PWUp的时间信息：PW Last Up Time和PW Total Up Time</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31%" headers="d72996e676 "><p>VRPV500R005C02B630</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69%" headers="d72996e680 "><p>增加显示VSI创建时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31%" headers="d72996e676 "><p>V500R006C01B02A</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69%" headers="d72996e680 "><p>增加FIB Link-ID字段</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31%" headers="d72996e676 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69%" headers="d72996e680 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_vsi_remote.html">display vsi remote</a></div>
+<div><a href="vsi.html">vsi</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

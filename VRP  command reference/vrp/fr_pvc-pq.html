@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="fr pvc-pq">
+<meta name="DC.Relation" scheme="URI" content="../vrp/fr_qos_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pvc-pq.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="fr_pvc-pq">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>fr pvc-pq</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="fr_pvc-pq"></a><a name="fr_pvc-pq"></a>
+
+
+
+<h1 class="topictitle1">fr pvc-pq</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>fr pvc-pq</strong>命令用来将帧中继接口的队列类型设置为PVC PQ（PVC Priority Queueing，虚电路优先级队列），并可以为各队列设置长度，即队列最多能容纳的报文个数。</p>
+<p><strong>undo
+fr pvc-pq</strong>命令用来将接口的队列类型恢复为FIFO。</p>
+<p>缺省情况下，帧中继接口的队列类型为FIFO。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>fr pvc-pq </strong>[ <em>top-limit middle-limit normal-limit bottom-limit</em><strong> </strong> ]</p>
+<p><strong>undo
+fr pvc-pq</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>top-limit</em>：高优先队列的队列长度，取值范围是1～1024，缺省值为20。</p>
+<p><em>middle-limit</em>：中优先队列的队列长度，取值范围是1～1024，缺省值为40。</p>
+<p><em>normal-limit</em>：正常优先队列的队列长度，取值范围是1～1024，缺省值为60。</p>
+<p><em>bottom-limit</em>：低优先队列的队列长度，取值范围是1～1024，缺省值为80。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>帧中继接口视图、MFR接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在执行<strong>fr pvc-pq</strong>命令前必须先执行<strong>fr traffic-shaping</strong>命令使能接口的帧中继流量整形功能。</p>
+<p>当接口使能了帧中继流量整形之后，接口队列类型只能为FIFO或者PVC
+PQ。</p>
+<p>PVC PQ是FRTS新增的一种队列机制，它类似于PQ队列，也有四种队列类型：top、middle、normal、bottom，队列优先级依次降低。在帧中继class中配置DLCI进入PVC
+PQ的哪个队列。当接口发生拥塞时，不同DLCI入不同的PVC PQ队列。发送时，按照队列优先级，在优先级高的队列发送完毕后，再发送低优先级队列中的报文。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="fr_pvc-pq__d77513e76"></a><a name="d77513e76"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置接口Serial 2/0/0的队列类型为PVC PQ。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial2/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial2/0/0]<strong> fr pvc-pq</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/fr_qos_configuration_commands.html">帧中继QoS命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pvc-pq.html">pvc-pq</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

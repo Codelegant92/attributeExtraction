@@ -1,0 +1,92 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ipv6 route-static vpn6-instance">
+<meta name="DC.Relation" scheme="URI" content="../vrp/static_route_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipv6_route-static.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipv6_route-static_vpn6-instance">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ipv6 route-static vpn6-instance</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipv6_route-static_vpn6-instance"></a><a name="ipv6_route-static_vpn6-instance"></a>
+
+
+<h1 class="topictitle1">ipv6 route-static vpn6-instance</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ipv6 route-static vpn6-instance</strong>命令用来在VPN实例下配置IPv6静态路由。</p>
+<p><strong>undo ipv6 route-static vpn6-instance </strong>命令用来撤销VPN实例下的单播IPv6静态路由。</p>
+<p>缺省情况下，系统没有为VPN实例配置IPv6静态路由。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ipv6 route-static vpn6-instance</strong> <em>vpn6-instance-name dest-ipv6-address</em> <em>mask-length</em> [ <em>interface-type interface-number</em> ] <em>nexthop-ipv6-address</em> [ <strong>preference</strong> <em>value</em> ] [ <strong>tag</strong> <em>tag</em> ] [ <strong>description</strong> <em>text</em> ]</p>
+<p><strong>ipv6 route-static vpn6-instance</strong> <em>vpn6-instance-name dest-ipv6-address</em> <em>prefix-length nexthop-ipv6-address</em> [ <strong>public</strong> ] [ <strong>preference</strong> <em>preference</em> ] [ <strong>tag</strong> <em>tag</em> ] [ <strong>description</strong> <em>text</em> ]</p>
+<p><strong>ipv6 route-static vpn6-instance</strong> <em>vpn6-instance-name</em> <em>dest-ipv6-address</em> <em>prefix-length</em> <strong>vpn6-instance</strong> <em>vpn6-destination-name nexthop-ipv6-address</em> [ <strong>preference</strong> <em>preference</em> ] [ <strong>tag</strong> <em>tag</em> ] [ <strong>description</strong> <em>text</em> ]</p>
+<p><strong>undo ipv6 route-static vpn6-instance</strong> <em>vpn6-instance-name</em> <em>dest-ipv6-address</em> <em>prefix-length</em> [ <em>interface-type interface-number</em> [ <em>nexthop-ipv6-address</em> ] | <em>nexthop-ipv6-address</em> ] [ <strong>preference</strong> <em>preference</em> ] [ <strong>tag</strong> <em>tag</em> ]</p>
+<p><strong>undo ipv6 route-static vpn6-instance</strong> <em>vpn6-instance-name</em> <em>dest-ipv6-address</em> <em>prefix-length</em> [ <em>nexthop-ipv6-address</em> ] [ <strong>public</strong> ] [ <strong>preference</strong> <em>preference</em> ] [ <strong>tag</strong> <em>tag</em> ]</p>
+<p><strong>undo ipv6 route-static vpn6-instance</strong> <em>vpn6-instance-name</em> <em>dest-ipv6-address</em> <em>prefix-length</em> [ <strong>vpn6-instance</strong> <em>vpn6-destination-name</em> <em>nexthop-ipv6-addres</em> ] [ <strong>preference</strong> <em>preference</em> ] [ <strong>tag</strong> <em>tag</em> ]</p>
+<p><strong>undo ipv6 route-static vpn6-instance</strong> <em>vpn6-instance-name</em> <strong>all</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vpn6-instance-name</em>：IPv6 VPN实例名。每一个IPv6 VPN实例都有自己独立的单播路由表，配置的静态路由就会被加入到指定的IPv6 VPN实例的路由表中。</p>
+<p><em>dest-ipv6-address</em>：指定目的IPv6地址。</p>
+<p><em>prefix-length</em>：IPv6地址前缀的长度，即掩码中连续&#8220;1&#8221;的个数。&#8220;1&#8221;必须是连续的。</p>
+<p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口编号。</p>
+<p><em>nexthop-ipv6-address</em>：路由器的下一跳IPv6地址。</p>
+<p><em>vpn6-destination-name</em>：目的IPv6 VPN实例名。配置了目的IPv6 VPN实例名后，路由器可根据已设置的网关地址，在静态路由表中找出到目的IPv6 VPN实例的出接口。</p>
+<p><strong>public</strong>：指定网关是公网的地址。当某路由器上配置成属于某IPv6 VPN实例后，它的下一跳或下一跳网关路由器可以属于此IPv6
+VPN实例，也可以属于公网。命令中有关键字<strong>public</strong>，说明指定下一跳为公网路由器。</p>
+<p><em>preference</em>：路由优先级。整数形式，取值范围为1～255。</p>
+<p><strong>tag</strong> <em>tag</em>：指定静态路由的tag属性值。整数形式，取值范围是1～4294967295。缺省值是0。配置不同的<strong>tag</strong>属性值，可对静态路由进行分类，以实现不同的路由管理策略。例如，其它协议引入静态路由时，可通过路由策略引入具有特定tag属性值的路由。</p>
+<p><strong>description</strong> <em>text</em>：对静态路由的描述信息。字符串形式，允许空格，长度范围是1～19。</p>
+<p><strong>all</strong>：删除为指定IPv6 VPN实例配置的所有路由。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当IPv6 VPN网络结构比较简单，可以使用<strong>ipv6 route-static vpn6-instance</strong>命令为该VPN配置静态路由。巧妙的设置和使用静态路由可以改进网络的性能。但当网络发生故障或者拓扑发生变化后，静态路由不会自动改变，因此请谨慎配置静态路由。</p>
+<p>目前的VRP版本中，配置VPN用户访问公网时，除了使用NAT外，还可以使用带关键字<strong>public</strong>的<strong>ipv6 route-static vpn6-instance</strong>命令来配置下一跳是公网的VPN路由。</p>
+<p>如果将目的地址与掩码都配置为全0，则表示配置的是缺省路由。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ipv6_route-static_vpn6-instance__d86533e321"></a><a name="d86533e321"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置一条缺省路由，它的下一跳为2001::1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ipv6 route-static vpn6-instance vpn1 :: 0 2001::1</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/static_route_configuration_commands.html">静态路由配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipv6_route-static.html">ipv6 route-static</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

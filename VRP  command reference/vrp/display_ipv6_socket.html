@@ -1,0 +1,268 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ipv6 socket">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ipv6_socket">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ipv6 socket</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ipv6_socket"></a><a name="display_ipv6_socket"></a>
+
+
+<h1 class="topictitle1">display ipv6 socket</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ipv6 socket</strong>命令用来查看指定套接字类型、套接字号和对应任务ID的套接字相关信息，包括：</p>
+<ul>
+<li><p>发送缓冲区</p>
+</li>
+<li><p>接收缓冲区</p>
+</li>
+<li><p>为特定套接字设置的套接字选项</p>
+</li>
+<li><p>套接字对</p>
+</li>
+</ul>
+<p>如果不指定可选参数，该命令显示所有类型的Socket信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ipv6 socket</strong> [ <strong>socktype </strong><em>socket-type </em>] [ <em>task-id</em> <em>socket-id </em>]</p>
+<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>socktype</strong> <em>socktype-value</em>：指定需要显示的Socket类型。整数形式，取值范围是1～3。</p>
+<p>取值意义是：</p>
+<ul>
+<li><p>1：表示SOCK_STREAM，对应于TCP流式性质的Socket。</p>
+</li>
+<li><p>2：表示SOCK_DGRAM，对应于UDP报文性质的Socket。</p>
+</li>
+<li><p>3：表示SOCK_RAW，对应于RAWIP性质的Socket。</p>
+</li>
+</ul>
+<p><em>task-id</em>：指定需要查的任务ID。整数形式，取值范围是1～200。</p>
+<p><em>socket-id</em>：指定需要查看的套接字ID。整数形式，取值范围是1～14848。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>用户可以通过这个命令查看当前所有或单一性质类型的Socket的详细信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ipv6_socket__d34730e144"></a><a name="d34730e144"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定套接字类型、套接字号和对应任务ID的套接字相关信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ipv6 socket</strong></pre>
+<pre class="screen">SOCK_STREAM:</pre>
+<pre class="screen">Task = VTYD(14), socketid = 4, Proto = 6,</pre>
+<pre class="screen">LA = ::-&gt;22, FA = ::-&gt;0,</pre>
+<pre class="screen">sndbuf = 8192, rcvbuf = 8192, sb_cc = 0, rb_cc = 0,</pre>
+<pre class="screen">socket option = SO_ACCEPTCONN SO_REUSEPORT SO_SENDVPNID,</pre>
+<pre class="screen">socket state = SS_PRIV SS_ASYNC</pre>
+
+<pre class="screen">Task = VTYD(14), socketid = 3, Proto = 6,</pre>
+<pre class="screen">LA = ::-&gt;23, FA = ::-&gt;0,</pre>
+<pre class="screen">sndbuf = 8192, rcvbuf = 8192, sb_cc = 0, rb_cc = 0,</pre>
+<pre class="screen">socket option = SO_ACCEPTCONN SO_REUSEPORT SO_SENDVPNID,</pre>
+<pre class="screen">socket state = SS_PRIV SS_ASYNC</pre>
+
+<pre class="screen">SOCK_DGRAM:</pre>
+<pre class="screen">SOCK_RAW:</pre>
+<p># 查看套接字类型为1的套接字相关信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ipv6 socket socktype 1</strong></pre>
+<pre class="screen">SOCK_STREAM:</pre>
+<pre class="screen">Task = VTYD(14), socketid = 4, Proto = 6,</pre>
+<pre class="screen">LA = ::-&gt;22, FA = ::-&gt;0,</pre>
+<pre class="screen">sndbuf = 8192, rcvbuf = 8192, sb_cc = 0, rb_cc = 0,</pre>
+<pre class="screen">socket option = SO_ACCEPTCONN SO_REUSEPORT SO_SENDVPNID,</pre>
+<pre class="screen">socket state = SS_PRIV SS_ASYNC</pre>
+
+<pre class="screen">Task = VTYD(14), socketid = 3, Proto = 6,</pre>
+<pre class="screen">LA = ::-&gt;23, FA = ::-&gt;0,</pre>
+<pre class="screen">sndbuf = 8192, rcvbuf = 8192, sb_cc = 0, rb_cc = 0,</pre>
+<pre class="screen">socket option = SO_ACCEPTCONN SO_REUSEPORT SO_SENDVPNID,</pre>
+<pre class="screen">socket state = SS_PRIV SS_ASYNC</pre>
+
+<div class="tablenoborder"><a name="display_ipv6_socket__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_socket__tb_01" frame="border" border="1" rules="all"><caption>表1 display ipv6 socket命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.24288233812043%" id="d34730e221"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.757117661879576%" id="d34730e225"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d34730e221 "><p>SOCK_STREAM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d34730e225 "><div class="p">Socket类型的一种。Socket主要包括以下几种类型：<ul>
+<li><p>SOCK_STREAM</p>
+</li>
+<li><p>SOCK_DGRAM</p>
+</li>
+<li><p>SOCK_RAW</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d34730e221 "><p>Task = VTYD(14)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d34730e225 "><p>调用Socket的任务类型和任务ID。如任务VTYD调用了Socket，该任务的ID是14。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d34730e221 "><p>socketid = 4</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d34730e225 "><p>Socket ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d34730e221 "><p>Proto = 6</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d34730e225 "><p>协议号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d34730e221 "><p>LA = ::-&gt;22, FA = ::-&gt;0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d34730e225 "><div class="p"><ul>
+<li><p>LA：本端地址与本端端口号</p>
+</li>
+<li><p>FA：远端地址与远端端口号</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d34730e221 "><p>sndbuf = 8192, rcvbuf = 8192, sb_cc = 0, rb_cc = 0,</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d34730e225 "><div class="p"><ul>
+<li><p>sndbuf：发送缓存的上限</p>
+</li>
+<li><p>rcvbuf：接收缓存的上限</p>
+</li>
+<li><p>sb_cc：实际发送的数据量</p>
+</li>
+<li><p>rb_cc：实际接收的数据量</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d34730e221 "><p>socket option</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d34730e225 "><p>显示当前已被置位的Socket选项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.24288233812043%" headers="d34730e221 "><p>socket state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.757117661879576%" headers="d34730e225 "><p>Socket的状态。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ipv6_socket__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_socket__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d34730e375"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d34730e379"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d34730e375 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d34730e379 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_basic_configuration_commands.html">IPv6基础配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

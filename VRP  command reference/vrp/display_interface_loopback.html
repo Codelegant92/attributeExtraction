@@ -1,0 +1,212 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface loopback">
+<meta name="DC.Relation" scheme="URI" content="../vrp/virtual_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="interface_loopback.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface_loopback">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface loopback</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface_loopback"></a><a name="display_interface_loopback"></a>
+
+
+<h1 class="topictitle1">display interface loopback</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display interface looback</strong>命令用来查看Loopback接口的状态信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display interface loopback</strong> [ <em>number</em> ] [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>number</em>：Loopback接口的编号，取值范围是0～1023。如果不指定接口编号，将显示所有已创建的Loopback接口的状态。</p>
+<p><strong>|</strong>：使用正则表达式过滤输出的显示信息。</p>
+<p><strong>begin</strong>：显示以包含指定正则表达式的行开始的配置信息。</p>
+<p><strong>exclude</strong>：显示不包含指定正则表达式的行的配置信息。</p>
+<p><strong>include</strong>：显示包含指定正则表达式的行的配置信息。</p>
+<p><em>regular-expression</em>：正则表达式。字符串形式，支持空格，区分大小写。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface_loopback__d29208e78"></a><a name="d29208e78"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定Loopback接口的状态。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display interface loopback 6</strong></pre>
+<pre class="screen">LoopBack6 current state : UP</pre>
+<pre class="screen">Line protocol current state :UP (spoofing)</pre>
+<pre class="screen">Description : HUAWEI, Quidway Series, LoopBack6 Interface</pre>
+<pre class="screen"><span>Route Port,The Maximum Transmit Unit is 1500</span></pre>
+<pre class="screen">Internet Address is 10.10.1.1/24</pre>
+<pre class="screen">Physical is Loopback</pre>
+<pre class="screen">Statistics last cleared: never</pre>
+<pre class="screen">    Last 300 seconds input rate 0 bits/sec, 0 packets/sec
+    Last 300 seconds output rate 0 bits/sec, 0 packets/sec
+    Input: 0 packets,0 bytes,
+           0 unicast,0 broadcast,0 multicast
+           0 errors,0 drops,0 unknownprotocol
+    Output:0 packets,0 bytes,
+           0 unicast,0 broadcast,0 multicast
+           0 errors,0 drops</pre>
+
+<div class="tablenoborder"><a name="display_interface_loopback__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_loopback__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface loopback命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="39.59435626102293%" id="d29208e115"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="60.405643738977076%" id="d29208e119"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="39.59435626102293%" headers="d29208e115 "><p>LoopBack6 current state :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.405643738977076%" headers="d29208e119 "><p>Loopback接口当前的物理状态。Loopback接口创建成功后物理状态一直是Up。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.59435626102293%" headers="d29208e115 "><p>Line protocol current state : </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.405643738977076%" headers="d29208e119 "><p>显示该接口的链路协议状态。Loopback接口创建成功后链路协议状态一直是Up。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.59435626102293%" headers="d29208e115 "><p>Description : </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.405643738977076%" headers="d29208e119 "><p>对接口的说明，支持空格，区分大小写，最多可输入242个字符。该说明信息便于用户了解该接口的作用。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.59435626102293%" headers="d29208e115 "><p>The Maximum Transmit Unit is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.405643738977076%" headers="d29208e119 "><p>接口的最大传输单元（MTU），缺省值是1500字节。长度大于MTU的报文，将会被分片后再发送。如果设置了不准分片，会被丢弃。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.59435626102293%" headers="d29208e115 "><p>Internet Address is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.405643738977076%" headers="d29208e119 "><p>接口的IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.59435626102293%" headers="d29208e115 "><p>Physical is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.405643738977076%" headers="d29208e119 "><p>物理层链路信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.59435626102293%" headers="d29208e115 "><p>Statistics last cleared:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.405643738977076%" headers="d29208e119 "><p>上次清除本接口统计信息的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.59435626102293%" headers="d29208e115 "><p>Last 300 seconds input rate</p>
+<p>Last 300 seconds output rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.405643738977076%" headers="d29208e119 "><p>这一字段显示了在前5分钟内通过接口发送和接收的字节速率和报文速率。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_interface_loopback__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_loopback__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d29208e231"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d29208e235"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d29208e231 "><p>VRPV500R003C07B250</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d29208e235 "><p>增加显示上次清除本接口统计信息的时间。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/virtual_interface_configuration_commands.html">逻辑接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="interface_loopback.html">interface loopback</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

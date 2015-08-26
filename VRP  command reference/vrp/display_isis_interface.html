@@ -1,0 +1,433 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_interface"></a><a name="display_isis_interface"></a>
+
+
+<h1 class="topictitle1">display isis interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis interface</strong>命令用来查看使能了IS-IS的接口信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis interface</strong> [ [ <strong>verbose</strong> | <strong>traffic-eng</strong> ] <sup>*</sup> | <strong>tunnel</strong> ] [ <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>verbose</strong>：如果使用该参数，将显示接口的详细信息。</p>
+<p><strong>traffic-eng</strong>：显示IS-IS的流量控制信息。</p>
+<p><strong>tunnel</strong>：显示IS-IS的MPLS TE隧道信息。</p>
+<p><em>process-id</em>：IS-IS进程号。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：显示指定IPv4 VPN的IS-IS多实例进程的接口信息。<em>vpn-instance-name</em>为IPv4 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn-instance default</strong>：显示除IPv4 VPN实例外的所有IS-IS进程的接口信息，即所有的IPv6 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：显示指定IPv6 VPN的IS-IS多实例进程的接口信息。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn6-instance default</strong>：显示除IPv6 VPN实例外的所有IS-IS进程的接口信息，即所有的IPv4 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令所查看的接口相关信息，包括接口名、接口IP地址、接口链路状态等多种信息。使用参数<strong>verbose</strong>除显示上述所有信息外，还可显示接口的CSNP报文广播间隔、Hello报文广播间隔、宣告邻居失效前IS-IS没有收到的Hello报文的数目等与接口相关的IS-IS参数设置情况。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_interface__d35690e176"></a><a name="d35690e176"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看使能了IS-IS的接口信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis interface</strong></pre>
+<pre class="screen">                                                                                </pre>
+<pre class="screen">                       Interface information for ISIS(1)                        </pre>
+<pre class="screen">                       ---------------------------------                        </pre>
+<pre class="screen"> Interface       Id      IPV4.State          IPV6.State      MTU  Type  DIS     </pre>
+<pre class="screen"> GigabitEthernet3/0/1        001         Up                 Down         1497 L1/L2 No/No</pre>
+<p># 查看使能了IS-IS的广播网接口的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis interface verbose</strong></pre>
+<pre class="screen">
+                       Interface information for ISIS(1)</pre>
+<pre class="screen">                       ---------------------------------</pre>
+<pre class="screen"> Interface       Id      IPV4.State          IPV6.State      MTU  Type  DIS</pre>
+<pre class="screen"> GigabitEthernet3/0/1        001         Up                 Down         1497 L1/L2 No/No</pre>
+<pre class="screen">  Description                 : HUAWEI, Quidway Series, GigabitEthernet3/0/1 Interface</pre>
+<pre class="screen">  SNPA Address                : 00e0-fc7b-4720</pre>
+<pre class="screen">  IP Address                  : 123.1.1.1</pre>
+<pre class="screen">  IPV6 Link Local Address     :</pre>
+<pre class="screen">  IPV6 Global Address(es)     :</pre>
+<pre class="screen">  Csnp Timer Value            :  L1    10  L2    10</pre>
+<pre class="screen">  Hello Timer Value           :  L1    10  L2    10</pre>
+<pre class="screen">  DIS Hello Timer Value       :  L1     3  L2     3</pre>
+<pre class="screen">  Hello Multiplier Value      :  L1     3  L2     3</pre>
+<pre class="screen">  LSP-Throttle Timer          :  L12   50</pre>
+<pre class="screen">  Cost                        :  L1    10  L2    10</pre>
+<pre class="screen">  Ipv6 Cost                   :  L1    10  L2    10</pre>
+<pre class="screen">  Priority                    :  L1    64  L2    64</pre>
+<pre class="screen">  Retransmit Timer Value      :  L12    5</pre>
+<pre class="screen">  Bandwidth-Value             :  Low 100000000  High         0</pre>
+<pre class="screen">  Static Bfd                  :  NO</pre>
+<pre class="screen">  Dynamic Bfd                 :  NO</pre>
+<pre class="screen">  Fast-Sense Rpr              :  NO</pre>
+<p># 查看使能了IS-IS的P2P接口的详细信息。</p>
+<pre class="screen">
+                       Interface information for ISIS(1)
+                       ---------------------------------
+ Interface       Id      IPV4.State          IPV6.State      MTU  Type  DIS
+ Pos3/0/1        001         Up                 Down         1500 L1/L2 --
+  Description                 : HUAWEI, Quidway Series, Pos3/0/1 Interface
+  SNPA Address                : 0000-0000-0000
+  IP Address                  : 123.1.1.1
+  IPV6 Link Local Address     :
+  IPV6 Global Address(es)     :
+  Csnp Timer Value            :  L12   10          
+  Hello Timer Value           :  L1    10  L2    10
+  DIS Hello Timer Value       
+  Hello Multiplier Value      :        3
+  LSP-Throttle Timer          :  L12   50
+  Cost                        :  L1    10  L2    10
+  Retransmit Timer Value      :  L12    5
+  Bandwidth-Value             :  Low 100000000  High         0
+  Static Bfd                  :  NO
+  Dynamic Bfd                 :  NO
+  Fast-Sense Rpr              :  NO
+
+</pre>
+
+<div class="tablenoborder"><a name="display_isis_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis interface verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.19160170983154%" id="d35690e260"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.80839829016847%" id="d35690e264"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>使能了IS-IS的接口类型和接口号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>链路ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>IPV4.State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>IPv4链路状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>IPV6.State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>IPv6链路状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>MTU尺寸</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>IS-IS类型（level-1、level-2或level-1-2）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>DIS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>是否为DIS</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>SNPA Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>MAC地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>IP Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>接口主IPv4地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>IPV6 Link Local Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>IPv6链路本地地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Csnp Timer Value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>指定中间系统发送CSNP报文的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Hello Timer Value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>指定中间系统发送hello报文的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>DIS Hello Timer Value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>指定DIS发送Hello报文的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Hello Multiplier Value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>宣告邻居失效前IS-IS没有收到的Hello报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>LSP-Throttle Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>发送LSP的最小间隔时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>IPv4的接口开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Ipv6 Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>IPv6的接口开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Retransmit Timer Value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>LSP重传定时器值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Bandwidth-Value</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Static Bfd</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><div class="p">静态BFD的状态<ul>
+<li>NO：没有使能静态BFD</li>
+<li>YES：已经使能静态BFD</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Dynamic Bfd</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><div class="p">动态BFD的状态<ul>
+<li>NO：没有使能动态BFD</li>
+<li>YES：已经使能动态BFD</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d35690e260 "><p>Fast-Sense Rpr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d35690e264 "><p>是否使能RPR快速感知功能</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_interface__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.88032249937012%" id="d35690e555"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.11967750062988%" id="d35690e559"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.88032249937012%" headers="d35690e555 "><p>VRPV500R005C02B101</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.11967750062988%" headers="d35690e559 "><p>修改了显示信息，使用<strong>verbose</strong>参数时增加了Description字段。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.88032249937012%" headers="d35690e555 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.11967750062988%" headers="d35690e559 "><p>修改命令<strong>display isis interface traffic-eng verbose</strong>的显示信息，增加了DS-TE信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.88032249937012%" headers="d35690e555 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.11967750062988%" headers="d35690e559 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.88032249937012%" headers="d35690e555 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.11967750062988%" headers="d35690e559 "><p>修改了使用<strong>traffic-eng</strong>参数时的显示信息，将TE Cost字段改为MPLS TE Cost。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.88032249937012%" headers="d35690e555 "><p>VRPV500R006C02B190</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.11967750062988%" headers="d35690e559 "><p><strong>display isis brief</strong>命令的显示信息由&#8220;Timers:     Csnp: L1 10 L2 10  ,&#8221;改为&#8220;Timers:     Csnp: L12 10       ,&#8221;。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

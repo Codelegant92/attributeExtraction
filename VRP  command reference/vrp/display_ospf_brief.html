@@ -1,0 +1,776 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ospf brief">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ospf.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ospf_brief">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ospf brief</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ospf_brief"></a><a name="display_ospf_brief"></a>
+
+
+<h1 class="topictitle1">display ospf brief</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ospf brief</strong>命令用来查看OSPF的概要信息。如果不指定OSPF进程号，该命令将显示所有OSPF进程的概要信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ospf</strong> [ <em>process-id</em> ] <strong>brief</strong><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：OSPF进程号。整数形式，取值范围是1～65535。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令除了用来查看OSPF概要信息，还会输出下列信息：</p>
+<ul>
+<li><p>路由器ID。</p>
+</li>
+<li><p>配置的VPN域标识符。</p>
+</li>
+</ul>
+<p>在检查OSPF的故障原因时，可执行此命令获取OSPF相关概要信息。用户可以根据这些信息进行OSPF的故障诊断等。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ospf_brief__d54556e115"></a><a name="d54556e115"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示OSPF的概要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf brief</strong></pre>
+<pre class="screen">
+          OSPF Process 1 with Router ID 10.1.1.1
+                  OSPF Protocol Information
+
+ RouterID: 10.1.1.1         Border Router:  AREA  AS  NSSA
+ Route Tag: 0
+ Multi-VPN-Instance is not enabled
+ Opaque Capable
+ Global DS-TE Mode: Non-Standard IETF Mode
+ Graceful-restart capability: planned and un-planned, totally
+ Helper support capability  : enabled
+        filter capability   : disabled
+        policy capability   : strict lsa check, planned and un-planned
+ Applications Supported: MPLS Traffic-Engineering
+ Spf-schedule-interval: max 10000ms, start 500ms, hold 1000ms
+ Default ASE parameters: Metric: 1 Tag: 1 Type: 2
+ Route Preference: 10
+ ASE Route Preference: 150
+ SPF Computation Count: 4
+ RFC 1583 Compatible
+ Retransmission limitation is disabled
+ Import routes limitation is enabled, the maximal limitation value: 4294967295
+ Area Count: 2   Nssa Area Count: 1
+ ExChange/Loading Neighbors: 0
+
+ Area: 0.0.0.0          (MPLS TE not enabled)
+ Authtype: MD5   Area flag: Normal
+ SPF scheduled Count: 4
+ ExChange/Loading Neighbors: 0
+
+ Interface: 10.1.1.1 (GigabitEthernet1/0/0)
+ Cost: 1       State: Waiting    Type: Broadcast    MTU: 1500
+ Priority: 1
+ Designated Router: 0.0.0.0
+ Backup Designated Router: 0.0.0.0
+ Timers: Hello 10 , Dead 40 , Poll  120 , Retransmit 5 , Transmit Delay 1
+
+ Area: 0.0.0.6          (MPLS TE not enabled)
+ Authtype: None   Area flag:   NSSA
+ SPF scheduled Count: 0
+ ExChange/Loading Neighbors: 0</pre>
+
+<div class="tablenoborder"><a name="display_ospf_brief__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_brief__tb_01" frame="border" border="1" rules="all"><caption>表1 display ospf brief命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d54556e137"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d54556e141"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>RouterID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>当前的OSPF路由器ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Border Router</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><div class="p">边界路由器<ul>
+<li><p>AS：自治系统边界路由器ASBR</p>
+</li>
+<li><p>AREA：区域边界路由器ABR</p>
+</li>
+<li><p>NSSA：NSSA区域边界路由器</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Domain&#8211;Id </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>路由器所属的域标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Route Tag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>与外部路由相关联的标记</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>PE Router, Multi-VPN-Instance is enabled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>只有当前进程是支持多VPN实例的PE路由器时才显示此项内容</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Applications Supported: MPLS Traffic-Engineering</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>目前OSPF支持TE功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Opaque Capable </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>使能Opaque能力显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Graceful-restart capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><div class="p">是否使能Graceful Restart能力：<ul>
+<li><p>disabled：没有使能Graceful Restart能力</p>
+</li>
+<li><p>planned only：支持Planned-GR方式</p>
+</li>
+<li><p>un-planned：支持Unplanned-GR方式</p>
+</li>
+<li><p>totally：支持Totally GR方式</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Helper support capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><div class="p">是否使能Helper模式：<ul>
+<li><p>enabled：已使能Helper模式</p>
+</li>
+<li><p>not configured：未使能Helper模式</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>filter capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><div class="p">是否使能Helper模式的过滤规则：<ul>
+<li>ip-prefix：使能Helper模式的ip-prefix过滤器</li>
+<li>acl-number：使能Helper模式的基本ACL号过滤器</li>
+
+<li>disabled：未使能Helper模式的过滤器</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>policy capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><div class="p">是否使能Helper模式的支持策略：<ul>
+<li>strict lsa check：严格检查LSA的支持策略</li>
+<li>planned and un-planned：planned和unplanned的支持策略</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Local-mt capable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>是否使能本地MT功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>OSPF protocol Hot Standby Capable </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>使能OSPF协议热备份时显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>OSPF stub router State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>使能Stub路由器时显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>OSPF stub router State Reason: Startup Synchronize</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>重启路由器时，正在使能BGP-OSPF联动功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>IGP-shortcut capable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>使能IGP快捷时显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Forwarding Adjacency Capable</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>使能邻接转发时显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Spf-schedule-interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>进行SPF计算的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Route Preference</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>缺省路由优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Default ASE parameters: Metric</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>外部LSA的度量值缺省值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Default ASE parameters: Tag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>外部LSA标记的缺省值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Default ASE parameters: Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>外部LSA类型的缺省值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>SPF Computation count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>进行SPF计算的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>RFC1583 Compatible</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>是否使能RFC1583兼容</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Retransmission limitation is enabled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>使能重传限制功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Mib-binding process</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>当前进程绑定MIB时显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Trap-binding process</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>当前进程绑定Trap时显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>OSPF is in LSDB overflow status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>进程为Overflow状态时显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>OSPF is in Graceful Restart status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>进程为Graceful Restart状态时显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>OSPF is in protocol hot standby state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>使能热备份时显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Import routes limitation is enabled, the maximal limitation value:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>使能引入外部路由限制功能，显示最大限制值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Area Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>当前进程中的区域数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Nssa Area Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>当前进程中的NSSA区域数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>ExChange/Loading Neighbors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>处于ExChange/Loading状态的Neighbor的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>开始列举当前进程中各区域的信息。显示当前区域ID，格式为XXX.XXX.XXX.XXX</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>MPLS Traffic-Engineering enabled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>当前区域使能流量工程</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Authtype:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>区域验证类型，包括无验证/简单验证/MD5验证/HMAC-MD5验证</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Area flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>说明区域属性：Transit/ Vlink/ Stub/ Nssa</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>SPF scheduled Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>说明上一次的SPF计算类型：All/ Router/ Net/ Intra/ SumNet/ SumASB/ ASE/ NSSA</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Area summary filter（import）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>只有定义了入方向的过滤器时此项才有显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Area summary filter（export）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>只有定义了出方向的过滤器时此项才有显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>显示区域内的接口信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>显示运行OSPF协议的接口的开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>接口的状态有：Down、Waiting、Loopback、P-2-P、DR、BDR DROTHER。其中，DR、BDR DROTHER在Broadcast和NBMA网络中才存在；P-2-P在P2P P2MP Vlink上才存在。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>接口的类型，可以是PTP、Broadcast、NBMA、PTMP</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>接口的MTU值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Transit Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>显示虚连接所在的传输区域的区域ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>接口优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Designated Router</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>如果当前接口不是DR则不显示（可选）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Backup Designated Router</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>如果当前接口不是BDR则不显示（可选）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Timers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>定时器的间隔信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Hello</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>Hello定时器的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Dead</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>Dead定时器的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Poll</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>Poll定时器的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Retransmit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>Retransmit定时器的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Transmit Delay</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>接口传送LSA的时间延迟（可选）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Passive interface, No hellos</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>接口为被动接口时显示（可选）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>MPLS Traffic-Engineering Link</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>接口使能MPLS-TE</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>IGP-shortcut Link</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>链路使能IGP快捷时显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Forwarding-adjacency Link</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><p>链路使能邻接转发时显示</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d54556e137 "><p>Global DS-TE Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d54556e141 "><div class="p">当前全局配置下的DS-TE模式信息：<ul>
+<li>Non-standard IETF Mode：不支持IETF模式</li>
+<li>Standard IETF Mode：支持IETF模式</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p>注：不同的配置情况下，该命令的显示信息有所不同。一个举例无法给出所有的显示信息，因此上述举例的显示内容可能以表格中所列出的内容不太一致。有些内容必须在特定的配置使能之后才能显示。</p>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="display_ospf_brief__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_brief__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d54556e906"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d54556e910"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+
+
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d54556e906 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d54556e910 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d54556e906 "><p>VRPV500R006C01B020</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d54556e910 "><p>显示信息中增加了&#8220;Global DS-TE Mode&#8221;。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ospf.html">ospf</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

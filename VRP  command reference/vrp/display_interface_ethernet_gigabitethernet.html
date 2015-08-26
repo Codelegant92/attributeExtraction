@@ -1,0 +1,528 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface { ethernet | gigabitethernet }">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="interface_ethernet.html">
+<meta name="DC.Relation" scheme="URI" content="display_interface.html">
+<meta name="DC.Relation" scheme="URI" content="display_this_interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface_ethernet_gigabitethernet">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface { ethernet | gigabitethernet }</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface_ethernet_gigabitethernet"></a><a name="display_interface_ethernet_gigabitethernet"></a>
+
+
+<h1 class="topictitle1">display interface { ethernet | gigabitethernet }</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display interface </strong>{ <strong>ethernet</strong> | <strong>gigabitethernet</strong> }命令用来显示以太网接口各种配置参数以及当前运行状态等信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display interface </strong>{<strong> ethernet</strong> | <strong>gigabitethernet</strong> } [ <em>interface-number </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ethernet</strong>：查看快速以太网接口的状态信息。</p>
+<p><strong>gigabitethernet</strong>：查看千兆以太网接口的状态信息。</p>
+<p><em>interface-number</em>：接口编号。如果不指定接口编号，将显示所有接口的配置及状态信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控以太网接口的状态或检查以太网接口的故障原因时，可执行此命令获取以太网接口的状态信息和报文统计信息等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface_ethernet_gigabitethernet__d28712e65"></a><a name="d28712e65"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看GE接口1/0/0的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">GigabitEthernet1/0/0 current state : UP</pre>
+<pre class="screen">Line protocol current state : UP</pre>
+<pre class="screen">Last line protocol up time: 2008-04-17, 15:38:42</pre>
+<pre class="screen">Route Port,The Maximum Transmit Unit is 1500, Hold timer is 10(sec)</pre>
+<pre class="screen">Internet Address is 10.5.40.1/24</pre>
+<pre class="screen">IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 00e0-fc2c-87b3</pre>
+<pre class="screen">Card info: 1000BASE-SX-MM-LC</pre>
+<pre class="screen">Media type: multimode, wavelength: 850nm, transmission distance: 500m</pre>
+<pre class="screen">Loopback not set, promiscuous mode not set</pre>
+<pre class="screen">1000Mbps-speed mode, full-duplex mode, link type is force link</pre>
+<pre class="screen">Output flow-control is unsupported, input flow-control is unsupported</pre>
+<pre class="screen">QoS max-bandwidth : 1000000 Kbps</pre>
+<pre class="screen">Output queue : (Urgent queue : Size/Length/Discards)   0/50/0</pre>
+<pre class="screen">Output queue : (Protocol queue : Size/Length/Discards) 0/1000/0</pre>
+<pre class="screen">Output queue : (FIFO queuing : Size/Length/Discards)   0/75/0</pre>
+<pre class="screen">Last physical up time   : 2008-03-21 15:35:04</pre>
+<pre class="screen">Last physical down time : 2008-03-21 15:35:04</pre>
+<pre class="screen">Statistics last cleared: never</pre>
+<pre class="screen">    Last 5 minutes input rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Last 5 minutes output rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Input: 1442 packets, 118606 bytes</pre>
+<pre class="screen">           11 broadcasts, 1426 multicasts, 0 pauses</pre>
+<pre class="screen">           62039 errors, 0 runts, 0 giants, 0 throttles,</pre>
+<pre class="screen">           0 CRC, 62039 frames, 0 overruns, 0 alignments</pre>
+<pre class="screen">    Output:2727 packets,  218444 bytes</pre>
+<pre class="screen">           0 broadcasts, 2710 multicasts, 0 pauses</pre>
+<pre class="screen">           0 errors, 0 underruns, 0 collisions, 0 late collisions,</pre>
+<pre class="screen">           0 deferred, 0 lost carrier, 0 no carrier</pre>
+<p># 查看GE接口1/0/0.1的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display interface gigabitethernet 1/0/0.1</strong></pre>
+<pre class="screen">GigabitEthernet1/0/0.1 current state : UP</pre>
+<pre class="screen">Line protocol current state : UP</pre>
+<pre class="screen">Last line protocol up time: 2008-04-17, 15:38:42</pre>
+<pre class="screen">Route Port, The Maximum Transmit Unit is 1500, Hold timer is 10(sec)</pre>
+<pre class="screen">Internet Address is 2.1.1.100/24</pre>
+<pre class="screen">IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 00e0-3177-e201</pre>
+<pre class="screen">Encapsulation dot1q Virtual LAN, Vlan number 1, Vlan ID 1</pre>
+<pre class="screen">    Last 300 seconds input rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Last 300 seconds output rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Input:6 packets, 574 bytes</pre>
+<pre class="screen">0 unicast,6 broadcast, 0 multicasts</pre>
+<pre class="screen">0 errors, 0 drops, 0 unknown protocol</pre>
+<pre class="screen">    Output:6 packets, 574 bytes</pre>
+<pre class="screen">0 unicast,5 broadcast, 1 multicasts</pre>
+<pre class="screen">0 errors, 0 drops</pre>
+
+<div class="tablenoborder"><a name="display_interface_ethernet_gigabitethernet__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_ethernet_gigabitethernet__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface ethernet命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="37.46535651297556%" id="d28712e177"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="62.53464348702445%" id="d28712e181"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>current state :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><div class="p">显示接口的物理状态。<ul>
+<li><p>UP：接口处于正常启动的状态</p>
+</li>
+<li><p>DOWN：接口在物理上出现故障</p>
+</li>
+<li><p>Administratively down：如果网络管理员在该接口执行<a href="shutdown_interface_view.html">shutdown（接口视图）</a>命令，将显示状态为Administratively down。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Line protocol current state : </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><div class="p">显示该接口的链路协议状态。<ul>
+<li><p>UP：接口的链路协议处于正常的启动状态。</p>
+</li>
+<li><p>DOWN：接口的链路协议不正常，或者没有在此接口配置IP地址。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Last line protocol up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接口的链路协议上次Up的时刻，&#8220;-&#8221;表示接口的链路协议状态没有发生过变化。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>The Maximum Transmit Unit is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接口的最大传输单元（MTU）。例如串口默认值是1500字节。长度大于MTU的报文，将会被分片后再发送。如果设置了不准分片，会被丢弃。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Hold timer is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>报文的生命周期。报文如果在生命周期内没有被送出去，则将丢弃。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Internet Address is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>在接口上配置的IP地址和掩码长度。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>IP Sending Frames' Format is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><div class="p">接口发送的Ethernet帧的格式。Ethernet_II为默认的帧格式。Ethernet在接收帧时，可以识别如下几种帧格式。<ul>
+<li><p>Ethernet_II</p>
+</li>
+<li><p>Ethernet_SNAP</p>
+</li>
+<li><p>802.2</p>
+</li>
+<li><p>802.3</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Hardware address is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接口的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Encapsulation</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>子接口的封装方式。该字段只有在子接口时才显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>The number of Vlan is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>子接口的VLAN数量。该字段只有在子接口时才显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Vlan ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>子接口上封装的最小VLAN ID。该字段只有在子接口时才显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Media type:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接口介质的类型。包括介质的类型、波长和传输距离。波长和传输距离会因接口介质类型的不同而不同。介质类型一般有双绞线、单模光纤和多模光纤等。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Loopback not set</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>没有设置接口环回功能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>promiscuous mode not set</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>该接口不处于混杂模式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>100Mbps-speed mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>工作速率是100Mbps。<span>对于10/100M双速率的接口，可以使用命令<a href="speed_ethernet_interface_view.html">speed（Ethernet接口视图）</a>更改配置。</span></p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>full-duplex mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>工作模式是全双工。<span>对于10/100M电接口，可以使用命令<a href="duplex.html">duplex</a>更改配置。</span></p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>link type is autonegotiation</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>链路连接类型是自动协商。此外还有强制连接等。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>The maximum frame length is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>帧的最大长度。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>QoS max-bandwidth :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>QoS最大带宽。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Output queue : (Urgent queue : Size/Length/Discards) Output queue : (Protocol queue : Size/Length/Discards)Output queue : (FIFO queuing : Size/Length/Discards)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><div class="p">接口输出队列的当前状态，通常包括三类输出队列（Output queue）：<ul>
+<li><p>紧急队列（Urgent queue），链路层的协议报文，比如PPP的协商报文和Keepalive报文等将进入这个队列。</p>
+</li>
+<li><p>协议队列（Protocol queue），IP优先级为6的报文将进入协议队列。</p>
+</li>
+<li><p>普通的报文队列（FIFO queue），根据接口上应用的队列类型，可能是FIFO（First In First Out Queue）、PQ（Priority Queue）、CQ（Custom Queue）或CBQ（Class-based Queue）等。</p>
+</li>
+</ul>
+当发生拥塞时，接口首先发送紧急队列中的报文，然后是协议队列中的报文，最后发送普通队列中的报文。队列状态中包含的三个字段Size、Length和Discards分别表示队列的当前报文数、最大可容纳报文数和丢弃的报文数。通过检查Discards在一段时间内与Size和Length的关系，可以考察该接口的性能是否满足要求。例如：当Discards的值较大时可能表示<span class="keyword">路由器</span>正忙于进行其他工作，而无法及时处理进入的分组，如果这种情况持续很长的时间，则通常表示需要一个更强大的<span class="keyword">路由器</span>以满足工作的要求</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Last physical up time   :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接口上次物理Up的时刻，&#8220;-&#8221;表示接口的此物理状态没有发生过变化。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Last physical down time :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接口上次物理Down的时刻，&#8220;-&#8221;表示接口的此物理状态没有发生过变化。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Last 5 minutes input Last 5 minutes output</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>这一字段显示了在前5分钟内通过接口发送和接收的字节速率和报文速率如果该接口处于混杂模式下，即它读取LAN上所有的分组，这样就提供了一种测试在网络中流动的数据的方法如果该接口不处于混杂模式下，即仅对它发送和接收的流量记录，那么这里的数据是该接口发送和接收的流量的测定</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Input: 84668 packets, 6279745 bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接口收到的总报文数和总字节数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>broadcasts</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接收或发送的广播报文的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>multicasts</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接收或发送的组播报文的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>在物理层检测时发现的错误报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>runts</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接口接收到小于规定的最小报文长度报文数。例如对于以太网报文的最小长度为64字节。接收到的小于64字节的报文将被丢弃</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>giants</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接收到长度大于规定长度的报文数目。此接口接收报文的最大长度为1500字节</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>CRC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>收到了长度正常但CRC校验错误的报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>collisions</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接收或发送的报文时，检测到冲突的报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Align error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>排列错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Other error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>其他错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>Output:23991 packets,  1331395 bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>接口发送的报文数和总字节数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>underruns</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>因为接口读取内存的速度小于转发的速度而无法发送报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.46535651297556%" headers="d28712e177 "><p>packets had been deferred</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.53464348702445%" headers="d28712e181 "><p>因为延时或超时无法发送报文数目</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="display_interface_ethernet_gigabitethernet__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_ethernet_gigabitethernet__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.962967628164755%" id="d28712e676"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.037032371835245%" id="d28712e680"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.962967628164755%" headers="d28712e676 "><p>VRPV500R005C05B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.037032371835245%" headers="d28712e680 "><p>缺省情况下，系统不显示接口默认描述信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_interface_configuration_commands.html">以太网接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="interface_ethernet.html">interface</a></div>
+<div><a href="display_interface.html">display interface</a></div>
+<div><a href="display_this_interface.html">display this interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

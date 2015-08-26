@@ -1,0 +1,82 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="rmon2 protocoldirtable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rmon_rmon2_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_rmon2_protocoldirtable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rmon2_protocoldirtable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>rmon2 protocoldirtable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="rmon2_protocoldirtable"></a><a name="rmon2_protocoldirtable"></a>
+
+
+<h1 class="topictitle1">rmon2 protocoldirtable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>rmon2 protocoldirtable</strong>命令用来创建或修改协议目录表中的一行。</p>
+<p><strong>undo rmon2 protocoldirtable</strong>命令用来删除协议目录表中的一行，如果不使用可选参数，将删除整个表。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>rmon2 protocoldirtable</strong> <strong>protocoldirid</strong> <em>protocol</em>-<em>id</em> <strong>parameter</strong> <em>parameter-value</em> [ <strong>descr</strong> <em>description-string </em>] [ <strong>host</strong> { <strong>notsupported</strong> | <strong>supportedon</strong> | <strong>supportedoff</strong> } ] [ <strong>owner</strong><em> owner-name </em>] [ <strong>status</strong> { <strong>active</strong> | <strong>inactive</strong> } ]</p>
+<p><strong>undo rmon2 protocoldirtable</strong> [ { <strong>protocoldirid</strong> <em>protocol-id</em> } { <strong>parameter </strong><em>parameter-value </em>} ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>protocol-id</em>：目前只实现IP，支持的值为8.0.0.0.1.0.0.8.0。</p>
+<p><em>parameter-value</em>：协议参数信息。目前支持的值为2.0.0。</p>
+<p><em>description-string</em>：协议目录表的描述信息。字符串类型，长度范围是1～64。</p>
+<p><strong>notsupported</strong>：不支持对本协议的网络层主机表的监控，并且这个值不能改变。</p>
+<p><strong>supportedon</strong>：支持对本协议的网络层主机表的监控，并且使能监控功能。</p>
+<p><strong>supportedoff</strong>：支持对本协议的网络层主机表的监控，但是不使能监控功能。</p>
+<p><strong>owner</strong><em> owner-name</em>：条目所有者的描述信息。字符串类型，长度范围是1～127。</p>
+<p><strong>active</strong>：该条目已激活，可以使用。</p>
+<p><strong>inactive</strong>：该条目没有激活，处于notinservice状态，不能使用。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置<strong>rmon2 protocoldirtable</strong>命令前，必须先设置描述信息和主机对协议支持的信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="rmon2_protocoldirtable__d114671e143"></a><a name="d114671e143"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建协议目录表中的一行。</p>
+<pre class="screen">[Quidway]<strong> rmon2 protocoldirtable protocoldirid 8.0.0.0.1.0.0.8.0 parameter 2.0.0 descr huawei host supportedon owner huawei status active</strong></pre>
+<p># 修改协议目录表中的一行protocolDirStatus为notinservice。</p>
+<pre class="screen">[Quidway]<strong> rmon2 protocoldirtable protocoldirid 8.0.0.0.1.0.0.8.0 parameter 2.0.0 status inactive</strong></pre>
+<p># 修改协议目录表中的一行protocolDirStatus为supportedon。</p>
+<pre class="screen">[Quidway]<strong> rmon2 protocoldirtable protocoldirid 8.0.0.0.1.0.0.8.0 parameter 2.0.0 host supportedon</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rmon_rmon2_configuration_commands.html">RMON和RMON2配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_rmon2_protocoldirtable.html">display rmon2 protocoldirtable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

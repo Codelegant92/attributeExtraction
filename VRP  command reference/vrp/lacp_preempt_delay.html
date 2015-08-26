@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="lacp preempt delay">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="lacp_preempt_enable.html">
+<meta name="DC.Relation" scheme="URI" content="mode.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="lacp_preempt_delay">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>lacp preempt delay</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="lacp_preempt_delay"></a><a name="lacp_preempt_delay"></a>
+
+
+<h1 class="topictitle1">lacp preempt delay</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>lacp preempt delay</strong>命令用来配置抢占等待时间。</p>
+<p><strong>undo lacp preempt delay</strong>命令用来恢复抢占等待时间为缺省值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>lacp preempt delay </strong><em>delay-time</em></p>
+<p><strong>undo lacp preempt delay</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>delay-time</em>：指定抢占等待时间。取值范围是10～180，单位是秒。缺省值是30秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Eth-Trunk接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在使能LACP优先级抢占功能并配置本命令后，当故障链路（链路A）恢复正常时，如果此链路的链路优先级高于当前活动链路（链路B）的优先级并且当前活动链路数已达到上限阈值，则经过<em>delay-time</em>秒后，链路A取代链路B，成为活动链路。</p>
+<p>使用本命令需确保以下条件：</p>
+<ul>
+<li><p>在配置本命令前，必须保证当前的Eth-Trunk工作模式为静态LACP模式，否则配置不成功。要更改工作模式为静态LACP模式，请在Eth-Trunk接口视图下执行<strong>mode lacp-static</strong>命令。</p>
+</li>
+<li><p>在配置本命令前，必须保证当前的Eth-Trunk已经使能优先级抢占，否则配置不生效。要使能优先级抢占，请在Eth-Trunk接口视图下执行<strong>lacp preempt enable</strong>命令。</p>
+</li>
+</ul>
+<p>在使能优先级抢占而没有配置抢占等待时间的情况下，系统会按照缺省抢占等待时间执行抢占操作。</p>
+<p>如果本端设备配置的抢占等待时间与对端设备不一致，系统会选择抢占等待时间值较大的时间。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="lacp_preempt_delay__d88845e73"></a><a name="d88845e73"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置Eth-Trunk1的抢占等待时间为20秒。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface eth-trunk 1</strong></pre>
+<pre class="screen">[Quidway-Eth-Trunk1]<strong> lacp preempt delay 20</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="lacp_preempt_enable.html">lacp preempt enable</a></div>
+<div><a href="mode.html">mode</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

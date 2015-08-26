@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="cfm trigger if-down">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mep_mep-id.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cfm_trigger_if-down">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>cfm trigger if-down</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="cfm_trigger_if-down"></a><a name="cfm_trigger_if-down"></a>
+
+
+<h1 class="topictitle1">cfm trigger if-down</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>cfm trigger if-down</strong>命令用来配置以太网CFM和当前接口联动。</p>
+<p><strong>undo cfm
+trigger if-down</strong>命令用来取消以太网CFM和当前接口联动功能。</p>
+<p>缺省情况下，接口不和以太网CFM联动。</p>
+<p>当配置了以太网CFM和接口联动后，如果指定MA内的MEP检测到和指定RMEP之间有连通性故障，OAM管理模块对当前接口进行闪断处理，即先关闭该接口，然后再打开该接口。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>cfm md</strong> <em>md-name</em> <strong>ma</strong> <em>ma-name</em> <strong>remote-mep
+mep-id</strong> <em>mep-id</em> <strong>trigger if-down</strong></p>
+<p><strong>undo cfm md</strong> <em>md-name</em> <strong>ma</strong> <em>ma-name</em> <strong>remote-mep</strong> <strong>mep-id</strong> <em>mep-id</em> <strong>trigger if-down</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>md</strong> <em>md-name</em>：指定MA所在的MD。<em>md-name</em>表示MD的名称，字符串形式，不支持空格、&#8220;-&#8221;和&#8220;?&#8221;，长度范围是1～43。</p>
+<p><strong>ma</strong> <em> ma-name</em>：指定MA。<em>ma-name</em>表示MA的名称，字符串形式，不支持空格、&#8220;-&#8221;和&#8220;?&#8221;，MA名称长度和MD名称长度之和不超过44个字符。</p>
+<p><strong>remote-mep</strong> <strong>mep-id</strong> <em>mep-id</em>：指定RMEP。<em>mep-id</em>表示RMEP的ID。整数形式，取值范围是1～8191。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernt接口视图、GE接口视图、Eth-Trunk接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用本命令配置以太网CFM和当前接口联动时，指定MA内必须已创建outward型的MEP，且该MEP所在接口为当前接口。</p>
+<p>每个接口仅支持和一个RMEP绑定，如果要改变接口和RMEP的对应联动关系，需先删除原有的配置，再重新进行配置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="cfm_trigger_if-down__d6255e120"></a><a name="d6255e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置以太网CFM和接口GigabitEthernet1/0/1联动，对应MD的名称、MA的名称、RMEP的ID分别为：mdcustomer、macustomer和2。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface gigabitethernet1/0/1</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> cfm md mdcustomer ma macustomer remote-mep me-pid 2 trigger if-down</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mep_mep-id.html">mep mep-id</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

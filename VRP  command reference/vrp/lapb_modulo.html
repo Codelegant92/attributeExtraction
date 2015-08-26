@@ -1,0 +1,67 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="lapb modulo">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="lapb_window-size.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="lapb_modulo">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>lapb modulo</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="lapb_modulo"></a><a name="lapb_modulo"></a>
+
+<h1 class="topictitle1">lapb modulo</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>lapb modulo</strong>命令用来配置LAPB帧编号方式（又称模数）。</p>
+<p><strong>undo lapb modulo</strong>命令用来恢复帧编号方式的缺省值。</p>
+<p>缺省情况下，LAPB的帧编号方式为模8。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>lapb modulo</strong> { <strong>128</strong> | <strong>8</strong> }</p>
+<p><strong>undo lapb modulo</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>128</strong>：采用模128编号方式。</p>
+<p><strong>8</strong>：采用模8编号方式。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>LAPB帧编号方式有两种：模8和模128。每个数据帧（I帧）均按顺序编号，编号可以从0到模数减1，序列号就在这整个模数的范围内循环。</p>
+<p>模8是基本方式，所有的标准LAPB都实现，并且对于大多数链路来说都足够了。</p>
+<p>执行完该命令后，必须重新启动接口，使配置生效。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="lapb_modulo__d89062e54"></a><a name="d89062e54"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将接口Serial1/0/0上的LAPB帧编号方式设置为模8。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> link-protocol lapb</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> lapb modulo 8</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> shutdown</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> undo shutdown</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="lapb_window-size.html">lapb window-size</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

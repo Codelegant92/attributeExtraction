@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="helper-role (OSPFv3)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospfv3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ospfv3_graceful-restart-information.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="helper-role_ospfv3">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>helper-role (OSPFv3)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="helper-role_ospfv3"></a><a name="helper-role_ospfv3"></a>
+
+
+<h1 class="topictitle1">helper-role (OSPFv3)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p>执行<strong>helper-role</strong>命令，配置路由器支持Helper模式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>helper-role</strong> [ <strong>ip-prefix</strong> <em>ip-prefix-name</em> | <strong>acl-number</strong> <em>acl-number </em>] [ <strong>max-grace-period</strong> <em>period</em>] [ <strong>planned-only</strong> ] [<strong> lsa-checking-ignore</strong> ]</p>
+<p><strong>undo helper-role</strong> [<strong> ip-prefix</strong> | <strong>acl-number</strong> ] [ <strong>max-grace-period </strong>] [ <strong>planned-only</strong> ] [<strong> lsa-checking-ignore</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ip-prefix</strong><em> ip-prefix-name</em>：指定地址前缀列表名称。字符串形式，长度范围是1～169。</p>
+<p><strong>acl-number</strong> <em>acl-number</em>：指定基本访问控制列表的编号。整数形式，取值范围是2000～2999。</p>
+<p><strong>max-grace-period</strong> <em>period</em>：指定允许最大重启周期。整数形式，取值范围是1～1800，单位是秒。缺省值是120秒。</p>
+<p><strong>planned-only</strong>：指定路由器只支持Planned-GR。缺省情况下，路由器支持Planned-GR和Unplanned-GR。</p>
+<p><strong>lsa-checking-ignore</strong>：指定不执行LSA严格检查。缺省情况下，路由器对收到的各类LSA都进行严格检查。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>OSPFv3视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>路由器在GR过程中禁止进入Helper模式。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="helper-role_ospfv3__d79393e108"></a><a name="d79393e108"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置路由器支持Helper模式。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ospfv3 1</strong></pre>
+<pre class="screen">[Quidway-ospfv3-1]<strong> <strong>helper-role acl-number 2001 max-grace-period 250 planned-only lsa-checking-ignore</strong></strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospfv3_configuration_commands.html">OSPFv3配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ospfv3_graceful-restart-information.html">display ospfv3 graceful-restart-information</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

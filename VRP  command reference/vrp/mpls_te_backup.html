@@ -1,0 +1,118 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te backup">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_backup">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te backup</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_backup"></a><a name="mpls_te_backup"></a>
+
+
+<h1 class="topictitle1">mpls te backup</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te backup</strong>命令用来配置当前隧道使用的备份模式。</p>
+<p><strong>undo
+mpls te backup hot-standby</strong>命令用来删除热备份功能。</p>
+<p><strong>undo mpls te backup
+ordinary</strong>命令用来删除普通备份功能，或删除热备份功能中的逃生路径。</p>
+<p>缺省情况下，隧道不进行备份。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te backup</strong> { <strong>hot-standby</strong> [ <strong>wtr</strong> <em>interval</em> ] | <strong>ordinary</strong> [ <strong>best-effort</strong> ] }</p>
+<p><strong>undo mpls te backup</strong> <span> { <strong>hot-standby</strong> | <strong>ordinary</strong> }</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>hot-standby</strong>：热备份，主LSP和备份LSP同时存在，主LSP失效时，直接将业务切换至备份LSP。</p>
+<p><strong>wtr</strong> <em>interval</em>：配置热备份回切的时间。<em>interval</em>的范围为0～60s，默认时间为10s。</p>
+<p><strong>ordinary</strong>：普通备份，主LSP失效后才创建备份LSP。</p>
+<p><strong>best-effort</strong>：表示配置逃生路径。配置逃生路径后，当主LSP和备份LSP都失效时，系统将触发建立逃生路径。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使能隧道备份功能后，记录路由也自动使能，而不论用户是否配置了命令<a href="mpls_te_record-route.html">mpls te record-route</a>。</p>
+<div class="p">隧道备份功能与以下命令互斥：<ul>
+<li><a href="mpls_te_reoptimization_tunnel_interface_view.html">mpls te reoptimization（Tunnel接口视图）</a></li>
+<li><a href="mpls_te_auto-bandwidth.html">mpls te auto-bandwidth</a></li>
+<li><a href="mpls_te_resv-style.html">mpls te resv-style</a></li>
+</ul>
+</div>
+<p>命令<strong>mpls te backup ordinary</strong>与<strong>mpls te backup ordinary
+best-effort</strong>互斥。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_backup__d95649e122"></a><a name="d95649e122"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能当前隧道使用热备份。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> tunnel-protocol mpls te</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> destination 2.2.2.2</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te tunnel-id 100</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te backup hot-standby</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>mpls te commit</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_te_backup__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_te_backup__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d95649e165"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d95649e169"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d95649e165 "><p>VRPV500R005C01B101</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d95649e169 "><p><strong>undo</strong>命令中增加<strong>hot-standby</strong>和<strong>ordinary</strong>参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

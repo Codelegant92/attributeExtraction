@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te reserved-for-binding">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_tunnel_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_binding.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_vpn-binding_vpn-instance.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_reserved-for-binding">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te reserved-for-binding</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_reserved-for-binding"></a><a name="mpls_te_reserved-for-binding"></a>
+
+
+<h1 class="topictitle1">mpls te reserved-for-binding</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te reserved-for-binding</strong>命令用来使能本MPLS TE隧道用于VPN绑定，即限制本隧道只能用于特定的VPN。</p>
+<p><strong>undo mpls te reserved-for-binding</strong>命令用来撤销对该隧道专用于VPN绑定的限制。</p>
+<p>缺省情况下，MPLS TE隧道不与VPN绑定。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te reserved-for-binding</strong></p>
+<p><strong>undo mpls
+te reserved-for-binding</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令只适用于MPLS TE隧道。</p>
+<p>配置VPN隧道绑定和RRVPN（Resource Reserved
+VPN）时，需要先使能隧道用于VPN绑定。</p>
+<p>在隧道的Tunnel接口下配置该命令后，该隧道不能用于顺序选择，也不能参与负载分担。即，使用命令<strong>tunnel select-seq</strong>选择隧道时不会选中配置了<strong>mpls te reserved-for-binding</strong>命令的TE隧道。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_reserved-for-binding__d96902e56"></a><a name="d96902e56"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在<span class="keyword">路由器</span>Quidway上使能Tunnel1/0/0专用于VPN绑定。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> tunnel-protocol mpls te</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te reserved-for-binding</strong></pre>
+<p># 撤销对隧道专用于VPN绑定的限制。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> undo mpls te reserved-for-binding</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpn_tunnel_management_configuration_commands.html">VPN隧道管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="tunnel_binding.html">tunnel binding</a></div>
+<div><a href="mpls_te_vpn-binding_vpn-instance.html">mpls te vpn-binding vpn-instance</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

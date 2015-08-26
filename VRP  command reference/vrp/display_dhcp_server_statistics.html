@@ -1,0 +1,171 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display dhcp server statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_dhcp_server_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_dhcp_server_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display dhcp server statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_dhcp_server_statistics"></a><a name="display_dhcp_server_statistics"></a>
+
+<h1 class="topictitle1">display dhcp server statistics</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p>使用<strong>display dhcp server statistics</strong>命令用来查看DHCP服务器的统计信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display dhcp server statistics</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在DHCP服务器配置成功后，使用<strong>display dhcp server statistics</strong>命令来查看服务器的统计信息：DHCP地址池数目，自动、手工和过期绑定的地址数目，不可识别的报文数量、DHCP请求和应答的报文数目统计等。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_dhcp_server_statistics__d22395e32"></a><a name="d22395e32"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看DHCP服务器的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display dhcp server statistics</strong></pre>
+<pre class="screen">    Global Pool:</pre>
+<pre class="screen">     Pool Number:             5</pre>
+<pre class="screen">     Binding</pre>
+<pre class="screen">      Auto:                   0</pre>
+<pre class="screen">      Manual:                 1</pre>
+<pre class="screen">      Expire:                 0</pre>
+<pre class="screen">    Interface Pool:</pre>
+<pre class="screen">     Pool Number:             1</pre>
+<pre class="screen">     Binding</pre>
+<pre class="screen">      Auto:                   1</pre>
+<pre class="screen">      Manual:                 0</pre>
+<pre class="screen">      Expire:                 0</pre>
+<pre class="screen">    Boot Request:             6</pre>
+<pre class="screen">     Dhcp Discover:           1</pre>
+<pre class="screen">     Dhcp Request:            4</pre>
+<pre class="screen">     Dhcp Decline:            0</pre>
+<pre class="screen">     Dhcp Release:            1</pre>
+<pre class="screen">     Dhcp Inform:             0</pre>
+<pre class="screen">    Boot Reply:               4</pre>
+<pre class="screen">     Dhcp Offer:              1</pre>
+<pre class="screen">     Dhcp Ack:                3</pre>
+<pre class="screen">     Dhcp Nak:                0</pre>
+<pre class="screen">    Bad Messages:             0</pre>
+
+<pre class="screen">    HA Message:  </pre>
+<pre class="screen">     BatchBackup send msg:    0 </pre>
+<pre class="screen">     BatchBackup recv msg:    0 </pre>
+<pre class="screen">     BatchBackup send lease:  0 </pre>
+<pre class="screen">     BatchBackup recv lease:  0</pre>
+<p>该显示信息主要内容解释如下表：</p>
+
+<div class="tablenoborder"><a name="display_dhcp_server_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_dhcp_server_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display dhcp server statistics命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="44.3562610229277%" id="d22395e106"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d22395e109"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>Global Pool:</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>全局地址池的统计信息</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>Interface Pool:</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>接口地址池的统计信息</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>Pool Number</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>地址池的数目</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>Auto</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>自动绑定的IP地址数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>Manual</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>手工绑定的IP地址数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>Expire</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>租约超期的IP地址数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>Boot Request</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>DHCP客户端发给DHCP服务器的消息数量</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>Dhcp Discover, Dhcp Request, Dhcp Decline, Dhcp Release, Dhcp Inform</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>收到的各种DHCP报文的统计数目</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>Boot Reply</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>DHCP服务器发给DHCP客户端的消息数量</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>Dhcp Offer, Dhcp Ack, Dhcp Nak</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>发送的各种DHCP报文的统计数目</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>Bad Messages</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>错误的报文统计</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>BatchBackup send msg</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>批量备份时主控板发送的HA消息的数目</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>BatchBackup recv msg</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>批量备份时备板接受的HA消息的数目</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>BatchBackup send lease</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>批量备份时主控板发送的Lease的数目</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d22395e106 "><p>BatchBackup recv lease</p>
+</td>
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d22395e109 "><p>批量备份时备板接收的Lease的数目</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_configuration_commands.html">DHCP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_dhcp_server_statistics.html">reset dhcp server statistics</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

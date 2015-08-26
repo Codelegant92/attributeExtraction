@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="apply ip-precedence（Route-Policy视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_policyconfiguration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="apply_behavior.html">
+<meta name="DC.Relation" scheme="URI" content="apply_qos-local-id.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="apply_ip-precedence_route-policy_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>apply ip-precedence（Route-Policy视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="apply_ip-precedence_route-policy_view"></a><a name="apply_ip-precedence_route-policy_view"></a>
+
+
+<h1 class="topictitle1">apply ip-precedence（Route-Policy视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>apply ip precedence</strong>命令用来为路由设置QoS参数ip-precedence。</p>
+<p><strong>undo apply ip-precedence</strong>命令用来取消该设置。</p>
+<p>缺省情况下，没有设置ip-precedence值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>apply ip-precedence</strong> <em>ip-precedence</em> </p>
+<p><strong>undo apply ip-precedence</strong> </p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-precedence</em>：IP优先级。整数形式，取值范围是0～7。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Route-Policy视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><em>ip-precedence</em>是QPPB可以设置的三种QoS参数中的一种，对应于IP报文头里的Precedence字段。与<a href="apply_qos-local-id.html">apply qos-local-id</a>，<a href="apply_behavior.html">apply behavior</a>命令互斥。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>产品NE16E/08E/05不支持<strong>apply ip precedence</strong>命令。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="apply_ip-precedence_route-policy_view__d1730e67"></a><a name="d1730e67"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在名为test的Route-Policy下配置ip-precedence策略。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>route-policy test permit node 10</strong></pre>
+<pre class="screen">[Quidway-route-policy] <strong>apply ip-precedence 3</strong></pre>
+<p># 删除ip-precedence策略。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>route-policy test permit node 10</strong></pre>
+<pre class="screen">[Quidway-route-policy] <strong>undo apply ip-precedence</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_policyconfiguration_commands.html">路由策略配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="apply_behavior.html">apply behavior</a></div>
+<div><a href="apply_qos-local-id.html">apply qos-local-id</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,264 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ripng">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ripng_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ripng.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ripng">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ripng</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ripng"></a><a name="display_ripng"></a>
+
+
+<h1 class="topictitle1">display ripng</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ripng</strong>命令用来显示RIPng进程的当前运行状态及配置信息。</p>
+<p>如果不指定可选参数，该命令将显示所有已配置的RIPng进程的参数。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ripng</strong> [ <em>process-id</em> ]<span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ripng</strong> [ <em>process-id</em> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> ]<span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：RIPng进程号。整数形式，取值范围是1～65535。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：显示指定IPv6 VPN的RIPng多实例进程的概要信息。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，字符串形式，不支持空格，区分大小写，长度范围是1～31。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ripng__d62893e131"></a><a name="d62893e131"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示RIPng进程信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ripng 100</strong></pre>
+<pre class="screen">  Public vpn6-instance name :</pre>
+<pre class="screen">    RIPng process : 100</pre>
+<pre class="screen">       Preference : 100</pre>
+<pre class="screen">       Checkzero : Enabled</pre>
+<pre class="screen">       Default Cost : 0</pre>
+<pre class="screen">       Maximum number of balanced paths : 6</pre>
+<pre class="screen">       Update time   : 30 sec   Age time  : 180 sec</pre>
+<pre class="screen">       Suppress time : 0 sec    Garbage-Collect time : 120 sec</pre>
+<pre class="screen">       Number of periodic updates sent : 0</pre>
+<pre class="screen">       Number of trigger updates sent : 1</pre>
+<pre class="screen">       Number of routes in database : 1</pre>
+<pre class="screen">       Number of interfaces enabled : 1</pre>
+
+<div class="tablenoborder"><a name="display_ripng__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ripng__tb_01" frame="border" border="1" rules="all"><caption>表1 display ripng命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d62893e175"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d62893e179"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>RIPng Process</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>RIPng进程号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Preference</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>协议优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Checkzero</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>零域检查（使能与否）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Default Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>缺省开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Maximum number of balanced paths</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>最大负载分担条数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Update time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>更新间隔时间，单位是秒</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Age time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>老化时间，单位是秒</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Supress time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>抑制时间，单位是秒</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Garbage-collect time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>垃圾路由回收时间，单位是秒</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Number of periodic updates sent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>定时发送的RIPng更新报文的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Number of trigger updates sent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>触发发送的RIPng更新报文的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Number of routes in database</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>RIPng数据库中路由的条数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Number of interfaces enabled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>使能RIPng协议的接口数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d62893e175 "><p>Number of sending routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d62893e179 "><p>每次更新时发送的路由条数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ripng__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ripng__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d62893e355"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d62893e359"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d62893e355 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d62893e359 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ripng_configuration_commands.html">RIPng配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ripng.html">ripng</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

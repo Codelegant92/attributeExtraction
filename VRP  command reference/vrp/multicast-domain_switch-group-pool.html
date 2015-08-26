@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="multicast-domain switch-group-pool">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_vpn_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_multicast-domain_vpn-instance_switch-group_receive.html">
+<meta name="DC.Relation" scheme="URI" content="display_multicast-domain_vpn-instance_switch-group_send.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="multicast-domain_switch-group-pool">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>multicast-domain switch-group-pool</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="multicast-domain_switch-group-pool"></a><a name="multicast-domain_switch-group-pool"></a>
+
+
+<h1 class="topictitle1">multicast-domain switch-group-pool</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>multicast-domain switch-group-pool</strong>命令用来指定Switch-MDT切换地址池范围和切换条件。</p>
+<p><strong>undo multicast-domain switch-group-pool</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，不指定切换地址池，不向Switch-MDT切换。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>multicast-domain switch-group-pool</strong> <em>switch-group-pool</em> { <em>network-mask</em> | <em>network-mask-length</em> } [ <strong>threshold</strong> <em>threshold-value</em> | <strong>acl</strong> <em>advanced-acl-number</em> ] *</p>
+<p><strong>undo multicast-domain switch-group-pool</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>switch-group-pool</em>：表示Switch-Group-pool的起始地址。点分十进制形式。取值范围是224.0.1.0～239.255.255.255。</p>
+<p><em>network-mask</em>：表示Switch-Group-pool地址的掩码，点分十进制形式，取值范围是225.225.255.0～225.255.255.255。</p>
+<p><em>network-mask-length</em>：表示Switch-Group-pool地址的掩码长度。整数形式，取值范围是24～32，即Switch-MDT切换地址池中包含的组地址个数为1～256。</p>
+<p><strong>threshold</strong> <em>threshold-value</em>：指定切换阈值。整数形式，取值范围是0～4194304，单位是kbits/s。缺省值是0。</p>
+<p><strong>acl</strong> <em>advanced-acl-number</em>：指定切换地址池作用的（S，G）项。如果没有指定ACL，则作用于所有的（S，G）项。<em>advanced-acl-number</em>为高级访问控制列表号。整数形式，取值范围是3000～3999。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VPN实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果该VPN中的Share-Group没有配置，不允许配置本命令。</p>
+<p>在相同VPN实例视图下重复配置时，新配置覆盖旧配置。</p>
+<p>在连接私网接收者的PE和连接私网组播源的PE之间，为流入公网的高速私网组播数据报文建立专用的Switch-MDT，将该组播数据流从Share-MDT切换到Switch-MDT，可以实现按需组播，避免使用Share-MDT传输私网组播数据报文时在公网中造成数据泛滥。</p>
+<p>在某些情况下，私网组播数据的转发速率会在切换阈值上下振荡。如果速率始终高于切换阈值则切换至Switch-MDT，否则继续使用Share-MDT进行报文转发。</p>
+<p>由于必要的流量计算和协议处理过程，从数据转发速率发生变化，到系统启动switch-delay计时器，期间存在1～30s的固有延迟。因此在实际的切换中，延迟时间将较switch-delay长1～30s。</p>
+<p><strong>multicast-domain switch-group-pool</strong>命令与<strong>acl</strong>命令配合使用。在ACL视图下，通过<strong>rule</strong>命令的<strong>source</strong>参数定义发送报文的源地址，<strong>destination</strong>参数定义组播组地址。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="multicast-domain_switch-group-pool__d98382e119"></a><a name="d98382e119"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置VPN实例mytest的Switch-Group的地址范围是225.2.2.1～225.2.2.14。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ip vpn-instance mytest</strong></pre>
+<pre class="screen">[Quidway-vpn-instance-mytest]<strong> multicast-domain switch-group-pool 225.2.2.1 28</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_vpn_configuration_commands.html">IPv4组播VPN配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_multicast-domain_vpn-instance_switch-group_receive.html">display multicast-domain vpn-instance switch-group receive</a></div>
+<div><a href="display_multicast-domain_vpn-instance_switch-group_send.html">display multicast-domain vpn-instance switch-group send</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

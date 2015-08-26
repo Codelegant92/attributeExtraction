@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="crp-policy（IPv6）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_pim_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="crp-policy_ipv6">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>crp-policy（IPv6）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="crp-policy_ipv6"></a><a name="crp-policy_ipv6"></a>
+
+
+<h1 class="topictitle1">crp-policy（IPv6）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>crp-policy</strong>命令用来限定合法的C-RP地址范围及其服务的组播组地址范围，使BSR丢弃来自该地址范围之外的C-RP消息，从而防止C-RP欺骗。</p>
+<p><strong>undo crp-policy</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，C-RP地址范围及其服务的组播组地址范围不受任何限制，即BSR认为接收到的所有C-RP消息都是合法的。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>crp-policy</strong> <em>advanced-acl6-number</em></p>
+<p><strong>undo crp-policy</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>advanced-acl6-number</em>：表示高级访问控制列表号，该列表定义了针对C-RP地址范围及其服务组地址范围的过滤策略。整数形式，取值范围是3000～3999。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IPv6 PIM视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在应用BSR机制的PIM SM网络中，任何一台<span class="keyword">路由器</span>都可以被配置为C-RP，为该地址范围内的组播组服务。C-RP单播C-RP信息到BSR，BSR将所有收集到的C-RP信息汇总为RP-Set，使用BSR消息在全网内扩散。之后，由当地<span class="keyword">路由器</span>根据RP-Set计算出特定组地址范围对应的RP。</p>
+<p>为了防止C-RP欺骗，需要在BSR路由器上配置<strong>crp-policy</strong>，限定合法的C-RP地址范围以及其服务的组播组地址范围。由于每个C-BSR都可能成为BSR，因此需要在每个C-BSR上都配置相同的过滤策略。</p>
+<p><strong>crp-policy</strong>命令与<strong>acl</strong>命令配合使用。在ACL6视图下，通过<strong>rule</strong>命令的<strong>source</strong>参数定义C-RP源地址范围，<strong>destination</strong>参数定义被服务的组播组地址范围。</p>
+<p>在对接收到的C-RP消息进行匹配时，只有当报文中的C-RP地址和<strong>source</strong>地址匹配，并且报文中指定的组地址范围是ACL中组地址范围的子集时，才认为匹配成功。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="crp-policy_ipv6__d8961e83"></a><a name="d8961e83"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在C-BSR路由器上配置公网实例C-RP策略，只允许2001::1/128充当C-RP，并且只允许其为地址范围ff03::101/128的组播组服务。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> acl ipv6 number 3100</strong>
+[Quidway-acl6-adv-3100]<strong> rule permit ipv6 source 2001::1 128 destination ff03::101 128</strong>
+[Quidway-acl6-adv-3100]<strong> quit</strong>
+[Quidway]<strong> pim-ipv6</strong>
+[Quidway-pim6]<strong> crp-policy 3100</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_pim_configuration_commands.html">IPv6 PIM配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

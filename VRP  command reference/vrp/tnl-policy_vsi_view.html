@@ -1,0 +1,69 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="tnl-policy（VSI视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pwsignal.html">
+<meta name="DC.Relation" scheme="URI" content="route-distinguisher_vsi-bgp_view.html">
+<meta name="DC.Relation" scheme="URI" content="vsi-id.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="tnl-policy_vsi_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>tnl-policy（VSI视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="tnl-policy_vsi_view"></a><a name="tnl-policy_vsi_view"></a>
+
+<h1 class="topictitle1">tnl-policy（VSI视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>tnl-policy</strong>命令用来配置VSI应用的隧道策略。</p>
+<p><strong>undo</strong> <strong>tnl-policy</strong>命令用来删除VSI的隧道策略。</p>
+<p>缺省情况下，系统没有配置VSI的任何隧道策略。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>tnl-policy</strong> <em>policy-name</em></p>
+<p><strong>undo tnl-policy</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>policy-name</em>：隧道策略名称。字符串形式，不支持空格，区分大小写，长度范围是1～19。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VSI视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对于Kompella方式的VPLS，使用<strong>tnl-policy</strong>命令前，需要先执行<a href="pwsignal.html">pwsignal</a>命令和<a href="route-distinguisher_vsi-bgp_view.html">route-distinguisher（VSI-BGP视图）</a>命令；对于Martini方式的VPLS，使用<strong>tnl-policy</strong>命令前，需要先执行<a href="pwsignal.html">pwsignal</a>命令和<a href="vsi-id.html">vsi-id</a>命令。</p>
+<p>执行<strong>tnl-policy</strong>命令后，根据隧道策略，决定流量在PE间优先选择哪条隧道进行转发，以及是否进行负载分担。创建隧道策略时，需要确定隧道选择顺序。如果没有配置隧道策略，将使用缺省隧道，即只选择LSP隧道，且不进行负载分担。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="tnl-policy_vsi_view__d124631e68"></a><a name="d124631e68"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置当前VSI实例的隧道策略名称。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>vsi company1 auto</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company1]<strong> pwsignal bgp</strong></pre>
+<pre class="screen">[Quidway-vsi-company1-bgp]<strong> <strong>route-distinguisher 100:1</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company1-bgp]<strong> <strong>quit</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company1]<strong> <strong>tnl-policy tnlpolicyofcompany1</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pwsignal.html">pwsignal</a></div>
+<div><a href="route-distinguisher_vsi-bgp_view.html">route-distinguisher（VSI-BGP视图）</a></div>
+<div><a href="vsi-id.html">vsi-id</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

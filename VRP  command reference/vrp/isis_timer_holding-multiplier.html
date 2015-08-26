@@ -1,0 +1,111 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="isis timer holding-multiplier">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="isis_timer_hello.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="isis_timer_holding-multiplier">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>isis timer holding-multiplier</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="isis_timer_holding-multiplier"></a><a name="isis_timer_holding-multiplier"></a>
+
+
+<h1 class="topictitle1">isis timer holding-multiplier</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>isis timer holding-multiplier</strong>命令用来设置宣告邻居失效前IS-IS没有收到的邻居Hello报文数目。</p>
+<p><strong>undo isis timer holding-multiplier</strong>命令用来恢复缺省设置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>isis timer holding-multiplier</strong> <em>number</em> [ <strong>level-1</strong> | <strong>level-2</strong> ]</p>
+<p><strong>undo</strong> <strong>isis timer holding-multiplier</strong> [ <strong>level-1</strong> | <strong>level-2</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>number</em>：宣告邻居失效前IS-IS没有收到的邻居Hello报文数目。整数形式，取值范围是3～1000。缺省值为3。</p>
+<p><strong>level-1</strong>：宣告邻居失效前IS-IS没有收到的Level-1邻居的Hello报文数目。</p>
+<p><strong>level-2</strong>：宣告邻居失效前IS-IS没有收到的Level-2邻居的Hello报文数目。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果没有指定级别，则默认级别为Level-1和Level-2。</p>
+<p>参数<strong>level-1</strong>和<strong>level-2</strong>仅在广播接口上是可配置的，而且必须先在接口上使能IS-IS。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对广播网络，可以分别设置Level-1和Level-2宣告邻居失效前IS-IS没有收到的Hello报文数目。对点到点链路，由于只有一种Hello报文，所以不需要使用参数<strong>level-1</strong>和<strong>level-2</strong>。</p>
+<p>实际上，Hello报文数目的设置就是设置Hold down时间（保持时间）。如果路由器在Hold down时间内没有收到对端路由器发送的Hello报文，就认为对端路由器已经失效。Hold down时间基于接口配置，同一路由器的不同接口可以设置不同的值。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果通过<strong>isis circuit-type</strong>命令将广播接口模拟为P2P接口或者通过<strong>undo isis circuit-type</strong>命令将该接口恢复为广播接口，则宣告邻居失效前IS-IS没有收到的邻居Hello报文的数目恢复为缺省值。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="isis_timer_holding-multiplier__d87469e102"></a><a name="d87469e102"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定接口GigabitEthernet1/0/0上宣告邻居失效前没有收到的Level-2 Hello报文数目为6。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface GigabitEthernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>isis timer holding-multiplier 6 level-2</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="isis_timer_holding-multiplier__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="isis_timer_holding-multiplier__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d87469e129"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d87469e133"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d87469e129 "><p>VRPV500R005C02B200</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d87469e133 "><p>修改参数<strong>level-1</strong>和<strong>level-2</strong>为只在广播接口上可配置</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="isis_timer_hello.html">isis timer hello</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,483 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis traffic-eng advertisements">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="traffic-eng.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_traffic-eng_advertisements">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis traffic-eng advertisements</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_traffic-eng_advertisements"></a><a name="display_isis_traffic-eng_advertisements"></a>
+
+
+<h1 class="topictitle1">display isis traffic-eng advertisements</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis traffic-eng advertisements</strong>命令用来查看流量工程TE（Traffic Engineering）最近一次发布的TE信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis traffic-eng advertisements</strong> [ <strong>level-1</strong> | <strong>level-2</strong> | <strong>level-1-2</strong> ] [ <em>lsp-id</em> | <strong>local</strong> ] [ <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>level-1</strong>：Level-1 LSDB中的TE信息。</p>
+<p><strong>level-2</strong>：Level-2 LSDB中的TE信息。</p>
+<p><strong>level-1-2</strong>：根据本节点的类别显示Level-1或Level-2 LSDB中的TE信息。即，若本节点属Level-1或Level-2，则显示Level-1或Level-2 LSDB中的TE信息；若本节点属Level-1-2，则显示Level-1和Level-2 LSDB中的TE信息。</p>
+<p><em>lsp-id</em>：查看IS-IS指定LSP ID发布的TE信息。</p>
+<p><strong>local</strong>：查看本地发布的TE信息。</p>
+<p><em>process-id</em>：IS-IS进程号。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定IPv4 VPN的IS-IS多实例进程。<em>vpn-instance-name</em>为IPv4 VPN实例的名称区分大小写。</p>
+<p><strong>vpn-instance default</strong>：除IPv4 VPN实例外的所有IS-IS进程，即所有的IPv6 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：指定IPv6 VPN的IS-IS多实例进程。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn6-instance default</strong>：除IPv6 VPN实例外的所有IS-IS进程，即所有的IPv4 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="p">该命令的显示信息有两种：标准DS-TE模式和非标准DS-TE模式。<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>有关DS-TE的详细介绍请参见《<span class="keyword">VRP</span><span class="keyword">  </span> 特性描述-MPLS》</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_traffic-eng_advertisements__d37035e194"></a><a name="d37035e194"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看IS-IS TE的发布信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display isis traffic-eng advertisements</strong></pre>
+<pre class="screen">                           TE information for ISIS(1)</pre>
+<pre class="screen">                           --------------------------</pre>
+<pre class="screen">Level-1 Link State Database</pre>
+<pre class="screen">---------------------------</pre>
+<pre class="screen">LSPID                 LSP Seq Num  LSP Checksum  LSP Holdtime  ATT/P/OL</pre>
+<pre class="screen">0000.0000.0001.00-00* 0x00000001   0x3f57        534           0/0/0</pre>
+<pre class="screen"> NLPID      : IPV4</pre>
+<pre class="screen"> AREA ADDR  : 00.0005</pre>
+
+<pre class="screen">Level-2 Link State Database</pre>
+<pre class="screen">---------------------------</pre>
+<pre class="screen">LSPID                 LSP Seq Num  LSP Checksum  LSP Holdtime  ATT/P/OL</pre>
+<pre class="screen">0000.0000.0001.00-00* 0x0000001c   0xf1ec        687           0/0/0</pre>
+<pre class="screen"> NLPID      : IPV4</pre>
+<pre class="screen"> AREA ADDR  : 00.0005</pre>
+<pre class="screen"> Router ID  : 1.1.1.9</pre>
+<pre class="screen">+NBR        : 0000.0000.0002.02  COST: 10</pre>
+<pre class="screen">    Affinity: 0x00000000</pre>
+<pre class="screen">    Interface IP Address:  10.1.1.1</pre>
+<pre class="screen">    Physical BW  :      12500 Bytes/sec</pre>
+<pre class="screen">    Reservable BW:       6250 Bytes/sec</pre>
+<pre class="screen">    Unreserved BW:</pre>
+<pre class="screen">    BW Unresrv[0] :       6250 Bytes/sec BW Unresrv[1] :       6250 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[2] :       6250 Bytes/sec BW Unresrv[3] :       6250 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[4] :       6250 Bytes/sec BW Unresrv[5] :       6250 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[6] :       6250 Bytes/sec BW Unresrv[7] :       6250 Bytes/sec</pre>
+<pre class="screen">    TE Cost      :         10</pre>
+<pre class="screen">    Sub Unreserved BW for Class Type 1:</pre>
+<pre class="screen">    BW Unresrv[0] :          0 Bytes/sec BW Unresrv[1] :          0 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[2] :          0 Bytes/sec BW Unresrv[3] :          0 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[4] :          0 Bytes/sec BW Unresrv[5] :          0 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[6] :          0 Bytes/sec BW Unresrv[7] :          0 Bytes/sec</pre>
+<pre class="screen">    Bandwidth Constraint Model: Russian Doll</pre>
+<pre class="screen">    Bandwidth Constraints:</pre>
+<pre class="screen">    BC[0] :       6250 Bytes/sec BC[1] :          0 Bytes/sec</pre>
+<pre class="screen">    Local Overbooking Multiplier:</pre>
+<pre class="screen">    LOM[0] :        100 %         LOM[1] :        100 %</pre>
+<pre class="screen">+NBR        : 0000.0000.0004.00  COST: 10</pre>
+<pre class="screen">    Affinity: 0x00000000</pre>
+<pre class="screen">    Interface IP Address:  30.1.1.1</pre>
+<pre class="screen">    Peer IP Address     :  30.1.1.2</pre>
+<pre class="screen">    Physical BW  :      12500 Bytes/sec</pre>
+<pre class="screen">    Reservable BW:       6250 Bytes/sec</pre>
+<pre class="screen">    Unreserved BW:</pre>
+<pre class="screen">    BW Unresrv[0] :       6250 Bytes/sec BW Unresrv[1] :       6250 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[2] :       6250 Bytes/sec BW Unresrv[3] :       6250 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[4] :       6250 Bytes/sec BW Unresrv[5] :       6250 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[6] :       6250 Bytes/sec BW Unresrv[7] :       6250 Bytes/sec</pre>
+<pre class="screen">    TE Cost      :         10</pre>
+<pre class="screen">    Sub Unreserved BW for Class Type 1:</pre>
+<pre class="screen">    BW Unresrv[0] :          0 Bytes/sec BW Unresrv[1] :          0 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[2] :          0 Bytes/sec BW Unresrv[3] :          0 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[4] :          0 Bytes/sec BW Unresrv[5] :          0 Bytes/sec</pre>
+<pre class="screen">    BW Unresrv[6] :          0 Bytes/sec BW Unresrv[7] :          0 Bytes/sec</pre>
+<pre class="screen">    Bandwidth Constraint Model: Russian Doll</pre>
+<pre class="screen">    Bandwidth Constraints:</pre>
+<pre class="screen">    BC[0] :       6250 Bytes/sec BC[1] :          0 Bytes/sec</pre>
+<pre class="screen">    Local Overbooking Multiplier:</pre>
+<pre class="screen">    LOM[0] :        100 %         LOM[1] :        100 %</pre>
+<pre class="screen">+SRLG NBR ID: 0000.0000.0004.00
+    Interface IP Address: 30.1.1.1 
+    Neighbor IP Address : 30.1.1.2 
+    Shared Risk Link Group: 10，20</pre>
+
+<div class="tablenoborder"><a name="display_isis_traffic-eng_advertisements__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_traffic-eng_advertisements__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis traffic-eng advertisements命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d37035e333"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d37035e337"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>LSPID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>链路状态报文ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>LSP Seq Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>LSP序列号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>LSP Checksum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>LSP校验和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>LSP Holdtime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>LSP保持时长</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>ATT/P/OL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>Attach bit（ATT）：连接位；Partition bit（P）：分区位；Overload bit（OL）：过载位。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>NLPID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>网络协议</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>AREA ADDR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>区域地址</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>路由器的Router ID</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>+NBR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>开销类型为wide，wide-compatible和compatible的邻居系统ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>COST</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Affinity:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>链路的亲和属性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Interface IP Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>接口的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Peer IP Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>接口对端的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Physical BW :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>链路的物理带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Reservable BW:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>链路的可预留带宽</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Unreserved BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>未预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Sub Unreserved BW for Class Type 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>CT1的未预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>BW Unresrv [ x ] </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>优先级为x的链路的未预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>TE Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>链路的TE度量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Bandwidth Constraint Model</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>链路使用的带宽约束模型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Bandwidth Constraints</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>带宽约束</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>BC[x]</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>BCx的带宽约束</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Local Overbooking Multiplier</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>本地过预留倍数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>LOM[x]</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>BCx的本地过预留倍数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>+SRLG NBR ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>一个共享风险链路组中邻居的系统ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Neighbor IP Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>邻居的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d37035e333 "><p>Shared Risk Link Group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d37035e337 "><p>共享风险链路组</p>
+<div class="note"><span class="notetitle"> 说明： </span><div class="notebody"><p>在接口下使能SRLG功能时，TE信息中带有SRLG信息。</p>
+</div></div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_traffic-eng_advertisements__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_traffic-eng_advertisements__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d37035e659"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d37035e663"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d37035e659 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d37035e663 "><p>增加参数<strong>vpn-instance default</strong>，<strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> }</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d37035e659 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d37035e663 "><p>修改了显示信息，分为标准DS-TE和非标准DS-TE两种模式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d37035e659 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d37035e663 "><p>增加了SRLG显示信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d37035e659 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d37035e663 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d37035e659 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d37035e663 "><p>删除了显示信息中以下字段：INTF ADDR，IP-Internal，COST，不带TE信息的NBR</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="traffic-eng.html">traffic-eng</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

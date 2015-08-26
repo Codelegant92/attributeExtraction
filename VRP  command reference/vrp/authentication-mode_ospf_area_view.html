@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="authentication-mode（OSPF区域视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ospf_authentication-mode.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="authentication-mode_ospf_area_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>authentication-mode（OSPF区域视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="authentication-mode_ospf_area_view"></a><a name="authentication-mode_ospf_area_view"></a>
+
+<h1 class="topictitle1">authentication-mode（OSPF区域视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>authentication-mode</strong>命令用来指定OSPF区域所使用的验证模式及验证口令。配置该命令相当于在指定区域所有路由器接口下使用相同的验证。</p>
+<p><strong>undo authentication-mode</strong>命令用来取消该区域已配置的验证模式。</p>
+<p>缺省情况下，没有配置区域验证模式。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>authentication-mode</strong> <strong>simple</strong> [ [ <strong>plain</strong> ] <em>plain-text</em> | <strong>cipher</strong> <em>cipher-text</em> ]</p>
+<p><strong>authentication-mode</strong> { <strong>md5</strong> | <strong>hmac-md5</strong> } [ <em>key-id</em> { <strong>plain</strong> <em>plain-text</em> | [<strong>cipher</strong> ] <em>cipher-text </em>} ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>simple</strong>：使用简单验证模式。</p>
+<p><strong>plain</strong>：明文口令类型。只能键入明文口令，在查看配置文件时以明文方式显示口令。对于简单验证模式，当此参数缺省时，默认为<strong>plain</strong>类型。</p>
+<p><em>plain-text</em>：指定明文验证字。<strong>simple</strong>模式下是1～8字节字符串；<strong>md5</strong>、<strong>hmac-md5</strong>模式是1～16字节字符串。</p>
+<p><strong>cipher</strong>：密文口令类型。对于MD5/HMAC-MD5验证模式，当此参数缺省时，默认为<strong>cipher</strong>类型。</p>
+<p><em>cipher-text</em>：指定密文验证字。<strong>simple</strong>模式下，1～8字节字符串对应明文，24字节对应密文；<strong>md5、hmac-md5</strong>模式下1～16字节字符串对应明文，24字节对应密文。</p>
+<p><strong>md5</strong>：使用MD5密文验证模式。</p>
+<p><strong>hmac-md5</strong>：使用hmac-md5密文验证模式。</p>
+<p><em>key-id</em>：认证ID值。整数形式，取值范围是1～255。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>OSPF区域视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>一个区域中所有路由器的验证模式必须相同（不验证、使用简单验证、使用MD5密文验证），验证口令也必须相同。</p>
+<p>该命令的优先级比接口验证方式（<a href="ospf_authentication-mode.html">ospf authentication-mode</a>）的优先级低。</p>
+<p>验证字中不允许包含空格。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="authentication-mode_ospf_area_view__d3180e133"></a><a name="d3180e133"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定OSPF区域0支持MD5密文验证模式。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong> </pre>
+<pre class="screen">[Quidway] <strong>ospf 100</strong></pre>
+<pre class="screen">[Quidway-ospf-100]<strong> area 0</strong></pre>
+<pre class="screen">[Quidway-ospf-100-area-0.0.0.0]<strong> authentication-mode md5 1 cipher abc</strong></pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="authentication-mode_ospf_area_view__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="authentication-mode_ospf_area_view__tb_01" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.34895439657345%" id="d3180e160"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d3180e163"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d3180e160 "><p>VRPV500R006C02B220</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d3180e163 "><p>关键字<strong>simple</strong>后的参数由必选修改为可选</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ospf_authentication-mode.html">ospf authentication-mode</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,112 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ospf filter-lsa-out">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="filter-lsa-out_peer.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ospf_filter_lsa-out">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ospf filter-lsa-out</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ospf_filter_lsa-out"></a><a name="ospf_filter_lsa-out"></a>
+
+
+<h1 class="topictitle1">ospf filter-lsa-out</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ospf filter-lsa-out</strong>命令用来在广播、NBMA、P2P以及P2MP网络中，配置对特定OSPF接口出方向的LSA进行过滤。</p>
+<p><strong>undo ospf filter-lsa-out</strong>命令用来取消对LSA的过滤。</p>
+<p>缺省情况下，不对LSA进行过滤。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ospf filter-lsa-out</strong> { <strong>all</strong> | { <strong>summary</strong> [ <strong>acl</strong> <em>acl-number</em> ] | <strong>ase</strong> [ <strong>acl</strong> <em>acl-number</em> ] | <strong>nssa</strong> [ <strong>acl</strong> <em>acl-number</em> ] } <sup>*</sup> }</p>
+<p><strong>undo ospf filter-lsa-out</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：对所有的LSA（除了Grace LSA）都进行过滤。</p>
+<p><strong>summary</strong>：对Network Summary LSA（Type3）进行过滤。</p>
+<p><strong>acl</strong> <em>acl-number</em>：指定基本访问控制列表编号。整数形式。</p>
+<p><strong>ase</strong>：对AS
+External LSA（Type5）进行过滤。</p>
+<p><strong>nssa</strong>：对NSSA LSA（Type7）进行过滤。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过对特定OSPF接口出方向的LSA进行过滤可以不向邻居发送无用的LSA，从而减少邻居LSDB的大小，提高网络收敛速度。</p>
+<p>当两台路由器之间存在多条链路时，通过配置本地路由器可以在某些链路上过滤LSA的传送，减少不必要的重传，节省带宽资源。</p>
+<p>在P2MP网络中配置对指定邻居发送的LSA进行过滤时，需要使用<strong>filter-lsa-out peer</strong>命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ospf_filter_lsa-out__d101720e108"></a><a name="d101720e108"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置接口GigabitEthernet1/0/0对出方向的所有LSA（除了Grace LSA）进行过滤。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view </strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>ospf filter-lsa-out all</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="ospf_filter_lsa-out__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="ospf_filter_lsa-out__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d101720e135"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d101720e139"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d101720e135 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d101720e139 "><p>首次发布</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="filter-lsa-out_peer.html">filter-lsa-out peer</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

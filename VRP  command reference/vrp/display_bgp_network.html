@@ -1,0 +1,292 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display bgp network">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_bgp_network">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display bgp network</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_bgp_network"></a><a name="display_bgp_network"></a>
+
+
+<h1 class="topictitle1">display bgp network</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display bgp network</strong>命令用来显示BGP计划通过<strong>network</strong>命令发布的路由信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display bgp network</strong><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv4</strong> { <strong>all</strong> | <strong>vpn-instance</strong> <em>vpn-instance-name</em> } <strong>network</strong><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp ipv6 network</strong><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display bgp vpnv6</strong> { <strong>all</strong> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> } <strong>network</strong><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpnv4</strong>：查看VPNv4的通过<strong>network</strong>命令发布的路由信息。</p>
+<p><strong>all</strong>：查看所有VPNv4的通过<strong>network</strong>命令发布的VPNv4路由信息。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：查看通过<strong>network</strong>命令发布的指定VPN实例的路由信息。</p>
+<p><strong>ipv6</strong>：查看BGP发布的IPv6路由信息。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：查看指定IPv6 VPN实例发布的路由信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_bgp_network__d16548e227"></a><a name="d16548e227"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示BGP发布的路由信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp network </strong></pre>
+<pre class="screen">  BGP Local Router ID is 1.1.1.9</pre>
+<pre class="screen">  Local AS Number is 10(Public)</pre>
+<pre class="screen">  Network          Mask            Route-policy</pre>
+<pre class="screen">  1.2.0.0          255.255.0.0</pre>
+<pre class="screen">  3.0.0.0          255.0.0.0       Policy1</pre>
+<pre class="screen">  4.4.4.0          255.255.255.0</pre>
+
+<div class="tablenoborder"><a name="display_bgp_network__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_network__tb_01" frame="border" border="1" rules="all"><caption>表1 display bgp network命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.19249181153943%" id="d16548e259"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.807508188460574%" id="d16548e263"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d16548e259 "><p>Network</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d16548e263 "><p>本地发布的网络地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d16548e259 "><p>Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d16548e263 "><p>网络地址的掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d16548e259 "><p>Route-policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d16548e263 "><p>使用的路由策略</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示BGP VPNv4发布的路由信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp vpnv4 all network</strong></pre>
+<pre class="screen">  BGP Local Router ID is 2.2.2.9</pre>
+<pre class="screen">  Local AS Number is 100</pre>
+<pre class="screen">  Route Distinguisher: 100:1
+  (vpn1)</pre>
+<pre class="screen">  Network          Mask            Route-policy</pre>
+
+<pre class="screen">  4.4.4.4          255.255.255.255</pre>
+<pre class="screen">  Route Distinguisher: 100:2
+  (vpn2)</pre>
+<pre class="screen">  Network          Mask            Route-policy</pre>
+
+<pre class="screen">  5.5.5.5          255.255.255.255</pre>
+
+<div class="tablenoborder"><a name="display_bgp_network__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_network__tb_02" frame="border" border="1" rules="all"><caption>表2 display bgp vpnv4 all network命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.19160170983154%" id="d16548e343"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.80839829016847%" id="d16548e347"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d16548e343 "><p>Route Distinguisher</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d16548e347 "><p>VPN实例的路由标识</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示BGP发布的IPv6路由信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp ipv6 network </strong></pre>
+<pre class="screen">  BGP Local Router ID is 5.5.5.5</pre>
+<pre class="screen">  Local AS Number is 100(PublicV6)</pre>
+<pre class="screen">  Network          Prefix            Route-policy</pre>
+
+<pre class="screen">  100::            64</pre>
+<pre class="screen">  200::            64</pre>
+<p># 查看本端BGP通过<strong>network</strong>命令发布的指定VPN实例的VPNv6路由信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bgp vpnv6 vpn6-instance vpn1 network</strong></pre>
+
+<pre class="screen">  BGP Local Router ID is 1.1.1.1</pre>
+<pre class="screen">  Local AS Number is 100</pre>
+<pre class="screen">  Route Distinguisher: 100:1
+  (vpn1)</pre>
+<pre class="screen">  Network          Prefix            Route-policy</pre>
+
+<pre class="screen">  2000::           100               policy1</pre>
+
+<div class="tablenoborder"><a name="display_bgp_network__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_network__tb_03" frame="border" border="1" rules="all"><caption>表3 display bgp vpnv6 network命令显示描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d16548e419"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d16548e423"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d16548e419 "><p>BGP Local Router ID is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d16548e423 "><p>本地BGP的本地路由器ID号，注意其格式与IPv4地址一样</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d16548e419 "><p>Local AS Number is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d16548e423 "><p>本地自治系统号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d16548e419 "><p>Route Distinguisher</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d16548e423 "><p>VPN实例的路由标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d16548e419 "><p>Prefix</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d16548e423 "><p>本端BGP发布的网段地址掩码</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看本端BGP通过<strong>network</strong>命令发布的所有的VPNv6路由信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display bgp vpnv6 all network</strong></strong></pre>
+<pre class="screen">  BGP Local Router ID is 2.2.2.9</pre>
+<pre class="screen">  Local AS Number is 100</pre>
+<pre class="screen">  Route Distinguisher: 100:4
+  (vpn1)</pre>
+<pre class="screen">  Network          Prefix            Route-policy</pre>
+<pre class="screen">  1::1             128</pre>
+<pre class="screen">  2::2             128</pre>
+<pre class="screen">  Route Distinguisher: 100:5
+  (vrf1)</pre>
+<pre class="screen">  Network          Prefix            Route-policy</pre>
+<pre class="screen">  3::3             128</pre>
+<pre class="screen">  Route Distinguisher: 100:9
+  (vrf2)</pre>
+<pre class="screen">  Network          Prefix            Route-policy</pre>
+<pre class="screen">  8::9             128</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_bgp_network__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bgp_network__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d16548e524"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d16548e528"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d16548e524 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d16548e528 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

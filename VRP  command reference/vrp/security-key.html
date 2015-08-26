@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="security-key">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mc-trunk_system_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="security-key">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>security-key</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="security-key"></a><a name="security-key"></a>
+
+
+<h1 class="topictitle1">security-key</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>security-key</strong>命令用来配置加密的密码。</p>
+<p><strong>undo security-key</strong>命令用来恢复密码到缺省值。</p>
+<p>缺省情况下，simple方式密码为00E0FC0000000000。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>security-key </strong>{<strong> simple </strong><em>simple-key </em>|<strong> cipher </strong><em>cipher-key </em>}</p>
+<p><strong>undo security-key</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong> simple </strong><em>simple-key </em>：以明文方式加密安全密钥。密码是长度小于等于16字节的连续字符串。缺省值是00E0FC0000000000。</p>
+<p><strong> cipher </strong><em>cipher-key </em>：以密文方式加密安全密钥。密码是长度小于等于16字节的连续字符串。查询时，显示24字节字符串。缺省值是00E0FC0000000000。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MC-Trunk视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>如果使用simple选项，密码将以明文形式保存在配置文件中，以低级别登录的用户可以通过查看配置方式获取密码，造成安全隐患。因此，建议使用cipher选项，将密码加密保存。</p>
+</div></div>
+<div class="p">用户可以选择采用明文加密或密文加密。<ul>
+<li><p>明文加密时，在配置文件中采用明文反编译后显示。</p>
+</li>
+<li><p>密文加密时，在配置文件中采用加密后的乱码显示，不显示真正的密码。</p>
+</li>
+</ul>
+</div>
+<p>为了提高系统的安全性可以配置加密密码。MC-Trunk中的两台设备上的加密密码必须配置为一致。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="security-key__d116857e82"></a><a name="d116857e82"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置MC-Trunk的密码为密文方式，密码为00E0FC000000。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway] <strong>mc-trunk 1</strong>
+[Quidway-mc-trunk-1] <strong>security-key cipher 00E0FC000000</strong>
+</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mc-trunk_system_view.html">mc-trunk（系统视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

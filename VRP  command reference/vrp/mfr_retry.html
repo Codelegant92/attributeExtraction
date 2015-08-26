@@ -1,0 +1,64 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mfr retry">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frame_relay_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mfr_timer_ack.html">
+<meta name="DC.Relation" scheme="URI" content="mfr_timer_hello.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mfr_retry">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mfr retry</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mfr_retry"></a><a name="mfr_retry"></a>
+
+<h1 class="topictitle1">mfr retry</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mfr retry</strong>命令用来设置帧中继捆绑链路等待hello应答消息时重发hello消息的最大次数。</p>
+<p><strong>undo mfr retry</strong>命令用来恢复缺省设置。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mfr retry</strong> <em>number</em></p>
+<p><strong>undo mfr retry</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>number</em>：捆绑链路最多可重发hello消息的次数。取值范围是1～5。缺省情况下为2次。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>帧中继接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果捆绑链路重发hello消息的次数达到最大后仍然没有收到对端应答，系统将认为此捆绑链路的链路协议发生故障。</p>
+<p>只有在使用命令<strong>link-protocol fr mfr</strong>将帧中继捆绑链路接口同帧中继捆绑相关联之后，本命令才能够被配置。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mfr_retry__d92808e45"></a><a name="d92808e45"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置捆绑链路Serial1/0/0最多可重发3次hello消息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> link-protocol fr mfr 1/0/123</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> mfr retry 3</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/frame_relay_configuration_commands.html">帧中继配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mfr_timer_ack.html">mfr timer ack</a></div>
+<div><a href="mfr_timer_hello.html">mfr timer hello</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

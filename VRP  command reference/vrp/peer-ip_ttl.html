@@ -1,0 +1,123 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer-ip ttl">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="multi-hop.html">
+<meta name="DC.Relation" scheme="URI" content="display_bfd_session.html">
+<meta name="DC.Relation" scheme="URI" content="display_bfd_ttl.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer-ip_ttl">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer-ip ttl</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer-ip_ttl"></a><a name="peer-ip_ttl"></a>
+
+
+<h1 class="topictitle1">peer-ip ttl</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer-ip ttl</strong>命令用来配置BFD报文的生存时间。</p>
+<p><strong>undo peer-ip</strong>命令用来恢复BFD报文的生存时间为默认值。</p>
+<p>缺省情况下，不配置BFD报文的生存时间，采用默认值。对于静态配置的BFD会话，单跳BFD报文的生存时间为255，多跳BFD报文的生存时间为254；多于动态建立的BFD会话，单跳BFD报文的生存时间为255，动态VPN类型的BFD报文的生存时间为254，多跳BFD报文的生存时间为253。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li>静态配置BFD会话：通过命令行手工配置BFD会话参数，包括了配置本地标识符和远端标识符等，然后手工下发BFD会话建立请求。</li>
+<li>动态建立BFD会话：路由协议在建立了新的邻居关系时，将邻居的参数及检测参数通告给BFD，BFD根据收到的参数建立起会话。</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer-ip</strong> <em>peer-ip</em> <em>mask-length</em> <strong>ttl</strong> { <strong>single-hop</strong> | <strong>multi-hop</strong> | <strong>vpn</strong> } <em>ttl-value</em></p>
+<p><strong>undo peer-ip</strong> <em>peer-ip</em> <em>mask-length </em> <strong>ttl</strong> { <strong>single-hop</strong> | <strong>multi-hop</strong> | <strong>vpn</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>peer-ip</em>：IP网段地址，同参数mask-length一同使用，用于匹配IP地址是否在此范围内。</p>
+<p><em>mask-length</em>：IP地址的掩码长度。取值范围是8～32。</p>
+<p><strong>single-hop</strong>：单跳会话类型。</p>
+<p><strong>multi-hop</strong>：多跳会话类型。</p>
+<p><strong>vpn</strong>：动态单跳VPN类型。</p>
+<p><em>ttl-value</em>：所指定的TTL值。取值范围是1～255。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BFD视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>为使得使用不同<span class="keyword">VRP</span>版本的设备能够互通，并考虑后续版本升级以及和其他厂商的设备互通，可以运用本命令进行TTL配置。</p>
+<p>IP网段地址必须和指定的掩码长度相匹配，长掩码的配置会优先于短掩码的配置。</p>
+<p>同一IP网段地址、同一掩码长度、同一TTL值类型不能同时存在。</p>
+<p>对于同一IP地址、同一掩码，单跳、VPN类型的TTL值必须大于多跳类型的TTL值。</p>
+<p>当配置的会话较多时，更新对应会话的TTL值会比较耗费时间，若多次配置之间的时间间隔太短，系统将会提示当前会话更新正在进行，请稍后配置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer-ip_ttl__d102938e128"></a><a name="d102938e128"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p>＃设置单跳BFD会话的TTL值为254，其中，IP网段地址为1.1.1.0，掩码长度为24。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>bfd</strong>
+[Quidway-bfd] <strong>peer-ip 1.1.1.0 24 ttl single-hop 254</strong>
+</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="peer-ip_ttl__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="peer-ip_ttl__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42%" id="d102938e155"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.99999999999999%" id="d102938e159"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42%" headers="d102938e155 "><p>VRPV500R006C02B111</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="d102938e159 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bfd_configuration_commands.html">BFD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="multi-hop.html">multi-hop</a></div>
+<div><a href="display_bfd_session.html">display bfd session</a></div>
+<div><a href="display_bfd_ttl.html">display bfd ttl</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

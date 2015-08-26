@@ -1,0 +1,243 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ntp-service sessions">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ntp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ntp-service_unicast-peer.html">
+<meta name="DC.Relation" scheme="URI" content="ntp-service_unicast-server.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ntp-service_sessions">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ntp-service sessions</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ntp-service_sessions"></a><a name="display_ntp-service_sessions"></a>
+
+
+<h1 class="topictitle1">display ntp-service sessions</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ntp-service sessions</strong>命令用来查看本地NTP服务维护的所有会话信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ntp-service sessions </strong> [ <strong>verbose</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>verbose</strong>：显示NTP会话的详细信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行命令<strong>display ntp-service sessions</strong>如果不使用verbose选项，将显示会话的简要信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ntp-service_sessions__d54023e46"></a><a name="d54023e46"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看本地设备的NTP会话信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ntp-service sessions</strong>
+       source          reference    stra reach poll  now offset  delay disper</pre>
+<pre class="screen">**********************************************************************
+[12345] 127.127.1.0   LOCAL(0)         1     3   64   68    0.0    0.0    0.4
+note: 1 source(master),2 source(peer),3 selected,4 candidate,5 configured1 source(master),2 source(peer),3 selected,4 candidate,5 configured,6 vpn-instance </pre>
+<p># 查看本地设备NTP会话的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ntp-service sessions verbose</strong>
+ clock source: 172.11.12.1
+ clock stratum: 1</pre>
+<pre class="screen"> clock status: configured, master, sane, valid
+ reference clock ID: LOCAL(0)
+ local mode: client, local poll: 10</pre>
+<pre class="screen"> peer mode: server, peer poll: 10
+ offset: -3.2385 ms,delay: 26.97 ms,  disper: 14.85 ms
+ root delay: 0.00 ms, root disper: 10.94 ms</pre>
+<pre class="screen"> reach: 377, sync dist: 0.058, sync state: 4
+ precision: 2^18, version: 3, peer interface: wildcard
+ reftime: 10:01:38.546 UTC Sep 5 2005(C6C69602.8C00DA1A)</pre>
+<pre class="screen"> orgtime: 10:01:43.463 UTC Sep 5 2005(C6C69607.76ACC921)
+ rcvtime: 10:01:43.480 UTC Sep 5 2005(C6C69607.7AF4ADBC)</pre>
+<pre class="screen"> xmttime: 10:01:43.452 UTC Sep 5 2005(C6C69607.73F1E8E6)
+ filter delay :  0.03   0.02   0.03   0.02   0.02   0.02   0.04   0.02</pre>
+<pre class="screen"> filter offset:  0.00  -0.01   0.00   0.01   0.00   0.00   0.00   0.00
+ filter disper:  0.03   0.02   0.00   0.11   0.09   0.08   0.06   0.05</pre>
+
+<div class="tablenoborder"><a name="display_ntp-service_sessions__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ntp-service_sessions__tb_01" frame="border" border="1" rules="all"><caption>表1 display ntp-service sessions verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="30.995212899974806%" id="d54023e88"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="69.0047871000252%" id="d54023e92"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>clock source</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>时钟源地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>clock stratum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>本地系统所处的NTP stratum。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>reference clock ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>当本地系统已被同步到一个远程NTP服务器或某个时钟源时，指示远程服务器的地址或时钟源的标识。当该服务器处于某一VPN内时，将显示该VPN实例的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>local mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>本地系统模式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>peer mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>对端系统模式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>offset</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>表示相对上一级时钟源的时差。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>delay</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>表示相对上一级时钟源的延时。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>disper</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>表示相对于上一级时钟源的离差。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>root delay</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>本地到主参考时钟总的系统延迟。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>root disper</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>本地相对主参考时钟的系统离差。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>reach</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>可达性标记。表明了相对于时钟源的可达性。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>sync dist</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><p>表示相对上一级时钟源的同步距离，此参数评价描述时钟源，NTP选择同步距离最小的时钟源。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="30.995212899974806%" headers="d54023e88 "><p>sync state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="69.0047871000252%" headers="d54023e92 "><div class="p">同步的状态：<ul>
+<li><p>0：时钟没有被更新过</p>
+</li>
+<li><p>1：从配置信息中得到频率信息</p>
+</li>
+<li><p>2：时钟被设定</p>
+</li>
+<li><p>3：时钟被设定，但是还没有决定频率</p>
+</li>
+<li><p>4：时钟被同步</p>
+</li>
+<li><p>5：发现错误</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ntp_configuration_commands.html">NTP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ntp-service_unicast-peer.html">ntp-service unicast-peer</a></div>
+<div><a href="ntp-service_unicast-server.html">ntp-service unicast-server</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

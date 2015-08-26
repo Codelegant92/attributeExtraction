@@ -1,0 +1,393 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display vll ccc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ccc_interface_in-label_out-label.html">
+<meta name="DC.Relation" scheme="URI" content="ccc_interface_out-interface.html">
+<meta name="DC.Relation" scheme="URI" content="display_l2vpn_ccc-interface_vc-type.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_vll_ccc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display vll ccc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_vll_ccc"></a><a name="display_vll_ccc"></a>
+
+
+<h1 class="topictitle1">display vll ccc</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display vll ccc</strong>命令用来查看CCC连接信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display vll ccc</strong> [ <em>ccc-name</em> | <strong>type</strong> { <strong>local</strong> | <strong>remote</strong> } ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ccc-name</em>：用于显示的CCC连接的名称。</p>
+<p><strong>type</strong>：指定要查看的CCC连接类型。</p>
+<p><strong>local</strong>：本地CCC连接。</p>
+<p><strong>remote</strong>：远程CCC连接。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置完CCC连接后，可执行<strong>display vll ccc</strong>命令查看配置是否成功。执行此命令后，如果不指定连接名或连接类型，将显示所有已配置的CCC连接信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_vll_ccc__d71462e67"></a><a name="d71462e67"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定名称的CCC连接。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vll ccc c1 </strong></pre>
+<pre class="screen">name: CE1-CE2, type: remote, state: up
+intf: GigabitEthernet1/0/1 (up ethernet), in-label: 100 ,
+out-label: 200 , nexthop: 10.1.1.2
+no control word
+VC last up time : 2009/03/23 11:16:07
+VC total up time: 0 days, 0 hours, 1 minutes, 37 seconds</pre>
+<p>显示信息的解释请参见下表。</p>
+<p># 显示所有的CCC连接。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vll ccc</strong></pre>
+<pre class="screen">total  ccc vc : 1
+local  ccc vc : 0,  0 up
+remote ccc vc : 1,  1 up
+
+name: CE1-CE2, type: remote, state: up,
+intf: GigabitEthernet1/0/1 (up), in-label: 100 , out-label: 200 , nexthop: 10.1.
+1.2
+VC last up time : 2009/03/23 11:16:07
+VC total up time: 0 days, 0 hours, 14 minutes, 14 seconds</pre>
+
+<div class="tablenoborder"><a name="display_vll_ccc__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vll_ccc__tb_01" frame="border" border="1" rules="all"><caption>表1 display vll ccc命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.76820357772739%" id="d71462e99"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.23179642227262%" id="d71462e103"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d71462e99 "><p>total  ccc vc</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d71462e103 "><p>表示本端的CCC本地连接和远程连接的总和。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d71462e99 "><p>local  ccc vc : 0,  0 up</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d71462e103 "><p>表示本端的CCC本地连接的总数为0，有0个状态为up。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d71462e99 "><p>remote ccc vc : 1,  0 up</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d71462e103 "><p>表示本端的CCC远程连接的总数为1，有0个状态为up。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d71462e99 "><p>name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d71462e103 "><p>表示CCC连接的名称，字符串形式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d71462e99 "><p>type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d71462e103 "><div class="p">CCC连接的类型：<ul>
+<li><p>local：本地连接，即同一个PE的两个CE之间建立的连接。</p>
+</li>
+<li><p>remote：远程连接，即两个不同PE上的CE之间建立的连接。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d71462e99 "><p>state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d71462e103 "><div class="p">CCC连接的状态：<ul>
+<li><p>down：表示CCC连接建立不成功，可能是配置不正确或关联的接口为down导致的。</p>
+</li>
+<li><p>up：表示CCC连接建立成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d71462e99 "><p>intf</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d71462e103 "><p>表示CCC连接关联的接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d71462e99 "><p>in-label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d71462e103 "><p>该CCC连接的入标签，手工指定的，与对端出标签一致。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d71462e99 "><p>out-label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d71462e103 "><p>该CCC连接的出标签，也是手工指定的，与对端入标签一致。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.76820357772739%" headers="d71462e99 "><p>nexthop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.23179642227262%" headers="d71462e103 "><p>该CCC连接的公网下一跳地址。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示所有本地CCC连接信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vll ccc type local</strong></pre>
+<pre class="screen">total local  ccc vc : 1,  1 up</pre>
+
+<pre class="screen">name: c2, type: local, state: up,</pre>
+<pre class="screen">intf1: GigabitEthernet1/0/0 (up),   intf2: GigabitEthernet2/0/0 (up)</pre>
+
+<div class="tablenoborder"><a name="display_vll_ccc__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vll_ccc__tb_02" frame="border" border="1" rules="all"><caption>表2 display vll ccc type local命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.780801209372644%" id="d71462e269"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.21919879062737%" id="d71462e273"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.780801209372644%" headers="d71462e269 "><p>total local  ccc vc :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.21919879062737%" headers="d71462e273 "><p>表示CCC本地连接的总数和状态为Up的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.780801209372644%" headers="d71462e269 "><p>name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.21919879062737%" headers="d71462e273 "><p>表示CCC连接的名称，字符串形式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.780801209372644%" headers="d71462e269 "><p>type: local,</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.21919879062737%" headers="d71462e273 "><p>表示显示的是CCC本地连接的信息。local表示本地连接，即同一个PE的两个直连CE之间建立的连接。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.780801209372644%" headers="d71462e269 "><p>state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.21919879062737%" headers="d71462e273 "><div class="p">CCC连接的状态：<ul>
+<li><p>down：表示CCC连接建立不成功，可能是关联的接口为down或配置不正确导致的。</p>
+</li>
+<li><p>up：表示CCC连接建立成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.780801209372644%" headers="d71462e269 "><p>intf1: GigabitEthernet1/0/0 (up),   intf2: GigabitEthernet2/0/0 (up)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.21919879062737%" headers="d71462e273 "><p>表示本端建立连接的两个CE的接入接口。其中一个为GE1/0/0（接口状态为up），另一个为GE2/0/0接口状态为up）。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示所有远程CCC连接信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display vll ccc type remote</strong></pre>
+<pre class="screen">total remote ccc vc : 1,  1 up</pre>
+
+<pre class="screen">name: CE1-CE2, type: remote, state: up,</pre>
+<pre class="screen">intf: GigabitEthernet1/0/0 (up), in-label: 100 , out-label: 200 , out-interface : GigabitEthernet2/0/0</pre>
+
+<div class="tablenoborder"><a name="display_vll_ccc__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vll_ccc__tb_03" frame="border" border="1" rules="all"><caption>表3 display vll ccc type remote命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d71462e374"><p>Item</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d71462e378"><p>Description</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e374 "><p>total remote ccc vc :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e378 "><p>表示CCC远程连接的总数和状态为Up的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e374 "><p>name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e378 "><p>表示CCC连接的名称，字符串形式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e374 "><p>type: remote,</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e378 "><p>表示显示的是CCC远程连接的信息。remote表示远程连接。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e374 "><p>state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e378 "><div class="p">CCC连接的状态： ?<ul>
+<li><p>down：表示CCC连接建立不成功，可能是关联的接口为down或配置不正确导致的。</p>
+</li>
+<li><p>up：表示CCC连接建立成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e374 "><p>intf: GigabitEthernet1/0/0 (up)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e378 "><p>表示本端建立CCC连接的CE的接入接口。其中接口名称为GE1/0/0（接口状态为up）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e374 "><p>in-label:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e378 "><p>该CCC连接的入标签，手工指定的，与对端出标签一致。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e374 "><p>out-label:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e378 "><p>该CCC连接的出标签，也是手工指定的，与对端入标签一致。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e374 "><p>out-interface :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d71462e378 "><p>表示本端建立CCC远程连接的出接口。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ccc_interface_in-label_out-label.html">ccc interface in-label out-label</a></div>
+<div><a href="ccc_interface_out-interface.html">ccc interface out-interface</a></div>
+<div><a href="display_l2vpn_ccc-interface_vc-type.html">display l2vpn ccc-interface vc-type</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

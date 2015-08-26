@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ipv6 nd hop-limit">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipv6_nd_hop-limit">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ipv6 nd hop-limit</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipv6_nd_hop-limit"></a><a name="ipv6_nd_hop-limit"></a>
+
+
+<h1 class="topictitle1">ipv6 nd hop-limit</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ipv6 nd hop-limit</strong>命令用来配置路由设备的跳数限制。</p>
+<p><strong>undo ipv6 nd hop-limit</strong>命令用来将此设置恢复为缺省值64。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ipv6 nd hop-limit </strong><em>limit</em></p>
+<p><strong>undo ipv6 nd hop-limit</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>limit</em>：指定跳数的取值。整数形式，取值范围是1～255。缺省值是64。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>跳数限制的作用包括：</p>
+<ul>
+<li><p>控制路由设备始发的IPv6单播报文的跳数限制；</p>
+</li>
+<li><p>作为RA报文中的参数，帮助主机完成跳数限制（即主机始发的IPv6单播报文的跳数限制）的自动配置。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>一般情况下，路由设备的跳数限制与RA报文中的跳数限制取值相同，但在下述情况中，路由设备的跳数限制为缺省值64，RA报文中的跳数限制为0。</p>
+<ul>
+<li><p>没有设置路由设备的跳数限制，即缺省情况下。</p>
+</li>
+<li><p>执行<strong>undo ipv6 nd hop-limit</strong>命令将路由设备的跳数限制恢复为缺省值。</p>
+</li>
+</ul>
+<p>主机收到跳数限制为0的RA报文后，使用缺省值64，与路由设备保持一致。</p>
+<p>在配置该命令前，需要先在接口视图下执行<strong>ipv6 enable</strong>命令，使能IPv6功能。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ipv6_nd_hop-limit__d86142e81"></a><a name="d86142e81"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置路由设备发布的跳数限制。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>ipv6 nd hop-limit 100</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_basic_configuration_commands.html">IPv6基础配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

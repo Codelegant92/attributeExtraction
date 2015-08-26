@@ -1,0 +1,93 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="l2-multicast protection oam-bind cfm">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="multicast-vlan_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="l2-multicast_protection_oam-bind_cfm">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>l2-multicast protection oam-bind cfm</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="l2-multicast_protection_oam-bind_cfm"></a><a name="l2-multicast_protection_oam-bind_cfm"></a>
+
+
+<h1 class="topictitle1">l2-multicast protection oam-bind cfm</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>l2-multicast protection oam-bind cfm</strong>命令用来配置本组播VLAN的故障检测。</p>
+<p><strong>undo</strong> <strong>l2-multicast protection oam-bind cfm</strong>命令用来解除本组播VLAN绑定的故障检测。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>l2-multicast protection oam-bind cfm md </strong><em>mdname</em><strong> ma </strong><em>maname</em><strong> remote-mep </strong><em>rmepid</em></p>
+<p><strong>undo</strong> <strong>l2-multicast protection oam-bind cfm </strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>md </strong><em>mdname</em>：表示MD（Maintenance Domain）名称。字符串形式，不支持空格，长度范围是1～43个字符。</p>
+<p><strong>ma </strong><em>maname</em>：表示MA（Maintenance Alliance）名称。字符串形式，不支持空格，长度范围是1～43个字符。</p>
+<p><strong>remote-mep </strong><em>rmepid</em>：表示RMEP（Remote Maintenance End Point）的编号。整数形式，取值范围是1～8191。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p><em>maname</em>和<em>mdname</em>的总长度不能超过44个字符。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VLAN视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置组播VLAN 1＋1保护功能中的工作VLAN和保护VLAN故障检测时需要配置这条命令。</p>
+<p>VLAN绑定OAM故障检测应遵循以下条件：</p>
+<ul>
+<li><p>必须使用命令<a href="l2-multicast_protection_protect-vlan.html">l2-multicast protection protect-vlan</a>配置了组播保护组。</p>
+</li>
+<li><p>一个VLAN只能绑定一个OAM故障检测。</p>
+</li>
+<li><p>指定的MD/MA/RMEP必须存在。</p>
+</li>
+</ul>
+<p>在删除组播保护组的时候，对应的工作VLAN和保护VLAN的OAM故障检测会自动解除绑定。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="l2-multicast_protection_oam-bind_cfm__d88377e105"></a><a name="d88377e105"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置VLAN 10和VLAN 20构成保护组，并配置VLAN 10和VLAN 20的故障检测。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> igmp-snooping enable</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 10</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> igmp-snooping enable </strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> multicast-vlan enable</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> l2-multicast protection protect-vlan 20</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> l2-multicast protection oam-bind cfm md test ma test1 remote-mep 1</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 20</strong></pre>
+<pre class="screen">[Quidway-vlan20]<strong> l2-multicast protection oam-bind cfm md test ma test2 remote-mep 2</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="multicast-vlan_enable.html">multicast-vlan enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

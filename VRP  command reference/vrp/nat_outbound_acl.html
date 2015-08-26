@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="nat outbound acl">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nat_and_nat_user_log_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="nat_outbound_acl">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>nat outbound acl</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="nat_outbound_acl"></a><a name="nat_outbound_acl"></a>
+
+<h1 class="topictitle1">nat outbound acl</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>nat outbound acl</strong>命令用来将一个访问控制列表ACL和一个地址池关联起来，表示<em>acl-number</em>中规定的地址可以使用地址池<em>group-number</em>进行地址转换。</p>
+<p><strong>undo nat outbound acl</strong>命令用来删除相应的地址转换。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>nat outbound  acl</strong><em>acl-number</em> [ <strong>address-group</strong> <em>group-number</em> [<strong> no-pat</strong> ] ]</p>
+<p><strong>undo nat outbound  acl</strong><em>acl-number</em> [ <strong>address-group</strong> <em>group-number</em> [<strong> no-pat</strong> ] ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>address-group</strong>：表示使用地址池的方式配置地址转换，如果不指定地址池，则直接使用该接口的IP地址作为转换后的地址，即easy ip特性。</p>
+<p><strong>no-pat</strong>：表示使用一对一的地址转换，只转换数据包的地址而不转换端口信息。</p>
+<p><strong>acl</strong><em>acl-number</em>：访问控制列表的索引值，范围是2000～3999（可以使用高级ACL）。</p>
+<p><em>group-number</em>：一个已经定义的地址池的编号, 范围是0～127。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过配置访问控制列表和地址池的关联，将符合访问控制列表中的数据报文的源地址进行地址转换，选用地址池中的某个地址或者直接使用接口的IP地址进行转换。可以在同一个接口上配置不同的地址转换关联。使用对应的<strong>undo</strong>命令可以将相应的地址转换关联删除。该接口一般情况应该是和ISP连接，是内部网络的出口。</p>
+<p>该命令如果不带<strong>address-group</strong>参数，即使用<strong>nat outbound </strong><em>acl-number</em>命令，则实现了easy-ip的特性，地址转换时，使用接口的IP地址作为转换后的地址，利用访问控制列表控制哪些地址可以进行地址转换。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="nat_outbound_acl__d99204e94"></a><a name="d99204e94"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 允许10.110.10.0/24网段的主机进行地址转换，选用202.110.10.10 到202.110.10.12之间的地址作为转换后的地址。假设Pos1/0/0口连接ISP。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> acl number  acl2001</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2001]<strong> rule permit source 10.110.10.0 0.0.0.255</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2001]<strong> rule deny</strong></pre>
+<p># 配置地址池。</p>
+<pre class="screen">[Quidway]<strong> nat address-group 1 202.110.10.10 202.110.10.12</strong></pre>
+<p># 允许地址转换，使用地址池1中的地址进行地址转换。在转换的时候使用TCP/UDP的端口信息，使用如下配置。</p>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> nat outbound acl 2001 address-group 1</strong></pre>
+<p># 删除对应配置。</p>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> undo outbound acl 2001 address-group 1</strong></pre>
+<p># 如果使用一对一的地址转换（不使用TCP/UDP的端口信息进行地址转换），可以使用如下配置。</p>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> nat outbound acl 2001 address-group 1 no-pat</strong></pre>
+<p># 删除对应配置。</p>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> undo nat outbound acl 2001 address-group 1 no-pat</strong></pre>
+<p># 如果直接使用Pos1/0/0口的IP地址，可以使用如下的配置。</p>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> nat outbound acl 2001</strong></pre>
+<p># 删除对应配置。</p>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> undo nat outbound acl 2001</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nat_and_nat_user_log_configuration_commands.html">NAT及NAT用户日志配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

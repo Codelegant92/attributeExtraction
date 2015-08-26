@@ -1,0 +1,77 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="proposal">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_proposal.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="security_acl.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_local.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_remote.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="proposal">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>proposal</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="proposal"></a><a name="proposal"></a>
+
+<h1 class="topictitle1">proposal</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>proposal</strong>命令用来设置安全策略所引用的提议。</p>
+<p><strong>undo proposal</strong>命令用来取消安全策略引用的提议。</p>
+<p>缺省情况下，不引用任何提议。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>proposal</strong> <em>proposal-name1</em> [<em> proposal-name2 </em>] &amp;&lt;1-6&gt;</p>
+<p><strong>undo</strong> <strong>proposal</strong> [ <em>proposal-name</em> ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>proposal-name1</em>，<em>proposal-name2</em>：所采用的提议名字。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>安全策略视图、安全策略模板视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在使用此命令之前，必须已经配置了相应的安全提议。</p>
+<p>如果安全策略是手工（<strong>manual</strong>）方式的，则安全策略在引用提议时只能指定一个安全提议。如果需要改变已配置好的安全提议，必须先使用命令<strong>undo</strong> <strong>proposal</strong>取消原先的安全提议，再设置新的安全提议。</p>
+<p>如果安全策略是IKE（<strong>isakmp</strong>）协商方式的，则一条安全策略最多可以引用六个安全提议，IKE协商时将在安全策略中搜索能够完全匹配的安全提议。</p>
+<p>如果是安全策略模板，则每个模板最多可以引用六个安全提议，IKE协商时将搜索能够完全匹配的安全提议。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="proposal__d108334e74"></a><a name="d108334e74"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置名字为prop1的安全提议，采用ESP协议和缺省算法。并设置安全策略引用名字为prop1的安全提议。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ipsec proposal prop1</strong></pre>
+<pre class="screen">[Quidway-ipsec-proposal-prop1]<strong> transform esp</strong></pre>
+<pre class="screen">[Quidway-ipsec-proposal-prop1]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> ipsec policy policy1 100 manual</strong></pre>
+<pre class="screen">[Quidway-ipsec-policy-manual-policy1-100]<strong> proposal prop1</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipsec_proposal.html">ipsec proposal</a></div>
+<div><a href="ipsec_policy_system_view.html">ipsec policy（系统视图）</a></div>
+<div><a href="ipsec_policy_interface_view.html">ipsec policy（接口视图）</a></div>
+<div><a href="security_acl.html">security acl</a></div>
+<div><a href="tunnel_local.html">tunnel local</a></div>
+<div><a href="tunnel_remote.html">tunnel remote</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

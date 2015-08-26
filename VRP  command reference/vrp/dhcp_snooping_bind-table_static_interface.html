@@ -1,0 +1,113 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dhcp snooping bind-table static interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_snooping_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dhcp_snooping_bind-table_static_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dhcp snooping bind-table static interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dhcp_snooping_bind-table_static_interface"></a><a name="dhcp_snooping_bind-table_static_interface"></a>
+
+
+<h1 class="topictitle1">dhcp snooping bind-table static interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dhcp</strong> <strong>snooping</strong> <strong>bind-table</strong> <strong>static</strong>命令用来配置DHCP Snooping功能中的IP地址与MAC地址的静态绑定关系。</p>
+<p><strong>undo</strong> <strong>dhcp</strong> <strong>snooping</strong> <strong>bind-table</strong>命令用来取消DHCP Snooping功能中的IP与MAC地址的绑定表项，包括动态表项和静态表项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dhcp</strong> <strong>snooping</strong> <strong>bind-table</strong> <strong>static</strong> <strong>ip-address</strong> <em>ip-address</em> [ <strong>mac-address</strong> <em>mac-address</em> ] [ <strong>interface</strong> <em>interface-type interface-number </em>[ <strong>ce-vlan</strong> <em>ce-vlan-id</em> ]]</p>
+<p><strong>undo</strong> <strong>dhcp</strong> <strong>snooping</strong> <strong>bind-table</strong> <strong>ip-address</strong> <em>ip-address</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：用户IP地址，点分十进制格式。</p>
+<p><em>mac-address</em>：用户MAC地址，格式为H-H-H。</p>
+<p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口号。</p>
+<p><strong>ce</strong>-<strong>vlan</strong><em> ce-vlan-id</em>：用户侧虚拟局域网标识，取值范围1~4094。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VLAN视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>dhcp</strong> <strong>snooping</strong> <strong>bind-table</strong> <strong>static interface</strong>命令后，DHCP Snooping绑定表中的动态表项不需配置，使能DHCP Snooping功能即可自动生成。但静态表项需要通过命令配置。</p>
+<p>当删除一个静态表项时，该静态表项必须在DHCP Snooping绑定表中存在，否则系统会输出错误提示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dhcp_snooping_bind-table_static_interface__d11183e148"></a><a name="d11183e148"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在VLAN100的Ethernet4/0/0上配置IP与MAC静态绑定关系。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 100</strong></pre>
+<pre class="screen">[Quidway-vlan100]<strong> dhcp snooping bind-table static ip-address 10.10.10.2 mac-address 0028-0120-0327 interface ethernet 4/0/0</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.5%" id="d11183e175"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.5%" id="d11183e179"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.5%" headers="d11183e175 "><p>VRPV500R005C02B101</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.5%" headers="d11183e179 "><p>添加参数<strong>ce-vlan</strong> <em>ce-vlan-id </em>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.5%" headers="d11183e175 "><p>VRPV500R005C02B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.5%" headers="d11183e179 "><p>当试图删除一个DHCP Snooping绑定表中不存在的静态表项时，系统会输出错误提示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_snooping_configuration_commands.html">DHCP Snooping命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

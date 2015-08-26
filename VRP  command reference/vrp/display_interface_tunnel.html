@@ -1,0 +1,377 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface tunnel">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4_over_ipv6_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_tunnel_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="interface_tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="default_interface-description_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface_tunnel">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface tunnel</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface_tunnel"></a><a name="display_interface_tunnel"></a>
+
+
+<h1 class="topictitle1">display interface tunnel</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display interface tunnel</strong>命令用来查看Tunnel接口的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display interface tunnel</strong> [ <em>interface-number</em> ] [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-number</em>：Tunnel接口的编号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置GRE、MPLS TE、IPv6 over IPv4等隧道或定位该类隧道的故障原因时，可使用此命令获取隧道接口的信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface_tunnel__d30004e78"></a><a name="d30004e78"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定Tunnel通道的接口信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display interface tunnel 1/0/0</strong></pre>
+<pre class="screen">Tunnel1/0/0 current state : UP</pre>
+<pre class="screen">Line protocol current state : UP</pre>
+<pre class="screen">Last line protocol up time: 2007-11-16, 12:26:17</pre>
+<pre class="screen">Description : HUAWEI, Quidway Series, Tunnel1/0/0 Interface</pre>
+<pre class="screen">Route Port,The Maximum Transmit Unit is 1500</pre>
+<pre class="screen">Internet Address is 30.1.1.2/24</pre>
+<pre class="screen">Encapsulation is TUNNEL, loopback not set</pre>
+<pre class="screen">Tunnel destination 100.1.1.2</pre>
+<pre class="screen">Tunnel protocol/transport MPLS/MPLS, ILM is available,</pre>
+<pre class="screen">QoS max-bandwidth : 64 Kbps</pre>
+<pre class="screen">Output queue : (Urgent queue : Size/Length/Discards)  0/50/0</pre>
+<pre class="screen">Output queue : (Protocol queue : Size/Length/Discards) 0/1000/0</pre>
+<pre class="screen">Output queue : (FIFO queuing : Size/Length/Discards)  0/75/0</pre>
+<pre class="screen">300 seconds input rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">300 seconds output rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">0 packets input, 0 bytes
+0 input error
+0 packets output,  0 bytes</pre>
+<pre class="screen">0 output error</pre>
+<pre class="screen">CT0: 0 packets input, 0 bytes
+0 input error
+0 packets output,  0 bytes 
+0 packets output error
+CT1: 0 packets input, 0 bytes
+0 input error
+0 packets output,  0 bytes 
+0 packets output error</pre>
+
+<div class="tablenoborder"><a name="display_interface_tunnel__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_tunnel__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface tunnel命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.50844041320232%" id="d30004e134"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.49155958679768%" id="d30004e138"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>Tunnel1/0/0 current state :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><div class="p">Tunnel1/0/0的接口物理层状态：<ul>
+<li><p>UP：接口处于正常启动的状态。</p>
+</li>
+<li><p>Administratively down：网络管理员在该接口执行了<strong>shutdown</strong>命令。</p>
+</li>
+</ul>
+一般情况下，Tunnel接口刚创建时其物理层状态就为UP。</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>Line protocol current state :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><div class="p">Tunnel1/0/0的接口链路层协议状态：<ul>
+<li><p>UP：接口网络层协议正常运行。</p>
+</li>
+<li><p>DOWN：接口网络层协议没有正常运行。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>Description :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>Tunnel接口描述信息。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>Route Port,The Maximum Transmit Unit is 1500</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>Tunnel接口的最大传输单元（MTU），默认值是1500字节。长度大于MTU的报文，将会被分片后再发送。如果设置了不允许分片，会被丢弃。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>Internet Address is 30.1.1.2/24</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>该Tunnel接口的IP地址为30.1.1.2，掩码为24位（即255.255.255.0）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>Encapsulation is TUNNEL,</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>该Tunnel接口的报文封装采用隧道模式，封装保护整个IP报文。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>loopback not set</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>表明tunnel接口不支持环回测试。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>Tunnel destination 100.1.1.2</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>Tunnel的目的地址是100.1.1.2，指目的端实际接收报文的接口的IP地址是100.1.1.2。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>Tunnel protocol/transport MPLS/MPLS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>Tunnel封装协议是MPLS TE协议，传输协议是MPLS协议。Tunnel的封装协议可以为以下几种类型：</p>
+<ul>
+
+<li><p>GRE：通用路由封装</p>
+</li>
+<li><p>MPLS：MPLS TE隧道封装</p>
+</li>
+<li><p>IPv6 over IPv4：把IPv6报文封装成IPv4报文</p>
+</li>
+
+<li><p>none：不进行任何封装，Tunnel接口的缺省模式</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>ILM is available</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>入标签映射表的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>QoS max-bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>本隧道端口的最大带宽，默认值为64Kbps</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>Output queue : (Urgent queue : Size/Length/Discards)  0/50/0</p>
+<p>Output queue : (Protocol queue : Size/Length/Discards) 0/500/0</p>
+<p>Output queue : (FIFO queuing : Size/Length/Discards)  0/75/0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><div class="p">各种发送队列可分为如下三类：<ul>
+<li><p>Urgent queue：紧急队列</p>
+</li>
+<li><p>Protocol queue：协议队列</p>
+</li>
+<li><p>FIFO queue：先进先出队列，依照报文到达时间的先后顺序转发</p>
+</li>
+</ul>
+对于各种发送队列，显示为Size/Length/Discards形式的数字，这里各字段含义如下：<ul>
+<li><p>Size：队列中的分组数</p>
+</li>
+<li><p>Length：用分组表示的最大队列的长度</p>
+</li>
+<li><p>Discards：由于队列已满而丢失的分组数</p>
+</li>
+</ul>
+通过检查Discards在一段时间内与Size和Length的关系，可以考察该接口的性能是否满足要求。例如：当Discards的值较大时可能表示路由设备正忙于进行其他工作，而无法及时处理进入的分组，如果这种情况持续很长的时间，则通常表示需要一个更强大的路由设备以满足工作的要求。</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>300 seconds input rate 0 bits/sec, 0 packets/sec</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>这一字段显示了在前300秒内通过接口接收（input）的字节速率和报文速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>300 seconds output rate 0 bits/sec, 0 packets/sec</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>这一字段显示了在前300秒内通过接口发送（output）的字节速率和报文速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>0 packets input,  0 bytes, 0 input error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>这一字段显示了该接口总计接收的报文数和字节数，及出错的报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>0 packets output,  0 bytes, 0 output error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>这一字段显示了该接口总计发送的报文数和字节数，及出错的报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>CT0: 0 packets input, 0 bytes 0 input error 0 packets output, 0 bytes     0 packets output error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>该接口最后5分钟内接收和发送的CT0的报文总数和字节总数，以及由于缓存空间不足而丢失的报文数和字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d30004e134 "><p>CT1: 0 packets input, 0 bytes 0 input error 0 packets output, 0 bytes     0 packets output error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d30004e138 "><p>该接口最后5分钟内接收和发送的CT1的报文总数和字节总数，以及由于缓存空间不足而丢失的报文数和字节数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="38.5%" id="d30004e434">版本</th>
+
+<th class="cellrowborder" valign="top" width="61.5%" id="d30004e437">修订内容</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d30004e434 "><p>VRPV500R005C02B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d30004e437 ">修改命令输出信息：增加了对链路层协议最近一次Up的时间的描述，只对协议Up的三层接口有效。</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d30004e434 "><p>VRPV500R005C05B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d30004e437 "><p>缺省情况下，系统不显示接口默认描述信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d30004e434 "><p>VRPV500R006C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d30004e437 "><p>修改命令回显信息，增加该接口最后5分钟内接收和发送的各个CT的报文总数和字节总数，以及由于缓存空间不足而丢失的报文字节数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv4_over_ipv6_configuration_commands.html">IPv4 over IPv6隧道配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="interface_tunnel.html">interface tunnel</a></div>
+<div><a href="default_interface-description_enable.html">default interface-description enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te tie-breaking">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_tie-breaking">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te tie-breaking</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_tie-breaking"></a><a name="mpls_te_tie-breaking"></a>
+
+
+<h1 class="topictitle1">mpls te tie-breaking</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te tie-breaking</strong>命令用来配置当存在多条到达同一目的地的等值路由时的选路原则。</p>
+<p><strong>undo mpls te tie-breaking</strong>命令用来恢复缺省设置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te tie-breaking</strong> { <strong> least-fill </strong> | <strong> most-fill</strong> | <strong>random </strong> }</p>
+<p><strong>undo mpls te tie-breaking</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>least-fill</strong>：优选已用带宽占最大可预留带宽比值最小的路径。</p>
+<p><strong>most-fill</strong>：优选已用带宽占最大可预留带宽比值最大的路径。</p>
+<p><strong>random</strong>：随机选择路径。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MPLS视图、Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>隧道优先使用本Tunnel接口视图下配置的仲裁方式，如果Tunnel接口视图下没有配置，将使用MPLS视图下的配置。</p>
+</div></div>
+<p>仲裁依据已经使用的可保留带宽占最大可保留带宽的比值来选择链路。如果配置<strong>least-fill</strong>，那么就会选择比值比较小的链路，否则选择比值大的链路。</p>
+<p>要注意的是：由于仲裁依据比值来选择链路，在比值相同的情况下，例如没有利用保留带宽，或者利用的份额都是一样，此时不管配置的是<strong>least-fill</strong>还是<strong>most-fill</strong>，都会选择首先发现的链路。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_tie-breaking__d97131e78"></a><a name="d97131e78"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置当前隧道接口优选已用带宽占最大可保留带宽比值最小的路径。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> tunnel-protocol mpls te</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te tie-breaking least-fill</strong></pre>
+<p># 设置全局优选已用带宽占最大可保留带宽比值最小的路径。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> mpls</strong></pre>
+<pre class="screen">[Quidway-mpls]<strong> mpls te tie-breaking least-fill</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

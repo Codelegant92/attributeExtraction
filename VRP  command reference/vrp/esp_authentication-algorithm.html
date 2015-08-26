@@ -1,0 +1,73 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="esp authentication-algorithm">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_proposal.html">
+<meta name="DC.Relation" scheme="URI" content="esp_encryption-algorithm.html">
+<meta name="DC.Relation" scheme="URI" content="proposal.html">
+<meta name="DC.Relation" scheme="URI" content="transform.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="esp_authentication-algorithm">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>esp authentication-algorithm</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="esp_authentication-algorithm"></a><a name="esp_authentication-algorithm"></a>
+
+<h1 class="topictitle1">esp authentication-algorithm</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>esp</strong> <strong>authentication-algorithm</strong>命令用来设置ESP协议采用的认证算法。</p>
+<p><strong>undo</strong> <strong>esp</strong> <strong>authentication-algorithm</strong>命令用来设置ESP协议不对报文进行认证。</p>
+<p>缺省情况下使用<strong>md5</strong>，即MD5认证算法。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>esp authentication-algorithm</strong> { <strong>md5</strong> | <strong>sha1</strong> }</p>
+<p><strong>undo esp authentication-algorithm</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>md5</strong>：采用MD5认证算法，密钥长度128位。</p>
+<p><strong>sha1</strong>：采用SHA-1认证算法，密钥长度160位。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>安全提议视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>MD5算法的计算速度比SHA-1算法快，而SHA-1算法的安全强度比MD5算法高。</p>
+<p>ESP协议允许对报文同时进行加密和认证，或只加密，或只认证。</p>
+<p>注意：<strong>undo</strong> <strong>esp</strong> <strong>authentication-algorithm</strong>命令不是恢复认证算法为缺省算法，而是设置认证算法为空，即不认证。当认证算法不为空时，<strong>undo</strong> <strong>esp</strong> <strong>authentication-algorithm</strong>命令才起作用。</p>
+<p>ESP协议采用的加密算法和认证算法不能同时设置为空。</p>
+<p>在安全隧道的两端设置的安全策略所引用的提议必须设置成采用同样的认证算法。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="esp_authentication-algorithm__d75489e88"></a><a name="d75489e88"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设定提议prop1采用ESP协议并使用SHA-1认证算法。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ipsec proposal prop1</strong></pre>
+<pre class="screen">[Quidway-ipsec-proposal-prop1]<strong> transform esp</strong></pre>
+<pre class="screen">[Quidway-ipsec-proposal-prop1]<strong> esp authentication-algorithm sha1</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipsec_proposal.html">ipsec proposal</a></div>
+<div><a href="esp_encryption-algorithm.html">esp encryption-algorithm</a></div>
+<div><a href="proposal.html">proposal</a></div>
+<div><a href="transform.html">transform</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

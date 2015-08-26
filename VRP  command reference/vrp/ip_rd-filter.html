@@ -1,0 +1,157 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ip rd-filter">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_policyconfiguration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="if-match_rd-filter.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ip_rd-filter">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ip rd-filter</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ip_rd-filter"></a><a name="ip_rd-filter"></a>
+
+
+<h1 class="topictitle1">ip rd-filter</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ip rd-filter</strong>命令用来配置RD属性过滤器。</p>
+<p><strong>undo ip rd-filter</strong>命令用来删除特定的RD属性过滤器。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ip rd-filter</strong> <em>rd-filter-number</em> { <strong>deny</strong> |<strong> permit</strong> } <em>route-distinguisher</em> &amp;&lt;1-10&gt;</p>
+<p><strong>undo ip
+rd-filter</strong> <em>rd-filter-number</em> [ { <strong>deny</strong> |<strong> permit</strong> } <em>route-distinguisher</em> &amp;&lt;1-10&gt; ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>filter-number</em>：RD过滤器的编号。整数形式，取值范围是1～199。</p>
+<p><strong>permit</strong>：如果RD匹配该行中的规则串，则允许路由匹配。</p>
+<p><strong>deny</strong>：如果RD匹配该行中的规则串，则拒绝路由匹配。</p>
+<p><em>route-distinguisher</em>：指定RD为aa：nn或ipv4-address：nn，可以配置1～10个RD。</p>
+<p><span class="keyword">VRP</span>支持下面4种格式配置RD：</p>
+<ul>
+<li><p>ipv4-address：nn，如1.1.1.1：200</p>
+</li>
+<li><p>aa：nn，如100：1</p>
+</li>
+<li><p>ipv4-address：*，通配格式。如1.1.1.1：*表示匹配所有以1.1.1.1开头的RD。</p>
+</li>
+<li><p>aa：*，通配格式。如100：*表示匹配所有以100开头的RD。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>RD属性过滤器有以下使用规则：</p>
+<ul>
+<li><p>如果没有配置rd-filter，却引用这个rd-filter进行过滤，则匹配结果是permit。</p>
+<p>例如，没有配置rd-filter 100，而route-policy引用了这个它：</p>
+<pre class="screen">route-policy test permit node 10</pre>
+<pre class="screen">if-match rd-filter 100</pre>
+<p>使用这个route-policy进行过滤时，认为if-match语句命中，并返回名为test的Route-Policy的node10的匹配结果是permit。</p>
+</li>
+<li><p>如果配置了rd-filter，但路由的RD没有与规则中定义的任何一个RD匹配，则默认匹配结果是deny。</p>
+<p>例如，路由的RD为100:1，而rd-filter的配置如下，</p>
+<pre class="screen">ip rd-filter 100 permit 1.1.1.1:100</pre>
+<p>使用这个过滤器进行过滤时，匹配结果是<strong>deny</strong>。</p>
+</li>
+<li><p>rd-filter配置的规则之间是&#8220;或&#8221;的关系。这与community-filter是不同的。原因是每条路由只可能有一个RD，而却可以同时具有多个Community。</p>
+<p>例如，将rd-filter配置成下面两种形式，过滤得结果是一样的。</p>
+<p>形式一：</p>
+<pre class="screen">ip rd-filter 100 permit 100:1 200:1 2.2.2.2:1 3.3.3.3:1</pre>
+<p>形式二：</p>
+<pre class="screen">ip rd-filter 100 permit 100:1 200:1</pre>
+<pre class="screen">ip rd-filter 100 permit 2.2.2.2:1</pre>
+<pre class="screen">ip rd-filter 100 permit 3.3.3.3:1</pre>
+<p>与community-filter对比，下面的配置中，两种形式的过滤效果是不一样的。</p>
+<p>形式一：</p>
+<pre class="screen">ip community-filter 1 permit 100:1 200:1 300:1</pre>
+<p>形式二：</p>
+<pre class="screen">ip community-filter 1 permit 100:1</pre>
+<pre class="screen">ip community-filter 1 permit 200:1 300:1</pre>
+<p>以上community-filter的配置中，每一行规则中的Community必须是路由的Community集合的子集，该行规则才能匹配。</p>
+</li>
+<li><p>多条规则之间按照配置顺序进行匹配。例如，</p>
+<pre class="screen">ip rd-filter 100 deny 200:1 5.5.5.5:1</pre>
+<pre class="screen">ip rd-filter 100 permit 200:* 5.5.5.5:*</pre>
+<p>则RD为200:1或5.5.5.5:1的路由将被拒绝。但如果配置顺序相反，例如：</p>
+<pre class="screen">ip rd-filter 100 permit 200:* 5.5.5.5:*</pre>
+<pre class="screen">ip rd-filter 100 deny 200:1 5.5.5.5:1</pre>
+<p>则RD为200:1或5.5.5.5:1的路由将被允许。</p>
+</li>
+<li><p>每个RD过滤器最多可配置255条规则。</p>
+</li>
+</ul>
+<p>配置了RD属性过滤器后，缺省情况下，RM会立即通知各个协议应用该过滤器进行过滤。如果需要延迟过滤器的生效时间，需使用命令<strong>route-policy-change notify-delay</strong>配置延迟生效时间。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ip_rd-filter__d84357e190"></a><a name="d84357e190"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置RD属性过滤器。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ip rd-filter 1 permit 100:1</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="ip_rd-filter__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="ip_rd-filter__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d84357e213"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d84357e217"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d84357e213 "><p>VRPV500R006C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d84357e217 "><p>在undo命令中增加[ { <strong>deny</strong> |<strong> permit</strong> } <em>route-distinguisher</em> &amp;&lt;1-10&gt; ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_policyconfiguration_commands.html">路由策略配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="if-match_rd-filter.html">if-match rd-filter</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

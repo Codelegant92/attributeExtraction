@@ -1,0 +1,280 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="rule（ACL视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/acl_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rule_acl_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>rule（ACL视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="rule_acl_view"></a><a name="rule_acl_view"></a>
+
+<h1 class="topictitle1">rule（ACL视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p>命令<strong>rule</strong>用来在对应的ACL视图下，增加一个规则。</p>
+<p>命令<strong>undo</strong> <strong>rule</strong>用来删除一个规则。</p>
+<p>在删除一条规则时，需要指定规则的编号，如果不知道规则的编号，可以使用命令<strong>display acl</strong>来查看。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p># 增加/删除一个基本访问控制列表的规则。</p>
+<p><strong>rule</strong> [ <em>rule-id</em> ] { <strong>deny</strong> | <strong>permit </strong>} [ <strong>fragment</strong> | <strong>logging</strong> | <strong>source</strong> { <em>source-ip-address source-wildcard</em> | <strong>any</strong> } | <strong>time-range</strong> <em>time-name</em> | <strong>vpn-instance </strong><em>vpn-instance-name </em>] <sup>*</sup></p>
+<p><strong>undo</strong> <strong>rule</strong> <em>rule-id</em> [ <strong>fragment</strong> | <strong>logging</strong> | <strong>source</strong> | <strong>time-range</strong> | <strong>vpn-instance</strong> ] <sup>*</sup></p>
+<p># 增加/删除一个高级访问控制列表的规则。</p>
+<ul><li><p>当参数<em>protocol</em>为TCP或UDP时，高级访问控制列表的命令格式为：</p>
+</li></ul>
+<p><strong>rule</strong> [ <em>rule-id</em> ] { <strong>deny</strong> | <strong>permit </strong>} <em>protocol</em> [<strong> destination</strong> { <em>destination-ip-address destination-wildcard</em> | <strong>any</strong> } | <strong>destination-port</strong><em> operator port </em>| <strong>fragment </strong>|<strong> logging </strong>|<strong> source</strong> { <em>source-ip-address source-wildcard</em> |<strong> any</strong> } | <strong>source-port</strong><em> operator port </em> |<strong> time-range</strong><em> time-name</em> | <strong>vpn-instance </strong><em>vpn-instance-name</em> | <strong>dscp</strong><em> dscp</em> ] <sup>*</sup></p>
+<p><strong>rule</strong> [ <em>rule-id</em> ] { <strong>deny</strong> |<strong> permit </strong>} <em>protocol</em> [<strong> destination</strong> { <em>destination-ip-address destination-wildcard</em> | <strong>any</strong> } | <strong>destination-port</strong><em> operator port </em>|<strong> fragment </strong>|<strong> logging </strong>|<strong> source</strong> { <em>source-ip-address source-wildcard</em> |<strong> any</strong> } | <strong>source-port</strong><em> operator port </em>| <strong>time-range</strong><em> time-name</em> | <strong>vpn-instance</strong><em> vpn-instance-name</em> | <strong>precedence</strong><em> precedence</em> | <strong>tos</strong><em> tos </em>] <sup>*</sup></p>
+<ul><li><p>当参数<em>protocol</em>为ICMP时，高级访问控制列表的命令格式为：</p>
+</li></ul>
+<p><strong>rule</strong> [ <em>rule-id</em> ] { <strong>deny </strong>| <strong>permit </strong>} <em>protocol</em> [ <strong>destination </strong>{ <em>destination-ip-address destination-wildcard</em> | <strong>any</strong> } | <strong>dscp</strong><em> dscp</em> | <strong>fragment </strong>| <strong>icmp-type</strong> {<em> icmp-name </em>| <em>icmp-type icmp-code </em>} | <strong>logging </strong>| <strong>precedence</strong> <em>precedence</em> | <strong>source</strong> { <em>source-ip-address source-wildcard</em> | <strong>any</strong> } | <strong>time-range</strong> <em>time-name</em> | <strong>tos</strong> <em>tos</em> |<strong> vpn-instance </strong><em>vpn-instance-name</em> ] <sup>*</sup></p>
+<ul><li><p>当<em>protocol</em>为其他协议时，高级访问控制列表的命令格式</p>
+</li></ul>
+<p><strong>rule</strong> [ <em>rule-id</em> ] { <strong>deny </strong>| <strong>permit </strong>} <em>protocol</em> [ <strong>destination </strong>{ <em>destination-ip-address destination-wildcard</em> | <strong>any</strong> } | <strong>dscp</strong><em> dscp</em> | <strong>fragment </strong>| <strong>logging </strong>| <strong>precedence</strong> <em>precedence</em> | <strong>source</strong> { <em>source-ip-address source-wildcard</em> | <strong>any</strong> } | <strong>time-range</strong> <em>time-name</em> | <strong>tos</strong> <em>tos</em> |<strong> vpn-instance </strong><em>vpn-instance-name</em> ] <sup>*</sup></p>
+<ul><li><p>删除高级访问控制列表的规则</p>
+</li></ul>
+<p><strong>undo</strong> <strong>rule</strong> <em>rule-id</em> [ <strong>destination</strong> | <strong>destination-port</strong> | <strong>dscp</strong> | <strong>fragment </strong> | <strong>icmp-type</strong> | <strong>logging </strong>| <strong>precedence</strong> | <strong>source</strong> | <strong>source-port</strong> | <strong>time-range</strong> | <strong>tos</strong> | <strong>vpn-instance</strong> ] <sup>*</sup></p>
+<p># 增加/删除一个基于接口的访问控制列表的规则。</p>
+<p><strong>rule</strong> [ <em>rule-id</em> ] { <strong>deny </strong>| <strong>permit</strong> } <strong>interface</strong> { <em>interface-type interface-number</em> | <strong>any </strong>} [ <strong>logging</strong> | <strong>time-range</strong> <em>time-name</em> ] <sup>*</sup></p>
+<p><strong>undo</strong> <strong>rule</strong> <em>rule-id </em>[ <strong>logging</strong> | <strong>time-range </strong>] <sup>*</sup></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>使用命令<strong>rule</strong>为ACL增加一个规则的时候，参数说明如下：</p>
+<p><em>rule-id：</em>ACL的规则编号，范围为0～4294967294。当指定了编号，如果与编号对应的规则已经存在，则会在旧的定义的基础上叠加新定义的规则，相当于编辑一个已经存在的规则。如果与编号对应的规则不存在，则使用指定的编号创建一个新的规则，并且按照编号的大小决定规则插入的位置。如果不指定编号，表示增加一个新规则，系统自动会为这个规则分配一个编号。编号是按照大小排序的，系统自动分配编号的时候会留有一定的空间，具体的相邻编号范围是依靠<strong>step</strong>命令指定的。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>系统自动生成的规则ID从步长值起始。比如：步长值是5，自动生成的规则ID从5开始；步长值是2，自动生成的规则ID从2开始。这样做是为了便于用户在第一条规则前面插入新规则。</p>
+</div></div>
+<p><strong>deny</strong>：表示拒绝符合条件的数据包。</p>
+<p><strong>permit</strong>：表示允许符合条件的数据包。</p>
+<p><em>protocol</em>：用名字或数字表示的IP承载的协议类型。如果用整数形式，取值范围是1～255；如果用字符串形式，可以选取：<strong>gre</strong>、<strong>icmp</strong>、<strong>igmp</strong>、<strong>ip</strong>、<strong>ipinip</strong>、<strong>ospf</strong>、<strong>tcp</strong>、<strong>udp</strong>。对不同的协议类型，有不同的参数组合，TCP和UDP有[ <strong>source-port</strong><em> operator port-number</em> ] [ <strong>destination-port</strong><em> operator port-number </em>] 可选项，其它协议类型没有。</p>
+<p><strong>destination</strong>：指定ACL规则的目的地址信息。如果不配置，表示报文的任何目的地址都匹配。</p>
+<p><em>destination-ip-address</em>：数据包的目的地址，点分十进制表示；或用&#8220;<strong>any</strong>&#8221;代表任意目的地址。</p>
+<p><em>destination</em>-<em>wildcard</em>：目的地址通配符，点分十进制表示；目的地址通配符可以为&#8220;0&#8221;（相当于0.0.0.0），表示目的地址为主机地址。</p>
+<p><strong>destination-port</strong>：指定UDP或者TCP报文的目的端口信息，仅仅在规则指定的协议号是TCP或者UDP有效。如果不指定，表示TCP/UDP报文的任何目的端口信息都匹配。</p>
+<p><em>operator</em>：比较源或者目的地址的端口号的操作符，名字及意义如下：lt（小于），gt（大于），eq（等于），<span>neq（不等于），</span>range（在范围内）。只有range需要两个端口号做操作数，其他的只需要一个端口号做操作数。</p>
+<p><em>port-number</em>：指定TCP或UDP的端口号，用助记符或数字表示，数字的取值范围是0～65535。助记符的使用请参考《<span class="keyword">VRP</span><span class="keyword">  </span>配置指南 IP业务》&#8220;07  ACL配置&#8221;。</p>
+<p><strong>dscp </strong><em>dscp </em>：指定区分服务代码点（Differentiated Services CodePoint）的取值。取值范围是0～63。</p>
+<p><strong>fragment</strong>：指定该规则是否仅对非首片分片报文有效。当包含此参数时表示该规则仅对非首片分片报文有效。</p>
+<p><em>interface-type，interface-number</em>：指定数据包是从该接口进入的。或者用&#8220;<strong>any</strong>&#8221;代表所有的接口。</p>
+<p><strong>logging</strong>：是否对符合条件的数据包做日志。日志内容包括访问控制列表规则的序号，数据包通过或被丢弃，IP承载的上层协议类型，源/目的地址，源/目的端口号，数据包的数目。</p>
+<p><strong>precedence </strong><em>precedence</em>：数据包可以依据优先级字段进行过滤。用关键字或数字表示，数字的取值范围是0～7的整数。<span>关键字的使用请参考《<span class="keyword">VRP</span><span class="keyword">  </span>配置指南 IP业务》&#8220;06  IP单播策略路由配置&#8221;。</span></p>
+<p><strong>source</strong>：指定ACL规则的源地址信息。如果不配置，表示报文的任何源地址都匹配。</p>
+<p><em>source-ip-address</em>：数据包的源地址，点分十进制表示；或用&#8220;<strong>any</strong>&#8221;代表任意源地址。</p>
+<p><em>source-wildcard</em>：源地址通配符，点分十进制表示。源地址通配符可以为&#8220;0&#8221;（相当于0.0.0.0），表示源地址为主机地址。</p>
+<p><strong>time-range</strong> <em>time-name</em>：指定ACL规则的生效时间段。</p>
+<p><strong>source-port</strong>：指定UDP或者TCP报文的源端口信息，仅仅在规则指定的协议号是TCP或者UDP有效。如果不指定，表示TCP/UDP报文的任何源端口信息都匹配。</p>
+<p><strong>syn-flag</strong> <em>syn-flag</em>：指定TCP-FLAG的值，整数形式，取值范围是0～63。</p>
+<p><strong>tos</strong>：数据包可以依据服务类型字段进行过滤。</p>
+<p><em>tos</em>：数据包过滤依据的服务类型。整数形式，取值范围是0～15，或名字，如normal，min-monetary-cost，max-reliability，max-throughput，min-delay等。</p>
+<p><strong>vpn-instance </strong><em>vpn-instance-name</em>：指定数据包可以根据VPN实例名称进行过滤。</p>
+<p><strong>icmp-type</strong>：指定ICMP报文的类型和消息码信息，仅仅在报文协议是ICMP的情况下有效。如果不配置，表示任何ICMP类型的报文都匹配。</p>
+<p><em>icmp-name</em>：ICMP包可以依据ICMP的消息名称进行过滤。</p>
+<p><em>icmp-type</em>：ICMP包可以依据ICMP的消息类型进行过滤。整数形式，取值范围是0～255。</p>
+<p><em>icmp-code</em>：依据ICMP的消息类型进行过滤的ICMP包也可以依据消息码进行过滤。取值为0～255的数字。</p>
+
+<div class="tablenoborder"><a name="rule_acl_view__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="rule_acl_view__tb_01" frame="border" border="1" rules="all"><caption>表1 <em>icmp-name</em>的取值及对应的ICMP-Type 和ICMP-Code</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="32.06097253716301%" id="d116023e721"><p>icmp-name</p>
+</th>
+<th class="cellrowborder" valign="top" width="31.79642227261275%" id="d116023e724"><p>icmp-type</p>
+</th>
+<th class="cellrowborder" valign="top" width="36.14260519022424%" id="d116023e727"><p>icmp-code</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Echo</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>8</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Echo-reply</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>0</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Parameter-problem</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>12</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Port-unreachable</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>3</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>3</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Protocol-unreachable</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>3</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>2</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Reassembly-timeout</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>11</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>1</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Source-quench</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>4</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Source-route-failed</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>3</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>5</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Timestamp-reply</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>14</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Timestamp-request</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>13</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Ttl-exceeded</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>11</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Fragmentneed-DFset</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>3</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>4</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Host-redirect</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>5</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>1</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Host-tos-redirect</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>5</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>3</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Host-unreachable</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>3</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>1</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Information-reply</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>16</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Information-request</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>15</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Net-redirect</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>5</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>0</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Net-tos-redirect</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>5</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>2</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.06097253716301%" headers="d116023e721 "><p>Net-unreachable</p>
+</td>
+<td class="cellrowborder" valign="top" width="31.79642227261275%" headers="d116023e724 "><p>3</p>
+</td>
+<td class="cellrowborder" valign="top" width="36.14260519022424%" headers="d116023e727 "><p>0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p># 使用命令<strong>undo rule</strong>删除规则的时候，参数说明如下：</p>
+<p><em>rule-id：</em>ACL规则编号，必须是一个已经存在的ACL规则编号。如果后面不指定参数，则将这个ACL规则完全删除。否则只是删除对应ACL规则的部分信息。</p>
+<p><strong>source</strong>：删除编号对应的ACL规则的源地址部分的信息设置。</p>
+<p><strong>destination</strong>：删除编号对应的ACL规则的目的地址部分的信息设置。</p>
+<p><strong>source-port</strong>：删除编号对应的ACL规则的源端口部分的信息设置，仅仅在规则的协议号是TCP或者UDP的情况下有效。</p>
+<p><strong>destination-port</strong>：删除编号对应的ACL规则的目的端口部分的信息设置，仅仅在规则的协议号是TCP或者UDP的情况下有效。</p>
+<p><strong>precedence</strong>：删除编号对应的ACL规则的precedence的相关设置。</p>
+<p><strong>tos</strong>：删除编号对应的ACL规则的tos的相关设置。</p>
+<p><strong>time-range</strong>：删除编号对应的ACL规则的时间段设置。</p>
+<p><strong>logging</strong>：删除编号对应的ACL规则对符合条件的数据包做日志的设置。</p>
+<p><strong>fragment</strong>：删除编号对应的ACL规则仅对非首片分片报文有效的设置。</p>
+<p><strong>icmp-type：</strong>删除编号对应的ACL规则对ICMP报文的类型和消息码信息的设置。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>第1组命令在基本ACL视图</p>
+<p>第2组命令在高级ACL视图</p>
+<p>第3组命令在基于接口ACL视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>不同的应用对规则的配置要求有差异。该命令针对不同的路由协议，过滤规则有所不同。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="rule_acl_view__d116023e993"></a><a name="d116023e993"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建ACL 3101，增加一条规则，禁止接收和发送RIP报文。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>acl number 3101</strong></pre>
+<pre class="screen">[Quidway-acl-adv-3101] <strong>rule deny udp destination-port eq rip</strong></pre>
+<p># 增加一条规则，允许从129.9.0.0网段的主机向202.38.160.0网段的主机发送WWW报文。</p>
+<pre class="screen">[Quidway-acl-adv-3101] <strong>rule permit tcp source 129.9.0.0 0.0.255.255 destination 202.38.160.0 0.0.0.255 destination-port eq www</strong></pre>
+<p># 增加一条规则，禁止从129.9.0.0网段内的主机建立与202.38.160.0网段内的主机的WWW端口（80）的连接，并对违反此规则的事件作日志。</p>
+<pre class="screen">[Quidway-acl-adv-3101] <strong>rule deny tcp source 129.9.0.0 0.0.255.255 destination 202.38.160.0 0.0.0.255 destination-port eq www logging</strong></pre>
+<p># 增加一条规则，禁止从一切主机建立与IP地址为202.38.160.1的主机的Telnet（23）的连接。</p>
+<pre class="screen">[Quidway-acl-adv-3101] <strong>rule deny tcp destination 202.38.160.1 0 destination-port eq telnet</strong></pre>
+<p># 增加一条规则，禁止从129.9.8.0网段内的主机建立与202.38.160.0网段内的主机的端口号大于128的UDP（用户数据报协议）连接。</p>
+<pre class="screen">[Quidway-acl-adv-3101] <strong>rule deny udp source 129.9.8.0 0.0.0.255 destination 202.38.160.0 0.0.0.255 destination-port gt 128</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/acl_configuration_commands.html">ACL配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

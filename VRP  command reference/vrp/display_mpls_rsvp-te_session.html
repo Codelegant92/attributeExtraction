@@ -1,0 +1,832 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls rsvp-te session">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_rsvp-te_session">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls rsvp-te session</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_rsvp-te_session"></a><a name="display_mpls_rsvp-te_session"></a>
+
+
+<h1 class="topictitle1">display mpls rsvp-te session</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls rsvp-te session</strong>命令用来查看指定RSVP会话的所有信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls rsvp-te session</strong> <em>ingress-lsr-id</em> <em>tunnel-id</em> <em>egress-lsr-id</em><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ingress-lsr-id</em>：入节点的LSR ID。</p>
+<p><em>tunnel-id</em>：隧道ID，取值范围是<span>0</span>～65535。</p>
+<p><em>egress-lsr-id</em>：出口设备的LSR ID。</p>
+<p>|：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>RSVP会话的信息包括PSB（Path State Block）、RSB（Reservation State
+Block）、RFSB（ReFresh State Block）和TCSB（Traffic Control State Block）的信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_rsvp-te_session__d46389e103"></a><a name="d46389e103"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看节点1.1.1.1和3.3.3.3之间(Tunnel ID为100)的RSVP会话的所有信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls rsvp-te session 1.1.1.1 100 3.3.3.3</strong></pre>
+<pre class="screen">==============================================================</pre>
+<pre class="screen">  Display PSB、RSB、RFSB and TCSB information in session table</pre>
+<pre class="screen">==============================================================</pre>
+<pre class="screen">==============================================================</pre>
+<pre class="screen">                       The PSB Content</pre>
+<pre class="screen">==============================================================</pre>
+<pre class="screen"> Tunnel Addr: 3.3.3.3                      Exist time: 0h 4m 30s</pre>
+<pre class="screen"> Tunnel ExtID: 1.1.1.1                     Session ID: 100</pre>
+<pre class="screen"> Ingress LSR ID: 1.1.1.1                   Local LSP ID: 1</pre>
+<pre class="screen"> Previous Hop : 128.1.1.1                  Next Hop : 128.2.2.2</pre>
+<pre class="screen"> Incoming / Outgoing Interface: GigabitEthernet6/0/0  / GigabitEthernet6/0/1</pre>
+<pre class="screen"> InLabel : 13312                           OutLabel : 3</pre>
+<pre class="screen"> Send Message ID : 7                       Recv Message ID : 7</pre>
+<pre class="screen"> Session Attribute-</pre>
+<pre class="screen">   SetupPrio: 7         HoldPrio: 7</pre>
+<pre class="screen">   SessionAttrib: Local Protect desired. Node Protect desired. Label Record. SE Style desired.</pre>
+<pre class="screen"> FRR Flag : No protection                  Local RRO Flag : 0x0</pre>
+<pre class="screen"> FAST_REROUTE Information-</pre>
+<pre class="screen"> ERO Information-</pre>
+<pre class="screen">     L-Type         ERO-IPAddr       ERO-PrefixLen</pre>
+<pre class="screen">   ERHOP_STRICT    128.2.2.2             32</pre>
+<pre class="screen"> RRO Information-</pre>
+<pre class="screen">   RRO-CType: IPV4   RRO-IPAddress: 128.1.1.1          RRO-IPPrefixLen: 32</pre>
+<pre class="screen">   RRO-CType: IPV4   RRO-IPAddress: 1.1.1.1            RRO-IPPrefixLen: 32</pre>
+<pre class="screen"> SenderTspec Information-</pre>
+<pre class="screen">   Token bucket rate: 3750.00</pre>
+<pre class="screen">   Token bucket size: 1000.00</pre>
+<pre class="screen">   Peak data rate: 3750.00</pre>
+<pre class="screen">   Minimum policed unit: 0</pre>
+<pre class="screen">   Maximum packet size: 1500</pre>
+<pre class="screen">CT-BandWidth Information:
+   CT0 Bandwidth (Bytes/sec):  5000    CT1 Bandwidth (Bytes/sec):  5000
+   CT2 Bandwidth (Bytes/sec):  -       CT3 Bandwidth (Bytes/sec):  -
+   CT4 Bandwidth (Bytes/sec):  -       CT5 Bandwidth (Bytes/sec):  -
+   CT6 Bandwidth (Bytes/sec):  -       CT7 Bandwidth (Bytes/sec):  -
+</pre>
+<pre class="screen"> Path Message arrive on GigabitEthernet6/0/0 from PHOP 128.1.1.1</pre>
+<pre class="screen"> Path Message sent to NHOP 128.2.2.2  on GigabitEthernet6/0/1</pre>
+<pre class="screen"> Resource Reservation OK</pre>
+
+<pre class="screen"> LSP Statistics Information:</pre>
+<pre class="screen">   SendPacketCounter: 258         RecvPacketCounter: 214</pre>
+<pre class="screen">   SendPathCounter: 257           RecvPathCounter: 2</pre>
+<pre class="screen">   SendResvCounter: 1             RecvResvCounter: 212</pre>
+
+<pre class="screen">==============================================================</pre>
+<pre class="screen">                       The RSB Content</pre>
+<pre class="screen">==============================================================</pre>
+<pre class="screen">Tunnel Addr: 3.3.3.3                  Session Tunnel ID: 100</pre>
+<pre class="screen"> Tunnel ExtID: 1.1.1.1</pre>
+<pre class="screen"> Next Hop: 128.2.2.2                  Reservation Style: SE Style</pre>
+<pre class="screen"> Reservation Incoming Interface: GigabitEthernet6/0/1</pre>
+<pre class="screen"> Reservation Interface: GigabitEthernet6/0/1</pre>
+<pre class="screen"> Message ID : 0</pre>
+<pre class="screen"> Filter Spec Information-</pre>
+<pre class="screen">   The filter number: 1</pre>
+<pre class="screen">   Ingress LSR ID: 1.1.1.1         Local LSP ID: 1       OutLabel: 3</pre>
+<pre class="screen"> RRO Information-</pre>
+<pre class="screen">   RRO-CType: IPV4   RRO-IPAddress: 128.2.2.2          RRO-IPPrefixLen: 32</pre>
+<pre class="screen">   RRO-CType: Label    RRO-Label: 3</pre>
+<pre class="screen">   RRO-CType: IPV4   RRO-IPAddress: 3.3.3.3            RRO-IPPrefixLen: 32</pre>
+<pre class="screen"> FlowSpec Information-</pre>
+<pre class="screen">   Token bucket rate: 3750.00</pre>
+<pre class="screen">   Token bucket size: 1000.00</pre>
+<pre class="screen">   Peak data rate: 3750.00</pre>
+<pre class="screen">   Minimum policed unit: 0</pre>
+<pre class="screen">   Maximum packet size: 1500</pre>
+<pre class="screen">   Bandwidth guarantees: 0.00</pre>
+<pre class="screen">   Delay guarantees: 0</pre>
+<pre class="screen">   Qos Service is Controlled</pre>
+<pre class="screen"> Resv Message arrive on GigabitEthernet6/0/1 from NHOP 128.2.2.2</pre>
+<pre class="screen">==============================================================</pre>
+<pre class="screen">                       The RFSB Content</pre>
+<pre class="screen">==============================================================</pre>
+<pre class="screen"> Tunnel Addr: 3.3.3.3</pre>
+<pre class="screen"> Tunnel ExtID: 1.1.1.1                Session Tunnel ID: 100</pre>
+<pre class="screen"> Next Hop: 128.1.1.1                  Reservation Style: SE Style</pre>
+<pre class="screen"> Message ID : 5</pre>
+<pre class="screen"> Filter Spec Information-</pre>
+<pre class="screen">   The filter number: 1</pre>
+<pre class="screen">   Ingress LSR ID: 1.1.1.1         Local LSP ID: 1       OutLabel: 13312</pre>
+<pre class="screen"> RRO Information-</pre>
+<pre class="screen">   RRO-CType: IPV4   RRO-IPAddress: 128.2.2.2          RRO-IPPrefixLen: 32</pre>
+<pre class="screen">   RRO-CType: Label    RRO-Label: 3</pre>
+<pre class="screen">   RRO-CType: IPV4   RRO-IPAddress: 3.3.3.3            RRO-IPPrefixLen: 32</pre>
+<pre class="screen"> FlowSpec Information-</pre>
+<pre class="screen">   Token bucket rate: 3750.00</pre>
+<pre class="screen">   Token bucket size: 1000.00</pre>
+<pre class="screen">   Peak data rate: 3750.00</pre>
+<pre class="screen">   Minimum policed unit: 0</pre>
+<pre class="screen">   Maximum packet size: 1500</pre>
+<pre class="screen">   Bandwidth guarantees: 0.00</pre>
+<pre class="screen">   Delay guarantees: 0</pre>
+<pre class="screen">   Qos Service is Controlled</pre>
+<pre class="screen">==============================================================</pre>
+<pre class="screen">                       The TCSB Content</pre>
+<pre class="screen">==============================================================</pre>
+<pre class="screen">Tunnel Addr: 3.3.3.3</pre>
+<pre class="screen"> Tunnel ExtID: 1.1.1.1               Session Tunnel ID: 100</pre>
+<pre class="screen"> Filter Spec Information-</pre>
+<pre class="screen">   The filter number: 1</pre>
+<pre class="screen">   Ingress LSR ID: 1.1.1.1           Local LSP ID: 1</pre>
+<pre class="screen"> FlowSpec Information-</pre>
+<pre class="screen">   Token bucket rate: 3750.00</pre>
+<pre class="screen">   Token bucket size: 1000.00</pre>
+<pre class="screen">   Peak data rate: 3750.00</pre>
+<pre class="screen">   Minimum policed unit: 0</pre>
+<pre class="screen">   Maximum packet size: 1500</pre>
+<pre class="screen">CT-BandWidth Information:
+   CT0 Bandwidth (Bytes/sec):  5000    CT1 Bandwidth (Bytes/sec):  5000
+   CT2 Bandwidth (Bytes/sec):  -       CT3 Bandwidth (Bytes/sec):  -
+   CT4 Bandwidth (Bytes/sec):  -       CT5 Bandwidth (Bytes/sec):  -
+   CT6 Bandwidth (Bytes/sec):  -       CT7 Bandwidth (Bytes/sec):  -
+</pre>
+<pre class="screen">   Bandwidth guarantees: 0.00</pre>
+<pre class="screen">   Delay guarantees: 0</pre>
+<pre class="screen">   Qos Service is Controlled</pre>
+
+<div class="tablenoborder"><a name="display_mpls_rsvp-te_session__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_rsvp-te_session__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls rsvp-te session命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50.277147896195515%" id="d46389e335"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="49.722852103804485%" id="d46389e339"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>The PSB Content</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>路径状态块（Path State Block）的内容</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Tunnel Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>隧道目的地址，格式为X.X.X.X</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Exist time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>PSB从创建到现在的时间值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Tunnel ExtID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>隧道扩展ID（入节点的LSR ID），格式为X.X.X.X</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Session ID/ Session Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>隧道ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Ingress LSR ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>入节点的LSR ID，格式为X.X.X.X</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Local LSP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>LSP的本地标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Previous Hop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>前一跳地址，格式为X.X.X.X</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Next Hop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>下一跳地址，格式为X.X.X.X</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Incoming / Outgoing Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>入接口或出接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>InLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>入标签值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>OutLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>出标签值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Send Message ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>发送的刷新消息ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Recv Message ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>接收的刷新消息ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Session Attribute</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>会话的属性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>SetupPrio</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>会话建立优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>HoldPrio</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>会话保持优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>SessionAttrib</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>会话的特性，包括需要的本地保护、带宽保护、节点保护、标签记录和预留风格。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>FRR Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><div class="p">是否提供FRR保护的标志位：<ul>
+<li><p>No protection：没有提供FRR保护</p>
+</li>
+<li><p>PLR in use：本地修复节点提供保护</p>
+</li>
+<li><p>MP in use：汇聚节点提供保护</p>
+</li>
+<li><p>Under protecting：提供了FRR保护</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Local RRO Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>是否记录本地路由信息的标志位</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>FAST_REROUTE Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>快速重路由信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>ERO Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>ERO（Explicit Route Object）信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>L-Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><div class="p">显式路由类型：<ul>
+<li><p>Strict：严格显示路由</p>
+</li>
+<li><p>Loose：松散显示路由</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>ERO-IPAddr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>显式路由地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>ERO-PrefixLen</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>显式路由地址的前缀长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>RRO Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>Record Route Object，记录路由信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>RRO-CType</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>记录C类路由，包括IPv4/IPv6地址和标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>RRO-IPAddress</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>记录路由的IPv4或IPv6地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>RRO-IPPrefixLen</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>记录路由前缀的长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>SenderTspec Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>发送方的规格信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Token bucket rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>流量参数，令牌桶速率（单位：kbit/s）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Token bucket size</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>流量参数，令牌桶大小</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Peak data rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>流量参数：峰值数据速率（单位：kbit/s）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Minimum policed unit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>流量参数，最小监管单元</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Maximum packet size</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>流量参数，最大报文长度（单位：byte）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>CT-BandWidth Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>CT及对应的带宽信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>CT0～CT7 Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>CT0～CT7的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Path Message sent to</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>Path消息的下一跳地址及出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Resource Reservation OK</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>只有设置了资源预留标记时才会显示此字段</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>LSP Statistics Infomation</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>LSP的统计信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>SendPacketCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>发送的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>RecvPacketCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>接收的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>SendPathounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>发送的Path消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>RecvPathCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>接收的Path消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>SendResvCounter:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>发送的Resv消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>RecvResvCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>接收的Resv消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>The RSB Content</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>预留状态块（Reservation State Block）的内容</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Reservation Style</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><div class="p">预留风格：<ul>
+<li><p>SE：Shared Explicit Style</p>
+</li>
+<li><p>FF：Fixed-Filter Style</p>
+</li>
+<li><p>WF：Wildcard-Filter Style</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Reserve Incoming Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>预留消息的输入接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Reservation Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>预留的接口名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Message ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>本地分配的消息ID，用于RSVP摘要刷新特性和可靠性。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Filter Spec Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>过滤规格信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>The filter number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>过滤器总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Label    RRO-Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>记录的标签值信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>FlowSpec Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>包括流规格信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Bandwidth guarantees</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>预留规格参数，带宽保证</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Delay guarantees</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>预留规格参数，延迟保证</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Qos Service is Controlled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>提供QoS保证</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>The RFSB Content</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>刷新状态块（ReFresh State Block）的内容</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>Resv Message arrive on</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>Resv消息的入接口及上一跳地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.277147896195515%" headers="d46389e335 "><p>The TCSB Content</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.722852103804485%" headers="d46389e339 "><p>流量控制状态块（Traffic Control State Block）的内容</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_rsvp-te_session__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_rsvp-te_session__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d46389e1074"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d46389e1078"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d46389e1074 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d46389e1078 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d46389e1074 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d46389e1078 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d46389e1074 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d46389e1078 "><p>将参数<em>tunnel-id</em>的最小值由1改为0</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

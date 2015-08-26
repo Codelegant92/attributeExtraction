@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="vrrp vrid virtual-ip">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vrrp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="vrrp_vrid_virtual-ip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>vrrp vrid virtual-ip</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="vrrp_vrid_virtual-ip"></a><a name="vrrp_vrid_virtual-ip"></a>
+
+
+<h1 class="topictitle1">vrrp vrid virtual-ip</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>vrrp vrid virtual-ip</strong>命令用来创建VRRP备份组并为备份组指定虚拟IP地址。</p>
+<p><strong>undo vrrp vrid virtual-ip</strong>命令用来删除虚拟IP地址。</p>
+<p>缺省情况下，系统无备份组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>vrrp vrid</strong> <em>virtual-router-id</em><strong> virtual-ip</strong><em> virtual-address</em></p>
+<p><strong>undo</strong><em> </em><strong>vrrp vrid</strong><em> virtual-router-id</em> [ <strong>virtual-ip</strong><em> virtual-address</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vrid</strong> <em>virtual-router-id</em>：VRRP备份组号，备份组号范围1～255。</p>
+<p><strong>virtual-ip</strong> <em>virtual-address</em>：虚拟IP地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果备份组中的地址被全部删除，则系统会自动将此备份组删除。</p>
+<p>在设备上同时配置VRRP和静态ARP时，需要注意：</p>
+<ul>
+<li><p>当在Dot1q终结子接口、QinQ终结子接口或者VLANIF接口下配置VRRP时，不能将与这些接口相关的静态ARP表项对应的映射IP地址作为VRRP的虚拟地址，否则会导致设备之间转发不通。</p>
+</li>
+<li><p>例如：如果设备上已经存在了一条静态ARP表项且其映射IP地址为10.1.1.1，那么在Dot1q终结子接口、QinQ终结子接口或者VLANIF接口下配置VRRP时，就不能再使用10.1.1.1作为VRRP的虚拟地址。</p>
+</li>
+<li><p>当在Dot1q终结子接口、QinQ终结子接口或者VLANIF接口下配置VRRP后，再配置静态ARP表项时，不能指定VRRP的虚拟地址作为该静态ARP表项中对应的映射IP地址，否则可能导致设备之间转发不通。</p>
+</li>
+<li><p>例如：设备上Dot1q终结子接口、QinQ终结子接口或者VLANIF接口下配置了VRRP的虚拟地址为10.1.1.1，那么再配置静态ARP表项时，就不能再使用10.1.1.1作为该静态ARP表项中对应的映射IP地址。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="vrrp_vrid_virtual-ip__d129216e97"></a><a name="d129216e97"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建一个备份组。</p>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> vrrp vrid 1 virtual-ip 10.10.10.10</strong></pre>
+<p># 向一个已经存在的备份组添加虚拟IP地址。</p>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> vrrp vrid 1 virtual-ip 10.10.10.11</strong></pre>
+<p># 删除一个虚拟IP地址。</p>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> undo vrrp vrid 1 virtual-ip 10.10.10.10</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vrrp_configuration_commands.html">VRRP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="multicast-vlan enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="multicast-vlan_user-vlan.html">
+<meta name="DC.Relation" scheme="URI" content="display_multicast-vlan_user-vlan_vlan.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="multicast-vlan_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>multicast-vlan enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="multicast-vlan_enable"></a><a name="multicast-vlan_enable"></a>
+
+
+<h1 class="topictitle1">multicast-vlan enable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>multicast-vlan enable</strong>命令用来配置视图所在VLAN为组播VLAN。</p>
+<p><strong>undo
+multicast-vlan enable</strong>命令用来将视图所在VLAN恢复成普通VLAN。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>multicast-vlan enable</strong></p>
+<p><strong>undo multicast-vlan enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VLAN视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用此命令之前，先全局使能IGMP Snooping 功能。</p>
+<p>系统支持的最大组播VLAN个数为16个。</p>
+<p>配置组播VLAN复制功能时需要配置这条命令。该命令在普通VLAN下执行才能生效。普通VLAN配置成组播VLAN后，就可以向它增加用户VLAN，这个VLAN收到的组播流就可以转发到它所映射的用户VLAN中去了，这样就实现了跨VLAN复制。</p>
+<p>将组播VLAN恢复成普通VLAN要遵循如下条件：</p>
+<ul>
+<li><p>组播VLAN内不能有用户VLAN，应该删除组播VLAN内的所有用户VLAN。</p>
+</li>
+<li><p>组播VLAN不能存在于组播保护组中，应该先删除组播所在的保护组。</p>
+</li>
+<li><p>组播VLAN不能绑定OAM故障检测，应该先解除和OAM的绑定，删除保护组会自动解除和OAM的绑定。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="multicast-vlan_enable__d98468e64"></a><a name="d98468e64"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置VLAN 10为组播VLAN。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 10</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> igmp-snooping enable</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> multicast-vlan enable</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="multicast-vlan_user-vlan.html">multicast-vlan user-vlan</a></div>
+<div><a href="display_multicast-vlan_user-vlan_vlan.html">display {
+multicast-vlan | user-vlan } vlan</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

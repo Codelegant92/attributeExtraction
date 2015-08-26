@@ -1,0 +1,429 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display logbuffer">
+<meta name="DC.Relation" scheme="URI" content="../vrp/information_center.html">
+<meta name="DC.Relation" scheme="URI" content="info-center_enable.html">
+<meta name="DC.Relation" scheme="URI" content="info-center_logbuffer.html">
+<meta name="DC.Relation" scheme="URI" content="display_info-center.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_logbuffer">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display logbuffer</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_logbuffer"></a><a name="display_logbuffer"></a>
+
+
+<h1 class="topictitle1">display logbuffer</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display logbuffer</strong>命令用来显示日志缓冲区记录的信息。</p>
+<p>缺省情况下，不带任何参数表示显示日志缓冲区记录的所有信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display logbuffer </strong>[ <strong>summary</strong> | <strong>level</strong> <em>severity</em> | <strong>module </strong><em>module-name</em> | <strong>size </strong><em>value</em> | <strong>slot</strong> <em>slot-id</em>  ]* <span> [<strong> |
+count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>summary</strong>：显示概要的日志缓冲区日志信息。</p>
+<p><strong>level</strong>：显示指定信息的级别。</p>
+<p><em>severity</em>：显示指定的信息级别，取值范围是0～7。</p>
+<p><strong>module</strong>：模块。</p>
+<p><em>module-name</em>：模块名称。</p>
+<p><strong>size</strong>：显示指定信息的条数。</p>
+<p><em>value</em>：显示指定的日志缓冲区内信息的条数，取值范围1～1024。</p>
+<p><em>slot-id</em>：显示指定的槽号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果当前日志缓冲区内的信息数少于用户指定的<em>value</em>，则显示实际条数的日志信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_logbuffer__d38610e144"></a><a name="d38610e144"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示日志缓冲区的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display logbuffer</strong>
+Logging buffer configuration and contents:enabled</pre>
+<pre class="screen">Allowed max buffer size : 1024
+Actual buffer size : 512
+Channel number : 4 , Channel name : logbuffer</pre>
+<pre class="screen">Dropped messages : 0
+Overwritten messages : 0
+Current messages : 1
+Feb 13 2007 20:05:46.523.1 quidway %%01SHELL/4/CMDRECORD(l):task:vt0 ip:100.1.1.</pre>
+<pre class="screen">48 user:** command:info-center timestamp log date precision-time millisecond
+</pre>
+
+<div class="tablenoborder"><a name="display_logbuffer__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_logbuffer__tb_01" frame="border" border="1" rules="all"><caption>表1 display logbuffer命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="51.31015369110607%" id="d38610e171"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="48.689846308893934%" id="d38610e175"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e171 "><p>Logging Buffer Confiuration and contents</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e175 "><p>日志缓冲区的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e171 "><p>allowed max buffer size</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e175 "><p>日志缓冲区的最大容量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e171 "><p>actual buffer size</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e175 "><p>日志缓冲区的实际容量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e171 "><p>channel number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e175 "><p>通道号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e171 "><p>channel name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e175 "><p>通道的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e171 "><p>dropped messages</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e175 "><p>丢弃的信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e171 "><p>overwritten messages</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e175 "><p>覆盖的信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e171 "><p>current messages</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e175 "><p>当前的信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示概要的日志缓冲区的日志信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display logbuffer summary</strong></pre>
+<pre class="screen">   SLOT EMERG ALERT  CRIT ERROR  WARN NOTIF  INFO DEBUG
+         2     0     0     0     0     0     0     0     0
+         3     0     0     0     0     0     0     0     0
+         6     0     0     0     0     0     0     0     0
+         9     0     0     0     0     0     0     0     0
+         0     0    91     0   321   100     0     0     0
+</pre>
+
+<div class="tablenoborder"><a name="display_logbuffer__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_logbuffer__tb_02" frame="border" border="1" rules="all"><caption>表2 display logbuffer summary命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="51.31015369110607%" id="d38610e294"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="48.689846308893934%" id="d38610e298"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e294 "><p>SLOT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e298 "><p>产生日志信息的槽位号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e294 "><p>EMERG</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e298 "><p>产生的严重等级为emergency的日志的条数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e294 "><p>ALERT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e298 "><p>产生的严重等级为alert的日志的条数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e294 "><p>CRIT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e298 "><p>产生的严重等级为critical的日志的条数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e294 "><p>ERROR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e298 "><p>产生的严重等级为error的日志的条数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e294 "><p>WARN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e298 "><p>产生的严重等级为warning的日志的条数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e294 "><p>NOTIF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e298 "><p>产生的严重等级为notice的日志的条数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e294 "><p>INFO</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e298 "><p>产生的严重等级为informational的日志的条数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.31015369110607%" headers="d38610e294 "><p>DEBUG</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.689846308893934%" headers="d38610e298 "><p>产生的严重等级为debugging的日志的条数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示日志缓冲区中存放的SNMP产生的日志信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display logbuffer module snmp</strong>
+Logging buffer configuration and contents:enabled
+Allowed max buffer size : 1024
+Actual buffer size : 512
+Channel number : 4 , Channel name : logbuffer
+Dropped messages : 0
+Overwritten messages : 0
+Current messages : 6
+Jul 27 2005 11:02:19 Quidway %%01SNMP/4/AR_PAF_FAILED(l):Failed to read PAF or License.</pre>
+
+<div class="tablenoborder"><a name="display_logbuffer__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_logbuffer__tb_03" frame="border" border="1" rules="all"><caption>表3 display logbuffer命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="51.09%" id="d38610e427"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="48.91%" id="d38610e431"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="51.09%" headers="d38610e427 "><p>Logging Buffer Confiuration and contents</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.91%" headers="d38610e431 "><p>日志缓冲区的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.09%" headers="d38610e427 "><p>allowed max buffer size</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.91%" headers="d38610e431 "><p>日志缓冲区的最大容量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.09%" headers="d38610e427 "><p>actual buffer size</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.91%" headers="d38610e431 "><p>日志缓冲区的实际容量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.09%" headers="d38610e427 "><p>channel number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.91%" headers="d38610e431 "><p>通道号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.09%" headers="d38610e427 "><p>channel name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.91%" headers="d38610e431 "><p>通道的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.09%" headers="d38610e427 "><p>dropped messages</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.91%" headers="d38610e431 "><p>丢弃的信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.09%" headers="d38610e427 "><p>overwritten messages</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.91%" headers="d38610e431 "><p>覆盖的信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="51.09%" headers="d38610e427 "><p>current messages</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="48.91%" headers="d38610e431 "><p>当前的信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_logbuffer__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_logbuffer__tb_04" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d38610e541"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d38610e545"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d38610e541 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d38610e545 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/information_center.html">信息中心命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="info-center_enable.html">info-center enable</a></div>
+<div><a href="info-center_logbuffer.html">info-center logbuffer</a></div>
+<div><a href="display_info-center.html">display info-center</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

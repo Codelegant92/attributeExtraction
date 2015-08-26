@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset ipsec sa">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ipsec_sa.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_ipsec_sa">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset ipsec sa</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_ipsec_sa"></a><a name="reset_ipsec_sa"></a>
+
+<h1 class="topictitle1">reset ipsec sa</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset</strong> <strong>ipsec</strong> <strong>sa</strong>命令删除已经建立的安全联盟（无论是手工建立的还是通过IKE协商建立的）。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset</strong> <strong>ipsec</strong> <strong>sa</strong> [ <strong>remote</strong> <em>ip-address</em> | <strong>policy</strong> <em>policy-name</em> [<em> seq-number</em> ] | <strong>parameters</strong> <em>dest-address</em> <em>protocol</em> <em>spi</em> ] </p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>remote</strong> <em>ip-address</em>：指定对端地址为<em>ip-address</em>，地址为点分十进制格式。</p>
+<p><strong>policy</strong>：指定安全策略。</p>
+<p><em>policy-name</em>：指定安全策略的名字。命名规则为：长度范围是1～15个字符，区分大小写，字符可以是英文字母或者数字。</p>
+<p><em>seq-number</em>：为可选参数，指定安全策略的顺序号。如果不指定<em>seq-number</em>，则安全策略是指名字为<em>policy-name</em>的安全策略组中所有安全策略，取值范围是1～10000。</p>
+<p><strong>parameters</strong>：指定一个安全联盟SA（Security Association）所对应的目的IP地址、安全协议、SPI（Security Parameter Index）。</p>
+<p><em>dest-address</em>：指定目的地址，格式为点分十进制的IP地址格式。</p>
+<p><em>protocol</em>：指定安全协议，可选关键字为<strong>ah</strong>或<strong>esp</strong>，不区分大小写。ah是指报文头认证（Authentication Header）协议，esp是指封装安全协议（Encapsulation Security Protocol）。</p>
+<p><em>spi</em>：指定安全参数索引，取值范围是256～4294967295。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果未指定<strong>remote</strong>、<strong>policy</strong>、<strong>parameters</strong>，使用<strong>reset</strong> <strong>ipsec</strong> <strong>sa</strong>命令则删除所有的安全联盟。</p>
+<p>通过手工建立的安全联盟被删除后，系统会自动根据对应的手工安全策略建立新的安全联盟。</p>
+<p>而通过IKE协商建立的安全联盟被删除后，如果有报文重新触发IKE协商，IKE将重新协商建立新的安全联盟。</p>
+<p>如果指定了<strong>parameters</strong>关键字，由于安全联盟是成对出现的，删除了一个方向的安全联盟，另一个方向的安全联盟也会被删除。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_ipsec_sa__d112398e143"></a><a name="d112398e143"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 删除所有安全联盟。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset ipsec sa</strong></pre>
+<p># 删除对端地址为10.1.1.2的安全联盟。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset ipsec sa remote 10.1.1.2</strong></pre>
+<p># 删除安全策略模板policy1中的所有安全联盟。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset ipsec sa policy policy1</strong></pre>
+<p># 删除安全策略名字为policy1、顺序号为10的安全联盟。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset ipsec sa policy policy1 10</strong></pre>
+<p># 删除对端地址为10.1.1.2、安全协议为AH、输出安全参数索引为10000的安全联盟。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset ipsec sa parameters 10.1.1.2 ah 10000</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ipsec_sa.html">display ipsec sa</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

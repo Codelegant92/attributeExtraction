@@ -1,0 +1,114 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="spf-schedule-interval">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="spf-schedule-interval">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>spf-schedule-interval</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="spf-schedule-interval"></a><a name="spf-schedule-interval"></a>
+
+
+<h1 class="topictitle1">spf-schedule-interval</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>spf-schedule-interval</strong>命令用来设置OSPF路由计算时间间隔。</p>
+<p><strong>undo spf-schedule-interval</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，使能智能定时器intelligent-timer，SPF计算的最长间隔时间为10000毫秒、初始间隔时间为500毫秒、基数间隔时间为1000毫秒。（以毫秒为单位的时间间隔）。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>spf-schedule-interval</strong> { <em>interval1</em> | <strong>intelligent-timer</strong> <em>max-interval start-interval
+hold-interval</em> | <strong>millisecond</strong> <em>interval2</em> }</p>
+<p><strong>undo spf-schedule-interval</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interval1</em>：OSPF的SPF计算间隔时间。整数形式，取值范围是1～10，单位是秒。</p>
+<p><strong>intelligent-timer</strong>：指定通过智能定时器设置OSPF SPF计算的间隔时间。</p>
+<p><em>max-interval</em>：指定OSPF SPF计算的最长间隔时间。整数形式，取值范围是1～20000，单位是毫秒。缺省值是10000。</p>
+<p><em>start-interval</em>：指定OSPF SPF计算的初始间隔时间。整数形式，取值范围是1～1000，单位是毫秒。缺省值是500。</p>
+<p><em>hold-interval</em>：指定OSPF SPF计算的基数间隔时间。整数形式，取值范围是1～5000，单位是毫秒。缺省值是1000。</p>
+<p><strong>millisecond</strong> <em>interval2</em>：OSPF的SPF计算间隔时间。整数形式，取值范围是1～10000，单位是毫秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>OSPF视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>根据本地维护的链路状态数据库LSDB，运行OSPF协议的路由器通过SPF算法计算出以自己为根的最短路径树，并根据这一最短路径树决定到目的网络的下一跳。通过调节SPF的计算间隔，可以抑制网络频繁变化可能导致的占用过多带宽资源和路由器资源。</p>
+<p>在一定组网环境下（例如对路由收敛时间要求较高的环境），可以指定以毫秒为单位的时间间隔，用来增加路由计算的频度，从而加快路由的收敛。</p>
+<p>当OSPF的链路状态数据库（LSDB）发生改变时，需要重新计算最短路径。如果网络频繁变化，由于不断的计算最短路径，会占用大量系统资源，影响路由器的效率。通过配置智能定时器，设置合理的SPF计算的间隔时间，可以避免占用过多的路由器内存和带宽资源。</p>
+<p>使能智能定时器后：</p>
+<ol>
+<li>初次计算SPF的间隔时间由<em>start-interval</em>参数指定。</li>
+<li>第n（n&#8805;2）次计算SPF的间隔时间为<em>hold-interval</em>&times;2(n-1)。</li>
+<li>当<em>hold-interval</em>&times;2(n-1)达到指定的最长间隔时间<u>max-interval</u>时，OSPF连续三次计算SPF的时间间隔都是最长间隔时间，之后，再次返回步骤1，按照初始间隔时间<em>start-interval</em>计算SPF。</li>
+</ol>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="spf-schedule-interval__d119772e119"></a><a name="d119772e119"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置OSPF路由计算间隔时间为6秒。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ospf 1</strong></pre>
+<pre class="screen">[Quidway-ospf-1]<strong> spf-schedule-interval 6</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="spf-schedule-interval__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="spf-schedule-interval__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d119772e146"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d119772e150"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d119772e146 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d119772e150 "><p>增加可选关键字：<strong>intelligent-timer</strong>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

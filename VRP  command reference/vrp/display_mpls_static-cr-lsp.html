@@ -1,0 +1,345 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls static-cr-lsp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_lsp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_static-cr-lsp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls static-cr-lsp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_static-cr-lsp"></a><a name="display_mpls_static-cr-lsp"></a>
+
+
+<h1 class="topictitle1">display mpls static-cr-lsp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls static-cr-lsp</strong>命令用来查看静态CR-LSP信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls static-cr-lsp</strong> [ <em>lsp-name</em> ]
+[ { <strong>include</strong> | <strong>exclude</strong> } <em>ip-address</em> <em>mask-length</em> ] [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> <em>regular-expression</em> | <strong>include</strong> <em>regular-expression</em> | <strong>exclude</strong> <em>regular-expression</em> } ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>lsp-name</em>：LSP名称，字符串形式，区分大小写，不支持空格，长度范围是1～<span>19</span>个字符。</p>
+<p><strong>exclude</strong>：显示除去指定目的IP地址的CR-LSP信息。</p>
+<p><strong>include</strong>：显示包含指定目的IP地址的CR-LSP信息。</p>
+<p><em>ip-address</em>：目的IP地址。</p>
+<p><em>mask-length</em>：目的IP地址掩码长度，取值范围是0～32。</p>
+<p><strong>verbose</strong>：查看详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<span> [<strong> | count</strong> ]</span><p><strong>begin</strong> <em>regular-expression</em>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong> <em>regular-expression</em>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong> <em>regular-expression</em>：只输出包含匹配字符串的行。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_static-cr-lsp__d47086e139"></a><a name="d47086e139"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看静态CR-LSP的简要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls static-cr-lsp</strong></pre>
+<pre class="screen">TOTAL         : 2     STATIC CRLSP(S)</pre>
+<pre class="screen">UP            : 2     STATIC CRLSP(S)</pre>
+<pre class="screen">DOWN          : 0     STATIC CRLSP(S)</pre>
+<pre class="screen">Name            FEC               I/O Label    I/O If            Stat</pre>
+<pre class="screen">Tunnel1/0/0     3.3.3.3/32        NULL/20      -/GE1/0/0         Up</pre>
+<pre class="screen">tunnel2/0/0     -/-               130/NULL     GE1/0/0/-         Up</pre>
+
+<div class="tablenoborder"><a name="display_mpls_static-cr-lsp__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_static-cr-lsp__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls static-cr-lsp命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.5830183925422%" id="d47086e171"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.41698160745779%" id="d47086e175"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e171 "><p>TOTAL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e175 "><p>静态CR-LSP的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e171 "><p>UP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e175 "><p>处于UP状态的静态CR-LSP数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e171 "><p>DOWN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e175 "><p>处于DOWN状态的静态CR-LSP的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e171 "><p>Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e175 "><p>静态CR-LSP的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e171 "><p>FEC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e175 "><p>目的地址及掩码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e171 "><p>I/O Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e175 "><p>入标签和出标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e171 "><p>I/O If</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e175 "><p>入接口和出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e171 "><p>Stat</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e175 "><p>此LSP当前的状态</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看静态CR LSP的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls static-cr-lsp verbose</strong></pre>
+<pre class="screen">No             : 1</pre>
+<pre class="screen">LSP-Name       : tunnel2/0/0</pre>
+<pre class="screen">LSR-Type       : Transit</pre>
+<pre class="screen">FEC            : -/-</pre>
+<pre class="screen">In-Label       : 20</pre>
+<pre class="screen">Out-Label      : 30</pre>
+<pre class="screen">In-Interface   : GigabitEthernet1/0/0</pre>
+<pre class="screen">Out-Interface  : GigabitEthernet2/0/0</pre>
+<pre class="screen">NextHop        : 10.1.3.2</pre>
+<pre class="screen">Lsp Status     : Up</pre>
+
+<div class="tablenoborder"><a name="display_mpls_static-cr-lsp__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_static-cr-lsp__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls static-cr-lsp verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.5830183925422%" id="d47086e312"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.41698160745779%" id="d47086e316"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e312 "><p>No</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e316 "><p>静态CR-LSP的显示序号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e312 "><p>LSP-Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e316 "><p>LSP的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e312 "><p>LSR-Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e316 "><div class="p">LSR的类型：<ul>
+<li>Ingress</li>
+<li>Transit</li>
+<li>Egress</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e312 "><p>FEC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e316 "><p>目的地址及掩码长度，对于Transit节点和Egress节点，FEC字段值显示为&#8220;-/-&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e312 "><p>In-Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e316 "><p>入标签值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e312 "><p>Out-Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e316 "><p>出标签值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e312 "><p>In-Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e316 "><p>入接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e312 "><p>Out-Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e316 "><p>出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e312 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e316 "><p>下一跳地址，格式为X.X.X.X</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.5830183925422%" headers="d47086e312 "><p>LSP Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.41698160745779%" headers="d47086e316 "><div class="p">表示该静态CR-LSP的状态：<ul>
+<li>Up：CR-LSP建立成功</li>
+<li>Down：CR-LSP建立不成功</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d47086e467"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d47086e471"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d47086e467 "><p>VRPV500R006C00B020</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d47086e471 "><p>将参数<em>lsp-name</em>的最大长度改为19个字符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d47086e467 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d47086e471 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_lsp.html">display mpls lsp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

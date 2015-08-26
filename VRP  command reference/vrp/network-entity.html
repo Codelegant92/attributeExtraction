@@ -1,0 +1,85 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="network-entity">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="isis.html">
+<meta name="DC.Relation" scheme="URI" content="isis_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="network-entity">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>network-entity</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="network-entity"></a><a name="network-entity"></a>
+
+
+<h1 class="topictitle1">network-entity</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>network-entity</strong>命令用来设置IS-IS路由进程的网络实体名称NET。</p>
+<p><strong>undo network-entity</strong>命令用来删除一个NET。</p>
+<p>缺省情况下，没有配置NET。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>network-entity</strong> <em>net</em></p>
+<p><strong>undo network-entity</strong> <em>net</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>net</em>：指定网络实体名称（Network Entity Title，NET），格式为X&#8230;X.XXXX.XXXX.XXXX.00，前面的&#8220;X&#8230;X&#8221;是区域地址，中间的12个&#8220;X&#8221;是路由器的System
+ID，最后的&#8220;00&#8221;是SEL。 </p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>NET也就是NSAP（Network Service Access Point）的特殊形式，IS-IS的NET为8～20字节。</p>
+<div class="p">NET由三部分组成：<ul>
+<li><p>区域ID，区域ID的长度可以是变化的（1～13个字节），同一个区域内的路由器区域ID相同。</p>
+</li>
+<li><p>本路由器的系统ID（6个字节），在整个区域和骨干区域中系统ID要求保持唯一。</p>
+</li>
+<li><p>最后一个字节SEL，其值必须为00。</p>
+</li>
+</ul>
+通常一台路由器配置一个NET即可，当区域需要重新划分例如合并区域或者分拆区域时，默认情况最多可配置3个区域，由此在区域更改时仍然能够保证路由的正确性和连续性。</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="network-entity__d99741e71"></a><a name="d99741e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定NET为10.0001.1010.1020.1030.00。其中系统ID是1010.1020.1030，区域ID是10.0001。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>isis 1</strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>network-entity 10.0001.1010.1020.1030.00</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="isis.html">isis</a></div>
+<div><a href="isis_enable.html">isis enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

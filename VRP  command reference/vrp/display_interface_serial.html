@@ -1,0 +1,289 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface serial">
+<meta name="DC.Relation" scheme="URI" content="../vrp/synchronous_serial_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="link-protocol_serial_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="default_interface-description_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface_serial">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface serial</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface_serial"></a><a name="display_interface_serial"></a>
+
+
+<h1 class="topictitle1">display interface serial</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display interface serial</strong>命令用来查看串口当前运行状态和接口统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display interface serial</strong> [ <em>interface-number</em> ] <span>[ <strong>| count</strong> ]</span><span> [ <strong>| </strong>{ <strong>begin | include | exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-number</em>：串口编号。如果不指定接口编号，将显示所有串口的运行状态和统计信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。字符串格式，支持空格，区分大小写。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface_serial__d29720e83"></a><a name="d29720e83"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看<span class="keyword">路由器</span>接口的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display interface serial</strong></pre>
+<pre class="screen">Serial6/0/0 current state : UP</pre>
+<pre class="screen">Line protocol current state : UP</pre>
+<pre class="screen">Last up time: 2007-11-03, 17:45:06</pre>
+<pre class="screen">Route Port,The Maximum Transmit Unit is 1500, Hold timer is 10(sec)
+</pre>
+<pre class="screen">Internet Address is 10.1.1.1/24</pre>
+<pre class="screen">Link layer protocol is PPP</pre>
+<pre class="screen">LCP opened, IPCP opened</pre>
+<pre class="screen">QoS max-bandwidth : 64 Kbps</pre>
+<pre class="screen">Output queue : (Urgent queue : Size/Length/Discards)  0/50/0</pre>
+<pre class="screen">Output queue : (Protocol queue : Size/Length/Discards) 0/1000/0</pre>
+<pre class="screen">Output queue : (FIFO queue : Size/Length/Discards)  0/256/0</pre>
+<pre class="screen">Interface is V35</pre>
+<pre class="screen">    73 packets input,  1274 bytes</pre>
+<pre class="screen">    123 packets output,  2216 bytes</pre>
+
+<div class="tablenoborder"><a name="display_interface_serial__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_serial__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface serial命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.239103048626852%" id="d29720e134"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.76089695137314%" id="d29720e138"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>Serial1/0/0 current state :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><div class="p">串口当前的物理状态：<ul>
+<li><p>UP：接口的物理状态正常启动。</p>
+</li>
+<li><p>DOWN：接口的物理连接出现故障。</p>
+</li>
+<li><p>Administratively down：如果网络管理员在该接口执行<strong>shutdown</strong>命令，将显示状态为Administratively down。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>Line protocol current state : </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><div class="p">显示该接口的链路协议状态：<ul>
+<li><p>UP：接口的链路协议处于正常的启动状态。</p>
+</li>
+<li><p>DOWN：接口的链路协议层出现故障，或者没有在此接口配置IP地址。其中damping表示接口因为频繁震荡而被抑制。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>Last up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><p>接口的协议状态最近一次变为Up的时间。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>The Maximum Transmit Unit is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><p>接口的最大传输单元（MTU）。例如串口缺省值是1500字节。长度大于MTU的报文，将会被分片后再发送。如果设置了不准分片，会被丢弃。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>Hold timer is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><p>报文的生命周期。报文如果在生命周期内没有被送出去，则将丢弃。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>Internet Address is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><p>接口的IP地址。如果没有配置IP地址，此处会显示：Internet protocol processing : disabled。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>Link layer protocol is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><p>串口的数据链路层协议。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>LCP opened, IPCP opened</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><p>表示PPP连接建立成功。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>QoS max-bandwidth :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><p>QoS最大带宽。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>Output queue : (Urgent queue : Size/Length/Discards)  Output queue : (Protocol queue : Size/Length/Discards) Output queue : (FIFO queuing : Size/Length/Discards)  </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><div class="p">接口输出队列的当前状态，通常包括三类输出队列（Output queue）：<ul>
+<li><p>紧急队列（Urgent queue），链路层的协议报文，比如PPP的协商报文和Keepalive报文等将进入这个队列。</p>
+</li>
+<li><p>协议队列（Protocol queue），IP优先级为6的报文将进入协议队列。</p>
+</li>
+<li><p>普通的报文队列（FIFO queue），根据接口上应用的队列类型，可能是FIFO（First In First Out Queue）、PQ（Priority Queue）、CQ（Custom Queue）或CBQ（Class-based Queue）等。</p>
+</li>
+</ul>
+当发生拥塞时，接口首先发送紧急队列中的报文，然后是协议队列中的报文，最后发送普通队列中的报文。对于各种发送队列，显示为Size/Length/Discards形式的数字，这里各字段含义如下：<ul>
+<li><p>Size ：队列中的分组数。</p>
+</li>
+<li><p>Length：用分组表示的最大队列的长度。</p>
+</li>
+<li><p>Discards：由于队列已满而丢失的分组数。</p>
+</li>
+</ul>
+通过检查Discards在一段时间内与Size和Length的关系，可以考察该接口的性能是否满足要求。例如：当Discards的值较大时可能表示<span class="keyword">路由器</span>正忙于进行其他工作，而无法及时处理进入的分组，如果这种情况持续很长的时间，则通常表示需要一个更强大的<span class="keyword">路由器</span>以满足工作的要求。</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>Interface is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><p>接口的线缆格式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d29720e134 "><p>73 packets input,  1274 bytes123 packets output,  2216 bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d29720e138 "><p>接口接收和发送的报文总数和字节总数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_interface_serial__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_serial__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.56892230576441%" id="d29720e355"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.4310776942356%" id="d29720e359"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.56892230576441%" headers="d29720e355 "><p>VRPV500R005C02B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.4310776942356%" headers="d29720e359 "><p>除在链路协议状态处显示具有spoofing特性的接口和Trunk成员接口外，所有协议是Up状态的三层接口都增加显示接口的协议状态最近一次变为Up的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.56892230576441%" headers="d29720e355 "><p>VRPV500R005C05B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.4310776942356%" headers="d29720e359 "><p>缺省情况下，系统不显示接口默认描述信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/synchronous_serial_interface_configuration_commands.html">串口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="link-protocol_serial_interface_view.html">link-protocol（串行接口视图）</a></div>
+<div><a href="default_interface-description_enable.html">default interface-description enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

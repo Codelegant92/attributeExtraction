@@ -1,0 +1,86 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mac-tunnel（业务实例视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mac-tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="service-instance_instance-name.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mac-tunnel_si_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mac-tunnel（业务实例视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mac-tunnel_si_view"></a><a name="mac-tunnel_si_view"></a>
+
+
+<h1 class="topictitle1">mac-tunnel（业务实例视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mac-tunnel</strong>命令用来配置业务实例与MAC Tunnel的绑定。</p>
+<p><strong>undo mac-tunnel</strong>命令用来解除业务实例与MAC Tunnel的绑定关系。</p>
+<p>缺省情况下，业务实例没有与MAC Tunnel绑定。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mac-tunnel</strong> <em>tunnel-name</em> &amp;&lt;1-6&gt;</p>
+<p><strong>undo mac-tunnel</strong> <em>tunnel-name</em> &amp;&lt;1-6&gt;</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>tunnel-name</em>：指定MAC Tunnel名称。长度范围是1～31个字符。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>业务实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>MAC Tunnel是业务实例传输数据的载体，业务实例与具体的用户业务映射后，需要与MAC Tunnel绑定后才能传输用户业务。</p>
+<p>在业务实例与隧道绑定前，必须已经配置业务实例的ID，否则无法与隧道绑定。而且要绑定的目标隧道也必须配置完整。</p>
+<p>对于点到点的业务实例，只能与一条隧道绑定，但是可以与其他多个业务实例共享相同的隧道；如果业务实例已经与隧道绑定，则新的隧道绑定配置将覆盖老的配置。</p>
+<p>多点到多点的业务实例可以与多条隧道进行绑定，也可以与其他多个业务实例共享相同的隧道，但是要求多条隧道的远端虚拟MAC地址不能相同。</p>
+<p>如果隧道配置了保护组，则业务实例绑定到工作隧道之后，保护隧道也自动绑定了该业务实例。不允许直接将保护隧道绑定到业务实例。</p>
+<p>对于已经和隧道绑定的业务实例，如果再次绑定隧道，则有两种情况：</p>
+<ul>
+<li><p>p2p类型的业务实例，直接覆盖上一条隧道。</p>
+</li>
+<li><p>mp2mp类型的业务实例，增加绑定一条隧道。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mac-tunnel_si_view__d91768e76"></a><a name="d91768e76"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置业务实例mysi与名为Mytunnel的MAC Tunnel绑定。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>service-instance instance-name</strong> <strong>mysi</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi] <strong>mac-tunnel Mytunnel</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mac-tunnel.html">mac-tunnel</a></div>
+<div><a href="service-instance_instance-name.html">service-instance instance-name</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

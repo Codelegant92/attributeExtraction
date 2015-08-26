@@ -1,0 +1,94 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te max-link-bandwidth">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_max-reservable-bandwidth.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_max-link-bandwidth">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te max-link-bandwidth</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_max-link-bandwidth"></a><a name="mpls_te_max-link-bandwidth"></a>
+
+
+<h1 class="topictitle1">mpls te max-link-bandwidth</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te max-link-bandwidth</strong>命令用来设置链路的最大带宽。</p>
+<p><strong>undo mpls te max-link-bandwidth</strong>命令用来恢复为缺省配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te max-link-bandwidth</strong> <em>bandwidth</em> [ <strong>bc1</strong> <em>bc1-bandwidth</em> ]</p>
+<p><strong>undo mpls te max-link-bandwidth</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>bandwidth</em>：指定链路的最大带宽。整数形式，取值范围是0～32000000，单位是kbit/s。缺省值是0。</p>
+<p><em>bc1-bandwidth</em>：指定带宽约束为BC1的链路最大带宽。整数形式，取值范围是0～<em>bandwidth</em>，单位是kbit/s。缺省值是0。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>mpls te max-link-bandwidth</strong>命令设置链路最大带宽时，不受实际物理接口的带宽限制。</p>
+<p>在RDM（Russian Dolls Model）中：</p>
+<ul>
+<li><p>执行<strong>mpls te max-link-bandwidth</strong> <em>bandwidth</em> [ <strong>bc1</strong> <em>bc1-bandwidth</em> ]命令。</p>
+</li>
+<li><p>在该模型中，BC0指的是全局带宽，即<em>bandwidth</em>的值。</p>
+</li>
+<li><p>BC1指的是子池带宽，它的值必须不大于全局带宽的值。</p>
+</li>
+</ul>
+<p>在MAM（Maximum Allocation Model）中：</p>
+<ul>
+<li><p>执行<strong>mpls te max-link-bandwidth</strong> <em>bandwidth</em>命令。</p>
+</li>
+<li><p>只能设置全局带宽，即<em>bandwidth</em>的值。</p>
+</li>
+<li><p>在该模型中，BC0和BC1指的都是子池带宽，它们的值在<strong>mpls te max-reservable-bandwidth</strong>命令中设置。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>该命令采用哪种模型，由设备的硬件决定。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_max-link-bandwidth__d96588e127"></a><a name="d96588e127"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置链路最大带宽为1158kbit/s，BC1的最大链路带宽为200kbit/s。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0] <strong>mpls te max-link-bandwidth 1158 bc1 200</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_te_max-reservable-bandwidth.html">mpls te
+max-reservable-bandwidth</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

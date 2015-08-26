@@ -1,0 +1,98 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="tunnel-protocol">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_over_ipv4_tunnel_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_tunnel_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="interface_tunnel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="tunnel-protocol">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>tunnel-protocol</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="tunnel-protocol"></a><a name="tunnel-protocol"></a>
+
+
+<h1 class="topictitle1">tunnel-protocol</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>tunnel-protocol</strong>命令用来配置隧道模式。</p>
+<p><strong>undo tunnel-protocol</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，采用NONE隧道模式。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>NONE模式表示没有对隧道配置任何模式，是一种初始配置，实际使用时必须选择另外的隧道模式。</p>
+</div></div>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>tunnel-protocol </strong>{ <strong>gre</strong> | <strong>ipv6-ipv4</strong> [ <strong>6to4</strong> | <strong>auto-tunnel</strong> | <strong>isatap</strong> ] | <strong>ipv4-ipv6</strong> | <strong>mpls te</strong> | <strong>none</strong> }</p>
+<p><strong>undo tunnel-protocol</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>gre</strong>：配置Tunnel接口为GRE隧道模式。GRE隧道为点到点模式。</p>
+<p><strong>ipv6-ipv4</strong>：配置Tunnel接口为IPv6 over IPv4手动配置隧道模式。手动隧道为点到点模式。</p>
+<p><strong>6to4</strong>：配置Tunnel接口为6to4隧道模式。6to4隧道为点到多点模式。</p>
+<p><strong>auto-tunnel</strong>：配置Tunnel接口为自动隧道模式，使用IPv4兼容IPv6地址。自动隧道为点到多点模式。</p>
+<p><strong>isatap</strong>：配置Tunnel接口为ISATAP隧道模式。</p>
+<p><strong>ipv4-ipv6</strong>：配置Tunnel接口为IPv4
+over IPv6手动配置隧道模式。</p>
+<p><strong>mpls
+te</strong>：配置Tunnel接口为CR-LSP隧道模式。</p>
+<p><strong>none</strong>：配置Tunnel接口的隧道模式为NONE。该模式的隧道不具备任何功能，为了使用该隧道接口，必须将隧道模式切换为其它模式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配置GRE、MPLS TE、IPv6 over IPv4和IPv4 over
+IPv6时，需要创建Tunnel接口，并使用<strong>tunnel-protocol</strong>命令配置该隧道接口的封装模式。</p>
+<p>可以根据网络拓扑和应用来选择隧道模式。手动隧道为点到点模式，6to4隧道及自动隧道为点到多点模式。在一个节点中，只能创建一个自动模式隧道。</p>
+<p>为了安全考虑也可以选择GRE隧道模式。它也是点到点模式，并有认证字与校验和作为安全机制。</p>
+<p>NONE模式用于当非缺省模式的接口还未达到最大值时，避免因为缺省模式的接口已经达到最大值，而无法继续创建非缺省模式的隧道接口。例如，一台设备最多允许创建X个隧道接口，其中允许创建的GRE隧道接口最大数为Y，允许创建的IPv4
+over IPv6隧道接口最大数为Z。如果该设备的缺省封装类型为GRE，当已经创建Y个GRE隧道接口、(Y－M)个IPv4 over
+IPv6隧道时，无法再创建IPv4 over IPv6隧道接口。因为新创建的是GRE类型，而GRE隧道接口已经到达最大数，无法再创建IPv4
+over IPv6隧道接口。此时，设备自动将新创建的隧道接口封装模式切换为None。用户如果要创建IPv4 over IPv6隧道接口，只需将新创建的隧道接口更改为IPv4
+over IPv6模式。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>必须先指定隧道协议后才能进行隧道的源/目的地址及其它参数的配置，修改隧道封装模式将删除该隧道的其它相关参数。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="tunnel-protocol__d126280e118"></a><a name="d126280e118"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置Tunnel1/0/0的隧道模式为MPLS TE。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface tunnel 1/0/0</strong></strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> <strong>tunnel-protocol mpls te</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_over_ipv4_tunnel_configuration_commands.html">IPv6 over IPv4隧道配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="interface_tunnel.html">interface tunnel</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

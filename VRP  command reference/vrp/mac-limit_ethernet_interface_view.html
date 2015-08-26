@@ -1,0 +1,73 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mac-limit（Ethernet接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mac_address_table_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-limit.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mac-limit_ethernet_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mac-limit（Ethernet接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mac-limit_ethernet_interface_view"></a><a name="mac-limit_ethernet_interface_view"></a>
+
+<h1 class="topictitle1">mac-limit（Ethernet接口视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mac-limit</strong>命令用来配置当前接口或VLAN上的MAC地址学习限制规则。</p>
+<p><strong>undo mac-limit</strong>命令用来删除配置的MAC地址学习限制规则。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mac-limit</strong> { <strong>action</strong> { <strong>discard</strong> | <strong>forward</strong> } | <strong>alarm</strong> { <strong>disable</strong> | <strong>enable</strong> } | <strong>maximum</strong> <em>max </em><strong>rate</strong> <em>interval</em> } *</p>
+<p><strong>undo mac-limit</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>action</strong>：当MAC地址表项数目达到限制后，系统所采取的动作。</p>
+<p><strong>discard</strong>：当MAC地址表项数目达到限制后，使用新MAC地址的报文被丢弃。</p>
+<p><strong>forward</strong>：当MAC地址表项数目达到限制后，使用新MAC地址的报文被继续转发，但不加入MAC地址表。</p>
+<p><strong>alarm</strong>：当MAC地址表项数目达到限制后，是否发送告警。</p>
+<p><strong>disable</strong>：当MAC地址表项数目达到限制后，不发送告警。</p>
+<p><strong>enable</strong>：当MAC地址表项数目达到限制后，以syslog方式提示告警。</p>
+<p><em>max</em>：当前接口或当前VLAN上最多可以学习的MAC数量。整数形式，取值范围是0～64512。当配置值为0时，表示不对学习数量进行限制。</p>
+<p><em>interval</em>：当前接口或当前VLAN上每次进行MAC学习的时间间隔。整数形式，取值范围是0～1000，单位是毫秒。当配置值为0时，表示不对学习速度进行限制。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet接口视图、GE接口视图、Eth-Trunk接口视图、Ethernet子接口视图、GE子接口视图、Eth-Trunk子接口视图、VLAN视图、VSI视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对于子接口，配置MAC学习限制规则前，必须已经绑定了VSI。</p>
+<p>如果接口或VLAN上已经学习了一些MAC地址，请使用<strong>undo mac-address dynamic</strong>命令清除已经学习的MAC地址，否则会使MAC地址学习限制功能的数量限制不准确。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mac-limit_ethernet_interface_view__d91600e100"></a><a name="d91600e100"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置以太接口GE1/0/0的MAC地址学习限制规则为最多允许学习100个MAC地址，每次MAC学习的时间间隔为50毫秒。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> portswitch</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mac-limit maximum 100 rate 50</strong></pre>
+<p># 配置VLAN2最多允许学习1000个MAC地址，每次学习的间隔为100毫秒，达到限制后，使用新MAC地址的报文被继续转发。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 2</strong></pre>
+<pre class="screen">[Quidway-vlan2]<strong> mac-limit action forward alarm enable maximum 1000 rate 100</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mac_address_table_configuration_commands.html">MAC地址表配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mac-limit.html">display mac-limit</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

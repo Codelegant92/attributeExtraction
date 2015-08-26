@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="rmon alarm">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rmon_rmon2_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_rmon_alarm.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rmon_alarm">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>rmon alarm</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="rmon_alarm"></a><a name="rmon_alarm"></a>
+
+
+<h1 class="topictitle1">rmon alarm</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>rmon</strong> <strong>alarm</strong>命令用来在报警表中添加一行信息。</p>
+<p><strong>undo rmon</strong> <strong>alarm</strong>命令用来在报警表中删除一行信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>rmon alarm</strong><em> entry-number alarm-OID sampling-time </em> { <strong>delta </strong> | <strong> absolute </strong> | <strong>changeratio</strong> }<strong> rising-threshold</strong><em> threshold-value1 event-entry1 </em><strong>falling-threshold</strong><em> threshold-value2 event-entry2 </em> [ <strong>owner</strong><em> owner-name </em> ]</p>
+<p><strong>undo</strong> <strong>rmon</strong> <strong>alarm</strong> <em>entry-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>entry-number</em>：添加或删除的行号。整数形式，取值范围是1～65535。</p>
+<p><em>alarm-OID</em>：告警变量OID。字符串形式，长度范围是1～256。</p>
+<p><em>sampling-time</em>：采样间隔时间。整数形式，取值范围是5～65535，单位是秒。</p>
+<p><strong>delta</strong>：采样类型为变化值。</p>
+<p><strong>absolute</strong>：采样类型为绝对值。</p>
+<p><strong>changeratio</strong>：采样类型为值变换的比率（变化值/采样周期）。</p>
+<p><strong>rising-threshold</strong><em> threshold-value1</em>：上限阈值。整数形式，取值范围是1～2147483647。</p>
+<p><em>event-entry1</em>：上限阈值相应的事件号。整数形式，取值范围是0～65535。</p>
+<p><strong>falling-threshold</strong><em> threshold-value2</em>：下限阈值。整数形式，取值范围是0～2147483647。</p>
+<p><em>event-entry2</em>：下限阈值相应的事件号。整数形式，取值范围是0～65535。</p>
+<p><strong>owner</strong> <em>owner-name</em>：该行的创建者名称。字符串形式，长度范围是1～127。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>设置报警项以便在出现异常时触发报警事件，再由报警事件来决定记录日志或向网管站发送trap信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="rmon_alarm__d114697e134"></a><a name="d114697e134"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在报警表中对接口统计表的etherStatsBroadcastPkts进行告警设置。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway]<strong> rmon alarm 1 1.3.6.1.2.1.16.1.1.1.6.1 30 absolute rising-threshold 500 1 falling-threshold 100 1 owner creator</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rmon_rmon2_configuration_commands.html">RMON和RMON2配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_rmon_alarm.html">display rmon alarm</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

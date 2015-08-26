@@ -1,0 +1,351 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ntdp device-list">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="port-tagged_vlan.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ntdp_device-list">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ntdp device-list</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ntdp_device-list"></a><a name="display_ntdp_device-list"></a>
+
+
+<h1 class="topictitle1">display ntdp device-list</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ntdp device-list</strong>命令用来查看通过NTDP收集到的设备信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ntdp device-list </strong>[ <strong>verbose</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>verbose</strong>：显示设备的详细信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定可选参数，本命令将显示设备的简要信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ntdp_device-list__d53928e43"></a><a name="d53928e43"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看NTDP收集到的设备信息。</p>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt; <strong>display ntdp device-list</strong></pre>
+<pre class="screen">The device-list of NTDP:
+------------------------------------------------------------------------------
+ MAC             HOP  IP                  PLATFORM
+
+------------------------------------------------------------------------------
+ 00e0-fcb8-d6b6  0    10.0.0.1/24         NE40E
+ 00e0-0003-0003  1    10.0.0.3/24         NE40E
+</pre>
+<p>该显示信息主要内容解释见<a href="#display_ntdp_device-list__tb_01">表1</a>。</p>
+
+<div class="tablenoborder"><a name="display_ntdp_device-list__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ntdp_device-list__tb_01" frame="border" border="1" rules="all"><caption>表1 display ntdp device-list命令输出信息描述（简要信息）</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d53928e70"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d53928e74"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d53928e70 "><p>MAC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d53928e74 "><p>设备的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d53928e70 "><p>HOP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d53928e74 "><p>设备距离拓扑收集设备的跳数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d53928e70 "><p>IP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d53928e74 "><p>设备在集群内通信时所使用的IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d53928e70 "><p>PLATFORM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d53928e74 "><p>设备类型。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看NTDP收集到的设备的详细信息。</p>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt;<strong> display ntdp device-list verbose</strong></pre>
+<pre class="screen">
+ Hostname  : HUAWEI_0.Quidway
+ MAC       : 00e0-fcb8-d6b6
+ Hop       : 0
+ Platform  : NE40E
+ IP        : 10.0.0.1/24
+ Version   : NE40E Version V300R007C01B022
+ Cluster   : Administrator switch of cluster dd
+
+ Peer MAC        Native Port ID Peer Port ID   N-Index    P-Index    Speed Dup
+ 00e0-0003-0003  GE1/0/1        GE1/0/2        17         335544705  1000  FULL
+
+-----------------------------------------------------------------------------
+
+ Hostname  : HUAWEI_2.Quidway
+ MAC       : 00e0-0003-0003
+ Hop       : 1
+ Platform  : NE40E
+ IP        : 10.0.0.3/24
+ Version   : NE40E Version V300R006C01B262
+ Cluster   : Member switch of cluster dd , Administrator MAC: 00e0-fcb8-d6b6
+
+ Peer MAC        Native Port ID Peer Port ID   N-Index    P-Index    Speed Dup
+ 0018-8267-7f7d  GE1/0/1        GE1/0/1        469762817  50         1000  FULL
+ 00e0-fcb8-d6b6  GE1/0/2        GE1/0/1        335544705  17         1000  FULL
+
+-----------------------------------------------------------------------------
+
+ Hostname  : HUAWEI_1.Quidway
+ MAC       : 0018-8267-7f7d
+ Hop       : 2
+ Platform  : NE40E-4
+ IP        : 15.0.0.2/24
+ Version   : NE40E-4 Version V300R007C01B022
+ Cluster   : Member switch of cluster dd , Administrator MAC: 00e0-fcb8-d6b6
+
+ Peer MAC        Native Port ID Peer Port ID   N-Index    P-Index    Speed Dup
+ 00e0-0003-0003  GE1/0/1        GE1/0/1        50         469762817  1000  FULL
+
+</pre>
+<p>该显示信息主要内容解释见<a href="#display_ntdp_device-list__tb_02">表2</a>。</p>
+
+<div class="tablenoborder"><a name="display_ntdp_device-list__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ntdp_device-list__tb_02" frame="border" border="1" rules="all"><caption>表2 display ntdp device-list命令输出信息描述（详细信息）</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.5127236079617%" id="d53928e154"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.4872763920383%" id="d53928e158"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>Hostname</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>设备的主机名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>MAC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>设备的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>Hop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>本设备距离拓扑收集设备的跳数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>Platform</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>设备型号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>IP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>设备的私有IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>Version</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>设备的系统软件版本。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>Cluster</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>设备所处集群的信息。包括集群名称、在集群中角色，命令交换机的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>Peer MAC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>邻居节点的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>Native Port ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>本设备与邻居节点连接时所使用的接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>Peer Port ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>邻居节点与本设备连接时所使用的接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>N-Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>本地接口索引。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>P-Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>对端接口索引。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>Speed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>邻居节点与本设备连接时的接口速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d53928e154 "><p>Dup</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d53928e158 "><p>邻居节点与本设备连接时的接口双工方式。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ntdp_device-list__tb_05"></a><a name="tb_05"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ntdp_device-list__tb_05" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d53928e334"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d53928e338"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d53928e334 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d53928e338 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="port-tagged_vlan.html">port-tagged vlan</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

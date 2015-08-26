@@ -1,0 +1,121 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls l2vpn pw bfd">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_l2vpn_pw_bfd">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls l2vpn pw bfd</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_l2vpn_pw_bfd"></a><a name="mpls_l2vpn_pw_bfd"></a>
+
+
+<h1 class="topictitle1">mpls l2vpn pw bfd</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls l2vpn pw bfd</strong>命令用来设置AC接口上支持动态BFD检测PW功能及调整BFD检测参数。</p>
+<p><strong>undo mpls l2vpn pw bfd</strong>命令用来删除AC接口上的动态BFD检测PW功能。</p>
+<p><strong>undo mpls l2vpn pw bfd </strong>[ <strong>detect-multiplier </strong>| <strong>min-rx-interval</strong> | <strong>min-tx-interval</strong> ] *命令用来将动态BFD检测PW的BFD参数恢复为默认值。</p>
+<p>缺省情况下，接口上没有配置动态BFD检测PW功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls l2vpn pw bfd</strong> [ <strong>detect-multiplie</strong>r <em>multiplier</em> | <strong>min-rx-interval</strong> <em>rx-interval</em>| <strong>min-tx-interval</strong> <em>tx-interval</em> ] * [ <strong>remote-vcid</strong> <em>vc-id</em> ] [ <strong>secondary</strong> ]</p>
+<p><strong>undo</strong> <strong>mpls</strong> <strong>l2vpn</strong> <strong>pw</strong> <strong>bfd</strong> [ <strong>secondary</strong> ]</p>
+<p><strong>undo mpls l2vpn pw bfd </strong>[ <strong>detect-multiplier</strong> | <strong>min-rx-interval</strong> | <strong>min-tx-interval</strong> ] * [ <strong>secondary</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>detect-multiplier</strong><em> multiplier</em>：BFD本地检测时间倍数。取值范围是3～50，缺省值是3。</p>
+<p><strong>min-rx-interval</strong><em> rx-interval</em><strong>：</strong>BFD期望的最小接收时间间隔。单位是毫秒。取值范围是100～1000，缺省值是1000ms。</p>
+<p><strong>min-tx-interval</strong><em> tx-interval</em><strong>：</strong>BFD期望的最小发送时间间隔。单位是毫秒。取值范围是100～1000，缺省值是1000ms。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>BFD检测参数的取值范围在不同产品上会有差异，请以实际显示为准。</p>
+</div></div>
+<p><strong>remote-vcid</strong><em> vc-id：</em>对端的VCID。被检测的PW是多跳PW时必须配置该参数，应该是PW对端的VC ID。取值范围是1～4294967295。</p>
+<p><strong>secondary：</strong>设置备用PW上支持BFD检测及配置检测参数。缺省情况下是针对主PW的配置。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>为降低对系统资源的占用，一旦检测到BFD会话Down，系统自动将本端的接收间隔和发送间隔调整为1000ms～3000ms之间的一个随机值，当BFD会话的状态重新变为Up后，再恢复成用户配置的时间间隔。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_l2vpn_pw_bfd__d94098e152"></a><a name="d94098e152"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在AC接口Pos1/0/0上设置PW支持动态BFD检测功能，并且配置BFD检测时间。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface pos1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0] <strong>mpls l2vpn pw bfd min-rx-interval 100 min-tx-interval 100</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_l2vpn_pw_bfd__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_l2vpn_pw_bfd__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d94098e179"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d94098e183"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d94098e179 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d94098e183 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d94098e179 "><p>VRPV500R005C02B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d94098e183 "><p>增加<strong>undo mpls l2vpn pw bfd </strong>[ <strong>detect-multiplier </strong>| <strong>min-rx-interval</strong> | <strong>min-tx-interval</strong> ] *命令</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

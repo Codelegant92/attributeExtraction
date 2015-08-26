@@ -1,0 +1,147 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls l2vpn label-space">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_mpls.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_l2vpn_label-space">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls l2vpn label-space</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_l2vpn_label-space"></a><a name="display_mpls_l2vpn_label-space"></a>
+
+
+<h1 class="topictitle1">display mpls l2vpn label-space</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls l2vpn label-space</strong>命令用来显示label分配空间分布信息以及label二级管理缓冲区信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls l2vpn label-space</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图下</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使能L2VPN后，执行命令<strong>display mpls l2vpn label-space</strong>将显示label分配空间分布信息以及label二级管理缓冲区信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_l2vpn_label-space__d43164e40"></a><a name="d43164e40"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># L2VPN没有使能时查看信息</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls l2vpn label-space</strong>
+Warning: MPLS L2VPN disabled. Please enable MPLS L2VPN first</pre>
+<p># L2VPN使能时，且缓存空间有标签时，查看信息</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls l2vpn label-space</strong>
+Label:  17408
+there are 1 labels or label blocks in label-space.</pre>
+<pre class="screen">------------------------------------------------------------
+label(s) released in SVC connection:              0</pre>
+<pre class="screen">label(s) released in LDP connection:              1
+label block(s) released in BGP connection:        0
+label(s) released in VPLS LDP connection:         0</pre>
+<pre class="screen">label block(s) released in VPLS BGP connection:   0</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vpn_label-space__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn_label-space__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls label-space命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.583432233562775%" id="d43164e74"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.41656776643721%" id="d43164e78"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d43164e74 "><p>Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d43164e78 "><p>当前标签缓存中的标签值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d43164e74 "><p>Label(s) released in SVC connection</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d43164e78 "><p>标签缓存中VLL SVC方式标签的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d43164e74 "><p>Label(s) released in LDP connection</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d43164e78 "><p>标签缓存中VLL LDP方式标签的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d43164e74 "><p>Label block(s) released in BGP connection</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d43164e78 "><p>标签缓存中VLL BGP方式标签块的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d43164e74 "><p>Label (s) released in VPLS LDP connection</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d43164e78 "><p>标签缓存中VPLS LDP方式标签块的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d43164e74 "><p>Label (s) released in VPLS BGP connection</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d43164e78 "><p>标签缓存中VPLS BGP方式标签块的总数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div><div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ip_netstream_mpls.html">ip netstream mpls</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

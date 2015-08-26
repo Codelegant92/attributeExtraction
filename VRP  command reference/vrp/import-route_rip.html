@@ -1,0 +1,132 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="import-route (RIP)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rip_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="apply_cost.html">
+<meta name="DC.Relation" scheme="URI" content="default-cost_rip.html">
+<meta name="DC.Relation" scheme="URI" content="filter-policy_export_rip.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="import-route_rip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>import-route (RIP)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="import-route_rip"></a><a name="import-route_rip"></a>
+
+
+<h1 class="topictitle1">import-route (RIP)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>import-route</strong>命令用来从其它路由协议引入路由。</p>
+<p><strong>undo import-route</strong>命令用来取消从其它路由协议引入路由。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>import-route</strong> <em>protocol</em> [ <em>process-id</em> ] [ <strong>cost</strong> { <em>cost</em> | <strong>transparent</strong> }] [ <strong>route-policy</strong> <em>route-policy-name</em> ]</p>
+<p><strong>undo import-route</strong><em> protocol</em> [ <em>process-id </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>protocol</em>：可引入的外部路由协议名称，目前RIP可引入的路由包括：direct、static、rip、ospf、isis和bgp。</p>
+<p><em>process</em>-<em>id</em>：进程号。对于路由协议rip、ospf、isis来说，需要指定进程号。</p>
+<p><em>cost</em>：引入路由的开销值。整数形式，取值范围是0～15。</p>
+<p><strong>transparent</strong>：该参数只在引入BGP路由时有效，引入路由的开销值为BGP路由的MED值。</p>
+<p><strong>route-policy</strong> <em>route-policy-name</em>：引入路由时指定路由策略名称。字符串形式，不支持空格，区分大小写，长度范围是1～40。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>RIP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过配置路由策略命令，可以在路由引入时只引入特定的路由，并可设置路由的属性。</p>
+<p>可以通过以下三条命令设置引入路由的开销值，其优先级依次递减：</p>
+<ul>
+<li><p>通过<a href="apply_cost.html">apply cost</a>命令设置的路由开销值。</p>
+</li>
+<li><p>通过<strong>import-route</strong>（RIP）命令设置的引入路由的开销值。</p>
+</li>
+<li><p>通过<a href="default-cost_rip.html">default-cost (RIP)</a>命令设置的缺省路由开销值。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>RIP协议规定的Tag字段长度为16bits，其他路由协议的Tag字段长度为32bits。如果在引入其他路由协议时，应用的路由策略中使用Tag，则应确保Tag值不超过65535，否则将导致路由策略失效或者产生错误的匹配结果。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="import-route_rip__d82206e124"></a><a name="d82206e124"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 从IS-IS进程7中引入路由，并设置其开销值为7。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>rip 1</strong></pre>
+<pre class="screen">[Quidway-rip-1]<strong> import-route isis 7 cost 7</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="import-route_rip__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="import-route_rip__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.73696145124717%" id="d82206e150"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.26303854875283%" id="d82206e154"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.73696145124717%" headers="d82206e150 "><p>VRPV500R005C02B280</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.26303854875283%" headers="d82206e154 "><p>新增可选关键字<strong>transparent</strong>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.73696145124717%" headers="d82206e150 "><p>VRPV500R006C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.26303854875283%" headers="d82206e154 "><p>新增可选关键字<strong>transparent</strong>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rip_configuration_commands.html">RIP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="apply_cost.html">apply cost</a></div>
+<div><a href="default-cost_rip.html">default cost (RIP)</a></div>
+<div><a href="filter-policy_export_rip.html">filter-policy export (RIP)</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

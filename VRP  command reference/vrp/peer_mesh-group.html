@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer mesh-group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/msdp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="peer_connect-interface_msdp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_mesh-group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer mesh-group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_mesh-group"></a><a name="peer_mesh-group"></a>
+
+
+<h1 class="topictitle1">peer mesh-group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer mesh-group</strong>命令用来将一个MSDP对等体加入全连接组。</p>
+<p><strong>undo peer mesh-group</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，MSDP对等体不属于任何全连接组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> <em>peer-address</em> <strong>mesh-group</strong> <em>name</em></p>
+<p><strong>undo peer</strong> <em>peer-address</em><strong> mesh-group</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>peer-address</em>：表示成为全连接组成员的远端MSDP对等体地址。点分十进制形式。</p>
+<p><em>name</em>：表示用来标识一个全连接组的名称。区分大小写，最长为32个字符。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例MSDP视图、VPN实例MSDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>Mesh group里的所有peer之间必须两两建立MSDP对等体关系。</p>
+<p>使用<strong>peer mesh-group</strong>命令为Mesh group添加新成员之前，新成员必须和Mesh group的现有成员之间逐一建立MSDP对等体关系。</p>
+<p>通常属于同一个AS的MSDP Peer加入同一个Mesh group，并在跨AS的MSDP Peer之间配置EBGP路由（BGP/MBGP）。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_mesh-group__d103979e73"></a><a name="d103979e73"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中，配置地址为125.10.7.6的MSDP对等体成为名称为Grp1的全连接组的成员。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> msdp</strong></pre>
+<pre class="screen">[Quidway-msdp]<strong> peer 125.10.7.6 mesh-group Grp1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/msdp_configuration_commands.html">MSDP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="peer_connect-interface_msdp.html">peer connect-interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

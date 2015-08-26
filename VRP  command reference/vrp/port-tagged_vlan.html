@@ -1,0 +1,146 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="port-tagged vlan">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ntdp_device-list.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="port-tagged_vlan">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>port-tagged vlan</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="port-tagged_vlan"></a><a name="port-tagged_vlan"></a>
+
+
+<h1 class="topictitle1">port-tagged vlan</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>port-tagged vlan</strong>命令用来将所有Hybrid和Trunk类型的集群接口以Trunk方式加入管理VLAN。</p>
+<p><strong>undo port-tagged</strong>命令用来将所有Access或QinQ类型的集群接口以缺省VLAN方式加入管理VLAN。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>port-tagged vlan</strong></p>
+<p><strong>undo port-tagged</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>集群视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只能在命令交换机上执行。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>请谨慎执行<strong>undo port-tagged</strong>命令，执行<strong>undo port-tagged</strong>命令将会改变所有集群接口的缺省VLAN，从而可能影响其它业务。</p>
+</div></div>
+<p>集群接口是指执行<strong>display ntdp device-list verbose</strong>命令时所查看到的&#8220;Native Port ID&#8221;和&#8220;Peer Port ID&#8221;，用于集群内部通信的接口。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="port-tagged_vlan__d106549e58"></a><a name="d106549e58"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置所有集群成员之间用于集群内部通信的Access或QinQ类型接口以缺省VLAN方式加入管理VLAN。集群接口为GE1/0/1，管理VLAN的编号为1。</p>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[HUAWEI_0.Quidway]<strong> display current-configuration interface gigabitethernet 1/0/1</strong></pre>
+<pre class="screen">#</pre>
+<pre class="screen">interface GigabitEthernet1/0/1</pre>
+<pre class="screen"> port trunk allow-pass vlan 1</pre>
+<pre class="screen"> ntdp enable</pre>
+<pre class="screen"> ndp enable</pre>
+<pre class="screen">#</pre>
+<pre class="screen">return</pre>
+<pre class="screen">[HUAWEI_0.Quidway]<strong> <strong>cluster</strong></strong></pre>
+<pre class="screen">[HUAWEI_0.Quidway-cluster]<strong><strong> undo port-tagged</strong></strong></pre>
+<pre class="screen"> Caution!!! The default vlan of all HGMP ports will be changed, some relational</pre>
+<pre class="screen">services may be interrupted!(Y/N)[N]<strong>: y</strong></pre>
+<pre class="screen">[HUAWEI_0.Quidway-cluster]<strong> <strong>display current-configuration interface gigabitethernet 1/0/1</strong></strong></pre>
+<pre class="screen">#</pre>
+<pre class="screen">interface GigabitEthernet1/0/1</pre>
+<pre class="screen"> port default vlan 1</pre>
+<pre class="screen"> port trunk allow-pass vlan 1</pre>
+<pre class="screen"> ntdp enable</pre>
+<pre class="screen"> ndp enable</pre>
+<pre class="screen">#</pre>
+<pre class="screen">return</pre>
+<p>屏幕上显示的&#8220;[Y/N]&#8221;表示&#8220;YES或NO&#8221;。输入&#8220;y&#8221;则表示确认，输入&#8220;n&#8221;则表示放弃。缺省值为&#8220;n&#8221;。</p>
+<p># 配置所有Hybrid和Trunk类型的集群接口以Trunk方式加入管理VLAN。集群接口为GE1/0/1，管理VLAN的编号为1。</p>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[HUAWEI_0.Quidway]<strong> display current-configuration interface gigabitethernet 1/0/1</strong></pre>
+<pre class="screen">#</pre>
+<pre class="screen">interface GigabitEthernet1/0/1</pre>
+<pre class="screen"> port default vlan 1</pre>
+<pre class="screen"> ntdp enable</pre>
+<pre class="screen"> ndp enable</pre>
+<pre class="screen">#</pre>
+<pre class="screen">return</pre>
+<pre class="screen">[HUAWEI_0.Quidway]<strong> <strong>cluster</strong></strong></pre>
+<pre class="screen">[HUAWEI_0.Quidway-cluster]<strong> <strong>port-tagged vlan</strong></strong></pre>
+<pre class="screen">[HUAWEI_0.Quidway-cluster]<strong> <strong>display current-configuration interface gigabitethernet 1/0/1</strong></strong></pre>
+<pre class="screen">#</pre>
+<pre class="screen">interface GigabitEthernet1/0/1</pre>
+<pre class="screen"> port trunk allow-pass vlan 1</pre>
+<pre class="screen"> ntdp enable</pre>
+<pre class="screen"> ndp enable</pre>
+<pre class="screen">#</pre>
+<pre class="screen">return</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="port-tagged_vlan__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="port-tagged_vlan__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d106549e196"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d106549e200"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d106549e196 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d106549e200 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ntdp_device-list.html">display ntdp device-list</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

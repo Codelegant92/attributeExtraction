@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer route-update-interval (BGP)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_route-update-interval_bgp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer route-update-interval (BGP)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_route-update-interval_bgp"></a><a name="peer_route-update-interval_bgp"></a>
+
+
+<h1 class="topictitle1">peer route-update-interval (BGP)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer route-update-interval</strong>命令用来配置向对等体/对等体组发送相同路由前缀更新报文的时间间隔。</p>
+<p><strong>undo peer route-update-interval</strong>命令用来恢复发送路由更新的时间间隔为缺省值。</p>
+<p>缺省情况下，IBGP对等体的路由更新时间间隔为15秒，EBGP对等体的路由更新时间间隔为30秒。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> { <em>group-name</em> | <em>ipv4-address</em> | <em>ipv6-address</em> } <strong>route-update-interval</strong> <em>interval</em></p>
+<p><strong>undo peer</strong> { <em>group-name</em> | <em>ipv4-address</em> | <em>ipv6-address</em> } <strong>route-update-interval</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>group-name</em>：对等体组的名称。</p>
+<p><em>ipv4-address</em>：对等体的IPv4地址。</p>
+<p><em>ipv6-address</em>：对等体的IPv6地址。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p><em>ipv4-address</em>参数仅在BGP视图、BGP-IPv4单播地址族视图和BGP-VPN实例视图下生效。</p>
+</li>
+<li><p><em>ipv6-address</em>参数仅在BGP-IPv6单播地址族视图和BGP-VPN6实例视图下生效。</p>
+</li>
+<li><p><em>group-name</em>参数仅在BGP视图、BGP-IPv4单播地址族视图、BGP-VPN实例视图和BGP-VPN6实例视图下生效。</p>
+</li>
+</ul>
+</div></div>
+<p><em>interval</em>：为发送BGP更新报文的最小时间间隔。整数形式，取值范围为5～600秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP视图，BGP-IPv4单播地址族视图、BGP-IPv6单播地址族视图，BGP-VPN实例视图、BGP-VPN6实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当路由变化时，路由器会发送Update报文通知对等体。但如果同一路由频繁变化时，为避免每次变化路由器都要发送Update报文给对等体，可以通过该命令配置发送该同一路由的Update报文的时间间隔。此命令仅对从对等体学来的路由生效，对自身发布的路由无效。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_route-update-interval_bgp__d104517e108"></a><a name="d104517e108"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置向对等体发送路由更新的时间间隔。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> peer 1.1.1.2 as-number 200</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> peer 1.1.1.2 route-update-interval 10</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

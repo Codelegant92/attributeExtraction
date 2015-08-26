@@ -1,0 +1,179 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="VLL配置命令">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_bind_pw.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ccc_interface_in-label_out-label.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ccc_interface_out-interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ce.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/connection.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_bgp_l2vpn.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_vll_ccc.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_l2vpn_ccc-interface_vc-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_local-ce_mac.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_l2vc.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_l2vc_oam-mapping.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_l2vpn.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_l2vpn_route-target.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_l2vpn_connection.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_l2vpn_forwarding-info.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_l2vpn_oam-mapping.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_static-l2vc.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_rrvpn-tunnel_vll.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ignore-mtu-match_mpls-l2vpn_instance_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/l2vpn-family.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-ce_ip.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-ce_mac.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-ce_mac_broadcast.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/manual-set_pw-ac-fault.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_l2vc.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_l2vpn.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_l2vpn_default_martini.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_l2vpn_l2vpn-name.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_l2vpn_oam-mapping.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_l2vpn_peer_message-merge.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_l2vpn_pw_bfd.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_l2vpn_reroute.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_l2vpn_trigger_if-down.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_static-l2vc_destination.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mtu_mpls-l2vpn_instance_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam_fr.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam_hdlc.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/oam_ppp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_bgp_l2vpn.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_local-ce_mac.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/route-distinguisher_mpls-l2vpn_instance_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp-agent_trap_enable_feature-name_l2vpn_non-excessive_all.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp-agent_trap_enable_feature-name_l2vpn_trap-name.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/tracert_vc.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn-target_mpls-l2vpn_instance_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="vll_configuration_commands">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>VLL配置命令</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="vll_configuration_commands"></a><a name="vll_configuration_commands"></a>
+
+
+<h1 class="topictitle1">VLL配置命令</h1>
+
+<div>
+<div class="section"><h4 class="sectiontitle">功能描述</h4><p>VLL配置命令主要涉及CCC方式VLL的配置、SVC方式VLL的配置、Martini方式VLL的配置、Kompella方式VLL的配置、VLL异种介质互通的配置、跨域Martini
+VLL的配置、跨域Kompella VLL的配置<span class="keyword">、VLL FRR的配置</span>以及维护VLL等。</p>
+</div>
+
+<div class="section"><h4 class="sectiontitle">相关链接</h4></div>
+
+</div>
+
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="../vrp/bfd_bind_pw.html">bfd bind pw</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ccc_interface_in-label_out-label.html">ccc interface in-label out-label</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ccc_interface_out-interface.html">ccc interface out-interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ce.html">ce</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/connection.html">connection</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_bgp_l2vpn.html">display bgp l2vpn</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_vll_ccc.html">display vll ccc</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_l2vpn_ccc-interface_vc-type.html">display l2vpn ccc-interface vc-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_local-ce_mac.html">display local-ce mac</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_l2vc.html">display mpls l2vc</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_l2vc_oam-mapping.html">display mpls l2vc oam-mapping</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_l2vpn.html">display mpls l2vpn</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_l2vpn_route-target.html">display mpls l2vpn (Route-Target)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_l2vpn_connection.html">display mpls l2vpn connection</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_l2vpn_forwarding-info.html">display mpls l2vpn forwarding-info</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_l2vpn_oam-mapping.html">display mpls l2vpn oam-mapping</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_static-l2vc.html">display mpls static-l2vc</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_rrvpn-tunnel_vll.html">display mpls te rrvpn-tunnel（VLL）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ignore-mtu-match_mpls-l2vpn_instance_view.html">ignore-mtu-match（MPLS-L2VPN实例视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/l2vpn-family.html">l2vpn-family</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-ce_ip.html">local-ce ip</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-ce_mac.html">local-ce mac</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-ce_mac_broadcast.html">local-ce mac broadcast</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/manual-set_pw-ac-fault.html">manual-set pw-ac-fault</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_l2vc.html">mpls l2vc</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_l2vpn.html">mpls l2vpn</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_l2vpn_default_martini.html">mpls l2vpn default martini</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_l2vpn_l2vpn-name.html">mpls l2vpn l2vpn-name</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_l2vpn_oam-mapping.html">mpls l2vpn oam-mapping</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_l2vpn_peer_message-merge.html">mpls l2vpn peer message-merge</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_l2vpn_pw_bfd.html">mpls l2vpn pw bfd</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_l2vpn_reroute.html">mpls l2vpn reroute</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_l2vpn_trigger_if-down.html">mpls l2vpn trigger if-down</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_static-l2vc_destination.html">mpls static-l2vc destination</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mtu_mpls-l2vpn_instance_view.html">mtu（MPLS-L2VPN实例视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam_fr.html">oam（FR）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam_hdlc.html">oam（HDLC）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/oam_ppp.html">oam（PPP）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_bgp_l2vpn.html">reset bgp l2vpn</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_local-ce_mac.html">reset local-ce mac</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/route-distinguisher_mpls-l2vpn_instance_view.html">route-distinguisher（MPLS-L2VPN实例视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/snmp-agent_trap_enable_feature-name_l2vpn_non-excessive_all.html">snmp-agent trap enable feature-name l2vpn non-excessive all</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/snmp-agent_trap_enable_feature-name_l2vpn_trap-name.html">snmp-agent trap enable feature-name l2vpn trap-name</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/tracert_vc.html">tracert vc</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/vpn-target_mpls-l2vpn_instance_view.html">vpn-target（MPLS-L2VPN实例视图）</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpn_commands.html">VPN命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

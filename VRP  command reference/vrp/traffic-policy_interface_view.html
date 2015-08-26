@@ -1,0 +1,95 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="traffic-policy（接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/class-based_qos_configuration_commmands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="traffic-policy_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>traffic-policy（接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="traffic-policy_interface_view"></a><a name="traffic-policy_interface_view"></a>
+
+
+<h1 class="topictitle1">traffic-policy（接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>traffic-policy</strong>命令用来在接口应用关联的策略。</p>
+<p><strong>undo traffic-policy</strong>命令用来删除关联的策略。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>traffic-policy</strong><em> policy-name</em> { <strong>inbound </strong>|<strong> outbound </strong>}<span> [ <strong>link-layer</strong> | <strong>all-layer </strong>] </span></p>
+<p><strong>undo traffic-policy </strong>{ <strong>inbound </strong>|<strong> outbound </strong>}</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>inbound</strong>：入方向。</p>
+<p><strong>outbound</strong>：出方向。</p>
+<p><em>policy-name</em>：策略名。必须是已定义的策略名。</p>
+<p><strong>link-layer</strong>：指定根据报文二层信息进行规则匹配并执行相应的动作。</p>
+<p><strong>all-layer </strong>：当接口上应用了关联的流量策略时，先根据报文的二层信息进行规则匹配并执行相应的动作；如果报文的二层信息没有匹配上流分类规则，则继续根据报文的三层信息进行规则匹配并执行相应的动作。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在应用策略时，如果策略中为确保转发和加速转发的类指定的带宽之和超过接口允许的可用带宽，则在该接口不可应用。如果对接口修改了可用带宽，此时如果策略中为确保转发和加速转发的类指定的带宽之和超过接口允许的可用带宽，则将策略删除。入方向的策略与类关联的行为不允许有<strong>queue af</strong>、<strong>queue ef</strong>与<strong>queue wfq</strong>配置，也不允许有GTS配置。</p>
+<p>策略在接口视图下应用的规格如下：</p>
+<ul>
+<li><p>普通物理接口和MP引用的VT及VE，可以应用配置了各种特性（包括<strong>remark</strong>、<strong>car</strong>、<strong>gts</strong>、<strong>queue af</strong>、<strong>queue ef</strong>、<strong>queue wfq</strong>、<strong>wred</strong>等）的策略。</p>
+</li>
+<li><p>策略中如果关联了配置了流量整形（<strong>gts</strong>）和队列（<strong>queue ef</strong>、<strong>queue af</strong>、<strong>queue wfq</strong>）特性的行为，不能作为入方向策略应用在入接口上。</p>
+</li>
+<li><p>只有关联了配置了队列（<strong>queue ef</strong>、<strong>queue af</strong>、<strong>queue wfq</strong>）特性的行为的出方向策略才能应用到ATM PVC上。</p>
+</li>
+<li><p>子接口不支持队列（<strong>queue ef</strong>、<strong>queue af</strong>、<strong>queue wfq</strong>）特性，但是支持流量整形（<strong>gts</strong>）与流量监管（<strong>car</strong>）。所以关联了只配置了流量整形与流量监管的行为的策略可以应用到子接口。</p>
+</li>
+</ul>
+<p>缺省情况下，流量策略根据报文的三层或四层信息进行规则匹配并执行相应的动作。 </p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>参数<strong>link-layer</strong>和<strong>all-layer</strong>只在NE40E/NE80E/NE5000E系列路由器上支持。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="traffic-policy_interface_view__d125294e183"></a><a name="d125294e183"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将策略DEFAULT应用到接口GE6/0/0的出方向上。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface GigabitEthernet6/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet6/0/0]<strong> traffic-policy default outbound</strong></pre>
+<p># 将流量策略policy2应用到接口Ringif 0的入方向上。 </p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+Quidway] <strong>interface ring-if 0</strong>
+[Quidway-ring-if0] <strong>traffic-policy policy2 inbound</strong>
+</pre>
+<p># 在接口GE1/0/0上配置policy p，指定为all-layer形式。 </p>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong> 
+[Quidway-GigabitEthernet1/0/0] <strong>traffic-policy p inbound all-layer</strong>
+</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/class-based_qos_configuration_commmands.html">基于类的QoS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

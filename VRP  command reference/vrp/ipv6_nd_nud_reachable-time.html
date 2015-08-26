@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ipv6 nd nud reachable-time">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipv6_nd_nud_reachable-time">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ipv6 nd nud reachable-time</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipv6_nd_nud_reachable-time"></a><a name="ipv6_nd_nud_reachable-time"></a>
+
+
+<h1 class="topictitle1">ipv6 nd nud reachable-time</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ipv6 nd nud reachable-time</strong>命令用来配置邻居可达时间。</p>
+<p><strong>undo ipv6 nd nud reachable-time</strong>命令用来将此设置恢复为缺省值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ipv6 nd nud reachable-time </strong><em>value</em></p>
+<p><strong>undo ipv6 nd nud reachable-time </strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>value</em> ：指定定时器的取值。整数形式，单位是毫秒，取值范围是0～3600000。缺省值是30000毫秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>可达时间的作用包括：</p>
+<ul>
+<li><p>控制本路由设备邻居表项的老化时间；</p>
+</li>
+<li><p>作为RA报文的参数，帮助主机配置可达时间。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>一般情况下，邻居可达时间与RA报文的可达时间取值相同。但在下述情况中，邻居可达时间为缺省值30000毫秒，RA报文中的可达时间为0毫秒。</p>
+<ul>
+<li><p>缺省情况下，邻居可达时间为缺省值30000毫秒。</p>
+</li>
+<li><p>执行<strong>undo ipv6 nd nud reachable-time</strong>命令将邻居可达时间恢复为缺省值。</p>
+</li>
+<li><p>执行<strong>ipv6 nd nud reachable-time 0</strong>命令，&#8220;<strong>0</strong>&#8221;表示不对邻居可达时间进行设置。</p>
+</li>
+</ul>
+<p>当主机收到可达时间为0的RA报文后，使用缺省值30000毫秒，与路由设备保持一致。</p>
+</div></div>
+<p>路由设备在接口上每次发布RA报文时都携带该时间，以便同一链路上的所有节点都使用相同的时间。</p>
+<p>此命令支持Ethernet接口及其子接口、GigabitEthernet接口及其子接口、POS接口以及Tunnel接口。</p>
+<p>在配置该命令前，需要先在接口视图下执行<strong>ipv6 enable</strong>命令，使能IPv6功能。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ipv6_nd_nud_reachable-time__d86200e95"></a><a name="d86200e95"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置GE接口上的可达时间。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>ipv6 nd nud reachable-time 10000</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_basic_configuration_commands.html">IPv6基础配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

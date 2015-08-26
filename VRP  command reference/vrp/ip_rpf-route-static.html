@@ -1,0 +1,89 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ip rpf-route-static">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_policy_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_multicast_rpf-info.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ip_rpf-route-static">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ip rpf-route-static</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ip_rpf-route-static"></a><a name="ip_rpf-route-static"></a>
+
+
+<h1 class="topictitle1">ip rpf-route-static</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ip rpf-route-static</strong>命令用来配置组播静态路由。</p>
+<p><strong>undo ip rpf-route-static</strong>命令用来删除组播静态路由。</p>
+<p>缺省情况下，未配置组播静态路由。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ip rpf-route-static</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <em>source-address</em> { <em>mask</em> | <em>mask-length</em> } [ <em>protocol</em> [ <em>process-id</em> ] ] [ <strong>route-policy</strong> <em>route-policy-name</em> ] { <em>rpf-nbr</em> | <em>interface-type
+interface-number</em> } [ <strong>preference</strong> <em>preference</em> ] [ <strong>order</strong> <em>order-number</em> ]</p>
+<p><strong>undo ip rpf-route-static</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] { <em>source-address</em> { <em>mask</em> | <em>mask-length</em> }
+[ <em>protocol</em> [ <em>process-id</em> ] ] [ <strong>route-policy</strong> <em>policy-name</em> ] | <strong>all</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance </strong><em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称。字符串形式，长度范围是1～31。缺省情况下，为公网实例。</p>
+<p><em>source-address</em>：表示组播源地址。点分十进制形式。</p>
+<p><em>mask</em>：表示组播源地址掩码。点分十进制形式。</p>
+<p><em>mask-length</em>：表示组播源地址掩码长度。整数形式，取值范围是0～32。</p>
+<p><em>protocol</em>：表示匹配的路由必须在指明的单播路由协议中出现。<em>protocol</em>可以是BGP、IS-IS、OSPF、RIP、static等单播路由协议。</p>
+<p><em>process-id</em>：表示单播路由协议的进程号。当单播路由协议为IS-IS、OSPF或RIP时，需要指定<em>process-id</em>。整数形式，取值范围是1～65535。</p>
+<p><strong>route-policy</strong><em> route-policy-name</em>：表示静态组播路由的匹配规则。<em>route-policy-name</em> 表示路由匹配规则的名称。字符串形式，长度范围是1～40。</p>
+<p><em>rpf-nbr</em>：表示RPF邻居的IP地址。</p>
+<p><em>interface-type interface-number</em>：表示<span class="keyword">路由器</span>的接口类型和接口号，用来指定具体的接口。</p>
+<p><strong>order</strong> <em>order-number</em>：表示同网段路由的配置次序。整数形式，取值范围是1～100。</p>
+<p><strong>preference</strong> <em>preference</em>：表示路由优先级，数值越大，优先级越低。整数形式，取值范围是1～255。缺省值是1。</p>
+<p><strong>all</strong>：表示组播静态路由表中存在的所有组播静态路由。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>ip rpf-route-static</strong>命令时，如果指定了协议类型<em>protocol</em> <em>process-id</em>，则只将当前组播静态路由与该协议类型的单播路由比较。如果最优单播路由跟组播静态路由的协议类型不一致，则选择此最优单播路由为RPF路由。</p>
+<p>参数<em>source-address</em> <em>mask</em>、<em>protocol</em>、<em>policy-name</em>为静态组播路由的关键要素，三个关键要素有一个不同就认为是不同的配置。配置时，首先查询静态组播路由树中是否已有此配置，若有就修改相应的字段（配置顺序保持不变）；若没有则添加。每一个网段允许配8条不同的配置。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>配置组播静态路由时，若下一跳接口是点对点形式，则可在命令中配置下一跳接口。若下一跳接口是非点对点形式，则必须使用下一跳地址形式。</p>
+</div></div>
+<p>配置了<strong>ip rpf-route-static</strong>之后，该组播静态路由并不一定会生效，因为有可能出现无法迭代出接口，或者指定接口Down等情况。因此，进行此项配置后，建议使用<strong>display ip routing-table protocol static</strong>命令查看该路由是否配置成功或该路由是否生效。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ip_rpf-route-static__d84785e228"></a><a name="d84785e228"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置组播静态路由。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ip rpf-route-static 1.0.0.0 255.0.0.0 rip 1 route-policy map1 11.0.0.1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_policy_configuration_commands.html">IPv4组播路由管理命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_multicast_rpf-info.html">display multicast rpf-info</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

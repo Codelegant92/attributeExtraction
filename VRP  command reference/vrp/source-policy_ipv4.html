@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="source-policy（IPv4）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="source-policy_ipv4">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>source-policy（IPv4）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="source-policy_ipv4"></a><a name="source-policy_ipv4"></a>
+
+
+<h1 class="topictitle1">source-policy（IPv4）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>source-policy</strong>命令用来配置<span class="keyword">路由器</span>对接收的组播数据报文根据源或源/组进行过滤。</p>
+<p><strong>undo source-policy</strong>命令用来删除配置。</p>
+<p>缺省情况下，<span class="keyword">路由器</span>不根据源或源/组过滤组播数据报文。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>source-policy</strong><em> acl-number</em></p>
+<p><strong>undo source-policy</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>acl-number</em>：表示基本或高级访问控制列表序号。整数形式，取值范围是2000～3999。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例PIM视图、VPN实例PIM视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果配置了<strong>source-policy</strong>，并且使用了基本访问控制列表，则对接收的所有组播数据报文匹配源地址，未通过该过滤规则的报文将被丢弃。</p>
+<p>如果配置了<strong>source-policy</strong>，并且使用了高级访问控制列表，则对接收的所有组播数据报文匹配源地址和组地址，未通过该过滤规则的报文将被丢弃。</p>
+<p>该命令还过滤注册报文中封装的组播数据。</p>
+<p>重复执行此命令，新的配置会覆盖上一次的配置。</p>
+<div class="p"><strong>source-policy</strong>命令与<strong>acl</strong>命令配合使用。<ul>
+<li><p>在基本ACL视图下，通过<strong>rule</strong>命令的<strong>source</strong>参数指定发送组播数据报文的源地址。</p>
+</li>
+<li><p>在高级ACL视图下，通过<strong>rule</strong>命令的<strong>source</strong>参数指定发送组播数据报文的源地址，<strong>destination</strong>参数指定组播组地址。</p>
+</li>
+</ul>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="source-policy_ipv4__d119595e100"></a><a name="d119595e100"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中，配置接受源为10.10.1.2的组播数据包，丢弃源为10.10.1.1的组播数据包。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> acl number 2001</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2001]<strong> rule permit source 10.10.1.2 0</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2001]<strong> rule deny source 10.10.1.1 0</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2001]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> pim</strong></pre>
+<pre class="screen">[Quidway-pim]<strong> source-policy 2001</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

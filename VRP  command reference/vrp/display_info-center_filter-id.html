@@ -1,0 +1,180 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display info-center filter-id">
+<meta name="DC.Relation" scheme="URI" content="../vrp/information_center.html">
+<meta name="DC.Relation" scheme="URI" content="info-center_filter-id.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_info-center_filter-id">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display info-center filter-id</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_info-center_filter-id"></a><a name="display_info-center_filter-id"></a>
+
+
+<h1 class="topictitle1">display info-center filter-id</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display info-center filter-id</strong>命令用来显示过滤表中单条日志ID信息或过滤列表中所有的日志ID信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display info-center filter-id </strong>[ <em>id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>id</em>：每一条日志唯一对应的标识。整数形式，取值范围0～4294967295。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>被屏蔽的ID集合称为ID过滤列表。</p>
+<p>在不指定ID时，显示的是已添加的所有过滤ID信息。ID是各功能模块注册日志时对应的唯一标志。</p>
+<p>如果用户不希望某条日志输出到文件、缓冲区等，可以到数据字典里找该日志对应的ID，通过添加过滤ID命令<a href="info-center_filter-id.html"><strong>info-center filter-id</strong></a>将ID添加到过滤表中，然后通过<strong>display info-center filter-id</strong>查看该ID是否已经添加为过滤ID。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_info-center_filter-id__d27476e54"></a><a name="d27476e54"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示过滤表中ID为1073844227的过滤信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display info-center filter-id 1073844227</strong></pre>
+<pre class="screen">ID:              1073844227</pre>
+<pre class="screen">Content:         The overloadState of IO board [ULONG] in master board is not ov</pre>
+<pre class="screen">erload suspend.</pre>
+<pre class="screen">Filtered Number: 0</pre>
+
+<div class="tablenoborder"><a name="display_info-center_filter-id__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_info-center_filter-id__tb_01" frame="border" border="1" rules="all"><caption>表1 display info-center filter-id命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="36.73%" id="d27476e82"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63.27%" id="d27476e86"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36.73%" headers="d27476e82 "><p>ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.27%" headers="d27476e86 "><p>日志对应的唯一标识。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.73%" headers="d27476e82 "><p>Content</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.27%" headers="d27476e86 "><p>日志ID对应的日志内容。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.73%" headers="d27476e82 "><p>Filtered Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.27%" headers="d27476e86 "><p>日志ID对应的日志被过滤的次数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示过滤表中所有的ID信息。</p>
+<pre class="screen">&lt;Quidway&gt;  <strong>display info-center filter-id</strong></pre>
+<pre class="screen">ID:              1073811457</pre>
+<pre class="screen">Content:         [string]</pre>
+<pre class="screen">Filtered Number: 0</pre>
+<pre class="screen">                                                                                </pre>
+<pre class="screen">ID:              1073844226</pre>
+<pre class="screen">Content:         Refresh route to slot [ULONG].</pre>
+<pre class="screen">Filtered Number: 0</pre>
+<pre class="screen">                                                                                </pre>
+<pre class="screen">ID:              1073844227</pre>
+<pre class="screen">Content:         The overloadState of IO board [ULONG] in master board is not ov</pre>
+<pre class="screen">erload suspend.</pre>
+<pre class="screen">Filtered Number: 0</pre>
+
+<div class="tablenoborder"><a name="display_info-center_filter-id__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_info-center_filter-id__tb_02" frame="border" border="1" rules="all"><caption>表2 display info-center filter-id命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="38.31%" id="d27476e172"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="61.69%" id="d27476e176"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="38.31%" headers="d27476e172 "><p>ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.69%" headers="d27476e176 "><p>日志对应的唯一标识。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.31%" headers="d27476e172 "><p>Content</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.69%" headers="d27476e176 "><p>日志ID对应的日志内容。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.31%" headers="d27476e172 "><p>Filtered Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.69%" headers="d27476e176 "><p>日志ID对应的日志被过滤的次数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/information_center.html">信息中心命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="info-center_filter-id.html">info-center filter-id</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

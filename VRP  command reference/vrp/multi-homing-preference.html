@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="multi-homing-preference">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pwsignal.html">
+<meta name="DC.Relation" scheme="URI" content="route-distinguisher_vsi-bgp_view.html">
+<meta name="DC.Relation" scheme="URI" content="display_vsi.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="multi-homing-preference">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>multi-homing-preference</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="multi-homing-preference"></a><a name="multi-homing-preference"></a>
+
+<h1 class="topictitle1">multi-homing-preference</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>multi-homing-preference</strong>命令用来配置VSI实例的多归属优先级。</p>
+<p><strong>undo multi-homing-preference</strong>命令用来取消VSI实例的多归属优先级。</p>
+<p>不配置该命令时，系统默认多归属优先级为0，即优先级最低。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>multi-homing-preference </strong><em>preference-value</em></p>
+<p><strong>undo multi-homing-preference</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>preference-value</em>：VSI实例的多归属优先级。十进制整数形式，取值范围是1～65535。取值越大，则优先级越高。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VSI视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>目前只支持对Kompella方式的VPLS配置VSI实例的多归属优先级。并且只支持CE双归属，不支持CE多归属。使用<strong>multi-homing-preference</strong>命令前，需要先执行<a href="pwsignal.html">pwsignal</a>命令和<a href="route-distinguisher_vsi-bgp_view.html">route-distinguisher（VSI-BGP视图）</a>命令。</p>
+<p>配置VSI实例的多归属优先级前，需要先配置VSI所采用的信令方式和VSI实例的RD（Route Distinguisher）值，否则系统会提示告警信息&#8220;Warning: VSI is in an invalid state; configure pw-signal basic attributes first&#8221;。</p>
+<p>当CE双归属接入的两个PE的VSI都处于Up状态时，优先级高的PE将作为主用PE，优先级低的PE将作为备用PE。</p>
+<p>主用PE负责CE的流量的转发，而备用PE只负责检测主用PE的VSI是否处于Up状态。被选为备用PE后，备用PE的VSI被置为Down状态。</p>
+<p>当主用PE的VSI变为Down状态后，主用PE会广播发送Unreach报文。备份PE接收到Unreach报文，可判断主用PE出现故障，于是发送Reach报文，用于与其他PE建立PW。这样，备用PE会成为新的主用PE。</p>
+<p>配置了<strong>multi-homing-preference</strong>命令后，可以通过命令<strong>display vsi</strong> [ <strong>name</strong> <em>vsi-name</em> ] <strong>verbose</strong>查看多归属优先级的信息。</p>
+<p>配置为双归属的两个PE中的VSI，目前只支持配置一个标签块。如果需要增加range，需要先使用命令<strong>undo site</strong>，删除原有的site，然后再配置一个范围大的range。并且，双归属的PE，其VSI只能配置一个AC。</p>
+<p>当双归属的两个PE之间的session尚未建立时，如果两者双归属优先级相同，当session建立起来后，PE会检测到冲突。此时，Router ID较小的PE的VSI会处于Up状态，Router ID较大的PE的VSI会处于Down状态。</p>
+<p>当session建立起来后，如果PE1的优先级为a，PE2的优先级为b，且a &gt; b，这时PE1上的VSI会是Up状态，PE2上的VSI会是Down状态。此时：</p>
+<ul><li><p>如果将PE1的优先级a修改为b（由于在PE1上没有PE2的远端VC信息，因此系统允许修改），修改后PE1上的VSI仍然是Up的，而PE2上的VSI仍然是Down的。</p>
+</li><li><p>如果将PE2的优先级b修改为a，则系统拒绝修改并提示告警信息。</p>
+</li></ul>
+<p>当session变为Down状态以后，优先级低的PE上的PW会变为Up状态，此时，两个PE之间的PW都为Up状态。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="multi-homing-preference__d98200e93"></a><a name="d98200e93"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置名称为company1的VSI实例的多归属优先级为100。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>vsi company1 auto</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company1]<strong> pwsignal bgp</strong></pre>
+<pre class="screen">[Quidway-vsi-company1-bgp]<strong> <strong>route-distinguisher 100:1</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company1-bgp]<strong> <strong>quit</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company1]<strong> multi-homing-preference 100</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pwsignal.html">pwsignal</a></div>
+<div><a href="route-distinguisher_vsi-bgp_view.html">route-distinguisher（VSI-BGP视图）</a></div>
+<div><a href="display_vsi.html">display vsi</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

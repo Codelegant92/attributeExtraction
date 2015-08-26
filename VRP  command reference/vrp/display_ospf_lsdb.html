@@ -1,0 +1,843 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ospf lsdb">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ospf.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ospf_lsdb">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ospf lsdb</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ospf_lsdb"></a><a name="display_ospf_lsdb"></a>
+
+
+<h1 class="topictitle1">display ospf lsdb</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ospf lsdb</strong>命令用来显示OSPF的链路状态数据库信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ospf</strong> [ <em>process-id </em>] <strong>lsdb</strong> [ <strong>brief</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ospf</strong> [ <em>process-id </em>] <strong>lsdb</strong> [ <strong>router</strong> | <strong>network</strong> | <strong>summary</strong> | <strong>asbr</strong> | <strong>ase</strong> | <strong>nssa</strong> | <strong>opaque-link</strong> | <strong>opaque-area</strong> | <strong>opaque-as</strong> ] [ <em>link-state-id </em>] [ <strong>originate</strong>-<strong>router</strong> [ <em>advertising-router-id</em> ] | <strong>self</strong>-<strong>originate</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：进程号。整数形式，取值范围是1～65535。</p>
+<p><strong>brief</strong>：显示链路状态数据库的概要信息。</p>
+<p><strong>router</strong>：显示路由器的链路状态信息。</p>
+<p><strong>network</strong>：显示网络的链路状态信息。</p>
+<p><strong>summary</strong>：显示network summary的链路状态信息。</p>
+<p><strong>asbr</strong>：显示ASBR summary的链路状态信息。</p>
+<p><strong>ase</strong>：显示AS的外部链路状态信息。</p>
+<p><strong>nssa</strong>：显示NSSA的外部链路状态信息。</p>
+<p><strong>opaque-link</strong>：显示Opaque-link的链路状态信息。</p>
+<p><strong>opaque-area</strong>：显示Opaque-area的链路状态信息。</p>
+<p><strong>opaque-as</strong>：显示Opaque-as的链路状态信息。</p>
+<p><strong>originate</strong>-<strong>router</strong>：显示发布者的链路状态信息。</p>
+<p><strong>self-originate</strong>：显示自生成的链路状态信息。</p>
+<p><em>link-state-id</em>：LSA标识。点分十进制格式的IP地址。</p>
+<p><em>advertising-router-id</em>：发布LSA的路由器的Router ID。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令有多种显示LSDB的方式可供选择，可以只显示摘要信息，也可以显示指定类型的LSA，可以基于产生LSA的源路由器进行显示，也可以只显示本地产生的LSA。</p>
+<p>此命令输出了OSPF的链路状态数据库信息，有助于进行故障诊断。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ospf_lsdb__d55699e244"></a><a name="d55699e244"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示OSPF的链路状态数据库信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf lsdb</strong></pre>
+<pre class="screen">          OSPF Process 1 with Router ID 1.1.1.1                                 
+                  Link State Database                                           
+                                                                                
+                          Area: 0.0.0.0                                         
+ Type      LinkState ID    AdvRouter          Age  Len   Sequence   Metric      
+ Router    2.2.2.2         2.2.2.2             98  36    8000000B       1       
+ Router    1.1.1.1         1.1.1.1             92  36    80000005       1       
+ Network   10.1.1.2        2.2.2.2             98  32    80000004       0       
+ Sum-Net   20.1.1.0        2.2.2.2            286  28    80000001       1       
+ Sum-Net   20.1.1.0        1.1.1.1            282  28    80000001       1       
+ Sum-Asbr  2.2.2.2         1.1.1.1             61  28    80000001       1
+
+                                                                                
+                          Area: 0.0.0.1                                         
+ Type      LinkState ID    AdvRouter          Age  Len   Sequence   Metric      
+ Router    2.2.2.2         2.2.2.2             99  36    8000000D       1       
+ Router    1.1.1.1         1.1.1.1             93  36    80000005       1       
+ Network   20.1.1.2        2.2.2.2             99  32    80000004       0       
+ Sum-Net   10.1.1.0        2.2.2.2            534  28    80000001       1       
+ Sum-Net   10.1.1.0        1.1.1.1            288  28    80000002       1       
+ NSSA      100.1.1.0       2.2.2.2            293  36    80000009       1       
+                                                                                
+                                                                                
+                  AS External Database                                          
+ Type      LinkState ID    AdvRouter          Age  Len   Sequence   Metric      
+ External  0.0.0.0         2.2.2.2           1128  36    80000001       1       
+ External  100.1.1.0       2.2.2.2            538  36    80000002       1       
+                                                                                
+          Type 9 Opaque (Link-Local Scope) Database. Area: 0.0.0.0              
+ Type      LinkState ID    AdvRouter          Age  Len   Sequence   Interfaces  
+ Opq-Link  3.0.0.0         2.2.2.2             12  44    80000001    10.1.1.1   
+                                                                                
+                  Type 10 Opaque (Area-Local Scope) Database                    
+ Type      LinkState ID    AdvRouter          Age  Len   Sequence   Area        
+ Opq-Area  1.0.0.1         1.1.1.1              4  200   80000003    0.0.0.0    
+ Opq-Area  1.0.0.0         1.1.1.1           1641  28    80000001    0.0.0.0    </pre>
+
+<div class="tablenoborder"><a name="display_ospf_lsdb__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_lsdb__tb_01" frame="border" border="1" rules="all"><caption>表1 display ospf lsdb命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d55699e266"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d55699e270"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>显示LSDB信息的区域</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>LSA类型（Router/Network/Sum-Net/Sum-Asbr/NSSA/External/Opq-Link/Opq-Area/Opq-As）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>LinkState Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>LSA报头中的链路状态ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>AdvRouter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>发布或产生LSA的路由器</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>Age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>LSA的老化时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>Len</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>LSA的大小</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>Sequence</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>LSA序列号（来自LSA报头）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>Metric</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>度量值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>AS External Database</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>包含外部LSA的LSDB</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>Type 9 Opaque (Link-Local Scope) Database</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>包含本地链路范围内Opaque LSA的LSDB</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>Interfaces</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>本地链路Opaque LSA的接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>Type 10 Opaque (Area-Local Scope) Database</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>包含区域范围内Opaque LSA的LSDB</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e266 "><p>Area</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e270 "><p>Type-10 Opaque LSA的区域</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示OSPF链路状态数据库中Router LSA的相关信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf 1 lsdb router 1.1.1.1</strong></pre>
+<pre class="screen">
+         OSPF Process 1 with Router ID 1.1.1.1
+                          Area: 0.0.0.0
+                 Link State Database
+
+
+  Type      : Router
+  Ls id     : 1.1.1.1
+  Adv rtr   : 1.1.1.1
+  Ls age    : 148
+  Len       : 36
+  Options   :  ASBR  ABR  E
+  seq#      : 8000000c
+  chksum    : 0x6bb7
+  Link count: 1
+     Link ID: 10.1.1.1
+     Data   : 10.1.1.1
+     Link Type: TransNet
+     Metric : 1</pre>
+
+<div class="tablenoborder"><a name="display_ospf_lsdb__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_lsdb__tb_02" frame="border" border="1" rules="all"><caption>表2 display ospf lsdb router命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d55699e444"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d55699e448"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e444 "><p>Ls id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e448 "><p>LSA报头中的链路状态ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e444 "><p>Adv rtr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e448 "><p>发布或产生LSA的路由器</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e444 "><p>Ls age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e448 "><p>LSA的老化时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e444 "><p>Options</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e448 "><p>LSA选项</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e444 "><p>seq#</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e448 "><p>序列号，用于检查LSA顺序</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e444 "><p>Chksum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e448 "><p>LSA校验和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e444 "><p>Link count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e448 "><p>链路数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e444 "><p>Link ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e448 "><p>（路由器LSA）链路ID（按链路类型分类）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e444 "><p>Data</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e448 "><p>（路由器LSA）链路数据</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e444 "><p>Link Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e448 "><p>（路由器LSA）链路类型：Point-to-Point/TransNet/StubNet/Virtual</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e444 "><p>Metric</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e448 "><p>（路由器LSA）链路度量值</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+<p># 显示OSPF链路状态数据库中Network LSA的相关信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf 1 lsdb network 1.1.1.1</strong></pre>
+<pre class="screen">
+          OSPF Process 1 with Router ID 1.1.1.1
+                          Area: 0.0.0.0
+                  Link State Database
+
+
+  Type      : Network
+  Ls id     : 10.1.1.1
+  Adv rtr   : 1.1.1.1
+  Ls age    : 167
+  Len       : 32
+  Options   :  E
+  seq#      : 80000002
+  chksum    : 0x3408
+  Net mask  : 255.255.255.0
+     Attached Router    2.2.2.2
+     Attached Router    1.1.1.1</pre>
+
+<div class="tablenoborder"><a name="display_ospf_lsdb__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_lsdb__tb_03" frame="border" border="1" rules="all"><caption>表3 display ospf lsdb network命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d55699e600"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d55699e604"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e600 "><p>Net mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e604 "><p>（网络LSA）网络掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e600 "><p>Attached Router</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e604 "><p>（网络LSA）与网络连接的路由器</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示OSPF链路状态数据库中Network Summary LSA的相关信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf 1 lsdb summary 20.1.1.0</strong></pre>
+<pre class="screen">
+          OSPF Process 1 with Router ID 1.1.1.1
+                          Area: 0.0.0.0
+                  Link State Database
+
+
+  Type      : Sum-Net
+  Ls id     : 20.1.1.0
+  Adv rtr   : 2.2.2.2
+  Ls age    : 419
+  Len       : 28
+  Options   :  E
+  seq#      : 80000001
+  chksum    : 0x1d21
+  Net mask  : 255.255.255.0
+  Tos 0  metric: 1       
+</pre>
+
+<div class="tablenoborder"><a name="display_ospf_lsdb__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_lsdb__tb_04" frame="border" border="1" rules="all"><caption>表4 display ospf lsdb summary命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d55699e657"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d55699e661"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e657 "><p>Net mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e661 "><p>（Summary LSA）网络掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e657 "><p>Tos</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e661 "><p>（Summary LSA）服务类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e657 "><p>Metric</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e661 "><p>（Summary LSA）从发布路由器到达网络的度量值或开销</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示OSPF链路状态数据库中ASBR Summary LSA的相关信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf 1 lsdb asbr 2.2.2.2</strong></pre>
+<pre class="screen">
+                OSPF Process 1 with Router ID 1.1.1.1
+                             Area： 0.0.0.2
+                         Link State Database
+
+Type      : Sum-Asbr
+  Ls id     : 2.2.2.2
+  Adv rtr   : 1.1.1.1
+  Ls age    : 90
+  Len       : 28
+  Options   :  E
+  seq#      : 80000001
+  chksum    : 0xec62
+  Tos 0  metric: 1</pre>
+<p># 显示OSPF链路状态数据库中AS-external LSA的相关信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf 100 lsdb ase 100.1.1.0</strong></pre>
+<pre class="screen">
+          OSPF Process 1 with Router ID 1.1.1.1
+                  Link State Database
+
+
+  Type      : External
+  Ls id     : 100.1.1.0
+  Adv rtr   : 2.2.2.2
+  Ls age    : 569
+  Len       : 36
+  Options   :  E
+  seq#      : 80000002
+  chksum    : 0x90d0
+  Net mask  : 255.255.255.0
+  TOS 0  Metric: 1
+
+  E type    : 2
+  Forwarding Address : 0.0.0.0
+  Tag       : 1</pre>
+
+<div class="tablenoborder"><a name="display_ospf_lsdb__tb_05"></a><a name="tb_05"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_lsdb__tb_05" frame="border" border="1" rules="all"><caption>表5 display ospf lsdb ase命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d55699e733"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d55699e737"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e733 "><p>Net mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e737 "><p>（ASE/NSSA LSA）ASE LSA中的网络掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e733 "><p>Tos</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e737 "><p>（ASE/NSSA LSA）服务类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e733 "><p>Metric</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e737 "><p>（ASE/NSSA LSA）从发布路由器到达网络的度量值或开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e733 "><p>E type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e737 "><p>（ASE/NSSA LSA）E类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e733 "><p>Forwarding Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e737 "><p>（ASE/NSSA LSA）转发地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55699e733 "><p>Tag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55699e737 "><p>32位字段，防止路由环路，用于在Type-5/Type-7 LSA上</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示OSPF链路状态数据库中NSSA External LSA的相关信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf 1 lsdb nssa 100.1.1.0</strong></pre>
+<pre class="screen">
+          OSPF Process 1 with Router ID 1.1.1.1
+                          Area: 0.0.0.1
+                  Link State Database
+
+
+  Type      : NSSA
+  Ls id     : 100.1.1.0
+  Adv rtr   : 2.2.2.2
+  Ls age    : 521
+  Len       : 36
+  Options   : None
+  seq#      : 80000005
+  chksum    : 0x9ea7
+  Net mask  : 255.255.255.0
+  TOS 0  Metric: 1
+
+  E type    : 2
+  Forwarding Address : 20.1.1.2
+  Tag       : 1      </pre>
+<p># 显示OSPF链路状态数据库中Opaque-link LSA的相关信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf 1 lsdb opaque-link</strong></pre>
+<pre class="screen">
+          OSPF Process 1 with Router ID 1.1.1.1
+                  Link State Database
+
+                          Area: 0.0.0.0
+ Link State Database for interface 10.1.1.1 (GigabitEthernet4/0/0) Type: Broadcast
+
+  Type      : Opq-Link
+  Ls id     : 3.0.0.0
+  Adv rtr   : 2.2.2.2
+  Ls age    : 12
+  Len       : 44
+  Options   :  E
+  seq#      : 80000001
+  chksum    : 0x9579
+         Opaque type : 3, Opaque ID : 0
+         Grace LSA TLV information:
+         Grace Period        : 1800
+         GR reason           : 1
+         IP address          : 10.1.1.2    </pre>
+
+<div class="tablenoborder"><a name="display_ospf_lsdb__tb_06"></a><a name="tb_06"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_lsdb__tb_06" frame="border" border="1" rules="all"><caption>表6 display ospf lsdb opaque-link命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.91836734693878%" id="d55699e842"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.08163265306123%" id="d55699e846"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="45.91836734693878%" headers="d55699e842 "><p>Opaque Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.08163265306123%" headers="d55699e846 "><p>Opaque类型（Opaque LSA）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.91836734693878%" headers="d55699e842 "><p>Opaque ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.08163265306123%" headers="d55699e846 "><p>（Opaque LSA）Opaque ID号，Opaque类型+Opaque ID号=LSA报头中的链路状态ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.91836734693878%" headers="d55699e842 "><p>Grace LSA TLV information:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.08163265306123%" headers="d55699e846 "><p>GR相关信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.91836734693878%" headers="d55699e842 "><p>Grace Period</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.08163265306123%" headers="d55699e846 "><p>GR等待时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.91836734693878%" headers="d55699e842 "><p>GR reason</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.08163265306123%" headers="d55699e846 "><div class="p">GR原因：<ul>
+<li><p>0：unknown</p>
+</li>
+<li><p>1：software</p>
+</li>
+<li><p>2：upgrade</p>
+</li>
+<li><p>3：switchover</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.91836734693878%" headers="d55699e842 "><p>IP address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.08163265306123%" headers="d55699e846 "><p>路由器上进行GR的接口地址</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示OSPF链路状态数据库中Opaque-area LSA的相关信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf 1 lsdb opaque-area</strong></pre>
+<pre class="screen">
+          OSPF Process 1 with Router ID 1.1.1.1
+                  Link State Database
+
+                          Area: 0.0.0.0
+
+  Type      : Opq-Area
+  Ls id     : 1.0.0.1
+  Adv rtr   : 1.1.1.1
+  Ls age    : 639
+  Len       : 200
+  Options   :  E
+  seq#      : 80000001
+  chksum    : 0x2175
+  Opaque Type: 1
+  Opaque Id: 1
+  Opaque lsa information:
+
+     00 02 00 b0 00 01 00 01 02 00 00 00 00 02 00 04
+     0a 01 01 01 00 03 00 04 0a 01 01 01 00 04 00 04
+     00 00 00 00 00 05 00 04 00 00 00 01 80 02 00 04
+     00 00 00 01 00 06 00 04 00 00 00 00 00 07 00 04
+     00 00 00 00 80 00 00 04 00 00 00 00 00 09 00 04
+     00 00 00 00 00 08 00 20 00 00 00 00 00 00 00 00
+     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+     00 00 00 00 00 00 00 00 80 01 00 20 00 00 00 00
+     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+     00 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 09
+     00 00 00 00 00 00 00 00 00 00 00 00 00 0c 00 04
+     00 01 00 01</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ospf_lsdb__tb_07"></a><a name="tb_07"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_lsdb__tb_07" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d55699e960"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d55699e964"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d55699e960 "><p>VRPV500R003C07B200</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d55699e964 "><p>修改对&#8220;<em>advertising-router-id</em>&#8221;参数的描述。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d55699e960 "><p>VRPV500R003C07B200</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d55699e964 "><p>修改举例中的显示信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d55699e960 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d55699e964 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ospf.html">ospf</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

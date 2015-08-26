@@ -1,0 +1,110 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te srlg path-calculation">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_srlg.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_srlg_path-calculation">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te srlg path-calculation</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_srlg_path-calculation"></a><a name="mpls_te_srlg_path-calculation"></a>
+
+
+<h1 class="topictitle1">mpls te srlg path-calculation</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te srlg path-calculation</strong>命令用来配置SRLG路径计算模式。</p>
+<p><strong>undo
+mpls te srlg path-calculation</strong>命令用来删除SRLG路径计算模式。</p>
+<p>缺省情况下，CSPF计算路径时不考虑主隧道经过的链路是否与旁路隧道或备份LSP所经过的链路在同一SRLG。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te srlg path-calculation</strong> [ <strong>strict</strong> | <strong>preferred</strong> ]</p>
+<p><strong>undo
+mpls te srlg</strong> { <strong>all-config</strong> | <strong>path-calculation</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>strict</strong>：在计算旁路隧道或热备份LSP的路径时，CSPF必须考虑SRLG属性的约束，即主隧道经过的链路不能与旁路隧道或备份LSP所经过的链路在同一SRLG。</p>
+<p><strong>preferred</strong>：在首次计算旁路隧道或热备份LSP的路径时，CSPF试图考虑SRLG属性的约束；如果首次计算失败，CSPF不再将SRLG属性作为约束条件。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody">如果配置<strong>mpls te srlg path-calculation</strong>命令时不指定参数，缺省情况下，使用<strong>preferred</strong>模式。</div></div>
+<p><strong>all-config</strong>：去使能SRLG功能。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MPLS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在TE FRR或热备份场景中，为了使能CSPF计算旁路隧道或备份LSP的路径时考虑SRLG约束条件，必须在隧道入节点配置<strong>mpls
+te srlg path-calculation</strong>命令。</p>
+<p>SRLG就像带宽和亲和属性一样，是路径计算的约束条件。如果在链路上配置SRLG，并在隧道入节点上配置<strong>mpls
+te srlg path-calculation</strong>命令，则CSPF在为旁路隧道或热备份LSP计算路径时，会根据配置的SRLG路径计算模式决定是否将SRLG属性作为路径计算的约束条件。</p>
+<p>如果指定参数<strong>strict</strong>，则CSPF在计算旁路CR-LSP或备份CR-LSP的路径时，总会将SRLG作为约束条件之一。</p>
+<p>如果指定参数<strong>preferred</strong>，则CSPF在首次计算旁路CR-LSP或备份CR-LSP的路径时，将SRLG作为约束条件之一；如果计算不成功，则不再将SRLG作为约束条件。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_srlg_path-calculation__d97087e96"></a><a name="d97087e96"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置SRLG的路径计算模式<strong>strict</strong>。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>mpls</strong>
+[Quidway-mpls] <strong>mpls te srlg path-calculation</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d97087e124">版本</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d97087e127">修订记录</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d97087e124 ">VRPV500R006C01B010</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d97087e127 ">首次发布</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_te_srlg.html">mpls te srlg</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

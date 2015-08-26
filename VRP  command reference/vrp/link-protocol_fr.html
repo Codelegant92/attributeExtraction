@@ -1,0 +1,108 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="link-protocol fr">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frame_relay_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="link-protocol_fr_mfr.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="link-protocol_fr">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>link-protocol fr</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="link-protocol_fr"></a><a name="link-protocol_fr"></a>
+
+
+<h1 class="topictitle1">link-protocol fr</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>link-protocol fr</strong>命令用来封装接口链路层协议为帧中继。</p>
+<p>缺省情况下，接口的链路层协议封装为PPP。当封装帧中继协议时，缺省情况下，帧的封装格式为IETF。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>link-protocol fr</strong> [ <strong>ietf</strong> |<strong> nonstandard</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ietf</strong>：IETF标准封装，按照RFC1490规定的格式进行封装，为缺省封装格式。</p>
+<p><strong>nonstandard</strong>：非标准兼容的封装格式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>帧中继接口视图、MFR接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果要配置帧中继网络，必须先把接口的协议类型封装为帧中继。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li>改变接口的帧中继封装格式时，如果该接口下有子接口，需要先删除子接口。</li>
+<li>改变接口的帧中继封装格式后，系统会自动删除该接口下帧中继的所有配置。此时需要重新进行帧中继的相关配置。</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="link-protocol_fr__d89365e61"></a><a name="d89365e61"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口Serial1/0/0:0上封装帧中继，并选择非标准兼容封装格式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0:0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> link-protocol fr nonstandard</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="37%" id="d89365e88"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63%" id="d89365e92"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="37%" headers="d89365e88 "><p>VRPV500R005C02B190</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63%" headers="d89365e92 "><p>增加提示信息，当改变接口的帧中继封装格式时，如果该接口下有子接口，需要先删除子接口。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/frame_relay_configuration_commands.html">帧中继配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="link-protocol_fr_mfr.html">link-protocol fr mfr</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

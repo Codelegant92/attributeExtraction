@@ -1,0 +1,192 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls rsvp-te established">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_rsvp-te_established">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls rsvp-te established</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_rsvp-te_established"></a><a name="display_mpls_rsvp-te_established"></a>
+
+
+<h1 class="topictitle1">display mpls rsvp-te established</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>mpls rsvp-te</strong> <strong>established</strong>命令用来查看基于接口的RSVP资源预留和经过该接口的LSP基本信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls rsvp-te established</strong> [ <strong>interface</strong> <em>interface-type
+interface-number</em> <em>peer-ip-address</em> ] [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type interface-number</em>：接口名称，包括接口类型和接口号。</p>
+<p><em>peer-ip-address</em>：RSVP邻居节点上与本设备相连的接口的IP地址。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果指定接口，则只显示该接口的RSVP-TE创建信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_rsvp-te_established__d45443e94"></a><a name="d45443e94"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有接口的RSVP-TE创建信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls rsvp-te established</strong></pre>
+<pre class="screen">Interface: Outgoing-Interface at the Egress
+ Token Bucket Rate: 6250.00            Peak Data Rate: 6250.00
+ Tunnel Addr: 2.2.2.2               Ingress LSR ID: 1.1.1.1
+ Local LSP ID: 1                    Session Tunnel ID: 100
+ Next Hop Addr: -----
+ Upstream Label: NULL               Downstream Label: 3
+
+ Token Bucket Rate: 6250.00         Peak Data Rate: 6250.00
+ Tunnel Addr: 3.3.3.3               Ingress LSR ID: 1.1.1.1
+ Local LSP ID: 2                    Session Tunnel ID: 300
+ Next Hop Addr: 10.5.1.2
+ Upstream Label: NULL               Downstream Label: 11264</pre>
+
+<div class="tablenoborder"><a name="display_mpls_rsvp-te_established__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_rsvp-te_established__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls rsvp-te established命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d45443e116"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d45443e120"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45443e116 "><p>Interface: Outgoing-Interface at the Egress</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45443e120 "><p>表示出节点上的出接口的RSVP预留资源和经过该接口的RSVP LSP基本信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45443e116 "><p>Token Bucket rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45443e120 "><p>流量参数，令牌桶速率，单位为byte/s</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45443e116 "><p>Peak Data Rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45443e120 "><p>流量参数，峰值速率，单位为byte/s</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45443e116 "><p>Tunnel Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45443e120 "><p>隧道地址，格式为X.X.X.X</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45443e116 "><p>Ingress LSR ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45443e120 "><p>入口LSR ID，格式为X.X.X.X</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45443e116 "><p>Local LSP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45443e120 "><p>本地LSP ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45443e116 "><p>Session Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45443e120 "><p>隧道ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45443e116 "><p>Next Hop Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45443e120 "><p>下一跳地址，格式为X.X.X.X</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45443e116 "><p>Upstream label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45443e120 "><p>入标签值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d45443e116 "><p>Downstream Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d45443e120 "><p>出标签值</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

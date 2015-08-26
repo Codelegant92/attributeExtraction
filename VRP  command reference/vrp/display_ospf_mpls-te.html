@@ -1,0 +1,581 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ospf mpls-te">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ospf_mpls-te">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ospf mpls-te</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ospf_mpls-te"></a><a name="display_ospf_mpls-te"></a>
+
+
+<h1 class="topictitle1">display ospf mpls-te</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ospf mpls-te</strong>命令用来查看链路状态数据库LSDB中包含的所有TE LSA信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ospf</strong> [ <em>process-id</em> ] <strong>mpls-te</strong> [ <strong>area</strong> <em>area-id</em> ] [ <strong>self-originated</strong> ]<span><span> [<strong> |
+count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：OSPF进程号，取值范围是1～65535。</p>
+<p><em>area-id</em>：区域号，可以是十进制整数或IP地址格式，显示指定区域的TE信息。如果采用整数，取值范围是0～4294967295。</p>
+<p><strong>self-originated</strong>：显示自产生（self originated）的TE LSA信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>可以使用参数指定只查看某个进程或区域的TE LSA。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ospf_mpls-te__d56060e120"></a><a name="d56060e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看LSDB中的所有TE LSA信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf mpls-te</strong></pre>
+<pre class="screen">          OSPF Process 50 with Router ID 5.5.5.5</pre>
+<pre class="screen"> Area ID                   : 0.0.0.0</pre>
+<pre class="screen"> Traffic Engineering LSA s of the database</pre>
+<pre class="screen"> ------------------------------------------------</pre>
+<pre class="screen"> LSA [ 1 ]</pre>
+<pre class="screen"> ------------------------------------------------</pre>
+<pre class="screen">   Lsa  Type                : Opq-Area</pre>
+<pre class="screen">   Opaque Type              : 1</pre>
+<pre class="screen">   Opaque Id                : 5</pre>
+<pre class="screen">   Advertising Router Id    : 2.2.2.2</pre>
+<pre class="screen">   Lsa  age                 : 30</pre>
+<pre class="screen">   Length                   : 200</pre>
+<pre class="screen">   Lsa  Options             : E</pre>
+<pre class="screen">   LS Seq Number            : 80000001</pre>
+<pre class="screen">   CheckSum                 : 62AF</pre>
+
+<pre class="screen">   Link Type                : Point To Point</pre>
+<pre class="screen">   Link ID                  : 3.3.3.3</pre>
+<pre class="screen">   Local Interface Address  : 3.1.1.1</pre>
+<pre class="screen">   Remote Interface Address : 3.1.1.2</pre>
+<pre class="screen">   TE Metric                : 1</pre>
+<pre class="screen">   Maximum Bandwidth        : 0 bytes/sec</pre>
+<pre class="screen">   Maximum Reservable BW    : 0 bytes/sec</pre>
+<pre class="screen">   Admin Group              : 0X0</pre>
+
+<pre class="screen"> Global Pool                :</pre>
+<pre class="screen">   Unreserved BW [ 0] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 1] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 2] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 3] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 4] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 5] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 6] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 7] =   0  bytes/sec</pre>
+<pre class="screen">   Sub Pool                 :</pre>
+<pre class="screen">   Unreserved BW [ 8] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 9] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [10] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [11] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [12] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [13] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [14] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [15] =   0  bytes/sec</pre>
+<pre class="screen">
+
+   DS-TE Mode: Non-Standard IETF Mode
+
+   Bandwidth Constraint Model: RDM
+</pre>
+
+<pre class="screen"> Bandwidth Constraints</pre>
+<pre class="screen">               BC [ 0] =   0  bytes/sec              BC [ 1] =   0  bytes/sec</pre>
+<pre class="screen"> Local OverBooking Multipliers</pre>
+<pre class="screen">              LOM [ 0] =   1                  LOM [ 1] =   1</pre>
+<pre class="screen"> ------------------------------------------------</pre>
+
+<pre class="screen"> LSA [ 2 ]</pre>
+<pre class="screen"> ------------------------------------------------</pre>
+<pre class="screen">   Lsa  Type                : Opq-Area</pre>
+<pre class="screen">   Opaque Type              : 1</pre>
+<pre class="screen">   Opaque Id                : 4</pre>
+<pre class="screen">   Advertising Router Id    : 2.2.2.2</pre>
+<pre class="screen">   Lsa  age                 : 65</pre>
+<pre class="screen">   Length                   : 200</pre>
+<pre class="screen">   Lsa  Options             : E</pre>
+<pre class="screen">   LS Seq Number            : 80000001</pre>
+<pre class="screen">   CheckSum                 : 58BC</pre>
+
+<pre class="screen">   Link Type                : Point To Point</pre>
+<pre class="screen">   Link ID                  : 3.2.1.2</pre>
+<pre class="screen">   Local Interface Address  : 3.2.1.1</pre>
+<pre class="screen">   Remote Interface Address : 3.2.1.2</pre>
+<pre class="screen">   TE Metric                : 1</pre>
+<pre class="screen">   Maximum Bandwidth        : 0 bytes/sec</pre>
+<pre class="screen">   Maximum Reservable BW    : 0 bytes/sec</pre>
+<pre class="screen">   Admin Group              : 0X0</pre>
+
+<pre class="screen"> Global Pool                :</pre>
+<pre class="screen">   Unreserved BW [ 0] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 1] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 2] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 3] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 4] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 5] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 6] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 7] =   0  bytes/sec</pre>
+<pre class="screen">   Sub Pool                 :</pre>
+<pre class="screen">   Unreserved BW [ 8] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [ 9] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [10] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [11] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [12] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [13] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [14] =   0  bytes/sec</pre>
+<pre class="screen">   Unreserved BW [15] =   0  bytes/sec</pre>
+<pre class="screen">
+
+   DS-TE Mode: Non-Standard IETF Mode
+
+   Bandwidth Constraint Model: RDM
+</pre>
+
+<pre class="screen"> Bandwidth Constraints</pre>
+<pre class="screen">               BC [ 0] =   0  bytes/sec              BC [ 1] =   0  bytes/sec</pre>
+<pre class="screen"> Local OverBooking Multipliers</pre>
+<pre class="screen">              LOM [ 0] =   1                  LOM [ 1] =   1</pre>
+<pre class="screen"> ------------------------------------------------</pre>
+
+<pre class="screen"> ------------------------------------------------</pre>
+<pre class="screen"> LSA [ 4 ]</pre>
+<pre class="screen"> ------------------------------------------------</pre>
+<pre class="screen">   Lsa  Type                : Opq-Area</pre>
+<pre class="screen">   Opaque Type              : 1</pre>
+<pre class="screen">   Opaque Id                : 0</pre>
+<pre class="screen">   Advertising Router Id    : 5.5.5.5</pre>
+<pre class="screen">   Lsa  age                 : 245</pre>
+<pre class="screen">   Length                   : 28</pre>
+<pre class="screen">   Lsa  Options             : E</pre>
+<pre class="screen">   LS Seq Number            : 80000001</pre>
+<pre class="screen">   CheckSum                 : C033</pre>
+
+<pre class="screen"> MPLS TE Router ID          : 5.5.5.5</pre>
+
+<pre class="screen"> ------------------------------------------------</pre>
+<pre class="screen"> LSA [ 5 ]</pre>
+<pre class="screen"> ------------------------------------------------</pre>
+<pre class="screen">   Lsa  Type                : Opq-Area</pre>
+<pre class="screen">   Opaque Type              : 1</pre>
+<pre class="screen">   Opaque Id                : 0</pre>
+<pre class="screen">   Advertising Router Id    : 3.3.3.3</pre>
+<pre class="screen">   Lsa  age                 : 756</pre>
+<pre class="screen">   Length                   : 28</pre>
+<pre class="screen">   Lsa  Options             : E</pre>
+<pre class="screen">   LS Seq Number            : 80000001</pre>
+<pre class="screen">   CheckSum                 : 6097</pre>
+
+<pre class="screen"> MPLS TE Router ID          : 3.3.3.3</pre>
+
+<div class="tablenoborder"><a name="display_ospf_mpls-te__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_mpls-te__tb_01" frame="border" border="1" rules="all"><caption>表1 display ospf mpls-te命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="37.44016124968506%" id="d56060e383"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="62.559838750314945%" id="d56060e387"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Area ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>使能了TE的OSPF区域的区域号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Lsa Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><div class="p">LSA类型，取值可能为:<ul>
+<li><p>Opq-Link：表示第9类LSA，第9类LSA只能在某一个接口上扩散；</p>
+</li>
+<li><p>Opq-Area：表示第10类LSA，第10类LSA只能在某一个区域内扩散；</p>
+</li>
+<li><p>Opq-As：表示第11类LSA，第11类LSA与第5类LSA具有相同的扩散范围，可以在除了STUB、NSSA之外的整个自治系统内部扩散</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Opaque Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>表示LSA的应用类型。例如，LSA应用于流量工程时，取值为1；LSA应用于OSPF
+Graceful Restart时，取值为3</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Opaque Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>用来区分同一种应用类型的不同的LSA。Opaque Type与Opaque ID一起构成LSA报头中的链路状态ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Advertising Router Id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>生成这条LSA的节点</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Lsa age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>LSA的老化时间（在Opaque LSA头中携带）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Length</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>Opaque LSA的长度，包括LSA Header，以字节为单位</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Lsa Options</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><div class="p">LSA选项：<ul>
+<li><p>E：允许Flood AS-external-LSAs</p>
+</li>
+<li><p>MC：转发IP组播报文</p>
+</li>
+<li><p>N/P：处理Type-7 LSAs</p>
+</li>
+<li><p>DC：处理按需链路</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>LS Seq Number </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>LSA的顺序号，其他设备根据这个值可以判断哪个LSA是最新的</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>CheckSum </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>LSA除了LS age外其它各域的校验和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Link Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><div class="p">链路类型：<ul>
+<li><p>点到点（Point To Point）</p>
+</li>
+<li><p>点到多点（Point to Multi Point）</p>
+</li>
+<li><p>广播（MultiAccess）</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Link ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><div class="p">链路标识，IP地址格式：<ul>
+<li><p>点到点类型：邻居的OSPF Router ID</p>
+</li>
+<li><p>点到多点类型或广播类型：DR节点的接口IP地址</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Local Interface Address </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>本地链路接口的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Remote Interface Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><div class="p">对端接口的IP地址：<ul>
+<li><p>点到点类型：使用对端IP地址</p>
+</li>
+<li><p>点到多点类型或广播类型：使用0.0.0.0或省略</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>TE Metric</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>TE度量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Maximum Bandwidth </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>最大带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Maximum Reservable BW </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>最大可预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Admin Group </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>管理组</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Global Pool </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>全局池</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Unreserved BW [ 0 ] to [ 7 ] </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>全局池中8个级别的可用带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Sub Pool</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>子池（对于DS-TE LSA有意义）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Unreserved BW [ 8 ] to [ 15 ] </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>子池中8个级别的可用带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>DS-TE Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><div class="p">DS-TE模式：<ul>
+<li>标准的IETF模式</li>
+<li>非标准的IETF模式</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Bandwidth Constraint Model</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><div class="p">LSA的带宽约束模式：<ul>
+<li>RDM</li>
+<li>MAM</li>
+<li>Extended-MAM</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Bandwidth Constraints </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>带宽约束（对于DS-TE LSA有意义）</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>BC [ 0] ～[ 7]</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>8种带宽约束（对于DS-TE LSA有意义）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>Local Overbooking Multipliers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>本地过预订倍数</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>LOM [ 0] LOM [ 1]</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>BC0或BC1的本地过预订倍数（Local Overbooking Multipliers）（对于DS-TE LSA有意义）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d56060e383 "><p>MPLS TE Router ID </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d56060e387 "><p>Router ID TLV中携带的MPLS Router ID</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="bottom" width="36%" id="d56060e813"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="bottom" width="64%" id="d56060e817"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36%" headers="d56060e813 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64%" headers="d56060e817 "><p>显示信息中增加了&#8220;DS-TE Mode&#8221;和&#8220;Bandwidth Constraint Model&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36%" headers="d56060e813 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64%" headers="d56060e817 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

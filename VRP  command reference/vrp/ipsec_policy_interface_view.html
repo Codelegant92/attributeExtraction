@@ -1,0 +1,62 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ipsec policy（接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy_system_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipsec_policy_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ipsec policy（接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipsec_policy_interface_view"></a><a name="ipsec_policy_interface_view"></a>
+
+<h1 class="topictitle1">ipsec policy（接口视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ipsec</strong> <strong>policy</strong> <em>policy-name</em>命令用来在接口上应用名字为<em>policy-name</em>的安全策略组。</p>
+<p><strong>undo</strong> <strong>ipsec</strong> <strong>policy</strong>命令用来从接口上取消应用的安全策略组，使此接口不再具有IPSec的安全保护功能。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ipsec</strong> <strong>policy</strong> <em>policy-name</em></p>
+<p><strong>undo</strong> <strong>ipsec</strong> <strong>policy</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>policy-name</em>：指定应用在接口上的安全策略组的名字，必须在系统视图下已经配置了名字为<em>policy-name</em>的安全策略组。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>一个接口只能应用一个安全策略组。如果要在接口上应用另一个安全策略组，必须先从接口上取消应用的安全策略组，再在接口上应用另外一个安全策略组。一个安全策略组可应用到多个接口上，但手工方式配置的安全策略只能应用到一个接口。</p>
+<p>当从一个接口发送报文时，将按照顺序号从小到大的顺序查找安全策略组中每一条安全策略。如果报文匹配了一条安全策略引用的访问控制列表，则使用这条安全策略对报文进行处理；如果报文没有匹配安全策略引用的访问控制列表，则继续查找下一条安全策略；如果报文对所有安全策略引用的访问控制列表都不匹配，则报文直接被发送（IPSec不对报文加以保护）。</p>
+<p>想要实现在接口上不发送任何不加密的报文，需要结合防火墙和IPSec一起使用，用防火墙将不需要加密的报文全部丢弃。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ipsec_policy_interface_view__d85157e71"></a><a name="d85157e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在Pos4/1/2接口上应用名为pg1的安全策略组。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface Pos4/1/2</strong></pre>
+<pre class="screen">[Quidway-if-Pos4/1/2]<strong> ipsec policy pg1</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipsec_policy_system_view.html">ipsec policy（系统视图）</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

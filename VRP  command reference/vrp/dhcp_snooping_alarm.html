@@ -1,0 +1,103 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dhcp snooping alarm">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_snooping_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_snooping_alarm_threshold_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_snooping_alarm_threshold_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_snooping_alarm_threshold_vlan_view.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_snooping_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dhcp_snooping_alarm">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dhcp snooping alarm</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dhcp_snooping_alarm"></a><a name="dhcp_snooping_alarm"></a>
+
+
+<h1 class="topictitle1">dhcp snooping alarm</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dhcp snooping alarm</strong>命令用来打开被丢弃的ARP报文、IP报文、DHCP Reply报文（Untrusted端口丢弃的）和DHCP Request报文数量达到告警阈值<span>以及用户数达到最大用户数限制的告警阈值</span>后的告警开关。</p>
+<p><strong>undo dhcp snooping alarm</strong>命令用来关闭告警开关。</p>
+<p>缺省情况下，告警开关是关闭的。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dhcp</strong> <strong>snooping</strong> <strong>alarm</strong> { <strong>arp</strong> | <strong>ip</strong> | <strong>dhcp-request</strong> | <strong>dhcp-chaddr</strong> | <strong>dhcp-reply </strong><span>|<strong> user-limit </strong></span>} <strong>enable</strong> [ <strong>interface</strong> <em>interface-type interface-number</em> ]</p>
+<p><strong>undo</strong> <strong>dhcp</strong> <strong>snooping</strong> <strong>alarm</strong> { <strong>arp</strong> | <strong>ip</strong> | <strong>dhcp-request</strong> | <strong>dhcp-chaddr</strong> | <strong>dhcp-</strong> <strong>reply </strong><span>|<strong> user-limit </strong></span>} <strong>enable</strong> [ <strong>interface</strong> <em>interface-type
+interface-number</em>  ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>arp</strong>：丢弃ARP报文达到告警阈值后产生告警。</p>
+<p><strong>ip</strong>：丢弃IP报文达到告警阈值后产生告警。</p>
+<p><strong>dhcp-reply</strong>：untrusted接口上丢弃的DHCP Server应答报文（包括Offer、ACK和NAK报文）达到告警阈值后产生告警。</p>
+<p><strong>dhcp-chaddr</strong>：丢弃DHCP报文里的CHADDR字段和以太帧头的源MAC不一致的报文，达到告警阈值后产生告警。</p>
+<p><strong>dhcp-request</strong>：丢弃DHCP Request报文达到告警阈值后产生告警。</p>
+<p><strong>user-limit</strong>：用户数达到最大用户数限制的告警阈值后产生告警。</p>
+<p><em>interface-type</em>：接口类型。此参数仅在VLAN视图下才可配置。</p>
+<p><em>interface-number</em>：接口号。此参数仅在VLAN视图下才可配置。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet接口视图、Ethernet子接口视图、GE接口视图、GE子接口视图、Eth-Trunk接口视图、Eth-Trunk子接口视图、QinQ终结子接口视图、Doltq终结子接口视图、<span>Virtual-Ethernet接口视图、</span>VLAN视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>dhcp snooping alarm</strong>后，就使能了向网管告警的功能。</p>
+<p>在接口视图或VLAN视图下，执行本命令之前必须先在系统视图下执行<a href="dhcp_snooping_enable.html">dhcp snooping enable</a>命令使能全局下的DHCP
+Snooping功能。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody">如果当前VLAN是RRPP的控制VLAN，则无法使能用户数达到告警阈值后的告警功能。</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dhcp_snooping_alarm__d10953e168"></a><a name="d10953e168"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在Ethernet4/0/0接口上打开ARP报文丢弃告警开关。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface ethernet 4/0/0</strong></pre>
+<pre class="screen">[Quidway-Ethernet4/0/0]<strong> dhcp snooping alarm arp enable</strong></pre>
+
+<p># 在VLAN100内打开用户数达到最大用户数限制的告警阈值的告警开关。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> dhcp snooping enable</strong>
+[Quidway]<strong> vlan 100</strong>
+[Quidway-vlan100]<strong> dhcp snooping alarm user-limit enable</strong></pre>
+
+<p># 在接口GE1/0/2上打开用户数达到最大用户数限制的告警阈值的告警开关。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> dhcp snooping enable</strong>
+[Quidway]<strong> interface gigabitethernet1/0/2</strong>
+[Quidway-gigabitethernet1/0/2]<strong> dhcp snooping alarm user-limit enable</strong>
+</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_snooping_configuration_commands.html">DHCP Snooping命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="dhcp_snooping_alarm_threshold_system_view.html">dhcp snooping alarm threshold（系统视图）</a></div>
+<div><a href="dhcp_snooping_alarm_threshold_interface_view.html">dhcp snooping alarm threshold（接口视图）</a></div>
+<div><a href="dhcp_snooping_alarm_threshold_vlan_view.html">dhcp snooping alarm threshold（VLAN视图）</a></div>
+<div><a href="dhcp_snooping_enable.html">dhcp snooping enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

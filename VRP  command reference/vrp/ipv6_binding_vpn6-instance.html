@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ipv6 binding vpn6-instance">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_mpls_ipv6_vpn_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ipv6_vpn6-instance.html">
+<meta name="DC.Relation" scheme="URI" content="route-distinguisher_ipv6_vpn_instance_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipv6_binding_vpn6-instance">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ipv6 binding vpn6-instance</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipv6_binding_vpn6-instance"></a><a name="ipv6_binding_vpn6-instance"></a>
+
+
+<h1 class="topictitle1">ipv6 binding vpn6-instance</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ipv6 binding vpn6-instance</strong>命令用来将当前接口与IPv6 VPN实例进行绑定。</p>
+<p><strong>undo ipv6 binding vpn6-instance</strong>命令用来取消当前接口与IPv6 VPN实例的绑定关系。</p>
+<p>缺省情况下，接口不与任何VPN实例相绑定，属于公网接口。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ipv6 binding vpn6-instance</strong> <em>vpn6-instance-name</em></p>
+<p><strong>undo ipv6 binding vpn6-instance</strong> <em>vpn6-instance-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vpn6-instance-name</em>：接口关联的IPv6 VPN实例名称。字符串形式，区分大小写，长度范围是1～31。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置IPv6 VPN实例后，需要将本设备上属于该IPv6 VPN的接口与该IPv6 VPN实例关联，否则该接口将属于公网接口。</p>
+<p>在接口上配置与IPv6 VPN实例关联或取消已建立的关联都将清除该接口的IPv6地址、IPv6相关的路由协议等三层特性，如果需要应重新配置。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ipv6_binding_vpn6-instance__d6470e56"></a><a name="d6470e56"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将接口GigabitEthernet1/0/0与名为vrf1的IPv6 VPN实例关联。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> ipv6 binding vpn6-instance vrf1</strong></pre>
+<pre class="screen"> All IPv6 related configurations on this interface are removed!</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_mpls_ipv6_vpn_configuration_commands.html">BGP/MPLS IPv6 VPN配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ipv6_vpn6-instance.html">display ipv6
+vpn6-instance</a></div>
+<div><a href="route-distinguisher_ipv6_vpn_instance_view.html">route-distinguisher</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

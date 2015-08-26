@@ -1,0 +1,70 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="natpt v4bound static">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nat-pt_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="natpt_v4bound_static">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>natpt v4bound static</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="natpt_v4bound_static"></a><a name="natpt_v4bound_static"></a>
+
+<h1 class="topictitle1">natpt v4bound static</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>natpt v4bound static</strong>命令用来配置IPv4到IPv6地址的静态映射，映射使用的是IPv4源地址。而实际上，缺省情况下添加了一条反方向的等效规则，因此当IPv6地址转化为IPv4地址时同样适用。</p>
+<p><strong>undo natpt v4bound static</strong>命令用来删除IPv4到IPv6地址的静态映射。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>natpt v4bound static </strong><em>ipv4-address ipv6-address</em></p>
+<p><strong>undo natpt v4bound static</strong>
+				<em>ipv4-address ipv6-address</em>
+			</p>
+<p><strong>natpt v4bound static v6server protocol </strong>{<strong> tcp </strong>|<strong> udp </strong>}<em> ipv4-address ipv4-port-number ipv6-address ipv6-port-number</em></p>
+<p><strong>undo natpt v4bound static v6server protocol</strong> {<strong> tcp </strong>|<strong> udp </strong>} <em>ipv4-address</em>
+				<em>ipv4-port-number ipv6-address ipv6-port-number</em>
+			</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ipv4-address</em>：指定需要映射的IPv4源地址，点分十进制形式。</p>
+<p><em>ipv4-port-number</em>：指定IPv4的端口号。整数形式，取值范围是1～12287。</p>
+<p><em>ipv6-address</em>：指定IPv6目的地址，格式为X.X::X.X。</p>
+<p><em>ipv6-port-number</em>：指定IPv6的端口号。整数形式，取值范围是1～12287。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>IPv6地址的前缀可以不同于NAT-PT前缀，但是建议与NAT-PT前缀相同。</p>
+<p>如果指定了参数&#8220;<strong>v6server</strong>&#8221;，就意味着从IPv4侧到目的地址的静态映射。因为DNS-ALG不支持PAT，它只映射IPv4地址而不含端口号。如果IPv4地址池里没有足够IPv4的公网地址，DNS-ALG就会溢出。此时这个命令就可以用来配置从IPv4侧到目的地址的静态PAT映射，节省了IPv4公网地址。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul><li><p>如果IPv4源地址映射的IPv6地址的前缀与配置的NAT-PT前缀不同，应谨慎对待，因为转换的IPv6报文有可能返回不成功。</p>
+</li><li><p>使用<strong>undo natpt v4bound static</strong>命令可能会影响某些动态映射的转换。</p>
+</li></ul>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="natpt_v4bound_static__d99466e99"></a><a name="d99466e99"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置IPv4到IPv6地址的静态映射。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>natpt v4bound static 2.3.4.9 2001::1</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nat-pt_configuration_commands.html">NAT-PT配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,108 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="transfer url">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="bulk-stat_enable.html">
+<meta name="DC.Relation" scheme="URI" content="bulk-file.html">
+<meta name="DC.Relation" scheme="URI" content="collect_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="transfer_url">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>transfer url</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="transfer_url"></a><a name="transfer_url"></a>
+
+
+<h1 class="topictitle1">transfer url</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>transfer</strong>命令用来设置批量统计文件的上传方式。</p>
+<p><strong>undo transfer</strong>命令用来删除批量统计文件的上传方式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>transfer</strong> { <strong> primary</strong> | <strong>secondary</strong>  } <strong> url </strong><em>url</em></p>
+<p><strong>undo transfer </strong>{ <strong>primary</strong> | <strong>secondary</strong> }<strong>url</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>primary</strong>：指定主用文件上传方式。</p>
+<p><strong>secondary</strong>：指定备用文件上传方式。</p>
+<p><em>url</em>：上传方式。以URL字符串方式提供，取值范围是1～127。</p>
+<p>URL具有FTP和TFTP两种格式，正确的格式如下：</p>
+<ul>
+<li><p>FTP格式</p>
+<ul>
+<li><p>格式为&#8212;ftp://用户:密码@主机名或者IP地址/相对路径</p>
+</li>
+<li><p>举例：ftp://user:password@host/folder/bulkstat1</p>
+</li>
+<li><p>必须输入用户名、密码、IP地址/主机名。</p>
+</li>
+</ul>
+</li>
+<li><p>TFTP格式</p>
+<ul>
+<li><p>格式为&#8212;tftp://主机名或者IP地址/相对路径</p>
+</li>
+<li><p>举例：tftp://10.1.0.1/tftpboot/user/bulkstat1</p>
+</li>
+<li><p>必须输入用户名、IP地址/主机名。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>在FTP和TFTP这2种格式中，用户名长度不允许超过64个字符，密码不允许超过16个字符；上述格式中相对路径可以不进行指定，上传的文件将放在服务器默认的目录；用户名、密码、相对路径的正确性由用户保证，<span class="keyword">VRP</span>不做检查。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>bulk-file视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>批量统计文件的上传支持主备方式，如果以主用方式上传不成功，则自动使用备用方式上传。</p>
+<p>必须要配置主URL，才能启动统计文件；备URL可选。</p>
+<p>文件启动后可以修改主/备URL，不能删除主URL ，但可以删除备URL，也可以添加备URL。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="transfer_url__d125618e123"></a><a name="d125618e123"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置批量统计文件&#8220;iftable&#8221;的主用上传方式。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway]<strong> bulk-file iftable</strong></pre>
+<pre class="screen">[Quidway-bulk-file-iftable]<strong> transfer primary url ftp://user:password@host/folder/bulkstat1</strong></pre>
+<p># 设置批量统计文件&#8220;iftable&#8221;的备用上传方式。</p>
+<pre class="screen">[Quidway-bulk-file-iftable]<strong> transfer secondary url tftp://10.1.0.1/tftpboot/user/bulkstat1</strong></pre>
+<p># 撤销批量统计文件&#8220;iftable&#8221;的主用上传方式。</p>
+<pre class="screen">[Quidway-bulk-file-iftable]<strong> undo transfer primary url</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="bulk-stat_enable.html">bulk-stat enable</a></div>
+<div><a href="bulk-file.html">bulk-file</a></div>
+<div><a href="collect_enable.html">collect enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

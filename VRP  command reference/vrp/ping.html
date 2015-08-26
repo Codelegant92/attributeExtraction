@@ -1,0 +1,222 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ping">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ping_and_tracert_commands.html">
+<meta name="DC.Relation" scheme="URI" content="tracert.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ping">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ping</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ping"></a><a name="ping"></a>
+
+
+<h1 class="topictitle1">ping</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ping</strong>命令用来检查IP网络连接及主机是否可达。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ping</strong> [ <strong>ip</strong> ] [ <strong>-a</strong><em> source-ip-address </em> | <strong>-c</strong><em> count </em> | <strong>-d</strong> | <strong>-f</strong> | <strong>-h</strong><em> ttl-value </em> | <strong>-i</strong><em> interface-type interface-number </em> | <strong>-m</strong><em> time </em> | <strong>-n</strong> | <strong>-p</strong><em> pattern </em> | <strong>-q</strong> | <strong>-r</strong> | <strong>-s</strong><em> packetsize </em> | <strong>-system-time</strong> | <strong>-t</strong><em> timeout </em> | <strong>-tos</strong><em> tos-value </em> | <strong>-v</strong> | <strong>-vpn-instance</strong><em> vpn-instance-name </em>] *<em> host</em></p>
+<p><strong>ping
+ipv6</strong> [ <strong>-a</strong> <em>source-ip-address</em> | <strong>-c</strong> <em>count</em> | <strong>-m</strong> <em>time</em> | <strong>-s</strong> <em>packetsize</em> | <strong>-t</strong> <em>timeout</em> | <strong>-tc</strong> [ <em>traffic-class-value</em> ] | <strong>vpn6-instance</strong> [ <em>vpn6-instance-name</em> ] ]
+* <em>host </em>[ <strong>-i </strong><em>interface-type interface-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ip</strong>：使用IP协议。</p>
+<p><strong>-a</strong><em> source-ip-address</em>：设置发送ICMP ECHO-REQUEST报文的源IP地址。</p>
+<p><strong>-c</strong><em> count</em>：发送ICMP ECHO-REQUEST报文次数，范围1～4294967295。缺省为5次。</p>
+<p><strong>-d</strong>：设置socket为debug模式。缺省为非debug模式。</p>
+<p><strong>-f</strong>：设置报文发送的过程中不分片，只有IPv4支持。</p>
+<p><strong>-h</strong> <em>ttl-value</em>：设置TTL的值，范围1～255。</p>
+<p><strong>-i</strong> <em>interface-type interface-number</em>：设置发送ICMP ECHO-REQUEST报文的接口。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody">对于广播式链路（以太网），指定的目的地址将作为报文的下一跳地址。</div></div>
+<p><strong>-m</strong><em> time</em>：设置发送下一个ICMP请求报文的等待时间，取值范围1～10000，单位ms。</p>
+<p><strong>-n</strong>：将<em>host</em>参数直接作为IP地址，而不需作域名解析。</p>
+<p><strong>-p </strong><em>pattern</em>：设置ICMP ECHO-REQUEST报文填充字节，格式为16进制，范围是0～FFFFFFFF。缺省情况下，填充方式为从0x00开始，递增至0xFF，然后循环。</p>
+<p><strong>-q</strong>：只显示统计信息。缺省情况下，显示全部信息。</p>
+<p><strong>-r</strong>：记录路由。缺省情况下，不记录路由。</p>
+<p><strong>-s </strong><em>packetsize</em>：ECHO-REQUEST报文长度（不包括IP和ICMP报文头），单位是字节，范围是20～8100。缺省报文长度是56字节。</p>
+<p><strong>-system-time</strong>：显示报文发送时的系统时间。</p>
+<p><strong>-t</strong><em> timeout</em>：为发送完ECHO-REQUEST后，等待ECHO-RESPONSE的超时时间，单位是ms，取值范围是0～65535。缺省超时时间是2000ms。</p>
+<p><strong>-tos</strong> <em>tos-value</em>：指定发送ECHO-REQUEST报文的TOS值，范围0～255。</p>
+<p><strong>-v</strong>：显示接收到的非ECHO-RESPONSE的ICMP报文。缺省情况下，不显示非ECHO-RESPONSE的ICMP报文。</p>
+<p><strong>-vpn-instance</strong><em> vpn-instance-name</em>：VPN实例名，字符串形式，不支持空格，长度范围是1～31。</p>
+<p><em>host</em>：目的主机的域名或IP地址。</p>
+<p><strong>ipv6</strong>：对使用IPv6协议的主机进行Ping测试。</p>
+<p><strong>-tc</strong> <em>traffic-class-value</em>: 指定回应请求报文中的流量类别，整数形式，取值范围是0～255，缺省值是0。</p>
+<p><strong>-vpn6-instance</strong> <em>vpn6-instance-name</em>: IPv6 VPN实例名称。字符串形式，长度范围是1～31。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>0：参观级</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p><strong>ping ipv6</strong>命令的缺省级别是1（监控级）。</p>
+</div></div>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>ping</strong>命令可以用于测试网络连接性故障。根据Ping测试输出的报文响应时间，还可以判断网络线路质量。</p>
+<p>如果网络速度较慢，执行Ping测试时可适当加大等待响应报文的超时时间。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p><strong>ping ipv6</strong>命令的详细介绍请参考&#8220;IP业务命令&#8221;。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ping__d105793e302"></a><a name="d105793e302"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 检查IP地址为10.1.1.2的主机是否可达。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> ping 10.1.1.2</strong></pre>
+<pre class="screen">  PING 10.1.1.2: 56  data bytes, press CTRL_C to break
+    Reply from 10.1.1.2: bytes=56 Sequence=1 ttl=255 time=2 ms
+    Reply from 10.1.1.2: bytes=56 Sequence=2 ttl=255 time=1 ms
+    Reply from 10.1.1.2: bytes=56 Sequence=3 ttl=255 time=1 ms
+    Reply from 10.1.1.2: bytes=56 Sequence=4 ttl=255 time=1 ms
+    Reply from 10.1.1.2: bytes=56 Sequence=5 ttl=255 time=1 ms
+  --- 10.1.1.2 ping statistics ---
+    5 packet(s) transmitted
+    5 packet(s) received
+    0.00% packet loss
+    round-trip min/avg/max = 1/1/2 ms </pre>
+
+<div class="tablenoborder"><a name="ping__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="ping__tb_01" frame="border" border="1" rules="all"><caption>表1 ping命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="27.86596119929453%" id="d105793e324"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="72.13403880070547%" id="d105793e328"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="27.86596119929453%" headers="d105793e324 "><p>ping x.x.x.x</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="72.13403880070547%" headers="d105793e328 "><p>目的主机的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="27.86596119929453%" headers="d105793e324 "><p>x data bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="72.13403880070547%" headers="d105793e328 "><p>发送的ECHO-REQUEST报文的长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="27.86596119929453%" headers="d105793e324 "><p>press CTRL-C to break</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="72.13403880070547%" headers="d105793e328 "><p>键盘操作&lt;CTRL + C&gt;将终止正在进行的Ping测试</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="27.86596119929453%" headers="d105793e324 "><p>Reply from x.x.x.x</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="72.13403880070547%" headers="d105793e328 "><div class="p">目的主机对每个ECHO-REQUEST报文的响应情况，包括：<ul>
+<li><p>bytes：响应报文的长度</p>
+</li>
+<li><p>sequence：响应报文的序号</p>
+</li>
+<li><p>ttl：响应报文的TTL</p>
+</li>
+<li><p>time ：响应时间，以ms为单位</p>
+</li>
+</ul>
+如果超时后没有收到响应报文，则显示&#8220;Request time out&#8221;</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="27.86596119929453%" headers="d105793e324 "><p>x.x.x.x ping statistics</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="72.13403880070547%" headers="d105793e328 "><div class="p">对目的主机进行Ping测试的统计结果，包括：<ul>
+<li><p>packets transmitted：发送的ECHO-REQUEST报文数目</p>
+</li>
+<li><p>packets received：接收到的ECHO-RESPONSE报文数目</p>
+</li>
+<li><p>% packet loss：未响应报文数占应发送报文总数的百分比</p>
+</li>
+<li><p>round-trip min/avg/max：响应时间的最小值、平均值、最大值</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 检查IP地址为10.1.1.2的主机是否可达，设置发送报文的源IP地址为202.38.160.243，设置发送报文次数为8。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> ping -a 202.38.160.243 -c 8 10.1.1.2</strong></pre>
+<pre class="screen">  PING 10.1.1.2: 56  data bytes, press CTRL_C to break</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=56 Sequence=1 ttl=255 time=32 ms</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=56 Sequence=2 ttl=255 time=32 ms</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=56 Sequence=3 ttl=255 time=32 ms</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=56 Sequence=4 ttl=255 time=32 ms</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=56 Sequence=5 ttl=255 time=32 ms</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=56 Sequence=6 ttl=255 time=32 ms</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=56 Sequence=7 ttl=255 time=32 ms</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=56 Sequence=8 ttl=255 time=32 ms</pre>
+<pre class="screen">  --- 10.1.1.2 ping statistics ---</pre>
+<pre class="screen">    8 packet(s) transmitted</pre>
+<pre class="screen">    8 packet(s) received</pre>
+<pre class="screen">    0.00% packet loss</pre>
+<pre class="screen">    round-trip min/avg/max = 32/32/32 ms</pre>
+<p># 检查IP地址为10.1.1.2的主机是否可达，设置发送报文长度为300字节，设置发送下一个报文需要等待时间为3000ms。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> ping -m 3000 -s 300 10.1.1.2</strong></pre>
+<pre class="screen">  PING 10.1.1.2: 300  data bytes, press CTRL_C to break</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=300 Sequence=1 ttl=255 time=31 ms</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=300 Sequence=2 ttl=255 time=31 ms</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=300 Sequence=3 ttl=255 time=31 ms</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=300 Sequence=4 ttl=255 time=31 ms</pre>
+<pre class="screen">    Reply from 10.1.1.2: bytes=300 Sequence=5 ttl=255 time=31 ms</pre>
+<pre class="screen">  --- 10.1.1.2 ping statistics ---</pre>
+<pre class="screen">    5 packet(s) transmitted</pre>
+<pre class="screen">    5 packet(s) received</pre>
+<pre class="screen">    0.00% packet loss</pre>
+<pre class="screen">    round-trip min/avg/max = 31/31/31 ms</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ping_and_tracert_commands.html">Ping和Tracert</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="tracert.html">tracert</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

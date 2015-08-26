@@ -1,0 +1,368 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ospfv3 lsdb">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospfv3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ospfv3.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ospfv3_lsdb">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ospfv3 lsdb</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ospfv3_lsdb"></a><a name="display_ospfv3_lsdb"></a>
+
+
+<h1 class="topictitle1">display ospfv3 lsdb</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ospfv3 lsdb</strong>命令用来显示OSPFv3的链路状态数据库信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ospfv3 </strong>[ <em>process-id</em> ] <strong>lsdb </strong>[<strong> external</strong> | <strong>grace</strong> | <strong>inter-prefix</strong> | <strong>inter-router</strong> | <strong>intra-prefix</strong> | <strong>link</strong> | <strong>network</strong> | <strong>router</strong> ] [ <em>link-state-id</em> ] [ <strong>originate-router</strong> <em>advertising-router-id</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ospfv3 </strong>[ <em>process-id</em> ] <strong>lsdb statistics</strong><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：OSPFv3进程号。整数形式，取值范围是1～65535。</p>
+<p><strong>external</strong>：显示数据库中AS-external LSA的信息。</p>
+<p><strong>grace</strong>：显示数据库中Grace-LSA的信息。</p>
+<p><strong>inter-prefix</strong>：显示数据库中Inter-area-prefix LSA的信息。</p>
+<p><strong>inter-router</strong>：显示数据库中Inter-area-router
+LSA的信息。</p>
+<p><strong>intra-prefix</strong>：显示数据库中Intra-area-prefix LSA的信息。</p>
+<p><strong>link</strong>：显示数据库中Link-local LSA的信息。</p>
+<p><strong>network</strong>：显示数据库中Network-LSA的信息。</p>
+<p><strong>router</strong>：显示数据库中Router-LSA的信息。</p>
+<p><em>link-state-id</em>：链路状态ID，IPv4地址形式。</p>
+<p><strong>originate-router</strong> <em>advertising-router-id</em>：指定发布LSA的路由器的Router ID。</p>
+<p><strong>statistics</strong>：显示LSDB的统计信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ospfv3_lsdb__d57627e212"></a><a name="d57627e212"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示OSPFv3的链路状态数据库信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display ospfv3 lsdb</strong></strong></pre>
+
+<pre class="screen">           OSPFv3 Router with ID (2.2.2.2) (Process 1)</pre>
+
+
+<pre class="screen">               Link-LSA (Interface Pos1/0/0)</pre>
+
+<pre class="screen">Link State ID   ADV Router       Age   Seq#       CkSum  Prefix</pre>
+<pre class="screen">0.0.2.6         1.1.1.1          0055  0x80000001 0x4642      0</pre>
+<pre class="screen">0.0.2.6         2.2.2.2          0053  0x80000001 0xf267      0</pre>
+
+<pre class="screen">               Router-LSA (Area 0.0.0.1)</pre>
+
+<pre class="screen">Link State ID   ADV Router       Age   Seq#       CkSum    Link</pre>
+<pre class="screen">0.0.0.0         1.1.1.1          0050  0x80000002 0x12d1      1</pre>
+<pre class="screen">0.0.0.0         2.2.2.2          0048  0x80000002 0xa142      1</pre>
+
+<div class="tablenoborder"><a name="display_ospfv3_lsdb__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospfv3_lsdb__tb_01" frame="border" border="1" rules="all"><caption>表1 display ospfv3 lsdb命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d57627e258"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d57627e262"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e258 "><p>Link-LSA</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e262 "><p>Link-LSA信息描述</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e258 "><p>Link State ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e262 "><p>LSA报文头中的链路状态ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e258 "><p>ADV Router</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e262 "><p>产生LSA的路由器</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e258 "><p>Age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e262 "><p>LSA的老化时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e258 "><p>Seq#</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e262 "><p>LSA序列号（来自LSA报头）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e258 "><p>CkSum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e262 "><p>LSA校验和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e258 "><p>Prefix</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e262 "><p>Link LSA中包含的前缀数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e258 "><p>Router-LSA</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e262 "><p>Router-LSA信息描述</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e258 "><p>Link</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e262 "><p>Router LSA中包含的Link数目</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示LSDB中Link-local LSA的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display ospfv3 lsdb link</strong></strong></pre>
+<pre class="screen">            OSPFv3 Router with ID (2.2.2.2) (Process 1)</pre>
+
+<pre class="screen">                Link-LSA (Interface Pos1/0/0)</pre>
+
+<pre class="screen">  LS age: 11</pre>
+<pre class="screen">  LS Type: Link-LSA</pre>
+<pre class="screen">  Link State ID: 0.0.2.6</pre>
+<pre class="screen">  Advertising Router: 2.2.2.2</pre>
+<pre class="screen">  LS Seq Number: 0x80000002</pre>
+<pre class="screen">  Checksum: 0xEFFA</pre>
+<pre class="screen">  Length: 56</pre>
+<pre class="screen">  Priority: 1</pre>
+<pre class="screen">  Options: 0x000013 (-|R|-|-|E|V6)</pre>
+<pre class="screen">  Link-Local Address: FE80::1441:0:E213:1</pre>
+<pre class="screen">  Number of Prefixes: 1</pre>
+<pre class="screen">    Prefix: 2000:1::/64</pre>
+<pre class="screen">Prefix Options: 0 (-|-|-|-)</pre>
+
+<div class="tablenoborder"><a name="display_ospfv3_lsdb__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospfv3_lsdb__tb_02" frame="border" border="1" rules="all"><caption>表2 display ospfv3 lsdb link命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d57627e424"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d57627e428"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e424 "><p>LS age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e428 "><p>LSA的老化时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e424 "><p>LS Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e428 "><div class="p">LSA的类型，有如下类型：<ul>
+<li><p>Router-LSAs</p>
+</li>
+<li><p>Network-LSAs</p>
+</li>
+<li><p>Inter-Area-Prefix-LSAs</p>
+</li>
+<li><p>Inter-Area-Router-LSAs</p>
+</li>
+<li><p>AS-external-LSAs</p>
+</li>
+<li><p>Link-LSAs</p>
+</li>
+<li><p>Intra-Area-Prefix-LSAs</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e424 "><p>Length</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e428 "><p>LSA的长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e424 "><p>Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e428 "><p>该Link对应接口的优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e424 "><p>Options</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e428 "><p>该Link的Option值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e424 "><p>Link-Local Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e428 "><p>Link Local地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e424 "><p>Number of Prefixes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e428 "><p>该LSA中包含的IPv6前缀数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e424 "><p>Prefix</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e428 "><p>IPv6前缀</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d57627e424 "><p>Prefix Options</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d57627e428 "><p>前缀Option值</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ospfv3_lsdb__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospfv3_lsdb__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d57627e579"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d57627e583"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d57627e579 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d57627e583 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospfv3_configuration_commands.html">OSPFv3配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ospfv3.html">ospfv3</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

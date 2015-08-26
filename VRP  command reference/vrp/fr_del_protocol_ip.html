@@ -1,0 +1,610 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="fr del protocol ip">
+<meta name="DC.Relation" scheme="URI" content="../vrp/fr_qos_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="fr_de_del.html">
+<meta name="DC.Relation" scheme="URI" content="fr_del_inbound-interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="fr_del_protocol_ip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>fr del protocol ip</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="fr_del_protocol_ip"></a><a name="fr_del_protocol_ip"></a>
+
+
+<h1 class="topictitle1">fr del protocol ip</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>fr del protocol ip</strong>命令用来配置基于IP协议的DE规则列表，封装了符合指定规则的IP报文的帧中继报文的DE标志位将被置为1。</p>
+<p><strong>undo
+fr del protocol ip</strong>命令用来从DE规则列表内删除指定的DE规则。</p>
+<p>缺省情况下，没有创建DE规则列表。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>fr del </strong><em>list-number</em><strong> protocol</strong> <strong>ip</strong> [ <strong>fragments</strong> | <strong>acl</strong> <em>acl-number </em>| <strong>less-than</strong> <em>bytes </em>| <strong>greater-than </strong><em>bytes</em> | <strong>tcp</strong> <em>ports</em> | <strong>udp</strong> <em>ports</em> ]</p>
+<p><strong>undo
+fr del </strong><em>list-number</em><strong> protocol ip</strong> [ <strong>fragments</strong> | <strong>acl </strong><em>acl-number </em>| <strong>less-than </strong><em>bytes </em>| <strong>greater-than </strong><em>bytes</em> |<strong> tcp </strong><em>ports</em> | <strong>udp </strong><em>ports</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>list-number</em>：DE规则列表编号，取值范围是1～10。</p>
+<p><strong>protocol</strong><em> </em><strong>ip</strong>：IP协议。</p>
+<p><strong>fragments</strong>：所有分片的IP报文。</p>
+<p><em>acl-number</em>：符合ACL匹配条件的IP报文。<em>acl-number</em>的取值范围是2000～3999。</p>
+<p><strong>less-than</strong>：长度小于<em>bytes</em>的IP报文。<em>bytes</em>的取值范围是0～65535。</p>
+<p><strong>greater-than</strong>：长度大于<em>bytes</em>的IP报文。<em>bytes</em>的取值范围是0～65535。</p>
+<p><strong>tcp</strong>：源或目的TCP端口号为<em>ports</em>的IP报文。</p>
+<p><strong>udp</strong>：源或目的UDP端口号为<em>ports</em>的IP报文。</p>
+<p>如果不使用可选参数，则表示所有IP报文。</p>
+
+<div class="tablenoborder"><a name="fr_del_protocol_ip__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="fr_del_protocol_ip__tb_01" frame="border" border="1" rules="all"><caption>表1 fr del 1 protocol ip tcp命令参数描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.19249181153943%" id="d77001e176"><p>主要字段</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.807508188460574%" id="d77001e180"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>bgp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Border Gateway Protocol (179)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>Chargen.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Character generator (19)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>cmd</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Remote commands (rcmd, 514)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>daytime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Daytime (13)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>discard</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Discard (9)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>domain</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Domain Name Service (53)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>echo</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Echo (7)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>exec</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Exec (rsh, 512)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>finger</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Finger (79)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>ftp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>File Transfer Protocol (21)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>ftp-data</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>FTP data connections (used infrequently, 20)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>gopher</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Gopher (70)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>hostname</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>NIC hostname server (101)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>ident</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Ident Protocol (113)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>irc</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Internet Relay Chat (194)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>klogin</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Kerberos login (543)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>kshell</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Kerberos shell (544)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>login</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Login (rlogin, 513)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>lpd</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Printer service (515)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>nntp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Network News Transport Protocol (119)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>pop2</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Post Office Protocol v2 (109)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>pop3</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Post Office Protocol v3 (110)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>smtp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Simple Mail Transport Protocol (25)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>sunrpc</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Sun Remote Procedure Call (111)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>tacacs</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>TAC Access Control System (49)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>talk</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Talk (517)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>telnet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Telnet (23)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Time (37)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>uucp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Unix-to-Unix Copy Program (540)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>whois</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>Nicname (43)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d77001e176 "><p>www</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d77001e180 "><p>World Wide Web (HTTP, 80)</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+<div class="tablenoborder"><a name="fr_del_protocol_ip__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="fr_del_protocol_ip__tb_02" frame="border" border="1" rules="all"><caption>表2 fr del 1 protocol ip udp命令参数描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.5930964978584%" id="d77001e544"><p>主要字段</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.4069035021416%" id="d77001e548"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>biff</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Biff (mail notification, comsat, 512)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>bootpc</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Bootstrap Protocol (BOOTP) client (68)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>bootps</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Bootstrap Protocol (BOOTP) server (67)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>discard</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Discard (9)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>dnsix</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>DNSIX security protocol auditing (195)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>domain</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Domain Name Service (53)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>echo</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Echo (7)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>mobile-ip</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Mobile IP registration (434)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>nameserver</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>IEN116 name service (obsolete, 42)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>netbios-dgm</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>NetBios datagram service (138)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>netbios-ns</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>NetBios name service (137)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>ntp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Network Time Protocol (123)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>rip</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Routing Information Protocol (router, in.routed,
+520)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>snmp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Simple Network Management Protocol (161)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>snmptrap</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>SNMP Traps (162)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>sunrpc</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Sun Remote Procedure Call (111)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>syslog</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p> Syslog (514)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>tacacs</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>TAC Access Control System (49)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>talk</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Talk (517)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>tftp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Trivial File Transfer Protocol (69)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Time (37)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>who</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>Who service (rwho, 513)</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.5930964978584%" headers="d77001e544 "><p>xdmcp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.4069035021416%" headers="d77001e548 "><p>X Display Manager Control Protocol (177)</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>重复使用本命令可以为DE规则列表添加新的规则。每个DE规则列表最多可以配置100条规则。</p>
+<p>本命令的<strong>undo</strong>形式每次只能删除一条DE规则，如果要删除一个DE规则列表，必须把列表中的所有DE规则全部删除。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="fr_del_protocol_ip__d77001e829"></a><a name="d77001e829"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在DE规则列表1内添加一条规则，对所有封装IP报文的帧中继报文，将其DE标志位置为1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> fr del 1 protocol ip</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/fr_qos_configuration_commands.html">帧中继QoS命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="fr_de_del.html">fr de del</a></div>
+<div><a href="fr_del_inbound-interface.html">fr del inbound-interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

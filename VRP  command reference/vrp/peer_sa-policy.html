@@ -1,0 +1,98 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer sa-policy">
+<meta name="DC.Relation" scheme="URI" content="../vrp/msdp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_msdp_peer-status.html">
+<meta name="DC.Relation" scheme="URI" content="import-source.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_sa-policy">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer sa-policy</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_sa-policy"></a><a name="peer_sa-policy"></a>
+
+
+<h1 class="topictitle1">peer sa-policy</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer sa-policy</strong>命令用来配置接收或转发SA消息的过滤列表。</p>
+<p><strong>undo peer sa-policy</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，不过滤接收和转发的SA消息，即接收并转发所有的（S，G）信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> <em>peer-address</em> <strong>sa-policy</strong> { <strong>import</strong> | <strong>export</strong> } [ <strong>acl</strong> <em>advanced-acl-number</em> ]</p>
+<p><strong>undo peer</strong> <em>peer-address</em> <strong>sa-policy</strong> { <strong>import</strong> | <strong>export</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>peer-address</em>：需要进行SA消息过滤的MSDP对等体地址。点分十进制形式。</p>
+<p><strong>import</strong>：表示接收来自指定MSDP对等体的SA消息。</p>
+<p><strong>export</strong>：表示向指定MSDP对等体转发SA消息。</p>
+<p><strong>acl</strong> <em>advanced-acl-number</em>：表示高级IP访问控制列表号。整数形式，取值范围是3000～3999。不指定访问控制列表，表示过滤掉所有携带（S，G）项的SA消息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例MSDP视图、VPN实例MSDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过配置<strong>peer sa-policy</strong>命令，MSDP可以在接收来自指定MSDP对等体的SA消息或向指定MSDP对等体转发SA消息时，对其通告的（S，G）转发项进行组播源过滤，从而实现在接收和转发SA消息时对组播源消息传播的控制。</p>
+<p><strong>peer</strong> <em>peer-address</em> <strong>sa-policy</strong> <strong>import</strong>：当从<em>peer-address</em>发出的SA消息到达<span class="keyword">路由器</span>时，依照import策略进行过滤，从而决定是否接收该SA消息。</p>
+<ul>
+<li><p>如果<strong>peer</strong> <em>peer-address</em> <strong>sa-policy import</strong>命令未配置<strong>acl</strong>参数，则不接收任何来自指定MSDP对等体发送的所有SA消息。</p>
+</li>
+<li><p>如果<strong>peer</strong> <em>peer-address</em> <strong>sa-policy import acl</strong> <em>advanced-acl-number</em>命令配置了<strong>acl</strong>参数，对于指定MSDP对等体发送的SA消息来说，只接收携带的（S，G）项通过ACL规则过滤的SA消息。</p>
+</li>
+</ul>
+<p><strong>peer </strong><em>peer-address</em><strong> sa-policy</strong> <strong>export</strong>：当<span class="keyword">路由器</span>向<em>peer-address</em>转发SA消息前，依照export策略进行过滤，从而决定是否转发该SA消息。</p>
+<ul>
+<li><p>如果<strong>peer </strong><em>peer-address</em><strong> sa-policy export</strong>命令未配置<strong>acl</strong>参数，则不向指定的MSDP对等体转发任何SA消息。</p>
+</li>
+<li><p>如果<strong>peer </strong><em>peer-address</em><strong> sa-policy</strong> <strong>export</strong> <strong>acl</strong> <em>advanced-acl-number</em>命令配置了<strong>acl</strong>参数，则只向指定的MSDP对等体转发（S，G）项通过ACL规则过滤的SA消息。</p>
+</li>
+</ul>
+<p>除了可以控制SA消息的接收和转发，还可以在源对等体上使用<strong>import-source</strong>命令过滤SA消息的创建。</p>
+<p><strong>peer sa-policy</strong>命令与<strong>acl</strong>命令配合使用。在ACL视图下，通过<strong>rule</strong>命令的<strong>source</strong>参数定义MSDP对等体接收或转发SA消息的源地址，<strong>destination</strong>参数定义MSDP对等体接收或转发SA消息的组地址。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_sa-policy__d104591e231"></a><a name="d104591e231"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中，配置只向对等体125.10.7.6转发通过ACL3100过滤的SA消息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> acl number 3100</strong></pre>
+<pre class="screen">[Quidway-acl-adv-3100]<strong> rule permit ip source 170.15.0.0 0.0.255.255 destination 225.1.0.0 0.0.255.255</strong></pre>
+<pre class="screen">[Quidway-acl-adv-3100]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> msdp</strong></pre>
+<pre class="screen">[Quidway-msdp]<strong> peer 125.10.7.6 connect-interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-msdp]<strong> peer 125.10.7.6 sa-policy export acl 3100</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/msdp_configuration_commands.html">MSDP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_msdp_peer-status.html">display msdp peer-status</a></div>
+<div><a href="import-source.html">import-source</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

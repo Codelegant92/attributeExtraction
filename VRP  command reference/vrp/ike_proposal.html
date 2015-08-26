@@ -1,0 +1,85 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ike proposal">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="authentication-method.html">
+<meta name="DC.Relation" scheme="URI" content="encryption-algorithm.html">
+<meta name="DC.Relation" scheme="URI" content="dh.html">
+<meta name="DC.Relation" scheme="URI" content="authentication-algorithm.html">
+<meta name="DC.Relation" scheme="URI" content="sa_duration_ike_proposal_view.html">
+<meta name="DC.Relation" scheme="URI" content="display_ike_proposal.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ike_proposal">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ike proposal</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ike_proposal"></a><a name="ike_proposal"></a>
+
+<h1 class="topictitle1">ike proposal</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ike</strong> <strong>proposal</strong>命令用来定义一个IKE提议。</p>
+<p><strong>undo</strong> <strong>ike</strong> <strong>proposal</strong>命令用来删除一个IKE提议。</p>
+<p>缺省情况下，系统提供一条缺省的IKE提议，此缺省的IKE提议具有最低的优先级。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ike</strong> <strong>proposal</strong> <em>priority-level</em></p>
+<p><strong>undo</strong> <strong>ike</strong> <strong>proposal</strong> <em>priority-level</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>priority-level</em>：是1到100之间的任意一个整数，表示IKE提议的优先级，并区别于其它的IKE提议。数值越小，优先级越高。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在系统视图下，使用此命令后，将进入IKE提议视图。</p>
+<p>在IKE提议视图下，可以使用<strong>authentication-method</strong>、<strong>encryption-algorithm</strong>、<strong>dh</strong>、<strong>authentication-algorithm</strong>和<strong>sa</strong> <strong>duration</strong>命令为IKE提议定义一系列的参数，包括认证方法、加密算法、认证算法、DH组标识和生存周期。</p>
+<p>缺省的提议具有缺省的参数，如下：</p>
+<pre class="screen">Encryption algorithm: DES-CBC</pre>
+<pre class="screen">Authentication algorithm: HMAC-SHA1</pre>
+<pre class="screen">Authentication method: Pre-Shared Key</pre>
+<pre class="screen">DH group ID: MODP_768</pre>
+<pre class="screen">SA duration and: 86400 seconds</pre>
+<p>这些参数在经过两端协商达成一致后，被用来建立一条安全通道。</p>
+<p>配置的IKE提议将被用来建立安全通道。执行此命令会进入IKE提议视图，配置参数。</p>
+<p>可以为进行IKE协商的每一端配置多条IKE提议，在协商时将从优先级最高的提议开始匹配一条双方都相同的提议。匹配的原则是：协商双方具有相同的加密算法、认证算法、认证方法和DH组标识，存活时间是由协商发起方决定的，两端不需要匹配。</p>
+<p>采用主模式时：若在协商发起方的ike peer中指定IKE提议，IKE协商时将只发送指定的IKE提议，响应方在自己的IKE提议配置中寻找与发送方指定的IKE提议相匹配的IKE提议，如果没有匹配的则协商失败；若发起方的ike peer中不指定IKE提议，IKE协商时将发送发起方所有的IKE提议，响应方在自己的IKE提议配置中依次寻找与发送方的IKE提议相匹配的IKE提议。</p>
+<p>采用野蛮模式时：若在协商发起方的ike peer中指定IKE提议，同采用主模式的情况；若发起方的ike peer中不指定IKE提议，IKE协商时将只发送发送方默认的IKE提议，响应方也会用默认的IKE提议匹配。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ike_proposal__d81905e105"></a><a name="d81905e105"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 以下命令定义了一条IKE提议10。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ike proposal 10</strong></pre>
+<pre class="screen">[Quidway-ike-proposal-10]<strong> authentication-algorithm md5</strong></pre>
+<pre class="screen">[Quidway-ike-proposal-10]<strong> authentication-method pre-share</strong></pre>
+<pre class="screen">[Quidway-ike-proposal-10]<strong> sa duration 5000</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="authentication-method.html">authentication-method</a></div>
+<div><a href="encryption-algorithm.html">encryption-algorithm</a></div>
+<div><a href="dh.html">dh</a></div>
+<div><a href="authentication-algorithm.html">authentication-algorithm</a></div>
+<div><a href="sa_duration_ike_proposal_view.html">sa duration（IKE提议视图）</a></div>
+<div><a href="display_ike_proposal.html">display ike proposal</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

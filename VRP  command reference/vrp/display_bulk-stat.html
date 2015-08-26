@@ -1,0 +1,429 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display bulk-stat">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_bulk-stat">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display bulk-stat</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_bulk-stat"></a><a name="display_bulk-stat"></a>
+
+
+<h1 class="topictitle1">display bulk-stat</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display bulk-stat</strong>命令用来显示批量性能统计的基本信息，包括：</p>
+<ul>
+<li>最大统计文件数目</li>
+<li>当前已配置统计文件数目</li>
+<li>5分钟可统计最大实例数目</li>
+<li>已配置统计文件的基本配置及状态</li>
+</ul>
+<div class="p"><strong>display bulk-stat </strong><em>file-name</em> 用来显示名为<em>file-name</em>的统计文件的详细信息，包括：<ul>
+<li><p>文件名称、文件存储方式、文件格式</p>
+</li>
+<li><p>采集周期、上传周期</p>
+</li>
+<li><p>主用上传URL和备用上传URL</p>
+</li>
+<li><p>重传次数</p>
+</li>
+<li><p>文件保存时间</p>
+</li>
+<li><p>当前文件状态</p>
+</li>
+<li><p>文件包含对象</p>
+</li>
+</ul>
+</div>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display bulk-stat</strong> [<em> file-name </em>] <span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>file-name</em>：统计文件名。字符串形式，取值范围是1～31。文件名称中只能包含：数字、字母、&#8216;_&#8217;、&#8216;-&#8217;。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>现阶段只支持<em>ephemeral</em>的存储方式，缺省值是<em>ephemeral。 </em>此命令接口可以后续进行扩展，以支持多种存储方式。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_bulk-stat__d18384e148"></a><a name="d18384e148"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示批量统计文件的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bulk-stat</strong>
+bulk statistic info:  
+--------------------------------
+max bulk file number : 10
+current bulk file number: 10
+current bulk object number: 2000
+max data item per 5 minutes: 40000
+--------------------------------
+index  bulk file name             collect(min)    transfer(min)    status
+-------------------------------------------------------------------------------------------------------
+1      bulk1                    	 5            	 5              	 running
+2      bulk2                    	 5            	 15             	 ready
+3      bulk3                    	 5            	 10             	 stop
+4      bulk4                    	 5            	 15             	 ready
+------------------------------------------------------------------------------------------------------</pre>
+
+<div class="tablenoborder"><a name="display_bulk-stat__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bulk-stat__tb_01" frame="border" border="1" rules="all"><caption>表1 display bulk-stat命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="40.98566758863465%" id="d18384e169"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="59.014332411365345%" id="d18384e173"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="40.98566758863465%" headers="d18384e169 "><p>max bulk file number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.014332411365345%" headers="d18384e173 "><p>最大统计文件数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.98566758863465%" headers="d18384e169 "><p>current bulk file number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.014332411365345%" headers="d18384e173 "><p>当前已配置统计文件数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.98566758863465%" headers="d18384e169 "><p>current bulk object number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.014332411365345%" headers="d18384e173 "><p>当前已配置统计对象数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.98566758863465%" headers="d18384e169 "><p>max data item per 5 minutes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.014332411365345%" headers="d18384e173 "><p>5分钟可统计最大实例数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.98566758863465%" headers="d18384e169 "><p>index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.014332411365345%" headers="d18384e173 "><p>已配置统计文件的索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.98566758863465%" headers="d18384e169 "><p>bulk file name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.014332411365345%" headers="d18384e173 "><p>已配置统计文件的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.98566758863465%" headers="d18384e169 "><p>collect(min)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.014332411365345%" headers="d18384e173 "><p>已配置统计文件的采集周期</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.98566758863465%" headers="d18384e169 "><p>transfer(min)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.014332411365345%" headers="d18384e173 "><p>已配置统计文件的上传周期</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.98566758863465%" headers="d18384e169 "><p>status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.014332411365345%" headers="d18384e173 "><div class="p">已配置统计文件的状态：<ul>
+<li>ready：准备启动批量性能统计</li>
+<li>running：正在进行统计，向统计文件中添加信息</li>
+<li>stop：在本周期内的批量性能统计结束</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示批量统计文件&#8220;iftable&#8221;的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display bulk-stat iftable</strong>
+bulk file iftable:  
+--------------------------------
+storage: ephemeral
+format: bulkASCII
+collect interval: 5 min
+transfer interval: 15 min
+primary transfer URL: ftp://user:password@host/folder/bulkstat1
+secondary transfer URL: tftp://10.1.0.1/tftpboot/user/bulkstat1
+transfer retry times: 3
+file remain time: 15 min
+status: running
+last transfer success time: 2006-11-29 11:15
+last transfer fail time: NULL
+total object number: 2
+--------------------------------
+index: 1
+class: single
+OID: 1.3.6.1.2.1.10.94.1.1.10.1.1.0.1
+start index: NULL
+instance number: NULL
+--------------------------------
+index: 2
+class: column
+OID:  1.3.6.1.2.1.10.94.1.1.10.1.2
+start index: 1
+instance number: 3 </pre>
+
+<div class="tablenoborder"><a name="display_bulk-stat__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bulk-stat__tb_02" frame="border" border="1" rules="all"><caption>表2 display bulk-stat命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="39.632149155958686%" id="d18384e313"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="60.36785084404133%" id="d18384e317"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>storage</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>文件存储方式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>format</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>文件格式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>collect interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>采集周期</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>transfer interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>上传周期</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>transfer retry times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>重传次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>primary transfer URL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>主用上传URL</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>secondary transfer URL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>备用上传URL</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>file remain time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>文件保存时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>last transfer success time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>最近一次上传成功的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>last transfer fail time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>最近一次上传失败的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>对象的索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>class</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><div class="p">对象的类别<ul>
+<li>single：单个统计对象。</li>
+<li>column：批量统计对象。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>OID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>对象的OID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>start index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>起始索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.632149155958686%" headers="d18384e313 "><p>instance number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.36785084404133%" headers="d18384e317 "><p>实例数目</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_bulk-stat__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bulk-stat__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d18384e512"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d18384e516"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d18384e512 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d18384e516 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ripng pkt-transmit">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ripng_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ripng_pkt-transmit">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ripng pkt-transmit</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ripng_pkt-transmit"></a><a name="ripng_pkt-transmit"></a>
+
+
+<h1 class="topictitle1">ripng pkt-transmit</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ripng pkt-transmit</strong>命令用来在指定接口上设置RIP发送更新报文的时间间隔和每次发送报文的数量。</p>
+<p><strong>undo ripng pkt-transmit</strong>命令用来在接口上恢复其缺省值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ripng pkt-transmit</strong> { <strong>interval</strong> <em>interval</em> | <strong>number </strong><em>pkt-count</em> } <sup>*</sup></p>
+<p><strong>undo ripng pkt-transmit</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interval</em>：报文发送的时间间隔。整数形式，取值范围是50～500，单位是毫秒。缺省值是200。</p>
+<p><em>pkt-count</em>：队列中每次发送报文的数量。整数形式，取值范围是25～100。缺省值是30。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>根据不同的网络环境在接口上配置<strong>ripng pkt-transmit</strong> { <strong>interval</strong> <em>interval</em> | <strong>number </strong><em>pkt-count</em> } <sup>*</sup>命令，可以更精确的控制报文的发送间隔和发送的报文数，从而提升RIPng性能。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ripng_pkt-transmit__d114501e81"></a><a name="d114501e81"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在指定接口GigabitEthernet 1/0/0上配置RIPng发送报文间隔为100毫秒和发送队列报文数量为50。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>interface GigabitEthernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> ripng pkt-transmit interval 100 number 50</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ripng_configuration_commands.html">RIPng配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,86 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="igmp prompt-leave">
+<meta name="DC.Relation" scheme="URI" content="../vrp/igmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="igmp_lastmember-queryinterval.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="igmp_prompt-leave">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>igmp prompt-leave</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="igmp_prompt-leave"></a><a name="igmp_prompt-leave"></a>
+
+
+<h1 class="topictitle1">igmp prompt-leave</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>igmp prompt-leave</strong>命令用来在接口上配置立刻离开组。当接口接收到针对某组播组的离开消息时，不发送最后组成员查询消息，立即删除该组记录。</p>
+<p><strong>undo igmp prompt-leave</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，IGMP在接收到主机发送的离开消息后发送最后组成员查询消息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>igmp prompt-leave</strong> [ <strong>group-policy</strong> <em>basic-acl-number</em> ]</p>
+<p><strong>undo igmp prompt-leave</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>basic-acl-number</em>：表示基本访问控制列表，该列表定义了一个组播组范围。整数形式，取值范围是2000～2999。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只适用于IGMPv2。</p>
+<p>如果未使用<strong>group-policy</strong> <em>basic-acl-number </em>参数，则所有的组都将执行立即离开。</p>
+<p>使用<strong>group-policy</strong> <em>basic-acl-number</em>参数之前，需要配置待引用的ACL，接口将按照该ACL过滤收到的Leave报文。</p>
+<ul>
+<li><p>如果主机要离开的组在ACL允许的范围之中，则<span class="keyword">路由器</span>不发送最后组成员查询消息，立即删除该组记录。</p>
+</li>
+<li><p>如果主机要离开的组在ACL允许的范围之外，则<span class="keyword">路由器</span>发送最后组成员查询消息。</p>
+</li>
+</ul>
+<p><strong>igmp prompt-leave</strong>命令与<strong>acl</strong>命令配合使用。在ACL视图下，通过<strong>rule</strong>命令的<strong>source</strong>参数定义主机将要离开的组播组地址。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="igmp_prompt-leave__d81533e100"></a><a name="d81533e100"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建编号为2005的ACL，配置<span class="keyword">路由器</span>与主机相连的接口GE1/0/0在收到主机发送的针对组播组225.1.0.0/16的IGMP离开消息后，立即删除该组记录。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> acl number 2005</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2005]<strong> rule permit source 225.1.0.0 0.0.255.255</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2005]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> <strong>igmp prompt-leave group-policy 2005</strong></strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/igmp_configuration_commands.html">IGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="igmp_lastmember-queryinterval.html">igmp lastmember-queryinterval</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

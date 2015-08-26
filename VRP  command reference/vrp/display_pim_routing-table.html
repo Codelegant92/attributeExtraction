@@ -1,0 +1,508 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display pim routing-table">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_multicast_routing-table.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_pim_routing-table">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display pim routing-table</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_pim_routing-table"></a><a name="display_pim_routing-table"></a>
+
+
+<h1 class="topictitle1">display pim routing-table</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display pim routing-table</strong>命令用来查看PIM协议组播路由表的内容。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display pim</strong> { <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>all-instance</strong> } <strong>routing-table</strong> [ <em>group-address</em> [ <strong>mask</strong> { <em>group-mask-length</em> | <em>group-mask</em> } ] | <em>source-address</em> [ <strong>mask</strong> { <em>source-mask-length</em> | <em>source-mask</em> } ] | <strong>incoming-interface</strong> { <em>interface-type interface-number</em> | <strong>register</strong> } | <strong>outgoing-interface</strong> {<strong> include</strong> | <strong>exclude</strong> | <strong>match</strong> } { <em>interface-type interface-number</em> | <strong>register</strong> | <strong>none</strong> } | <strong>mode</strong> { <strong>dm</strong> | <strong>sm</strong> | <strong>ssm</strong> } | <strong>flags</strong> <em>flag-value</em> | <strong>fsm</strong> ] <sup>*</sup> <span>[<strong> | count</strong> ] </span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+<p><strong>display pim routing-table</strong> [ <em>group-address</em> [ <strong>mask</strong> {<em> group-mask-length</em> | <em>group-mask</em> } ] | <em>source-address</em> [<strong> mask</strong> { <em>source-mask-length</em> | <em>source-mask</em> } ] | <strong>incoming-interface</strong> {<em> interface-type interface-number</em> | <strong>register</strong> } | <strong>outgoing-interface</strong> { <strong>include</strong> | <strong>exclude</strong> | <strong>match</strong> } { <em>interface-type interface-number</em> | <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>register</strong> | <strong>none</strong> } | <strong>mode</strong> { <strong>dm</strong> | <strong>sm</strong> | <strong>ssm</strong> } | <strong>flags</strong> <em>flag-value</em> | <strong>fsm</strong> ] <sup>*</sup> <span>[<strong> | count</strong> ] </span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+<p><strong>display pim</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>routing-table</strong> <strong>channel</strong> <em>channel-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>all-instance</strong>：指定所有实例。</p>
+<p><em>group-address</em>：表示组播组地址，用来指定一个组播组，显示该组对应的路由表信息。点分十进制形式，取值范围是224.0.0.0～239.255.255.255。</p>
+<p><strong>mask</strong>：指定组播组或源的地址掩码。</p>
+<p><em>group-mask</em>：表示组播组地址掩码。点分十进制形式。</p>
+<p><em>group-mask-length</em>：表示组播组地址掩码长度。整数形式，取值范围是4～32。</p>
+<p><em>source-address</em>：表示组播源地址，用来指定一个组播源，显示该源对应的路由表信息。点分十进制形式。</p>
+<p><em>source-mask</em>：表示组播源地址掩码。点分十进制形式。</p>
+<p><em>source-mask-length</em>：表示组播源地址掩码长度。整数形式，取值范围是0～32。</p>
+<p><strong>channel</strong> <em>channel-name</em>：显示与指定节目组相关的（*，G）或（S，G）表项。</p>
+<p><strong>incoming-interface</strong>：表示入接口为指定接口的路由项。</p>
+<p><em>interface-type interface-number</em>：表示接口类型和接口号。</p>
+<p><strong>register</strong>：表示注册接口。</p>
+<p><strong>outgoing-interface</strong>：表示出接口为指定接口的路由项。</p>
+<p><strong>include</strong>：表示出接口列表中包含指定接口的路由项。</p>
+<p><strong>exclude</strong>：表示出接口列表中不包含指定接口的路由项。</p>
+<p><strong>match</strong>：表示出接口列表中包含且仅包含指定接口的路由项。</p>
+<p><strong>none：</strong>表示出接口列表为空的路由项。</p>
+<p><strong>mode</strong>：表示PIM运行模式，取值包括<strong>dm</strong>、<strong>sm</strong>和<strong>ssm</strong>，分别表示PIM-DM、SM和SSM类型的路由项。</p>
+<p><strong>flags</strong><em> flag-value</em>：表示有指定标志的PIM路由表项。<em>flag-value</em>为路由表项的类型标识。</p>
+<p><strong>fsm</strong>：显示FSM状态的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display pim routing-table</strong>命令：</p>
+<ul>
+<li><p>若不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>，则只显示公网实例的相关信息。</p>
+</li>
+<li><p>若指定了<strong>vpn-instance</strong>或<strong>all-instance</strong>，则不能为出接口指定VPN实例，即不能在<strong>outgoing-interface</strong>参数后指定<strong>vpn-instance</strong>或<strong>all-instance</strong>。这是因为目前组播VPN只支持IPv4，只有公网表项的下游接口可能属于特定的VPN实例。</p>
+</li>
+<li><p>如果指定了<strong>flags</strong> <em>flag-value</em>，则只显示带有标志的PIM路由表项。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+
+<div class="tablenoborder"><a name="display_pim_routing-table__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_routing-table__tb_01" frame="border" border="1" rules="all"><caption>表1 flag-value取值列表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="14.222726127488034%" id="d60153e474"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="85.77727387251197%" id="d60153e478"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>2msdp</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>RP最近收到注册消息并学习到（S，G）信息，准备通知MSDP，在下一个SA消息中包含该（S，G）表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>act</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>已经有实际数据到达的组播路由表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>del</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>准备删除的组播路由表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>exprune</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>RPT上的表项被剪枝且RPT上没有接收者对源感兴趣。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>ext</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>包含了由其他组播路由协议提供的出接口的路由表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>loc</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>在与组播源网段直连的路由器上的组播路由表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>msdp</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>RP最近从收到的MSDP SA消息中学习到的路由表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>nonbr</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>找不到朝向RP或源的上游邻居地址（link-local地址)的路由表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>none</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>无任何标志的路由表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>niif</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>未确定入接口的路由表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>rpt</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>处于共享树上但不使用共享树数据的路由表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>rq</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>收到了切换到Switch-Group的通知的（S，G）表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>spt</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>最短路径树上的路由表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>sq</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>源发出了切换到Switch-Group的通知的（S，G）表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>swt</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>处在向SPT切换过程中的路由表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>sg_rcvr</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>表示路由器有源S的本地（S，G）接收者，且PIM是下游接口owner。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>sgjoin</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>表示路由器有源S的本地（S，G）接收者，但PIM不是下游接口owner。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>upchg</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>路由变化的标志，表示当前的表项在使用原来的上游转发数据，正在等待数据从新的接口到来。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.222726127488034%" headers="d60153e474 "><p><strong>wc</strong></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.77727387251197%" headers="d60153e478 "><p>表示（*，G）表项。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_pim_routing-table__d60153e717"></a><a name="d60153e717"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看公网实例的PIM协议组播路由表的内容。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display pim routing-table</strong>
+VPN-Instance: public net
+ Total 0 (*, G) entry; 1 (S, G) entry
+
+ (172.168.0.12, 227.0.0.1)
+     RP: 2.2.2.2
+     Protocol: pim-sm, Flag: SPT LOC ACT
+     UpTime: 02:54:43
+     Upstream interface: GigabitEthernet1/3/1
+         Upstream neighbor: NULL
+         RPF prime neighbor: NULL
+     Downstream interface(s) information:
+     Total number of downstreams: 1
+         1: GigabitEthernet1/3/2
+             Protocol: pim-sm, UpTime: 02:54:43, Expires: 00:02:47
+</pre>
+<p># 查看公网实例的PIM路由表中指定节目组对应的路由项信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display pim routing-table channel SDTV</strong>
+ Total 1 (*, G) entry; 0 (S, G) entry
+ Total matched 1 (*, G) entry; 0 (S, G) entry
+ (*, 225.1.1.1)
+     RP: 25.0.0.1
+     Protocol: pim-sm, Flag: WC
+     Channel Program: SDTV
+     UpTime: 00:03:21
+     Upstream interface: GigabitEthernet0/1/0
+         Upstream neighbor: 24.0.0.1
+         RPF prime neighbor: 24.0.0.1
+     Downstream interface(s) information: None
+</pre>
+
+<div class="tablenoborder"><a name="display_pim_routing-table__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_routing-table__tb_02" frame="border" border="1" rules="all"><caption>表2 display pim routing-table命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.7941546989166%" id="d60153e745"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.2058453010834%" id="d60153e749"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><p>PIM路由信息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>Total 0 (*, G) entry; 1 (S, G) entry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><p>PIM路由表中(S,G)项和(*, G)项总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>(172.168.0.2，227.0.0.1)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><p>PIM路由表的(S,G)项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>RP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><p>RP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><p>PIM协议类型：PIM-DM，PIM-SM或PIM-SSM。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>Channel Program</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><p>节目组名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><p>PIM (S,G)或者(*,G)项的标志。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>Uptime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><p>接口存活时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>Upstream interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><p>(S,G)项或者(*,G)项的入接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>Upstream neighbor</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><p>(S,G)项或者(*,G)项的上游邻居。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>RPF prime neighbor</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><div class="p">(S,G)项或者(*,G)项的RPF邻居<ul>
+<li><p>对(*,G)来说，当本路由器是RP时，(*,G)项的RPF邻居是NULL</p>
+</li>
+<li><p>对(S,G)项来说，当本路由器直连源时，(S,G)项的RPF邻居是NULL</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60153e745 "><p>Downstream interface(s) information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60153e749 "><div class="p">下游接口信息，包括：<ul>
+<li><p>下游接口总数</p>
+</li>
+<li><p>下游接口名称</p>
+</li>
+<li><p>下游接口上所配置的PIM协议的类型</p>
+</li>
+<li><p>下游接口已存在的时间和超时时间</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_pim_routing-table__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_routing-table__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d60153e931"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d60153e935"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d60153e931 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d60153e935 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d60153e931 "><p>VRPV500R006C01B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d60153e935 "><p>增加参数<strong>channel</strong>来显示与指定channel相关的PIM路由表项。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_multicast_routing-table.html">display multicast routing-table</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

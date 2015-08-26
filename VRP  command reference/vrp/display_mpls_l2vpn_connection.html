@@ -1,0 +1,833 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls l2vpn connection">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_l2vpn_route-target.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_l2vpn_forwarding-info.html">
+<meta name="DC.Relation" scheme="URI" content="connection.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_l2vpn_connection">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls l2vpn connection</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_l2vpn_connection"></a><a name="display_mpls_l2vpn_connection"></a>
+
+
+<h1 class="topictitle1">display mpls l2vpn connection</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls l2vpn connection</strong>命令用来查看Kompella方式的L2VPN连接信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls l2vpn connection</strong> <em>vpn-name</em> [ <strong>remote-ce</strong> <em>ce-id</em> | <strong>down</strong> | <strong>up</strong> | <strong>verbose</strong> ]<span> [<strong> | count</strong> ] </span><span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display mpls l2vpn connection</strong> [ <strong>summary</strong> | <strong>interface</strong> <em>interface-type interface-number</em> ]<span> [<strong> | count</strong> ] </span><span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vpn-name</em>：用于显示的指定的VPN名称。字符串格式，不支持空格，区分大小写，长度范围是1～31。如果不指定，将显示所有L2VPN信息。</p>
+<p><strong>remote-ce</strong><em> ce-id</em>：指定将要显示其远程连接信息的CE。</p>
+<p><strong>down</strong>：状态为Down的连接的详细信息。如果不指定Down，将显示两种状态的连接的详细信息。</p>
+<p><strong>up</strong>：状态为Up的连接的详细信息。如果不指定Up，将显示两种状态的连接的详细信息。</p>
+<p><strong>verbose</strong>：显示连接的详细信息。该参数只有在查看VPN内所有连接时有效。</p>
+<p><strong>summary</strong>：显示连接的摘要统计信息。</p>
+<p><strong>interface </strong><em>interface-type interface-number</em>：显示特定接口类型和编号的连接信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置完Kompella方式的L2VPN时，可以使用指定参数<em>vpn-name</em>的<strong>display mpls l2vpn connection</strong>命令查看该连接是否处于Up状态。</p>
+<p><strong>display mpls l2vpn connection</strong>命令还可以用来查看本设备上所有的Kompella方式L2VPN连接信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_l2vpn_connection__d42734e177"></a><a name="d42734e177"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有Kompella方式的L2VPN连接。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls l2vpn connection</strong></pre>
+<pre class="screen">1 total connections,</pre>
+<pre class="screen">connections: 1 up, 0 down, 0 local, 1 remote, 0 unknown</pre>
+<pre class="screen">VPN name: vpn1,</pre>
+<pre class="screen">1 total connections,</pre>
+<pre class="screen">connections: 1 up, 0 down, 0 local, 1 remote, 0 unknown</pre>
+<pre class="screen">  CE name: ce1, id: 1,</pre>
+<pre class="screen">  Rid type status peer-id         route-distinguisher intferface           primary or not</pre>
+<pre class="screen">  2   rmt  up     3.3.3.9         100:1               GigabitEthernet1/0/1  primary</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vpn_connection__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn_connection__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls l2vpn connection命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.843789367598895%" id="d42734e213"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.15621063240111%" id="d42734e217"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>1 total connections,connections: 1 up, 0 down, 0 local, 1 remote, 0 unknown</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><p>前两行的显示信息表示本设备上建立的所有Kompella方式的连接信息，包括连接的总数、处于up状态的连接数、down状态的连接数、本地连接数、远程连接数、未知的连接数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>vpn-name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><p>已创建的VPN实例的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>1 total connections,connections: 1 up, 0 down, 0 local, 1 remote, 0 unknown</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><p>该VPN的连接信息，包括连接的总数、处于up状态的连接数、down状态的连接数、本地连接数、远程连接数、未知的连接数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>CE name:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><p>CE连接的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>id:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><p>该CE连接的CE ID，用于在一个VPN中唯一确定一个CE。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>Rid</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><p>与本CE建立连接的远端CE ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><div class="p">该CE连接的类型：<ul>
+<li><p>rmt：表示该连接的类型为远程连接；</p>
+</li>
+<li><p>loc：表示该连接的类型为本地连接；</p>
+</li>
+<li><p>---：表示目的CE不存在或者创建远程连接时，信令连接建立不成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><div class="p">该CE连接的状态：<ul>
+<li><p>up：表示该连接建立成功；</p>
+</li>
+<li><p>down：表示该连接建立不成功，可能是配置不正确或关联的接口为down导致的。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>peer-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><p>与本端建立会话连接的对端IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>route-distinguisher</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><p>该CE所属VPN的路由标志符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><p>与该CE相关联的接口（AC接口）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.843789367598895%" headers="d42734e213 "><p>primary or not</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.15621063240111%" headers="d42734e217 "><p>该VC连接是主用VC还是备用VC。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看名为vpn1的VPN上Kompella方式的L2VPN连接信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display mpls l2vpn connection vpn1</strong></strong></pre>
+<pre class="screen">VPN name: vpn1,</pre>
+<pre class="screen">1 total connections,</pre>
+<pre class="screen">connections: 1 up, 0 down, 0 local, 1 remote, 0 unknown</pre>
+<pre class="screen">  CE name: ce1, id: 1,</pre>
+<pre class="screen">  Rid type status peer-id         route-distinguisher   interface  primary or not</pre>
+<pre class="screen">  2   rmt  up     3.3.3.9         100:1                 GigabitEthernet1/0/1  primary</pre>
+<p># 查看接口GE1/0/1上Kompella方式的L2VPN连接信息（远程）。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls l2vpn connection interface gigabitethernet 1/0/1</strong></pre>
+<pre class="screen">conn-type: remote</pre>
+<pre class="screen">     local vc state:             up</pre>
+<pre class="screen">     remote vc state:            up</pre>
+<pre class="screen">     local ce-id:                1</pre>
+<pre class="screen">     local ce name:              ce1</pre>
+<pre class="screen">     remote ce-id:               2</pre>
+<pre class="screen">     intf (state,encap):          GigabitEthernet1/0/1(up,ethernet)</pre>
+<pre class="screen">     peer id:                    2.2.2.2</pre>
+<pre class="screen">     route-distinguisher:        100:2</pre>
+<pre class="screen">     local vc label:             25602</pre>
+<pre class="screen">     remote vc label:            25601</pre>
+<pre class="screen">     tunnel policy:              default</pre>
+<pre class="screen">     primary or secondary:       primary</pre>
+<pre class="screen">     forward entry exist or not:  true</pre>
+<pre class="screen">     forward entry active or not:true</pre>
+<pre class="screen">     manual fault set or not:    not set</pre>
+<pre class="screen">     AC OAM state:               up</pre>
+<pre class="screen">     BFD for PW session index:   --</pre>
+<pre class="screen">     BFD for PW state:           invalid</pre>
+<pre class="screen">     BFD for LSP state:          true</pre>
+<pre class="screen">     Local C bit is not set,         Remote C bit is not set</pre>
+<pre class="screen">tunnel type: lsp   ,             id: 0x2002000   </pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vpn_connection__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn_connection__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls l2vpn connection interface命令输出的远程连接信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="24.943310657596374%" id="d42734e466"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="75.05668934240363%" id="d42734e470"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>conn-type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><div class="p">L2VPN连接类型：<ul>
+<li><p>local：本地连接；</p>
+</li>
+<li><p>remote：远程连接；</p>
+</li>
+<li><p>unknown：未知的L2VPN连接。出现的原因可能是目的CE不存在；或者创建远程连接时，信令连接建立不成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>local vc state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>本端的VC状态。up表示该连接建立成功；down表示连接建立失败，可能是配置不正确或相关联的接口为down。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>remote vc state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>目的端的VC状态。up表示该连接建立成功；down表示连接建立失败，可能是配置不正确或相关联的接口为down。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>local ce-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>本端的CE-ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>local ce name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>本端CE的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>remote ce-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>与本CE建立连接的目的CE-ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>intf(state,encap)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>连接关联的本端接口的状态和封装类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>peer id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>与该接口关联的CE建立会话连接的远端IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>route-distinguisher</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>与该接口关联的CE所属的VPN的路由标志符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>local vc label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>本端系统产生的标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>remote vc label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>远端标签，是远端LDP分发给本端的标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>tunnel policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>应用到该CE连接的隧道策略。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>primary or secondary</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>该VC是主用VC还是备用VC。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>forward entry exist or not</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>是否存在转发表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>forward entry active or not</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>转发表项是否处于活跃状态（活跃状态表示可以转发）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>manual fault set or not</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>是否手工设置了PW故障。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>AC OAM state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>本端AC的OAM状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>BFD for PW session index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>检测PW状态的BFD会话的索引值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>BFD for PW state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>检测PW状态的BFD会话的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>BFD for LSP state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>检测LSP状态的BFD会话的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>Local C bit is not set</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>表示该L2VPN没有使能控制字。如果使能了控制字，则不显示该行信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>tunnel type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>隧道的类型。该隧道用于在公网上传输该CE的用户数据。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e466 "><p>id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e470 "><p>隧道的Tunnel ID。该隧道用于在公网上传输该CE的用户数据。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看接口GE1/0/1上Kompella方式的L2VPN连接信息（本地）。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls l2vpn connection interface gigabitethernet 1/0/1</strong></pre>
+<pre class="screen">conn-type: local, local vc state: up, remote vc state: up,</pre>
+<pre class="screen">     local ce-id: 2, local ce name: ce2, remote ce-id: 1,</pre>
+<pre class="screen">     intf(state,encap): GigabitEthernet1/0/1(up,ethernet) &amp; GigabitEthernet1/0/2(up, ethernet)</pre>
+<pre class="screen">     primary or secondary:       primary</pre>
+<pre class="screen">     forward entry exist or not: true</pre>
+<pre class="screen">     forward entry active or not:true</pre>
+<pre class="screen">     manual fault set or not:    not set</pre>
+<pre class="screen">     AC OAM state:               up</pre>
+<pre class="screen">     BFD for PW session index:   --</pre>
+<pre class="screen">     BFD for PW state:           invalid</pre>
+<pre class="screen">     BFD for LSP state:          true</pre>
+<pre class="screen">     Local C bit is not set</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vpn_connection__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn_connection__tb_03" frame="border" border="1" rules="all"><caption>表3 display mpls l2vpn connection interface命令输出的本地连接信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="24.943310657596374%" id="d42734e790"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="75.05668934240363%" id="d42734e794"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>conn-type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><div class="p">L2VPN连接类型：<ul>
+<li><p>local：本地连接；</p>
+</li>
+<li><p>remote：远程连接；</p>
+</li>
+<li><p>unknown：未知的L2VPN连接。出现的原因可能是目的CE不存在；或者创建远程连接时，信令连接建立不成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>local vc state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>本端的VC状态。up表示该连接建立成功；down表示连接建立失败，可能是配置不正确或相关联的接口为down。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>remote vc state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>目的端的VC状态。up表示该连接建立成功；down表示连接建立失败，可能是配置不正确或相关联的接口为down。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>local ce-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>本端的CE-ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>local ce name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>本端CE的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>remote ce-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>与本CE建立连接的目的CE-ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>intf(state,encap): GigabitEthernet1/0/1(up, ethernet) &amp; GigabitEthernet 1/0/2(up, ethernet)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>连接关联的本端接口的状态和封装类型。</p>
+<p>&#8220;GigabitEthernet 1/0/1(up,ppp) &amp; GigabitEthernet 1/0/0(up,ethernet)&#8221;表示本CE关联的接口是GigabitEthernet1/0/1，该接口的状态是Up，封装类型是ethernet，与本CE建立连接的目的CE关联的接口是GigabitEthernet1/0/0，其状态为Up，封装类型是ethernet。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>primary or secondary</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>该VC是主用VC还是备用VC。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>forward entry exist or not</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>转发表项是否处于活跃状态（活跃状态表示可以转发）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>forward entry active or not</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>转发表项是否处于活跃状态（活跃状态表示可以转发）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>manual fault set or not</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>是否手工设置了PW故障。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>AC OAM state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>本端AC的OAM状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>BFD for PW session index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>检测PW状态的BFD会话的索引值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>BFD for PW state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>检测PW状态的BFD会话的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>BFD for LSP state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>检测LSP状态的BFD会话的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e790 "><p>Local C bit is not set</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e794 "><p>表示该L2VPN没有使能控制字。如果使能了控制字，则不显示该行信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看所有Kompella方式的L2VPN连接的摘要统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls l2vpn connection summary</strong></pre>
+<pre class="screen">1 total connections,</pre>
+<pre class="screen">connections: 1 up,  0 down , 0 local, 1 remote, 0 unknown</pre>
+<pre class="screen">No.   vpn-name    local-num remote-num unknown-num up-num total-num</pre>
+<pre class="screen">1     vpn1               0         1          0         1      1</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vpn_connection__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn_connection__tb_04" frame="border" border="1" rules="all"><caption>表4 display mpls l2vpn connection summary命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="24.943310657596374%" id="d42734e1023"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="75.05668934240363%" id="d42734e1027"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e1023 "><p>total connections</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e1027 "><p>&#8220;total connections&#8221;前面的数字表示本设备上的所有L2VPN连接数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e1023 "><p>connections:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e1027 "><p>L2VPN连接数，up、down、remote、local和unknown分别表示连接建立成功、连接建立失败、远程连接、本地连接和不能识别的L2VPN连接。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e1023 "><p>No.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e1027 "><p>连接的序列号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e1023 "><p>vpn-name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e1027 "><p>对应的VPN实例名称。该显示信息是按L2VPN实例的顺序来显示各个类型的连接。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e1023 "><p>local-num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e1027 "><p>属于该L2VPN实例所有的本地连接数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e1023 "><p>remote-num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e1027 "><p>属于该L2VPN实例所有的远程连接数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e1023 "><p>unknown-num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e1027 "><p>属于该L2VPN实例所有的不能识别的连接数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e1023 "><p>up-num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e1027 "><p>属于该L2VPN实例所有的建立成功的连接数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d42734e1023 "><p>total-num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d42734e1027 "><p>属于该L2VPN实例所有的连接数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_l2vpn_connection__tb_05"></a><a name="tb_05"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn_connection__tb_05" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.0047871000252%" id="d42734e1148"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.99521289997481%" id="d42734e1152"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d42734e1148 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d42734e1152 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d42734e1148 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d42734e1152 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_l2vpn_route-target.html">display mpls l2vpn (Route-Target)</a></div>
+<div><a href="display_mpls_l2vpn_forwarding-info.html">display mpls l2vpn forwarding-info</a></div>
+<div><a href="connection.html">connection</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

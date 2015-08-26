@@ -1,0 +1,65 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qos wred ip-precedence">
+<meta name="DC.Relation" scheme="URI" content="../vrp/weighted_random_early_detection_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="qos_wred.html">
+<meta name="DC.Relation" scheme="URI" content="display_qos_wred_interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qos_wred_ip-precedence">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qos wred ip-precedence</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qos_wred_ip-precedence"></a><a name="qos_wred_ip-precedence"></a>
+
+<h1 class="topictitle1">qos wred ip-precedence</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qos wred ip-precedence</strong>命令用来设置WRED各优先级的下限、上限和丢弃概率分母。</p>
+<p><strong>undo qos wred ip-precedence</strong>命令用来恢复缺省值。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qos wred ip-precedence</strong> <em>ip-precedence </em><strong>low-limit</strong><em> low-limit </em><strong>high-limit</strong><em> high-limit </em><strong>discard-probability</strong><em> discard-probability</em></p>
+<p><strong>undo qos wred ip-precedence</strong> <em>ip-precedence</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-precedence</em>：IP报文的优先级，取值范围是0～7。</p>
+<p><em>low-limit</em>：优先级的WRED下限，取值范围是1～1024，<em>low-limit</em>的缺省值分别为10。</p>
+<p><em>high-limit</em>：优先级的WRED上限，取值范围是1～1024，<em>high-limit</em>的缺省值为30。</p>
+<p><em>discard-probability</em>：丢弃概率的分母，取值范围是1～255，缺省值为10。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>必须先使用<strong>qos wred</strong>在接口上应用WRED，才可以配置WRED的参数。阈值限制的是平均队列长度。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qos_wred_ip-precedence__d109861e76"></a><a name="d109861e76"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口上设置优先级为3的报文的队列下限为20，上限为40，丢弃概率分母为15。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface GigabitEthernet0/0/0</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet0/0/0]<strong> qos wred ip-precedence 3 low-limit 20 high-limit 40 discard-probability 15</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/weighted_random_early_detection_configuration_commands.html">WRED配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="qos_wred.html">qos wred</a></div>
+<div><a href="display_qos_wred_interface.html">display qos wred interface</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

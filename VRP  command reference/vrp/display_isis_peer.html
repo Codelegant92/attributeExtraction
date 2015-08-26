@@ -1,0 +1,302 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis peer">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_peer">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis peer</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_peer"></a><a name="display_isis_peer"></a>
+
+
+<h1 class="topictitle1">display isis peer</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis peer</strong>命令用来查看IS-IS的邻居信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis peer</strong> [ <strong>verbose</strong> ] [ <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>verbose</strong>：显示IS-IS邻居的详细信息。</p>
+<p><em>process-id</em>：IS-IS进程号。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定IPv4 VPN的IS-IS多实例进程。<em>vpn-instance-name</em>为IPv4 VPN实例的名称，，区分大小写。</p>
+<p><strong>vpn-instance default</strong>：除IPv4 VPN实例外的所有IS-IS进程，即所有的IPv6
+VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：指定IPv6 VPN的IS-IS多实例进程。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，，区分大小写。</p>
+<p><strong>vpn6-instance default</strong>：除IPv6 VPN实例外的所有IS-IS进程，即所有的IPv4 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用参数<strong>verbose</strong>除了可以显示<strong>display isis peer</strong>的所有信息外，还将显示邻居的区域地址、处于Up状态的时长、以及直连接口的IP地址。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_peer__d36388e162"></a><a name="d36388e162"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示IS-IS邻居信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis peer</strong></pre>
+<pre class="screen">                          Peer information for ISIS(1)
+
+  System Id     Interface          Circuit Id       State HoldTime Type     PRI
+-------------------------------------------------------------------------------
+0000.0000.0001  GigabitEthernet1/0/0  0000.0000.0001.01  Up   24s      L1(L1L2) 64
+0000.0000.0001  GigabitEthernet1/0/0  0000.0000.0001.01  Up   24s      L2(L1L2) 64
+
+Total Peer(s): 2
+</pre>
+
+<div class="tablenoborder"><a name="display_isis_peer__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_peer__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis peer命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d36388e184"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d36388e188"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e184 "><p>System ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e188 "><p>邻居的主机系统ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e184 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e188 "><p>接口类型和接口号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e184 "><p>Circuit ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e188 "><p>电路ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e184 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e188 "><p>接口状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e184 "><p>HoldTime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e188 "><p>邻接保持时长</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e184 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e188 "><p>IS-IS类型（Level-1、Level-2或Level-1-2）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e184 "><p>PRI</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e188 "><p>选举DIS时的优先级</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 使用参数<strong>verbose</strong>后将获得更多输出信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis peer verbose</strong></pre>
+<pre class="screen">                          Peer information for ISIS(1)
+
+  System Id     Interface          Circuit Id       State HoldTime Type     PRI
+-------------------------------------------------------------------------------
+0000.0000.0001  GigabitEthernet1/0/0           ---               Up   26s      L1(L1L2) 64
+  Area Address(es)     : 10
+  Peer IP Address(es)  : 10.10.10.1
+  Uptime               : 00:00:19
+  Adj Protocol         : IPV4
+
+0000.0000.0001  GigabitEthernet1/0/0           ---               Up   27s      L2(L1L2) 64
+  Area Address(es)     : 10
+  Peer IP Address(es)  : 10.10.10.1
+  Uptime               : 00:00:19
+  Adj Protocol         : IPV4
+
+
+Total Peer(s): 2
+</pre>
+
+<div class="tablenoborder"><a name="display_isis_peer__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_peer__tb_02" frame="border" border="1" rules="all"><caption>表2 display isis peer verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d36388e299"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d36388e303"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e299 "><p>Area Address(es)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e303 "><p>邻居的区域地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e299 "><p>Peer IP Address(es)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e303 "><p>对端接口IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e299 "><p>Uptime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e303 "><p>邻接处于Up状态时长</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e299 "><p>Adj Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e303 "><p>建立邻接关系的协议（IPv4、IPv6）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36388e299 "><p>Total Peer(s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36388e303 "><p>邻居数量</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_peer__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_peer__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d36388e380"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d36388e384"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36388e380 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36388e384 "><p>增加参数<strong>vpn-instance default</strong>，<strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> }。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36388e380 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36388e384 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36388e380 "><p>VRPV500R006C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36388e384 "><p>删除参数Restart Capable和Suppressed Adj。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

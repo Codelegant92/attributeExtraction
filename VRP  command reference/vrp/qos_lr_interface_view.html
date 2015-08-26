@@ -1,0 +1,63 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qos lr（接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/traffic_policing_traffic_shaping_rate_limiting_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qos_lr_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qos lr（接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qos_lr_interface_view"></a><a name="qos_lr_interface_view"></a>
+
+<h1 class="topictitle1">qos lr（接口视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qos lr</strong>命令用来限制接口的向外发送数据的速率。</p>
+<p><strong>undo qos lr</strong>命令用来取消限制。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qos lr cir </strong><em>cir</em> [<strong> cbs</strong> <em>cbs</em> [ <strong>ebs</strong> <em>ebs </em>] ]</p>
+<p><strong>undo qos lr</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>cir</strong>：承诺信息速率。</p>
+<p><em>cir</em>: 承诺信息速率的值，取值范围是8000bps~155000000bps。</p>
+<p><strong>cbs</strong>：承诺突发尺寸，实际平均速率在承诺速率以内时的突发流量。</p>
+<p><em>cbs</em>：承诺突发尺寸的值，取值范围是15000～155000000bit。cbs的取值应大于等于cir取值的1/2，当cir&gt;30000bit/s时，缺省取值是cir的1/2，当cir&lt;30000bit/s时，缺省取值是15000。</p>
+<p><strong>ebs</strong>：过度突发尺寸。</p>
+<p><em>ebs</em>：过度突发尺寸，取值范围是0～155000000bit。</p>
+<p>缺省为0，即只采用一个令牌桶监管。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>qos lr</strong>命令还可以应用于Tunnel接口，实现对Tunnel接口的流量限速，结合各种队列调度算法，可以实现Tunnel接口的拥塞管理。在为Tunnel接口配置队列之前，必须先在Tunnel接口上应用LR。反之，在删除Tunnel接口上的<strong>qos lr</strong>命令时，必须先删除Tunnel接口上的队列配置。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qos_lr_interface_view__d109558e79"></a><a name="d109558e79"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 下面的命令将对物理接口GE6/0/0发出的报文进行限速。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface GigabitEthernet6/0/0</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet6/0/0]<strong> qos lr cir 38400 cbs 76800 ebs 0</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/traffic_policing_traffic_shaping_rate_limiting_configuration_commands.html">流量监管、流量整形和接口限速配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

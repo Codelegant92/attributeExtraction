@@ -1,0 +1,316 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display cluster members">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="auto-build.html">
+<meta name="DC.Relation" scheme="URI" content="add-member.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_cluster_members">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display cluster members</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_cluster_members"></a><a name="display_cluster_members"></a>
+
+
+<h1 class="topictitle1">display cluster members</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display cluster members</strong>命令用来查看HGMP集群内命令交换机和成员交换机的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display cluster members</strong> [ <em>member-number</em> | <strong>verbose</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>member-number</em>：指定成员交换机的成员编号，以查看此成员交换机的详细信息。十进制整数形式，取值范围是0～255。</p>
+<p><strong>verbose</strong>：显示所有成员交换机的详细信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只能在命令交换机上执行。</p>
+<p>不指定可选参数时，本命令将显示HGMP集群内所有命令交换机和成员交换机的简要信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_cluster_members__d19970e52"></a><a name="d19970e52"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有集群成员的简要信息。</p>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt;<strong> <strong>display cluster members</strong></strong></pre>
+<pre class="screen">The list of cluster member:
+------------------------------------------------------------------------------
+SN   Device Type              MAC Address     Status Device Name
+------------------------------------------------------------------------------
+0    NE40E                    0001-0001-0001  Admin  HUAWEI_0.Administrator-1
+1    NE40E                    0002-0002-0002  <strong>Up</strong>     HUAWEI_1.Member-1
+2    NE40E                    0003-0003-0003  <strong>Up</strong>     HUAWEI_2.Member-2
+3    NE40E                    0004-0004-0004  <strong>Up</strong>     HUAWEI_3.Member-3
+</pre>
+<p>该显示信息主要内容解释见<a href="#display_cluster_members__tb_01">表1</a>。</p>
+
+<div class="tablenoborder"><a name="display_cluster_members__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cluster_members__tb_01" frame="border" border="1" rules="all"><caption>表1 display cluster members命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.772990677752585%" id="d19970e90"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.22700932224741%" id="d19970e94"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d19970e90 "><p>SN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d19970e94 "><div class="p">成员编号。<ul>
+<li><p>&#8220;0&#8221;表示命令交换机。</p>
+</li>
+<li><p>其它数字表示成员交换机。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d19970e90 "><p>Device Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d19970e94 "><p>设备的类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d19970e90 "><p>MAC Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d19970e94 "><p>设备的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d19970e90 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d19970e94 "><div class="p">设备在集群内的角色及状态。<ul>
+<li><p>Admin表示命令交换机，且处于UP状态。</p>
+</li>
+<li><p>其它情况表示成员交换机，状态分为DOWN和UP。</p>
+</li>
+</ul>
+</div>
+<p>UP：该设备处于正常启动状态</p>
+<p>DOWN：该设备的物理线路没有连接好，或它的接口出现物理故障</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d19970e90 "><p>Device Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d19970e94 "><p>设备的主机名。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示所有集群成员的详细信息。</p>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt;<strong><strong> display cluster members verbose</strong></strong></pre>
+<pre class="screen">Member number:0
+Name:HUAWEI_0.Quidway
+DeviceType:NE40E
+MAC Address:00e0-fcb8-d6b6
+Member status:Admin
+Hops to administrator switch:0
+IP: 15.0.0.1/24
+Version:NE40E Version V300R007C01B022
+
+Member number:1
+Name:HUAWEI_1.Quidway
+DeviceType:NE40E
+MAC Address:0018-8267-7f7d
+Member status:Up
+Hops to administrator switch:2
+IP: 10.0.0.2/24
+Version:NE40E-4 Version V300R007C01B022
+
+Member number:2
+Name:HUAWEI_2.Quidway
+DeviceType:NE40E
+MAC Address:00e0-0003-0003
+Member status:Up
+Hops to administrator switch:1
+IP: 10.0.0.3/24
+Version:NE40E Version V300R006C01B262</pre>
+
+<div class="tablenoborder"><a name="display_cluster_members__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cluster_members__tb_02" frame="border" border="1" rules="all"><caption>表2 display cluster members命令输出信息描述（详细信息）</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.00050390526581%" id="d19970e205"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.99949609473419%" id="d19970e209"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19970e205 "><p>Member number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19970e209 "><p>成员编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19970e205 "><p>Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19970e209 "><p>设备的主机名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19970e205 "><p>Device</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19970e209 "><p>设备类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19970e205 "><p>MAC Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19970e209 "><p>设备的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19970e205 "><p>Member status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19970e209 "><div class="p">设备在集群内的角色及状态。<ul>
+<li><p>Admin表示命令交换机，且处于UP状态。</p>
+</li>
+<li><p>其它情况表示成员交换机，状态分为DOWN和UP。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19970e205 "><p>Hops to administrator device</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19970e209 "><p>从本设备到命令交换机的跳数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19970e205 "><p>IP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19970e209 "><p>设备用于集群内通信的私有IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d19970e205 "><p>Version</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d19970e209 "><p>设备的系统软件的版本信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_cluster_members__tb_09"></a><a name="tb_09"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cluster_members__tb_09" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d19970e329"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d19970e333"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d19970e329 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d19970e333 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="auto-build.html">auto-build</a></div>
+<div><a href="add-member.html">add-member</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

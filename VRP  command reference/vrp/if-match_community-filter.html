@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="if-match community-filter">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_policyconfiguration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ip_community-filter.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="if-match_community-filter">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>if-match community-filter</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="if-match_community-filter"></a><a name="if-match_community-filter"></a>
+
+
+<h1 class="topictitle1">if-match community-filter</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>if-match community-filter</strong>命令用来设置一个基于团体属性过滤器的匹配规则。</p>
+<p><strong>undo if-match community-filter</strong>命令用来删除该匹配规则。</p>
+<p>缺省情况下，没有配置基于团体属性过滤器的匹配规则。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>if-match community-filter</strong> { <em>basic-comm-filter-num</em> [ <strong>whole-match</strong> ] | <em>adv-comm-filter-num</em> } * &amp;&lt;1-16&gt;</p>
+<p><strong>if-match community-filter</strong> <em>comm-filter-name</em> [ <strong>whole-match</strong> ]</p>
+<p><strong>undo if-match
+community-filter</strong> [ <em>basic-comm-filter-num</em> | <em>adv-comm-filter-num</em> ]</p>
+<p><strong>undo if-match community-filter</strong> <em>comm-filter-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>basic-comm-filter-num</em>：基本团体属性过滤器号。整数形式，取值范围是1～99。</p>
+<p><em>adv-comm-filter-num</em>：高级团体属性过滤器号。整数形式，取值范围是100～199。</p>
+<p><em>comm-filter-name</em>：团体属性过滤器名称。字符串类型，取值范围是1～51。</p>
+<p><strong>whole-match</strong>：完全匹配，即所有的团体都必须出现。仅对基本团体属性过滤器生效。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Route-Policy视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>whole-match</strong>参数只对其前面的一个团体过滤器号生效。当<strong>if-match community-filter</strong>中指定了多个过滤器，且要求每一个过滤器都必须完全匹配，则需要在每个过滤器后面增加<strong>whole-match</strong>参数。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="if-match_community-filter__d80315e101"></a><a name="d80315e101"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置一个基于团体属性过滤器1的匹配规则。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ip community-filter 1 permit 100:200</strong></pre>
+<pre class="screen">[Quidway]<strong> route-policy test permit node 10</strong></pre>
+<pre class="screen">[Quidway-route-policy]<strong> if-match community-filter 1</strong></pre>
+<p># 设置基于团体属性过滤器的完全匹配规则，完全匹配过滤器1、2。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> route-policy test permit node 11</strong></pre>
+<pre class="screen">[Quidway-route-policy]<strong> if-match community-filter 1 whole-match 2 whole-match</strong></pre>
+<p># 设置一个团体属性过滤器名称为aa的匹配规则。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>route-policy test permit node 12</strong>
+[Quidway-route-policy] <strong>if-match community-filter aa</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_policyconfiguration_commands.html">路由策略配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ip_community-filter.html">ip community-filter</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

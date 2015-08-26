@@ -1,0 +1,106 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="nat server">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nat_and_nat_user_log_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="nat_server">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>nat server</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="nat_server"></a><a name="nat_server"></a>
+
+
+<h1 class="topictitle1">nat server</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>nat server</strong>命令用来定义一个内部服务器的映射表，用户可以通过<em>global-addr</em>和<em>global-port</em>定义的地址端口来访问地址和端口分别为<em>host-addr</em>和<em>host-port</em>的内部服务器。</p>
+<p><strong>undo nat server</strong>命令用来取消映射表。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>nat server</strong> [<strong> vpn-instance</strong><em> vpn-instance-name</em> ] <strong>protocol </strong><em>protocol-type </em><strong>global</strong><em> global-address
+global-port1 global-port2 </em><strong>inside</strong><em> host-address1 host-address2
+host-port</em></p>
+<p><strong>nat server </strong>[<strong> vpn-instance</strong><em> vpn-instance-name</em> ] <strong>protocol </strong><em>protocol-type </em><strong>global</strong><em> global-address </em>[<em> global-port </em>] <strong>inside</strong><em> host-address </em>[<em> host-port</em> ]</p>
+<p><strong>nat
+server </strong>[<strong> vpn-instance</strong><em> vpn-instance-name</em> ] <strong>global</strong><em> global-address
+ </em><strong>inside</strong><em> host-address</em></p>
+<p><strong>undo nat server</strong> [<strong> vpn-instance</strong><em> vpn-instance-name</em> ] <strong>protocol </strong><em>protocol-type </em><strong>global</strong><em> global-address global-port1 global-port2 </em><strong>inside</strong><em> host-address1
+host-address2 host-port</em></p>
+<p><strong>undo nat server</strong> [ <strong>vpn-instance</strong><em> vpn-instance-name</em> ] <strong>protocol </strong><em>protocol-type </em><strong>global</strong><em> global-address </em>[<em> global-port </em>] <strong>inside</strong><em> host-address </em>[<em> host-port</em> ]</p>
+<p><strong>undo
+nat server</strong> [ <strong>vpn-instance</strong><em> vpn-instance-name</em> ] <strong>global</strong><em> global-address
+ </em><strong>inside</strong><em> host-address</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vpn-instance-name</em>：内部服务器所属VPN的虚拟路由转发实例。如果不设置该值，表示内部服务器属于一个普通的私网，不属于某一个MPLS
+VPN。其范围是1～31。</p>
+<p><em>global-address</em>：提供给外部访问的IP地址（一个合法的IP地址）。</p>
+<p><em>global-port</em>：提供给外部访问的服务的端口号。若忽略的话，将和<em>host-port</em>的值一致。</p>
+<p><em>host-address</em>：服务器在内部局域网的IP地址。</p>
+<p><em>host-port</em>：服务器提供的服务端口号，范围是0～65535，常用的端口号可以用关键字代替。如：www服务端口为80，同时可以使用<strong>www</strong>代替。ftp服务端口号为21，同时可以使用<strong>ftp</strong>代替。如果为零，表示任何类型的服务都提供，可以用<strong>any</strong>关键字代替。如果没有配置这个参数，则表示是<strong>any</strong>的情况，相当于<em>global-addr</em>和<em>host-addr</em>之间有一个静态的连接。当<em>host-port</em>是<strong>any</strong>时候，<em>global-port</em>也必须是<strong>any</strong>，否则是非法配置。</p>
+<p><em>global-port1</em>、<em>global-port2</em>：通过两个端口指定一个端口范围，和内部的主机的地址范围，构成一种对应关系。<em>global-port2</em>必须大于<em>global-port1</em>。</p>
+<p><em>host-address1</em>、<em>host-address2</em>：定义一组连续的地址范围，和前面定义的端口范围构成一一对应的关系。 <em>host-address2</em>必须大于<em>host-address1</em>。该地址范围的数量必须和<em>global-port1</em>、<em>global-port2</em>定义的端口数量相同。</p>
+<p><em>protocol-type</em>：表示IP协议承载的协议类型，可用关键字代替。如：<strong>tcp</strong>、<strong>udp</strong>。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过该命令可以配置一些内部网络提供给外部使用的服务器，内部服务器可以位于普通的私网内，也可以位于MPLS VPN内。例如www、ftp、telnet、pop3、dns等等。</p>
+<p>在一个接口下最多可以配置256条内部服务器转换命令，一个接口下最多可以配置4096个内部服务器，系统一共可以最多配置256个内部服务器转换命令。如果配置端口范围的nat
+server（即通过配置<em>global-port1</em>、<em>global-port2</em>指定一个端口范围，和内部主机的地址范围构成一种对应关系），则对应配置多少端口，即为多少个内部服务器，规格也为4096个。</p>
+<p>配置该命令的接口应该是和ISP连接的，是内部网络的出口。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="nat_server__d99238e289"></a><a name="d99238e289"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定局域网内部的www服务器的IP地址是10.110.10.10，VPN vrf10内部的FTP服务器的IP地址是10.110.10.11，希望外部通过http://
+202.110.10.10:8080可以访问web，通过ftp://202.110.10.10可以连接FTP站点。假设Pos1/0/0和ISP连接。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface pos1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> nat server protocol tcp global 202.110.10.10 8080 inside 10.110.10.10 www</strong></pre>
+<pre class="screen">[Quidway]<strong> ip vpn-instance vrf10</strong></pre>
+<pre class="screen">[Quidway-vpn-instance]<strong> route-distinguisher 100:001</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> nat server vpn-instance vrf10 protocol tcp global 202.110.10.10 inside 10.110.10.11 ftp</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> nat server vpn-instance vrf10 protocol tcp global 202.110.10.10 inside 10.110.10.11 20</strong></pre>
+<p># 指定一个VPN vrf10内部的主机10.110.10.12，希望外部网络的主机可以利用ping 202.110.10.11命令<strong>ping</strong>通它。</p>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> nat server vpn-instance vrf10 protocol icmp global 202.110.10.11 inside 10.110.10.12</strong></pre>
+<p># 用以下命令可以删除www服务器。</p>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> undo nat server protocol tcp global 202.110.10.10 8070 inside 10.110.10.10 www</strong></pre>
+<p># 用以下命令可以删除VPN vrf10内部的FTP服务器。</p>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> undo nat server vpn-instance vrf10 protocol tcp global 202.110.10.11 8070 inside 10.110.10.11 ftp</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> undo nat server vpn-instance vrf10 protocol tcp global 202.110.10.11 8070 inside 10.110.10.11 20</strong></pre>
+<p># 指定一个外部地址202.110.10.10，从端口1001～1100分别映射VPN vrf10内主机10.110.10.1～10.110.10.100的telnet服务。202.110.10.10:1001访问10.110.10.1，202.110.10:1002访问10.110.10.2。</p>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> nat server vpn-instance vrf10 protocol tcp global 202.110.10.10 1001 1100 inside 10.110.10.1 10.110.10.100 telnet</strong></pre>
+<div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>配置ftp服务器时，必须同时配置ftp data服务器（一般为端口20）。</p>
+</div></div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nat_and_nat_user_log_configuration_commands.html">NAT及NAT用户日志配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

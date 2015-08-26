@@ -1,0 +1,305 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls ldp interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_ldp_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_ldp_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls ldp interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_ldp_interface"></a><a name="display_mpls_ldp_interface"></a>
+
+
+<h1 class="topictitle1">display mpls ldp interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls ldp interface</strong>命令用来查看使能了LDP的接口信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls ldp interface</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name </em>] [<em> interface-type interface-number</em> | <strong>verbose </strong>] [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+<p><strong>display mpls ldp interface</strong> [ <strong>all</strong> ] [ <strong>verbose</strong> ] [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例的名字。使用此参数查看指定VPN实例的使能了LDP的接口的配置信息。</p>
+<p><em>interface-type interface-number</em>：接口类型和编号。使用此参数查看指定接口上LDP的配置信息。</p>
+<p><strong>all</strong>：显示所有使能了LDP的接口信息。</p>
+<p><strong> | </strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+<p><strong>verbose</strong>：显示使能了LDP的接口详细信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>此命令可以用来查看使能了LDP的接口的配置信息，以及部分实时信息，比如发送和接收的Hello消息数。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_ldp_interface__d43724e127"></a><a name="d43724e127"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看LDP接口信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls ldp interface</strong></pre>
+<pre class="screen">     LDP Interface Information in Public Network</pre>
+<pre class="screen">--------------------------------------------------------------------------</pre>
+<pre class="screen"> IF-Name         Status       LAM   Transport-Address   Hello-Sent/Rcv</pre>
+<pre class="screen">--------------------------------------------------------------------------</pre>
+<pre class="screen"> Pos1/0/0        Active       DU    172.17.1.1          2495/2514</pre>
+<pre class="screen"> GE2/0/0         Active       DU    172.17.1.1          1106/1094</pre>
+<pre class="screen">--------------------------------------------------------------------------</pre>
+<pre class="screen"> LAM: Label Advertisement Mode         IF-Name: Interface name</pre>
+
+<div class="tablenoborder"><a name="display_mpls_ldp_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_ldp_interface__tb_02" frame="border" border="1" rules="all"><caption>表1 display mpls ldp interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d43724e163"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d43724e167"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e163 "><p>IF-Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e167 "><p>使能了LDP的接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e163 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e167 "><p>实体状态：激活或非激活</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e163 "><p>LAM</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e167 "><p>标签发布模式为DU：下游自主模式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e163 "><p>Transport-Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e167 "><p>会话TCP连接的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e163 "><p>Hello-Sent/Rcv</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e167 "><p>此接口发出和接收的Hello消息数目</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看LDP接口的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls ldp interface verbose</strong></pre>
+<pre class="screen">
+     LDP Interface Information in Public Network
+ ------------------------------------------------------------------------------
+ Interface Name : Pos1/0/0
+ LDP ID         : 1.1.1.1:0             Transport Address : 1.1.1.1
+ Entity Status  : Active                Effective MTU     : 1500
+
+ Configured Hello Timer     : 15 Sec
+ Negotiated Hello Timer     : 15 Sec
+ Configured Keepalive Timer : 45 Sec
+ Configured Delay Timer     : 0 Sec
+ Label Advertisement Mode   : Downstream Unsolicited
+ Hello Message Sent/Rcvd    : 4186/4190 (Message Count)
+
+ ------------------------------------------------------------------------------
+ Interface Name : Pos1/0/1
+ LDP ID         : 1.1.1.1:0             Transport Address : 1.1.1.1
+ Entity Status  : Active                Effective MTU     : 1500
+
+ Configured Hello Timer     : 15 Sec
+ Negotiated Hello Timer     : 15 Sec
+ Configured Keepalive Timer : 45 Sec
+ Configured Delay Timer     : 0 Sec
+ Label Advertisement Mode   : Downstream Unsolicited
+ Hello Message Sent/Rcvd    : 4227/4230 (Message Count)
+
+ ------------------------------------------------------------------------------</pre>
+
+<div class="tablenoborder"><a name="display_mpls_ldp_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_ldp_interface__tb_01" frame="border" border="1" rules="all"><caption>表2 display mpls ldp interface verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d43724e253"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d43724e257"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e253 "><p>Interface Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e257 "><p>使能了LDP的接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e253 "><p>LDP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e257 "><p>LDP标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e253 "><p>Transport Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e257 "><p>会话TCP连接的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e253 "><p>Entity Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e257 "><p>实体状态：激活或非激活</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e253 "><p>Effective MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e257 "><p>新建LSP时采用的MTU值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e253 "><p>Configured Hello Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e257 "><p>配置的Hello保持定时器的值</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e253 "><p>Negotiated Hello Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e257 "><p>协商的Hello保持定时器的值，为LDP对等体两端所配置的Hello保持定时器的较小值</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e253 "><p>Configured Keepalive Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e257 "><p>配置的存活定时器的值</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e253 "><p>Configured Delay Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e257 "><p>配置的LDP与IGP同步中，LDP会话建立后等待LSP建立的定时器的值</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e253 "><p>Label Advertisement Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e257 "><p>标签发布模式为DU：下游自主模式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d43724e253 "><p>Hello Message Sent/Rcvd</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d43724e257 "><p>此接口发出和接收的Hello消息数目</p>
+</td>
+
+</tr>
+
+
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_ldp_interface_view.html">mpls ldp（接口视图）</a></div>
+<div><a href="display_mpls_interface.html">display mpls interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

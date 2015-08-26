@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="retain-crc enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="retain-crc_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>retain-crc enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="retain-crc_enable"></a><a name="retain-crc_enable"></a>
+
+
+<h1 class="topictitle1">retain-crc enable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>retain-crc enable</strong>命令用来使能传递的报文携带CRC校验码。</p>
+<p><strong>undo retain-crc enable</strong>命令用来关闭报文携带CRC校验码功能。</p>
+<p>缺省情况下，传递的报文不携带CRC。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>retain-crc enable</strong></p>
+<p><strong>undo retain-crc enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>业务实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>CRC（Cyclic Redundancy Check），循环冗余校验码。</p>
+<p>循环冗余码校验是一个检查在通信线路中传输的数据中错误的方法。发送设备为数据块添加一个16或32位的多项式，它就是传输中附加在数据块中的循环冗余码校验。接收终端为数据添加同样的多项式，并将它的结果与发送设备附加的结果进行对比，如果两者相符，就表明数据接收成功，如果不相符，发送端将再次发送数据块。</p>
+<p>使能用户报文中携带CRC校验码后，在隧道的出端可以根据CRC来检测用户报文是否在隧道传输的过程中被修改。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>在业务实例的封装映射模式为<strong>s-tagged one-to-one</strong>时，不能配置该命令来使能传递的报文携带CRC校验码。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="retain-crc_enable__d113891e56"></a><a name="d113891e56"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能传递的报文携带CRC校验码。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> service-instance instance-name mysi</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi] <strong>mapping-type s-tagged bundling</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi] <strong>retain-crc enable </strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,259 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display cfm mp-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mep_ccm-send_enable.html">
+<meta name="DC.Relation" scheme="URI" content="mep_mep-id.html">
+<meta name="DC.Relation" scheme="URI" content="mip_create-type_md_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_cfm_mp-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display cfm mp-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_cfm_mp-info"></a><a name="display_cfm_mp-info"></a>
+
+
+<h1 class="topictitle1">display cfm mp-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display cfm mp-info</strong>命令用来查看指定接口、VLAN或VSI上的CFM管理对象的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display cfm mp-info</strong> [ <strong> interface </strong><em> interface-type interface-number </em>] [<strong> level </strong><em> md-level </em> ] [<strong> inward </strong>|<strong> outward </strong>] [<strong> vlan</strong><em> vlanid </em>|<strong> vsi </strong><em> vsi-name </em>|<strong> no-associated-vlan </strong>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface</strong><em> interface-type interface-number</em>：显示指定接口名称、接口类型和接口号。接口类型包括：Ethernet接口、GE接口、Eth-Trunk接口。</p>
+<p><strong>level</strong> <em> md-level</em>：显示指定维护域MD级别。整数形式，取值范围是0～7，默认级别是0。</p>
+<p><strong>inward </strong>：MEP类型。inward型MEP发出的802.1ag协议报文通过当前MA关联VLAN内的所有接口（除MEP所在接口）向外发送，即在当前MA关联的VLAN内广播。</p>
+<p><strong>outward</strong>：MEP类型。outward型MEP发出的协议报文直接通过该MEP所在的接口向外发送。</p>
+<p><strong>vlan</strong> <em>vlanid</em>：显示指定VLAN信息。整数形式，取值范围是1～4094。</p>
+<p><strong>vsi</strong> <em>vsi-name</em>：显示指定VSI信息。字符串形式，不支持空格，区分大小写，取值范围是1～31。</p>
+<p><strong>no-associated-vlan</strong>：表示没有关联VLAN的MP。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>现如今，802.1ag协议分为draft7草案版本和standard2007标准版本，本命令只支持standard2007标准版本使用。</p>
+<p>在同一接口上可能会配置多个MEP、生成多个MIP，但只能有一个级别的MEP和MIP。如果配置错误会导致报文泄露或者无法正确回复LBR、LTR报文。</p>
+<p>通过使用本命令，查看CFM管理对象的信息，了解该接口的MP之间的关系，以便正确配置MEP。</p>
+<p>使用<a href="cfm_enable_system_view.html">cfm enable（系统视图）</a>命令全局使能CFM功能后才能使用本命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_cfm_mp-info__d19191e113"></a><a name="d19191e113"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定接口、MD级别、MEP类型和VLAN信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display cfm mp-info interface gigabitethernet1/0/1 level 6 inward vlan 300</strong></pre>
+<pre class="screen">MD Name            : md1
+MD Name Format     : md-name
+Level              : 6
+MA Name            : ma1
+MEP ID             : 10
+VLAN ID            : 300
+VSI Name           : --
+Interface Name     : gigabitethernet1/0/1
+CCM Send           :enable
+Direction          : inward
+MAC Address        : 0018-8247-b977
+-----------------------------------------------------
+The total number of MPs is 1.
+The number of MEPs is 1. The number of MIPs is 0.
+</pre>
+
+<div class="tablenoborder"><a name="display_cfm_mp-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cfm_mp-info__tb_01" frame="border" border="1" rules="all"><caption>表1 display cfm mp-info命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.93801965230537%" id="d19191e135"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.06198034769464%" id="d19191e139"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19191e135 "><p>Interface Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19191e139 "><p>接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19191e135 "><p>MD Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19191e139 "><p>MD的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19191e135 "><p>MD Name Format</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19191e139 "><div class="p">MD名称参数输入类型:<ul>
+<li>no-md-name</li>
+<li>dnsname-and-mdname</li>
+<li>mac-address</li>
+<li>md-name</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19191e135 "><p>Level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19191e139 "><p>MD级别，范围0～7，级别越高，优先级越高，也是MA、MP的级别。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19191e135 "><p>MA Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19191e139 "><p>MA名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19191e135 "><p>MEP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19191e139 "><p>MEP 节点标识。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19191e135 "><p>CCM Send</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19191e139 "><div class="p">CCM报文发送的使能状态:<ul>
+<li>enable</li>
+<li>disable</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19191e135 "><p>Direction</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19191e139 "><div class="p">MEP类型:<ul>
+<li>inward</li>
+<li>outward</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19191e135 "><p>VLAN ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19191e139 "><p>MA关联的VLAN ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19191e135 "><p>VSI Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19191e139 "><p>MA关联的VSI名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d19191e135 "><p>MAC Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d19191e139 "><p>接口的MAC地址。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_cfm_mp-info__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cfm_mp-info__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="37%" id="d19191e312"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63%" id="d19191e316"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="37%" headers="d19191e312 "><p>VRPV500R006C01B</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63%" headers="d19191e316 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mep_ccm-send_enable.html">mep ccm-send enable</a></div>
+<div><a href="mep_mep-id.html">mep mep-id</a></div>
+<div><a href="mip_create-type_md_view.html">mip create-type（MD视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="clock timezone">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="clock_daylight-saving-time.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="clock_timezone">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>clock timezone</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="clock_timezone"></a><a name="clock_timezone"></a>
+
+
+<h1 class="topictitle1">clock timezone</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>clock timezone</strong>命令用来对本地时区信息进行设置。</p>
+<p><strong>undo clock timezone</strong>命令用来将本地时区恢复为缺省的UTC（Universal Time Coordinated）时区。</p>
+<p>如果没有指定时区名称，则系统采用默认值&#8220;Default Zone Name&#8221;。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>clock timezone</strong> <em>time-zone-name</em> { <strong>add</strong> | <strong>minus</strong> } <em>offset</em></p>
+<p><strong>undo clock timezone</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>time-zone-name</em>：指定时区名称。字符串形式，取值范围是1～32。</p>
+<p><strong>add</strong>：与通用协调时间UTC相比，<em>time-zone-name</em>增加的时间偏移量。反过来说，就是在系统默认的UTC时区的基础上，减去<em>offset</em>，就可以得到<em>time-zone-name</em>所标识的时区时间。</p>
+<p><strong>minus</strong>：与UTC时间相比，<em>time-zone-name</em>减少的时间偏移量。反过来说，就是在系统默认的UTC时区的基础上，加上<em>offset</em>，就可以得到<em>time-zone-name</em>所标识的时区时间。</p>
+<p><em>offset</em>：指定与UTC的时间差。形式是：<em>HH:MM:SS</em>，<em>HH</em>表示小时，取值范围是0～23，<em>MM</em>和<em>SS</em>分别表示分和秒，取值范围是0～59。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在输入设定的时间参数时，只支持24小时制。其中，可以不输入<em>MM</em><em>SS</em>，表示0分0秒。但至少需要输入一位数的<em>HH</em>的值，例如输入0，则表示0小时0分0秒。</p>
+<p>设置生效后，可以用<a href="display_clock.html">display clock</a>命令进行查看。另外，日志、诊断等信息时间采用经过时区和夏令时调整过的本地时间。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="clock_timezone__d7118e115"></a><a name="d7118e115"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在中国北京，设置本地时区名称为BJ。</p>
+<p>因北京处于+8时区，那么在配置时，需要在UTC时间基础上，再加上8小时，才能得到预期中的BJ时区。</p>
+<pre class="screen">&lt;Quidway&gt;<strong><strong> <strong>clock timezone BJ minus 08:00:00</strong></strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_configuration_commands.html">基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="clock_daylight-saving-time.html">clock daylight-saving-time</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

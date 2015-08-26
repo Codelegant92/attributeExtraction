@@ -1,0 +1,189 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display dhcp server tree">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_dhcp_server_tree">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display dhcp server tree</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_dhcp_server_tree"></a><a name="display_dhcp_server_tree"></a>
+
+<h1 class="topictitle1">display dhcp server tree</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display dhcp server tree</strong>命令用来查看DHCP地址池的树状结构信息，包括各节点的地址池、option参数、地址租用期限、DNS服务器的信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display dhcp server tree</strong> { <strong>all </strong>| <strong>interface</strong> [ <em>interface-type interface-number </em>] | <strong>pool</strong> [ <em>pool-name </em>] | <strong>vlan</strong><em> vlan-id</em> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：表示所有DHCP地址池。</p>
+<p><strong>interface</strong> [ <em>interface-type interface-number </em>]：指定要查看的接口地址池。不指定接口名则表示所有的接口地址池。</p>
+<p><strong>pool</strong> [ <em>pool-name </em>]：指定全局地址池。如果不指定地址池名，表示所有全局地址池。字符串形式，长度范围是1～35。</p>
+<p><strong>vlan</strong> <em>vlan-id</em>：表示范围为指定的VLAN的接口地址池，没指定参数<em>vlan-id</em>时指所有VLAN的接口地址池。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display dhcp server tree</strong>命令用来查看DHCP地址池的树状结构信息，包括各节点的地址池、option参数、地址租用期限、DNS服务器的信息。</p>
+<p>如果不指定任何可选参数，处理如下：</p>
+<ul><li><p>在以太网接口视图下，范围为当前接口的地址池。</p>
+</li><li><p>在其他视图下，范围为所有的地址池。</p>
+</li></ul>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_dhcp_server_tree__d22488e86"></a><a name="d22488e86"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看DHCP地址池的树状结构信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display dhcp server tree all</strong></pre>
+<pre class="screen">Global pool:  </pre>
+<pre class="screen">Pool name: 5      network 10.10.1.0  255.255.255.0 </pre>
+<pre class="screen">Child node:6  </pre>
+<pre class="screen">Sibling node:7</pre>
+<pre class="screen">  option 1 ip-address 255.0.0.0 </pre>
+<pre class="screen">  expired 1 0 0  </pre>
+<pre class="screen">  option 58 hex 00 00 A8 C0  </pre>
+<pre class="screen">  option 59 hex 00 00 00 3C  </pre>
+<pre class="screen">  </pre>
+<pre class="screen">Pool name: 6      host 10.10.1.2  255.0.0.0 </pre>
+<pre class="screen">    hardware-address 1111.2222.3333 gigabitethernet</pre>
+<pre class="screen">Parent node:5 </pre>
+<pre class="screen">  option 1 ip-address 255.255.0.0  </pre>
+<pre class="screen">  expired 1 0 0  </pre>
+<pre class="screen">  option 58 hex 00 00 A8 C0  </pre>
+<pre class="screen">  option 59 hex 00 00 00 3C  </pre>
+<pre class="screen">  </pre>
+<pre class="screen">Pool name: 7      network 10.10.1.64  255.255.255.192 </pre>
+<pre class="screen">PrevSibling node:5  </pre>
+<pre class="screen">Sibling node:8</pre>
+<pre class="screen">  option 1 ip-address 255.0.0.0 </pre>
+<pre class="screen">  </pre>
+<pre class="screen">Pool name: 8      network 20.10.1.1  255.255.255.0 </pre>
+<pre class="screen">Child node:9  </pre>
+<pre class="screen">PrevSibling node:7  </pre>
+<pre class="screen">  option 1 ip-address 255.0.0.0 </pre>
+<pre class="screen">  gateway-list 2.2.2.2 </pre>
+<pre class="screen">  nbns-list 3.3.3.3 </pre>
+<pre class="screen">  netbios-type  m-node </pre>
+<pre class="screen">  expired 2 0 0  </pre>
+<pre class="screen">  option 58 hex 00 01 51 80  </pre>
+<pre class="screen">  option 59 hex 00 00 00 3C  </pre>
+<pre class="screen">  </pre>
+<pre class="screen">Pool name: 9      network 30.10.1.64  255.255.255.0</pre>
+<pre class="screen">Parent node:8 </pre>
+<pre class="screen">  option 1 ip-address 255.0.0.0 </pre>
+<pre class="screen">  gateway-list 2.2.2.2 </pre>
+<pre class="screen">  dns-list 1.1.1.1  </pre>
+<pre class="screen">  domain-name 444444</pre>
+<pre class="screen">  nbns-list 3.3.3.3 </pre>
+<pre class="screen">  netbios-type  m-node </pre>
+<pre class="screen">  expired 2 0 0  </pre>
+<pre class="screen">  option 58 hex 00 01 51 80  </pre>
+<pre class="screen">  option 59 hex 00 00 00 3C  </pre>
+<pre class="screen">  </pre>
+<pre class="screen">Interface pool:  </pre>
+<pre class="screen">Pool name: Ethernet11/2/0 </pre>
+<pre class="screen">  network 5.5.5.0 mask 255.255.255.0  </pre>
+<pre class="screen">  option 1 ip-address 255.255.255.0</pre>
+<pre class="screen">  gateway-list 5.5.5.5 </pre>
+<pre class="screen">  expired 1 0 0  </pre>
+<pre class="screen">  option 58 hex 00 00 A8 C0  </pre>
+<pre class="screen">  option 59 hex 00 00 00 3C</pre>
+<p>该显示信息主要内容解释如下表：</p>
+
+<div class="tablenoborder"><a name="display_dhcp_server_tree__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_dhcp_server_tree__tb_01" frame="border" border="1" rules="all"><caption>表1 display dhcp server tree命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="39.36759889140842%" id="d22488e209"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="60.632401108591594%" id="d22488e212"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>Global pool:</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>全局地址池信息</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>Interface pool:</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>接口地址池信息</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>Pool Name:</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>地址池名称</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>network</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>可分配的地址段范围</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>host x.x.x.x hardware-address H.H.H gigabitethernet</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>静态绑定的IP地址和MAC地址</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>child node:6</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>此节点的子节点为地址池6在这一位置可能出现的节点类型包括：child node：此地址池的子节点（子网）地址池；parent node：此节点的父节点（自然网段）地址池；Sibling node：此节点的下一个兄弟节点（同一自然网段的其它子网）地址池，兄弟节点之间的顺序由配置的先后决定；PrevSibling node：此节点的前一个兄弟节点。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>option</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>自定义的DHCP选项</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>expired</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>地址租约期限，包括天数、小时数、分钟数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>gateway-list</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>为DHCP客户端分配的出口网关路由设备</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>dns-list</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>为DHCP客户端分配的DNS服务器</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>domain-name</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>为DHCP客户端指定的域名</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>nbns-list</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>为DHCP客户端分配的NetBIOS服务器</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="39.36759889140842%" headers="d22488e209 "><p>netbios-type</p>
+</td>
+<td class="cellrowborder" valign="top" width="60.632401108591594%" headers="d22488e212 "><p>为DHCP客户端指定的NetBIOS节点类型</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_configuration_commands.html">DHCP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

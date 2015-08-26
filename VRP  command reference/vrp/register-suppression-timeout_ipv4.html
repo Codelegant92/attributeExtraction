@@ -1,0 +1,77 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="register-suppression-timeout（IPv4）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Relation" scheme="URI" content="probe-interval_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="register-policy_ipv4.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="register-suppression-timeout_ipv4">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>register-suppression-timeout（IPv4）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="register-suppression-timeout_ipv4"></a><a name="register-suppression-timeout_ipv4"></a>
+
+
+<h1 class="topictitle1">register-suppression-timeout（IPv4）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>register-suppression-timeout</strong>命令用来配置<span class="keyword">路由器</span>保持注册抑制状态的超时时间。</p>
+<p><strong>undo register-suppression-timeout</strong>命令用来恢复超时时间为缺省值。</p>
+<p>缺省情况下，<span class="keyword">路由器</span>保持注册抑制状态的超时时间是60秒。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>register-suppression-timeout </strong><em>interval</em></p>
+<p><strong>undo register-suppression-timeout</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interval</em>：表示<span class="keyword">路由器</span>保持注册抑制状态的超时时间。整数形式，取值范围是11～3600，单位是秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例PIM视图、VPN实例PIM视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当<span class="keyword">路由器</span>接收到从RP发来的针对（S，G）项的Register-Stop消息，会立刻停止发送封装组播数据的Register消息，此时<span class="keyword">路由器</span>进入注册抑制状态。</p>
+<p>如果配置的超时时间较小，意味着RP将更频繁地接收到突发性组播数据；如果配置较大的超时时间，则意味着当RP上（S，G）超时时，新接收者加入相应组播组的延迟时间变长。</p>
+<p>值得注意的是，假如使用<a href="probe-interval_ipv4.html">probe-interval（IPv4）</a>命令配置了在超时前发送空注册消息，那么就可以缓解注册的突发现象，这样也可以适当减小超时时间以降低新接收者的加入延迟。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="register-suppression-timeout_ipv4__d110829e72"></a><a name="d110829e72"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中，配置<span class="keyword">路由器</span>保持注册抑制状态的超时时间为70秒。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> pim</strong></pre>
+<pre class="screen">[Quidway-pim]<strong> register-suppression-timeout 70</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="probe-interval_ipv4.html">probe-interval</a></div>
+<div><a href="register-policy_ipv4.html">register-policy</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,222 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="trace mac">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_oam_global_configuration.html">
+<meta name="DC.Relation" scheme="URI" content="trace_mac_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="trace_mac">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>trace mac</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="trace_mac"></a><a name="trace_mac"></a>
+
+
+
+
+<h1 class="topictitle1">trace mac</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>trace mac</strong>命令用来定位当前设备和目的设备之间的连通性故障，这种操作称为通用MAC Trace。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>trace mac</strong> <em>mac-address</em> <span>{<strong>vlan</strong> <em>vlan-id</em>| <strong>vsi</strong> <em>vsi-name</em> }</span> [ <strong>interface</strong> <em>interface-type
+interface-number</em> | <strong>-t</strong> <em>timeout</em> ] *</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>mac-address</em>：指定目的设备的桥MAC地址。格式为H-H-H，其中H为1至4位的十六进制数。不能为广播MAC地址或组播MAC地址。</p>
+<p><strong>vlan</strong> <em>vlan-id</em>：指定VLAN。<em>vlan-id</em>表示VLAN
+ID，整数形式，取值范围是1～4094。</p>
+<p><em>vsi-name</em>：VSI实例对应的名称。字符串形式，长度为1～31个字符。</p>
+<p><strong>interface</strong> <em>interface-type
+interface-number</em>：指定本设备发送Trace报文的出接口。<em>interface-type</em>表示接口类型，取值包括：ethernet、eth-trunk和gigabitethernet<em>。interface-number</em>表示接口编号。如果：</p>
+<ul>
+<li><p>指定本参数，设备直接从该接口发出Trace报文。</p>
+</li>
+<li><p>不指定本参数，首先根据指定的目的MAC地址、VLAN或VSI查询MAC地址转发表，如果：</p>
+</li>
+<li><p>查询到对应的转发表项，按该表项发送Trace报文；</p>
+</li>
+<li><p>未查询到对应的转发表项。如果找不到出接口但是VLAN内有唯一的端口，会直接从该端口转发出去，如果多于一个端口则直接丢弃。</p>
+</li>
+</ul>
+<p><strong>-t</strong> <em>timeout</em>：指定等待应答的超时时间。<em>timeout</em>表示等待应答的超时时间，整数形式，取值范围是1～65535，单位是ms，缺省值是2000ms。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>0：参观级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用本命令时，通用MAC Trace功能必须处于使能状态，否则需首先使用<strong>trace mac enable</strong>命令使能通用MAC
+Trace功能。</p>
+<p>通用MAC Trace不需要由MEP发起，中间节点和目的节点也不需要是MEP或MIP，即在源设备、中间设备和目的设备上均不需要配置MD、MA和MEP就可以进行通用MAC
+Trace，所有中间设备均回应LTR消息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="trace_mac__d124884e130"></a><a name="d124884e130"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># Trace MAC地址为aa99-6600-5600的目的设备，该设备属于VLAN2。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong><strong> trace mac enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>trace mac aa99-6600-5600 vlan 2</strong></strong></pre>
+<pre class="screen">Tracing the route to aa99-6600-5600:</pre>
+<pre class="screen">-------------------------------------------------------------------------------</pre>
+<pre class="screen">Hops     Mac                Ingress                     Ingress Action      Reply Action</pre>
+<pre class="screen">          Forwarded         Egress                      Egress Action                   </pre>
+<pre class="screen">--------------------------------------------------------------------------------</pre>
+<pre class="screen">1     2155-2201-3302      gigabitethernet2/0/1      IngOK                 RlyFDB       </pre>
+<pre class="screen">      Forwarded            gigabitethernet0/0/1       EgrOK      </pre>
+<pre class="screen">2     5522-1101-5503      gigabitethernet0/0/1       IngOK                RlyFDB       </pre>
+<pre class="screen">      Forwarded            gigabitethernet1/0/0       EgrOk        </pre>
+<pre class="screen">3     aa99-6600-5600      gigabitethernet1/0/0       IngOK                RlyHit       </pre>
+<pre class="screen">      Not Forwarded</pre>
+<pre class="screen">Info: Succeed in tracing the destination address.</pre>
+
+<div class="tablenoborder"><a name="trace_mac__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="trace_mac__tb_01" frame="border" border="1" rules="all"><caption>表1 trace mac命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.93801965230537%" id="d124884e187"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.06198034769464%" id="d124884e191"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d124884e187 "><p>Hops</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d124884e191 "><p>跳数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d124884e187 "><p>Mac</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d124884e191 "><p>中间节点或目的节点所在设备的桥MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d124884e187 "><p>Ingress</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d124884e191 "><p>中间节点或目的节点接收Trace报文的入接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d124884e187 "><p>Ingress Action</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d124884e191 "><div class="p">入接口对Trace报文的处理。<ul>
+<li><p>IngOK表示入接口成功转发Trace报文。</p>
+</li>
+<li><p>本字段为空表示入接口转发Trace报文不成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d124884e187 "><p>Reply Action</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d124884e191 "><div class="p">本设备对Trace报文的回复，取值包括：<ul>
+<li><p>RlyFDB：报文在此设备被成功转发到下一跳设备。</p>
+</li>
+<li><p>RlyHit：报文到达目的设备。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d124884e187 "><p>Forwarded</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d124884e191 "><div class="p">Trace报文是否被继续转发，取值包括：<ul>
+<li><p>Forwarded：Trace报文被继续转发。</p>
+</li>
+<li><p>Not Forwarded：Trace报文未被继续转发。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d124884e187 "><p>Egress</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d124884e191 "><p>中间节点转发Trace报文的出接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d124884e187 "><p>Egress Action</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d124884e191 "><div class="p">出接口对Trace报文的处理，取值包括：<ul>
+<li><p>EgrOK表示出接口成功转发Trace报文。</p>
+</li>
+<li><p>本字段为空表示出接口未转发Trace报文或转发不成功。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_oam_global_configuration.html">display oam global
+configuration</a></div>
+<div><a href="trace_mac_enable.html">trace mac enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

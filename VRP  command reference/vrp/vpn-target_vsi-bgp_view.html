@@ -1,0 +1,89 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="vpn-target（VSI-BGP视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="route-distinguisher_vsi-bgp_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="vpn-target_vsi-bgp_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>vpn-target（VSI-BGP视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="vpn-target_vsi-bgp_view"></a><a name="vpn-target_vsi-bgp_view"></a>
+
+
+<h1 class="topictitle1">vpn-target（VSI-BGP视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>vpn-target</strong>命令用来将当前VSI实例与一个或多个VPN-Target进行关联。</p>
+<p><strong>undo vpn-target</strong>命令用于删除当前VSI实例关联的VPN-Target。</p>
+<p>缺省情况下，VSI实例没有与任何VPN-Target进行关联，必须在创建VSI实例时配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>vpn-target</strong> <em>vpn-target </em>&amp;&lt;1-16&gt; [ <strong>both</strong> | <strong>export-extcommunity</strong> | <strong>import-extcommunity</strong> ]</p>
+<p><strong>undo vpn-target</strong> { <strong>all</strong> | <em>vpn-target </em>&amp;&lt;1-16&gt; } [ <strong>both</strong> | <strong>export-extcommunity</strong> | <strong>import-extcommunity</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vpn-target</em>：添加VPN-Target扩展团体属性到VSI实例。用户可以使用以下两种格式之一来表示VPN-Target值。</p>
+<ul>
+<li><p>16位自治系统号:32位用户自定义数，例如：1:3。自治系统号的取值范围是0～65535；用户自定义数的取值范围是0～4294967295。其中，自治系统号和用户自定义数不能同时为0，即VPN
+Target的值不能是0:0。</p>
+</li>
+<li><p>32位IP地址:16位用户自定义数，例如：192.168.122.15:1。IP地址的取值范围是0.0.0.0～255.255.255.255；用户自定义数的取值范围是0～65535。</p>
+</li>
+
+</ul>
+<p><strong>export-extcommunity</strong>：定义出方向路由信息携带的团体属性值。</p>
+<p><strong>import-extcommunity</strong>：定义可以接收带有指定扩展团体属性值的路由信息。</p>
+<p><strong>both</strong>：从目的VPN扩展团体来的入方向路由信息和到目的VPN扩展团体的出方向路由信息。</p>
+<p><strong>all</strong>：删除所有的VPN-Target属性。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VSI-BGP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当PE根据VSI实例向其他PE发送路由时，它将向发送的路由附加Export VPN-Target。当PE从其他PE接收路由时，它根据Import
+VPN-Target决定这些路由是否可以被添加到相应的VSI实例中。因此，通过VPN-Target可以控制节点之间的路由发布。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="vpn-target_vsi-bgp_view__d128516e103"></a><a name="d128516e103"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将当前VSI实例与VPN-Target关联。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>vsi company2</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company2]<strong> pwsignal bgp</strong></pre>
+<pre class="screen">[Quidway-vsi-company2-bgp]<strong> <strong>vpn-target 3:3 export-extcommunity</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company2-bgp]<strong> <strong>vpn-target 4:4 import-extcommunity</strong></strong></pre>
+<pre class="screen">[Quidway-vsi-company2-bgp]<strong> vpn-target 5:5 both</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="route-distinguisher_vsi-bgp_view.html">route-distinguisher（VSI-BGP视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

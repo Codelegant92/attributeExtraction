@@ -1,0 +1,143 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display traffic classifier">
+<meta name="DC.Relation" scheme="URI" content="../vrp/class-based_qos_configuration_commmands.html">
+<meta name="DC.Relation" scheme="URI" content="traffic_classifier.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_traffic_classifier">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display traffic classifier</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_traffic_classifier"></a><a name="display_traffic_classifier"></a>
+
+
+
+<h1 class="topictitle1">display traffic classifier</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display traffic classifier</strong>命令用来显示路由器配置的类信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display traffic classifier</strong> { <strong>system-defined</strong> | <strong>user-defined </strong>}
+[ <em>classifier-name </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>system-defined</strong> ：显示系统预定义流分类的信息。</p>
+<p><strong>user-defined</strong> ：显示用户定义流分类的信息。</p>
+<p><em>classifier-name</em>：指定流分类名称。字符串形式，长度范围是1～31。如果未指定流分类名称，则显示所有系统预定义类或所有用户定义类的信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display traffic classifier</strong>命令可以观察到的信息包括：</p>
+<ul>
+<li><p>流分类名</p>
+</li>
+<li><p>匹配类的规则之间的关系</p>
+</li>
+<li><p>匹配规则</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_traffic_classifier__d69424e73"></a><a name="d69424e73"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><pre class="screen">&lt;Quidway&gt;<strong> <strong>display traffic classifier user-defined</strong></strong></pre>
+<pre class="screen">User Defined Classifier Information:</pre>
+<pre class="screen"> Classifier: HUAWEI</pre>
+<pre class="screen">  Operator: AND</pre>
+<pre class="screen">  Rule(s) : if-match ip-precedence 5</pre>
+
+<pre class="screen"> Classifier: database</pre>
+<pre class="screen">  Operator: AND</pre>
+<pre class="screen">  Rule(s) : if-match acl 3131</pre>
+<pre class="screen">            if-match inbound-interface GigabitEthernet10/2/0</pre>
+
+<div class="tablenoborder"><a name="display_traffic_classifier__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_traffic_classifier__tb_01" frame="border" border="1" rules="all"><caption>表1 display traffic classifier命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="39.12824389014865%" id="d69424e110"><p>主要字段</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="60.87175610985135%" id="d69424e114"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="39.12824389014865%" headers="d69424e110 "><p>User Defined Classifier Information</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.87175610985135%" headers="d69424e114 "><p>用户定义的流分类信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.12824389014865%" headers="d69424e110 "><p>Classifier</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.87175610985135%" headers="d69424e114 "><p>流分类名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.12824389014865%" headers="d69424e110 "><p>Operator</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.87175610985135%" headers="d69424e114 "><p>匹配类的规则之间的关系</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.12824389014865%" headers="d69424e110 "><p>Rule(s)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.87175610985135%" headers="d69424e114 "><p>匹配规则</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/class-based_qos_configuration_commmands.html">基于类的QoS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="traffic_classifier.html">traffic classifier</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

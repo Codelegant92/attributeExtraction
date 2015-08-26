@@ -1,0 +1,73 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="timers rip">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rip_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="timers_rip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>timers rip</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="timers_rip"></a><a name="timers_rip"></a>
+
+
+<h1 class="topictitle1">timers rip</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>timers rip</strong>命令用来调整定时器。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>timers rip </strong><em>update age suppress garbage-collect</em></p>
+<p><strong>undo timers rip</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>update</em>：路由更新报文的发送间隔。整数形式，取值范围是1～86400，单位是秒。缺省值是30秒。</p>
+<p><em>age</em>：路由老化时间。整数形式，取值范围是1～86400，单位是秒。缺省值是180秒。</p>
+<p><em>suppress</em>：抑制时间，在这段时间内最佳路由信息的发布被抑制。整数形式，取值范围是0～86400，单位是秒。在目前的版本中，固定是0秒。</p>
+<p><em>garbage-collect</em>：路由被从路由表中删除的时间（标准中定义的garbage收集时间）。整数形式，取值范围是1～86400，单位是秒。缺省值是120秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>RIP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>可以通过调节RIP定时器来调整路由协议的性能，来满足网络需要。请注意如果这四个定时器的值如果配置不当，会引起路由不稳定。</p>
+<p>它们的配置值关系是：<em>update</em>&lt;<em>age</em>，<em>suppress</em>&lt;<em>garbage-collect</em>。例如，如果更新时间大于失效时间，那么在更新时间内，如果RIP路由发生变化，路由器将无法及时通知邻居。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>通常情况下，无需改变缺省值，该命令须谨慎使用。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="timers_rip__d124550e73"></a><a name="d124550e73"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置RIP各定时器的值。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>ripng 100</strong></pre>
+<pre class="screen">[Quidway-rip-100]<strong> timers rip 35 170 0 240</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rip_configuration_commands.html">RIP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

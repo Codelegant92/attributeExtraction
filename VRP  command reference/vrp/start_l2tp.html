@@ -1,0 +1,94 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="start l2tp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/l2tp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="l2tp_domain_suffix-separator.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="start_l2tp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>start l2tp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="start_l2tp"></a><a name="start_l2tp"></a>
+
+
+<h1 class="topictitle1">start l2tp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>start l2tp</strong>命令用来指定本端作为L2TP LAC端时发起呼叫的触发条件。</p>
+<p><strong>undo
+start</strong>命令用来删除指定的触发条件。</p>
+<p>缺省情况下，<span class="keyword">路由器</span>上没有配置触发条件。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>start l2tp</strong> { <strong>ip</strong> <em>ip-address</em> } &amp;&lt;1-5&gt;
+{ <strong>domain</strong> <em>domain-name</em> | <strong>fullusername</strong> <em>user-name</em> }</p>
+<p><strong>undo
+start</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ip</strong> <em>ip-address</em>：指定隧道对端（LNS）的IP地址，最多可以设置五个LNS的IP地址，彼此形成备份LNS。</p>
+<p><strong>domain</strong> <em>domain-name</em>：指定触发连接请求的用户域名，对大小写敏感，字符串形式，长度范围是1～20。</p>
+<p><strong>fullusername</strong> <em>user-name</em>：指定触发连接请求的用户全名，对大小写敏感，取值为字符串，长度范围是1～64。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>L2TP组视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>start l2tp</strong>命令在LAC端使用。<span class="keyword">VRP</span>支持如下2种情况触发连接请求：</p>
+<ul>
+<li><p>根据用户域名发起建立隧道的连接请求。例如：假设用户所在公司的域名为huawei.com，则可以指定包含huawei.com域名的用户为VPN用户。</p>
+</li>
+<li><p>根据用户全名发起建立隧道的连接请求。此时，可以直接使用用户全名来指定该用户为VPN用户。</p>
+</li>
+</ul>
+<p>LAC在收到LAC客户端发起的呼叫后，根据上面所述的情况判断，如果发现发起呼叫的用户是VPN用户，则LAC按照配置的LNS的先后顺序向各LNS发送建立L2TP隧道的连接请求，当得到LNS的接收应答后，该LNS就作为隧道的对端；否则LAC向下一个LNS发起隧道连接请求。</p>
+<p>LAC判定一个用户是否为VPN用户的顺序为：</p>
+<ol>
+<li><p>检查用户全名是否与配置的VPN用户全名一致，如果一致，则为VPN用户。</p>
+</li>
+<li><p>如果用户全名与配置的VPN用户全名不一致，则检查用户名中的域名是否与配置的域名一致，如果一致，则为VPN用户。</p>
+</li>
+<li><p>如果均不匹配，则判定该用户不是VPN用户。</p>
+</li>
+</ol>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="start_l2tp__d120431e120"></a><a name="d120431e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 根据域名huawei.com来判断VPN用户，对应的总部L2TP接入服务器的IP地址为202.38.168.1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> l2tp-group 1</strong></pre>
+<pre class="screen">[Quidway-l2tp1]<strong> start l2tp ip 202.38.168.1 domain huawei.com</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/l2tp_configuration_commands.html">L2TP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="l2tp_domain_suffix-separator.html">l2tp domain suffix-separator</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

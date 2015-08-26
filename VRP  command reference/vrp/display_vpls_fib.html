@@ -1,0 +1,313 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display vpls fib">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_vpls_mid.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_vpls_fib">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display vpls fib</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_vpls_fib"></a><a name="display_vpls_fib"></a>
+
+
+<h1 class="topictitle1">display vpls fib</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display vpls fib</strong>命令用来显示VPLS FIB信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display vpls fib</strong> [ <strong>vsi</strong> <em>vsi-name</em> | <strong>link</strong> <em>link-id</em> ] [ <strong>verbose</strong> ]<span> [<strong> | count</strong> ] </span><span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vsi</strong> <em>vsi-name</em>：用于显示指定VSI实例的FIB信息。字符串形式，不支持空格，区分大小写，取值范围是1～31。</p>
+<p><strong>link</strong> <em>link-id</em>：用于显示指定连接的FIB信息。十进制整数形式，取值范围是1～40960。</p>
+<p><strong>verbose</strong>：用于显示详细的FIB信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>定位VPLS故障时，可以使用<strong>display vpls fib</strong>命令查看VPLS的转发信息。执行<strong>display vpls fib</strong>命令后，可以通过在命令行中指定不同的关键字或参数来显示所需要的转发表项信息。</p>
+<p>如果此命令不指定关键字或参数，将显示所有的转发表项信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_vpls_fib__d71831e123"></a><a name="d71831e123"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有VPLS的转发表的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display vpls fib</strong></strong></pre>
+<pre class="screen">Vsi-Name                     Link-ID   Link-Type             Link-State</pre>
+<pre class="screen">company1                     1          VPLS Remote Link     up</pre>
+<p>显示信息的解释请参见下表。</p>
+<p># 显示名称为company1的VSI实例的转发表的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display vpls fib vsi company1 verbose</strong></strong></pre>
+<pre class="screen">**Vsi-Name      : company1</pre>
+<pre class="screen">  Vsi Index: 0</pre>
+<pre class="screen">  Link-ID       : 1                   Link-Type   : VPLS Remote-link</pre>
+<pre class="screen">  Tunnel ID     : 0x6002001           Link-State  : up</pre>
+<pre class="screen">  Enable CtrWord: Disabled            L2 MTU      : 1500</pre>
+<pre class="screen">  Link VCLabel  : 19458               Tunnel Label: 1024</pre>
+<pre class="screen">  Out Interface : Pos2/0/0            Next Hop    : 168.1.1.2</pre>
+<pre class="screen">  Out VCLabel   : 19457               Lsp token   : 0x7</pre>
+<pre class="screen">  SendCounter   : 0                   Recv Counter: 0</pre>
+<pre class="screen">  Op type       : add                 Down Status : OK</pre>
+
+<div class="tablenoborder"><a name="display_vpls_fib__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vpls_fib__tb_01" frame="border" border="1" rules="all"><caption>表1 display vpls fib命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="26.73217435122197%" id="d71831e179"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="73.26782564877804%" id="d71831e183"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>VSI Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>VSI名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Link-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>连接标志号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Link-Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>连接类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Link-State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>连接状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Vsi Index</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>VSI的索引号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>隧道标志号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Enable CtrWord</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>是否启动控制字功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>L2 MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>二层MTU</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Link VCLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>虚电路的入标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Tunnel Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>隧道标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Out Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Next Hop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>下一跳地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Out VCLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>虚电路的出标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Lsp token</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>LSP的Token</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Send Counter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>发送VPLS报文的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Recv Counter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>接收VPLS报文的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Op type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>对于该转发表的操作类型。add表示添加该VSI的转发项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.73217435122197%" headers="d71831e179 "><p>Down Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.26782564877804%" headers="d71831e183 "><p>转发表FIB的下发状态</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_vpls_fib__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vpls_fib__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.0047871000252%" id="d71831e403"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.99521289997481%" id="d71831e407"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d71831e403 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d71831e407 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d71831e403 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d71831e407 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_vpls_mid.html">display vpls mid</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

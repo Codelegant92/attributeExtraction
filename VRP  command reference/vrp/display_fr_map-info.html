@@ -1,0 +1,215 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display fr map-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frame_relay_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="fr_map_ip.html">
+<meta name="DC.Relation" scheme="URI" content="fr_inarp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_fr_map-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display fr map-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_fr_map-info"></a><a name="display_fr_map-info"></a>
+
+
+<h1 class="topictitle1">display fr map-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display fr map-info</strong>命令用来显示帧中继地址映射表。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display fr map-info</strong> [ <strong>interface</strong><em> interface-type
+interface-number</em> ]<span> [ <strong>dlci</strong> <em>dlci-number</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type interface-number</em>：用于指定查看的接口。指定接口可以是主接口，也可以是子接口。不指定接口则显示全部信息。</p>
+<p><strong>dlci</strong> <em>dlci-number</em>：DLCI号。取值范围是16～1007。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>根据此命令的显示信息可以查看用户配置的静态地址映射是否正确以及动态地址映射是否工作正常等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_fr_map-info__d25177e60"></a><a name="d25177e60"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示帧中继地址映射表。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display fr map-info</strong></pre>
+<pre class="screen">Map Statistics for interface Serial1/0/2:0 (DTE)</pre>
+<pre class="screen">DLCI = 100, IP INARP 100.100.1.1, Serial1/0/2:0</pre>
+<pre class="screen">create time = 2002/10/21 14:48:44, status = ACTIVE</pre>
+<pre class="screen">encapsulation = ietf, vlink = 14, broadcast</pre>
+<pre class="screen">DLCI = 200, IP INARP 100.100.1.1, Serial1/0/2:0</pre>
+<pre class="screen">create time = 2002/10/21 14:34:42, status = ACTIVE</pre>
+<pre class="screen">encapsulation = ietf, vlink = 0, broadcast</pre>
+<pre class="screen">DLCI = 300, IP 1.1.1.1, Serial1/0/2:0</pre>
+<pre class="screen">create time = 2002/10/21 15:03:35, status = ACTIVE</pre>
+<pre class="screen">encapsulation = ietf, vlink = 15</pre>
+
+<div class="tablenoborder"><a name="display_fr_map-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fr_map-info__tb_01" frame="border" border="1" rules="all"><caption>表1 display fr map-info输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.87503149407911%" id="d25177e100"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.12496850592089%" id="d25177e104"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d25177e100 "><p>Map Statistics for interface Serial1/0/2:0
+(DTE)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d25177e104 "><p>工作方式是DTE的Serial1/0/2:0的地址映射信息表。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d25177e100 "><p>DLCI =</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d25177e104 "><p>虚电路号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d25177e100 "><p>IP INARP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d25177e104 "><p>动态IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d25177e100 "><p>Serial1/0/2:0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d25177e104 "><p>虚电路号和动态IP地址所在的具体接口类型和编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d25177e100 "><p>create time =</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d25177e104 "><p>地址映射信息的创建时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d25177e100 "><p>status =</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d25177e104 "><p>地址映射的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d25177e100 "><p>encapsulation =</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d25177e104 "><p>接口协议的封装格式。可以使用<a href="link-protocol_fr.html">link-protocol fr</a>命令来改变。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d25177e100 "><p>vlink =</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d25177e104 "><p>虚电路连接的总数。</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d25177e100 "><p>broadcast</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d25177e104 "><p>支持广播。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="display_fr_map-info__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fr_map-info__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.962967628164755%" id="d25177e229"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.037032371835245%" id="d25177e233"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="45.962967628164755%" headers="d25177e229 "><p>VRPV500R006C01B070</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.037032371835245%" headers="d25177e233 "><p>在命令行中增加可选参数<strong>dlci</strong> <em>dlci-number</em>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/frame_relay_configuration_commands.html">帧中继配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="fr_map_ip.html">fr map ip</a></div>
+<div><a href="fr_inarp.html">fr inarp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

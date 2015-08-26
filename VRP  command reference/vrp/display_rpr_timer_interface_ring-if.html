@@ -1,0 +1,194 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rpr timer interface ring-if">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rpr_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="rpr_protection_timer_atd-timeout.html">
+<meta name="DC.Relation" scheme="URI" content="rpr_protection_timer_fast-timeout.html">
+<meta name="DC.Relation" scheme="URI" content="rpr_protection_timer_holdoff-timeout.html">
+<meta name="DC.Relation" scheme="URI" content="rpr_protection_timer_keepalive-timeout.html">
+<meta name="DC.Relation" scheme="URI" content="rpr_protection_timer_slow-timeout.html">
+<meta name="DC.Relation" scheme="URI" content="rpr_protection_timer_wtr-timeout.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rpr_timer_interface_ring-if">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rpr timer interface ring-if</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rpr_timer_interface_ring-if"></a><a name="display_rpr_timer_interface_ring-if"></a>
+
+
+<h1 class="topictitle1">display rpr timer interface ring-if</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display rpr timer interface ring-if</strong>命令用来显示本地节点的所有的RPR定时器配置信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display rpr timer interface ring-if</strong> <em>interface-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-number</em>：接口编号。取值范围是0～31。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rpr_timer_interface_ring-if__d64301e42"></a><a name="d64301e42"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示RPR接口1下的定时器信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rpr timer interface ring-if 1</strong></pre>
+<pre class="screen">Protection wtr timers : timeout:10(s), time remain:0(s)</pre>
+
+<pre class="screen">Protection discovery timers: txfasttimout:10(ms), txslowtimeout:1000(ms)</pre>
+
+<pre class="screen">Protection attribute timers:1(s)</pre>
+
+<pre class="screen">Protection Keepalivetimeout timers:3(ms)</pre>
+
+<pre class="screen">Protection holdoff timers: west:0(ms), east:0(ms) </pre>
+
+<div class="tablenoborder"><a name="display_rpr_timer_interface_ring-if__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rpr_timer_interface_ring-if__tb_01" frame="border" border="1" rules="all"><caption>表1 display rpr timer interface ring-if命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.04308390022676%" id="d64301e76"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.95691609977325%" id="d64301e80"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64301e76 "><p>Protection wtr timers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64301e80 "><p>节点的等待恢复时间，单位为s。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64301e76 "><p>timeout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64301e80 "><p>本地节点的WTR（Wait to Restore）超时时间，单位为s。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64301e76 "><p>time remain</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64301e80 "><p>节点剩余的等待恢复时间，单位为s。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64301e76 "><p>Protection discovery timers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64301e80 "><p>TP/TC帧的转发时间，单位为ms。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64301e76 "><p>txfasttimeout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64301e80 "><p>TP/TC帧快发定时器超时时间，单位为ms。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64301e76 "><p>txslowtimeout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64301e80 "><p>TP/TC帧慢发定时器超时时间，单位为ms。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64301e76 "><p>Protection attribute timers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64301e80 "><p>属性发现定时器（ATD定时器）表示节点发送ATD帧的间隔时间，单位为s。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64301e76 "><p>Protection Keepalivetimeout timers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64301e80 "><p>节点的keepalive超时时间，单位为ms。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.04308390022676%" headers="d64301e76 "><p>Protection holdoff timers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.95691609977325%" headers="d64301e80 "><p>节点的故障延时上报时间，单位为ms。</p>
+<div class="p">流量路径分为：<ul>
+<li><p>west：逆时针方向</p>
+</li>
+<li><p>east：顺时针方向</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rpr_configuration_commands.html">RPR配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="rpr_protection_timer_atd-timeout.html">rpr protection timer atd-timeout</a></div>
+<div><a href="rpr_protection_timer_fast-timeout.html">rpr protection timer fast-timeout</a></div>
+<div><a href="rpr_protection_timer_holdoff-timeout.html">rpr protection timer holdoff-timeout</a></div>
+<div><a href="rpr_protection_timer_keepalive-timeout.html">rpr protection timer keepalive-timeout</a></div>
+<div><a href="rpr_protection_timer_slow-timeout.html">rpr protection timer slow-timeout</a></div>
+<div><a href="rpr_protection_timer_wtr-timeout.html">rpr protection timer wtr-timeout</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

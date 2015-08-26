@@ -1,0 +1,65 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="summary (RIP)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rip_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="rip_poison-reverse.html">
+<meta name="DC.Relation" scheme="URI" content="rip_split-horizon.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="summary_rip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>summary (RIP)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="summary_rip"></a><a name="summary_rip"></a>
+
+<h1 class="topictitle1">summary (RIP)</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>summary</strong>命令用来使能RIP有类聚合，聚合后的路由以使用自然掩码的路由形式发布。</p>
+<p><strong>undo summary</strong>命令用来取消有类聚合以便在子网之间进行路由，此时，子网的路由信息就会被发布出去。路由聚合降低了路由表中路由信息量。</p>
+<p>缺省情况下，RIP-2启用有类聚合功能。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>summary</strong></p>
+<p><strong>undo summary</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>RIP视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>有类聚合对于RIP-1不起作用。当使用RIP-2时，可通过<strong>undo summary</strong>命令取消有类聚合。</p>
+<p>在RIP-2中进行路由聚合可提高大型网络的可扩展性和效率。聚合IP地址就是指RIP路由表中没有子路由项，即没有单个IP地址组合构成的路由项。在缩减路由表的同时，这也使路由器能处理更多的路由。</p>
+<p>在有类聚合被使能的情况下，路由器在向自然网段边界外发布路由时会将子网地址聚合到自然网络边界。但在配置水平分割或毒性反转的情况下，有类聚合将失效。因此在向自然网段边界外发送聚合路由时，相关视图下的水平分割和毒性反转功能都应关闭。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="summary_rip__d122403e44"></a><a name="d122403e44"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能RIP-2有类聚合。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway]<strong> rip 1</strong></pre>
+<pre class="screen">[Quidway-rip-1]<strong> summary</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rip_configuration_commands.html">RIP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="rip_poison-reverse.html">rip poison-reverse</a></div>
+<div><a href="rip_split-horizon.html">rip split-horizon</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

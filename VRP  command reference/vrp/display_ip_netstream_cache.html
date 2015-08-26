@@ -1,0 +1,542 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ip netstream cache">
+<meta name="DC.Relation" scheme="URI" content="../vrp/netstream_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ip_netstream_export.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_ipv6_multicast.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_mpls.html">
+<meta name="DC.Relation" scheme="URI" content="ip_netstream_multicast.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ip_netstream_cache">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ip netstream cache</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ip_netstream_cache"></a><a name="display_ip_netstream_cache"></a>
+
+
+<h1 class="topictitle1">display ip netstream cache</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display netstream ip cache</strong>命令用来显示指定NetStream板的NetStream缓冲区信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ip netstream cache </strong>{ {<strong> all-slot </strong>| <strong>slot</strong> <em>slot-id</em> } [ <strong>flow-type</strong> { <strong>ip </strong>|<strong> ipv6 </strong>| <strong>mpls ip </strong>|<strong> mpls ipv6 </strong>|<strong> mpls unknown </strong> | <strong>multicast-vpn</strong> } ] [ <strong>interface</strong> <em>interface-type
+interface-number</em> ] [ <strong>bgp-nexthop</strong><em> bgp-nexthop </em>] } <span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all-slot</strong>：所有的接口板</p>
+<p><strong>slot</strong><em> slot-id</em>：接口板槽号。使用此参数指定当前活跃的NetStream板。</p>
+<p><strong>flow-type</strong>：显示缓冲中指定类型的流统计信息。</p>
+<p><strong>ip </strong>：IPv4流量信息。</p>
+<p><strong>ipv6</strong> ：IPv6流量信息。</p>
+<p><strong> mpls-ip </strong> ：MPLS和IPv4流量信息。</p>
+<p><strong>mpls-ipv6</strong>:MPLS和IPv6流量信息。</p>
+<p><strong>mpls-unknown</strong>：未知的MPLS流量信息。</p>
+<p><strong>multicast-vpn</strong>：组播VPN流量信息。</p>
+<p><strong>interface</strong><em> interface-type</em>：指定VLAN下的二层物理接口类型。</p>
+<p><em> interface-number</em>：指定VLAN下的二层物理接口号。</p>
+<p><strong>bgp-nexthop</strong><em>bgp-nexthop</em>：bgp下一跳地址。点分十进制形式。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display ip netstream cache</strong>命令可结合NetStream流采样使能命令使用。在配置了NetStream流采样使能命令后，可以通过<strong>display ip netstream cache</strong>命令来显示指定NetStream板上指定流类型的流信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ip_netstream_cache__d31180e182"></a><a name="d31180e182"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定显示3号板的流缓冲区信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip net cache slot 3</strong>
+ NetStream cache information
+  Stream active timeout(minute)  : 30
+  Stream inactive timeout(second): 30
+  Active stream entry            : 0
+  Inactive stream entry          : 10000
+  Stream entry been created      : 0
+  Ip flow last clearing of statistics           : never
+  Mpls-ip flow last clearing of statistics      : never
+  Mpls-unknown flow last clearing of statistics : never
+  Multicast-vpn flow last clearing of statistics: never
+  Ipv6 flow last clearing of statistics         : never
+  Mpls-ipv6 flow last clearing of statistics    : never
+IP packet number of different size
+1-80        81-552      553-576     577-612     613-1480    1481-1500   1501-
+0           0           0           0           0           0           0
+Protocol           Total  Packets   Stream   Packets Active(sec)   Idle(sec)
+                   Streams   /Sec     /Sec   /stream     /stream     /stream
+ ----------------------------------------------------------------------------
+ UDP-other            491        0        0         1           0          30
+ TCP-other             14        0        0       194         451          28
+ UDP-NTP             4914        0        0         1           0          30
+ UDP-NetBios          133        0        0         4           6          30
+ TCP-Telnet             5        0        0       476        1221          11
+ Total               5557        0        0         2           2          29 
+ip streams Info:
+ DstIf            DstIP           SrcIP           Pro Tos Flgs Pkts
+ SrcIf            DstP  Msk AS    SrcP  Msk AS    Drop NextHop
+ BGP NextHop     VpnId DstVlan SrcVlan Octets
+ --------------------------------------------------------------------------
+
+ ET2/2/0          100.1.1.201     100.1.1.186     17  192 0    1
+ Local            123   24  0     123   32  0     0    100.1.1.201
+ 0.0.0.0         0     0       0       76
+
+ ET2/2/0          100.1.1.168     100.1.1.186     6   0   16   18
+ Local            1245  24  0     23    32  0     0    100.1.1.168
+ 0.0.0.0         0     0       0       720
+
+ ET2/2/0          100.1.1.168     100.1.1.186     6   192 24   2
+ Local            1245  24  0     23    32  0     0    100.1.1.168
+ 0.0.0.0         0     0       0       209
+
+ Local            100.1.1.186     100.1.1.168     6   0   24   199
+ ET2/2/0          23    32  0     1245  24  0     0    127.0.0.1
+ 0.0.0.0         0     0       0       8056     </pre>
+
+<div class="tablenoborder"><a name="display_ip_netstream_cache__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_netstream_cache__tb_01" frame="border" border="1" rules="all"><caption>表1 display ip NetStream cache 命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.583432233562775%" id="d31180e203"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.41656776643721%" id="d31180e207"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Stream active timeout(minute)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流的活跃老化时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Stream inactive timeout(second):</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流的不活跃老化时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Active stream entry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>当前活跃的流数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Inactive stream entry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>当前不活跃的流数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Stream entry been created</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>目前共创建的流数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Ip flow last clearing of statistics</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>上次清除Ip流的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Mpls-ip flow last clearing of statistics </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>上次清除MPLS Ip流的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Mpls-unknown flow last clearing of statistics</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>上次清除MPLS未知流的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Multicast-vpn flow last clearing of statistics</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>上次清除组播VPN流的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Ipv6 flow last clearing of statistics</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>上次清除IPv6流的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Mpls-ipv6 flow last clearing of statistics</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>上次清除MPLS IPv6流的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>IP packet number of different size</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>不同大小IP报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>产生流量的协议报文。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Total Streams</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>协议报文产生的流的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Packets/Sec</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>每秒钟产生的协议报文数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Stream/Sec</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>每秒钟产生的流数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Packets/stream</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>每条流中包含的报文数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Active(sec)/stream</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流的活跃老化时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Idle(sec)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流的非活跃老化时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>ip streams Info</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>IP NetStream流信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>DstIf</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含目的接口信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>DstIP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的目的IP信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>SrcIP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的源IP信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Pro</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的协议号信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Tos</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的tos信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Flgs</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的TCP flag字段信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Pkts</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>SrcIf</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的源接口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>DstP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的目的端口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Msk</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的掩码。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>AS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的AS域号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>SrcP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>源端口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Drop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>丢弃报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的下一跳地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p> BGP NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的BGP下一跳地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>VpnId</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的VPN实例号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>DstVlan</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>目的VLAN。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>SrcVlan</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>源VLAN。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31180e203 "><p>Octets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31180e207 "><p>流中包含的总字节数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ip_netstream_cache__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_netstream_cache__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d31180e658"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d31180e662"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d31180e658 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d31180e662 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/netstream_configuration_commands.html">NetStream配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ip_netstream_export.html">display ip netstream export</a></div>
+<div><a href="ip_netstream.html">ip netstream</a></div>
+<div><a href="ip_netstream_ipv6.html">ip netstream ipv6</a></div>
+<div><a href="ip_netstream_ipv6_multicast.html">ip netstream ipv6 multicast</a></div>
+<div><a href="ip_netstream_mpls.html">ip netstream mpls</a></div>
+<div><a href="ip_netstream_multicast.html">ip netstream multicast</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

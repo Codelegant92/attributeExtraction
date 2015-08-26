@@ -1,0 +1,258 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="using（T3接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/t3_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_controller_t3_t3_interface.html">
+<meta name="DC.Relation" scheme="URI" content="default_interface-description_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="using_t3_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>using（T3接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="using_t3_interface_view"></a><a name="using_t3_interface_view"></a>
+
+<h1 class="topictitle1">using（T3接口视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>using</strong>命令用来激活T3通道，创建T3接口的同步串口。</p>
+<p><strong>undo using</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，T3通道未被激活，不能创建同步串口。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>using t3</strong></p>
+<p><strong>undo using</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>t3</strong>：激活T3通道。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>T3接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>必须先激活T3通道，T3接口才能形成44M的串口。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="using_t3_interface_view__d127507e39"></a><a name="d127507e39"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 对T3 1/0/0激活T3通道。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> controller t3 1/0/0</strong></pre>
+<pre class="screen">[Quidway-T3 1/0/0]<strong> using t3</strong></pre>
+<p># 查看T3形成的串口的配置和状态信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong>display interface serial 1/0/0/0:0</strong></pre>
+<pre class="screen">Serial1/0/0/0:0 current state : DOWN</pre>
+<pre class="screen">Line protocol current state : DOWN</pre>
+<pre class="screen">Route Port,The Maximum Transmit Unit is 1500, Hold timer is 10(sec)</pre>
+<pre class="screen">Derived from T3 1/0/0,  Unchannelized mode,  baudrate is 44736000 bps</pre>
+<pre class="screen">Internet protocol processing : disabled</pre>
+<pre class="screen">Link layer protocol is PPP</pre>
+<pre class="screen">LCP initial</pre>
+<pre class="screen">Physical layer is unchannelized T3, Crc type is 16</pre>
+<pre class="screen">QoS max-bandwidth : 44736 Kbps</pre>
+<pre class="screen">Output queue : (Urgent queue : Size/Length/Discards)  0/50/0</pre>
+<pre class="screen">Output queue : (Protocol queue : Size/Length/Discards) 0/1000/0</pre>
+<pre class="screen">Output queue : (FIFO queue : Size/Length/Discards)  0/256/0</pre>
+<pre class="screen">Statistics last cleared: never</pre>
+<pre class="screen">    Last 300 seconds input rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Last 300 seconds output rate 0 bits/sec, 0 packets/sec</pre>
+<pre class="screen">    Input: 0 packets, 0 bytes</pre>
+<pre class="screen">           0 errors, 0 runts, 0 giants, 0 CRC,</pre>
+<pre class="screen">           0 overruns, 0 aborts, 0 ONR</pre>
+<pre class="screen">    Output:0 packets, 0 bytes</pre>
+<pre class="screen">           0 errors, 0 underruns, 0 ONR</pre>
+
+<div class="tablenoborder"><a name="using_t3_interface_view__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="using_t3_interface_view__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface serial命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="32.7538422776518%" id="d127507e108"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="67.2461577223482%" id="d127507e111"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Serial1/0/0/0:0 current state :</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><div class="p">串口当前的物理状态：<ul><li><p>UP：物理状态正常启动。</p>
+</li><li><p>DOWN：物理连接不正常。</p>
+</li><li><p>Administratively down：如果网络管理员在该接口执行<strong>shutdown</strong>命令，将显示状态为Administratively down。</p>
+</li></ul>
+</div>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Line protocol current state : </p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><div class="p">显示该接口的链路协议状态：<ul><li><p>UP：接口的链路协议处于正常的启动状态。</p>
+</li><li><p>DOWN：接口的链路协议不正常，或者没有在此接口配置IP地址。</p>
+</li></ul>
+</div>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>The Maximum Transmit Unit is </p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>接口的最大传输单元（MTU）。例如串口缺省值是1500字节。长度大于MTU的报文，将会被分片后再发送。如果设置了不准分片，会被丢弃。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Hold timer is</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>报文的生命周期。报文如果在生命周期内没有被送出去，则将丢弃。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Derived from </p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>形成串口的T3接口号和T1通道号。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Timeslot(s) Used:</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>形成串口的时隙号。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>baudrate is</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>串口的带宽。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Internet protocol processing : disabled</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>接口没有配置IP地址。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Link layer protocol is</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>串口的数据链路层协议。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>LCP initial</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>LCP初始化。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Physical layer is</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>物理层链路信息。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>QoS max-bandwidth :</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>QoS最大带宽。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Output queue : (Urgent queue : Size/Length/Discards)  Output queue : (Protocol queue : Size/Length/Discards) Output queue : (FIFO queuing : Size/Length/Discards)  </p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><div class="p">接口输出队列的当前状态，通常包括三类输出队列（Output queue）：<ul><li><p>紧急队列（Urgent queue），链路层的协议报文，比如PPP的协商报文和Keepalive报文等将进入这个队列。</p>
+</li><li><p>协议队列（Protocol queue），IP优先级为6的报文将进入协议队列。</p>
+</li><li><p>普通的报文队列（FIFO queue），根据接口上应用的队列类型，可能是FIFO（First In First Out Queue）、PQ（Priority Queue）、CQ（Custom Queue）或CBQ（Class-based Queue）等。</p>
+</li></ul>
+当发生拥塞时，接口首先发送紧急队列中的报文，然后是协议队列中的报文，最后发送普通队列中的报文。对于各种发送队列，显示为Size/Length/Discards形式的数字，这里各字段含义如下：<ul><li><p>Size ：队列中的分组数。</p>
+</li><li><p>Length：用分组表示的最大队列的长度。</p>
+</li><li><p>Discards：由于队列已满而丢失的分组数。</p>
+</li></ul>
+通过检查Discards在一段时间内与Size和Length的关系，可以考察该接口的性能是否满足要求。例如：当Discards的值较大时可能表示<span class="keyword">路由器</span>正忙于进行其他工作，而无法及时处理进入的分组，如果这种情况持续很长的时间，则通常表示需要一个更强大的<span class="keyword">路由器</span>以满足工作的要求。</div>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Statistics last cleared:</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>上次清除本接口统计信息的时间。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Last 300 seconds input rate </p>
+<p>Last 300 seconds output rate</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>这一字段显示了在前300秒内通过接口发送和接收的字节速率和报文速率。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Input:</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>接口收到的总报文数和总字节数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>errors</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>在物理层检测时发现的错误报文数目。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>runts</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>接口接收到小于规定的最小报文长度报文数。例如对于以太网报文的最小长度为64字节。接受到的小于64字节的报文将被丢弃。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>giants</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>接收到长度大于规定长度的报文数目。此接口接收报文的最大长度为1500字节。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>CRC</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>收到了长度正常但CRC校验错误的报文数目。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>overruns</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>接收的报文速度大于转发处理能力导致无法处理的报文。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>aborts</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>接收报文的异常错误。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>ONR</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>内存ownership错误。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>Output:</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>接口发送的报文数和总字节数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d127507e108 "><p>underruns</p>
+</td>
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d127507e111 "><p>因为接口读取内存的速度小于转发的速度而无法发送报文数目。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="using_t3_interface_view__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="using_t3_interface_view__tb_02" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.338345864661655%" id="d127507e347"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d127507e350"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d127507e347 "><p>VRPV500R003C07B250</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d127507e350 "><p>增加显示上次清除本接口统计信息的时间。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d127507e347 "><p>VRPV500R005C05B003</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d127507e350 "><p>缺省情况下，系统不显示接口默认描述信息。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/t3_interface_configuration_commands.html">T3接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_controller_t3_t3_interface.html">display controller t3（T3接口）</a></div>
+<div><a href="default_interface-description_enable.html">default interface-description enable</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

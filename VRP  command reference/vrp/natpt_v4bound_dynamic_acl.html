@@ -1,0 +1,64 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="natpt v4bound dynamic acl">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nat-pt_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="natpt_v4bound_dynamic_acl">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>natpt v4bound dynamic acl</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="natpt_v4bound_dynamic_acl"></a><a name="natpt_v4bound_dynamic_acl"></a>
+
+<h1 class="topictitle1">natpt v4bound dynamic acl</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>natpt v4bound dynamic acl</strong>命令用来为IPv4侧到IPv6侧的报文配置动态映射。</p>
+<p><strong>undo natpt v4bound dynamic acl</strong>命令用来取消动态映射配置。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>natpt v4bound dynamic acl</strong>
+				<em>acl-number</em>
+				<strong>prefix</strong>
+				<em>natpt-prefix </em></p>
+<p><strong>undo natpt v4bound dynamic acl</strong>
+				<em>acl-number</em>
+			</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>acl-number</em>：指定IPv4访问控制列表编号。整数形式，取值范围是2000～2999，即基本ACL。</p>
+<p><em>natpt-prefix</em>：指定NAT-PT前缀，长度只能为96位。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>将命令中指定的前缀（前缀长度是96位）加在被ACL标识的IPv4报文的源地址前面，就可将其转换为IPv6地址。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>使用命令<strong>undo natpt v4bound dynamic acl</strong>可能会影响某些动态映射的转换。</p>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="natpt_v4bound_dynamic_acl__d99450e60"></a><a name="d99450e60"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使用基本ACL 2000来对IPv4报文的源地址进行识别，将NAT-PT前缀2001::/96加在IPv4源地址的前面转换为IPv6地址。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>natpt v4bound dynamic acl 2000 prefix 2001::</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nat-pt_configuration_commands.html">NAT-PT配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

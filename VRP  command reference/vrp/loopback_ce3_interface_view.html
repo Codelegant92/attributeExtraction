@@ -1,0 +1,66 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="loopback（CE3接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ce3_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="e1_set_loopback_ce3_interface_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="loopback_ce3_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>loopback（CE3接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="loopback_ce3_interface_view"></a><a name="loopback_ce3_interface_view"></a>
+
+<h1 class="topictitle1">loopback（CE3接口视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>loopback</strong>命令用来使能CE3接口的环回功能。</p>
+<p><strong>undo loopback</strong>命令用来禁止环回。</p>
+<p>缺省情况下，禁止CE3接口环回。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>loopback</strong> { <strong>local</strong> | <strong>payload</strong> | <strong>remote</strong> }</p>
+<p><strong>undo</strong> <strong>loopback</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>local</strong>：使能CE3接口对内自环。</p>
+<p><strong>payload</strong>：使能CE3接口对外载荷环回。数据经过成帧器，生成载荷后再进行环回。</p>
+<p><strong>remote</strong>：使能CE3接口对外远端环回。数据不经过成帧器，未生成载荷即进行环回。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>CE3接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>环回功能主要用于检测接口或电缆本身的状况，正常工作时应禁止这些功能。</p>
+<p>当CE3接口设置为本端环回时，CE3接口的物理状态变为Up。</p>
+<div class="p">当对CE3接口设置环回时，该环回也会在该CE3接口下的同步串口生效：<ul><li>如果同步串口的链路层协议是PPP，当设置环回时，接口的物理状态变为Up，而链路协议状态为Down。</li><li>如果同步串口的链路层协议是HDLC，当设置环回时，接口的物理状态和链路协议状态都是Up。</li></ul>
+</div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="loopback_ce3_interface_view__d90383e69"></a><a name="d90383e69"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能CE3接口1/0/0对内自环。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> controller e3 1/0/0</strong></pre>
+<pre class="screen">[Quidway-E3 1/0/0]<strong> loopback local</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ce3_interface_configuration_commands.html">CE3接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="e1_set_loopback_ce3_interface_view.html">e1 set loopback（CE3接口视图）</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

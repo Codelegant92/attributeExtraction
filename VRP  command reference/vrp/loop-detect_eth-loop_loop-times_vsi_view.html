@@ -1,0 +1,102 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="loop-detect eth-loop loop-times（VSI视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_loop-detect_eth-loop.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="loop-detect_eth-loop_loop-times_vsi_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>loop-detect eth-loop loop-times（VSI视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="loop-detect_eth-loop_loop-times_vsi_view"></a><a name="loop-detect_eth-loop_loop-times_vsi_view"></a>
+
+
+<h1 class="topictitle1">loop-detect eth-loop loop-times（VSI视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>loop-detect eth-loop loop-times</strong>命令用来创建或删除VSI内的以太环路检测命令。</p>
+<p><strong>undo loop-detect eth-loop</strong>命令用来删除VSI内的以太环路检测命令。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>loop-detect eth-loop loop-times </strong><em>loop-times</em><strong> detect-cycle </strong><em>detect-cycle-time</em><strong> cycles </strong><em>cycles</em> {<strong> block-time </strong><em>block-time</em><strong> retry-times </strong><em>retry-times</em> | <strong>alarm-only </strong>}</p>
+<p><strong>undo loop-detect eth-loop</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>loop-times</strong><em> loop-times</em>：配置在一个检测间隔内允许的环回次数，整数形式，取值范围是3～1000。设备在<em>detect-cycle-time</em>秒内检测VSI下的环回次数，如果超过配置的<em>loop-times</em>次，则判断出现环路。</p>
+<p><strong>detect-cycle</strong><em> detect-cycle-time</em>：每个检测周期的时间，整数形式，取值范围是3～30，单位是秒。</p>
+<p><strong>cycles</strong><em> cycles</em>：配置检测几个检测周期才执行阻断操作，整数形式，取值范围是1～15。</p>
+<p><strong>block-time </strong><em>block-time</em>：配置接口阻断时间，整数形式，取值范围是10～65535，单位是秒。</p>
+<p><strong>retry-times </strong><em>retry-times</em>：阻断恢复后，环路允许重复出现次数，超过此次数后接口永久阻断。整数形式，取值范围是1～5。</p>
+<p><strong>alarm-only</strong>：配置系统检测到环路时不阻断接口，只是记录日志并给网管发送告警。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VSI视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对于<strong>cycles</strong><em> cycles</em>参数，如果只配置一个检测周期，则系统在某一个检测周期内检测到的环回次数超过了<em>loop-times</em>次，就会认为出现环路；如果配置检测多个检测周期，则系统在某一个检测周期内（这个检测周期作为第一个检测周期）检测到的环回次数超过了<em>loop-times</em>次，此时系统不会认为出现环路，在第<em>cycles</em>个检测周期如果还是检测到环回次数超过了<em>loop-times</em>次，系统才认为出现环路。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>在配置检测多个检测周期时，中间的检测周期中的检测结果对最终的环路判断结果没有影响，最终的环路判断结果是根据第一检测周期和第<em>cycles</em>检测周期的检测结果得出的。</p>
+</div></div>
+<p>在一个VSI下有多台设备配置以太环路检测时，需要在每台设备上配置不同的<em>cycles</em>参数，让每台设备在不同的周期执行阻断判决，以避免多台设备阻断同一个环路的不同接口而导致设备的正常转发也被阻断。</p>
+<p><strong>block-time </strong><em>block-time</em>参数和<strong>retry-times </strong><em>retry-times</em>参数配合使用，可以控制每次阻断的时间和永久阻断的次数。例如：<em>block-time</em>为100秒，<em>retry-times</em>为2次。那么系统在检测到该VSI下出现环路后，将按如下方式阻断接口。</p>
+<ol>
+<li><p>第一次检测到环路后，将出现环路的接口阻断100秒后恢复。</p>
+</li>
+<li><p>在刚刚阻断100秒接口恢复后的第一个环路检测周期<em>detect-cycle-time</em>内，如果再次检测到环路，则将出现环路的接口阻断2&times;100秒之后恢复；否则认为环路消除，以后再出现环路时，重新开始计算。</p>
+</li>
+<li><p>如果在第二个阻断周期结束后，立即检测到了环路，则将出现环路的接口阻断3&times;100秒之后恢复。</p>
+</li>
+<li><p>如果在第三个阻断周期结束后，立即检测到了环路，即，第一个阻断结束后又重复出现了3次环路，此时已经超过了<em>retry-times</em>定义的阻断后允许重复出现的环路次数，系统将永久阻断出现环路的接口。</p>
+<p>系统每次检测到环路时，都要记录日志并给网管发送告警。</p>
+<p>在一个VSI下有多个AC和PW出现环路时，如何进行阻断可以分为如下几种情况：</p>
+<ul>
+
+<li><p>如果配置优先或仅阻断AC，在多个AC内部先阻断优先级低的接口，接口的阻断优先级可以通过<strong>loop-detect block-priority</strong>命令配置；</p>
+</li>
+<li><p>如果配置优先阻断PW，在多个PW内部优先阻断Spoke-PW（在HVPLS中，位于UPE侧的PW）；</p>
+</li>
+<li><p>如果没有配置阻断策略，则使用系统默认的阻断策略：环路中AC的个数多于PW的个数时，优先阻断AC；PW的个数多于AC的个数时，优先阻断PW；AC的个数等于PW的个数时，优先阻断AC。</p>
+</li>
+</ul>
+</li>
+</ol>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="loop-detect_eth-loop_loop-times_vsi_view__d90258e195"></a><a name="d90258e195"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在VSI下配置以太环路检测。</p>
+<pre class="screen">&lt;Quiway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quiway]<strong> vsi vsi1</strong></pre>
+<pre class="screen">[Quiway-vsi-vsi1] <strong>loop-detect eth-loop loop-times 3 detect-cycle 10 cycles 3 block-time 100 retry-times 3</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_loop-detect_eth-loop.html">display loop-detect eth-loop</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

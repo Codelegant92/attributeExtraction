@@ -1,0 +1,154 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display this">
+<meta name="DC.Relation" scheme="URI" content="../vrp/file_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="save.html">
+<meta name="DC.Relation" scheme="URI" content="reset_saved-configuration.html">
+<meta name="DC.Relation" scheme="URI" content="display_saved-configuration.html">
+<meta name="DC.Relation" scheme="URI" content="display_current-configuration.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_this">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display this</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_this"></a><a name="display_this"></a>
+
+
+<h1 class="topictitle1">display this</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display this</strong>命令用来显示系统当前视图的运行配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>this</strong><span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>|：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当用户在某一视图下完成一组配置之后，需要验证是否配置正确，则可以执行<strong>display this</strong>命令来查看当前生效的参数。</p>
+<p>对于某些正在生效的配置参数，如果与缺省工作参数相同，则不显示；对于某些参数，虽然用户已经配置，但如果这些参数所在的功能如果没有生效，则不予显示。</p>
+<p>在不同接口视图下使用该命令，将直接显示相应接口下的配置；在不同协议视图下使用该命令，将显示相应协议视图的配置；在协议子视图下，不显示任何配置信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_this__d68814e85"></a><a name="d68814e85"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示<span class="keyword">路由器</span>系统当前视图下生效的运行配置参数。</p>
+<pre class="screen">[Quidway]<strong> display this</strong></pre>
+<pre class="screen">#</pre>
+<pre class="screen"> sysname Quidway</pre>
+<pre class="screen">#</pre>
+<pre class="screen"> command-privilege level 0 view system interface</pre>
+<pre class="screen">#</pre>
+<pre class="screen">Return</pre>
+
+<div class="tablenoborder"><a name="display_this__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_this__tb_01" frame="border" border="1" rules="all"><caption>表1 display this命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="27.45023935500126%" id="d68814e120"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="72.54976064499874%" id="d68814e124"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="27.45023935500126%" headers="d68814e120 "><p>sysname</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="72.54976064499874%" headers="d68814e124 "><p><span class="keyword">路由器</span>的主机名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="27.45023935500126%" headers="d68814e120 "><p>command-privilege</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="72.54976064499874%" headers="d68814e124 "><p>命令行授权的类型</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_this__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_this__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d68814e170"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d68814e174"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d68814e170 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d68814e174 "><p>增加通配符<span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/file_management_configuration_commands.html">管理配置文件命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="save.html">save</a></div>
+<div><a href="reset_saved-configuration.html">reset saved-configuration</a></div>
+<div><a href="display_saved-configuration.html">display saved-configuration</a></div>
+<div><a href="display_current-configuration.html">display current-configuration</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

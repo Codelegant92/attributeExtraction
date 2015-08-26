@@ -1,0 +1,195 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ping lsp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="tracert_lsp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ping_lsp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ping lsp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ping_lsp"></a><a name="ping_lsp"></a>
+
+
+<h1 class="topictitle1">ping lsp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ping lsp</strong>命令用来检测LSP的连通性及LSP是否能够保证正常的转发。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ping lsp </strong> [ <strong>-a</strong> <em>source-ip</em> | <strong>-c</strong> <em>count</em> | <strong>-exp</strong> <em>exp-value</em> | <strong>-h</strong> <em>ttl-value</em> | <strong>-m</strong> <em>interval</em> | <strong>-r</strong> <em>reply-mode</em> | <strong>-s</strong> <em>packet-size</em> | <strong>-t</strong> <em>time-out</em> | <strong>-v</strong> ] * { <strong>ip</strong> <em> destination-address
+mask-length</em> [ <em>ip-address</em> ] | <strong>te tunnel</strong> <em>tunnel-number</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>-a</strong> <em>source-ip</em>：发送echo请求报文的源IPv4地址。</p>
+<p><strong>-c</strong> <em>count</em>：发送echo请求报文的数目。整数形式，取值范围是1～4294967295。</p>
+<p><strong>-exp</strong> <em>exp-value</em>：发送的echo请求报文的EXP值。整数形式，取值范围是0～7。</p>
+<p><strong>-h</strong> <em>ttl-value</em>：发送的echo请求报文的TTL值。整数形式，取值范围是1～255。</p>
+<p><strong>-m</strong> <em> interval</em>：发送下一个报文的间隔时间。整数形式，取值范围是1～10000，单位是毫秒。</p>
+<p><strong>-r</strong> <em>reply-mode</em>：应答模式。整数形式，缺省值为2。</p>
+<p><strong>-s</strong> <em>packet-size</em>：发送的净荷报文长度，即不包括IP头和UDP头的报文长度。整数形式，取值范围是65～8100，单位是字节。</p>
+<p><strong>-t</strong> <em>time-out</em>：等待echo应答的超时时间。单位为毫秒，取值范围是0～65535。</p>
+<p><strong>-v</strong>：输出详细信息。</p>
+<p><strong>ip</strong> <em>destination-address mask-length</em>：LDP LSP的目的IPv4地址和掩码长度。</p>
+<p><em>ip-address</em>：MPLS Ping报文IP头中的目的地址，前缀为127.0.0.0/8。</p>
+<p><strong>te</strong> <strong>tunnel</strong> <em>tunnel-number</em>：TE隧道的接口编号。</p>
+<p>：标识探测CR-LSP热备份隧道。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>0：参观级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令提供与普通Ping相同的功能，区别仅在于前者是在LSP上进行。</p>
+<p>指定远端的PW信息。Remote指定的信息，会最终编码到Ping报文中，在远端寻找相应的PW。缺省情况下，Ping报文的信息源于本地的PW信息，这适合于单跳的情况。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ping_lsp__d105904e187"></a><a name="d105904e187"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 对目的地址4.4.4.9/32进行MPLS Ping操作，发送10个大小为200字节的echo请求报文。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>ping lsp -c 10 -s 200 ip 4.4.4.9 32</strong></pre>
+<pre class="screen">  LSP PING FEC: IPV4 PREFIX 4.4.4.9/32 : 200  data bytes, press CTRL_C to break
+    Reply from 4.4.4.9: bytes=200 Sequence=1 time = 11 ms
+    Reply from 4.4.4.9: bytes=200 Sequence=2 time = 6 ms
+    Reply from 4.4.4.9: bytes=200 Sequence=3 time = 6 ms
+    Reply from 4.4.4.9: bytes=200 Sequence=4 time = 6 ms
+    Reply from 4.4.4.9: bytes=200 Sequence=5 time = 12 ms
+    Reply from 4.4.4.9: bytes=200 Sequence=6 time = 9 ms
+    Reply from 4.4.4.9: bytes=200 Sequence=7 time = 12 ms
+    Reply from 4.4.4.9: bytes=200 Sequence=8 time = 9 ms
+    Reply from 4.4.4.9: bytes=200 Sequence=9 time = 12 ms
+    Reply from 4.4.4.9: bytes=200 Sequence=10 time = 12 ms
+
+  --- FEC: IPV4 PREFIX 4.4.4.9/32 ping statistics ---
+    10 packet(s) transmitted
+    10 packet(s) received
+    0.00% packet loss
+    round-trip min/avg/max = 6/10/12 ms
+</pre>
+<div class="p"># 对MPLS
+TE隧道进行Ping操作。<pre class="screen">&lt;Quidway&gt;<strong> ping lsp te tunnel 1/0/0</strong></pre>
+</div>
+<pre class="screen">  LSP PING FEC: RSVP IPV4 SESSION QUERY Tunnel1/0/0 : 100  data bytes, press CTRL_C to break</pre>
+<pre class="screen">    Reply from 20.1.1.2: bytes=100 Sequence=0 time = 50 ms</pre>
+<pre class="screen">    Reply from 40.1.1.2: bytes=100 Sequence=1 time = 28 ms</pre>
+<pre class="screen">    Reply from 20.1.1.2: bytes=100 Sequence=2 time = 33 ms</pre>
+<pre class="screen">    Reply from 40.1.1.2: bytes=100 Sequence=3 time = 52 ms</pre>
+<pre class="screen">    Reply from 20.1.1.2: bytes=100 Sequence=4 time = 8 ms</pre>
+<pre class="screen">  --- FEC: RSVP IPV4 SESSION QUERY Tunnel1/0/0 ping statistics ---</pre>
+<pre class="screen">    5 packet(s) transmitted</pre>
+<pre class="screen">    5 packet(s) received</pre>
+<pre class="screen">    0.00% packet loss</pre>
+<pre class="screen">    round-trip min/avg/max = 8/34/52 ms</pre>
+<p># 对目的地址3.3.3.3/32进行MPLS Ping操作，输出详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>ping lsp -v ip 3.3.3.3 32 </strong></pre>
+<pre class="screen">  LSP PING FEC: IPV4 PREFIX 3.3.3.3/32 : 100  data bytes, press CTRL_C to break</pre>
+<pre class="screen">    Reply from 3.3.3.3: bytes=100 Sequence=1 time = 4 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply from 3.3.3.3: bytes=100 Sequence=2 time = 4 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply from 3.3.3.3: bytes=100 Sequence=3 time = 4 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply from 3.3.3.3: bytes=100 Sequence=4 time = 4 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply from 3.3.3.3: bytes=100 Sequence=5 time = 5 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">  --- FEC: IPV4 PREFIX 3.3.3.3/32 ping statistics ---</pre>
+<pre class="screen">    5 packet(s) transmitted</pre>
+<pre class="screen">    5 packet(s) received</pre>
+<pre class="screen">    0.00% packet loss</pre>
+<pre class="screen">    round-trip min/avg/max = 4/4/5 ms   </pre>
+
+<div class="tablenoborder"><a name="ping_lsp__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="ping_lsp__tb_01" frame="border" border="1" rules="all"><caption>表1 ping lsp &#8211;v命令输出信息描述 </caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.7538422776518%" id="d105904e265"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.2461577223482%" id="d105904e269"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d105904e265 "><p>Return Code</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d105904e269 "><div class="p">返回码。不同的返回值有不同的含义<ul>
+<li><p>0：表示没有返回码；</p>
+</li>
+<li><p>1：表示收到错误的请求；</p>
+</li>
+<li><p>2：表示收到未知的TLV；</p>
+</li>
+<li><p>3：表示有一条LSP的出接口；</p>
+</li>
+<li><p>4：表示应答设备没有映射；</p>
+</li>
+<li><p>5：表示与下游映射不匹配；</p>
+</li>
+<li><p>6：表示有未知的上游接口；</p>
+</li>
+<li><p>7：为预留值，未对其进行定义；</p>
+</li>
+<li><p>8：表示这是标签交换；</p>
+</li>
+<li><p>9：表示是标签交换，但没有经MPLS转发；</p>
+</li>
+<li><p>10：表示没有标签的映射；</p>
+</li>
+<li><p>11：表示没有标签的实体；</p>
+</li>
+<li><p>12：表示协议没有加载到接口上；</p>
+</li>
+<li><p>13：表示由于标签缩短，使ping命令过早结束。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.7538422776518%" headers="d105904e265 "><p>Subcode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.2461577223482%" headers="d105904e269 "><p>子码，表示交换标签的层次，一般为1。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="tracert_lsp.html">tracert lsp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

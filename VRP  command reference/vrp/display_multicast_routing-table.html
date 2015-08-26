@@ -1,0 +1,239 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display multicast routing-table">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_policy_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_multicast_forwarding-table.html">
+<meta name="DC.Relation" scheme="URI" content="reset_multicast_routing-table.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_multicast_routing-table">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display multicast routing-table</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_multicast_routing-table"></a><a name="display_multicast_routing-table"></a>
+
+
+<h1 class="topictitle1">display multicast routing-table</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display multicast routing-table</strong>命令用来查看IP组播路由表信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display multicast</strong> { <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>all-instance</strong> } <strong>routing-table</strong> [ <em>group-address</em> [ <strong>mask</strong> { <em>group-mask</em> | <em>group-mask-length</em> } ] | <em>source-address</em> [ <strong>mask</strong> { <em>source-mask</em> | <em>source-mask-length</em> } ] | <strong> incoming-interface</strong> { <em>interface-type interface-number</em> | <strong>register</strong> } | <strong>outgoing-interface</strong> { <strong>include</strong> | <strong>exclude</strong> | <strong>match</strong> } { <em>interface-type interface-number</em> | <strong>register</strong> | <strong>none</strong> } ] <sup>*</sup> <span>[<strong> | count</strong> ] </span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+<p><strong>display multicast routing-table</strong> [ <em>group-address</em> [ <strong>mask</strong> { <em>group-mask</em> | <em>group-mask-length</em> }
+] | <em>source-address</em> [ <strong>mask</strong> { <em>source-mask </em>| <em>source-mask-length</em> } ] | <strong>incoming-interface</strong> {<em> interface-type interface-number</em> | <strong>register</strong> } | <strong>outgoing-interface</strong> {<strong> include</strong> | <strong>exclude</strong> | <strong>match</strong> } { <em>interface-type interface-number</em> | <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>register</strong> | <strong>none</strong> } ] <sup>*</sup> <span>[<strong> | count</strong> ] </span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>all-instance</strong>：指定所有实例。</p>
+<p><em>group-address</em>：表示组播组地址。点分十进制形式，取值范围是224.0.0.0～239.255.255.255。</p>
+<p><strong>mask</strong>：指定组播组或源的地址掩码。</p>
+<p><em>group-mask</em>：表示组播组地址掩码。点分十进制形式。</p>
+<p><em>group-mask-length</em>：表示组播组地址掩码长度。整数形式，取值范围是4～32。</p>
+<p><em>source-address</em>：表示组播源地址。点分十进制形式。</p>
+<p><em>source-mask</em>：表示组播源地址掩码。点分十进制形式。</p>
+<p><em>source-mask-length</em>：表示组播源地址掩码长度。整数形式，取值范围是0～32。</p>
+<p><strong>incoming-interface</strong>：表示组播路由项的入接口。</p>
+<p><em>interface-type interface-number</em>：表示接口类型和接口编号。</p>
+<p><strong>register</strong>：表示PIM-SM的注册接口。</p>
+<p><strong>outgoing-interface</strong>：表示组播路由项的出接口。</p>
+<p><strong>include</strong>：显示下游接口列表中包含指定出接口的（S，G）表项。</p>
+<p><strong>exclude</strong>：显示下游接口列表中不包含指定出接口的（S，G）表项。</p>
+<p><strong>match</strong>：显示下游接口列表中只有一个接口且该接口与指定出接口相同的（S，G）表项。如果没有指定接口，则显示下游接口列表为空的（S，G）表项。</p>
+<p><strong>none</strong>：表示出接口列表为空。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令显示组播路由表的信息，而<strong>display multicast forwarding-table</strong>命令显示组播转发表的信息。</p>
+<p>若不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>，则只显示公网实例的相关信息。</p>
+<p>组播转发表项与组播路由表项保持一致。</p>
+<ul>
+<li><p>每一个（S，G）项有一个唯一的Upstream（上游），表示组播数据应该从此接口到达。</p>
+</li>
+<li><p>每一个（S，G）项有一个Downstream List（下游接口列表），表示组播数据应该从哪些接口向外转发。</p>
+</li>
+</ul>
+<p>使用<strong>display multicast routing-table</strong>命令：</p>
+<ul>
+<li><p>若不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>，则只显示公网实例的组播路由表信息。</p>
+</li>
+<li><p>如果指定<em>group-address</em>，则显示指定组播组对应的组播路由表信息。</p>
+</li>
+<li><p>如果指定<em>group-address</em> <strong>mask</strong> ，则显示指定地址范围内的组播组对应的组播路由表信息。</p>
+</li>
+<li><p>如果指定<em>source-address</em>，则显示指定组播源对应的组播路由表信息。</p>
+</li>
+<li><p>如果指定<em>source-address</em> <strong>mask</strong>，则显示指定地址范围内的组播源对应的组播路由表信息。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_multicast_routing-table__d52176e399"></a><a name="d52176e399"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看公网实例的组播路由表中组播组对应的路由项信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display multicast routing-table</strong>
+Multicast routing table of VPN-Instance: public net
+ Total 1 entry
+ 00001. (172.168.0.2, 227.0.0.1)
+       Uptime: 00:00:28
+       Upstream Interface: GigabitEthernet1/2/1
+       List of 2 downstream interfaces
+           1:  GigabitEthernet1/2/2
+           2:  GigabitEthernet1/2/0
+</pre>
+
+<div class="tablenoborder"><a name="display_multicast_routing-table__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_multicast_routing-table__tb_01" frame="border" border="1" rules="all"><caption>表1 display multicast routing-table 命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.81279919375158%" id="d52176e420"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.18720080624843%" id="d52176e424"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d52176e420 "><p>Multicast routing table of VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d52176e424 "><p>组播路由信息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d52176e420 "><p>Total 1 entry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d52176e424 "><p>符合查询条件的路由项数目。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d52176e420 "><p>00001</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d52176e424 "><p>(S,G)项的序号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d52176e420 "><p>(172.168.0.2，227.0.0.1)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d52176e424 "><p>组播路由表的(S,G)项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d52176e420 "><p>Uptime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d52176e424 "><p>(S,G)项已经存在的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d52176e420 "><p>Upstream interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d52176e424 "><p>(S,G)项的上游接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d52176e420 "><p>List of 2 downstream interfaces</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d52176e424 "><p>下游接口列表。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_multicast_routing-table__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_multicast_routing-table__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d52176e523"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d52176e527"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d52176e523 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d52176e527 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_policy_configuration_commands.html">IPv4组播路由管理命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_multicast_forwarding-table.html">display multicast forwarding-table</a></div>
+<div><a href="reset_multicast_routing-table.html">reset multicast routing-table</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

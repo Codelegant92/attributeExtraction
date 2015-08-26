@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="rmon history">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rmon_rmon2_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_rmon_history.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rmon_history">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>rmon history</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="rmon_history"></a><a name="rmon_history"></a>
+
+
+<h1 class="topictitle1">rmon history</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>rmon</strong> <strong>history</strong>命令用来在历史控制表中添加一行。</p>
+<p><strong>undo rmon</strong> <strong>history</strong>命令用来在历史控制表中删除一行。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>rmon history</strong><em> entry-number </em><strong>buckets</strong><em> number </em><strong>interval</strong><em> sampling-interval </em> [ <strong>owner</strong><em> owner-name </em> ] </p>
+<p><strong>undo</strong> <strong>rmon</strong> <strong>history</strong> <em>entry-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>entry-number</em>：添加或删除行的行号。整数形式，取值范围是1～65535。</p>
+<p><em>number</em>：该控制行对应历史表容量。整数形式，取值范围是1～10。</p>
+<p><em>sampling-interval</em>：采样时间。整数形式，取值范围是5～3600，单位是秒。</p>
+<p><em>owner-name</em>：该行的创建者名称。字符串类型，长度范围是1～127。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>以太网接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>可以对当前接口设置抽样参数（抽样时间间隔）和保存数量，若保存数量的容量过大，则根据资源情况进行分配，一般配置数值为10。</p>
+<p>设置之后，RMON定期对指定端口进行数据采集并保存以备查看。抽样信息包括利用率、错误数、总包数、广播数和组播数等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="rmon_history__d114742e91"></a><a name="d114742e91"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口GE1/0/0的历史控制表中删除第15行。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> undo rmon history 15</strong></pre>
+<p># 在接口GE1/0/0的历史控制表中添加1行。</p>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> rmon history 1 buckets 10 interval 30 owner creator</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rmon_rmon2_configuration_commands.html">RMON和RMON2配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_rmon_history.html">display rmon history</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

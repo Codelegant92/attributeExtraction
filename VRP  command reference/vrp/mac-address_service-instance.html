@@ -1,0 +1,77 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mac-address service-instance">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-address.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mac-address_service-instance">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mac-address service-instance</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mac-address_service-instance"></a><a name="mac-address_service-instance"></a>
+
+<h1 class="topictitle1">mac-address service-instance</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mac-address service-instance</strong>命令用于配置业务在出隧道后到达目的CE设备的静态转发MAC地址表项。本命令用来配置基于业务实例的静态MAC表项和黑洞MAC表项。</p>
+<p>表项内容包括：</p>
+<ul><li><p>报文的目的MAC地址；</p>
+</li><li><p>隧道出接口编号；</p>
+</li><li><p>业务实例的名称；</p>
+</li><li><p>目标CE设备的VLAN。</p>
+</li></ul>
+<p><strong>undo mac-address</strong>命令用来删除基于指定业务实例的MAC地址表项。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mac-address static</strong> <em>mac-address</em><em> interface-type interface-number </em><strong>service-instance</strong><em> service-instance-name</em><strong> vlan</strong><em> vlan-id</em></p>
+<p><strong>undo mac-address</strong> <em>mac-address</em> <strong>service-instance</strong> <em>service-instance-name</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>static</strong>：指定表项的类型为静态表项。静态表项不老化，系统复位或接口板热插拔后不丢失。</p>
+<p><em>mac-address</em>：指定报文的目的MAC地址。格式为H-H-H。其中H为1～4位的十六进制数，如00e0、fc01。当输入不足4位时，表示前面的几位为0，如：输入e0，等同于00e0。该MAC地址不可以是组播或广播地址，也不能是设备的虚MAC地址。</p>
+<p><em>interface-type interface-number</em>：指定需要被隔离的接口。</p>
+<p>其中：</p>
+<ul><li><p><em>interface-type</em>表示接口的类型，包括以太网接口和由Eth-Trunk接口。</p>
+</li><li><p><em>interface-number</em>表示接口的编号。</p>
+</li></ul>
+<p><strong>service-instance</strong><em> service-instance-name</em>：指定报文所属业务实例名字。长度范围是1～31个字符，首位不能是空格。</p>
+<p><strong>vlan</strong><em> vlan-id</em>：指定报文目标CE设备所属的外层VLAN ID，取值范围是1～4094。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图、业务实例视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过将业务实例与设备的接口、目的CE设备的MAC地址和CE设备所属的VLAN ID相映射，实现业务出隧道后被静态转发给目标CE设备。</p>
+<p>配置接口+VLAN时，可以将用户报文的外层VLAN替换为MAC表项中配置的VLAN，但是必须保证映射到该服务实例的用户使用了该接口，对于外层VLAN则没有限制。</p>
+<p>静态MAC地址表项配置后即生效，不需要经过MAC地址学习过程，能更快速的实现业务传输。</p>
+<p>该命令只对多点到多点的业务实例有效。</p>
+<p>静态MAC地址表项中的业务实例必须已经与MAC Tunnel绑定。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mac-address_service-instance__d91200e115"></a><a name="d91200e115"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置目的MAC地址为0-0-1的报文经业务实例mysi传输后，从接口GE1/0/1静态转发到在VLAN 30内的CE设备。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address static 0-0-1 gigabitethernet1/0/1 service-instance mysi vlan 30</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mac-address.html">display mac-address</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

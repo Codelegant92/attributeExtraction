@@ -1,0 +1,470 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te protection tunnel">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_protection_tunnel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_protection_tunnel">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te protection tunnel</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_protection_tunnel"></a><a name="display_mpls_te_protection_tunnel"></a>
+
+
+<h1 class="topictitle1">display mpls te protection tunnel</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>mpls</strong> <strong>te</strong> <strong>protection</strong> <strong>tunnel</strong>命令用来显示指定Tunnel和其对应保护Tunnel信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te protection tunnel</strong> { <strong>all</strong> | <em>tunnel-id</em> | <strong>interface tunnel</strong> <em>interface-number</em> } [ <strong>verbose</strong> ]<span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：显示所有保护组信息。</p>
+<p><em>tunnel-id</em>：主隧道或保护隧道的Tunnel ID，取值范围是1～<span>1024</span>。</p>
+<p><strong>interface tunnel</strong> <em>interface-number</em>：指定主隧道或保护隧道的隧道接口。</p>
+<p><strong>verbose</strong>：显示详细信息。</p>
+<p>|：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果指定主隧道的Tunnel ID或隧道接口，则显示该主隧道及其保护隧道的信息。如果指定保护隧道的Tunnel ID或隧道接口，则显示该保护隧道及其保护的所有主隧道的信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_protection_tunnel__d49019e120"></a><a name="d49019e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看Tunnel ID为100的隧道及其保护隧道信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te protection tunnel 100</strong></pre>
+<pre class="screen">------------------------------------------------------------------------</pre>
+<pre class="screen">No. Work-tunnel status  /id  Protect-tunnel status /id    Switch-Result</pre>
+<pre class="screen">------------------------------------------------------------------------</pre>
+<pre class="screen">1           in defect   /100        non-defect     /300  protect-tunnel</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_protection_tunnel__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_protection_tunnel__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te protection tunnel命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.99622071050643%" id="d49019e148"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.00377928949358%" id="d49019e152"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.99622071050643%" headers="d49019e148 "><p>No.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00377928949358%" headers="d49019e152 "><p>隧道保护组的序号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.99622071050643%" headers="d49019e148 "><p>Work-tunnel status  /id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00377928949358%" headers="d49019e152 "><div class="p">主隧道的状态以及Tunnel ID<ul>
+<li><p>non-defect：该隧道状态正常</p>
+</li>
+<li><p>in defect：检测到该隧道故障</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.99622071050643%" headers="d49019e148 "><p>Protect-tunnel status /id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00377928949358%" headers="d49019e152 "><div class="p">保护隧道的状态以及Tunnel ID<ul>
+<li><p>non-defect：该隧道状态正常</p>
+</li>
+<li><p>in defect：检测到该隧道故障</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.99622071050643%" headers="d49019e148 "><p>Switch-Result</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00377928949358%" headers="d49019e152 "><div class="p">倒换结果<ul>
+<li><p>work-tunnel：流量在主隧道传输</p>
+</li>
+<li><p>protect-tunnel：流量已经倒换道保护隧道传输</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看Tunnel1/0/12所保护的主隧道。</p>
+<pre class="screen">&lt;Quidway&gt;<strong>display mpls te protection tunnel interface tunnel 1/0/12</strong>
+------------------------------------------------------------------------
+No. Work-tunnel status  /id  Protect-tunnel status /id    Switch-Result
+------------------------------------------------------------------------
+1          non-defect   /10         non-defect     /12      work-tunnel
+2          non-defect   /11         non-defect     /12      work-tunnel</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_protection_tunnel__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_protection_tunnel__tb_01_1" frame="border" border="1" rules="all"><caption>表2 display mpls te protection tunnel interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.99622071050643%" id="d49019e256"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.00377928949358%" id="d49019e260"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.99622071050643%" headers="d49019e256 "><p>Work-tunnel status  /id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00377928949358%" headers="d49019e260 "><div class="p">主隧道的状态和ID。主隧道的状态有以下几种：<ul>
+<li><p>non-defect：无缺陷</p>
+</li>
+<li><p>in defect：有缺陷</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.99622071050643%" headers="d49019e256 "><p>Protect-tunnel status /id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00377928949358%" headers="d49019e260 "><div class="p">保护隧道的状态以及Tunnel ID<ul>
+<li><p>non-defect：无缺陷</p>
+</li>
+<li><p>in defect：有缺陷</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.99622071050643%" headers="d49019e256 "><p>Switch-Result</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.00377928949358%" headers="d49019e260 "><div class="p">根据主备隧道状态切换的结果，表示当前工作的隧道，有以下取值：<ul>
+<li><p>work-tunnel：数据流量在主隧道上传输</p>
+</li>
+<li><p>protect-tunnel：数据流量在保护隧道上传输</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看Tunnel ID为200的隧道及其保护隧道的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te protection tunnel 200 verbose</strong></pre>
+<pre class="screen">----------------------------------------------------------------
+Verbose information about the No.1 protection-group
+----------------------------------------------------------------
+Work-tunnel id                           : 200
+Protect-tunnel id                        : 201
+Work-tunnel name                         : Tunnel2/0/0
+Protect-tunnel name                      : Tunnel2/0/1
+Work-tunnel reverse-lsp                  : PE2toPE1-1
+Protect-tunnel reverse-lsp               : PE2toPE1-2
+Switch result                            : protect-tunnel
+Tunnel using Best-Effort                 : protect-tunnel
+Work-tunnel defect state                 : in defect
+Protect-tunnel defect state              : non-defect
+work-tunnel reverse-lsp defect state     : non-defect
+protect-tunnel reverse-lsp defect state  : non-defect
+HoldOff                                  : 0ms
+WTR                                      : 120s
+Mode                                     : revertive
+current command                          : manual-switch for protection-lsp</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_protection_tunnel__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_protection_tunnel__tb_02" frame="border" border="1" rules="all"><caption>表3 display mpls te protection tunnel verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="37.780297304106824%" id="d49019e354"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="62.219702695893176%" id="d49019e358"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>Work-tunnel id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><p>主Tunnel的Tunnel ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>Protect-tunnel id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><p>保护Tunnel的Tunnel ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>Work-tunnel name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><p>主Tunnel的接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>Protect-tunnel name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><p>保护Tunnel的接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>Work-tunnel reverse-lsp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><p>主隧道反向LSP的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>Protect-tunnel reverse-lsp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><p>保护隧道反向LSP的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>switch result</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><div class="p">倒换结果：<ul>
+<li><p>work-tunnel：流量在主Tunnel传输</p>
+</li>
+<li><p>protect-tunnel：流量已经倒换到保护Tunnel传输</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>Tunnel using Best-Effort</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><p>使用了逃生路径的隧道：</p>
+<div class="p"><ul>
+<li><p>protect-tunnel：保护隧道正在使用逃生路径</p>
+</li>
+<li><p>none：目前没有隧道使用逃生路径</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>Work-tunnel defect state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><div class="p">主Tunnel缺陷状态<ul>
+<li><p>non-defect：该Tunnel状态正常</p>
+</li>
+<li><p>in defect：检测到该Tunnel故障</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>Protect-tunnel defect state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><div class="p">备Tunnel缺陷状态<ul>
+<li><p>non-defect：该Tunnel状态正常</p>
+</li>
+<li><p>in defect：检测到该Tunnel故障</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>Holdoff</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><p>倒换延迟时间设置</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>WTR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><p>回切等待时间设置</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><div class="p">回切模式：<ul>
+<li><p>revertive：可回切模式</p>
+</li>
+<li><p>non-revertive：不可回切模式</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.780297304106824%" headers="d49019e354 "><p>current command</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.219702695893176%" headers="d49019e358 "><p>当前的倒换请求。&#8220;SF&#8221;表示&#8220;Signal Failure&#8221;，是指由于所检测的LSP故障自动触发倒换</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_te_protection_tunnel__tb_02_1"></a><a name="tb_02_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_protection_tunnel__tb_02_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d49019e585"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d49019e589"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d49019e585 "><p>VRPV500R005C01</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d49019e589 "><p>增加了<strong>interface tunnel</strong> <em>interface-number</em>参数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d49019e585 "><p>VRPV500R005C02</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d49019e589 "><p>增加了MPLS保护组与逃生路径可以混合配置，因此显示信息中增加了字段&#8220;Tunnel using Best-Effort&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d49019e585 "><p>VRPV500R006C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d49019e589 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_oam_configuration_commands.html">MPLS OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_te_protection_tunnel.html">mpls te protection tunnel</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

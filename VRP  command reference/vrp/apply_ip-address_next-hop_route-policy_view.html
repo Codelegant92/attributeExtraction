@@ -1,0 +1,110 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="apply ip-address next-hop（Route-Policy视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_policyconfiguration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="apply_ip-address_next-hop_route-policy_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>apply ip-address next-hop（Route-Policy视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="apply_ip-address_next-hop_route-policy_view"></a><a name="apply_ip-address_next-hop_route-policy_view"></a>
+
+
+<h1 class="topictitle1">apply ip-address next-hop（Route-Policy视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>apply ip-address next-hop</strong>命令用来设置路由的下一跳地址。</p>
+<p><strong>undo apply ip-address next-hop</strong>命令用来取消设置。</p>
+<p>缺省情况下，不设置下一跳地址。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>apply
+ip-address next-hop</strong> { <strong>peer-address</strong> | <em>ipv4-address</em> }</p>
+<p><strong>undo apply ip-address next-hop</strong> { <strong>peer-address</strong> | <em>ipv4-address</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ipv4-address</em>：下一跳地址。</p>
+<p><strong>peer-address</strong>：指定对等体地址为下一跳。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Route-Policy视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在BGP中，通过策略设置路由信息的下一跳地址分两种情况。</p>
+<ul>
+<li><p>IBGP：</p>
+<p>对于IBGP对等体，配置的入口策略或者出口策略均可以生效。如果策略中配置的下一跳地址是不可达的，那么IBGP对等体也会将该路由加入到BGP路由表中，但不是有效路由。</p>
+</li>
+<li><p>EBGP：</p>
+<p>对EBGP对等体使用策略修改下一跳地址时，一般配置为入口策略。这是因为如果配置为出口策略，这条路由到达EBGP对等体后会因为下一跳不可达而被丢弃。当EBGP对等体是通过物理连接直接建立时，该策略不能生效，即不能修改路由信息的下一跳地址。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="apply_ip-address_next-hop_route-policy_view__d1651e80"></a><a name="d1651e80"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 定义一个apply子句，设置下一跳地址为193.1.1.8。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> route-policy policy permit node 10</strong></pre>
+<pre class="screen">[Quidway-route-policy]<strong> apply ip-address next-hop 193.1.1.8</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="apply_ip-address_next-hop_route-policy_view__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="apply_ip-address_next-hop_route-policy_view__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d1651e107"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d1651e111"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d1651e107 "><p>VRPV500R006C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d1651e111 "><p>增加参数<strong>peer-address</strong>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_policyconfiguration_commands.html">路由策略配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

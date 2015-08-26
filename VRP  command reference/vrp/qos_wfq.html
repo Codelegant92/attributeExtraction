@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qos wfq">
+<meta name="DC.Relation" scheme="URI" content="../vrp/congestion_management_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qos_wfq">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qos wfq</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qos_wfq"></a><a name="qos_wfq"></a>
+
+
+<h1 class="topictitle1">qos wfq</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qos wfq</strong>命令用来在接口上应用加权公平队列或修改加权平均队列的参数。</p>
+<p><strong>undo qos
+wfq</strong>命令用来恢复缺省拥塞管理机制FIFO。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qos wfq </strong>[ <strong>queue-length</strong><em> max-queue-length </em>[ <strong>queue-number</strong><em> total-queue-number </em>]
+]</p>
+<p><strong>undo qos wfq</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>max-queue-length</em>：队列的最大长度，即每个队列中数据包的最大个数，超出后数据包将被丢弃，取值范围是1～1024，缺省值为64。</p>
+<p><em>total-queue-number</em>：队列的总数目，可取的值为：16、32、64、128、256、512、1024、2048、4096，缺省值为256。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody">
+<p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody">
+<p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当接口没有应用WFQ策略时，使用该命令可以在接口上应用WFQ策略，同时可指定WFQ的参数。</p>
+<p>如果接口已经应用了WFQ策略，使用该命令可以修改WFQ的参数。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qos_wfq__d109825e63"></a><a name="d109825e63"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口GE 6/0/0上应用WFQ，并设置队列长度为100，总队列个数设置为512个。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface GigabitEthernet6/0/0</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet6/0/0]<strong> <strong>qos wfq queue-length 100 queue-number 512</strong></strong></pre>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>链路层使用X.25协议的物理接口不可以应用加权公平队列。其他物理接口都可以应用加权公平队列。在NE16E/08E/05的
+
+
+
+
+
+ATM口上应用加权公平队列需要进入PVC视图。</p>
+</div></div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/congestion_management_configuration_commands.html">拥塞管理配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,347 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display bfd statistics session">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_bfd_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_bfd_statistics_session">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display bfd statistics session</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_bfd_statistics_session"></a><a name="display_bfd_statistics_session"></a>
+
+
+<h1 class="topictitle1">display bfd statistics session</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display bfd statistics session</strong>命令用来查看BFD会话的统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display bfd statistics session</strong> { { <strong>all</strong> | <strong>static</strong> } [ <strong>for-</strong><strong>ip</strong> | <strong>for-</strong><strong>lsp</strong> | <strong>for</strong>-<strong>pw</strong> | <strong>for-</strong><strong>te</strong><span>| <strong>for-vsi-pw</strong></span> ] [ <strong>slot</strong> <em>slot-id</em> ]<span> | <strong>vsi-pw vsi</strong> <em>vsi-name</em> <strong>peer</strong> <em>peer-address</em> [ <strong>vc-id</strong> <em>vc-id</em> ]</span> }</p>
+<p><strong>display bfd statistics session</strong> { <strong>dynamic</strong> | <strong>discriminator</strong> <em>discr-value </em>| <strong>peer</strong>-<strong>ip</strong> <em>peer-ip</em> [ <strong>vpn</strong>-<strong>instance</strong> <em>vpn-name</em> ] | <strong>static-auto</strong> } [ <strong>slot</strong> <em>slot-id</em> ]</p>
+<p><strong>display bfd statistics session</strong> { <strong>ldp-lsp peer-ip</strong> <em>peer-ip</em> [ <strong>interface</strong> <em>interface-type interface-number</em> ] | <strong>static-lsp</strong> <em>lsp-name</em> | <strong>mpls-te</strong> <strong>interface</strong> <em>interface-type interface-number</em>[ <strong>te-lsp</strong> ] | <strong>pw</strong> <strong>interface</strong> <em>interface-type interface-number</em> [ <strong>secondary</strong> ] }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：显示所有BFD会话统计信息。</p>
+<p><strong>static</strong>：显示静态BFD会话统计信息。</p>
+<p><strong>dynamic</strong>：显示动态BFD会话统计信息。</p>
+<p><strong>discriminator</strong> <em>discr-value</em>：显示指定本地标识符的BFD会话统计信息。</p>
+<p><strong>peer-ip</strong> <em>peer-ip</em>：显示与指定IP地址间的BFD会话统计信息。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：显示绑定到指定VPN实例的BFD会话统计信息。VPN实例名称是字符串形式，长度范围是1～31。</p>
+<p><strong>slot</strong> <em>slot-id</em>：显示指定接口板上的BFD会话统计信息。</p>
+<p><strong>for-ip</strong>：显示检测IP链路的BFD会话统计信息。</p>
+<p><strong>for-pw</strong>：显示检测PW链路的BFD会话统计信息。</p>
+<p><strong>for-lsp</strong>：显示检测LSP链路的BFD会话统计信息。</p>
+<p><strong>for&#8211;te</strong>：显示检测TE隧道的BFD会话统计信息。</p>
+<p><strong>for-vsi-pw</strong>：显示检测VSI PW的BFD会话统计信息。</p>
+<p><em>vsi-name</em>：VSI实例的名称，不区分大小写，字符串类型，长度范围是1～31。</p>
+<p><strong>peer</strong> <em>peer-address</em>：VSI PW对端的IPv4地址，点分十进制。</p>
+<p><strong>vc-id</strong> <em>vc-id</em>：虚电路的唯一标识，一般用于两端VSI ID不同但要求互通的情况。参数vc-id不能与本端其他VSI配置的VSI ID相同，也不能与本端其他negotiate-vc-id指定的VSI ID相同，即vc-id是没有被用过的虚电路号，十进制整数形式，取值范围为1～4294967295。</p>
+<p><strong>ldp-lsp</strong>：显示检测LDP LSP的BFD会话统计信息。</p>
+<p><strong>static-lsp</strong>：显示检测静态LSP的BFD会话统计信息。</p>
+<p><em>lsp-name</em>：静态LSP的名称。</p>
+<p><strong>mpls-te</strong>：显示检测MPLS TE的BFD会话统计信息。</p>
+<p><strong>te-lsp</strong>：显示检测与TE绑定的主LSP的会话统计信息。</p>
+<p><strong>pw</strong>：显示检测PW的BFD会话统计信息。</p>
+<p><strong>secondary</strong>：显示检测备PW的BFD会话统计信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在标识符自协商静态会话和动态会话共用时，根据BFD会话类型（静态、动态）进行查询时，共用会话既属于静态会话，也属于动态会话。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_bfd_statistics_session__d14615e286"></a><a name="d14615e286"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看接口板1的BFD会话统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display bfd statistics session all slot 1</strong></pre>
+<pre class="screen">--------------------------------------------------------------------------------
+Session MIndex : 16384     (One Hop) State : Up        Name : test
+--------------------------------------------------------------------------------
+  Session Type                        : Static 
+  Bind Type                           : IP
+  Local/Remote Discriminator          : 1/2
+  Received Packets                    : 240059
+  Send Packets                        : 240059
+  Received Bad Packets                : 0
+  Send Bad Packets                    : 0
+  Down Count                          : 0
+  ShortBreak Count                    : 0
+  Send Lsp Ping Count                 : 0
+  Dynamic Session Delete Count        : 0
+  Create Time                         : 2009/02/28 09:52:06
+  Last Down Time                      : 0000/00/00 00:00:00
+  Total Time From Last DOWN           : ---D:--H:--M:--S
+  Total Time From Create              : 000D:00H:44M:15S
+--------------------------------------------------------------------------------
+
+     Total Session Number : 1        </pre>
+
+<div class="tablenoborder"><a name="display_bfd_statistics_session__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bfd_statistics_session__tb_01" frame="border" border="1" rules="all"><caption>表1 display statistics session all命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.00050390526581%" id="d14615e308"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.99949609473419%" id="d14615e312"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Session MIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>会话表项的索引</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>会话的当前状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>配置的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Session Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><div class="p">BFD会话类型<ul>
+<li><p>Static：静态配置建立的BFD会话。</p>
+</li>
+<li><p>Dynamic：动态触发建立的BFD会话。</p>
+</li>
+<li><p>Entire_Dynamic：完全动态触发建立的BFD会话，在LSP的宿端<span class="keyword">路由器</span>上使能被动动态创建BFD会话功能后，将创建该会话类型。</p>
+</li>
+<li><p>Static_Auto：静态建立的标识符自协商BFD会话。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Bind Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>BFD的绑定类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Local/Remote Discriminator</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>本地标识符和远端标识符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Received Packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>本端接收到的BFD控制报文数</p>
+<p>该字段可以通过命令<a href="reset_bfd_statistics.html">reset bfd statistics</a>清空</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Send Packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>本端发送的BFD控制报文数该字段可以通过命令<a href="reset_bfd_statistics.html">reset bfd statistics</a>清空</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Received Bad Packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>收到的错误报文个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Send Bad Packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>报文发送失败的个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Down Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>会话Down的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>ShortBreak Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>会话瞬断次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Send Lsp Ping Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>发送的LSP Ping报文个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Dynamic Session Delete Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>删除的动态会话个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Create Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>会话创建的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Last Down Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>会话上一次Down的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Total Time From Last Down</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>会话从上一次Up到现在的运行时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Total Time From Create</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>会话从创建到现在的运行时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.00050390526581%" headers="d14615e308 "><p>Total Session Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.99949609473419%" headers="d14615e312 "><p>BFD会话总数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_bfd_statistics_session__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_bfd_statistics_session__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50.5406084988685%" id="d14615e572"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="49.459391501131506%" id="d14615e576"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50.5406084988685%" headers="d14615e572 "><p>VRPV500R003C07B240</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.459391501131506%" headers="d14615e576 "><div class="p">修改命令回显信息。<ul>
+<li>Session Type字段增加Static_Auto类型</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bfd_configuration_commands.html">BFD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_bfd_statistics.html">reset bfd statistics</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

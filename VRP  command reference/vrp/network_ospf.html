@@ -1,0 +1,94 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="network (OSPF)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ospf.html">
+<meta name="DC.Relation" scheme="URI" content="ospf_network-type.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="network_ospf">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>network (OSPF)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="network_ospf"></a><a name="network_ospf"></a>
+
+
+<h1 class="topictitle1">network (OSPF)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>network</strong>命令用来指定运行OSPF协议的接口和接口所属的区域。</p>
+<p><strong>undo network</strong>命令用来删除运行OSPF协议的接口。</p>
+<p>缺省情况下，此接口不属于任何区域。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>network </strong><em>address wildcard-mask</em></p>
+<p><strong>undo</strong> <strong>network </strong><em>address wildcard-mask</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>address</em>：接口所在的网段地址。</p>
+<p><em>wildcard-mask</em>：IP地址的反码，相当于将IP地址的掩码反转（0变1，1变0）。其中，&#8220;1&#8221;表示忽略IP地址中对应的位，&#8220;0&#8221;表示必须保留此位。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>OSPF区域视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用参数<em>address</em>和<em>wildcard-mask</em>，可以在一个区域内配置一个或多个接口。在接口上运行OSPF协议，此接口的主IP地址必须在<strong>network</strong>命令指定的网段范围之内。如果此主接口的从IP地址在<strong>network</strong>命令指定的网段范围之内，则该主接口不运行OSPF协议。</p>
+<p>满足下面两个条件，OSPF协议才能在接口上运行：</p>
+<ul>
+<li><p>接口的IP地址掩码长度&#8805;<strong>network</strong>命令中的掩码长度。</p>
+</li>
+<li><p>接口的主IP地址必须在<strong>network</strong>命令指定的网段范围之内。否则，即使此接口的从IP地址在<strong>network</strong>命令指定的网段范围之内，接口也不运行OSPF协议。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>缺省情况下，OSPF以32位主机路由的方式对外发布Loopback接口的IP地址，与Loopback接口上配置的掩码长度无关。</p>
+</li>
+<li><p>如果要发布Loopback接口的网段路由，需要在接口下执行<a href="ospf_network-type.html">ospf network-type</a>配置网络类型为<span>NBMA或广播型。</span></p>
+</li>
+<li><p>配置伪连接时，本端地址不能通过私网的OSPF进程发布。</p>
+</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="network_ospf__d99837e114"></a><a name="d99837e114"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定运行OSPF协议的接口的主IP地址位于网段131.108.20.0，接口所在的OSPF区域ID为2。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong> </pre>
+<pre class="screen">[Quidway] <strong>ospf 100</strong></pre>
+<pre class="screen">[Quidway-ospf-100]<strong> area 2</strong></pre>
+<pre class="screen">[Quidway-ospf-100-area-0.0.0.2]<strong> network 131.108.20.0 0.0.0.255</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ospf.html">ospf</a></div>
+<div><a href="ospf_network-type.html">ospf network-type</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

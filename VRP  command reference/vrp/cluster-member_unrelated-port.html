@@ -1,0 +1,114 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="cluster-member unrelated-port">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_member-interface-state.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cluster-member_unrelated-port">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>cluster-member unrelated-port</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="cluster-member_unrelated-port"></a><a name="cluster-member_unrelated-port"></a>
+
+
+<h1 class="topictitle1">cluster-member unrelated-port</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>cluster-member unrelated-port</strong>命令用来配置成员交换机上不需要运行NDP和NTDP协议的接口，使能NDP和NTDP功能。</p>
+<p><strong>undo cluster-member unrelated-port</strong>命令用来配置成员交换机上不需要运行NDP和NTDP协议的接口，禁止NDP和NTDP功能。</p>
+<p>本命令的缺省情况由PAF文件中的定义决定。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>cluster-member</strong> [ <strong>group-by</strong> { <strong>device-type </strong><em>device-type</em> | <strong>ip</strong> {<em>ip-addres</em> [ <strong>to</strong> <em>ip-addres</em> ] } &amp;&lt;1-10&gt; | <strong>member-number</strong> {<em> member-number</em> [ <strong>to</strong> <em>member-number</em> ] } &amp;&lt;1-10&gt; } ] <strong>unrelated-port</strong> { <strong>ndp</strong> | <strong>ntdp</strong> }</p>
+<p><strong>undo cluster-member</strong> [ <strong>group-by</strong> { <strong>device-type </strong><em>device-type</em> | <strong>ip</strong> {<em>ip-addres</em> [ <strong>to</strong> <em>ip-addres</em> ] } &amp;&lt;1-10&gt; | <strong>member-number</strong> {<em> member-number</em> [ <strong>to</strong> <em>member-number</em> ] } &amp;&lt;1-10&gt; } ] <strong>unrelated-port</strong> { <strong>ndp</strong> | <strong>ntdp</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>group-by</strong>：指定成员交换机的分类方式。目前支持三种分类方式：设备类型、IP地址和成员编号。不选择该参数时，默认对所有的成员交换机进行操作。</p>
+<p><strong>device-type</strong> <em>device-type</em>：指定成员交换机的设备类型。字符串形式，不区分大小写，不支持空格，长度范围是1～100。一次只能指定一种设备类型。目前支持的设备类型由NTDP协议收集得到，例如NE40E，CX200B等。</p>
+<p><em>ip-address</em>：指定成员交换机的IPv4地址。可以同时指定一个或者多个成员交换机的地址和地址范围。</p>
+<p><em>member-number</em>：指定成员交换机的成员编号。十进制整数形式，取值范围是1～255。可以同时指定一个或者多个成员交换机的成员编号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>集群视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只能在命令交换机上执行，并且只对Switch类型的接口有效。</p>
+<p>不需要运行NDP和NTDP协议的接口是指对整个集群拓扑信息没有作用的接口。</p>
+<p>指定成员交换机的成员编号时不能超过集群支持的最大编号。</p>
+<p>当集群的拓扑信息收集完成后，使用本命令可以提高整个集群的安全性。关闭成员交换机不相关端口的NDP或NTDP协议后，新的候选交换机接入成员交换机的不相关接口，新的候选交换机不能加入该集群。除非重新使能该成员交换机的不相关端口的NDP或NTDP协议。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="cluster-member_unrelated-port__d7399e153"></a><a name="d7399e153"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置集群中所有成员交换机不需要运行NDP协议的接口，禁止NDP功能</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>cluster</strong></pre>
+<pre class="screen">[Quidway-cluster] <strong>undo cluster-member unrelated-port ndp</strong></pre>
+<p># 配置集群中所有成员交换机不需要运行NTDP协议的接口，禁止NTDP功能</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>cluster</strong></pre>
+<pre class="screen">[Quidway-cluster] <strong>undo cluster-member unrelated-port ntdp</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="cluster-member_unrelated-port__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="cluster-member_unrelated-port__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d7399e194"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d7399e198"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d7399e194 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d7399e198 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_member-interface-state.html">display member-interface-state</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

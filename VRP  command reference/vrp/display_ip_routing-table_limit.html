@@ -1,0 +1,185 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ip routing-table limit">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ip_routing-table_limit">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ip routing-table limit</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ip_routing-table_limit"></a><a name="display_ip_routing-table_limit"></a>
+
+
+<h1 class="topictitle1">display ip routing-table limit</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ip routing-table limit</strong>命令用来显示VPN实例的路由和前缀限制信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ip routing-table limit</strong> { <strong>all-vpn-instance</strong> | <strong>vpn-instance</strong> <em>vpn-instance-name</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all-vpn-instance</strong>：所有的VPN实例。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例的名称。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ip_routing-table_limit__d32002e56"></a><a name="d32002e56"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有VPN实例的前缀和路由限制信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip routing-table limit all-vpn-instance</strong>
+Limit-Object     Limit-Type    Upper-Limit     Warning     Current
+------------------------------------------------------------------
+VPN Instance Name: VPN1
+Route            Simply-Alert   5000           -            4223
+Prefix           Alert-Percent  1000           800          760
+-------------------------------------------------------------------
+VPN Instance Name: VPN12345678901234567890123456789
+Route           Alert-Percent   2000           1000         823
+Prefix          Default         -              -            760</pre>
+
+<div class="tablenoborder"><a name="display_ip_routing-table_limit__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_routing-table_limit__tb_01" frame="border" border="1" rules="all"><caption>表1 display ip routing-table limit命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.01788863693626%" id="d32002e77"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.98211136306375%" id="d32002e81"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32002e77 "><p>Limit-Object</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32002e81 "><p>限制的对象。包括前缀和路由两种类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32002e77 "><p>Limit-Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32002e81 "><p>当前路由表中路由和前缀限制的方式，包括三种：</p>
+<ul>
+<li><p>Simply-Alert：仅产生告警。</p>
+</li>
+<li><p>Alert-Percent：告警百分比。</p>
+</li>
+<li><p>Default：缺省情况，即无路由和前缀限制。</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32002e77 "><p>Upper-Limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32002e81 "><p>当前路由表中路由和前缀限制的上限值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32002e77 "><p>Warning</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32002e81 "><p>当前路由表中路由和前缀限制的阈值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d32002e77 "><p>Current</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d32002e81 "><p>当前路由表中路由和前缀的数量。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+<p># 显示名称为vpn1的VPN实例的前缀和路由限制信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip routing-table limit vpn-instance vpn1</strong>
+VPN Instance Name: vpn1
+Limit-Object     Limit-Type      Upper-Limit    Warning    Current
+Route            Simply-Alert    5000           -          4223
+Prefix           Alert-Percent   1000           800        760</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ip_routing-table_limit__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_routing-table_limit__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d32002e179"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d32002e183"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d32002e179 "><p>VRPV500R005C07B650</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d32002e183 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_basic_configuration_commands.html">IP路由表显示命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

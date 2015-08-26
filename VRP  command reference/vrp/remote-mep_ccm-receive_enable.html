@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="remote-mep ccm-receive enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ccm-interval.html">
+<meta name="DC.Relation" scheme="URI" content="display_cfm_remote-mep.html">
+<meta name="DC.Relation" scheme="URI" content="mep_ccm-send_enable.html">
+<meta name="DC.Relation" scheme="URI" content="remote-mep.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="remote-mep_ccm-receive_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>remote-mep ccm-receive enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="remote-mep_ccm-receive_enable"></a><a name="remote-mep_ccm-receive_enable"></a>
+
+<h1 class="topictitle1">remote-mep ccm-receive enable</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>remote-mep ccm-receive</strong> <strong>enable</strong>命令用来使能本设备上当前MA内或当前MAC tunnel内本地MEP接收同一MA内或同一MAC tunnel内RMEP发送的CCM消息的功能。</p>
+<p><strong>undo remote-mep ccm-receive</strong> <strong>enable</strong>命令用来禁止本设备上当前MA内或当前MAC tunnel内本地MEP接收同一MA内或同一MAC tunnel内RMEP发送的CCM消息的功能。</p>
+<p>缺省情况下，本地MEP不接收RMEP发送的CCM消息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>remote-mep ccm-receive </strong> [ <strong>mep-id</strong><em>mep-id </em>] <strong>enable</strong></p>
+<p><strong>undo remote-mep ccm-receive</strong> [ <strong>mep-id</strong> <em>mep-id </em>] <strong>enable</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>mep-id </strong><em>mep-id</em>：表示接收指定RMEP发送的CCM消息。<em>mep-id</em>表示指定RMEP的ID，整数形式，取值范围是1～8191。不配置本参数，表示使能本设备当前MA内接收所有RMEP发送的CCM消息功能。在MAC Tunnel视图下使用本命令，不需要输入本参数，因为只有隧道的两个端节点才能够互发CCM消息。当隧道一端的CCM消息接收功能使能后，默认接收对端节点发来的CCM消息。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MA视图、MAC Tunnel视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当在本端设备上使能了接收某个RMEP发送的CCM消息后，如果通过CC探测发现本端与该RMEP之间出现连通性故障，则本端设备上提示RMEP连通性告警。</p>
+<p>只有当MA内已创建了MEP，且指定的RMEP也已创建时，在该MA内执行本命令才能成功。</p>
+<p>一台设备可以配置多个MA，如果某MA内：</p>
+<ul><li><p>已使用<a href="mep_ccm-send_enable.html">mep ccm-send enable</a>命令使能了CCM消息发送功能</p>
+</li><li><p>或已使用本命令使能了CCM消息接收功能</p>
+</li></ul>
+<p>则不允许修改该MA内发送或探测CCM消息的时间间隔。如要修改，需先使用对应的<strong>undo</strong>命令禁止以上功能。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="remote-mep_ccm-receive_enable__d111096e86"></a><a name="d111096e86"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在本设备上ma1内使能接收RMEP10发送的CCM消息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm md md1</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1]<strong> ma ma1</strong></pre>
+<pre class="screen">[Quidway-md-md1-ma-ma1]<strong> <strong>remote-mep mep-id 10 mac 0001-0300-0204</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1-ma-ma1]<strong> <strong>remote-mep ccm-receive mep-id 10 enable</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ccm-interval.html">ccm-interval</a></div>
+<div><a href="display_cfm_remote-mep.html">display cfm remote-mep</a></div>
+<div><a href="mep_ccm-send_enable.html">mep ccm-send enable</a></div>
+<div><a href="remote-mep.html">remote-mep</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,249 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="auto-build">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cluster_enable.html">
+<meta name="DC.Relation" scheme="URI" content="ip-pool.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="auto-build">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>auto-build</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="auto-build"></a><a name="auto-build"></a>
+
+
+<h1 class="topictitle1">auto-build</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>auto-build</strong>命令用来自动添加成员交换机或自动创建HGMP集群。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>auto-build</strong> [ <strong>recover</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>recover</strong>：将所有成员交换机重新加入HGMP集群，包括在命令交换机上丢失的成员交换机。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果HGMP集群A的命令交换机认为交换机N不属于集群A，但交换机N却认为自己属于集群A，则交换机N被称为在命令交换机上丢失的成员交换机。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>集群视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>auto-build</strong>命令只能在命令交换机或没有加入任何HGMP集群的设备上执行：</p>
+<ul>
+<li><p>如果设备已经是HGMP集群中的命令交换机，通过本命令，将提示用户是否将已经发现的所有候选交换机加入HGMP集群，使这些候选交换机成为本HGMP集群的成员交换机。</p>
+</li>
+<li><p>如果设备没有加入任何HGMP集群，通过本命令，可以在此设备上自动创建HGMP集群，并且该设备成为此HGMP集群的命令交换机，然后将提示用户是否将已经发现的所有候选交换机加入HGMP集群，使这些候选交换机成为本HGMP集群的成员交换机。</p>
+</li>
+</ul>
+<p>在自动创建HGMP集群的过程中，设备将提示如下信息：</p>
+<ol>
+<li><p>输入HGMP集群名称。</p>
+</li>
+<li><p>列出发现的所有候选交换机列表，提示用户确认是否向HGMP集群加入发现的候选交换机。</p>
+</li>
+</ol>
+<p>在系统显示提示信息后，用户如果选择&#8220;Yes&#8221;，则系统自动将发现的候选交换机加入集群。在自动加入的过程中，用户可以按下&lt;Ctrl+C&gt;快捷键中断加入过程，但此前已经加入集群的成员交换机不会被删除。</p>
+<p>执行本命令时，必须已经使能HGMP集群功能并且创建了集群管理VLAN及相应的VLANIF，同时还必须先配置HGMP集群可使用的IP范围。</p>
+<p>执行本命令创建HGMP集群将会改变设备的系统名称。执行<strong>undo build</strong>或<strong>undo cluster
+enable</strong>命令可恢复，此时HGMP集群也相应被删除或者禁止。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="auto-build__d3429e82"></a><a name="d3429e82"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在命令交换机上自动添加成员交换机。</p>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[HUAWEI_0.Quidway] <strong>cluster</strong></pre>
+<pre class="screen">[HUAWEI_0.Quidway-cluster] <strong>auto-build</strong></pre>
+<pre class="screen">Collecting candidate list, please wait...
+Candidate list:
+
+Name                            Hop   MAC Address     DeviceType
+Quidway                         1     00e0-fc8b-8adb  NE40E
+Quidway                         1     0e00-0003-0003  NE40E
+
+Warning: Add all to cluster?（Y/N）y
+Info: Cluster auto-build is complete.
+Added 2 member（s） into the cluster successfully.</pre>
+<pre class="screen">[HUAWEI_0.Quidway-cluster]</pre>
+<p>该显示信息主要内容解释见<a href="#auto-build__tb_01">表1</a>。</p>
+
+<div class="tablenoborder"><a name="auto-build__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="auto-build__tb_01" frame="border" border="1" rules="all"><caption>表1 auto-build命令输出信息描述（添加成员交换机）</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d3429e119"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d3429e123"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e119 "><p>Candidate list</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e123 "><p>候选交换机列表。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e119 "><p>Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e123 "><p>候选交换机的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e119 "><p>Hops</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e123 "><p>候选交换机到命令交换机之间的跳数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e119 "><p>MAC Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e123 "><p>候选交换机的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e119 "><p>Device</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e123 "><p>候选交换机的类型。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 在没有加入任何HGMP集群的设备上使用<strong>auto-build</strong>命令自动创建集群，集群名称为HUAWEI，管理VLAN的编号为1，内部通信地址池为私网IP地址池10.0.0.1/8，同时将发现的候选交换机加入集群。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>vlan 1</strong></pre>
+<pre class="screen">[Quidway-vlan1] <strong>port gigabitethernet 1/0/1</strong></pre>
+<pre class="screen">[Quidway-vlan1] <strong>quit</strong></pre>
+<pre class="screen">[Quidway] <strong>interface vlanif 1</strong></pre>
+<pre class="screen">[Quidway-Vlanif1] <strong>quit</strong></pre>
+<pre class="screen">[Quidway]<strong> cluster</strong></pre>
+<pre class="screen">[Quidway-cluster] <strong>ip-pool 10.0.0.1 8</strong></pre>
+<pre class="screen">[Quidway-cluster] <strong>auto-build</strong></pre>
+<pre class="screen"> Please input cluster name:<strong>HUAWEI</strong></pre>
+<pre class="screen">Collecting candidate list, please wait...
+Candidate list:
+
+Name                            Hop   MAC Address     DeviceType
+Quidway                         1     00e0-fc8b-8adb  NE40E
+Quidway                         1     0e00-0003-0003  NE40E
+
+Warning: Add all to cluster?（Y/N）y
+Info: Cluster auto-build is complete.
+Added 2 member（s） into the cluster successfully.</pre>
+<pre class="screen">[HUAWEI_0.Quidway-cluster]</pre>
+<p>该显示信息主要内容解释见<a href="#auto-build__tb_02">表2</a>。</p>
+
+<div class="tablenoborder"><a name="auto-build__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="auto-build__tb_02" frame="border" border="1" rules="all"><caption>表2 auto-build命令输出信息描述（创建集群）</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d3429e255"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d3429e259"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e255 "><p>Please input cluster name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d3429e259 "><p>请输入集群名称。集群名称只能包含字母、数字、连字符&#8220;-&#8221;和下划线&#8220;_&#8221;。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="auto-build__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="auto-build__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d3429e292"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d3429e296"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d3429e292 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d3429e296 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cluster_enable.html">cluster enable</a></div>
+<div><a href="ip-pool.html">ip-pool</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

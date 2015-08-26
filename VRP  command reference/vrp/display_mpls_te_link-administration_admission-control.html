@@ -1,0 +1,182 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te link-administration admission-control">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_link-administration_admission-control">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te link-administration admission-control</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_link-administration_admission-control"></a><a name="display_mpls_te_link-administration_admission-control"></a>
+
+
+<h1 class="topictitle1">display mpls te link-administration admission-control</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls te link-administration admission-control</strong>命令用来查看所有链路接纳的CR-LSP信息，包括带宽、优先级等。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te link-administration admission-control</strong> [ <strong>interface</strong> <em>interface-type</em> <em>interface-number</em> | <strong>stale-interface</strong> <em>interface-index</em> ]<span><span> [<strong> |
+count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface</strong> <em>interface-type interface-number</em>：查看指定接口的准入控制情况。</p>
+<p><strong>stale-interface</strong> <em>interface-index</em>：查看stale接口的准入控制情况。<em>interface-index</em>表示stale接口的索引号。十六进制整数形式，取值范围是1～FFFFFFFF。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>stale接口的接口索引号可通过执行<strong>display mpls stale-interface</strong>命令查看。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_link-administration_admission-control__d48770e117"></a><a name="d48770e117"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有链路的准入控制信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te link-administration admission-control</strong></pre>
+<pre class="screen">LspID           In/Out IF         S/H Prio    CT       BW (kbps)</pre>
+<pre class="screen">1.1.1.9:1024:1    --- / GE1/0/0     0 /0        0        1000</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_link-administration_admission-control__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_link-administration_admission-control__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te link-administration admission-control命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50.88183421516755%" id="d48770e141"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="49.11816578483245%" id="d48770e145"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48770e141 "><p>LspID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48770e145 "><p>LSP标识，用三元组&lt;Ingress-LSR-ID、Tunnel-ID、Local-LSP-ID&gt;唯一标识</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48770e141 "><p>In/Out IF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48770e145 "><p>入接口、出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48770e141 "><p>S/H Prio</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48770e145 "><p>建立优先级、保持优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48770e141 "><p>CT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48770e145 "><p>Class Type</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48770e141 "><p>BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48770e145 "><p>带宽</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看指定stale接口的链路准入控制信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls te link-administration admission-control stale-interface 18000106</strong></pre>
+<pre class="screen">LspID                       In/Out IF              S/H Prio  CT        BW (kbps)  </pre>
+<pre class="screen">1.1.1.1:600:1           --- / 0x18000106           0 /0      0         0</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_te_link-administration_admission-control__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_link-administration_admission-control__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d48770e232"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d48770e236"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d48770e232 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d48770e236 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d48770e232 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d48770e236 "><p>修改回显信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

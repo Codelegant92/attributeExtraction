@@ -1,0 +1,223 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display startup">
+<meta name="DC.Relation" scheme="URI" content="../vrp/file_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="startup_saved-configuration.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_startup">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display startup</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_startup"></a><a name="display_startup"></a>
+
+
+<h1 class="topictitle1">display startup</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display stratup</strong>命令用来显示与本次及下次启动相关的系统软件、配置文件名和Paf、License文件、补丁文件。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display startup</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用该命令可以查看的信息包括：</p>
+<ul>
+<li><p>用户配置的用于本次启动的系统软件的文件名；</p>
+</li>
+<li><p>本次启动实际使用的系统软件的文件名；</p>
+</li>
+<li><p>配置的用于下次启动的系统软件的文件名；</p>
+</li>
+<li><p>本次启动采用的配置文件的文件名；</p>
+</li>
+<li><p>配置的用于下次启动的配置文件的文件名；</p>
+</li>
+<li><p>本次启动采用的PAF文件的文件名；</p>
+</li>
+<li><p>配置的用于下次启动的PAF文件的文件名；</p>
+</li>
+<li><p>本次启动采用的License文件的文件名；</p>
+</li>
+<li><p>配置的用于下次启动的License文件的文件名；</p>
+</li>
+<li><p>本次启动采用的补丁包；</p>
+</li>
+<li><p>配置的用于下次启动的补丁包。</p>
+</li>
+</ul>
+<p>如果在启动过程中没有找到用户配置的用于启动的系统软件的文件名，启动程序将自动搜索Flash目录下扩展名为.cc的文件，并使用找到的第一个.cc文件启动系统。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_startup__d67620e85"></a><a name="d67620e85"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示本次及下次启动相关的文件名。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display startup</strong></pre>
+<pre class="screen">MainBoard:</pre>
+<pre class="screen">  Configured startup system software:      hda1:/vrp5.cc</pre>
+<pre class="screen">  Startup system software:                 hda1:/vrp5.cc</pre>
+<pre class="screen">  Next startup system software:            hda1:/vrp5.cc</pre>
+<pre class="screen">  Startup saved-configuration file:        flash:/vrpcfg.cfg</pre>
+<pre class="screen">  Next startup saved-configuration file:   flash:/vrpcfg.cfg</pre>
+<pre class="screen">  Startup paf file:                        flash:/paf-b291smk3.txt
+  Next startup paf file:                   flash:/paf-b291smk3.txt
+  Startup license file:                    flash:/license-b291smk3.txt
+  Next startup license file:               flash:/license-b291smk3.txt
+  Startup patch package:                   flash:/patch.bat
+  Next startup patch package:              flash:/patch.bat</pre>
+
+<div class="tablenoborder"><a name="display_startup__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_startup__tb_01" frame="border" border="1" rules="all"><caption>表1 display startup命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="47.16553287981859%" id="d67620e119"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="52.83446712018141%" id="d67620e123"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="47.16553287981859%" headers="d67620e119 "><p>Configured startup system software</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.83446712018141%" headers="d67620e123 "><p>指定的系统文件</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.16553287981859%" headers="d67620e119 "><p>Startup system software</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.83446712018141%" headers="d67620e123 "><p>上一次启动所使用的系统软件</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.16553287981859%" headers="d67620e119 "><p>Next startup system software</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.83446712018141%" headers="d67620e123 "><p>下一次系统启动所使用的系统文件</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.16553287981859%" headers="d67620e119 "><p>Startup saved-configuration file</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.83446712018141%" headers="d67620e123 "><p>上一次启动时使用的配置文件</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.16553287981859%" headers="d67620e119 "><p>Next startup saved-configuration file</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.83446712018141%" headers="d67620e123 "><p>下一次启动时使用的配置文件</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.16553287981859%" headers="d67620e119 "><p>Startup paf file</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.83446712018141%" headers="d67620e123 "><p>上一次启动所使用的PAF文件</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.16553287981859%" headers="d67620e119 "><p>Next startup paf file</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.83446712018141%" headers="d67620e123 "><p>下一次启动所使用的PAF文件</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.16553287981859%" headers="d67620e119 "><p>Startup license file</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.83446712018141%" headers="d67620e123 "><p>上一次启动所使用的License文件</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.16553287981859%" headers="d67620e119 "><p>Next startup license file</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.83446712018141%" headers="d67620e123 "><p>下一次启动所使用的License文件</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.16553287981859%" headers="d67620e119 "><p>Startup patch package</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.83446712018141%" headers="d67620e123 "><p>上一次启动所使用的补丁包</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.16553287981859%" headers="d67620e119 "><p>Next startup patch package</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.83446712018141%" headers="d67620e123 "><p>下一次启动所使用的补丁包</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/file_management_configuration_commands.html">管理配置文件命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="startup_saved-configuration.html">startup saved-configuration</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,451 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="MPLS TE配置命令">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/add_hop.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_bind_mpls-te.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/delete_hop.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_default-parameter_mpls_te_cspf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_explicit-path.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_bfd_session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_established.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_graceful-restart.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_graceful-restart_peer.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_peer.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_psb-content.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_request.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_reservation.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_rsb-content.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_sender.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_rsvp-te_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_static-cr-lsp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_cspf_destination.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_cspf_tedb.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_ds-te.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_hot-standby_state.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_link-administration_admission-control.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_link-administration_bandwidth-allocation.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_link-administration_srlg-information.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_session-entry.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_srlg.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_te-class-tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_tunnel_path.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_tunnel_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_tunnel-interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_mpls_te_tunnel-interface_last-error.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_mpls-te.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_traffic-adjustment.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/enable_traffic-adjustment.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/explicit-path.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/list_hop.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/modify_hop.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_authentication.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_authentication_handshake.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_authentication_lifetime.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_authentication_window-size.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_bfd.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_bfd_all-interfaces.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_bfd_all-interfaces_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_bfd_block.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_bfd_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_blockade-multiplier.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_challenge-lost.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_hello.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_hello_basic-restart-time.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_hello_full-gr.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_hello_nodeid-session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_hello_support-peer-gr.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_hello-lost.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_keep-multiplier.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_resvconfirm.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_srefresh.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_retrans-timer_challenge.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_timer_hello.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_timer_refresh.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_rsvp-te_timer_retransmission.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_affinity_property.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_auto-bandwidth.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_auto-frr_mpls_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_auto-frr_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_backup.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_backup_frr-in-use.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_bandwidth_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_bandwidth_tunnel_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_bandwidth_change_thresholds.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_bandwidth_max-reservable-bandwidth.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_bfd.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_bfd_block.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_bfd_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_bypass-attributes.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_bypass-tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_commit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_cspf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_cspf_preferred-igp.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_cspf_timer_failed-link.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_ds-te_bcm.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_ds-te_mode.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_fast-reroute.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_hop-limit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_igp_advertise.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_igp_metric.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_igp_shortcut.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_link_administrative_group.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_loop-detection.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_max-link-bandwidth.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_max-reservable-bandwidth.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_metric.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_path_explicit-path.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_path_metric-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_priority.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_protected-interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_record-route.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_reoptimization_user_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_reoptimization_tunnel_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_resv-style.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_retry.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_route-pinning.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_signal-protocol.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_signaling-delay-trigger_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_srlg.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_srlg_path-calculation.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_switch-delay.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_tie-breaking.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_timer_auto-bandwidth.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_timer_fast-reroute.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_timer_retry.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_tunnel-id.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls-te_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/next_hop.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/opaque-capability_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_mpls_rsvp-te.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_mpls_rsvp-te_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_mpls_te_auto-bandwidth_adjustment_timers.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_mpls_te_auto-frr.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_mpls_te_idle-time.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_mpls_te_tunnel-interface_tunnel.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/static-cr-lsp_egress.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/static-cr-lsp_ingress.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/static-cr-lsp_transit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/te-class.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/te-class-mapping.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/te-set-subtlv.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/traffic-eng.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/tunnel-protocol_mpls_te.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/undo_mpls_te_srlg_all-config.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_configuration_commands">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>MPLS TE配置命令</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_configuration_commands"></a><a name="mpls_te_configuration_commands"></a>
+
+
+<h1 class="topictitle1">MPLS TE配置命令</h1>
+
+<div>
+<div class="section"><h4 class="sectiontitle">功能描述</h4><p>介绍MPLS TE相关的配置、复位和查看命令。</p>
+</div>
+
+<div class="section"><h4 class="sectiontitle">相关链接</h4></div>
+
+</div>
+
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="../vrp/add_hop.html">add hop</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/bfd_bind_mpls-te.html">bfd bind mpls-te</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/delete_hop.html">delete hop</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_default-parameter_mpls_te_cspf.html">display default-parameter mpls te cspf</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_explicit-path.html">display explicit-path</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te.html">display mpls rsvp-te</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_bfd_session.html">display mpls rsvp-te bfd session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_established.html">display mpls rsvp-te established</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_graceful-restart.html">display mpls rsvp-te graceful-restart</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_graceful-restart_peer.html">display mpls rsvp-te graceful-restart peer</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_interface.html">display mpls rsvp-te interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_peer.html">display mpls rsvp-te peer</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_psb-content.html">display mpls rsvp-te psb-content</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_request.html">display mpls rsvp-te request</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_reservation.html">display mpls rsvp-te reservation</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_rsb-content.html">display mpls rsvp-te rsb-content</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_sender.html">display mpls rsvp-te sender</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_session.html">display mpls rsvp-te session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_rsvp-te_statistics.html">display mpls rsvp-te statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_static-cr-lsp.html">display mpls static-cr-lsp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_cspf_destination.html">display mpls te cspf destination</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_cspf_tedb.html">display mpls te cspf tedb</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_ds-te.html">display mpls te ds-te</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_hot-standby_state.html">display mpls te hot-standby state</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_link-administration_admission-control.html">display mpls te link-administration admission-control</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_link-administration_bandwidth-allocation.html">display mpls te link-administration bandwidth-allocation</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_link-administration_srlg-information.html">display mpls te link-administration srlg-information</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_session-entry.html">display mpls te session-entry</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_srlg.html">display mpls te srlg</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_te-class-tunnel.html">display mpls te te-class-tunnel</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_tunnel.html">display mpls te tunnel</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_tunnel_path.html">display mpls te tunnel path</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_tunnel_statistics.html">display mpls te tunnel statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_tunnel-interface.html">display mpls te tunnel-interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_mpls_te_tunnel-interface_last-error.html">display mpls te tunnel-interface last-error</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_mpls-te.html">display ospf mpls-te</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_traffic-adjustment.html">display ospf traffic-adjustment</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/enable_traffic-adjustment.html">enable traffic-adjustment</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/explicit-path.html">explicit-path</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/list_hop.html">list hop</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/modify_hop.html">modify hop</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te.html">mpls rsvp-te</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_authentication.html">mpls rsvp-te authentication</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_authentication_handshake.html">mpls rsvp-te authentication handshake</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_authentication_lifetime.html">mpls rsvp-te authentication lifetime</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_authentication_window-size.html">mpls rsvp-te authentication window-size</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_bfd.html">mpls rsvp-te bfd</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_bfd_all-interfaces.html">mpls rsvp-te bfd all-interfaces</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_bfd_all-interfaces_enable.html">mpls rsvp-te bfd all-interfaces enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_bfd_block.html">mpls rsvp-te bfd block</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_bfd_enable.html">mpls rsvp-te bfd enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_blockade-multiplier.html">mpls rsvp-te blockade-multiplier</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_challenge-lost.html">mpls rsvp-te challenge-lost</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_hello.html">mpls rsvp-te hello</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_hello_basic-restart-time.html">mpls rsvp-te hello basic-restart-time</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_hello_full-gr.html">mpls rsvp-te hello full-gr</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_hello_nodeid-session.html">mpls rsvp-te hello nodeid-session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_hello_support-peer-gr.html">mpls rsvp-te hello support-peer-gr</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_hello-lost.html">mpls rsvp-te hello-lost</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_keep-multiplier.html">mpls rsvp-te keep-multiplier</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_resvconfirm.html">mpls rsvp-te resvconfirm</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_srefresh.html">mpls rsvp-te srefresh</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_retrans-timer_challenge.html">mpls rsvp-te retrans-timer challenge</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_timer_hello.html">mpls rsvp-te timer hello</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_timer_refresh.html">mpls rsvp-te timer refresh</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_rsvp-te_timer_retransmission.html">mpls rsvp-te timer retransmission</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te.html">mpls te</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_affinity_property.html">mpls te affinity property</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_auto-bandwidth.html">mpls te auto-bandwidth</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_auto-frr_mpls_view.html">mpls te auto-frr（MPLS视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_auto-frr_interface_view.html">mpls te auto-frr（接口视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_backup.html">mpls te backup</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_backup_frr-in-use.html">mpls te backup frr-in-use</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_bandwidth_interface_view.html">mpls te bandwidth（接口视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_bandwidth_tunnel_interface_view.html">mpls te bandwidth（Tunnel接口视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_bandwidth_change_thresholds.html">mpls te bandwidth change thresholds</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_bandwidth_max-reservable-bandwidth.html">mpls te bandwidth max-reservable-bandwidth</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_bfd.html">mpls te bfd</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_bfd_block.html">mpls te bfd block</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_bfd_enable.html">mpls te bfd enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_bypass-attributes.html">mpls te bypass-attributes</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_bypass-tunnel.html">mpls te bypass-tunnel</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_commit.html">mpls te commit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_cspf.html">mpls te cspf</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_cspf_preferred-igp.html">mpls te cspf preferred-igp</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_cspf_timer_failed-link.html">mpls te cspf timer failed-link</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_ds-te_bcm.html">mpls te ds-te bcm</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_ds-te_mode.html">mpls te ds-te mode</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_fast-reroute.html">mpls te fast-reroute</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_hop-limit.html">mpls te hop-limit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_igp_advertise.html">mpls te igp advertise</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_igp_metric.html">mpls te igp metric</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_igp_shortcut.html">mpls te igp shortcut</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_link_administrative_group.html">mpls te link administrative group</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_loop-detection.html">mpls te loop-detection</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_max-link-bandwidth.html">mpls te max-link-bandwidth</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_max-reservable-bandwidth.html">mpls te max-reservable-bandwidth</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_metric.html">mpls te metric</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_path_explicit-path.html">mpls te path explicit-path</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_path_metric-type.html">mpls te path metric-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_priority.html">mpls te priority</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_protected-interface.html">mpls te protected-interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_record-route.html">mpls te record-route</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_reoptimization_user_view.html">mpls te reoptimization（用户视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_reoptimization_tunnel_interface_view.html">mpls te reoptimization（Tunnel接口视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_resv-style.html">mpls te resv-style</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_retry.html">mpls te retry</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_route-pinning.html">mpls te route-pinning</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_signal-protocol.html">mpls te signal-protocol</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_signaling-delay-trigger_enable.html">mpls te signaling-delay-trigger enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_srlg.html">mpls te srlg</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_srlg_path-calculation.html">mpls te srlg path-calculation</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_switch-delay.html">mpls te switch-delay</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_tie-breaking.html">mpls te tie-breaking</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_timer_auto-bandwidth.html">mpls te timer auto-bandwidth</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_timer_fast-reroute.html">mpls te timer fast-reroute</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_timer_retry.html">mpls te timer retry</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls_te_tunnel-id.html">mpls te tunnel-id</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/mpls-te_enable.html">mpls-te enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/next_hop.html">next hop</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/opaque-capability_enable.html">opaque-capability enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_mpls_rsvp-te.html">reset mpls rsvp-te</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_mpls_rsvp-te_statistics.html">reset mpls rsvp-te statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_mpls_te_auto-bandwidth_adjustment_timers.html">reset mpls te auto-bandwidth adjustment timers</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_mpls_te_auto-frr.html">reset mpls te auto-frr</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_mpls_te_idle-time.html">reset mpls te idle-time</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_mpls_te_tunnel-interface_tunnel.html">reset mpls te tunnel-interface tunnel</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/static-cr-lsp_egress.html">static-cr-lsp egress</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/static-cr-lsp_ingress.html">static-cr-lsp ingress</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/static-cr-lsp_transit.html">static-cr-lsp transit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/te-class.html">te-class</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/te-class-mapping.html">te-class-mapping</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/te-set-subtlv.html">te-set-subtlv</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/traffic-eng.html">traffic-eng</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/tunnel-protocol_mpls_te.html">tunnel-protocol mpls te</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/undo_mpls_te_srlg_all-config.html">undo mpls te srlg all-config</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_commands.html">MPLS命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

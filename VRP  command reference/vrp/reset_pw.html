@@ -1,0 +1,63 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset pw">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pw-template.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_pw">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset pw</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_pw"></a><a name="reset_pw"></a>
+
+<h1 class="topictitle1">reset pw</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset pw</strong>命令用于重新建立PW或PW模板。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset</strong> <strong>pw</strong> { <em>pw-id</em> <em>pw-type</em> | <strong>pw-template</strong> <em>pw-template-name</em> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>pw-id</em>：L2VPN连接的VC ID，十进制整数形式，取值范围是1～4294967295。</p>
+<p><em>pw-type</em>：PW的封装类型。支持<strong>reset</strong> <strong>pw</strong>命令的PW封装类型有<strong>atm-aal5-sdu</strong>、<strong>atm-trans-cell</strong>、<strong>ethernet</strong>、<strong>fr</strong>、<strong>hdlc</strong>、<strong>ip-interworking</strong>、<strong>ip-layer2</strong>、<strong>ppp</strong>、<strong>vlan</strong>。</p>
+<p><strong>pw-template</strong>：重建PW模板下所有PW。</p>
+<p><em>pw-template-name</em>：指定的PW模板名称。字符串形式，不支持空格，区分大小写，长度范围是1～19。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>改变了PW模板参数，则必须使用<strong>reset pw-template</strong>命令后，新配置才能起作用，而且对所有使用该模板的PW都起作用；PW的一些属性可以通过PW模板来配置，也可以通过命令行配置，通过命令行配置的优先级较高。如果在命令行中指定了PW属性，则PW模板中的相应PW属性不起作用，因此执行<strong>reset pw template</strong>和<strong>reset pw </strong><em>vc-id</em>命令，PW属性不会改变。可以将需要更改的PW属性设置在PW模板上，而不是通过命令指定。</p>
+<p>如果已建立PW模板，重新建立该PW模板就会重新建立该PW模板下的所有PW。如果PW引用了PW模板，当该PW模板属性发生变化时，该PW的属性也随之更新。</p>
+<p>如果在命令行中指定了PW属性，则PW模板中的相应PW属性不起作用，因此执行<strong>reset pw pw-template</strong>或<strong>reset pw</strong>命令，PW属性不会改变。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_pw__d113386e112"></a><a name="d113386e112"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 通过VC-ID和VC-Type重建PW。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>reset pw 100 ppp</strong></strong></pre>
+<p># 重建名为pwt1的PW模板下所有PW。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>reset pw pw-template pwt1</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pwe3_configuration_commands.html">PWE3配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pw-template.html">pw-template</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

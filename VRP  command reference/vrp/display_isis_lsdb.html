@@ -1,0 +1,593 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis lsdb">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_lsdb">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis lsdb</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_lsdb"></a><a name="display_isis_lsdb"></a>
+
+
+<h1 class="topictitle1">display isis lsdb</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis lsdb</strong>命令用来查看IS-IS的链路状态数据库信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis lsdb</strong> [ <strong>level-1</strong> | <strong>level-2</strong> ] [<strong> verbose</strong> ] [<strong> local</strong> | <em>lsp-id</em> | <strong>is-name</strong> <em>symbolic-name</em> ] [ <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>level-1</strong>：显示Level-1链路状态数据库。</p>
+<p><strong>level-2</strong>：显示Level-2链路状态数据库。</p>
+<p><strong>verbose</strong>：显示链路状态数据库的详细信息。使用<strong>verbose</strong>参数可以查看链路状态数据库中的详细信息，包括MT拓扑ID、MT拓扑邻居ID和IPv6前缀等。</p>
+<p><strong>local</strong>：显示本地数据库的信息。</p>
+<p><em>lsp-id</em>：指定要显示的LSP的ID。形式为####.####.####.##-##，例如0050.0500.5004.00-00。</p>
+<p><strong>is-name</strong> <em>symbolic-name</em>：动态主机名，形式为is-name或is-name.##-##（##-##表示伪节点ID-LSP分片ID）。</p>
+<p><em>process-id</em>：IS-IS进程号。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：显示指定IPv4 VPN的IS-IS多实例进程的LSDB信息。<em>vpn-instance-name</em>为IPv4 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn-instance default</strong>：显示除IPv4 VPN实例外的所有IS-IS进程的LSDB信息，即所有的IPv6 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：显示指定IPv6 VPN的IS-IS多实例进程的LSDB信息。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn6-instance
+default</strong>：显示除IPv6 VPN实例外的所有IS-IS进程的LSDB信息，即所有的IPv4 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定级别，则显示Level-1和Level-2的链路状态数据库。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_lsdb__d35920e200"></a><a name="d35920e200"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示IS-IS的链路状态数据库。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis lsdb</strong></pre>
+<pre class="screen">                        Database information for ISIS(1)</pre>
+<pre class="screen">                        --------------------------------</pre>
+<pre class="screen">                          Level-2 Link State Database</pre>
+<pre class="screen">LSPID                 Seq Num      Checksum      Holdtime      Length  ATT/P/OL</pre>
+<pre class="screen">-------------------------------------------------------------------------------</pre>
+<pre class="screen">0000.0000.0001.00-00  0x0000017a   0xa21c        846           84      0/0/0</pre>
+<pre class="screen">2222.2222.2222.00-00* 0x000001ce   0xbdcc        845           111     0/0/0</pre>
+<pre class="screen">3333.3333.3333.00-00  0x00000013   0x8847        1004          84      0/0/0</pre>
+<pre class="screen">3333.3333.3333.01-00  0x0000000b   0x95bc        1004          55      0/0/0</pre>
+<pre class="screen">    *(In TLV)-Leaking Route, *(By LSPID)-Self LSP, +-Self LSP(Extended),</pre>
+<pre class="screen">           ATT-Attached, P-Partition, OL-Overload</pre>
+
+<div class="tablenoborder"><a name="display_isis_lsdb__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_lsdb__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis lsdb命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.01788863693626%" id="d35920e242"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.98211136306375%" id="d35920e246"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e242 "><p>LSPID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e246 "><p>链路状态报文ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e242 "><p>Seq Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e246 "><p>LSP序列号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e242 "><p>Checksum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e246 "><p>LSP校验和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e242 "><p>Holdtime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e246 "><p>LSP保持时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e242 "><p>Length</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e246 "><p>LSP长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e242 "><p>ATT/P/OL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e246 "><p>Attach bit（ATT）：连接位；Partition bit（P）：分区位；Overload bit（OL）：过载位。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e242 "><p>*(In TLV)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e246 "><p>渗透路由</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e242 "><p>*(By LSPID)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e246 "><p>本地生成的LSP</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示IS-IS的链路状态数据库详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis lsdb verbose</strong>
+
+                        Database information for ISIS(1)
+                        --------------------------------
+
+                          Level-1 Link State Database
+
+LSPID                 Seq Num      Checksum      Holdtime      Length  ATT/P/OL
+-------------------------------------------------------------------------------
+0000.0000.0001.00-00  0x00000010   0xc776        0 (724)       36      0/0/0
+ SOURCE       0000.0000.0001.00
+Auth: *****     Len: 6     Type: Plain Text
+
+0000.0000.0003.00-00* 0x00000026   0x6fb4        1145          350     0/0/0
+ SOURCE       RouterA.00 ORG ID: 0000.0000.0003.00
+ HOST NAME    RouterA
+Auth: *****     Len: 6     Type: Plain Text
+ NLPID        IPV4
+ NLPID        IPV6
+ AREA ADDR    10
+ INTF ADDR    10.1.1.2
+ INTF ADDR    20.1.1.2
+ INTF ADDR V6 3:1::1
+ Topology     Standard,     IPV6
+ NBR  ID      0000.0000.0001.00  COST: 10
++NBR  ID      0000.0000.0001.00  COST: 10
+ IP-Internal  10.1.1.0       255.255.255.0    COST: 10
+ IP-Internal  20.1.1.0       255.255.255.0    COST: 10
++IP-Extended  10.1.1.0       255.255.255.0    COST: 10
++IP-Extended  20.1.1.0       255.255.255.0    COST: 10
+ IPV6         3:1::/64                        COST: 10
+ Router ID    3.3.3.3
+ IPV6         3:1::/64                        COST: 10         MT:2</pre>
+<pre class="screen">+SRLG NBR ID  0000.0000.0001.00</pre>
+<pre class="screen">
+
+
+
+                          Level-2 Link State Database
+
+LSPID                 Seq Num      Checksum      Holdtime      Length  ATT/P/OL
+-------------------------------------------------------------------------------
+0000.0000.0003.00-00* 0x0000001c   0x9b0d        1131          233     0/0/0
+ SOURCE       RouterA.00 ORG ID: 0000.0000.0003.00
+ HOST NAME    RouterA
+Auth: *****     Len: 16     Type: MD5
+ NLPID        IPV4
+ NLPID        IPV6
+ AREA ADDR    10
+ INTF ADDR    10.1.1.2
+ INTF ADDR    20.1.1.2
+ INTF ADDR V6 3:1::1
+ Topology     Standard,     IPV6
+ NBR  ID      0000.0000.0004.00  COST: 10
++NBR  ID      0000.0000.0004.00  COST: 10
++MT NBR ID    0000.0000.0004.00  COST: 10                MT:2 (IPV6)
+ IP-Internal  10.1.1.0       255.255.255.0    COST: 10
+ IP-Internal  20.1.1.0       255.255.255.0    COST: 10
++IP-Extended  10.1.1.0       255.255.255.0    COST: 10
++IP-Extended  20.1.1.0       255.255.255.0    COST: 10
+ IPV6         3:1::/64                        COST: 10
+ Router ID    3.3.3.3
+ IPV6         3:1::/64                        COST: 10         MT:2
+
+0000.0000.0003.00-01* 0x00000005   0x5ec1        1129          70      0/0/0
+ SOURCE       RouterA.00
+Auth: *****     Len: 16     Type: MD5
+ IP-External  30.1.1.0       255.255.255.0    COST: 0
++IP-Extended  30.1.1.0       255.255.255.0    COST: 0</pre>
+
+<div class="tablenoborder"><a name="display_isis_lsdb__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_lsdb__tb_02" frame="border" border="1" rules="all"><caption>表2 display isis lsdb verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.01788863693626%" id="d35920e368"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.98211136306375%" id="d35920e372"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>LSPID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>链路状态报文ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>Seq Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>LSP序列号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>Checksum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>LSP校验和</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>Holdtime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>LSP保持时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>Length</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>LSP长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>ATT/P/OL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>Attach bit（ATT）：连接位；Partition bit（P）：分区位；Overload bit（OL）：过载位。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>SOURCE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>源节点的系统ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>ORG ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>虚拟系统的源系统ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>HOST NAME</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>动态主机名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>Auth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>认证密码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>Len</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>认证密码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>认证类型</p>
+<ul>
+<li><p>Plain Text：密码以明文方式发送</p>
+</li>
+<li><p>MD5：密码以MD5加密方式发送</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>NLPID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>支持的网络协议</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>AREA ADDR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>区域地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>INTF ADDR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>接口地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>INTF ADDR V6</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>接口的IPv6地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>Topology</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>拓扑类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>NBR  ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>邻居的系统ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>+NBR  ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>可以携带TE信息的邻居系统ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>+MT NBR ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>MT拓扑中的邻居ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>COST</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>指定路由的开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>MT</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>拓扑号：</p>
+<ul>
+<li>0代表IPv4拓扑和标准IPv6拓扑</li>
+<li>2代表IPv6拓扑</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>IP-Internal</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>域内IPv4路由信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>IP-External</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>域外IPv4路由信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>+IP-Extended</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>扩展的IP路由信息，可以携带与TE相关的信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>IPV6</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>域内IPv6路由信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>Router ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>本地路由器ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d35920e368 "><p>+SRLG NBR ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d35920e372 "><p>同在一个共享风险链路组的邻居ID</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_lsdb__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_lsdb__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d35920e720"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d35920e724"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d35920e720 "><p>VRPV500R003C07B340</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d35920e724 "><p>删除参数<strong>l1</strong>和<strong>l2</strong>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d35920e720 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d35920e724 "><p>增加参数<strong>vpn-instance default</strong>，<strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> }。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d35920e720 "><p>VRPV005R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d35920e724 "><p>使用<strong>verbose</strong>参数时增加了SRLG显示信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d35920e720 "><p>VRPV005R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d35920e724 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

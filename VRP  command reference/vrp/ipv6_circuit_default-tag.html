@@ -1,0 +1,110 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ipv6 circuit default-tag">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipv6_circuit_default-tag">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ipv6 circuit default-tag</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipv6_circuit_default-tag"></a><a name="ipv6_circuit_default-tag"></a>
+
+
+<h1 class="topictitle1">ipv6 circuit default-tag</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ipv6 circuit default-tag</strong>命令用来设置IS-IS中IPv6接口的管理标记值。</p>
+<p><strong>undo ipv6 circuit default-tag</strong>命令用来恢复缺省值。</p>
+<p>缺省情况下，所有IPv6接口的管理标记值是0。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ipv6 circuit default-tag</strong> <em>tag</em> [<strong> level-1</strong> | <strong>level-2</strong> ]</p>
+<p><strong>undo ipv6 circuit default-tag</strong> [ <strong>level-1</strong> | <strong>level-2</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>tag</em>：指定IPv6接口上引入路由的管理标记值。整数形式，取值范围是1～4294967295。</p>
+<p><strong>level-1</strong>：指定Level-1的IPv6接口的管理标记值。</p>
+<p><strong>level-2</strong>：指定Level-2的IPv6接口的管理标记值。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果命令中没有指定Level-1或Level-2，则为所有的Level-1和Level-2 IPv6接口配置管理开销值。</p>
+<p>管理标记值随路由信息发布。</p>
+<ul>
+<li><p>当IS-IS的开销类型为narrow或narrow-compatible时，管理标记值不会在LSP中发布，也不会起作用。</p>
+</li>
+<li><p>当IS-IS的开销类型为wide、wide-compatible或compatible时，管理标记值会在LSP中发布。</p>
+</li>
+</ul>
+<p>使用此命令前，必须先使能IS-IS进程的IPv6能力。配置过程请参见<a href="isis_ipv6_enable.html"><strong>isis ipv6 enable</strong></a>命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ipv6_circuit_default-tag__d85664e91"></a><a name="d85664e91"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置Level-1的IPv6接口的管理标记值为30。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong> </pre>
+<pre class="screen">[Quidway] <strong>isis 1</strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>ipv6 circuit default-tag 30 level-1</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="ipv6_circuit_default-tag__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="ipv6_circuit_default-tag__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d85664e119"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d85664e123"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d85664e119 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d85664e123 "><p>参数<em>tag</em>的取值范围由0～4294967295变为1～4294967295。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

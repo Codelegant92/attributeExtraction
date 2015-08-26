@@ -1,0 +1,521 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis route">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_route">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis route</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_route"></a><a name="display_isis_route"></a>
+
+
+<h1 class="topictitle1">display isis route</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis route</strong>命令用来查看IS-IS路由信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis route</strong> [ <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup> ] [<strong> ipv4</strong> ] [ <strong>verbose</strong> |
+[ <strong>level-1</strong> | <strong>level-2</strong> ] | <em>ip-address</em> [ <em>mask</em> | <em>mask-length</em> ] ] <sup>*</sup><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display isis route</strong> [ <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup> ] <strong> ipv6</strong> [ <strong>verbose</strong> | [ <strong>level-1</strong> | <strong>level-2</strong> ] | <em>ipv6-address</em> [ <em>prefix-length</em> ] ] <sup>*</sup><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：IS-IS进程号。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定IPv4 VPN的IS-IS多实例进程。<em>vpn-instance-name</em>为IPv4 VPN实例的名称，，区分大小写。</p>
+<p><strong>vpn-instance default</strong>：除IPv4 VPN实例外的所有IS-IS进程，即所有的IPv6 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：指定IPv6 VPN的IS-IS多实例进程。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，，区分大小写。</p>
+<p><strong>vpn6-instance default</strong>：除IPv6 VPN实例外的所有IS-IS进程，即所有的IPv4 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>ipv4</strong>：显示IPv4的路由信息。</p>
+<p><em>ip-address</em>：指定IP地址，点分十进制格式。</p>
+<p><em>mask</em>：指定子网掩码，点分十进制格式。</p>
+<p><em>mask-length</em>：指定掩码长度。</p>
+<p><strong>ipv6</strong>：显示IPv6的路由信息。</p>
+<p><em>ipv6-address</em>：IPv6目的地址。</p>
+<p><em>prefix-length</em>：IPv6地址前缀长度。</p>
+<p><strong>level-1</strong>：显示Level-1的IS-IS路由。</p>
+<p><strong>level-2</strong>：显示Level-2的IS-IS路由。</p>
+<p><strong>verbose</strong>：显示路由的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果没有指定<strong>ipv4</strong>和<strong>ipv6</strong>，则显示IPv4和IPv6的IS-IS路由信息。</p>
+<p>如果不指定级别，则既显示Level-1也显示Level-2的路由信息。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_route__d36479e290"></a><a name="d36479e290"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示IS-IS的所有路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis route</strong></pre>
+<pre class="screen">
+                         Route information for ISIS(1)
+                         -----------------------------
+
+                        ISIS(1) Level-1 Forwarding Table
+                        --------------------------------
+
+IPV4 Destination     IntCost    ExtCost ExitInterface   NextHop         Flags
+-------------------------------------------------------------------------------
+192.56.10.0/24       20         NULL    Pos1/0/0       192.26.30.2     A/-/L/-
+192.12.10.0/24       10         NULL    GE1/1/0       Direct          D/-/L/-
+
+IPV6 Dest.       ExitInterface   NextHop                      Cost      Flags
+-------------------------------------------------------------------------------
+192:23:30::/64   Pos1/1/0       Direct                       10        D/L/-
+
+     Flags: D-Direct, A-Added to URT, L-Advertised in LSPs, S-IGP Shortcut,
+                               U-Up/Down Bit Set
+
+
+                        ISIS(1) Level-2 Forwarding Table
+                        --------------------------------
+
+ IPV4 Destination    IntCost    ExtCost ExitInterface   NextHop         Flags
+-------------------------------------------------------------------------------
+ 192.12.10.0/24      10         NULL    GE1/1/0       Direct          D/-/L/-
+
+ IPV6 Dest.      ExitInterface   NextHop                       Cost     Flags
+-------------------------------------------------------------------------------
+ 192:23:30::/64  Pos1/1/0       Direct                        10       D/L/-
+
+     Flags: D-Direct, A-Added to URT, L-Advertised in LSPs, S-IGP Shortcut,
+                               U-Up/Down Bit Set
+</pre>
+
+<div class="tablenoborder"><a name="display_isis_route__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_route__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis route命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d36479e312"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d36479e316"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>IPV4 Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>IPv4目的地址/掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>IPV6 Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>IPv6目的地址/掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>Int.Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>IPv4内部开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>Ext.Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>IPv4外部开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>IPv6目的开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>ExitInterface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>Next Hop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>路由下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>路由信息标记</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>D</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>直连路由</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>A</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>路由被加入到单播路由表</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>L</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>路由通过LSP发布出去</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>S</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>到达该前缀的路径上存在IGP-Shortcut</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e312 "><p>U</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e316 "><p>Up/Down比特位</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示IS-IS的IPv4路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis route ipv4</strong></pre>
+<pre class="screen">
+                         Route information for ISIS(1)
+                         -----------------------------
+                        ISIS(1) Level-1 Forwarding Table
+                        --------------------------------
+
+ IPV4 Destination     Int.Cost   Ext.Cost ExitInterface   NextHop         Flags
+--------------------------------------------------------------------------------
+ 1.1.1.0/24           10         NULL     LoopBack1       Direct          D/-/L/-
+ 2.2.2.0/24           10         NULL     LoopBack2       Direct          D/-/L/-
+
+     Flags: D-Direct, A-Added to URT, L-Advertised in LSPs, S-IGP Shortcut,
+                               U-Up/Down Bit Set
+
+
+                        ISIS(1) Level-2 Forwarding Table
+                        --------------------------------
+
+ IPV4 Destination     Int.Cost   Ext.Cost ExitInterface   NextHop         Flags
+--------------------------------------------------------------------------------
+ 1.1.1.0/24           10         NULL     LoopBack1       Direct          D/-/L/-
+ 2.2.2.0/24           10         NULL     LoopBack2       Direct          D/-/L/-
+
+     Flags: D-Direct, A-Added to URT, L-Advertised in LSPs, S-IGP Shortcut,
+                               U-Up/Down Bit Set
+</pre>
+<p># 显示IS-IS的IPv6路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis route ipv6</strong></pre>
+<pre class="screen">
+                         Route information for ISIS(1)
+                         -----------------------------
+                        ISIS(1) Level-1 Forwarding Table
+                        --------------------------------
+
+IPV6 Destination    Cost     ExitInterface        NextHop                  Flags
+--------------------------------------------------------------------------------
+ 1:1::/64           10       GE1/0/0 Direct                   D/L/-
+ 2:2::/64           20       GE1/0/0 FE80::200:5EFF:FE04:4A01 A/L/-
+
+     Flags: D-Direct, A-Added to URT, L-Advertised in LSPs, S-IGP Shortcut,
+                               U-Up/Down Bit Set
+
+
+                        ISIS(1) Level-2 Forwarding Table
+                        --------------------------------
+
+IPV6 Destination    Cost     ExitInterface        NextHop                  Flags
+--------------------------------------------------------------------------------
+ 1:1::/64           10       GE1/0/0 Direct                   D/L/-
+ 2:2::/64           20       GE1/0/0 FE80::200:5EFF:FE04:4A01 A/L/-
+
+     Flags: D-Direct, A-Added to URT, L-Advertised in LSPs, S-IGP Shortcut,
+                               U-Up/Down Bit Set
+</pre>
+<p># 显示IS-IS的详细路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis route verbose</strong></pre>
+<pre class="screen"> 
+                        Route information for ISIS(2)
+                         -----------------------------
+
+                        ISIS(2) Level-1 Forwarding Table
+                        --------------------------------
+
+ IPV4 Dest  : 172.11.12.0/24     Int. Cost : 10              Ext. Cost : NULL
+ Admin Tag  : -                  Src Count : 2               Flag      : D/-/L/-
+ NextHop    :                    Interface :                 ExitIndex :
+    Direct                             GE1/0/0                   0x00000000
+
+ IPV4 Dest  : 172.12.13.0/30     Int. Cost : 10              Ext. Cost : NULL
+ Admin Tag  : -                  Src Count : 1               Flag      : D/-/L/-
+ NextHop    :                    Interface :                 ExitIndex :
+   Direct                             GE2/0/0                   0x00000000
+
+
+ IPV6 Dest  : 10:1::/64                      Cost : 10            Flag : D/L/-
+ Admin Tag  : -                         Src Count : 2
+ NextHop    :                           Interface :          ExitIndex :
+    Direct                                  GE1/0/0             0x00000000
+
+     Flags: D-Direct, A-Added to URT, L-Advertised in LSPs, S-IGP Shortcut,
+                               U-Up/Down Bit Set
+
+
+                        ISIS(2) Level-2 Forwarding Table
+                        --------------------------------
+
+ IPV4 Dest  : 172.11.12.0/24     Int. Cost : 10              Ext. Cost : NULL
+ Admin Tag  : -                  Src Count : 1               Flag      : D/-/L/-
+ NextHop    :                    Interface :                 ExitIndex :
+    Direct                             GE1/0/0                   0x00000000
+
+ IPV4 Dest  : 172.12.13.0/30     Int. Cost : 10              Ext. Cost : NULL
+ Admin Tag  : -                  Src Count : 2               Flag      : D/-/L/-
+ NextHop    :                    Interface :                 ExitIndex :
+   Direct                             GE2/0/0                   0x00000000
+
+     Flags: D-Direct, A-Added to URT, L-Advertised in LSPs, S-IGP Shortcut,
+                               U-Up/Down Bit Set
+</pre>
+
+<div class="tablenoborder"><a name="display_isis_route__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_route__tb_02" frame="border" border="1" rules="all"><caption>表2 display isis route verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d36479e506"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d36479e510"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e506 "><p>IPV4 Dest</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e510 "><p>IPv4目的地址/掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e506 "><p>Int.Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e510 "><p>IPv4内部开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e506 "><p>Ext.Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e510 "><p>IPv4外部开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e506 "><p>Src Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e510 "><p>到达同一目的地的源地址个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e506 "><p>Admin Tag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e510 "><p>管理标签</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e506 "><p>Next Hop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e510 "><p>路由下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e506 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e510 "><p>出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e506 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e510 "><p>路由信息标记</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e506 "><p>IPV6 Dest</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e510 "><p>IPv6目的地址/前缀长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e506 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e510 "><p>IPv6目的开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36479e506 "><p>ExitIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36479e510 "><p>出口索引值</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_route__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_route__tb_04" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d36479e653"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d36479e657"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36479e653 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36479e657 "><p>增加参数<strong>vpn-instance default</strong>，<strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> }。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36479e653 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36479e657 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="lsp-fragments-extend">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="virtual-system.html">
+<meta name="DC.Relation" scheme="URI" content="reset_isis_all.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="lsp-fragments-extend">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>lsp-fragments-extend</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="lsp-fragments-extend"></a><a name="lsp-fragments-extend"></a>
+
+
+<h1 class="topictitle1">lsp-fragments-extend</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>lsp-fragments&#8211;extend</strong>命令用来在特定的模式和Level上使能IS-IS路由器的LSP分片扩展。为了使路由器生成扩展LSP分片，应至少配置一个虚拟系统ID。</p>
+<p><strong>undo lsp-fragments-extend</strong>命令用来关闭该特性。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>lsp-fragments-extend</strong> [ <strong>level-1</strong> | <strong>level-2</strong> | <strong>level-1-2</strong> ] [ <strong>mode-1</strong> | <strong>mode-2</strong> ]</p>
+<p><strong>undo lsp-fragments-extend</strong> [ <strong>level-1 </strong>|<strong> level-2</strong> |<strong> level-1-2</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>level-1</strong>：使能分片扩展的路由器的级别为Level-1。</p>
+<p><strong>level-2</strong>：使能分片扩展的路由器的级别为Level-2。</p>
+<p><strong>level-1-2</strong>：使能分样片扩展的路由器的级别为Level-1-2。</p>
+<p><strong>mode-1</strong>：该模式可以兼容以前老版本不支持LSP分片扩展特性的情况。</p>
+<p><strong>mode-2</strong>：该模式要求所有路由器都支持LSP分片扩展特性。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>缺省情况下，使用<strong>mode-1</strong>和<strong>level-1-2</strong>两个参数。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>需要用命令<a href="reset_isis_all.html"><strong>reset isis all</strong></a>重启IS-IS进程之后才可以使能LSP分片扩展功能。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="lsp-fragments-extend__d90782e101"></a><a name="d90782e101"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能<strong>mode-1</strong>模式和Level-2的LSP分片扩展。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>isis</strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>lsp-fragments-extend mode-1 level-2</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="virtual-system.html">virtual-system</a></div>
+<div><a href="reset_isis_all.html">reset isis all</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

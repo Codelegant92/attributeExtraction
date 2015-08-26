@@ -1,0 +1,77 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="igmp static-group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/igmp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="igmp_static-group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>igmp static-group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="igmp_static-group"></a><a name="igmp_static-group"></a>
+
+
+<h1 class="topictitle1">igmp static-group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>igmp static-group</strong>命令用来配置该接口以静态方式加入组播组。</p>
+<p><strong>undo igmp static-group</strong>命令用来删除以静态方式加入的组播组。</p>
+<p>缺省情况下，接口未以静态方式加入任何组播组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>igmp static-group</strong> <em>group-address</em> [ <strong>source</strong> <em>source-address </em>]</p>
+<p><strong>undo igmp static-group </strong>{<strong> all </strong>| <em>group-address</em> [ <strong>source </strong><em>source-address </em>] }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：表示该接口以静态方式加入的所有组播组。</p>
+<p><em>group-address</em>：表示组播组地址。点分十进制形式，取值范围是224.0.1.0～239.255.255.255。</p>
+<p><strong>source</strong><em> source-address</em>：用来指定一个组播源。<em>source-address</em>表示组播源地址。点分十进制形式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果组播组地址在SSM范围内，可通过<strong>source</strong><em> source-address</em>参数指定组播源地址，在接口加入组的同时指定源地址。</p>
+<p>执行此命令后，<span class="keyword">路由器</span>认为该接口上始终连接着组成员主机，并持续向该接口所在网段转发符合条件的组播报文。</p>
+<p>配置组播CAC功能后，要想配置静态组播组，必须先使能PIM-SM。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="igmp_static-group__d81659e95"></a><a name="d81659e95"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置<span class="keyword">路由器</span>GE1/0/0接口以静态方式加入组播组。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> igmp static-group 224.1.1.1</strong></pre>
+<p># 配置<span class="keyword">路由器</span>在GE1/0/0接口上转发从组播源192.168.11.1到组播组232.1.1.1的报文。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> igmp static-group 232.1.1.1 source 192.168.11.1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/igmp_configuration_commands.html">IGMP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te bandwidth change thresholds">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_bandwidth_change_thresholds">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te bandwidth change thresholds</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_bandwidth_change_thresholds"></a><a name="mpls_te_bandwidth_change_thresholds"></a>
+
+
+<h1 class="topictitle1">mpls te bandwidth change thresholds</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te bandwidth change thresholds</strong>命令用来设置MPLS TE隧道占用的物理链路带宽变化比率的泛洪阈值。</p>
+<p><strong>undo mpls te bandwidth change thresholds</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，当一条链路上为MPLS TE隧道保留的带宽与TEDB（Traffic Engineering DataBase）中的链路剩余带宽的比值等于或大于10%，或MPLS
+TE隧道释放的带宽与TEDB中剩余带宽的比值等于或大于10%时，IGP将对该链路信息进行泛洪，CSPF更新TEDB。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te bandwidth change thresholds</strong> { <strong>down</strong> | <strong>up </strong> } <em>percent</em></p>
+<p><strong>undo mpls te bandwidth change
+thresholds</strong>  { <strong>down</strong> | <strong>up</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>down</strong>：MPLS TE隧道占用带宽的泛洪阈值。当MPLS TE隧道占用的带宽与TEDB中的链路剩余带宽的比值大于或等于此阈值时，IGP将进行泛洪，CSPF更新TEDB。</p>
+<p><strong>up</strong>：MPLS TE隧道释放带宽的泛洪阈值。当MPLS TE隧道释放的带宽与TEDB中的链路剩余带宽的比值大于或等于此阈值时，IGP将进行泛洪，CSPF更新TEDB。</p>
+<p><em>percent</em>：带宽阈值百分比。整数形式，取值范围是0～100，缺省值为10。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>链路带宽变化很小时对带宽进行泛洪会浪费网络资源。例如某条链路带宽为100M，在此链路上建立100条1M的TE隧道时，则需要进行100次泛洪。如果设置泛洪阈值为10％，则建立第1～9条时不进行泛洪；当建立第10条时才对第1～10条所占用的10M带宽进行泛洪。当建立第11～18条隧道时不进行泛洪，当建立第19条时才泛洪。依此类推。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_bandwidth_change_thresholds__d95729e72"></a><a name="d95729e72"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 对于接口GE1/0/0，当接口上建立的MPLS TE隧道保留的带宽超过链路总带宽的25%，或接口上MPLS
+TE隧道释放的带宽超过链路总带宽的10%时，对该链路的信息进行泛洪。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mpls te bandwidth change thresholds up 25</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mpls te bandwidth change thresholds down 10</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

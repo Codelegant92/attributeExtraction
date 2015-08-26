@@ -1,0 +1,92 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="user-isolate (业务实例视图)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_service-instance.html">
+<meta name="DC.Relation" scheme="URI" content="mapping.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="user-isolate_si_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>user-isolate (业务实例视图)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="user-isolate_si_view"></a><a name="user-isolate_si_view"></a>
+
+
+<h1 class="topictitle1">user-isolate (业务实例视图)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>user-isolate</strong>命令用来配置多点到多点业务实例的所有或者指定用户的隔离。</p>
+<p><strong>undo user-isolate</strong>命令用来删除多点到多点业务实例的所有或者指定用户的隔离。</p>
+<p>缺省情况下，没有配置任何用户隔离。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>user-isolate</strong> { <strong>all</strong> | <strong>interface</strong> <em>interface-type interface-number</em> [ <strong>vlan</strong> { <em>vlan-id1</em> [ <strong>to</strong> <em>vlan-id2</em> ] } &amp; &lt;1-10&gt; [ <strong>priority</strong> <em>pri-value</em> ] ] | <strong>vlan</strong> <em>global-vlan-id</em> }</p>
+<p><strong>undo</strong> <strong>user-isolate</strong> { <strong>all</strong> | <strong>interface</strong> <em>interface-type interface-number</em> [ <strong>vlan</strong> { <em>vlan-id1</em> [ <strong>to</strong> <em>vlan-id2</em> ] } &amp; &lt;1-10&gt; [ <strong>priority</strong> <em>pri-value</em> ] ] | <strong>vlan</strong> <em>global-vlan-id</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：映射到业务实例所有用户之间彼此隔离。</p>
+<p><strong>interface </strong><em> interface-type interface-number</em>：用于接入被隔离用户的接口。interface-type表示接口的类型，包括以太网接口和Eth-Trunk接口。interface-number表示接口的编号。</p>
+<p><em>vlan-id</em>：用户侧VLAN ID，整数形式，取值范围是1～4094。</p>
+<p><strong>priority</strong><em> pri-value</em>：用户业务的优先级。整数形式，取值范围是0～7，值越小优先级越高。</p>
+<p><em>global-vlan-id</em>：全局VLAN ID，整数形式，取值范围是1～4094。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>业务实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令仅用于多点到多点业务实例。</p>
+<p>一个业务实例能接入多个用户。多点到多点业务实例有广播功能，隔离用户实现的是禁止映射到一个多点到多点业务实例中的多个用户的数据包通过广播在本地转发。点到点业务实例没有广播功能，因此不支持本命令。</p>
+<p>配置用户隔离时，该用户必须与业务实例有映射关系。用户类型必须与通过mapping命令映射到该业务实例的用户类型一致。例如，用户A通过&#8220;接口＋VLAN&#8221;的方式映射到业务实例，对用户A配置隔离时，也必须采用&#8220;接口＋VLAN&#8221;的方式隔离。</p>
+<p>配置所有用户隔离后，任意两个用户之间的流量不能互通。</p>
+<p>配置指定用户隔离后，该用户的数据流量与已配置隔离的用户数据流量之间不能互通，与未配置隔离的用户之间流量可以相通。例如，VLAN1～10的用户映射到一个多点到多点业务实例。对VLAN1和VLAN5的用户配置隔离后，VLAN1与VLAN5之间的流量不能互通，但VLAN1与VLAN2～4、VLAN6～10之间可以互通，VLAN5与VLAN2～4、VLAN6～10之间也可以互通。</p>
+<p>本命令不支持对一个用户的隔离。</p>
+<div class="p">输入VLAN ID范围时，应注意：<ul>
+<li><p>关键字to之后的VLAN ID要大于to之前的VLAN ID。</p>
+</li>
+<li><p>两者之间包含的VLAN都存在。</p>
+</li>
+</ul>
+</div>
+<p>一条<strong>user-isolate</strong>命令中，最多可以使用10次to形式输入10个用户VLAN ID范围。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="user-isolate_si_view__d127127e166"></a><a name="d127127e166"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置从Ethernet3/0/1接口接入的VLAN ID范围100～103的用户之间相互隔离。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>service-instance instance-name si100</strong></pre>
+<pre class="screen">[Quidway-service-instance-si100] <strong>user-isolate interface ethernet3/0/1 vlan 100 to 103</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_service-instance.html">display service-instance</a></div>
+<div><a href="mapping.html">mapping</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

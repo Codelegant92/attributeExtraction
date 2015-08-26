@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="channel-set（CT1接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ct1_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_controller_t1.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="channel-set_ct1_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>channel-set（CT1接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="channel-set_ct1_interface_view"></a><a name="channel-set_ct1_interface_view"></a>
+
+
+<h1 class="topictitle1">channel-set（CT1接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>channel-set</strong>命令用来对CT1接口进行时隙捆绑。</p>
+<p><strong>undo channel-set</strong>命令用来取消指定的时隙捆绑。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>channel-set </strong><em>set-number </em><strong>timeslot-list </strong><em>slot-list</em> [ <strong>speed</strong> { <strong>56k</strong> | <strong>64k</strong> } ]</p>
+<p><strong>undo</strong> <strong>channel-set</strong> <em>set-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>set-number</em>：在CT1接口上时隙捆绑形成的接口的索引号。整数形式，取值范围是0～23。</p>
+<p><em>slot-list</em>：用于捆绑的时隙编号或时隙范围。整数形式，取值范围是0～23。指定捆绑时隙时，可以指定单个时隙，也可以指定时隙范围。使用&#8220;,&#8221;分隔多个时隙，使用&#8220;-&#8221;表示时隙范围。</p>
+<p><strong>speed</strong>：配置时隙捆绑的方式。选用参数<strong>56k</strong>时，捆绑方式为N&times;56kbit/s；选用参数<strong>64k</strong>时，捆绑方式为N&times;64kbit/s。</p>
+<p>如果不指定速率，缺省采用56kbit/s。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>CT1接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>CT1接口有两种工作模式：</p>
+<ul>
+<li>当工作在通道化模式下时，CT1接口在物理上分为24个时隙，可以任意地将24个时隙分成若干组，每组时隙捆绑以后作为一个接口（channel-set）使用，其逻辑特性与同步串口相同，使用<strong>interface serial</strong>命令进入捆绑后形成的接口的视图。</li>
+<li>当工作在净通道模式下时，整个接口不再时隙化，不支持channel-set命令，而是作为一个1.544M带宽的串口使用。</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="channel-set_ct1_interface_view__d6333e95"></a><a name="d6333e95"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将CT1接口1/0/0的1、2、10-15时隙捆绑为1号channel-set。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> controller t1 1/0/0</strong></pre>
+<pre class="screen">[Quidway-T1 1/0/0]<strong> channel-set 1 timeslot-list 1,2,10-15 speed 64k</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ct1_interface_configuration_commands.html">CT1接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_controller_t1.html">display controller t1</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

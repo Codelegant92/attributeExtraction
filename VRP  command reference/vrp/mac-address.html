@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mac-address">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="broadcast_discard_si_view.html">
+<meta name="DC.Relation" scheme="URI" content="display_mac-address.html">
+<meta name="DC.Relation" scheme="URI" content="unknown-multicast_discard_si_view.html">
+<meta name="DC.Relation" scheme="URI" content="unknown-unicast_discard_si_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mac-address">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mac-address</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mac-address"></a><a name="mac-address"></a>
+
+
+<h1 class="topictitle1">mac-address</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mac-address</strong>命令用来配置基于业务实例的静态MAC表项和黑洞MAC表项。表项内容包括报文的目的MAC地址、用于转发该报文的MAC Tunnel名称和报文所属业务实例的名称。</p>
+<p><strong>undo mac-address</strong>命令用来删除基于业务实例的MAC地址表项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mac-address</strong> <strong>static</strong><em> mac-address </em><strong>mac-tunnel</strong><em> tunnel-name </em><strong>service-instance</strong> <em>service-instance-name</em></p>
+<p><strong>mac-address</strong> <strong>blackhole</strong> <em>mac-address</em> <strong>service-instance</strong> <em>service-instance-name</em></p>
+<p><strong>undo mac-address</strong> <em>mac-address</em> <strong>service-instance</strong> <em>service-instance-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>blackhole</strong>：指定表项的类型为黑洞表项。黑洞表项不被老化，系统复位或接口板热插拔后不丢失。</p>
+<p><strong>static</strong>：指定表项的类型为静态表项。静态表项不老化，系统复位或接口板热插拔后不丢失。</p>
+<p><em>mac-address</em>：指定报文的目的MAC地址。格式为H-H-H。其中H为1～4位的十六进制数，如00e0、fc01。当输入不足4位时，表示前面的几位为0，如：输入e0，等同于00e0。该MAC地址不可以是组播或广播地址，也不能是设备的虚MAC地址。</p>
+<p><strong>mac-tunnel</strong><em> tunnel-name</em>：指定用于转发该报文的MAC Tunnel的名字。长度范围是1～31个字符。</p>
+<p><strong>service-instance</strong><em> service-instance-name</em>：指定报文所属业务实例的名字。长度范围是1～31个字符。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图、业务实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在用户业务与多点到多点业务实例映射后，可以通过配置基于业务实例的静态MAC地址表项，使业务实例静态选择用于传输业务的MAC Tunnel。静态MAC地址表项配置后即生效，不需要经过MAC地址学习过程，能更快速的实现业务传输。</p>
+<p>该命令只对多点到多点的业务实例有效。</p>
+<p>静态MAC地址表项中的业务实例必须已经与MAC Tunnel绑定。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mac-address__d91048e108"></a><a name="d91048e108"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置带有目的MAC地址0-0-1的业务实例mysi，被名为mytunnel的MAC Tunnel静态转发。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> mac-address static 0-0-1 mac-tunnel mytunnel service-instance mysi</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="broadcast_discard_si_view.html">broadcast discard</a></div>
+<div><a href="display_mac-address.html">display mac-address</a></div>
+<div><a href="unknown-multicast_discard_si_view.html">unknown-multicast discard</a></div>
+<div><a href="unknown-unicast_discard_si_view.html">unknown-unicast discard</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

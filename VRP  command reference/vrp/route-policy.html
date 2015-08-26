@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="route-policy">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_policyconfiguration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="route-policy-change_notify-delay.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="route-policy">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>route-policy</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="route-policy"></a><a name="route-policy"></a>
+
+
+<h1 class="topictitle1">route-policy</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>route-policy</strong>命令用来创建Route-Policy并进入该Route-Policy视图。</p>
+<p><strong>undo route-policy</strong>命令用来删除创建的Route-Policy。</p>
+<p>缺省情况下，不创建Route-Policy。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>route-policy</strong> <em>route-policy-name</em> {<strong> permit</strong> | <strong>deny</strong> } <strong>node</strong> <em>node</em></p>
+<p><strong>undo route-policy</strong> <em>route-policy-name</em> [ <strong>node</strong> <em>node</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>route-policy-name</em>：指定Route-Policy名称。该名称必须唯一。字符串形式，长度范围是1～40。</p>
+<p><strong>permit</strong>：指定Route-Policy节点的匹配模式为允许。如果路由匹配所有的if-match子句，该路由可通过过滤并执行此节点apply命令中规定的一系列动作；否则，必须进行下一节点的测试。</p>
+<p><strong>deny</strong>：指定Route-Policy节点的匹配模式为拒绝。如果路由匹配所有的if-match子句，该路由不能通过过滤从而不能进入下一节点的测试。</p>
+<p><strong>node</strong> <em>node</em>：Route-Policy的节点索引。整数形式，取值范围是0～65535。当引用该Route-Policy进行路由信息过滤时，<em>node</em>的值小的节点先进行测试。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>Route-Policy用于过滤路由信息以及为通过过滤的路由信息设置路由属性。一个Route-Policy由多个节点构成。一个节点包括多个<strong>if-match</strong>和<strong>apply</strong>子句。</p>
+<p><strong>if-match</strong>子句用来定义该节点的匹配条件，<strong>apply</strong>子句用来定义通过过滤的路由行为。<strong>if-match</strong>子句的过滤规则关系是&#8220;与&#8221;，即该节点的所有<strong>if-match</strong>子句都必须匹配。Route-Policy节点间的过滤关系是&#8220;或&#8221;，即只要通过了一个节点的过滤，就可通过该Route-Policy。如果没有通过任何一个节点的过滤，路由信息将无法通过该Route-Policy。</p>
+<p>配置了Route-Policy后，缺省情况下，RM会立即通知各个协议应用该过滤器进行过滤。如果需要延迟Route-Policy的生效时间，需使用命令<a href="route-policy-change_notify-delay.html">route-policy-change notify-delay</a>配置延迟生效时间。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p><span class="keyword">VRP</span>默认所有未匹配的路由将被拒绝通过Route-Policy。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="route-policy__d115001e120"></a><a name="d115001e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置route-policy policy1，其节点号为10，匹配模式为允许。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> route-policy policy1 permit node 10</strong></pre>
+<pre class="screen">[Quidway-route-policy]</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_policyconfiguration_commands.html">路由策略配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="route-policy-change_notify-delay.html">route-policy-change notify-delay</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

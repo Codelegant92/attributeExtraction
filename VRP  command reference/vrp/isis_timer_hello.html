@@ -1,0 +1,113 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="isis timer hello">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="isis_timer_holding-multiplier.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="isis_timer_hello">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>isis timer hello</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="isis_timer_hello"></a><a name="isis_timer_hello"></a>
+
+
+<h1 class="topictitle1">isis timer hello</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>isis timer hello</strong>命令用来指定接口发送Hello报文的间隔时间。</p>
+<p><strong>undo isis timer hello</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况矿下，接库发送Hello报文的间隔时间是10秒。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>isis timer hello</strong> { <em>hello-interval1 </em>| <strong>millisecond-timer </strong><em>hello-interval2</em> } [ <strong>level-1</strong> | <strong>level-2</strong> ]</p>
+<p><strong>undo</strong> <strong>isis timer hello</strong> [ <strong>level-1</strong> | <strong>level-2</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>hello-interval1</em>：Hello报文发送的间隔时间。整数类型，取值范围是3～255，单位是秒。缺省值是10秒。</p>
+<p><strong>millisecond-timer </strong><em>hello-interval2</em>：Hello报文发送的间隔时间。整数类型，取值范围是100～255000，单位是毫秒。缺省值是10000毫秒。</p>
+<p><strong>level-1</strong>：Level-1 Hello报文的发送间隔。</p>
+<p><strong>level-2</strong>：Level-2 Hello报文的发送间隔。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果没有指定级别，则默认级别为Level-1和Level-2。</p>
+<p>参数<strong>level-1</strong>和<strong>level-2</strong>仅在广播接口上是可配置的，而且必须先在接口上使能IS-IS。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有使能了Smart-Hello功能，Hello报文时间间隔才能设置成毫秒级（<strong>millisecond-timer</strong>参数）。如果Smart-Hello功能被取消，相应的Hello报文时间间隔将恢复到默认值。</p>
+<p>在广播链路上，Level-1和Level-2的Hello报文会分别发送，其间隔时间也要分别设置。在点到点链路上只有一种Hello报文，所以不需要使用参数<strong>level-1</strong>和<strong>level-2</strong>。发送间隔越短，就需要占用越多的系统资源来发送Hello报文，因此，间隔时间需要根据实际情况设定。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果通过<strong>isis circuit-type</strong>命令将广播接口模拟为P2P接口或者通过<strong>undo isis circuit-type</strong>命令将该接口恢复为广播接口，则IS-IS发送Hello报文的间隔时间恢复为缺省值。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="isis_timer_hello__d87436e118"></a><a name="d87436e118"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置Level-2的Hello报文在接口GigabitEthernet1/0/0上每20秒发送一次。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>isis timer hello 20 level-2</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="isis_timer_hello__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="isis_timer_hello__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d87436e145"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d87436e149"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d87436e145 "><p>VRPV500R005C02B200</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d87436e149 "><p>修改参数<strong>level-1</strong>和<strong>level-2</strong>为只在广播接口上可配置</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="isis_timer_holding-multiplier.html">isis timer holding-multiplier</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dot1q termination vid">
+<meta name="DC.Relation" scheme="URI" content="../vrp/qinq_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="control-vid.html">
+<meta name="DC.Relation" scheme="URI" content="display_dot1q_information.html">
+<meta name="DC.Relation" scheme="URI" content="mode_user-termination.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dot1q_termination_vid">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dot1q termination vid</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dot1q_termination_vid"></a><a name="dot1q_termination_vid"></a>
+
+
+<h1 class="topictitle1">dot1q termination vid</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dot1q termination vid</strong>命令用来配置子接口对一层Tag报文的终结功能。</p>
+<p><strong>undo dot1q termination vid</strong>命令用来取消子接口对一层Tag报文的终结功能。</p>
+<p>缺省情况，子接口没有配置对一层Tag报文的终结功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dot1q termination vid</strong> <em>low-pe-vid</em> [ <strong>to</strong> <em>high-pe-vid</em> ] [ <strong>vlan-group</strong> <em>group-id</em> ]</p>
+<p><strong>undo dot1q termination vid</strong> <em>low-pe-vid</em> [ <strong>to</strong> <em>high-pe-vid</em> ] [ <strong>vlan-group</strong> <em>group-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>low-pe-vid</em>：用户报文中的Tag的取值下限，十进制整数形式，取值范围是1～4094。</p>
+<p><em>high-pe-vid</em>：用户报文中的Tag的取值上限，十进制整数形式，取值范围是1～4094。</p>
+<p><strong>vlan-group</strong><em> group-id</em>：用户组号，十进制整数形式，取值范围是1～16。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet子接口视图、GE子接口视图、Eth-Trunk子接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在以太网子接口上使用<strong>dot1q termination vid</strong>命令前，应先在该子接口下配置<strong>control-vid</strong> <em>vid</em> <strong>dot1q-termination</strong>命令，否则无法看到<strong>dot1q
+termination vid</strong>命令。</p>
+<p>子接口收到的用户报文的Tag值应该在命令中指定的pe-vid范围内，否则该报文将被丢弃。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dot1q_termination_vid__d74251e107"></a><a name="d74251e107"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p>在子接口上GE1/0/0.1上配置vlan-group 1的终结功能，外层Tag为100～200。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0.1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> control-vid 1 dot1q-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1] <strong>vlan-group 1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> dot1q termination vid 100 to 200 vlan-group 1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/qinq_configuration_commands.html">QinQ配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="control-vid.html">control-vid</a></div>
+<div><a href="display_dot1q_information.html">display dot1q
+information</a></div>
+<div><a href="mode_user-termination.html">mode user-termination</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

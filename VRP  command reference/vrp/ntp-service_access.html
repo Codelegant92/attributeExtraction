@@ -1,0 +1,172 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ntp-service access">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ntp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ntp-service_access">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ntp-service access</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ntp-service_access"></a><a name="ntp-service_access"></a>
+
+
+
+<h1 class="topictitle1">ntp-service access</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ntp-service access</strong>命令用来设置对本地设备NTP服务的访问控制权限。</p>
+<p><strong>undo
+ntp-service access</strong>命令用来取消设置的访问控制权限。</p>
+<p>缺省情况下，没有访问限制。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ntp-service access</strong> { <strong>peer</strong> | <strong>query</strong> | <strong>server</strong> | <strong>synchronization</strong> } <em>acl-number</em></p>
+<p><strong>undo
+ntp-service access</strong> { <strong>peer</strong> | <strong>query</strong> | <strong>server</strong> | <strong>synchronization</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>peer</strong>：设置完全访问权限。可以对本地NTP服务进行时间请求和控制查询，本地时钟也可以同步到远程服务器。</p>
+<p><strong>query</strong>：设置最大访问限制，只允许对本地NTP服务进行控制查询。</p>
+<p><strong>server</strong>：允许服务器访问与查询。可以对本地NTP服务进行时间请求和控制查询，但本地时钟不会同步到远程服务器。</p>
+<p><strong>synchronization</strong>：只允许服务器访问。只允许对本地NTP服务进行时间请求。</p>
+<p><em>acl-number</em>：基本访问控制列表编号。取值范围是2000～2999。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>相对于NTP验证，<strong>ntp-service access</strong>命令实现一种简单的安全措施。当有一个访问请求时，按照最小访问限制到最大访问限制依次匹配，以第一个匹配的为准，匹配顺序为<strong>peer</strong>、<strong>server</strong>、<strong>synchronization</strong>、<strong>query</strong>。</p>
+<p>根据所要实现的访问限制，需要配置该命令的设备也不相同，具体信息参见下表。</p>
+
+<div class="tablenoborder"><a name="ntp-service_access__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="ntp-service_access__tb_01" frame="border" border="1" rules="all"><caption>表1 NTP访问控制权限配置</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="31.41849332325523%" id="d100558e122"><p>NTP工作模式</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="46.2962962962963%" id="d100558e126"><p>限制的NTP请求类型</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="22.28521038044848%" id="d100558e130"><p>进行配置的设备</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="31.41849332325523%" headers="d100558e122 "><p>单播NTP服务器/客户端模式</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.2962962962963%" headers="d100558e126 "><p>限制客户端同步到服务器端</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="22.28521038044848%" headers="d100558e130 "><p>客户端</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.41849332325523%" headers="d100558e122 "><p>单播NTP服务器/客户端模式</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.2962962962963%" headers="d100558e126 "><p>限制服务器端处理客户端的同步时间请求</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="22.28521038044848%" headers="d100558e130 "><p>服务器</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.41849332325523%" headers="d100558e122 "><p>NTP对等体模式</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.2962962962963%" headers="d100558e126 "><p>限制两端相互同步</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="22.28521038044848%" headers="d100558e130 "><p>主动对等体端</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.41849332325523%" headers="d100558e122 "><p>NTP对等体模式</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.2962962962963%" headers="d100558e126 "><p>限制被动对等体端处理时间请求</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="22.28521038044848%" headers="d100558e130 "><p>被动对等体端</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.41849332325523%" headers="d100558e122 "><p>NTP组播模式</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.2962962962963%" headers="d100558e126 "><p>限制客户端同步到服务器端</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="22.28521038044848%" headers="d100558e130 "><p>NTP组播客户端</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="31.41849332325523%" headers="d100558e122 "><p>NTP广播模式</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="46.2962962962963%" headers="d100558e126 "><p>限制客户端同步到服务器端</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="22.28521038044848%" headers="d100558e130 "><p>NTP广播客户端</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ntp-service_access__d100558e231"></a><a name="d100558e231"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置允许第2000号访问列表中的peer可以对本地设备进行时间请求、查询控制、时间同步。</p>
+<pre class="screen">[Quidway]<strong> ntp-service access peer 2000</strong></pre>
+<p>#
+只允许匹配ACL 2002的peer对本地NTP设备进行时间请求、查询控制。</p>
+<pre class="screen">[Quidway]<strong> <strong>ntp-service access synchronization 2002</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ntp_configuration_commands.html">NTP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

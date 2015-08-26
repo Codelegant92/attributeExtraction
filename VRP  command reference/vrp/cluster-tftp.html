@@ -1,0 +1,104 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="cluster-tftp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="tftp-server.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cluster-tftp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>cluster-tftp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="cluster-tftp"></a><a name="cluster-tftp"></a>
+
+
+<h1 class="topictitle1">cluster-tftp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>cluster-tftp</strong>命令用来从HGMP集群公用的TFTP服务器下载文件，或者向HGMP集群公用的TFTP服务器上传文件。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>cluster-tftp</strong> { <strong>get</strong> <em>get-source-file</em> [ <em>get-destination-file</em> ] | <strong>put</strong> <em>put-source-file</em> [ <em>put-destination-file</em> ] }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>get</strong> <em>get-source-file</em>：从HGMP集群公用的TFTP服务器下载文件。<em>get-source-file</em>表示被下载文件的文件名，字符串形式，不支持空格，不区分大小写，长度范围是1～46。</p>
+<p><em>get-destination-file</em>：指定文件被下载到本设备后所保存的文件名。字符串形式，不支持空格，不区分大小写，长度范围是1～56。如果不指定本参数，则文件被下载到本设备后所保存的文件名将与被下载文件的文件名一致。</p>
+<p><strong>put</strong> <em>put-source-file</em>：向HGMP集群公用的TFTP服务器上传文件。<em>put-source-file</em>表示被上传文件的文件名，字符串形式，不支持空格，不区分大小写，长度范围是1～46。</p>
+<p><em>put-destination-file</em>：文件被上传到TFTP服务器后所存的文件名。字符串形式，不支持空格，不区分大小写，长度范围是1～56。如果不指定本参数，则文件被上传到TFTP服务器后所保存的文件名将与被上传文件的文件名一致。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只能在成员交换机上执行。</p>
+<p>在执行本命令前，需要先在命令交换机上通过<a href="tftp-server.html">tftp-server</a>命令配置本HGMP集群的公用TFTP服务器的IP地址。</p>
+<p>对于NE40E、NE80E、NE5000E和CX600产品，目前暂不支持HGMP集群的TFTP功能。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="cluster-tftp__d7547e89"></a><a name="d7547e89"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 从集群公用的TFTP服务器下载文件名为test.txt的文件。下载到本设备后，存储的文件名为hgmp.txt。</p>
+<pre class="screen">&lt;HUAWEI_1.Quidway&gt;<strong> <strong>cluster-tftp get test.txt hgmp.txt</strong></strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="cluster-tftp__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="cluster-tftp__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d7547e110"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d7547e114"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d7547e110 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d7547e114 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="tftp-server.html">tftp-server</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

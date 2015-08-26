@@ -1,0 +1,299 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display pim bsr-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Relation" scheme="URI" content="c-bsr_ipv4.html">
+<meta name="DC.Relation" scheme="URI" content="c-rp_ipv4.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_pim_bsr-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display pim bsr-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_pim_bsr-info"></a><a name="display_pim_bsr-info"></a>
+
+
+<h1 class="topictitle1">display pim bsr-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display pim bsr-info</strong>命令用来查看PIM-SM域中BSR自举路由器的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display pim</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>all-instance</strong> ] <strong>bsr-info</strong><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>all-instance</strong>：指定所有实例。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display pim bsr-info</strong>命令时，如果不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>，则只显示公网实例的相关信息。</p>
+<p>该命令适用于使用BSR动态选举RP的PIM-SM域。域内任何一台<span class="keyword">路由器</span>上都可以使用该命令查看BSR信息。</p>
+<ul>
+<li><p>如果当前<span class="keyword">路由器</span>上配置了C-BSR，则显示信息中包括Elected BSR和本地配置的C-BSR信息。</p>
+</li>
+<li><p>如果当前<span class="keyword">路由器</span>上未配置C-BSR，则显示信息中仅包括Elected BSR。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_pim_bsr-info__d58818e149"></a><a name="d58818e149"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看当前公网实例PIM-SM域中的BSR信息。该<span class="keyword">路由器</span>上没有配置C-BSR，因此只显示Elected BSR的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display pim bsr-info</strong>
+ VPN-Instance: public net
+ Elected AdminScoped BSR Count: 0
+ Elected BSR Address: 10.1.2.2
+     Priority: 0
+     Hash mask length: 30
+     State: Accept Preferred
+     Scope: Not scoped
+     Uptime: 00:01:46
+     Expires: 00:02:02
+     C-RP Count: 1
+</pre>
+<p># 查看当前公网实例PIM-SM域中的BSR信息。该<span class="keyword">路由器</span>上配置了C-BSR，因此显示Elected BSR和C-BSR的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display pim bsr-info</strong>
+ VPN-Instance: public net
+ Elected AdminScoped BSR Count: 0
+ Elected BSR Address: 10.1.2.2
+     Priority: 0
+     Hash mask length: 30
+     State: Elected
+     Scope: Not scoped
+     Uptime: 00:10:42
+     Next BSR message scheduled at: 00:00:31
+     C-RP Count: 1
+ Candidate AdminScoped BSR Count: 0
+ Candidate BSR Address: 10.1.2.2
+     Priority: 0
+     Hash mask length: 30
+     State: Elected
+     Scope: Not scoped
+     Wait to be BSR: 0
+</pre>
+
+<div class="tablenoborder"><a name="display_pim_bsr-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_bsr-info__tb_01" frame="border" border="1" rules="all"><caption>表1 display pim bsr-info命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.81279919375158%" id="d58818e183"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.18720080624843%" id="d58818e187"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>BSR信息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>Elected AdminScoped BSR Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>当选管理域BSR的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>Elected BSR Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>当选BSR的地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>BSR优先级，缺省值为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>Hash mask lenth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>进行RP Hash计算时的掩码长度。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>BSR的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>Scope</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>该BSR是管理域BSR时，管理域中的组播地址范围。</p>
+<p>Not scoped表示该BSR不是管理域BSR。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>Uptime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>BSR已经存在的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>Expires</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>BSR存在的剩余时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>C-RP Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>通过此BSR学到的RP的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>Next BSR message scheduled at</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>下一个BSR消息将在多少时间后发送。只有当选BSR上维护该定时器，定时器超时则发送BSR消息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>Candidate AdminScoped BSR Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>候选管理域BSR的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>Cancidate BSR Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><p>候选BSR的地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d58818e183 "><p>Wait to be BSR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d58818e187 "><div class="p">当前C-BSR是否有效标识，有以下两种取值：<ul>
+<li>0：表示当前C-BSR有效，即参与竞选BSR；</li>
+<li>1：表示当前C-BSR无效，即不参与竞选BSR。</li>
+</ul>
+</div>
+<p>当<span class="keyword">路由器</span>上配置的C-BSR超过最大规格限制时，如果继续配置C-BSR，该标识位将取1。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_pim_bsr-info__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_bsr-info__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d58818e378"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d58818e382"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d58818e378 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d58818e382 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="c-bsr_ipv4.html">c-bsr</a></div>
+<div><a href="c-rp_ipv4.html">c-rp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

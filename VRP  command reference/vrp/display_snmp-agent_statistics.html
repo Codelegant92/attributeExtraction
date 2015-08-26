@@ -1,0 +1,284 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display snmp-agent statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_snmp-agent_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display snmp-agent statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_snmp-agent_statistics"></a><a name="display_snmp-agent_statistics"></a>
+
+
+<h1 class="topictitle1">display snmp-agent statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display snmp-agent statistics</strong>命令用来显示SNMP的报文处理统计数据信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display snmp-agent statistics</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过对报文统计信息进行分析，能够得到代理和网管间通信的相关信息，为故障定位提供依据。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_snmp-agent_statistics__d66324e37"></a><a name="d66324e37"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看SNMP通讯的统计数据信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display snmp-agent statistics</strong>
+  0 Messages delivered to the SNMP entity
+  0 Messages which were for an unsupported version
+  0 Messages which used a SNMP community name not known
+  0 Messages which represented an illegal operation for the community supplied
+  0 ASN.1 or BER errors in the process of decoding
+  7 Messages passed from the SNMP entity
+  0 SNMP PDUs which had badValue error-status
+  0 SNMP PDUs which had genErr error-status
+  0 SNMP PDUs which had noSuchName error-status
+  0 SNMP PDUs which had tooBig error-status
+  0 MIB objects retrieved successfully
+  0 MIB objects altered successfully
+  0 GetRequest-PDU accepted and processed
+  0 GetNextRequest-PDU accepted and processed
+  0 GetResponse-PDU accepted and processed
+  0 SetRequest-PDU accepted and processed
+  7 Trap-PDU accepted and processed
+  0 Inform-PDU sent
+  0 Inform-PDU received with no acknowledgement
+  0 Inform-PDU received with acknowledgement  </pre>
+
+<div class="tablenoborder"><a name="display_snmp-agent_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_snmp-agent_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display snmp-agent statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="55.127236079617035%" id="d66324e58"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="44.872763920382965%" id="d66324e62"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>Messages delivered to the SNMP entity</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>输入的SNMP报文的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>Messages which were for an unsupported version</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>版本信息错误的报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>Messages which used a SNMP community name not known</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>团体名错误的报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>Messages which represented an illegal operation for the community supplied</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>团体名对应的权限错误的报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>ASN.1 or BER errors in the process of decoding</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>编码错误的SNMP报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>Messages passed from the SNMP entity</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>输出的SNMP报文的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>SNMP PDUs which had a badValue error-status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>Bad_values错误的SNMP报文的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>SNMP PDUs which had a genErr error-status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>General_errors错误的SNMP报文的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>SNMP PDUs which had a noSuchName error-status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>对不存在的MIB对象进行请求的报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>SNMP PDUs which had a tooBig error-status </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>Too_big错误的SNMP报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>MIB objects retrieved successfully</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>NMS请求的变量的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>MIB objects altered successfully</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>NMS设置的变量的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>GetRequest-PDU accepted and processed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>收到的Get请求的报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>GetNextRequest-PDU accepted and processed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>收到的GetNext请求的报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>GetResponse-PDU accepted and processed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>收到的Get响应的报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>SetRequest-PDU accepted and processed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>收到的Set请求的报文数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>Trap-PDU accepted and processed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>发送的Trap报文的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>Inform-PDU sent
+</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>发送的Inform报文的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>Inform-PDU received with no acknowledgement</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>未得到确认的Inform报文的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="55.127236079617035%" headers="d66324e58 "><p>Inform-PDU received with acknowledgement</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="44.872763920382965%" headers="d66324e62 "><p>得到确认的Inform报文的数目</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,113 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="increment-command">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="increment.html">
+<meta name="DC.Relation" scheme="URI" content="increment-run.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="increment-command">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>increment-command</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="increment-command"></a><a name="increment-command"></a>
+
+
+<h1 class="topictitle1">increment-command</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>increment-command</strong>命令用来修改和增加增量配置信息。</p>
+<p><strong>undo increment-command</strong>命令用来删除增量配置信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>increment-command</strong> { <strong>command-number</strong> <em>command-number</em> }<strong>command-text</strong> <em>command-text</em></p>
+<p><strong>undo</strong> <strong>increment-command</strong> {<strong> command-number</strong> <em>command-number</em> | <strong>all</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>command-number</strong><em> command-number</em>：增量配置的编号，十进制整数形式，取值范围是1～500。</p>
+<p><strong>command-text</strong><em> command-text</em>：增量配置的命令，字符串形式，支持空格，长度范围是0～200。</p>
+<p><strong>all</strong>：所有的增量配置信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>增量配置视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只能在命令交换机上执行。</p>
+<p>使用本命令时：如果不指定增量配置的编号，新的增量配置编号为现存最大增量配置编号除以10取整后再乘以10加10。例如，当前现存最大增量配置编号是123，123除以10取整为12，如果不指定增量配置的编号，那么新的增量配置编号是12&times;10＋10＝130。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>增量配置命令会从命令交换机的系统视图下开始执行，因此用户必须保证增量配置命令的连续性，如果相邻两条命令不在同一个视图下，那么就必须增加切换视图的增量配置命令，否则会导致增量配置命令执行失败。</p>
+</div></div>
+<p>增量配置命令列表编辑完成后，可以根据增量配置的编号对命令列表重新进行修改。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="increment-command__d82328e90"></a><a name="d82328e90"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 增加增量配置信息，准备在成员交换机上创建VLAN1和VLAN5。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cluste</strong>r</strong></pre>
+<pre class="screen">[Quidway-cluster]<strong> <strong>increment</strong></strong></pre>
+<pre class="screen">[Quidway-cluster-increment]<strong> <strong>increment&#8211;command command-number 10 command-text vlan 1</strong></strong></pre>
+<pre class="screen">[Quidway-cluster-increment]<strong> <strong>increment&#8211;command command-number 20 command-text vlan 5</strong></strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="increment-command__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="increment-command__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d82328e134"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d82328e138"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d82328e134 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d82328e138 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="increment.html">increment</a></div>
+<div><a href="increment-run.html">increment-run</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

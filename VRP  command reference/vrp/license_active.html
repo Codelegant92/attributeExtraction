@@ -1,0 +1,119 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="license active">
+<meta name="DC.Relation" scheme="URI" content="../vrp/update_and_maintenance.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="license_active">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>license active</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="license_active"></a><a name="license_active"></a>
+
+
+<h1 class="topictitle1">license active</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>license active</strong>命令用来激活主备板的License文件。</p>
+<p><strong>undo license active</strong>命令用来去激活主备板的License文件。</p>
+<p>缺省情况下，License文件没有被激活。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>license active </strong><em>file-name</em></p>
+<p><strong>undo license active</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>file-name</em>：要激活的License文件名。字符串形式，不支持空格，长度范围是1～135。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>首次激活License文件和升级License文件时，新的License文件必须在主板和备板上同时存在。</p>
+<p><strong>license active</strong>命令用来激活License文件，有以下两种情况。</p>
+<ul>
+<li><p>首次激活License文件</p>
+<p>当系统中没有激活过License文件时，输入激活License文件的命令，有两种结果：主板和备板验证License文件的结果相同，主板和备板分别进行激活；主板和备板验证License文件的结果不相同，提示用户主板和备板的License文件不一致，不进行License文件的激活。</p>
+</li>
+<li><p>升级License文件</p>
+<p>系统中存在已经激活的License文件时，要激活一个新的License文件。</p>
+<ul>
+<li><p>主板和备板验证新的License文件结果相同时：</p>
+<p>将新的License文件的配置与当前的配置进行比较。如果低于当前配置则提示用户确认是否继续升级，用户选择否，系统回退到之前的License；用户选择是，主板和备板分别激活该文件，系统升级到新的License文件。</p>
+</li>
+<li><p>主板和备板验证新的License文件结果不相同时：</p>
+<p>提示用户主板和备板的License文件不一致，回退到之前的License。</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>如果激活的License文件中允许配置的VSI实例数小于已配置的VSI实例数，系统会提示用户删除多余的VSI实例。如果用户进行了处理，不再提示；否则，以后每5分钟提示一次用户，直到48小时后系统重启。系统重启后按照配置文件中的顺序恢复VSI实例，超出License文件允许个数的VSI实例被删除。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="license_active__d89293e85"></a><a name="d89293e85"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 激活主备板的License文件xx.dat。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> license active xx.dat</strong></pre>
+<pre class="screen">Info: Please wait for a while...</pre>
+<pre class="screen">Info: Succeeded in activating the License file on the master board.</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="license_active__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="license_active__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d89293e108"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d89293e112"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d89293e108 "><p>VRPV500R005C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d89293e112 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/update_and_maintenance.html">升级维护</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

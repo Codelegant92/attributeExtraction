@@ -1,0 +1,85 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="diffserv-mode">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_qos_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="diffserv-mode">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>diffserv-mode</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="diffserv-mode"></a><a name="diffserv-mode"></a>
+
+
+<h1 class="topictitle1">diffserv-mode</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>diffserv-mode</strong>命令用来配置MPLS的差分服务模式，实现端到端的QoS保证。</p>
+<p>缺省情况下，MPLS的差分服务模式为Uniform。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>diffserv-mode </strong>{ <strong>pipe</strong> <em>service-class color</em> | <strong>short-pipe</strong> <em>service-class color</em> [ <strong>domain</strong> <em>ds-name</em>] | <strong>uniform</strong> }</p>
+<p><strong>undo diffserv-mode</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>pipe</strong>：指定MPLS的差分服务模式为Pipe。</p>
+<p><strong>short-pipe</strong>：指定MPLS的差分服务模式为Short-pipe。</p>
+<p><strong>uniform</strong>：指定MPLS的差分服务模式为Uniform。</p>
+<p><em>service-class</em>：指定报文从私网进入公网时的服务类型。取值为cs7、cs6、ef、af4、af3、af2、af1、be。</p>
+<p><em>color</em>：指定报文从私网进入公网时的颜色，用来标记报文的丢弃优先级。取值为green、yellow、red。</p>
+<p><strong>domain</strong> <em>ds-name</em>：Short-pipe模式时，指定出节点上采用指定PHB的DS域名称。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VPN实例视图、接口视图、Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在接口视图和Tunnel接口视图下，此命令的格式为：</p>
+<p><strong>diffserv-mode </strong>{ <strong>pipe</strong> <em>service-class color</em> | <strong>uniform</strong> }</p>
+<p>在接口视图下，设置绑定VLL接口的diffserv模式。</p>
+<p>在Tunnel接口视图下，设置Tunnel接口的diffserv模式。</p>
+<div class="p">当配置报文从私网进入公网的服务类型时：<ul>
+<li>需要传送信令协议，服务类型设置为：cs7和cs6。</li>
+<li>需要保证低时延的业务，服务类型设置为：ef。</li>
+<li>需要保证带宽的关键数据业务，服务类型设置为：af4、af3、af2或af1。</li>
+<li>不需要严格QoS保证的尽力发送业务，服务类型设置为：be。</li>
+</ul>
+</div>
+<p>上述服务类型的报文按照发送优先级从高到低的顺序排列。</p>
+<p>报文从私网进入公网的颜色，按照丢弃优先级从低到高的顺序排列为green、yellow和red。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="diffserv-mode__d12000e126"></a><a name="d12000e126"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置MPLS diffserv模式为Pipe，服务类型为af1，颜色为green。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>ip vpn-instance vpna</strong></strong></pre>
+<pre class="screen">[Quidway-vpn-instance-vpna]<strong> diffserv-mode pipe af1 green</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpn_qos_configuration_commands.html">VPN QoS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

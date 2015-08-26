@@ -1,0 +1,457 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ndp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ndp_enable_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="ndp_enable_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="ndp_timer_aging.html">
+<meta name="DC.Relation" scheme="URI" content="ndp_timer_hello.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ndp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ndp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ndp"></a><a name="display_ndp"></a>
+
+
+<h1 class="topictitle1">display ndp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ndp</strong>命令用来查看本设备的NDP信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ndp</strong> [ <strong>interface</strong> { <em>interface-type</em> <em>interface-number</em> [ <strong>to</strong> <em>interface-type</em> <em>interface-number</em> ] } &amp;&lt;1-10&gt; ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface</strong> <em>interface-type interface-number</em>：查看指定接口的NDP信息。<em>interface-type</em>表示接口类型。<em>interface-number</em>表示接口编号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定可选参数，本命令显示设备的全局NDP和所有接口的NDP信息。</p>
+<p>在未使能全局NDP时，如果不指定可选参数，执行本命令将不会显示接口的NDP信息，只显示设备的全局NDP信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ndp__d52958e69"></a><a name="d52958e69"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示全局NDP和所有接口的NDP信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ndp</strong></pre>
+<pre class="screen">Info: Neighbor discovery protocol is enabled.</pre>
+<pre class="screen">Neighbor Discovery Protocol Ver: 1, Hello Timer: 60(s), Aging Timer: 180(s)</pre>
+<pre class="screen">Interface: GigabitEthernet1/0/1</pre>
+<pre class="screen">    Status: Disabled, Packets Sent: 0, Packets Received: 0, Packets Error: 0</pre>
+
+<pre class="screen">Interface: GigabitEthernet1/0/2</pre>
+<pre class="screen">    Status: Enabled, Packets Sent: 114, Packets Received: 108, Packets Error: 0</pre>
+<pre class="screen">    Neighbor 1:  Aging Time: 174(s)</pre>
+<pre class="screen">       MAC Address : 0018-8203-39d8</pre>
+<pre class="screen">       Port Name   : GigabitEthernet1/0/1</pre>
+<pre class="screen">       Software Version: NE40E Version V300R006C01B100</pre>
+<pre class="screen">       Device Name : NE40E</pre>
+<pre class="screen">       Port Duplex : FULL</pre>
+<pre class="screen">       Product Ver : NE40E</pre>
+<p>该显示信息主要内容解释见<a href="#display_ndp__tb_01">表1</a>。</p>
+
+<div class="tablenoborder"><a name="display_ndp__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ndp__tb_01" frame="border" border="1" rules="all"><caption>表1 display ndp命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.094734189972286%" id="d52958e121"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.905265810027714%" id="d52958e125"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Neighbor discovery protocol is <em>status.</em></p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><div class="p">本设备全局NDP功能处于<em>status</em>状态。<em>status</em>包括两个状态：<ul>
+<li><p>disabled表示禁止全局NDP功能。</p>
+</li>
+<li><p>enabled表示使能全局NDP功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Neighbor Discovery Protocol Ver</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>本设备支持的NDP版本。目前，设备都支持版本1。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Hello Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>NDP报文的发送时间间隔。以秒为单位。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Aging Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>NDP信息的老化时间。以秒为单位。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>指定的接口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><div class="p">接口的NDP状态。<ul>
+<li><p>Disabled：表示本接口禁止了NDP功能。</p>
+</li>
+<li><p>Enabled：表示本接口使能了NDP功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Packets Send:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>接口发送的NDP报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Packets Received:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>接口接收到的NDP报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Packets Error:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>接口接收到的错误的NDP报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Aging Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>接口连接的邻居节点的NDP信息老化时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>MAC Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>邻居节点的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Port Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>邻居节点的与本接口相连的接口名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Software Version</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>邻居节点的系统软件的版本信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Device Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>邻居节点的主机名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Port Duplex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><div class="p">邻居节点与本接口相连的接口的双工模式。<ul>
+<li><p>FULL：表示全双工。</p>
+</li>
+<li><p>HALF：表示半双工。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.094734189972286%" headers="d52958e121 "><p>Product Ver</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.905265810027714%" headers="d52958e125 "><p>邻居节点的型号。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示GigabitEthernet1/0/1接口的NDP信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display ndp interface gigabitethernet 1/0/1</strong></strong></pre>
+<pre class="screen">Interface: GigabitEthernet1/0/1</pre>
+<pre class="screen">    Status: Enabled, Packets Sent: 116, Packets Received: 110, Packets Error: 0</pre>
+<pre class="screen">    Neighbor 1:  Aging Time: 174(s)</pre>
+<pre class="screen">       MAC Address : 0018-8203-39d8</pre>
+<pre class="screen">       Port Name   : GigabitEthernet1/0/1</pre>
+<pre class="screen">       Software Version: NE40E Version V300R006C01B100</pre>
+<pre class="screen">       Device Name : NE40E</pre>
+<pre class="screen">       Port Duplex : FULL</pre>
+<pre class="screen">       Product Ver : NE40E</pre>
+<p>该显示信息主要内容解释见<a href="#display_ndp__tb_01">表1</a>。</p>
+
+<div class="tablenoborder"><a name="display_ndp__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ndp__tb_02" frame="border" border="1" rules="all"><caption>表2 display ndp interface gigabitethernet 1/0/1命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.772990677752585%" id="d52958e393"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.22700932224741%" id="d52958e397"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><p>指定的接口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><div class="p">接口的NDP状态。<ul>
+<li><p>Disabled：表示本接口禁止了NDP功能。</p>
+</li>
+<li><p>Enabled：表示本接口使能了NDP功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>Packets Send:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><p>接口发送的NDP报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>Packets Received:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><p>接口接收到的NDP报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>Packets Error:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><p>接口接收到的错误的NDP报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>Aging Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><p>接口连接的邻居节点的NDP信息老化时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>MAC Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><p>邻居节点的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>Port Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><p>邻居节点的与本接口相连的接口号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>Software Version</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><p>邻居节点的系统软件的版本信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>Device Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><p>邻居节点的主机名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>Port Duplex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><div class="p">邻居节点与本接口相连的接口的双工模式。<ul>
+<li><p>FULL：表示全双工。</p>
+</li>
+<li><p>HALF：表示半双工。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.772990677752585%" headers="d52958e393 "><p>Product Ver</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.22700932224741%" headers="d52958e397 "><p>邻居节点的型号。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 在未使能全局NDP时，只显示设备的全局NDP信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ndp</strong></pre>
+<pre class="screen">Neighbor Discovery Protocol is disabled.</pre>
+<pre class="screen"> Neighbor Discovery Protocol Ver: 1, Hello Timer: 60(s), Aging Timer: 180(s)</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ndp__tb_07"></a><a name="tb_07"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ndp__tb_07" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d52958e581"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d52958e585"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d52958e581 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d52958e585 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ndp_enable_interface_view.html">ndp enable（接口视图）</a></div>
+<div><a href="ndp_enable_system_view.html">ndp enable（系统视图）</a></div>
+<div><a href="ndp_timer_aging.html">ndp timer aging</a></div>
+<div><a href="ndp_timer_hello.html">ndp timer hello</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,64 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="arp-ping ip">
+<meta name="DC.Relation" scheme="URI" content="../vrp/arp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="arp-ping_mac.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="arp-ping_ip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>arp-ping ip</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="arp-ping_ip"></a><a name="arp-ping_ip"></a>
+
+<h1 class="topictitle1">arp-ping ip</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>arp-ping ip</strong>命令用来在局域网范围内查询某IP地址是否被其它设备使用的情况。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>arp-ping ip </strong><em>ip-address</em> [<strong> interface </strong><em>interface-type interface-number</em> [ <strong>vlan-id </strong><em>vlan-id</em> ] ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：目的IP地址。为点分十进制格式。</p>
+<p><strong>interface </strong><em>interface-type interface-number</em>：指定发送ARP报文的接口编号和接口类型。</p>
+<p><strong>vlan-id</strong> <em>vlan-id</em>：VLAN ID。整数形式，取值范围是1～4094。如果不配置此参数，认为VLAN ID为0。当指定出接口为二层接口时，必须配置该参数，当指定出接口为三层接口时，不可配置该参数。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>arp-ping ip</strong>命令是利用ARP报文在局域网内探测IP地址是否被其它设备使用的一种方法。</p>
+<p>通过<strong>ping</strong>命令也可以探测该IP地址是否被网络上的其他设备使用。但是如果带有防火墙功能的目的主机和路由设备设置了对ping报文不进行回复的功能时，就不会响应ping报文，造成该IP没有被使用的假象。由于ARP报文是二层协议，大多数情况下可以透过设置了对<strong>ping</strong>报文不进行回复的防火墙，从而避免了此类情况的发生。</p>
+<p><strong>arp-ping ip</strong>命令不支持对本机IP地址的操作（<strong>ping</strong>命令可以对本机进行操作）。</p>
+<p>该命令仅支持出接口类型为Ethernet、GigabitEthernet、Eth-Trunk和VLANIF（包括这几类接口转换生成的二层接口）。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="arp-ping_ip__d2226e75"></a><a name="d2226e75"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使用<strong>arp-ping ip</strong>命令查看IP地址是否已被使用。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>arp-ping ip</strong> <strong>10.1.1.1</strong></pre>
+<pre class="screen">ARP-Pinging 10.1.1.1:</pre>
+
+<pre class="screen">10.1.1.1 is used by 00e0-fc91-8d70</pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/arp_configuration_commands.html">ARP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="arp-ping_mac.html">arp-ping mac</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,95 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="router id">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_basic_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_router_id.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="router_id">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>router id</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="router_id"></a><a name="router_id"></a>
+
+
+<h1 class="topictitle1">router id</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>router id</strong>命令用来设置路由管理中的Router ID。</p>
+<p><strong>undo router
+id</strong>命令用来删除已配置的Router ID。</p>
+<p>缺省情况下，在路由器没有配置任何接口时，路由管理的Router ID是0.0.0.0。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>router id</strong> <em>router-id</em></p>
+<p><strong>undo router
+id</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>router-id</em>：IPv4地址形式的Router ID。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>一些动态路由协议要求使用Router ID，如果在启动这些路由协议时没有指定Router ID，则缺省使用路由管理的Router
+ID。</p>
+<p>Router ID选择规则如下：</p>
+<ol>
+<li><p>如果通过命令<strong>router id</strong>配置了Router ID，则按照配置结果设置。没有配置Router ID，则按照下面的规则进行选择。</p>
+<ul>
+<li><p>如果存在配置了IP地址的Looback接口，则选择Loopback接口地址中最大的作为Router ID。</p>
+</li>
+<li><p>如果没有已配置IP地址的Loopback接口，则从其他接口的IP地址中选择最大的作为Router ID（不考虑接口的UP/DOWN状态）。</p>
+</li>
+</ul>
+<p>当且仅当被选为Router ID的接口IP地址被删除/修改，才触发重新选择过程，其他情况（例如接口处于DOWN状态；已经选取了一个非Loopback接口地址后又配置了一个Loopback接口地址；配置了一个更大的接口地址等）不触发重新选择的过程。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>可以通过命令<strong>display router id</strong>查看到：Router ID的值、通过命令<strong>router id</strong>配置的结果、公网接口地址中Router ID的选择结果。</p>
+</div></div>
+</li>
+<li><p>各个VPN实例则按照上述规则分别在属于该VPN实例的接口地址中进行选择。</p>
+</li>
+<li><p>存在主备的情况下，系统将备份命令行配置的Router ID和从接口地址中选择出来的Router ID。主备倒换后平滑的时候，系统将检查从地址中选出的Router
+ID的有效性，如果无效将重新进行选择。</p>
+</li>
+</ol>
+<p>Router ID改变之后，各协议需要通过手工执行<strong>reset</strong>命令才会取新的Router ID。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="router_id__d115106e96"></a><a name="d115106e96"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置路由管理中的路由器ID。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> router id 1.1.1.1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_basic_configuration_commands.html">IP路由表显示命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_router_id.html">display router id</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

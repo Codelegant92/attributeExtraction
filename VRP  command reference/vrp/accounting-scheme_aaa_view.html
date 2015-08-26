@@ -1,0 +1,77 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="accounting-scheme（AAA视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aaa_and_user_management_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="accounting-scheme_aaa_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>accounting-scheme（AAA视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="accounting-scheme_aaa_view"></a><a name="accounting-scheme_aaa_view"></a>
+
+
+<h1 class="topictitle1">accounting-scheme（AAA视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>accounting-scheme</strong>命令用来创建一个计费方案，并进入计费方案视图。</p>
+<p><strong>undo</strong> <strong>accounting-scheme</strong>命令用来删除一个计费方案。</p>
+<p>系统固定有一个&#8220;default&#8221;方案，不能删除，只能修改。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>accounting-scheme</strong> <em>accounting-scheme-name</em></p>
+<p><strong>undo accounting-scheme</strong> <em>accounting-scheme-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>accounting-scheme-name</em>：计费方案名称，字符串形式，长度范围是1～32。不区分大小写，方案名需要符合Windows的命名规范，不能包括斜线&#8220;\&#8221;、反斜线&#8220;/&#8221;、冒号&#8220;:&#8221;、星号&#8220;*&#8221;、问号&#8220;?&#8221;、引号&#8220;&#8221;&#8221;和尖括号&#8220;&lt;&#8221;、&#8220;&gt;&#8221;等字符。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>AAA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>accounting-scheme</strong>命令在创建一个计费方案时，如果同名的计费方案已经存在，将直接进入该计费方案视图。</p>
+<p><strong>undo accounting-scheme</strong>只能删除一个已经存在的、没有被任何域绑定的计费方案。</p>
+<p>系统最多支持128个计费方案。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="accounting-scheme_aaa_view__d272e65"></a><a name="d272e65"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 增加一个新的计费方案，名为newscheme。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>aaa</strong></pre>
+<pre class="screen">[Quidway-aaa]<strong> accounting-scheme newscheme</strong></pre>
+<pre class="screen">[Quidway-aaa-accounting-newscheme]</pre>
+<p># 删除一个已经存在的计费方案，名为oldscheme。</p>
+<pre class="screen">[Quidway-aaa] <strong>undo accounting-scheme oldscheme</strong></pre>
+<p># 进入缺省计费方案的视图。</p>
+<pre class="screen">[Quidway-aaa] <strong>accounting-scheme default</strong></pre>
+<pre class="screen">[Quidway-aaa-accounting-default]</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/aaa_and_user_management_configuration_commands.html">AAA及用户管理配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

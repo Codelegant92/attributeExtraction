@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="c-rp priority（IPv4）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Relation" scheme="URI" content="c-rp_ipv4.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="c-rp_priority_ipv4">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>c-rp priority（IPv4）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="c-rp_priority_ipv4"></a><a name="c-rp_priority_ipv4"></a>
+
+
+<h1 class="topictitle1">c-rp priority（IPv4）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>c-rp priority</strong>命令用来配置C-RP的全局性优先级。</p>
+<p><strong>undo c-rp priority</strong>命令用来恢复该优先级为缺省值。</p>
+<p>缺省情况下，C-RP的全局性优先级是0。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>c-rp priority </strong><em>priority</em></p>
+<p><strong>undo c-rp priority</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>priority</em>：表示C-RP的全局性优先级，优先级数值越大，优先级越低。整数形式，取值范围是0～255，缺省值是0。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例PIM视图、VPN实例PIM视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令和<strong>c-rp </strong><em>interface-type interface-number </em><strong>priority</strong> <em>priority</em>命令功能完全相同，差别只是作用范围不同。<strong>c-rp priority </strong><em>priority</em>命令具有全局性，对整个<span class="keyword">路由器</span>有效；<strong>c-rp </strong><em>interface-type interface-number </em><strong>priority</strong> <em>priority</em>命令只对指定接口有效。</p>
+<p>系统优先采用<strong>c-rp </strong><em>interface-type interface-number </em><strong>priority</strong> <em>priority</em>命令的配置。当未执行<strong>c-rp </strong><em>interface-type interface-number </em><strong>priority</strong> <em>priority</em>命令时，才采用<strong>c-rp priority </strong><em>priority</em>命令的配置。</p>
+<p>从众多C-RP中竞选出RP的规则如下：</p>
+<ul><li><p>C-RP接口地址掩玛最长者获胜。</p>
+</li>
+<li><p>C-RP优先级较高者获胜；</p>
+</li>
+<li><p>如果优先级相同，则执行Hash函数，计算结果较大者获胜；</p>
+</li>
+<li><p>如果以上都相同，则C-RP地址较大者获胜。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="c-rp_priority_ipv4__d5538e124"></a><a name="d5538e124"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例下，配置C-RP的全局性优先级为5。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>pim</strong></strong></pre>
+<pre class="screen">[Quidway-pim]<strong> <strong>c-rp priority 5</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="c-rp_ipv4.html">c-rp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

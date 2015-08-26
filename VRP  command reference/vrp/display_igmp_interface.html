@@ -1,0 +1,465 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display igmp interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/igmp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_igmp_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display igmp interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_igmp_interface"></a><a name="display_igmp_interface"></a>
+
+
+<h1 class="topictitle1">display igmp interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display igmp interface</strong>命令用来查看接口上IGMP配置和运行信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display igmp</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>all-instance</strong> ]<strong> interface</strong> [ <em>interface-type interface-number</em> | <strong>up</strong> | <strong>down</strong> ] [ <strong>verbose</strong> ]<span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称，字符串形式，长度范围是1～31。</p>
+<p><strong>all-instance</strong>：指定所有实例。</p>
+<p><em>interface-type interface-number</em>：表示<span class="keyword">路由器</span>的接口类型和接口号，用来指定具体的接口。</p>
+<p><strong>up</strong>：IGMP接口的IP协议状态是Up，IGMP协议的状态是Active。</p>
+<p><strong>down</strong>：IGMP接口的IP协议状态是Down，IGMP协议的状态是Inactive。</p>
+<p><strong>verbose</strong>：表示IGMP的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display igmp interface</strong>命令时：</p>
+<ul>
+<li><p>如果不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>，则只显示公网实例的相关信息。</p>
+</li>
+<li><p>若指定了<em>interface-type interface-number</em>，则仅显示在该接口下的IGMP配置和运行信息。如果该接口未使能IGMP，则出现提示信息。若不指定<em>interface-type interface-number</em>则显示所有运行IGMP的接口的信息。</p>
+</li>
+<li>如果指定<strong>up</strong>，则仅显示所有IGMP协议为Active状态的IGMP接口参数。</li>
+<li> 如果指定<strong>down</strong>，则仅显示所有IGMP协议为Inactive状态的IGMP接口参数。</li>
+<li><p>若指定了<strong>verbose</strong>则显示接口运行IGMP的各种状态参数。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_igmp_interface__d26766e195"></a><a name="d26766e195"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看公网实例中的接口IGMP配置和运行信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display igmp interface gigabitethernet 6/0/0</strong>
+Interface information of VPN-Instance: public net
+ GigabitEthernet6/0/0(11.1.0.1):
+   IGMP is enabled
+   Current IGMP version is 2
+   IGMP state: up
+   IGMP group policy: none</pre>
+<pre class="screen">   IGMP limit: 40  except: 2000</pre>
+<pre class="screen">   Value of query interval for IGMP (negotiated): -
+   Value of query interval for IGMP (configured): 60 s
+   Value of other querier timeout for IGMP: 105 s
+   Value of maximum query response time for IGMP: 10 s
+   Querier for IGMP: 11.1.0.1 (this router)
+  Total 1 IGMP Group reported
+</pre>
+<pre class="screen">&lt;Quidway&gt; <strong>display igmp interface verbose</strong>
+Interface information of VPN-Instance: public net
+ GigabitEthernet6/0/0(11.1.0.1):
+   IGMP is enabled
+   Current IGMP version is 2
+   IGMP state: up
+   IGMP group policy: none</pre>
+<pre class="screen">   IGMP limit: 40  except: 2000</pre>
+<pre class="screen">   Value of query interval for IGMP (negotiated): - s
+   Value of query interval for IGMP (configured): 60 s
+   Value of other querier timeout for IGMP: 0 s
+   Value of maximum query response time for IGMP: 10 s
+   Value of last member query time: 2 s
+   Value of last member query interval: 1 s
+   Value of startup query interval: 15 s
+   Value of startup query count: 2
+   General query timer expiry (hours:minutes:seconds): 00:00:31
+   Querier for IGMP: 11.1.0.1 (this router)
+   IGMP activity: 1 joins, 0 leaves
+   Robustness (negotiated): -
+   Robustness (configured): 2
+   Require-router-alert: disabled
+   Send-router-alert: enabled
+   Prompt-leave: disabled
+   SSM-Mapping: disabled
+   Startup-query-timer-expiry: off
+   Other-querier-present-timer-expiry: off
+  Total 1 IGMP Group reported
+</pre>
+
+<div class="tablenoborder"><a name="display_igmp_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display igmp interface verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="41.01788863693626%" id="d26766e229"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="58.98211136306375%" id="d26766e233"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Interface information of VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>IGMP接口信息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>GigabitEthernet6/0/0(11.1.0.1)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>接口编号(IP地址)。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>IGMP is enabled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>接口已使能IGMP。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Current IGMP version</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>该接口使能的IGMP版本号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>IGMP state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>IGMP接口状态，up或down。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>IGMP group policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>IGMP组策略的ACL编号，用于限制该接口上可以加入的组。可通过<a href="igmp_group-policy.html">igmp group-policy</a>命令进行配置。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>IGMP limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>IGMP表项限制值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>except</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>ACL定义的组播组不受IGMP表项限制值的限制。</p>
+</td>
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Value of query interval for IGMP (negotiated)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>非查询器通过协商得到的查询消息的时间间隔，单位是秒。该协商值只存在于IGMPv3中。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Value of query interval for IGMP (configured)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>接口上配置发送IGMP查询消息的时间间隔，单位是秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Value of other querier timeout for IGMP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>其它IGMP查询器存活时间，每秒减1，超时值可以通过<a href="igmp_timer_other-querier-present.html">igmp timer other-querier-present</a>进行配置。作为查询器的接口上取值为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Value of maximum query response time for IGMP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>IGMP查询报文中包含的最大响应时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Value of last member query time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>最后成员查询时间。最后成员查询时间 = 最后成员查询时间间隔 &times; 健壮系数。在IGMPv1中，未定义&#8220;最后成员查询时间&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Value of last member query interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>最后成员查询时间间隔，单位是秒。在IGMPv1中，未定义&#8220;最后成员查询时间间隔&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Value of startup query interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>该接口作为查询器刚启动时的查询间隔，单位是秒。在IGMPv1中，未定义&#8220;查询器启动时发送查询消息的查询间隔&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Value of startup query count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>该接口作为查询器启动时发送查询消息的次数。在IGMPv1中，未定义&#8220;查询器启动时发送查询消息的次数&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>General query timer expiry  (hours:minutes:seconds)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>普遍组查询定时器的超时时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Querier for IGMP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>IGMP查询器。在IGMP版本1中，查询器的选择由组播路由协议决定；在IGMPv2中，共享网段上IP地址最低的<span class="keyword">路由器</span>充当查询器。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>IGMP activity: 0 joins, 0 leaves</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><div class="p">接口上的活跃的组成员关系：<ul>
+<li><p>joins表示加入过的IGMP组个数，有新的组加入时增加1，组离开时该值不变。</p>
+</li>
+<li><p>leaves表示离开的组个数，有组离开时增加1。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Robustness (negotiated)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>非查询器通过协商得到的健壮系数。该协商值只存在于IGMPv3中。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Robustness (configured)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>接口上配置的健壮系数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Require-router-alert</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>是否要求接收到的IGMP报文携带Router Alert选项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Send-router-alert</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>发送的IGMP报文是否携带Router Alert选项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Prompt-leave</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>是否使能立即离开。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>SSM-Mapping</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>是否使能SSM-Mapping功能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Startup-query-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><div class="p">启动时该接口作为查询器的查询间隔定时器状态：<ul>
+<li>off：查询消息发送完毕。</li>
+<li>on：查询消息未发送完毕。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Other-querier-present-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><div class="p">其他查询器的存在时间定时器状态：<ul>
+<li>off：接口认为自己是查询器，不存在其他查询器。</li>
+<li>on：接口不是查询器，存在其他查询器。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="41.01788863693626%" headers="d26766e229 "><p>Total 1 IGMP Group reported</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="58.98211136306375%" headers="d26766e233 "><p>该接口上动态加入的IGMP组个数，不包括静态加入的IGMP组。有新组播组动态加入时增加1，有组播组离开时减1。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_igmp_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp_interface__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d26766e598"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d26766e602"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d26766e598 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d26766e602 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d26766e598 "><p>VRPV500R006C01B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d26766e602 "><p>显示信息中增加&#8220;IGMP Limit&#8221;和&#8220;except&#8221;。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/igmp_configuration_commands.html">IGMP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,60 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="firewall packet-filter ipv6">
+<meta name="DC.Relation" scheme="URI" content="../vrp/acl6_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="firewall_packet-filter_ipv6">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>firewall packet-filter ipv6</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="firewall_packet-filter_ipv6"></a><a name="firewall_packet-filter_ipv6"></a>
+
+<h1 class="topictitle1">firewall packet-filter ipv6</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>firewall packet-filter ipv6</strong>命令用来配置接口的出或入方向上的IPv6报文过滤，并指定所使用的ACL6编号。如果报文满足匹配规则，则报文通过过滤，否则将被丢弃。</p>
+<p><strong>undo firewall packet-filter ipv6</strong>命令用来取消接口的出或入方向的IPv6报文过滤。</p>
+<p>缺省匹配规则为&#8220;<strong>permit</strong>&#8221;，即如果未设置匹配规则，则允许报文通过。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>firewall packet-filter ipv6</strong> <em>acl6-number</em> { <strong>inbound</strong> | <strong>outbound</strong> }</p>
+<p><strong>undo firewall</strong> <strong>packet-filter</strong> <strong>ipv6</strong> { <strong>inbound</strong> | <strong>outbound</strong> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>acl6-number</em>：指定ACL6编号，整数形式，取值范围是1000～3999。其中2000～2999是基本ACL6，3000～3999是高级ACL6，1000～1999是基于接口的ACL6。</p>
+<p><strong>inbound</strong>：表示在当前接口的入方向上进行报文过滤。</p>
+<p><strong>outbound</strong>：表示在当前接口的出方向上进行报文过滤。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="firewall_packet-filter_ipv6__d76609e73"></a><a name="d76609e73"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置接口GE 1/0/0 的IPv6报文过滤。设置过滤此接口输出报文的ACL6编号为2050。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>firewall packet-filter ipv6 2050 outbound</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/acl6_configuration_commands.html">ACL6配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

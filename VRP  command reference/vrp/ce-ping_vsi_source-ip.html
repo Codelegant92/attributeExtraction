@@ -1,0 +1,86 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ce-ping vsi source-ip">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ping_and_tracert_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ce-ping_vsi_source-ip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ce-ping vsi source-ip </title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ce-ping_vsi_source-ip"></a><a name="ce-ping_vsi_source-ip"></a>
+
+
+<h1 class="topictitle1">ce-ping vsi source-ip </h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ce-ping vsi source-ip</strong>命令用于在VPLS网络中，查看CE设备IP的使用情况。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ce-ping</strong> <em>ip-address</em> <strong>vsi</strong> <em>vsi-name</em> <strong>source-ip</strong> <em>source-ip-address</em> [ <strong>interval</strong> <em>interval</em> | <strong>count</strong> <em>count</em> ] *</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：指定的目的IP地址。</p>
+<p><strong>vsi</strong> <em>vsi-name</em>：指定VPLS网络中的虚拟交换实例。字符串形式，长度范围是1～31，区分大小写。</p>
+<p><strong>source-ip</strong> <em>source-ip-address</em>：指定的源IP地址。</p>
+<p><strong>interval</strong> <em>interval</em>：指定请求报文的发送时间间隔。取值范围1～10，单位是秒，缺省值为3秒。</p>
+<p><strong>count</strong> <em>count</em>：指定请求报文的发送次数。取值范围1～255，缺省值为3次。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级 </p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在VPLS网络中，通过在PE上执行命令<strong>ce-ping vsi source-ip</strong>，可以检测用户IP是否在线。</p>
+<div class="p"><strong>ce-ping vsi source-ip</strong>命令采用ARP协议，在源PE上广播ARP请求报文，实现指定VSI中的所有用户都会收到ARP请求报文。如果源PE收到用户的ARP应答，即认为用户在线。<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody">源PE设备最多支持同时执行20＋1个（系统支持的VTY终端用户数＋网管用户）<strong>ce-ping vsi source-ip</strong>命令。</div></div>
+</div>
+<div class="p">但是，由于VPLS作为二层网络不感知用户网段，也没有IP地址，所以源PE广播ARP请求报文时就需要用户指定源IP地址。<div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody">用户指定源IP地址有以下两个方面需要注意：<ul>
+<li>指定源IP地址需要跟接收用户的IP地址在同网段，否则接收用户认为ARP请求非法报文，不会回应ARP。</li>
+<li>指定源IP地址不能与VPLS网络内已经使用的IP地址相同，否则使得报文转发路径错误，导致IP地址被指定为源IP地址的用户无法正常上网。如果指定的源IP地址刚好是网关IP地址，将会影响网络中的所有主机无法正常上网</li>
+</ul>
+<p>为了避免上述问题，执行<strong>ce-ping vsi source-ip</strong>命令后首先提示用户务必使用&#8220;未使用&#8221;的IP地址作为源IP地址，用户输入<strong>Y</strong>后才执行命令。</p>
+</div></div>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ce-ping_vsi_source-ip__d5980e127"></a><a name="d5980e127"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在VSI abc下，执行<strong>ce-ping vsi source-ip</strong>操作探测目的地址3.3.3.3/32的MAC地址。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>ce-ping 3.3.3.3 vsi abc source-ip 3.3.3.4 interval 2 count 5</strong>
+If the designated source IP address is in use, it could cause the abnormal data transmission in VPLS network. Are you sure the source-ip is unused in this VPLS?[Y/N]<strong>y</strong>
+
+ce-ping is in process...
+
+3.3.3.3 is used by 00e0-2324-df4a.
+</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ping_and_tracert_commands.html">Ping和Tracert</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href=""></a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

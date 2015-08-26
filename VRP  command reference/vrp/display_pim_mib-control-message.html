@@ -1,0 +1,242 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display pim mib-control-message">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_network_management_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_pim_mib-control-message">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display pim mib-control-message</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_pim_mib-control-message"></a><a name="display_pim_mib-control-message"></a>
+
+
+<h1 class="topictitle1">display pim mib-control-message</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display pim mib-control-message counters</strong>用来查看邻居丢失计数、DR当选计数、无效Join/Prune报文计数、无效注册报文计数、RP-Mapping改变计数、收到和发送的Assert报文计数。</p>
+<p><strong>display pim mib-control-message join-prune</strong>用来查看最后一次接收到的无效Join/Prune报文的源地址、组地址、RP地址。</p>
+<p><strong>display pim mib-control-message assert</strong>用来查看最后一次接收或者发送的Assert报文的源地址、组地址。</p>
+<p><strong>display pim mib-control-message register</strong>用来查看最后一次接收到的无效注册报文的源地址、组地址、RP地址。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display pim mib-control-message</strong> { <strong>counters</strong> | <strong>join-prune</strong> | <strong>assert</strong> | <strong>register</strong> }<span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>counters</strong>：PIM相关计数。</p>
+<p><strong>join-prune</strong>：最后一次接收到的无效Join/Prune报文信息。</p>
+<p><strong>assert</strong>：最后一次接收或者发送的Assert报文信息。</p>
+<p><strong>register</strong>：最后一次无效的注册报文信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_pim_mib-control-message__d59937e121"></a><a name="d59937e121"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看邻居丢失计数，DR当选计数，无效Join/Prune报文计数，无效注册报文计数，RP-Mapping-Change计数，收到和发送的Assert报文计数。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display pim mib-control-message counters</strong>
+pim mib-control-message counters
+Neighbor-loss（times）        : 0
+DR-Election（times）          : 0
+Invalid-join-prune（times）   : 0
+RP-Mapping（times）           : 0
+Invalid-register（times）     : 0
+Assert-received（times）      : 0
+Assert-send（times）          : 0</pre>
+<p># 查看最后一次接收到的无效Join/Prune报文。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display pim mib-control-message join-prune</strong>
+The last invalid join-prune message received information:
+Group address  : 225.1.1.1
+Source address : 0.0.0.0
+RP address     : 20.0.5.5</pre>
+<p># 查看最后一次发送或者接收的Assert报文。如果执行该命令时接收或发送Assert报文的接口板被拔掉，则显示&#8220;The
+last assert message was received or sent on lost interface&#8221;</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display pim mib-control-message assert</strong>
+The last assert message received or sent on Ethernet1/0/0
+Group address   : 226.3.3.3
+Source address  : 20.0.5.55 </pre>
+<p># 查看最后一次接收到的无效注册报文。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display pim mib-control-message register</strong>
+The last invalid register message received information:
+Group address  : 225.1.1.1
+Source address : 20.0.5.100
+RP address     : 20.0.3.1</pre>
+
+<div class="tablenoborder"><a name="display_pim_mib-control-message__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_mib-control-message__tb_01" frame="border" border="1" rules="all"><caption>表1 display pim mib-control-message命令显示信息说明</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="47.2411186696901%" id="d59937e163"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="52.758881330309904%" id="d59937e167"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d59937e163 "><p>Neighbor-loss（times）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d59937e167 "><p>邻居丢失事件次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d59937e163 "><p>DR-Election（times）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d59937e167 "><p>DR当选次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d59937e163 "><p>Invalid-join-prune（times）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d59937e167 "><p>无效的Join/Prune报文个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d59937e163 "><p>RP-Mapping（times）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d59937e167 "><p>RP-MAPPING Change发生次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d59937e163 "><p>Invalid-register（times）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d59937e167 "><p>无效的注册报文个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d59937e163 "><p>Assert-received（times）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d59937e167 "><p>收到的Assert报文个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d59937e163 "><p>Assert-send（times）</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d59937e167 "><p>发送的Assert报文个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d59937e163 "><p>Group address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d59937e167 "><p>组地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d59937e163 "><p>Source address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d59937e167 "><p>源地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d59937e163 "><p>RP address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d59937e167 "><p>RP地址</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_pim_mib-control-message__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_mib-control-message__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d59937e299"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d59937e303"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d59937e299 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d59937e303 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_network_management_commands.html">组播网管功能配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

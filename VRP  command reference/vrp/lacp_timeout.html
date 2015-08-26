@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="lacp timeout">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="lacp_timeout">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>lacp timeout</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="lacp_timeout"></a><a name="lacp_timeout"></a>
+
+
+<h1 class="topictitle1">lacp timeout</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>lacp timeout</strong>命令用来配置静态LACP模式下接口接收LACP协议报文的超时时间。</p>
+<p><strong>undo lacp timeout</strong>命令用来恢复静态LACP模式下接口接收LACP协议报文的超时时间为缺省值。</p>
+<p>缺省情况下，接收报文的超时时间为3秒。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>lacp timeout </strong>{ <strong>fast </strong>|<strong>slow </strong> }</p>
+<p><strong>undo lacp timeout</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>fast</strong>：指定接收报文的超时时间为3秒。</p>
+<p><strong>slow</strong>：指定接收报文的超时时间为90秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Eth-Trunk接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用本命令的前提条件是需保证当前Eth-Trunk的工作模式为静态LACP模式。</p>
+<p>配置此命令后，本端将接收报文的超时时间通过LACP报文通知对端。例如，本端配置为<strong>fast</strong>接收报文超时时间，则对端在接收到报文后会更改为<strong>fast</strong>的发送周期1秒。</p>
+<p>配置<strong>fast</strong>的超时时间后，对端发送LACP报文的周期为1秒，响应性能好，但占用系统资源相对<strong>slow</strong>参数情况较大。</p>
+<p>配置<strong>slow</strong>的超时时间后，对端发送LACP报文的周期为30秒，响应性较<strong>fast</strong>低一些，但占用系统资源也比较少。</p>
+<p>两端配置的超时时间可以不一致，但为了便于维护，建议用户配置一致的LCAP协议报文超时时间。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="lacp_timeout__d88930e85"></a><a name="d88930e85"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置Eth-Trunk1接收LACP协议报文超时时间为90秒。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface eth-trunk 1</strong></pre>
+<pre class="screen">[Quidway-Eth-Trunk1]<strong> lacp timeout slow</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

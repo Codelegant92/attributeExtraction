@@ -1,0 +1,164 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls ldp lsp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_lsp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_ldp_lsp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls ldp lsp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_ldp_lsp"></a><a name="display_mpls_ldp_lsp"></a>
+
+
+<h1 class="topictitle1">display mpls ldp lsp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls ldp lsp</strong>命令用来查看使用LDP创建的LSP相关信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls ldp lsp</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] [ <em>destination-address</em> <em>mask-length</em> ] [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+<p><strong>display mpls ldp lsp</strong> [ <strong>all</strong> ] [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例的名字。使用此参数查看指定VPN下的LDP LSP信息。</p>
+<p><em>destination-address</em>：显示使用LDP创建的，指定目的IPv4地址的LSP信息。</p>
+<p><em>mask-length</em>：目的IPv4地址的掩码长度。整数形式，取值范围是0～32。</p>
+<p><strong>all</strong>：显示所有使用LDP创建的LSP的相关信息。</p>
+<p><strong> | </strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用LDP建立LSP的时候，可以执行此命令查看经过各设备的LSP的数量和详细信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_ldp_lsp__d43817e124"></a><a name="d43817e124"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看LSP信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls ldp lsp</strong></pre>
+<pre class="screen">                              LDP LSP Information
+--------------------------------------------------------------------------
+ SN     DestAddress/Mask   In/OutLabel   Next-Hop        In/Out-Interface
+--------------------------------------------------------------------------
+ 1      2.2.2.2/32         1024/NULL     10.1.2.1        GE3/0/0/GE4/0/0
+*2      2.2.2.2/32         Liberal
+ 3      3.3.3.3/32         NULL/3        10.1.4.1        -------/GE3/0/0
+ 4      4.4.4.4/32         3/NULL        127.0.0.1       GE3/0/0/InLoop0
+ 5      100.1.1.0/24       3/NULL        100.1.1.186     GE3/0/0/GE2/0/0
+ 6      10.1.2.0/24        3/NULL        10.1.2.2        GE3/0/0/GE4/0/0
+ 7      10.1.7.0/24        1025/NULL     10.1.2.1        GE3/0/0/GE4/0/0
+ 8      10.1.8.0/24        3/NULL        10.1.8.2        GE3/0/0/GE1/0/0
+--------------------------------------------------------------------------
+TOTAL: 7 Normal LSP(s) Found.
+TOTAL: 1 Liberal LSP(s) Found.
+ A '*' before an LSP means the LSP is not established
+ A '*' before a Label means the USCB or DSCB is stale</pre>
+
+<div class="tablenoborder"><a name="display_mpls_ldp_lsp__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_ldp_lsp__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls ldp lsp命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="23.80952380952381%" id="d43817e146"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="76.19047619047619%" id="d43817e150"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="23.80952380952381%" headers="d43817e146 "><p>SN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.19047619047619%" headers="d43817e150 "><p>LSP的序号。</p>
+<p>SN前面如果有&#8220; * &#8221;表示未建立LSP。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.80952380952381%" headers="d43817e146 "><p>DestAddress/Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.19047619047619%" headers="d43817e150 "><p>LSP的目的地址和掩码。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.80952380952381%" headers="d43817e146 "><p>In/OutLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.19047619047619%" headers="d43817e150 "><p>入/出标签值。</p>
+<p>In/OutLabel前面有&#8220; * &#8221;表示LSP为Stale
+LSP，需要恢复。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.80952380952381%" headers="d43817e146 "><p>Next-Hop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.19047619047619%" headers="d43817e150 "><p>下一跳IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="23.80952380952381%" headers="d43817e146 "><p>In/Out-Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="76.19047619047619%" headers="d43817e150 "><p>入接口与出接口名称分别用&#8220;/&#8221;分开。</p>
+</td>
+
+</tr>
+
+
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_lsp.html">display mpls lsp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

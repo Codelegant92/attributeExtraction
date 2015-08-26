@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="using（E1接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/e1_interface_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="using_e1_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>using（E1接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="using_e1_interface_view"></a><a name="using_e1_interface_view"></a>
+
+
+<h1 class="topictitle1">using（E1接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>using</strong>命令用来切换E1接口的工作模式。</p>
+<p><strong>undo using</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，E1接口没有设置工作模式，只能进行E1接口本身的配置，不能作为通道化串口使用。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>using</strong> <strong>e1</strong></p>
+<p><strong>undo</strong> <strong>using</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>e1</strong>：净通道工作模式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>E1接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>E1接口有两种工作方式：</p>
+<ul>
+<li><p>当工作在通道化工作模式下时，物理上分为32个时隙，可以对除时隙0以外的31个时隙进行捆绑。使用该接口时，可以任意地将全部时隙分成若干组，每组时隙捆绑以后作为一个接口使用，其逻辑特性与同步串口相同。使用interface
+serial命令进入捆绑后形成的接口的视图。</p>
+</li>
+<li><p>当工作在净通道工作模式下时，整个接口不再时隙化，不支持<a href="channel-set_ce1_interface_view.html">channel-set（CE1接口视图）</a>和<a href="frame-format_ce1_interface_view.html">frame-format（CE1接口视图）</a>命令，而是作为一个2.048M的接口。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p><span class="keyword">VRP</span>目前只支持E1接口工作在净通道模式。</p>
+</div></div>
+<p>配置<strong>using
+e1</strong>命令后，E1接口才能形成通道化串口，从而可以在通道化串上配置链路层和网络层协议，进行数据传输。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="using_e1_interface_view__d127464e80"></a><a name="d127464e80"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置E1接口的工作模式为净通道模式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> controller e1 1/0/0</strong></pre>
+<pre class="screen">[Quidway-E1 1/0/0]<strong> using e1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/e1_interface_configuration_commands.html">E1接口配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

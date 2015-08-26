@@ -1,0 +1,113 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="static-cr-lsp ingress">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="static-cr-lsp_ingress">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>static-cr-lsp ingress</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="static-cr-lsp_ingress"></a><a name="static-cr-lsp_ingress"></a>
+
+
+<h1 class="topictitle1">static-cr-lsp ingress</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>static-cr-lsp ingress</strong>命令用来在入口节点配置静态CR-LSP。</p>
+<p><strong>undo static-cr-lsp ingress</strong>命令用来在入口节点删除配置的静态CR-LSP。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>static-cr-lsp ingress</strong> { <strong>tunnel-interface tunnel</strong> <em>interface-number</em> | <em>tunnel-name</em> } <strong>destination</strong> <em>destination-address</em> { <strong>nexthop</strong> <em>next-hop-address</em> | <strong>outgoing-interface</strong> <em>interface-type interface-number</em> } <strong>out-label</strong> <em>out-label</em> [ <strong>bandwidth</strong> [ <span><strong>ct0</strong> | <strong>ct1</strong> | <strong>ct2</strong> | <strong>ct3</strong> | <strong>ct4</strong> | <strong>ct5</strong> | <strong>ct6</strong> | <strong>ct7</strong></span> ] <em>bandwidth</em> ]</p>
+<p><strong>undo static-cr-lsp ingress</strong> { <strong>tunnel-interface tunnel</strong> <em>interface-number</em> | <em>tunnel-name</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>tunnel-interface tunnel</strong> <em>interface-number</em>：指定静态CR-LSP的隧道接口。<em>interface-number</em>是隧道接口的接口编号。</p>
+<p><em>tunnel-name</em>：静态CR-LSP隧道的名称，字符串形式，区分大小写，不支持空格和缩写，长度范围是1～<span>19</span>。假设使用命令<strong>interface tunnel</strong> <strong>2/0/0</strong>为静态CR-LSP创建了一个的Tunnel接口，则静态CR-LSP入节点中的参数应该写作&#8220;Tunnel2/0/0&#8221;或者&#8220;tunnel2/0/0&#8221;，否则隧道将不能正确建立。中间节点和出节点无此限制。</p>
+<p><strong>destination</strong> <em>destination-address</em>：指定静态CR-LSP的目的地址。</p>
+<p><strong>nexthop</strong> <em>next-hop-address</em>：指定静态CR-LSP下一跳地址。</p>
+<p><strong>outgoing-interface</strong> <em>interface-type interface-number</em>：出接口类型和编号，只有点到点链路才能选择配置出接口。</p>
+<p><strong>out-label</strong> <em>out-label</em>：指定出标签。<em>out-label</em>表示出标签的值，整数形式，取值范围是16～1023。</p>
+<p><strong>bandwidth</strong>：指定静态CR-LSP的带宽。</p>
+<p><strong>ct0</strong>～<strong>ct7</strong>：设置预留给CT0～CT7的带宽。Non-IETF模式只支持CT0和CT1，IETF模式支持CT0～CT7。</p>
+<p><em>bandwidth</em>：CR-LSP所需的带宽，单位为kbit/s。取值范围是0～32000000，缺省值为0。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="static-cr-lsp_ingress__d120878e186"></a><a name="d120878e186"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在入口节点配置静态CR-LSP。名字为Tunnel1/0/0，目的IP地址为10.1.3.1，下一跳IP地址为10.1.1.2，出标签为237，所需要的带宽20kbit/s，从BC1获取带宽。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> static-cr-lsp ingress Tunnel1/0/0 destination 10.1.3.1 nexthop 10.1.1.2 out-label 237 bandwidth ct1 20</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d120878e209">版本</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d120878e212">修订内容</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d120878e209 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d120878e212 "><p>将参数<em>lsp-name</em>的最大长度改为19个字符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d120878e209 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d120878e212 "><p>删除参数BC0～BC1，改为CT0～CT7。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

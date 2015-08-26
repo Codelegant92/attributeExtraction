@@ -1,0 +1,159 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display fib longer">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_performance_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_fib_longer">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display fib longer</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_fib_longer"></a><a name="display_fib_longer"></a>
+
+
+<h1 class="topictitle1">display fib longer</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p>对于该命令，按照后面选择参数的不同匹配的方式也不同。</p>
+<p>对于<strong>display</strong> <strong>fib</strong> [ <em>slot-id</em> ] <em>destination-address</em>命令，如果目的地址在自然掩码范围内能找到相应的FIB表项，则将其子网全部显示出来，否则显示与目的地址最长匹配的FIB表项。</p>
+<p>对于<strong>display</strong> <strong>fib</strong> [ <em>slot-id </em>] <em>destination-address
+destination-mask</em>命令，该命令用来查看与目的地址和掩码精确匹配的FIB表项。</p>
+<p>对于<strong>display</strong> <strong>fib</strong> [ <em>slot-id </em>] <em>destination-address </em><strong>longer</strong>命令，该命令用来查看与目的地址在自然掩码范围内的IP地址匹配的所有的目的地址FIB表项。</p>
+<p>对于<strong>display</strong> <strong>fib</strong> [ <em>slot-id </em>] <em>destination-address destination-mask</em> <strong>longer</strong>命令，该命令用来查看与目的地址在输入的掩码范围内的IP地址匹配的所有的目的地址FIB表项。</p>
+<p>对于<strong>display</strong> <strong>fib</strong> [ <em>slot-id </em>] <em>destination-address1
+desination-mask1</em> <em>desination-address2 destination-mask2</em>命令，该命令用来查看目的地址在输入的<em>desination-address1 desination-mask1</em>到<em>desitination-address2
+destination-mask2</em>范围内的FIB表项。</p>
+<p>如果输入了<em>slot-id</em>，则显示对应板上的FIB信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>fib</strong> [ <em>slot-id</em> ] [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <em>destination-address1</em> [ <em>destination-mask1</em> ] [ <strong>longer</strong> ] [ <strong>verbose</strong> ]</p>
+<p><strong>display</strong><em> </em><strong>fib</strong> [ <em>slot-id </em>] [ <strong>vpn-instance</strong><em> vpn-instance-name</em> ]<em> destination-address1 destination-mask1 destination-address2
+destination-mask2 </em>[ <strong>verbose</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>slot-id</em>：槽位号，根据路由设备硬件的不同而具有不同的取值范围。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例的名称。字符串形式，区分大小写，长度范围是1～31。</p>
+<p><em>destination-address1</em>：为目的IP地址1。点分十进制表示。</p>
+<p><em>destination-mask1</em>：相应的子网掩码1。为点分十进制格式的掩码或整数形式的掩码长度。</p>
+<p><em>destination-address2</em>：为目的IP地址2。点分十进制表示。</p>
+<p><em>destination-mask2</em>：相应的子网掩码2。为点分十进制格式的掩码或整数形式的掩码长度。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_fib_longer__d24368e196"></a><a name="d24368e196"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示目的地址与169.253.0.0在自然掩码范围内匹配的FIB项或最长匹配的FIB项。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display fib 169.253.0.0</strong></pre>
+<pre class="screen">Destination/Mask  Nexthop  Flag  TimeStamp  Interface  TunnelID</pre>
+<pre class="screen">169.0.0.0/8       2.1.1.1  U     t[0]       GE1/0/0     0x0</pre>
+<p># 显示目的地址在169.254.0.0/16和169.254.0.6/16范围内的FIB项。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display fib 169.254.0.0 255.255.0.0 169.254.0.6 255.255.0.0</strong></pre>
+<pre class="screen">Destination/Mask  Nexthop  Flag  TimeStamp  Interface  TunnelID</pre>
+<pre class="screen">169.254.0.1/8     2.1.1.1  U     t[0]       GE1/0/0     0x0</pre>
+
+<div class="tablenoborder"><a name="display_fib_longer__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fib_longer__tb_01" frame="border" border="1" rules="all"><caption>表1 display fib longer命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d24368e230"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d24368e234"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24368e230 "><p>Destination/Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24368e234 "><p>目的地址/掩码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24368e230 "><p>Nexthop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24368e234 "><p>下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24368e230 "><p>Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24368e234 "><p>当前标志，G、H、U、S、D的组合。G表示Gateway（网关路由）H表示Host（主机路由）U表示Up（可用路由）S表示Static（静态路由）D表示Dynamic（动态路由）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24368e230 "><p>TimeStamp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24368e234 "><p>时间戳，表示该表项存在的时间，单位是秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24368e230 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24368e234 "><p>到目的地址的出接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d24368e230 "><p>TunnelID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d24368e234 "><p>表示转发表项索引。用于连接上行板和下行板之间的转发表项。该值不为0时，表示匹配该项的报文通过MPLS隧道转发。该值为0时，表示报文不通过MPLS隧道转发。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_performance_configuration_commands.html">IP性能配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

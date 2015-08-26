@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="apply-label per-instance(IPv6 VPN实例视图)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_mpls_ipv6_vpn_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="apply-label_per-instance_ipv6_vpn_instance_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>apply-label per-instance(IPv6 VPN实例视图)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="apply-label_per-instance_ipv6_vpn_instance_view"></a><a name="apply-label_per-instance_ipv6_vpn_instance_view"></a>
+
+
+<h1 class="topictitle1">apply-label per-instance(IPv6 VPN实例视图)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>apply-label per-instance</strong>命令用来配置当前IPv6 VPN实例下所有发往对端PE的路由都使用本VPN实例的标签值。</p>
+<p><strong>undo apply-label per-instance</strong>命令用来去使能此特性。</p>
+<p>缺省情况下，IPv6 VPN实例下的路由按照每条路由分配一个标签的方式申请标签。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>apply-label per-instance</strong></p>
+<p><strong>undo apply-label per-instance</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>IPv6 VPN实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><ul>
+<li>由于改变标签分配方式将导致VPN实例路由重发，请慎重使用<strong>apply-label per-instance</strong>命令及其undo形式。</li>
+<li>对于运营商的运营商（Carriers' Carrier）组网，在目前的版本中，只有二级运营商的PE上支持基于VPN的MPLS标签分配；一级运营商的PE上只支持基于路由的MPLS标签分配。</li>
+</ul>
+</div></div>
+<p>通常情况下，标签的分配方式是每条路由一个标签（one label per route）。当路由数量比较多时，设备入标签映射表ILM（Incoming Label Map）需要维护的in-segment表项也会增多，从而提高了对设备容量的要求。为了减少ILM表项数目，可以配置<strong>apply-label per-instance</strong>命令，为每个VPN实例分配一个标签，VPN实例中的所有路由都使用同一个标签。</p>
+<p>执行<strong>apply-label per-instance</strong>命令后，如果之前没有发送过本IPv6 VPN实例的路由，则所有路由使用本IPv6 VPN实例的标签；如果之前发送过本IPv6 VPN实例的路由，但路由标签不是基于IPv6 VPN的，则路由释放原先申请的标签，使用现有IPv6 VPN实例的标签重新发布，即，执行这条命令后，重新发送本IPv6 VPN实例内的所有路由。</p>
+<p>执行<strong>undo apply-label per-instance</strong>命令后，如果之前的路由发布是按照每IPv6 VPN每标签方式，则按照每条路由分配一个标签的方式重新申请标签，并重新发送路由。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="apply-label_per-instance_ipv6_vpn_instance_view__d1267e73"></a><a name="d1267e73"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 对IPv6 VPN实例try只分配一个标签来发布路由。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ipv6 vpn6-instance try</strong></pre>
+<pre class="screen">[Quidway-vpn-instance-try]<strong> apply-label per-instance</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_mpls_ipv6_vpn_configuration_commands.html">BGP/MPLS IPv6 VPN配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,132 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls oam egress">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_oam.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_oam_egress_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_oam_egress">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls oam egress</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_oam_egress"></a><a name="mpls_oam_egress"></a>
+
+
+<h1 class="topictitle1">mpls oam egress</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls</strong> <strong>oam</strong> <strong>egress</strong>命令用来在LSP的出节点配置MPLS OAM参数。</p>
+<p><strong>undo
+mpls oam egress</strong>命令用来在LSP出节点取消指定的MPLS OAM参数。</p>
+<p>缺省情况下，出节点使用OAM自动协议扩展功能，反向通道采用共享模式，反向BDI的发送频率是OAM检测报文的发送频率。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls</strong> <strong>oam</strong> <strong>egress</strong> { <strong>lsp-name</strong> <em>lsp-name</em> | <strong>lsr-id</strong> <em>ingress-lsr-id</em> <strong>tunnel-id</strong> <em>tunnel-id</em> } [ <strong>auto-protocol</strong> [ <strong>overtime</strong> <em>over-time</em> ] | <strong>type</strong> { <strong>cv</strong> | <strong>ffd</strong> <strong>frequency</strong> <em>ffd-fre</em> }
+] [ <strong>backward-lsp</strong> <strong>tunnel</strong><em> tunnel-number</em> [ <strong>private</strong> | <strong>share</strong> ]
+[ <strong>bdi-frequency</strong> { <strong>detect-freq</strong> | <strong>per-second</strong> } ] ]</p>
+<p><strong>undo</strong> <strong>mpls</strong> <strong>oam</strong> <strong>egress</strong> { <strong>all</strong> | <strong>lsp-name</strong> <em>lsp-name</em> | <strong>lsr-id</strong> <em>ingress-lsr-id</em> <strong>tunnel-id</strong> <em>tunnel-id</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>lsp-name</strong> <em>lsp-name</em>：静态LSP的名称。字符串形式，不支持空格，长度范围是1～19。</p>
+<p><strong>lsr-id</strong> <em>ingress-lsr-id</em>：绑定被检测LSP的隧道入节点的LSR
+ID。</p>
+<p><strong>tunnel-id</strong> <em>tunnel-id</em>：绑定的被检测LSP的隧道ID，整数形式<span>，取值范围取决于产品的许可证文件</span>。</p>
+<p><strong>auto-protocol</strong>：使能OAM自动协议扩展功能。</p>
+<p><strong>overtime</strong> <em>over-time</em>：首包超时等待时间，是指当配置支持自动协议时，OAM配置生效后等待首个检测报文的时间。如果超过这个时间没有接收到检测报文，认为发生缺陷，触发BDI报文向入节点告警。首包超时等待时间单位为30秒，取值范围是0～255，缺省值为10，即5分钟。</p>
+<p><strong>type</strong>：设置OAM检测报文的类型。</p>
+<p><strong>cv</strong>：设置OAM检测报文的类型是CV报文。</p>
+<p><strong>ffd</strong> <strong>frequency</strong> <em>ffd-freffd-fre</em>：设置OAM检测报文的类型是FFD报文，并设置FFD报文的发送频率。发送频率的可选值为100、200、500，单位是毫秒。其值根据产品而略有不同。</p>
+<p><strong>backward-lsp</strong> <strong>tunnel</strong><em> tunnel-number</em>：绑定的反向LSP的隧道接口编号。</p>
+<p><strong>private</strong>：独占反向通道。用户一旦指定反向LSP为&#8220;独占&#8221;方式后，该LSP就不能再被其他LSP绑定为反向通道。</p>
+<p><strong>share</strong>：共享反向通道，多条前向LSP可以共用一条反向通道。</p>
+<p><strong>bdi-frequency</strong>：反向通告报文BDI的发送频率。</p>
+<p><strong>detect-freq</strong>：反向BDI的发送频率按OAM检测报文的发送频率。</p>
+<p><strong>per-second</strong>：反向BDI的发送频率为每秒一发。</p>
+<p><strong>all</strong>：删除所有出节点OAM配置。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在配制MPLS OAM参数前，必须先执行<a href="mpls_oam.html">mpls oam</a>命令全局使能MPLS
+OAM功能。</p>
+<p>如果执行<strong>static-lsp egress</strong>或<strong>static-cr-lsp egress</strong>命令创建前向LSP时，指定了参数<strong>lsrid</strong> <em>ingress-lsr-id</em>和<strong>tunnel-id</strong> <em>tunnel-id</em>，则在此步骤中可以选用参数<strong>lsr-id</strong> <em>ingress-lsr-id</em> <strong>tunnel-id</strong> <em>tunnel-id</em>，否则只能使用参数<strong>lsp-name</strong> <em>lsp-name</em>。</p>
+<p>如果用户配置出节点的MPLS
+OAM检测报文类型，则自动协议功能失效。</p>
+<p>如果反向通道是静态LSP或者静态CR-LSP，则反向通道必须采用独占方式。</p>
+<p>只有自动协议扩展可以自动使能，其他OAM参数配置后均需要手工启动。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_oam_egress__d94505e286"></a><a name="d94505e286"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 某LSP为RSVP-TE建立的LSP，LSP入节点的LSR ID为1.1.1.1，Tunnel ID为100，在出节点配置MPLS
+OAM协议参数：启用自动协议，反向LSP为独占方式，BDI报文发送频率继承检测报文发送频率。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> mpls oam egress lsr-id 1.1.1.1 tunnel-id 100 auto-protocol backward-lsp tunnel 3/0/0 private bdi-frequency detect-freq</strong></pre>
+<p># 修改该LSP的MPLS OAM检测报文类型为CV，修改后，自动协议功能失效。</p>
+<pre class="screen">[Quidway]<strong> mpls oam egress lsr-id 1.1.1.1 tunnel-id 100 type cv</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d94505e315"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d94505e319"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d94505e315 "><p>VRPV500R003C07B360</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d94505e319 "><p>修改命令行格式，必须指定反向LSP才能配置BDI的发送频率。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_oam_configuration_commands.html">MPLS OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_oam.html">mpls oam</a></div>
+<div><a href="mpls_oam_egress_enable.html">mpls oam egress enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

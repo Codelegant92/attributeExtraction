@@ -1,0 +1,129 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dhcp snooping alarm threshold（VLAN视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_snooping_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_snooping_alarm.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_snooping_enable.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_snooping_max-user-number_vlan_view.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_snooping_max-user-number_interface_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dhcp_snooping_alarm_threshold_vlan_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dhcp snooping alarm threshold（VLAN视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dhcp_snooping_alarm_threshold_vlan_view"></a><a name="dhcp_snooping_alarm_threshold_vlan_view"></a>
+
+
+<h1 class="topictitle1">dhcp snooping alarm threshold（VLAN视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dhcp</strong> <strong>snooping</strong> <strong>alarm</strong> <strong>threshold</strong>命令用来配置VLAN丢弃的ARP报文、IP报文、DHCP Reply报文（Untrusted端口收到的）和DHCP Request报文数量的告警阈值<span>以及用户数达到最大用户数限制的百分比告警阈值</span>。</p>
+<p><strong>undo</strong> <strong>dhcp</strong> <strong>snooping</strong> <strong>alarm</strong> <strong>threshold</strong>命令用来恢复告警阈值的缺省值。</p>
+<div class="p">缺省情况下：<ul>
+<li><p>VLAN丢弃报文的告警阈值是全局模式下的告警阈值（全局模式下，默认的告警阈值为100，也可手动配置），单位是报文的个数。</p>
+</li>
+<li><p>VLAN内用户数达到最大用户数的告警阈值是100，单位是&#8220;％&#8221;。</p>
+</li>
+</ul>
+</div>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dhcp</strong> <strong>snooping</strong> <strong>alarm</strong> { <strong>arp</strong> | <strong>ip</strong> | <strong>dhcp-request</strong> | <strong>dhcp-chaddr</strong> | <strong>dhcp-</strong> <strong>reply </strong><span>|<strong> user-limit </strong></span>} <strong>threshold</strong> <em>threshold</em> [ <strong>interface</strong> <em>interface-type interface-number</em> ]</p>
+<p><strong>undo</strong> <strong>dhcp</strong> <strong>snooping</strong> <strong>alarm</strong> { <strong>arp</strong> | <strong>ip</strong> | <strong>dhcp-request</strong> | <strong>dhcp-chaddr</strong> | <strong>dhcp-</strong> <strong>reply </strong><span>|<strong> user-limit </strong></span>} <strong>threshold</strong> [ <strong>interface</strong><em> interface-type interface-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>arp</strong>：丢弃ARP报文的告警阈值。</p>
+<p><strong>ip</strong>：丢弃IP报文的告警阈值。</p>
+<p><strong>dhcp-reply</strong>：丢弃untrusted接口上收到的DHCP应答报文（包括Offer、ACK和NAK报文）的告警阈值。</p>
+<p><strong>dhcp-chaddr</strong>：丢弃DHCP报文中CHADDR字段与以太帧头中的源 MAC不匹配报文的告警阈值。</p>
+<p><strong>dhcp-request</strong>：丢弃DHCP Request报文的告警阈值。</p>
+<p><strong>user-limit</strong>：用户数达到最大用户数限制的告警阈值。</p>
+<p><em>threshold</em>：告警阈值，VLAN丢弃报文的告警阈值取值范围是1~1000，缺省为100<span>；DHCP Snooping用户数达到最大用户数限制的百分比告警阈值取值范围是1~100，缺省为100</span>。</p>
+<p><em>interface-type interface-number</em>：接口类型、接口号。此参数仅在VLAN视图下才可配置。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VLAN视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在VLAN视图下执行此命令表示仅配置该VLAN丢弃的报文的告警阈值<span>以及用户数达到最大用户数限制的百分比告警阈值</span>。</p>
+<div class="p">VLAN丢弃的报文告警阈值,有以下两种情况：<ul>
+<li><p>如果没有配置VLAN的告警阈值，那么VLAN的告警阈值就是全局的默认值，可以通过配置全局的告警阈值来修改默认值。</p>
+</li>
+<li><p>如果VLAN上配置了告警阈值，那么以VLAN上配置的告警阈值为准。</p>
+</li>
+</ul>
+</div>
+<div class="p">在VLAN视图下配置用户数达到最大用户数限制的百分比告警阈值前，必须先执行以下命令：<ul>
+<li><p>在系统视图下，执行<a href="dhcp_snooping_enable.html">dhcp snooping enable</a>命令，使能全局的DHCP Snooping功能。</p>
+</li>
+<li><p>在VLAN视图下，执行<a href="dhcp_snooping_max-user-number_vlan_view.html">dhcp snooping max-user-number（VLAN视图）</a>命令，配置用户数限制功能。</p>
+</li>
+<li><p>在VLAN视图下，执行<a href="dhcp_snooping_alarm.html">dhcp snooping alarm</a>命令，使能DHCP Snooping告警功能。</p>
+</li>
+</ul>
+</div>
+<p>若配置了用户数最大限制数量为n，用户数达到最大用户数限制的百分比为m，那么当该VLAN下用户数达到n&times;m，将产生告警。但是当用户数达到或超过(n&times;m)＋1都不会再告警。只有用户租期到期或用户主动释放IP地址，VLAN下的用户数会下降到n&times;m以下。当用户数再一次达到n&times;m，这时将会产生告警。</p>
+<p>当用户需要修改已经配置的百分比告警阈值，重新配置即可，只有当前配置生效。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody">如果当前VLAN是RRPP的控制VLAN，则无法配置最大用户数百分比告警阈值。</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dhcp_snooping_alarm_threshold_vlan_view__d11067e240"></a><a name="d11067e240"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置VLAN 100丢弃ARP报文的告警阈值为200。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 100</strong></pre>
+<pre class="screen">[Quidway-Vlan100]<strong> dhcp snooping alarm arp threshold 200</strong></pre>
+
+<div class="p"># 配置VLAN100内用户数达到最大用户数限制的百分比告警阈值为50％。<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> dhcp snooping enable</strong>
+[Quidway]<strong> vlan 100</strong>
+[Quidway-vlan100]<strong> dhcp snooping max-user-number 3000</strong>
+[Quidway-vlan100]<strong> dhcp snooping alarm user-limit enable</strong>
+[Quidway-vlan100]<strong> dhcp snooping alarm user-limit threshold 50</strong>
+</pre>
+</div>
+
+<div class="p"># 配置VLAN 100内接口GE1/0/1上用户数达到最大用户数限制的百分比告警阈值为50%。<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> dhcp snooping enable</strong>
+[Quidway]<strong> vlan 100</strong>
+[Quidway-vlan100]<strong> dhcp snooping max-user-number 3000 interface gigabitethernet 1/0/1</strong>
+[Quidway-vlan100]<strong> dhcp snooping alarm user-limit enable</strong>
+[Quidway-vlan100]<strong> dhcp snooping alarm user-limit threshold 50 interface gigabitethernet 1/0/1</strong>
+</pre>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_snooping_configuration_commands.html">DHCP Snooping命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="dhcp_snooping_alarm.html">dhcp snooping alarm</a></div>
+<div><a href="dhcp_snooping_enable.html">dhcp snooping enable</a></div>
+<div><a href="dhcp_snooping_max-user-number_vlan_view.html">dhcp snooping max-user-number（VLAN视图）</a></div>
+<div><a href="dhcp_snooping_max-user-number_interface_view.html">dhcp snooping max-user-number（接口视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

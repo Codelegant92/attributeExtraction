@@ -1,0 +1,176 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ipv6 fib statistics all">
+<meta name="DC.Relation" scheme="URI" content="../vrp/interface_board_intermixing_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="apply_ipv6_fib-policy.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ipv6_fib_statistics_all">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ipv6 fib statistics all</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ipv6_fib_statistics_all"></a><a name="display_ipv6_fib_statistics_all"></a>
+
+
+<h1 class="topictitle1">display ipv6 fib statistics all</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ipv6 fib statistics all</strong>命令用来查看IPv6 FIB的统计信息。主要包括接口板容量及各个转发表项实例的转发表项数量。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ipv6 fib</strong> [ <em>slot</em>-<em>number</em> ] <strong>statistics all</strong><span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>slot</em>-<em>number</em>：需要查看IPv6 FIB策略统计信息的槽号。当不指定槽号时，查看的是主控板上所有的IPv6 FIB转发表项信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行命令<strong>display ipv6 fib statistics all</strong>时，</p>
+<p>如果指定槽号，则可以查看指定槽号的接口板上的IPv6 FIB路由前缀容量及各个转发表项实例的转发表项数量。</p>
+<p>如果不指定槽号，则可以查看主控板上所有IPv6 FIB转发表项信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ipv6_fib_statistics_all__d33704e104"></a><a name="d33704e104"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看2号槽的接口板上的IPv6 FIB策略的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ipv6 fib 2 statistics all</strong></pre>
+<pre class="screen">IPv6 FIB Route Prefix Capacity : 320000</pre>
+<pre class="screen">IPv6 FIB Total Route Prefix Count: 1 ; Entry Count : 1
+</pre>
+<pre class="screen">IPv6 FIB Public Route Prefix Count :1 ; Entry Count : 1</pre>
+<pre class="screen">IPv6 Vpn-instance vpna6 Route Prefix Count :0 ; Entry Count : 0</pre>
+
+<div class="tablenoborder"><a name="display_ipv6_fib_statistics_all__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_fib_statistics_all__tb_01" frame="border" border="1" rules="all"><caption>表1 display ipv6 fib statistics all输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="38.850889192886456%" id="d33704e132"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="61.14911080711355%" id="d33704e136"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="38.850889192886456%" headers="d33704e132 "><p>IPv6 FIB Route Prefix Capacity :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.14911080711355%" headers="d33704e136 "><p>本接口板的IPv6 FIB路由前缀容量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.850889192886456%" headers="d33704e132 "><p>IPv6 FIB Total Route Prefix Count : Entry Count :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.14911080711355%" headers="d33704e136 "><p>IPv6转发表项的路由前缀总数和转发表项总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.850889192886456%" headers="d33704e132 "><p>IPv6 FIB Public Route Prefix Count : Entry Count :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.14911080711355%" headers="d33704e136 "><p>IPv6公网转发表项的路由前缀总数和转发表项总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.850889192886456%" headers="d33704e132 "><p>IPv6 Vpn-instance vpna6 Route Prefix Count : Entry Count :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.14911080711355%" headers="d33704e136 "><p>名为vpna6的IPv6 VPN实例的路由前缀总数和转发表项总数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ipv6_fib_statistics_all__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_fib_statistics_all__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d33704e202"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d33704e206"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d33704e202 "><p>VRPV500R005C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d33704e206 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d33704e202 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d33704e206 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/interface_board_intermixing_configuration_commands.html">接口板混插配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="apply_ipv6_fib-policy.html">apply ipv6 fib-policy</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

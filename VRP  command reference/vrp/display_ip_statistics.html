@@ -1,0 +1,297 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ip statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_performance_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ip_interface.html">
+<meta name="DC.Relation" scheme="URI" content="reset_ip_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ip_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ip statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ip_statistics"></a><a name="display_ip_statistics"></a>
+
+
+<h1 class="topictitle1">display ip statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ip statistics</strong>命令用来查看IP流量统计信息，包括接收报文（其中包括丢弃的带源路由选项报文的统计信息）、发送报文、分片、重组的统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ip statistics</strong> [ <strong>slot </strong><em>slot-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>slot </strong><em>slot-id</em>：表示显示指定接口板的IP流量统计信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在主控板统计丢弃的带源路由选项报文的信息，当选择<strong>slot</strong> <em>slot-id</em>参数查看某一接口板信息时，丢弃的报文数为0。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ip_statistics__d32791e53"></a><a name="d32791e53"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示IP流量统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ip statistics</strong></pre>
+<pre class="screen">  Input:     sum                     0      local                     0
+             bad protocol            0      bad format                0
+             bad checksum            0      bad options               0
+             discard srr             0      TTL exceeded              0
+  Output:    forwarding              0      local                     0
+             dropped                 0      no route                  0
+  Fragment:  input                   0      output                    0
+             dropped                 0
+             fragmented              0      couldn't fragment         0
+  Reassembling:sum                   0      timeouts                  0</pre>
+
+<div class="tablenoborder"><a name="display_ip_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display ip statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d32791e75"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d32791e79"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>Input</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>接收到的报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>报文总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>local</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>被送给上次协议的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>bad protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>涉及到未知协议的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>bad format</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>格式错误的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>bad checksum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>校验错误的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>discard srr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>被丢弃的带源路由选项的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>bad options</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>选项错误的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>TTL exceeded</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>由于TTL超时被丢弃的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>Output</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>发送的报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>forwarding</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>被转发的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>local</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>产生的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>dropped</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>丢弃的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>no route</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>没有路由的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>Fragment</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>分片数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>input</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>收到的分片数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>output</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>被创建发送的分片数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>dropped</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>被丢弃的分片数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>fragmented</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>分片成功的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>couldn't fragment</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>不能被分片的报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>Reassembling:sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>重装成功的分片数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d32791e75 "><p>timeouts</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d32791e79 "><p>超时的分片数量</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_performance_configuration_commands.html">IP性能配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ip_interface.html">display ip interface</a></div>
+<div><a href="reset_ip_statistics.html">reset ip statistics</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

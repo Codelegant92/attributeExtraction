@@ -1,0 +1,77 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="filter-policy export (RIP)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rip_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="import-route_rip.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="filter-policy_export_rip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>filter-policy export (RIP)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="filter-policy_export_rip"></a><a name="filter-policy_export_rip"></a>
+
+
+<h1 class="topictitle1">filter-policy export (RIP)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>filter-policy export</strong>命令用来配置全局、协议、接口出口过滤策略，只有通过过滤的路由才能被加入其路由表中，并通过更新报文发布出去。</p>
+<p><strong>undo filter-policy export</strong>命令用来取消过滤路由的操作。如果已经配置了基于接口的路由策略，删除时必须指定<em>interface-type interface-number</em>，且一次只能删除一个接口上的策略。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>filter-policy</strong> { <em>acl-number</em> | <strong>ip-prefix</strong> <em>ip-prefix-name </em>} <strong>export</strong> [ <em>protocol</em> [ <em>process-id </em>] | <em>interface-type interface-number </em>] </p>
+<p><strong>undo filter-policy</strong> <strong>export</strong> [ <em>protocol</em> [ <em>process-id </em>] |<em> interface-type interface-number </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>acl-number</em>：用于过滤路由信息目的地址的访问列表号。整数形式，取值范围是2000～2999。</p>
+<p><strong>ip-prefix</strong><em> ip-prefix-name</em>：用于过滤路由信息目的地址的地址前缀列表名。字符串形式，不支持空格，区分大小写，长度范围是1～169。</p>
+<p><em>protocol</em>：被引入的外部路由协议名称。可以是<strong>static</strong>、<strong>direct</strong>、<strong>rip</strong>、<strong>ospf</strong>、<strong>isis</strong>和<strong>bgp</strong>。</p>
+<p><em>process-id</em>：指定进程号。当引入路由协议为<strong>is-is</strong>、<strong>rip</strong>和<strong>ospf</strong>时，必须指定进程号。</p>
+<p><em>interface-type interface-number</em>：接口类型和接口号。基于出口过滤路由。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>RIP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令在RIP进程下配置，如果基于接口或者协议对路由进行过滤，则一个接口或协议只能配置一个路由策略；在没有指定接口和协议的情况下，就认为是配置全局过滤策略，同样每次只能配置一个策略，如果重复配置，新的策略将覆盖之前的策略。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="filter-policy_export_rip__d76222e129"></a><a name="d76222e129"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 按照地址前缀列表abc，对引入的静态路由过滤，通过过滤的路由加入RIP路由表，并作为RIP路由更新报文发送出去。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>rip 100</strong></pre>
+<pre class="screen">[Quidway-rip-100]<strong> filter-policy ip-prefix abc export static</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rip_configuration_commands.html">RIP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="import-route_rip.html">import-route (RIP)</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

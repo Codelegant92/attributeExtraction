@@ -1,0 +1,370 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis migp-routing">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_migp-routing">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis migp-routing</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_migp-routing"></a><a name="display_isis_migp-routing"></a>
+
+
+<h1 class="topictitle1">display isis migp-routing</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis migp-routing</strong>命令用来显示IS-IS的MIGP（Multicast IGP）路由信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>isis</strong> [ <em>process-id</em> ] <strong>migp-routing</strong> [ <em>ip-address</em> [ <em>mask</em> | <em>mask-length</em> ] ] [ <strong>level-1</strong> | <strong>level-2</strong> ] [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：IS-IS进程号。</p>
+<p><em>ip-address</em>：显示指定目的地址的路由信息。</p>
+<p><em>mask</em>：掩码，点分十进制格式。</p>
+<p><em>mask-length</em>：掩码长度。</p>
+<p><strong>level-1</strong>：显示Level-1的IS-IS路由。</p>
+<p><strong>level-2</strong>：显示Level-2的IS-IS路由。</p>
+<p><strong>verbose</strong>：使用此参数后，将显示路由的管理标签。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过此命令可以查看出接口为TE-Tunnel的路由的实际物理接口。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_migp-routing__d36168e148"></a><a name="d36168e148"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示IS-IS的MIGP路由信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis migp-routing</strong></pre>
+
+<pre class="screen">                       MIGP Route information for ISIS(1)</pre>
+<pre class="screen">                       ----------------------------------</pre>
+
+<pre class="screen">                        ISIS(1) Level-2 Forwarding Table</pre>
+<pre class="screen">                        --------------------------------</pre>
+
+<pre class="screen"> IPV4 Destination     IntCost    ExtCost ExitInterface   NextHop          Flags</pre>
+<pre class="screen">--------------------------------------------------------------------------------</pre>
+<pre class="screen"> 192.168.3.0/24       40         NULL    GE2/0/0        10.0.1.1         A/-
+ 5.5.5.5/32           30         NULL    GE2/0/0        10.0.1.1         A/-
+ 4.4.4.4/32           20         NULL    GE2/0/0        10.0.1.1         A/-
+ 10.0.2.0/24          20         NULL    GE2/0/0        10.0.1.1         A/-
+ 10.0.3.0/24          30         NULL    GE2/0/0        10.0.1.1         A/-
+
+            Flags: A-Added to MIGP, U-Up/Down Bit Set</pre>
+
+<div class="tablenoborder"><a name="display_isis_migp-routing__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_migp-routing__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis migp-routing命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d36168e185"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d36168e189"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e185 "><p>IPV4 Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e189 "><p>IPv4目的地址/掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e185 "><p>Int.Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e189 "><p>IPv4内部开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e185 "><p>Ext.Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e189 "><p>IPv4外部开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e185 "><p>ExitInterface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e189 "><p>出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e185 "><p>Next Hop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e189 "><p>路由下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e185 "><div class="p">Flags<ul>
+
+<li><p>A-Added to MIGP</p>
+</li>
+<li><p>U-Up/Down Bit Set</p>
+</li>
+</ul>
+</div>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e189 "><div class="p">路由信息标记<ul>
+
+<li><p>A-Added to MIGP：向MIGP表中添加了路由</p>
+</li>
+<li><p>U-Up/Down Bit Set：Up/Down比特位</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis migp-routing verbose</strong></pre>
+
+<pre class="screen">                       MIGP Route information for ISIS(1)</pre>
+<pre class="screen">                       ----------------------------------</pre>
+
+<pre class="screen">                        ISIS(1) Level-2 Forwarding Table</pre>
+<pre class="screen">                        --------------------------------</pre>
+
+<pre class="screen"> IPV4 Dest  : 192.168.3.0/24     Int. Cost : 40              Ext. Cost : NULL</pre>
+<pre class="screen"> Admin Tag  : -                  Src Count : 1               Flag      : A/-</pre>
+<pre class="screen"> NextHop    :                    Interface :                 ExitIndex :</pre>
+<pre class="screen">    10.0.1.1                           GE2/0/0                  0x00000009</pre>
+
+<pre class="screen"> IPV4 Dest  : 5.5.5.5/32         Int. Cost : 30              Ext. Cost : NULL</pre>
+<pre class="screen"> Admin Tag  : -                  Src Count : 1               Flag      : A/-</pre>
+<pre class="screen"> NextHop    :                    Interface :                 ExitIndex :</pre>
+<pre class="screen">    10.0.1.1                           GE2/0/0                  0x00000009</pre>
+
+<pre class="screen"> IPV4 Dest  : 4.4.4.4/32         Int. Cost : 20              Ext. Cost : NULL</pre>
+<pre class="screen"> Admin Tag  : -                  Src Count : 1               Flag      : A/-</pre>
+<pre class="screen"> NextHop    :                    Interface :                 ExitIndex :</pre>
+<pre class="screen">    10.0.1.1                           GE2/0/0                  0x00000009</pre>
+
+<pre class="screen"> IPV4 Dest  : 10.0.2.0/24        Int. Cost : 20              Ext. Cost : NULL</pre>
+<pre class="screen"> Admin Tag  : -                  Src Count : 1               Flag      : A/-</pre>
+<pre class="screen"> NextHop    :                    Interface :                 ExitIndex :</pre>
+<pre class="screen">    10.0.1.1                           GE2/0/0                  0x00000009</pre>
+
+<pre class="screen"> IPV4 Dest  : 10.0.3.0/24        Int. Cost : 30              Ext. Cost : NULL</pre>
+<pre class="screen"> Admin Tag  : -                  Src Count : 1               Flag      : A/-</pre>
+<pre class="screen"> NextHop    :                    Interface :                 ExitIndex :</pre>
+<pre class="screen">    10.0.1.1                           GE2/0/0                  0x00000009</pre>
+
+<pre class="screen">            Flags: A-Added to MIGP, U-Up/Down Bit Set</pre>
+
+<div class="tablenoborder"><a name="display_isis_migp-routing__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_migp-routing__tb_02" frame="border" border="1" rules="all"><caption>表2 display isis migp-routing verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d36168e360"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d36168e364"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e360 "><p>IPV4 Dest</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e364 "><p>IPv4目的地址/掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e360 "><p>Int.Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e364 "><p>IPv4内部开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e360 "><p>Ext.Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e364 "><p>IPv4外部开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e360 "><p>Admin Tag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e364 "><p>路由的管理标记</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e360 "><p>Src Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e364 "><p>到达同一目的地的源地址个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e360 "><div class="p">Flags<ul>
+
+<li><p>A-Added to MIGP</p>
+</li>
+<li><p>U-Up/Down Bit Set</p>
+</li>
+</ul>
+</div>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e364 "><div class="p">路由信息标记<ul>
+
+<li><p>A-Added to MIGP：向MIGP表中添加了路由</p>
+</li>
+<li><p>U-Up/Down Bit Set：Up/Down比特位</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e360 "><p>Next Hop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e364 "><p>路由下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e360 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e364 "><p>路由的出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36168e360 "><p>ExitIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36168e364 "><p>出口索引值</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_migp-routing__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_migp-routing__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d36168e505"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d36168e509"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36168e505 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36168e509 "><p>修改了显示信息，删除B（Build MIGP）标志。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36168e505 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36168e509 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

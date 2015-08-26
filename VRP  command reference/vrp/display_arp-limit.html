@@ -1,0 +1,165 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display arp-limit">
+<meta name="DC.Relation" scheme="URI" content="../vrp/arp_security_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_arp-limit">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display arp-limit</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_arp-limit"></a><a name="display_arp-limit"></a>
+
+
+<h1 class="topictitle1">display arp-limit</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>arp-limit</strong>命令用来查询接口可以学习ARP数目的最大值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>arp-limit</strong> [ <strong>interface </strong><em>interface-type interface-number</em> ] <span>[ <strong>vlan</strong><em> vlan-id </em>]</span><span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口编号。</p>
+<p><em>vlan-id</em>：VLAN ID，取值范围是1～4094。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display arp-limit</strong>命令查询接口学习的ARP数目时，二层接口和三层接口都可以显示配置的ARP学习的最大数目和主控板已经学习到的ARP数目<span>，其余接口只能显示配置的ARP学习的最大数目</span>。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_arp-limit__d12616e118"></a><a name="d12616e118"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查询整机配置限制数目。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display arp-limit</strong></pre>
+<pre class="screen">interface               LimitNum        VlanID          LearnedNum(Mainboard)</pre>
+<pre class="screen">---------------------------------------------------------------------------</pre>
+<pre class="screen"> Eth-Trunk0              100             124                0</pre>
+<pre class="screen"> Eth-Trunk0              100             125                0</pre>
+<pre class="screen"> GigabitEthernet2/0/1    16384           0                  0</pre>
+<pre class="screen"> GigabitEthernet4/0/1    100             0                  0</pre>
+<pre class="screen"> GigabitEthernet4/0/2    16384           124                0</pre>
+
+<div class="tablenoborder"><a name="display_arp-limit__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_arp-limit__tb_01" frame="border" border="1" rules="all"><caption>表1 display arp-limit命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.52426452099572%" id="d12616e152"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.47573547900427%" id="d12616e156"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12616e152 "><p>interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12616e156 "><p>接口类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12616e152 "><p>LimitNum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12616e156 "><p>接口学习ARP的最大数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12616e152 "><p>VlanID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12616e156 "><p>接口所在的VLAN ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12616e152 "><p>LearnedNum(Mainboard)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12616e156 "><p>接口已经学习的ARP数目</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_arp-limit__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_arp-limit__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d12616e222"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d12616e226"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d12616e222 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d12616e226 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/arp_security_commands.html">ARP安全命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

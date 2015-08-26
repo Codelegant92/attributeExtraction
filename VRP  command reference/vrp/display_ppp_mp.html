@@ -1,0 +1,354 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ppp mp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ppp_and_mp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="link-protocol_ppp.html">
+<meta name="DC.Relation" scheme="URI" content="ppp_mp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ppp_mp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ppp mp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ppp_mp"></a><a name="display_ppp_mp"></a>
+
+
+<h1 class="topictitle1">display ppp mp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ppp mp</strong>命令用来显示MP的捆绑信息及捆绑链路的统计信息，如果不指定接口类型和接口编号，将显示所有虚拟接口模板上的绑定信息和捆绑链路的统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ppp mp</strong> [ <strong>interface</strong> <em>interface-type</em> <em>interface-number</em> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em> <em>interface-number</em>：接口类型和接口编号，用于指定查看的接口。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。字符串格式，支持空格，区分大小写。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>用此命令可以查看到物理接口是否成功绑定到了指定的虚拟接口模板上。同时还可以看到被绑定的方式是直接绑定还是通过验证方式的绑定等。</p>
+<p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ppp_mp__d60775e100"></a><a name="d60775e100"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看Virtual-Template接口的MP绑定信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ppp mp interface virtual-template 1</strong></pre>
+<pre class="screen">Template is Virtual-Template1</pre>
+<pre class="screen"><strong> Bundle quid0</strong>, 2 member, slot 4, Master link is Virtual-Template1:0</pre>
+<pre class="screen">  0 lost fragments, 0 reordered, 0 unassigned, 0 interleaved,</pre>
+<pre class="screen"> sequence 0/0 rcvd/sent</pre>
+<pre class="screen"> The bundled son channels are:</pre>
+<pre class="screen">      Serial4/0/0:0</pre>
+<pre class="screen">      Serial4/0/0:1</pre>
+
+<div class="tablenoborder"><a name="display_ppp_mp__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ppp_mp__tb_01" frame="border" border="1" rules="all"><caption>表1 display ppp mp interface virtual-template命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.7941546989166%" id="d60775e136"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.2058453010834%" id="d60775e140"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e136 "><p>Template is Virtual-Template1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e140 "><p>使用的虚拟接口模板：Virtual-Template1。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e136 "><p>Bundle quid0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e140 "><p>被绑定的物理接口的用户名是quid0。当配置通过终端标识符进行验证绑定时，此处显示的唯一标识这台<span class="keyword">路由器</span>的终端标识符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e136 "><p>2 member</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e140 "><p>绑定的通道数目：2。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e136 "><p>slot 4</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e140 "><p>绑定在4号槽。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e136 "><p>Master link is Virtual-Template1:0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e140 "><p>主通道。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e136 "><p>0 lost fragments</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e140 "><p>接收方向丢弃的分片。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e136 "><p>0 reordered</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e140 "><p>接收方向重组报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e136 "><p>0 unassigned</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e140 "><p>接收方向等待重组的分片数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e136 "><p>0 interleaved</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e140 "><p>发送方向LFI的分片个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e136 "><p>sequence 0/0 rcvd/sent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e140 "><p>接收序列号/发送序列号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e136 "><p>The bundled son channels are</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e140 "><p>此MP中捆绑的子通道。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看MP-Group接口的MP绑定信息和捆绑链路的运行状态。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ppp mp interface mp-group 1/0/1</strong></pre>
+<pre class="screen">Mp-group is Mp-group1/0/1</pre>
+<pre class="screen"> ===========Sublinks status begin======           </pre>
+<pre class="screen"> Serial1/0/1:1 physical UP,protocol UP        </pre>
+<pre class="screen"> Serial1/0/1:2 physical UP,protocol UP            </pre>
+<pre class="screen"> Serial1/0/1:3 physical UP,protocol DOWN(damping)        </pre>
+<pre class="screen"> Serial1/0/1:4 physical UP,protocol DOWN     </pre>
+<pre class="screen"> ===========Sublinks status end========       </pre>
+<pre class="screen"> Bundle Multilink, 2 member, slot 1, Master link is Mp-group1/0/1 </pre>
+<pre class="screen">  0 lost fragments, 0 reordered, 0 unassigned, 0 interleaved,</pre>
+<pre class="screen"> sequence 0/0 rcvd/sent                 </pre>
+<pre class="screen"> The bundled son channels are:           </pre>
+<pre class="screen">      Serial1/0/1:1                    </pre>
+<pre class="screen">      Serial1/0/1:2</pre>
+
+<div class="tablenoborder"><a name="display_ppp_mp__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ppp_mp__tb_02" frame="border" border="1" rules="all"><caption>表2 display ppp mp interface mp-group命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.7941546989166%" id="d60775e319"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.2058453010834%" id="d60775e323"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e319 "><p>Mp-group is Mp-group1/0/1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e323 "><p>使用的MP-Group接口是MP-Group1/0/1。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e319 "><p>Serial  physical, protocol </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e323 "><div class="p">捆绑链路的物理接口及其物理状态和链路层协议状态。<ul>
+<li><p>UP：表示接口的物理层或链路层工作正常。</p>
+</li>
+<li><p>DOWN：表示接口的物理层或链路层出现了故障。其中damping表示接口因为震荡频繁而被抑制。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e319 "><p>Bundle Multilink, member, slot, Master link is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e323 "><p>表示多链路捆绑的有效捆绑链路数、槽号和绑定的接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e319 "><p>lost fragments</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e323 "><p>接收方向丢弃的分片。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e319 "><p>reordered</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e323 "><p>接收方向重组报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e319 "><p>unassigned</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e323 "><p>接收方向等待重组的分片数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e319 "><p>interleaved</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e323 "><p>发送方向LFI的分片个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e319 "><p>sequence  rcvd/sent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e323 "><p>接收序列号/发送序列号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d60775e319 "><p>The bundled son channels are</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d60775e323 "><p>此MP中捆绑的捆绑链路。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ppp_mp__tb_02_1"></a><a name="tb_02_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ppp_mp__tb_02_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d60775e454"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d60775e458"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d60775e454 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d60775e458 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ppp_and_mp_configuration_commands.html">PPP和MP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="link-protocol_ppp.html">link-protocol ppp</a></div>
+<div><a href="ppp_mp.html">ppp mp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

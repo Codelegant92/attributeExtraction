@@ -1,0 +1,91 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="if-match classifier">
+<meta name="DC.Relation" scheme="URI" content="../vrp/class-based_qos_configuration_commmands.html">
+<meta name="DC.Relation" scheme="URI" content="traffic_classifier.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="if-match_classifier">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>if-match classifier</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="if-match_classifier"></a><a name="if-match_classifier"></a>
+
+
+<h1 class="topictitle1">if-match classifier</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>if-match classifier</strong>命令用来定义QoS类匹配规则。</p>
+<p><strong>undo if-match
+classifier</strong>命令用来删除QoS类匹配规则。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>if-match</strong> [<strong> not </strong>]<strong> classifier </strong><em>classifier-name</em></p>
+<p><strong>undo
+if-match</strong> [<strong> not </strong>]<strong> classifier </strong><em>classifier-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>classifier-name</em>：类名。</p>
+<p><strong>not</strong>：不匹配该类。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>流分类视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果类匹配的规则之间既有逻辑与，又有逻辑或的关系，采用本匹配方法可以解决。</p>
+<p>例如：需要定义classA，满足以下关系：规则1
+&amp; 规则2 | 规则3，可以这样定义。</p>
+<p>traffic classifier classB operator and</p>
+<p>if-match
+规则1</p>
+<p>if-match 规则2</p>
+<p>traffic classifier classA operator or</p>
+<p>if-match
+规则3</p>
+<p>if-match classifier classB</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="if-match_classifier__d80285e80"></a><a name="d80285e80"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 定义类class2，要求引用class1。</p>
+<p># 定义类class2的匹配规则，需要引用class1，所以先配置class1。class1规则为：匹配IP优先级为5。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> traffic classifier class1</strong></pre>
+<pre class="screen">[Quidway-classifier-class1]<strong> if-match ip-precedence 5</strong></pre>
+<p># 定义类class2，匹配规则为class1，并且目的MAC地址为0050-BA27-BED3的报文。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> traffic classifier class2</strong></pre>
+<pre class="screen">[Quidway-classifier-class2]<strong> if-match classifier class1</strong></pre>
+<pre class="screen">[Quidway-classifier-class2]<strong> if-match destination-mac 0050-BA27-BED3</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/class-based_qos_configuration_commmands.html">基于类的QoS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="traffic_classifier.html">traffic classifier</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

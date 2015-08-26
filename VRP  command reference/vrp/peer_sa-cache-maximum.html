@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer sa-cache-maximum">
+<meta name="DC.Relation" scheme="URI" content="../vrp/msdp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_msdp_sa-count.html">
+<meta name="DC.Relation" scheme="URI" content="display_msdp_peer-status.html">
+<meta name="DC.Relation" scheme="URI" content="display_msdp_brief.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_sa-cache-maximum">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer sa-cache-maximum</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_sa-cache-maximum"></a><a name="peer_sa-cache-maximum"></a>
+
+
+<h1 class="topictitle1">peer sa-cache-maximum</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer sa-cache-maximum</strong>命令用来限制<span class="keyword">路由器</span>缓存从指定MSDP对等体学到的（S，G）项的最大数量。</p>
+<p><strong>undo peer sa-cache-maximum</strong>命令用来恢复SA-Cache最大值的缺省配置。</p>
+<p>缺省情况下，SA-cache最多缓存8192个（S，G）表项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> <em>peer-address</em> <strong>sa-cache-maximum</strong> <em>sa-limit</em></p>
+<p><strong>undo peer</strong> <em>peer-address</em> <strong>sa-cache-maximum</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>peer-address</em>：表示MSDP对等体地址。点分十进制形式。</p>
+<p><em>sa-limit</em>：表示允许缓存（S，G）项的最大值。整数形式，取值范围是1～4294967295。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例MSDP视图、VPN实例MSDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在可能遭受DoS攻击的网络中，建议对所有MSDP对等体进行此项配置。</p>
+<p>SA-cache能够缓存的（S，G）项的总数受限于SA-cache的规格。目前对于整个<span class="keyword">路由器</span>来说，SA-cache能够缓存的（S，G）项总数最大是8192。因此，对于来自单个peer的（S，G）项：</p>
+<ul>
+<li>如果不配置或配置值超过8192，则SA-cache能够缓存的最大数量为8192。</li>
+<li> 如果配置值小于8192，则SA-cache能够缓存的最大数量为配置值。多余的（S，G）项不能被缓存，也不能被通告给PIM-SM。但可以使用SA消息转发。</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_sa-cache-maximum__d104564e83"></a><a name="d104564e83"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中，配置<span class="keyword">路由器</span>在接收到MSDP peer 125.10.7.6的SA消息时限制缓存（S，G）的数量为100。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> msdp</strong></pre>
+<pre class="screen">[Quidway-msdp]<strong> peer 125.10.7.6 sa-cache-maximum 100</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/msdp_configuration_commands.html">MSDP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_msdp_sa-count.html">display msdp sa-count</a></div>
+<div><a href="display_msdp_peer-status.html">display msdp peer-status</a></div>
+<div><a href="display_msdp_brief.html">display msdp brief</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

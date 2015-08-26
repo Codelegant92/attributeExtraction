@@ -1,0 +1,244 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis bfd session">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_bfd_session">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis bfd session</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_bfd_session"></a><a name="display_isis_bfd_session"></a>
+
+
+<h1 class="topictitle1">display isis bfd session</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis bfd session</strong>命令用来查看BFD特性会话的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis</strong> [ <em>process-id</em> | <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>bfd session</strong> { <strong>peer</strong> <em>ip-address</em> | <strong>all</strong> }<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：IS-IS进程号。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定IPv4 VPN的IS-IS多实例进程。<em>vpn-instance-name</em>是VPN实例名，区分大小写。</p>
+<p><strong>peer</strong> <em>ip-address</em>：指定邻居的IP地址。</p>
+<p><strong>all</strong>：指定该IS-IS进程下所有使能了IS-IS的接口。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_bfd_session__d35167e137"></a><a name="d35167e137"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看邻居BFD信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis bfd session all</strong></pre>
+<pre class="screen">                      BFD session information for ISIS(1)</pre>
+<pre class="screen">                      -----------------------------------</pre>
+<pre class="screen">Peer System ID : 0000.0000.0002           Interface : Pos1/0/0</pre>
+<pre class="screen">TX : 1000          BFD State : up         Peer IP Address : 100.1.1.2</pre>
+<pre class="screen">RX : 1000          LocDis : 8194          Local IP Address: 100.1.1.1</pre>
+<pre class="screen">Multiplier : 3     RemDis : 8197          Type : L1</pre>
+<pre class="screen">Diag : No diagnostic information </pre>
+
+<div class="tablenoborder"><a name="display_isis_bfd_session__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_bfd_session__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis bfd session all命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.96875787351978%" id="d35167e171"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.031242126480215%" id="d35167e175"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>Peer system ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><p>邻居的System ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><p>本端的接口名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>TX</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><p>经过协商后BFD报文的最小发送间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>BFD State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><div class="p">BFD状态<ul>
+<li><p>Up</p>
+</li>
+<li><p>Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>Peer IP Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><p>邻居IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>RX</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><p>经过协商后BFD报文的最小接收间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>LocDis</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><p>BFD动态分配的本地标示符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>Local IP Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><p>本端接口IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>Multiplier</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><p>远端的检测倍数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>RemDis</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><p>BFD动态分配的对端标示符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><p>邻居的Level级别</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.96875787351978%" headers="d35167e171 "><p>Diagnostic Info</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.031242126480215%" headers="d35167e175 "><p>诊断信息</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_bfd_session__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_bfd_session__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d35167e339"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d35167e343"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d35167e339 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d35167e343 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

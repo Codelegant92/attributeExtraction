@@ -1,0 +1,120 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ipv6 import-route">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipv6_enable_is-is.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipv6_import-route">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ipv6 import-route</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipv6_import-route"></a><a name="ipv6_import-route"></a>
+
+
+
+<h1 class="topictitle1">ipv6 import-route</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ipv6 import-route</strong>命令用来引入其他IPv6路由信息。</p>
+<p><strong>undo ipv6 import-route</strong>命令用来取消IS-IS引入其它协议的IPv6路由信息。</p>
+<p>缺省情况下，IS-IS不引入其它协议的IPv6路由信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ipv6 import-route</strong> <em>protocol</em> [ <em>process-id</em> ] [ <strong>cost </strong><em>cost</em> ] [ <strong>tag</strong> <em>tag</em> ] [ <strong>route-policy</strong> <em>route-policy-name</em> ] [<strong> level-1</strong> | <strong>level-2</strong> | <strong>level-1-2</strong> ]</p>
+<p><strong>undo ipv6 import-route</strong> <em>protocol</em> [ <em>process-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>protocol</em>：要引入的路由协议，可以是<strong>direct</strong>、<strong>static</strong>、<strong>ripng</strong>、<strong>isis</strong>、<strong>ospfv3</strong>和<strong>bgp</strong>。</p>
+<p><em>process-id</em>：当引入<strong>ospfv3</strong>、<strong>isis</strong>或<strong>ripng</strong>协议时，需要指明协议号。</p>
+<p><strong>cost</strong><em> cost</em>：引入路由的开销值。此处区分开销类型，取值范围是0～4261412864。</p>
+<p><strong>tag</strong><em> tag</em>：为引入的路由分配管理标签号。整数形式，取值范围是1～4294967295。</p>
+<p><strong>route-policy</strong><em> route-policy-name</em>：指定路由策略名称。</p>
+<p><strong>level-1</strong>：引入路由到Level-1的路由表中。</p>
+<p><strong>level-2</strong>：引入路由到Level-2的路由表中。</p>
+<p><strong>level-1-2</strong>：引入路由到Level-1和Level-2的路由表中。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果不指定引入的级别，默认为引入路由到Level-2路由表中。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对IS-IS而言，其它的路由协议发现的路由总被当作路由域外部的路由来处理。在引入其它协议路由时，还可指定引入路由的缺省开销值。如果未指定值，将采用缺省值0。</p>
+<p>在IS-IS引入路由时，可以指定将路由引入到Level-1级、Level-2级以及Level-1-2级。</p>
+<p>IS-IS将所有引入路由域中的路由当作外部路由，它们描述了应该如何选择到路由域以外目的地的路由。</p>
+<p>可以配置IS-IS在引入外部路由时保留路由的原有开销值，在路由发布和路由计算时，采用这些路由的原有开销值。在这种情况下，将不能配置引入路由的开销类型和开销值，且引入的外部路由协议只能是OSPFv3、RIPng、IS-IS或者BGP。</p>
+<p>使用此命令前，必须先使能IS-IS进程的IPv6能力。配置过程请参见<a href="ipv6_enable_is-is.html"><strong>ipv6 enable(IS-IS)</strong></a>命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ipv6_import-route__d85928e164"></a><a name="d85928e164"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置IS-IS引入静态IPv6路由，并设置该路由的开销值为15。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>isis</strong>
+[Quidway-isis-1] <strong>ipv6 enable</strong>
+[Quidway-isis-1] <strong>ipv6 import-route static cost 15</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="ipv6_import-route__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="ipv6_import-route__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d85928e192"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d85928e196"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d85928e192 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d85928e196 "><p><em>cost</em>的取值范围由&#8220;如果IS-IS的开销类型是wide或wide-compatible，则引入路由权值的取值范围是0～4261412864；否则取值为0～63&#8221;变为&#8220;此处不论开销类型，取值范围均为0～4261412864&#8221;。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipv6_enable_is-is.html">ipv6 enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

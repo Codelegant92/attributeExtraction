@@ -1,0 +1,72 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ntp-service unicast-peer">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ntp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ntp-service_unicast-peer">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ntp-service unicast-peer</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ntp-service_unicast-peer"></a><a name="ntp-service_unicast-peer"></a>
+
+
+<h1 class="topictitle1">ntp-service unicast-peer</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ntp-service</strong> <strong>unicast-peer</strong>命令用来配置NTP对等体模式。</p>
+<p><strong>undo ntp-service</strong> <strong>unicast-peer</strong>命令用来取消NTP对等体模式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ntp-service</strong> <strong>unicast-peer</strong> <em>ip-address</em> [ <strong>version</strong> <em>number</em> | <strong>authentication-keyid</strong> <em>key-id</em> | <strong>source-interface</strong> <em>interface-type interface-number </em>|<strong> vpn-instance </strong><em>vpn-instance-name</em> | <strong>preference</strong> ] *</p>
+<p><strong>undo</strong> <strong>ntp-service</strong> <strong>unicast-peer</strong> <em>ip-address </em>[ <strong>vpn-instance </strong><em>vpn-instance-name</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：远程服务器IP地址。主机地址，不能为广播、组播地址或参考时钟的IP地址。</p>
+<p><strong>version </strong><em>number</em>：NTP版本号。取值范围是1～3。缺省值是3。</p>
+<p><strong>authentication-keyid</strong>：定义身份验证密钥。</p>
+<p><em>key-id</em>：向该远程服务器发送消息使用的密钥ID号，范围是1～4294967295。</p>
+<p><strong>source-interface </strong><em>interface-type interface-number</em>：主动对等体向被动对等体发送NTP消息时使用的源接口，消息包中的源IP地址从该接口获取。</p>
+<p><strong>vpn-instance </strong><em>vpn-instance-name</em>：VPN实例名称。字符串形式，不支持空格，长度范围是1～31。</p>
+<p><strong>preference</strong>：指定该服务器为优先选择的远程服务器。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>设置以<em>ip-address</em>所指定的远程服务器作为本地的对等体，本地运行在 symmetric active模式。在这种配置下，本地设备能同步到远程服务器，远程服务器也能同步到本地服务器。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ntp-service_unicast-peer__d100798e133"></a><a name="d100798e133"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 本地被配置成由peer 10.10.1.1提供同步时间，本地对等体也能为peer提供同步时间，版本号为3。NTP消息包的IP地址从GE1/0/0获得。</p>
+<pre class="screen">[Quidway]<strong> ntp-service unicast-peer 10.10.1.1 version 3 source-interface GigabitEthernet 1/0/0</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ntp_configuration_commands.html">NTP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

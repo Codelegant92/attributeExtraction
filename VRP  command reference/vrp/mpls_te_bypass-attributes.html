@@ -1,0 +1,137 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te bypass-attributes">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_fast-reroute.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_te_tunnel-interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_bypass-attributes">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te bypass-attributes</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_bypass-attributes"></a><a name="mpls_te_bypass-attributes"></a>
+
+
+<h1 class="topictitle1">mpls te bypass-attributes</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te bypass-attributes</strong>命令用来设置MPLS TE自动快速重路由的旁路隧道属性。</p>
+<p><strong>undo mpls te bypass-attributes</strong>命令用来恢复缺省设置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te bypass-attributes</strong> <strong>bandwidth</strong> <em>bandwidth</em> [ <strong>priority</strong> <em>setup-priority</em> [ <em>hold-priority</em> ] ]</p>
+<p><strong>undo mpls te bypass-attributes</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>bandwidth</em>：带宽的值。取值范围是从1到主隧道的最大预留带宽，单位是kbit/s。</p>
+<p><em>setup-priority</em>：建立优先级。整数形式，取值范围是0～7，数值越小则优先级越高。缺省情况下，旁路隧道的建立优先级与被保护的主隧道一致。</p>
+<p><em>hold-priority</em>：保持优先级。整数形式，取值范围是0～7，数值越小则优先级越高。缺省情况下，旁路隧道的保持优先级与被保护的主隧道一致。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置该命令前，接口需使能<a href="mpls_te_fast-reroute.html">mpls
+te fast-reroute bandwidth</a>，且旁路隧道的带宽不能大于主隧道的带宽。</p>
+<p>旁路隧道的建立优先级不能高于其保持优先级，并且，二者均不能高于主隧道的相应优先级。</p>
+<p>同一个TE隧道接口下，该命令与指定了多个CT的<a href="mpls_te_bandwidth_tunnel_interface_view.html">mpls te bandwidth（Tunnel接口视图）</a>命令互斥。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_bypass-attributes__d96027e80"></a><a name="d96027e80"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置旁路隧道的带宽为2048kbit/s。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>mpls lsr-id 1.1.1.1</strong></pre>
+<pre class="screen">[Quidway] <strong>mpls</strong></pre>
+<pre class="screen">[Quidway-mpls] <strong>mpls te</strong></pre>
+<pre class="screen">[Quidway-mpls] <strong>quit</strong></pre>
+<pre class="screen">[Quidway] <strong>interface tunnel1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> tunnel-protocol mpls te</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> destination 2.2.2.2</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te tunnel-id 100</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te bandwidth ct0 10000</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te fast-reroute bandwidth</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>mpls te bypass-attributes bandwidth 2048</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>mpls te commit</strong></pre>
+<p># 设置旁路隧道的带宽为2048kbit/s，建立优先级为3，保持优先级为3。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>mpls lsr-id 1.1.1.1</strong></pre>
+<pre class="screen">[Quidway] <strong>mpls</strong></pre>
+<pre class="screen">[Quidway-mpls] <strong>mpls te</strong></pre>
+<pre class="screen">[Quidway-mpls] <strong>quit</strong></pre>
+<pre class="screen">[Quidway] <strong>interface tunnel1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> tunnel-protocol mpls te</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> destination 2.2.2.2</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te tunnel-id 100</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te bandwidth ct0 10000</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te priority 3 3</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te fast-reroute bandwidth</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te bypass-attributes bandwidth 2048 priority 3 3</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>mpls te commit</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_te_bypass-attributes__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_te_bypass-attributes__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d96027e205"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d96027e209"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d96027e205 "><p>VRPV500R006C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d96027e209 "><p>增加命令输入限制：<strong>mpls te bypass-attributes</strong>命令与指定多CT的<a href="mpls_te_bandwidth_tunnel_interface_view.html">mpls te bandwidth
+(tunnel interface view)</a>命令互斥。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_te_fast-reroute.html">mpls te fast-reroute</a></div>
+<div><a href="display_mpls_te_tunnel-interface.html">display
+mpls te tunnel-interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

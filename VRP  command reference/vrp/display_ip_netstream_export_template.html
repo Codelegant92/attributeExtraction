@@ -1,0 +1,229 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ip netstream export template">
+<meta name="DC.Relation" scheme="URI" content="../vrp/netstream_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ip_netstream_export_template">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ip netstream export template</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ip_netstream_export_template"></a><a name="display_ip_netstream_export_template"></a>
+
+
+<h1 class="topictitle1">display ip netstream export template</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ip netstream export template</strong>命令用来显示当前发送的数据统计信息或模板统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ip netstream export template</strong> [ <strong>ip</strong> | <strong>ipv6</strong> | <strong>mpls-ip</strong> | <strong>mpls-ipv6</strong> | <strong>mpls-label aggregation</strong> | <strong>mpls-unknown</strong> | <strong>multicast-vpn</strong> ] <strong>slot</strong> <em>slot-id</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ip</strong>：显示IPv4流模板输出的各种信息。</p>
+<p><strong>ipv6</strong>：显示IPv6流模板输出的各种信息</p>
+<p><strong>mpls-ip</strong>：显示MPLS和IPv4流模板输出的各种信息</p>
+<p><strong>mpls-ipv6</strong>：显示MPLS和IPv6流模板输出的各种信息</p>
+<p><strong>mpls-label aggregation</strong>：显示MPLS标签聚合流模板输的出各种信息。</p>
+<p><strong>mpls-unknown</strong>：显示未知MPLS标签流模板输出的各种信息</p>
+<p><strong>multicast-vpn</strong>：显示多播VPN流模板输出的各种信息。</p>
+<p><strong>slot</strong> <em>slot-id</em>：指定显示NetStream统计输出报文信息的接口板槽号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display ip netstream export template</strong>命令可结合配置老化时间、模板发送时间、选项模板使能和发送时间、IPv4的十种聚合使能、MPLS基于标签聚合使能等命令使用。</p>
+<p>在配置了老化时间、模板发送时间、选项模板使能和发送时间、IPv4的十种聚合使能、MPLS基于标签聚合使能等命令后，</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ip_netstream_export_template__d31388e101"></a><a name="d31388e101"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># TAL信息发布使能，MPLS 基于标签聚合使能，配置了输出的目的地址，且发送版本为版本9，显示当前NetStream板的发送模板的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ip netstream export template slot 3</strong>
+ Option Template export is disabled
+ Option Template exported(packets) : 0
+ Stream Template exported(packets) : 0
+ Ipv4 Stream Template exported(packets) : 0
+ Cache version 9 export is enabled
+  Template export configuration:
+  Template timeout(minutes) : 1
+  Template refresh rate(packets) : 20
+ Option export configuration:
+ Option timeout(minutes) : 30
+ Option refresh rate(packets) : 20
+ mpls-ip version 9 export is enabled
+ mpls-ip Stream Template exported(packets) : 0
+  Template timeout(minutes) : 1
+  Template refresh rate(packets) : 20
+ TAL export is enabled
+ TAL Template exported(packets) : 0
+  Template timeout(minutes) : 30
+  Template refresh rate(packets) : 20
+ mpls-unknown version 9 export is enabled
+ mpls-unknown Stream Template exported(packets) : 0
+  Template timeout(minutes) : 1
+  Template refresh rate(packets) : 20
+ multicast-vpn version 9 export is enabled
+ multicast-vpn Stream Template exported(packets) : 0
+  Template timeout(minutes) : 1
+  Template refresh rate(packets) : 20
+ ipv6 version 9 export is enabled
+ ipv6 Stream Template exported(packets) : 0
+  Template timeout(minutes) : 1
+  Template refresh rate(packets) : 20
+ mpls-ipv6 version 9 export is enabled
+ mpls-ipv6 Stream Template exported(packets) : 0
+  Template timeout(minutes) : 1
+  Template refresh rate(packets) : 20
+ mpls-label version 9 export is enabled
+ mpls-label Stream Template exported(packets) : 0
+  Template timeout(minutes) : 30
+  Template refresh rate(packets) : 20 </pre>
+
+<div class="tablenoborder"><a name="display_ip_netstream_export_template__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_netstream_export_template__tb_01" frame="border" border="1" rules="all"><caption>表1 display ip netstream export template命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.583432233562775%" id="d31388e122"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.41656776643721%" id="d31388e126"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31388e122 "><p>Option Template exported(packets) :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31388e126 "><p>发送的选项模板数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31388e122 "><p>Stream Template exported(packets) :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31388e126 "><p>发送的流模板数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31388e122 "><p>Ipv4 Stream Template exported(packets) :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31388e126 "><p>发送的Ipv4流模板数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31388e122 "><p>Template timeout(minutes) :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31388e126 "><p>模板发送的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31388e122 "><p>Template refresh rate(packets) :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31388e126 "><p>模板发送的报文间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31388e122 "><p>TAL Template exported(packets) :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31388e126 "><p>发送的TAL模板数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31388e122 "><p>mpls-label Stream Template exported(packets) :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31388e126 "><p>发送的基于标签聚合的MPLS模板数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31388e122 "><p>mpls-ip Stream Template exported(packets) :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31388e126 "><p>发送的MPLS Ipv4流模板数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31388e122 "><p>mpls-ipv6 Stream Template exported(packets) :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31388e126 "><p>发送的MPLS Ipv6流模板数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31388e122 "><p>mpls-unknown Stream Template exported(packets) :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31388e126 "><p>发送的MPLS未知流模板数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.583432233562775%" headers="d31388e122 "><p>multicast-vpn Stream Template exported(packets) :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.41656776643721%" headers="d31388e126 "><p>发送的组播VPN流模板数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/netstream_configuration_commands.html">NetStream配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

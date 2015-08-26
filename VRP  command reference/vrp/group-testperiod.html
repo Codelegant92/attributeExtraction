@@ -1,0 +1,76 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="group-testperiod">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nqa_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="frequency.html">
+<meta name="DC.Relation" scheme="URI" content="switch-to_group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="group-testperiod">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>group-testperiod</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="group-testperiod"></a><a name="group-testperiod"></a>
+
+<h1 class="topictitle1">group-testperiod</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>group-testperiod</strong>命令用来配置NQA测试组的测试周期。</p>
+<p><strong>undo group-testperiod</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，NQA测试组的测试周期是60秒。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>group-testperiod </strong><em>period</em></p>
+<p><strong>undo group-testperiod</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>period</em>：NQA测试组的测试周期。单位是秒，取值范围是1～604800。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>NQA视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>group-testperiod</strong>命令配置的是该测试组的整体测试时间，即，该测试组的所有成员测试例在这个周期内会全部测试完毕。</p>
+<p>假设一个测试组包括m个成员测试例，每个测试例需要运行t秒。如果组测试周期设置为s秒，则测试例将分为n批（n = s/t）完成，每批包含的测试例个数为m/n。</p>
+<p>因此，<strong>group-testperiod</strong>命令配置的组测试周期必须大于成员测试例完成一次测试所需的时间，否则测试组不能正常启动。</p>
+<p>举例说明：</p>
+<p>假设一个测试组包括8个成员测试例，每个测试例需要运行2秒：</p>
+<ul><li><p>如果组测试周期为4秒，则测试例分2（4/2）批完成，每批4（8/2）个；</p>
+</li><li><p>如果组测试周期为8秒，则测试例分4（8/2）批完成，每批2（8/4）个；</p>
+</li><li><p>如果组测试周期为16秒，则测试例分8（16/2）批完成，每批1（8/8）个；</p>
+</li><li><p>如果组测试周期为1秒，测试组不能运行。</p>
+</li></ul>
+<p>类似地，<strong>group-testperiod</strong>命令配置的组测试周期也必须小于<a href="frequency.html">frequency</a>命令配置的自动测试执行间隔。以保证在一个周期内所有成员测试例都能完成一次测试。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>在指定的组测试周期内，如测试组成员过多，可能导致组测试无法正常启动。请根据测试组成员个数，选择合适的组测试周期。</p>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="group-testperiod__d78774e78"></a><a name="d78774e78"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置测试组group1的测试周期为60秒。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>nqa test-instance user group1</strong></strong></pre>
+<pre class="screen">[Quidway-nqa-user-group1]<strong> <strong>switch-to group</strong></strong></pre>
+<pre class="screen">[Quidway-nqa-user-group1]<strong> <strong>group-testperiod 60</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nqa_configuration_commands.html">NQA配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="frequency.html">frequency</a></div>
+<div><a href="switch-to_group.html">switch-to group</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

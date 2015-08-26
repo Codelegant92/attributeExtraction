@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="baudrate">
+<meta name="DC.Relation" scheme="URI" content="../vrp/synchronous_serial_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_interface_serial.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="baudrate">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>baudrate</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="baudrate"></a><a name="baudrate"></a>
+
+<h1 class="topictitle1">baudrate</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>baudrate</strong>命令用来设置串口的波特率。</p>
+<p><strong>undo baudrate</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，同步串口的波特率是64kbit/s。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>baudrate</strong><em> baudrate</em></p>
+<p><strong>undo baudrate</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>baudrate</em>：串口的波特率。单位是bit/s。取值范围请参见下面的使用指南。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>串行接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>由其它接口板通道化成的serial接口不支持<strong>baudrate</strong>命令。</p>
+</div></div>
+<p>同步串口支持的波特率有：</p>
+<ul><li><p>1200bit/s</p>
+</li><li><p>2400bit/s</p>
+</li><li><p>4800bit/s</p>
+</li><li><p>9600bit/s</p>
+</li><li><p>19200bit/s</p>
+</li><li><p>38400bit/s</p>
+</li><li><p>56000bit/s</p>
+</li><li><p>57600bit/s</p>
+</li><li><p>64000bit/s</p>
+</li><li><p>72000bit/s</p>
+</li><li><p>115200bit/s</p>
+</li><li><p>128000bit/s</p>
+</li><li><p>384000bit/s</p>
+</li><li><p>2048000bit/s</p>
+</li></ul>
+<p>另外同步串口对于不同的物理电气规程，所支持的波特率范围有所不同。</p>
+<ul><li><p>V.24 DTE/DCE：1200 bit/s～64 kbit/s</p>
+</li><li><p>V.35 DTE：1200 bit/s～4.096 Mbit/s</p>
+</li><li><p>V.35 DCE、X.21 DTE/DCE、EIA/TIA-449 DTE/DCE、EIA-530 DTE/DCE：1200 bit/s～2.048 Mbit/s</p>
+</li></ul>
+<p>在设置串口波特率时，要注意串口外接电缆的电气规程等因素。在同步方式下，由DCE侧设备决定线路传输的波特率。只能在DCE侧设定线路传输的波特率。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="baudrate__d3796e104"></a><a name="d3796e104"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置同步串口Serial 1/0/0的波特率为115200bit/s。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> baudrate 115200</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/synchronous_serial_interface_configuration_commands.html">串口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_interface_serial.html">display interface serial</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

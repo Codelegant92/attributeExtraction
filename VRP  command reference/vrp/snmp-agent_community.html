@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="snmp-agent community">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_group.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_usm-user.html">
+<meta name="DC.Relation" scheme="URI" content="display_snmp-agent_community.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="snmp-agent_community">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>snmp-agent community</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="snmp-agent_community"></a><a name="snmp-agent_community"></a>
+
+
+<h1 class="topictitle1">snmp-agent community</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>snmp-agent community</strong>命令用来设置SNMPv1、SNMPv2C的团体访问名。</p>
+<p><strong>undo snmp-agent community</strong>命令用来取消团体访问名设置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>snmp-agent community</strong> { <strong>read</strong> | <strong>write</strong> } <em>community-name</em> [ <strong>mib-view</strong> <em>view-name</em> | <strong>acl</strong> <em>acl-number</em> ] *</p>
+<p><strong>undo snmp-agent community</strong> <em>community-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>read</strong>：表明该团体名在指定视图内有只读权限。</p>
+<p><strong>write</strong>：表明该团体名在指定视图内有读写权限。</p>
+<p><em>community-name</em>：团体名字符串。字符串形式，长度范围是1～32。</p>
+<p><strong>mib-view</strong> <em>view-name</em>：设置团体名可以访问的MIB视图名。字符串形式，长度范围是1～32。</p>
+<p><strong>acl</strong> <em>acl-number</em>：设置团体名对应的访问控制列表号，范围2000～2999。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>snmp-agent community</strong>命令用来设置SNMPv1、SNMPv2c的团体访问名以及对应的MIB视图中具有的读写权限，也可以通过设置访问控制列表配置允许或禁止某些用户对视图的访问。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="snmp-agent_community__d118263e95"></a><a name="d118263e95"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置团体名为comaccess，并且允许使用该团体名进行只读访问。</p>
+<pre class="screen">[Quidway]<strong> snmp-agent community read comaccess</strong></pre>
+<p># 设置团体名为mgr，并且可以进行读写访问。</p>
+<pre class="screen">[Quidway]<strong> snmp-agent community write mgr</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="snmp-agent_group.html">snmp-agent group</a></div>
+<div><a href="snmp-agent_usm-user.html">snmp-agent usm-user</a></div>
+<div><a href="display_snmp-agent_community.html">display snmp-agent community</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

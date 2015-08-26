@@ -1,0 +1,147 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mep mep-id">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="map.html">
+<meta name="DC.Relation" scheme="URI" content="display_cfm_mep.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mep_mep-id">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mep mep-id</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mep_mep-id"></a><a name="mep_mep-id"></a>
+
+
+<h1 class="topictitle1">mep mep-id</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mep mep-id</strong>命令用来创建MEP。其中：</p>
+<ul>
+<li><p><strong>mep mep-id</strong> <em>mep-id</em> <strong>interface</strong> { <em>interface-type
+interface-number</em> | <em> interface-type interface-number</em> <em> subnumber</em> }
+[ <strong>vlan</strong> <em>vlan-id</em> ] <span>{ <strong>inward</strong> | <strong>outward</strong>}</span>命令用来创建接口型MEP。</p>
+</li>
+<li><p><strong>mep mep-id</strong> <em>mep-id</em> <strong>vlan</strong>命令用来创建VLAN型MEP。</p>
+</li>
+</ul>
+<p><strong>undo mep mep-id</strong>命令用来删除MEP。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mep</strong> <strong>mep-id</strong> <em>mep-id</em> <strong>interface</strong> { <em>interface-type
+interface-number</em> | <em> interface-type interface-number</em>.<em>subnumber</em> }
+[ <strong>vlan</strong> <em>vlan-id</em> ] <span>{ <strong>inward</strong> | <strong>outward</strong> }</span></p>
+<p><strong>mep mep-id</strong> <em>mep-id</em> <strong>vlan</strong></p>
+<p><strong>undo
+mep mep-id</strong> [ <em>mep-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>mep-id</strong> <em>mep-id</em>：指定MEP的ID。整数形式，取值范围是1～8191。MEP的ID值用来标识一个MEP。在同一个MA内的所有设备上MEP
+ID必须是唯一的，在同一个VLAN或VSI内MEP ID也必须是唯一的。</p>
+<p><strong>interface</strong> <em>interface-type
+interface-number</em>：指定MEP所在的接口。<em>interface-type</em>表示接口类型，取值包括：ethernet、eth-trunk、gigabitethernet。<em>interface-number</em>表示接口编号，该接口必须是二层接口。一个接口上只能创建一个MEP。</p>
+<p><em>interface-type interface-number</em>.<em>subnumber</em>：子接口的类型和编号。<span>子接口必须和VSI相关联。</span></p>
+<p><strong>inward</strong>：表示该MEP是一个inward型的MEP。inward型MEP发出的802.1ag协议报文通过当前MA关联VLAN内的所有接口（除MEP所在接口）向外发送，即在当前MA关联的VLAN内广播。</p>
+<p><strong>outward</strong>：表示该MEP是一个outward型的MEP。outward型MEP发出的协议报文直接通过该MEP所在的接口向外发送。</p>
+<p><strong>vlan</strong> <em>vlan-id</em>：表示端口所属的VLAN。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="p"><div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><ul>
+<li><p>一个Trunk上只支持配置一个MEP，Trunk上存在多个子接口也只能配置一个MEP。</p>
+</li>
+<li><p>设备在运行过程中，不支持热插拔。</p>
+</li>
+</ul>
+</div></div>
+</div>
+<p>MEP有两种分类方式：</p>
+<ul>
+<li><p>根据所在接口不同，可以分为接口型和VLAN型；</p>
+</li>
+<li><p>根据发送协议报文的范围不同，可以分为inward型和outward型。</p>
+</li>
+</ul>
+<p>目前VLAN型MEP只用于组播VLAN的连通性故障检测，在其它连通性故障检测应用场景均需使用接口型MEP。VLAN型的MEP发出的协议报文直接向设备外发送，即是outward型的。</p>
+<p>在同一个MA内，对创建MEP的数量和类型要求如下：</p>
+<ul>
+<li><p>VLAN型MEP和接口型MEP不能同时存在<span>，inward型普通MEP和outward型普通MEP不能同时存在</span>。</p>
+</li>
+<li><p>只能创建1个outward接口型MEP<span>，可以创建多个inward接口型MEP，但是同一个接口上只能创建1个inward接口型MEP</span>。</p>
+</li>
+<li><p>只能创建1个VLAN型的MEP。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody">不同型号的接口板最多支持创建的MEP个数有差异。不同型号的<span class="keyword">路由器</span>设备最多支持创建的MEP个数也有差异。请参阅具体板卡或<span class="keyword">路由器</span>的规格说明。</div></div>
+<p>在MA内创建MEP时，对该MA是否关联VLAN和MEP所在接口的配置要求如下：</p>
+<ul>
+<li><p>在创建inward接口型的MEP时，要求该MA必须已经关联了VLAN，且指定的MEP所在接口必须已经加入该VLAN。</p>
+</li>
+<li><p>在创建outward接口型的MEP时，不要求该MA必须关联VLAN，但是如果该MA已经关联了VLAN，则指定的MEP所在接口必须已经加入该VLAN。</p>
+</li>
+<li><p>在创建VLAN类型的MEP时，要求该MA必须已经关联了VLAN。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mep_mep-id__d92660e252"></a><a name="d92660e252"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在md1内的ma1中，创建MEP ID为15的inward接口型MEP，该MEP所在的接口为GigabitEthernet1/0/1。</p>
+<p>&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> vlan 100</strong>
+[Quidway-vlan100]<strong> port gigabitethernet1/0/1</strong>
+[Quidway-vlan100]<strong> quit</strong>
+[Quidway]<strong> cfm enable</strong>
+[Quidway]<strong> cfm md md1</strong>
+[Quidway-md-md1]<strong> ma ma1</strong>
+[Quidway-md-md1-ma-ma1]<strong> map vlan 100</strong>
+[Quidway-md-md1-ma-ma1]<strong> mep mep-id 15 interface gigabitethernet1/0/1 inward</strong></p>
+<p>#
+在md1内的ma1中，创建MEP ID为20的VLAN型MEP。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>vlan 100</strong></strong></pre>
+<pre class="screen">[Quidway-vlan100]<strong> <strong>quit</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> portswitch</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> port trunk allow-pass vlan 100</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/1]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm md md1</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1]<strong> ma ma1</strong></pre>
+<pre class="screen">[Quidway-md-md1-ma-ma1]<strong> <strong>map vlan 100</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1-ma-ma1]<strong> mep mep-id 20 vlan</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="map.html">map</a></div>
+<div><a href="display_cfm_mep.html">display cfm mep</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

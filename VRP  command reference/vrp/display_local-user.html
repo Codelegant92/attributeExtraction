@@ -1,0 +1,253 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display local-user">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aaa_and_user_management_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_local-user">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display local-user</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_local-user"></a><a name="display_local-user"></a>
+
+
+<h1 class="topictitle1">display local-user</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display local-user</strong>命令用来查看本地用户的属性。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display local-user</strong> [ <strong>domain</strong> <em>domain-name</em> | <strong>username</strong> <em>user-name</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>user-name</em>：用户名，字符串形式，格式为&#8220;纯用户名@域名&#8221;，不区分大小写。用户名和域名中都不能包括问号&#8220;?&#8221;和&#8220;@&#8221;。长度范围是1～64。</p>
+<p><em>domain-name</em>：指定本地用户的域名。字符串形式，长度范围是1～20。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行该命令时需要注意以下几点。</p>
+<ul>
+<li><p>如果不使用任何可选参数，将显示所有用户的概要信息；</p>
+</li>
+<li><p>如果使用关键字user-name，将显示指定用户的详细属性信息，包括用户状态、CAR级别和闲置切断数据等；</p>
+</li>
+<li><p>如果使用其它关键字，将显示符合条件的用户的概要信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_local-user__d38514e70"></a><a name="d38514e70"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有本地用户的概要信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display local-user</strong></pre>
+<pre class="screen">  ----------------------------------------------------------------</pre>
+<pre class="screen">  Username             State  Type         CAR Access-limit Online</pre>
+<pre class="screen">  ----------------------------------------------------------------</pre>
+<pre class="screen">  aaa@163              Active All          Dft    1              0</pre>
+<pre class="screen">  aaa                  Active All          Dft    No             0</pre>
+<pre class="screen">  ----------------------------------------------------------------</pre>
+<pre class="screen">  Total 2,2 printed</pre>
+<p># 查看指定本地用户aaa的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display local-user username aaa</strong></pre>
+<pre class="screen">  --------------------------------------------------------------</pre>
+<pre class="screen">  Username          : aaa</pre>
+<pre class="screen">  Password          : huawei</pre>
+<pre class="screen">  State             : Active</pre>
+<pre class="screen">  Service-type      : All</pre>
+<pre class="screen">  ACL-number        : -</pre>
+<pre class="screen">  User-CAR          : -</pre>
+<pre class="screen">  Idle-cut          : No</pre>
+<pre class="screen">  Access-limit      : No</pre>
+<pre class="screen">  Online-number     : 0</pre>
+<pre class="screen">  MAC-address       : -</pre>
+<pre class="screen">  User-level        : 0</pre>
+<pre class="screen">  FTP-directory     : -</pre>
+<pre class="screen">  Call-number       : -</pre>
+<pre class="screen">  Callback-check    : Yes</pre>
+<pre class="screen">  Callback-number   : -</pre>
+<pre class="screen">  ------------------------------------------------------------</pre>
+
+<div class="tablenoborder"><a name="display_local-user__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_local-user__tb_01" frame="border" border="1" rules="all"><caption>表1 display local-user命令显示信息说明</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.36331569664903%" id="d38514e144"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.63668430335098%" id="d38514e148"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>User-name </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>本地用户名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>Password</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>本地用户的密码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>本地用户的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>Service-type </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>本地用户的接入类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>ACL-number </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>指定本地用户名接入时的过滤条件</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>User-CAR </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>本地用户的流量控制级别</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>Idle-cut </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>本地用户是否设置闲置切断</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>Access-limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>允许接入本地用户的最大用户数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>Online-number </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>在线的本地用户数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>MAC-address </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>本地用户的MAC地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>User-level </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>本地用户的等级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>FTP-directory </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>本地用户的FTP目录</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>Call-number </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>本地用户的ISDN主叫号码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>Callback-check</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>用户的回呼认证属性</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.36331569664903%" headers="d38514e144 "><p>Callback-number </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.63668430335098%" headers="d38514e148 "><p>本地用户的回呼号码</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/aaa_and_user_management_configuration_commands.html">AAA及用户管理配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

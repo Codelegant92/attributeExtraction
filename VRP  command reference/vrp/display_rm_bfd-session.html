@@ -1,0 +1,309 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rm bfd-session">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rm_bfd-session">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rm bfd-session</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rm_bfd-session"></a><a name="display_rm_bfd-session"></a>
+
+
+<h1 class="topictitle1">display rm bfd-session</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display rm bfd-session</strong>命令用来查看路由管理(RM)中保存的BFD会话配置信息，可显示的内容包括BFD的全局状态、BFD会话数量、每个BFD会话的VPN实例、目的地址、源地址、接口、会话状态等信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display rm bfd-session</strong> [ <strong>all</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display rm bfd-session</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] [ <strong>destination</strong> <em>destination-address</em> ] [ <strong>source</strong> <em>source-address</em> ] [ <strong>interface</strong> <em>interface-type</em> <em>interface-number</em> ] [ <strong>protocol</strong> { <strong>bgp</strong> | <strong>isis-l1</strong> | <strong>isis-l2</strong> | <strong>isisl1l2</strong> | <strong>ospf</strong> | <strong>pim</strong> }]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：显示RM中BFD会话的全部配置信息（包括公网和私网）。如果不指定参数all，则仅显示公网的BFD会话配置信息。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例的名称。</p>
+<p><strong>destination</strong> <em>destination-address</em>：对端目的地址。</p>
+<p><strong>source</strong> <em>source-address</em>：本地源地址。</p>
+<p><strong>interface</strong> <em>interface-type</em> <em>interface-number</em>：出接口类型和出接口号。</p>
+<p><strong>protocol</strong>：指定路由协议。</p>
+<ul>
+<li><p><strong>bgp</strong>：BGP协议。</p>
+</li>
+<li><p><strong>isis-l1</strong>：IS-IS协议，Level-1级别。</p>
+</li>
+<li><p><strong>isis-l2</strong>：IS-IS协议，Level-2级别。</p>
+</li>
+<li><p><strong>isisl1l2</strong>：IS-IS协议，Level-1-2级别。</p>
+</li>
+<li><p><strong>ospf</strong>：OSPF协议。</p>
+</li>
+<li><p><strong>pim</strong>：PIM协议。</p>
+</li>
+</ul>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过命令可以查看路由协议动态创建的BFD会话。如果需要更改BFD会话参数值请参见命令<strong>bfd all-interfaces</strong>、<strong>ospf bfd</strong>、<strong>isis bfd</strong>、<strong>peer bfd</strong>和<strong>pim bfd</strong>。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rm_bfd-session__d63364e262"></a><a name="d63364e262"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示RM中BFD会话的配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rm bfd-session vpn-instance a destination 1.1.1.1 source 1.1.1.2 interface GigabitEthernet 2/0/0</strong>
+BFD Global Status: ON
+BFD Session Total Number: 1
+
+BFD Session:1
+  Destination  Source  Session-State  Create-State  Interface
+  1.1.1.1      1.1.1.2     Up         Established   GigabitEthernet2/0/0
+  Route-Protocol  Rx-Interval(ms)  Tx-Interval(ms)  Multiplier
+  BGP             1000             1000             7</pre>
+
+<div class="tablenoborder"><a name="display_rm_bfd-session__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rm_bfd-session__tb_01" frame="border" border="1" rules="all"><caption>表1 display rm bfd-session命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.208112874779545%" id="d63364e283"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.79188712522046%" id="d63364e287"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>BFD Global Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><div class="p">BFD全局状态<ul>
+<li><p>ON：全局使能BFD功能</p>
+</li>
+<li><p>OFF：全局关闭BFD功能</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>BFD Session Total Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><p>BFD会话的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>BFD Session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><p>BFD会话的编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><p>BFD会话绑定的对端IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>Source</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><p>BFD会话绑定的源端IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>Session-State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><div class="p">BFD会话当前状态<ul>
+<li><p>AdminDown</p>
+</li>
+<li><p>Down </p>
+</li>
+<li><p>Init</p>
+</li>
+<li><p>Up</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>Create-State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><div class="p">RM模块中BFD会话建立状态<ul>
+<li><p>Creating：表示会话已经由路由协议通告给RM，但RM还没有通告BFD进行创建</p>
+</li>
+<li><p>Established：表示RM已经通告BFD进行会话创建（BFD会话最终是否建立需要查看Session-State）</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><p>BFD绑定的本端物理接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>Route-Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><div class="p">使能BFD的路由协议<ul>
+<li><p>BGP</p>
+</li>
+<li><p>IS-IS Level-1</p>
+</li>
+<li><p>IS-IS Level-2</p>
+</li>
+<li><p>OSPF</p>
+</li>
+<li><p>PIM</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>Rx-Interval(ms)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><p>配置的接收间隔（毫秒）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>Tx-Interval(ms)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><p>配置的发送间隔（毫秒）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>Multiplier</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><p>配置的本地检测倍数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.208112874779545%" headers="d63364e283 "><p>BFD Session exceed The Limit number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.79188712522046%" headers="d63364e287 "><p>当配置的BFD会话数目超过系统规格上限的时候，会提示此信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_rm_bfd-session__tb_01_1"></a><a name="tb_01_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rm_bfd-session__tb_01_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d63364e512"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d63364e516"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d63364e512 "><p>VRPV500R005C02B101</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d63364e516 "><p>修改<strong>isis-l1l2</strong>参数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d63364e512 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d63364e516 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_basic_configuration_commands.html">IP路由表显示命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

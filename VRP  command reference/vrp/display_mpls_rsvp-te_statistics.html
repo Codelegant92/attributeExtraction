@@ -1,0 +1,595 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls rsvp-te statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_mpls_rsvp-te_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_rsvp-te_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls rsvp-te statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_rsvp-te_statistics"></a><a name="display_mpls_rsvp-te_statistics"></a>
+
+
+
+<h1 class="topictitle1">display mpls rsvp-te statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls rsvp-te statistics</strong>命令用来查看RSVP-TE的运行统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls rsvp-te statistics</strong> { <strong>global</strong> | <strong>interface</strong> [ <em>interface-type
+interface-number</em> ] }<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>global</strong>：全局RSVP-TE运行统计信息。</p>
+<p><strong>interface</strong>：接口上的RSVP-TE运行统计信息。</p>
+<p><em>interface-type
+interface-number</em>：运行RSVP-TE的接口的类型和编号。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_rsvp-te_statistics__d46741e103"></a><a name="d46741e103"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看全局RSVP-TE运行统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls rsvp-te statistics global</strong></pre>
+<pre class="screen">LSR ID: 2.2.2.2</pre>
+<pre class="screen"> PSB Count: 1                          RSB Count: 1</pre>
+<pre class="screen"> RFSB Count: 0                         TCSB Count: 1</pre>
+<pre class="screen"> LSP Count: 1</pre>
+
+<pre class="screen">Total Statistics Information:</pre>
+<pre class="screen"> PSB CleanupTimeOutCounter: 0          RSB CleanupTimeOutCounter: 0</pre>
+<pre class="screen"> SendPacketCounter: 8787               RecPacketCounter: 12638</pre>
+<pre class="screen"> SendPathCounter: 1326                 RecPathCounter: 6229</pre>
+<pre class="screen"> SendResvCounter: 0                    RecResvCounter: 170</pre>
+<pre class="screen"> SendResvConfCounter: 0                RecResvConfCounter: 0</pre>
+<pre class="screen"> SendHelloCounter: 0                   RecHelloCounter: 0</pre>
+<pre class="screen"> SendAckCounter: 0                     RecAckCounter: 0</pre>
+<pre class="screen"> SendPathErrCounter: 6229              RecPathErrCounter: 10</pre>
+<pre class="screen"> SendResvErrCounter: 0                 RecResvErrCounter: 0</pre>
+<pre class="screen"> SendPathTearCounter: 1230             RecPathTearCounter: 6229</pre>
+<pre class="screen"> SendResvTearCounter: 0                RecResvTearCounter: 0</pre>
+<pre class="screen"> SendSrefreshCounter: 0                RecSrefreshCounter: 0</pre>
+<pre class="screen"> SendAckMsgCounter: 0                  RecAckMsgCounter: 0</pre>
+<pre class="screen"> SendChallengeMsgCounter: 0            RecChallengeMsgCounter: 0</pre>
+<pre class="screen"> SendResponseMsgCounter: 0             RecResponseMsgCounter: 0</pre>
+<pre class="screen"> SendErrMsgCounter: 0                  RecErrMsgCounter: 0</pre>
+<pre class="screen"> SendRecoveryPathMsgCouter: 938        RecRecoveryPathMsgCouter: 0</pre>
+<pre class="screen"> SendGRPathMsgCounter: 0               RecGRPathMsgCounter: 0</pre>
+<pre class="screen"> ResourceReqFaultCounter: 0            RecGRPathMsgFromLSPMCounter: 0</pre>
+<pre class="screen"> Bfd neighbor count: 2                 Bfd session count: 2</pre>
+
+<div class="tablenoborder"><a name="display_mpls_rsvp-te_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_rsvp-te_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls rsvp-te statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="36.422272612748806%" id="d46741e174"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63.5777273872512%" id="d46741e178"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>LSR ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>本机的LSR ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>PSB Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>路径状态块（Path State Block）数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RSB Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>预留状态块（Reservation State Block）数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RFSB Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>刷新状态块（ReFresh State Block）数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>TCSB Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>流量控制状态块（Traffic Control State Block）数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>LSP Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>RSVP-TE建立的LSP的数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>PSB CleanupTimeOutCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>PSB超时被清除的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RSB CleanupTimeOutCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>RSB超时被清除的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendPacketCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecPacketCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendPathCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的路径（Path）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecPathCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的路径（Path）消息数</p>
+</td>
+
+</tr>
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendResvCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的预留（Resv）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecResvCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的预留（Resv）消息数</p>
+</td>
+
+</tr>
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendResvConfCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的预留确认（ResvConf）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecResvConfCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的预留确认（ResvConf）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendHelloCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的Hello消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecHelloCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的Hello消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendAckCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的确认（Ack）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecAckCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的确认（Ack）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendPathErrCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的路径错误（PathErr）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecPathErrCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的路径错误（PathErr）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendResvErrCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的预留错误（ResvErr）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecResvErrCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的预留错误（ResvErr）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendPathTearCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的路径删除（PathTear）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecPathTearCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的路径删除（PathTear）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendResvTearCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的预留删除（ResvTear）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecResvTearCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的预留删除（ResvTear）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendSrefreshCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的摘要刷新（Srefresh）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecSrefreshCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的摘要刷新（Srefresh）消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendAckMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的消息确认（Msg_ID_ACK）数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecAckMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的消息确认（Msg_ID_ACK）数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendChallengeMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的Challenge消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecChallengeMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的Challenge消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendResponseMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的回应消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecResponseMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的回应消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendErrMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的错误消息（Msg_ID_NACK）数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecErrMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的错误消息（Msg_ID_NACK）数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendRecoveryPathMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的Recovery Path消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecRecoveryPathMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的Recovery Path消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>SendGRPathMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>发送的GR Path消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecGRPathMsgCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>接收的GR Path消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>ResourceReqFaultCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>资源请求失败的次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>RecGRPathMsgFromLSPMCounter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>从LSP管理模块接收的GR Path消息数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>Bfd neighbor count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>BFD邻居数量，BFD邻居是指至少有一条已经处于UP状态的LSP经过的上游或下游邻居</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.422272612748806%" headers="d46741e174 "><p>Bfd session count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.5777273872512%" headers="d46741e178 "><p>BFD会话数量</p>
+</td>
+
+</tr>
+
+
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_rsvp-te_statistics__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_rsvp-te_statistics__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d46741e706"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d46741e710"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d46741e706 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d46741e710 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d46741e706 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d46741e710 "><p>参数<strong>PW</strong>被删除</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d46741e706 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d46741e710 "><p>修改显示信息，将&#8220;IfDownCounter&#8221;和&#8220;LspmNotifyRsvpDeleteCounter&#8221;字段删除</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_mpls_rsvp-te_statistics.html">reset mpls rsvp-te
+statistics</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

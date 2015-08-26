@@ -1,0 +1,151 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="info-center timestamp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/information_center.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="info-center_timestamp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>info-center timestamp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="info-center_timestamp"></a><a name="info-center_timestamp"></a>
+
+
+<h1 class="topictitle1">info-center timestamp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>info-center timestamp</strong>命令用来设置输出的调试/告警/日志信息中时间戳格式。</p>
+<p><strong>undo info-center timestamp</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，告警信息和日志信息采用<strong>date</strong>时间戳，调试信息采用<strong>boot</strong>时间戳。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>info-center timestamp</strong> { <strong>debugging</strong> |<strong> trap </strong>} {<strong> boot</strong> | <strong>date</strong> | <strong>none</strong> | <strong>short-date</strong> }</p>
+<p><strong>info-center timestamp log</strong> { <strong>boot</strong> | <strong>date</strong> | <strong>none</strong> | { <strong>short-date</strong> | <strong>format-date </strong>} [ <strong>precision-time</strong> { <strong>tenth-second</strong> | <strong>millisecond </strong>}] }</p>
+<p><strong>undo info-center timestamp</strong> { <strong>log</strong> | <strong>debugging</strong> | <strong>trap</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>debugging</strong>：调试信息。</p>
+<p><strong>log</strong>：日志信息。</p>
+<p><strong>trap</strong>：告警信息。</p>
+<p><strong>boot</strong>：时间戳采用相对时间类型，即系统启动后经过的时间。格式是xxxxxx.yyyyyy，xxxxxx为系统启动后经过时间的毫秒数高32位，yyyyyy为低32位。</p>
+<p><strong>date</strong>：时间戳采用系统当前日期和时间，中文环境下为yyyy/mm/dd hh:mm:ss；英文环境下为mm dd
+hh:mm:ss yyyy。</p>
+<p><strong>short-date</strong>：时间戳采用短日期格式。这种格式的时间戳与<strong>date</strong>类型的时间戳基本相同，唯一区别是短日期格式取消了年份的显示。</p>
+<p><strong>format-date：</strong>时间戳采用另一种时间表示方式。按照年、月、日、时、分、秒的格式显示：YYYY-MM-DD hh:mm:ss</p>
+<p><strong>none</strong>：输出的信息不包含时间戳。</p>
+<p><strong>precision-time：</strong>时间戳精度。</p>
+<p><strong>tenth-second</strong>：时间戳精确到0.1秒。</p>
+<p><strong>millisecond</strong>：时间戳精确到毫秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当采用<strong>date</strong>类型时，时间戳各部分介绍如下表所示。</p>
+
+<div class="tablenoborder"><a name="info-center_timestamp__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="info-center_timestamp__tb_01" frame="border" border="1" rules="all"><caption>表1 date类型的时间戳各部分描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="14.121945074326025%" id="d82745e170"><p>字段</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="24.930713025951125%" id="d82745e174"><p>含义</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="60.947341899722865%" id="d82745e178"><p>取值</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="14.121945074326025%" headers="d82745e170 "><p>yyyy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.930713025951125%" headers="d82745e174 "><p>年份</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.947341899722865%" headers="d82745e178 "><p>4位数字格式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.121945074326025%" headers="d82745e170 "><p>mm</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.930713025951125%" headers="d82745e174 "><p>月份</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.947341899722865%" headers="d82745e178 "><p>中文环境：1～12西文环境：Jan，Feb，Mar，Apr，May，Jun，Jul，Aug，Sep，Oct，Nov，Dec</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.121945074326025%" headers="d82745e170 "><p>dd</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.930713025951125%" headers="d82745e174 "><p>日期</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.947341899722865%" headers="d82745e178 "><p>1～31西文环境下，如果日期的值小于10，则在日期前面补一个空格，例如&#8220;7&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.121945074326025%" headers="d82745e170 "><p>hh:mm:ss</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.930713025951125%" headers="d82745e174 "><p>本地时间，时:分:秒</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.947341899722865%" headers="d82745e178 "><p>hh采用24小时制，取值范围是00～23mm和ss取值范围都是00～59</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p>在时间戳的精度精确到0.1秒或毫秒时，同时间产生的日志会按照日志的产生顺序加入相应的标示。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="info-center_timestamp__d82745e251"></a><a name="d82745e251"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置日志（log）信息时间戳格式为<strong>boot</strong>。</p>
+<pre class="screen">[Quidway]<strong> info-center timestamp trap boot</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/information_center.html">信息中心命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,996 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te tunnel-interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_tunnel-interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te tunnel-interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_tunnel-interface"></a><a name="display_mpls_te_tunnel-interface"></a>
+
+
+
+<h1 class="topictitle1">display mpls te tunnel-interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls te tunnel-interface</strong>命令用来查看本地节点的隧道接口信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te tunnel-interface</strong> [ <strong>tunnel</strong> <em>tunnel-number</em> | <strong>auto-bypass-tunnel</strong> <em>tunnel-name </em>]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>tunnel-number</em>：本节点存在的隧道接口编号。</p>
+<p><strong>auto-bypass-tunnel</strong>：显示某一条指定的自动生成的Bypass
+tunnel信息。</p>
+<p><em>tunnel-name</em>：隧道名称，字符串形式，不支持空格，长度范围是1～63。</p>
+<p>|：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_tunnel-interface__d49586e104"></a><a name="d49586e104"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有隧道接口信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te tunnel-interface</strong></pre>
+<pre class="screen">  Tunnel Name         :  Tunnel1/0/0</pre>
+<pre class="screen">  Tunnel State Desc   : CR-LSP is Up</pre>
+<pre class="screen">  Tunnel Attributes   :</pre>
+<pre class="screen">    Session ID          :  100
+    Ingress LSR ID      :  1.1.1.1               Egress LSR ID:  2.2.2.2
+    Admin State         :  UP                    Oper State   :  UP
+    Signaling Protocol  :  RSVP
+    Tie-Breaking Policy :  None                  Metric Type  :  None
+    Car Policy          :  Disabled              Bfd Cap      :  None
+    BypassBW Flag       :  Not Supported
+    BypassBW Type       :  -                     Bypass BW    :  -
+    Retry Limit         :  5                     Retry Int    :  10 sec
+    Reopt               :  Disabled              Reopt Freq   :  -
+    Auto BW             :  Disabled
+    Current Collected BW:  -                     Auto BW Freq :  -
+    Min BW              :  -                     Max BW       :  -
+    Tunnel  Group       :  Primary
+    Interfaces Protected:  -
+    Excluded IP Address :  -
+    Is On Radix-Tree    :  Yes                   Referred LSP Count:  0
+    Primary Tunnel      :  -                     Pri Tunn Sum :  -
+    Backup Tunnel       :  -
+    Group Status        :  Up                  Oam Status   :  Up
+    IPTN InLabel        :  -
+    BackUp Type         :  None                  BestEffort   :  Disabled
+    Secondary HopLimit  :  -
+    BestEffort HopLimit :  -
+    Secondary Explicit Path Name:  -
+    Secondary Affinity Prop/Mask:  0x0/0x0
+    BestEffort Affinity Prop/Mask:  0x0/0x0
+
+    Primary LSP ID      :  1.1.1.1:1
+    Setup Priority      :  7                     Hold Priority:  7
+    Affinity Prop/Mask  :  0x0/0x0               Resv Style   :  SE
+    CT0 Reserved BW (Kbit/sec): 10           CT1 Reserved BW (Kbit/sec): 10
+    CT2 Reserved BW (Kbit/sec): -            CT3 Reserved BW (Kbit/sec): -
+    CT4 Reserved BW (Kbit/sec): 10           CT5 Reserved BW (Kbit/sec): 20
+    CT6 Reserved BW (Kbit/sec) -            CT7 Reserved BW (Kbit/sec): -
+    Actual Bandwidth(kbps):  -
+    Explicit Path Name  :  -                     Hop Limit    :  -
+    Record Route        :  Disabled              Record Label :  Disabled
+    Route Pinning       :  Disabled
+    FRR Flag            :  Disabled
+    IdleTime Remain     :  -
+
+    Backup LSP ID       :  5.5.5.5:3
+    Backup LSP Type     : Hot-standby
+    Setup Priority      :  7                    Hold Priority:  7
+    Affinity Prop/Mask:  0x0/0x0                Resv Style   :  SE
+    CT0 Reserved BW (Kbit/sec): 10           CT1 Reserved BW (Kbit/sec): 10
+    CT2 Reserved BW (Kbit/sec): -            CT3 Reserved BW (Kbit/sec): -
+    CT4 Reserved BW (Kbit/sec): -            CT5 Reserved BW (Kbit/sec): 20
+    CT6 Reserved BW (Kbit/sec): -            CT7 Reserved BW (Kbit/sec): -
+    Explicit Path Name  :  path1312               Hop Limit   :  -
+    Record Route        :  Enabled                Record Label:  Enabled
+    Route Pinning       :  Disabled
+    FRR Flag            :  -
+    IdleTime Remain     :  -</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_tunnel-interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_tunnel-interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te tunnel-interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.49584278155707%" id="d49586e132"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.50415721844294%" id="d49586e136"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Tunnel Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>隧道的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Tunnel State Desc</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><div class="p">隧道状态的描述：<ul>
+<li>CR-LSP is Up：隧道正在使用</li>
+<li>CR-LSP is Down：隧道未建立成功</li>
+<li>Modifying CR-LSP is waiting for deleting：隧道正在等待删除</li>
+<li>Modifying CR-LSP is waiting for switching：隧道正在等待切换</li>
+<li>Primary CR-LSP Up and HotBackup CR-LSP Up：配置了CR-LSP热备份，且主、备CR-LSP都建立成功</li>
+<li>Primary CR-LSP UP and HotBackup CR-LSP setting Up：配置了CR-LSP热备份，且主CR-LSP的状态为Up，正在创建热备份CR-LSP</li>
+<li>Primary CR-LSP Down and Backup CR-LSP setting Up：配置了CR-LSP普通备份或逃生路径，且主CR-LSP故障，正在试图建立普通备份CR-LSP或逃生路径。或者配置了CR-LSP热备份和逃生路径，且主CR-LSP和热备份CR-LSP都故障时，正在试图建立逃生路径。</li>
+<li>Backup CR-LSP In use and Primary CR-LSP setting Up：配置了CR-LSP热备份或普通备份或逃生路径，且主CR-LSP故障，备份CR-LSP或逃生路径建立成功，使用备份CR-LSP或逃生路径传输数据</li>
+<li>CR-LSP is setting Up：正在试图建立CR-LSP</li>
+<li>CR-LSP setup Failed：CR-LSP建立不成功</li>
+<li>Primary CR-LSP UP and Ordinary CR-LSP setting
+Up：配置了CR-LSP普通备份，且主CR-LSP处于Frr-in-use状态时，正在试图建立普通备份CR-LSP</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Tunnel Attributes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>该隧道的属性</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Session ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>隧道的会话ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Admin State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>该隧道的管理状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Oper State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>该隧道的操作状态</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Egress LSR ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>出节点LSR的ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Signaling Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>信令协议的类型</p>
+</td>
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Tie-Breaking Policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>当前隧道的CR-LSP仲裁方法</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Metric Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>度量的类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Car Policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CAR策略</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Bfd Cap</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><div class="p">BFD能力:<ul>
+<li>Enable：使能了BFD</li>
+<li>Disable：没有使能BFD</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>BypassBW Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>旁路隧道带宽标志位</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>BypassBW Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>旁路隧道带宽的类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Bypass BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>旁路隧道带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Retry Limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>隧道尝试重建的次数限制</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Retry Int</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>重建隧道的间隔时间，单位为秒</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Reopt</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>配置定时重优化</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Reopt Freq</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>定时重优化的频率</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Auto BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>自动调整的带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Current Collected BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>自动带宽调整中，当前采集到的链路带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Auto BW Freq</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>自动调整带宽的频率</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Min BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>最小带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Max BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>最大带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Tunnel Group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>隧道保护组</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Interfaces Protected</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>受保护的接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Excluded IP Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>排除的节点IP</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Is On Radix-Tree</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>是否挂在Radix-Tree上</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Referred LSP Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>引用的LSP数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Primary Tunnel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>主隧道信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Pri Tunn Sum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>记录备份隧道已保护的主隧道的个数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Backup Tunn</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>备份隧道</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Group Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>隧道组的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Oam Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>OAM的状态。如果没有配置OAM功能，此项显示为&#8220;-&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT0 Reserved BandWidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT0的预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT1 Reserved BandWidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT1的预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT2 Reserved BandWidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT2的预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT3 Reserved BandWidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT3的预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT4 Reserved BandWidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT4的预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT5 Reserved BandWidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT5的预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT6 Reserved BandWidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT6的预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT7 Reserved BandWidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT7的预留带宽</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>IPTN InLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>IPTN入标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>BackUp Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CR-LSP备份类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>BestEffort</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>逃生路径标志位</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Secondary HopLimit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>备份CR-LSP的跳数限制值。显示为&#8220;-&#8221;表示缺省值为32。配置值的范围是1～31，相关命令请参见<a href="mpls_te_hop-limit.html">mpls
+te hop-limit</a></p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>BestEffort HopLimit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>逃生路径的跳数限制值。显示为&#8220;-&#8221;表示缺省值为32。配置值的范围是1～31，相关命令请参见<a href="mpls_te_hop-limit.html">mpls
+te hop-limit</a></p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Secondary Explicit Path Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>备份显式路径的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Secondary Affinity Prop/Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>备份LSP的亲和属性及其掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>BestEffort Affinity Prop/Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>逃生路径的亲和属性及其掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Primary LSP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>主LSP的ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Setup Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>隧道的建立优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Hold Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>隧道的保持优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT0 Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT0的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT1 Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT1的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT2 Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT2的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT3 Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT3的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT4 Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT4的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT5 Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT5的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT6 Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT6的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>CT7 Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>CT7的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Resv Style</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>隧道的资源预留风格</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Affinity Prop/Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>隧道的亲和属性及掩码</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Explicit Path Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>隧道的显式路径名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Hop Limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>主CR-LSP的跳数限制值。显示为&#8220;-&#8221;表示缺省值为32。配置值的范围是1～31，相关命令请参见<a href="mpls_te_hop-limit.html">mpls
+te hop-limit</a></p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Record Route</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>建立隧道时是否记录路由</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Record Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>建立隧道时是否记录标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Route Pinning</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>是否使能路由锁定</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>FRR Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>快速重路由的标记</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>IdleTime Remain</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>隧道等待重建的时间。LSP建立失败后需等待一段时间后才触发重建</p>
+<p>隧道的状态为&#8220;CR-LSP is Up&#8221;时，显示为&#8220;-&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Modify LSP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>处于Modify状态的LSP的ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Back Up LSP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><p>备份LSP的ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.49584278155707%" headers="d49586e132 "><p>Backup LSP Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.50415721844294%" headers="d49586e136 "><div class="p">当前的备份CR-LSP的类型：<ul>
+<li>Hot-standby：当前备份CR-LSP的类型是热备份</li>
+<li>Ordinary：当前备份CR-LSP的类型是普通备份</li>
+<li>BestEffort：当前备份CR-LSP的类型是逃生路径</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_te_tunnel-interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_tunnel-interface__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="38.5%" id="d49586e1023"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="61.5%" id="d49586e1027"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d49586e1023 "><p>VRPV500R005C01B101</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d49586e1027 "><p>修改命令回显信息，添加备份CR-LSP的亲和属性及其掩码的显示信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d49586e1023 "><p>VRPV500R005C02B080</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d49586e1027 "><p>修改命令回显信息，删除隧道描述信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d49586e1023 "><p>VRPV500R005C02B140</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d49586e1027 "><p>修改命令回显信息，添加主CR-LSP、备份CR-LSP和逃生路径的跳数限制值，以及逃生路径的的亲和属性及其掩码的显示信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d49586e1023 "><p>VRPV500R005C02B140</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d49586e1027 "><p>修改命令回显信息，删除字段&#8220;ACL Bind Value&#8221;、&#8220;VRF Bind Value&#8221;和&#8220;L2VPN Bind Value&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d49586e1023 "><p>VRPV500R005C02B151</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d49586e1027 "><p>修改命令回显信息，删除字段&#8220;Retry Limit&#8221;和&#8220;Retry Interval&#8221;</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d49586e1023 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d49586e1027 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d49586e1023 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d49586e1027 "><p>修改命令回显信息，调整显示顺序，并增加CT0～CT7的带宽值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d49586e1023 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d49586e1027 "><p>修改命令回显信息，增加&#8220;Is On Radix-Tree&#8221;和&#8220;Referred LSP Count&#8221;字段</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d49586e1023 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d49586e1027 "><p>修改命令回显信息，将&#8220;IsBestEffortPath&#8221;改为&#8220;Backup LSP Type&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="38.5%" headers="d49586e1023 "><p>VRPV500R006C02B280</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="61.5%" headers="d49586e1027 "><p>回显信息的&#8220;Tunnel State Desc&#8221;字段中增加取值&#8220;Primary CR-LSP UP and Ordinary CR-LSP
+setting Up&#8221;</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="port-master">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_eth-trunk.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="port-master">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>port-master</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="port-master"></a><a name="port-master"></a>
+
+
+<h1 class="topictitle1">port-master</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>port-master</strong>用来指定当前接口为1:1主备模式下的主接口。</p>
+<p><strong>undo port-master</strong>用来取消当前接口为1:1主备模式下的主接口。</p>
+<p>缺省情况下，Eth-Trunk成员接口的类型为备份接口。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>port-master</strong></p>
+<p><strong>undo port-master</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet接口视图、GE接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用本命令的前提条件是要求接口所属的Eth-Trunk模式为1:1主备模式。如果需要更改当前Eth-Trunk工作模式，可以通过执行<a href="mode.html">mode</a>命令修改。</p>
+<p>要更改当前的备份接口为主接口，必须首先在当前主接口上执行<strong>undo port-master</strong>命令取消当前接口为主接口，然后再配置当前的备份接口为主接口即可。但这种方法切换主备接口有可能造成业务的短暂中断，要避免业务的短暂中断可以在Eth-Trunk接口视图下执行<a href="protect-switch.html">protect-switch</a>命令强制手工切换非活动接口为活动接口，这时备份接口成为活动接口并负责转发数据。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="port-master__d106490e57"></a><a name="d106490e57"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将GigabitEthernet 1/0/0接口加入1:1主备模式Eth-Trunk 1，并把它设置成主接口。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> eth-trunk 1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> port-master</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_eth-trunk.html">display eth-trunk</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

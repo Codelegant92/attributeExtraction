@@ -1,0 +1,98 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="time-range">
+<meta name="DC.Relation" scheme="URI" content="../vrp/acl_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_time-range.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="time-range">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>time-range</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="time-range"></a><a name="time-range"></a>
+
+
+<h1 class="topictitle1">time-range</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>time-range</strong>命令用来定义一个时间段，用来描述一个特殊的时间范围。</p>
+<p><strong>undo</strong> <strong>time-range</strong>命令用来删除一个时间段。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>time-range</strong> <em>time-name</em> { <em>start-time</em> <strong>to</strong> <em>end-time</em> <em>days</em> | <strong>from</strong><em> time1 date1</em> [ <strong>to</strong><em> time2 date2</em> ] }</p>
+<p><strong>undo</strong> <strong>time-range</strong> <em>time-name</em> [ <em>start-time</em> <strong>to</strong> <em>end-time</em> <em>days </em>| <strong>from</strong><em> time1
+date1</em> [ <strong>to</strong><em> time2 date2</em> ] ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>time-name</em>：指定时间段的名字，最长32个字符，必须以英文字母a～z或A～Z开头，并且为避免混淆，时间段的名字不可以使用英文单词all。</p>
+<p><em>start-time</em>：指定一个时间范围的开始时间，格式为hh:mm，小时和分钟之间使用&#8220;:&#8221;分隔，hh的范围为0～23，mm的范围为0～59。</p>
+<p><em>end-time</em>：一个时间范围的结束时间，格式为hh:mm，小时和分钟之间使用&#8220;:&#8221;分隔，hh的范围为0～23，mm的范围为0～59。</p>
+<p><em>days</em>：表示配置的时间范围在每周的星期几有效，可以输入如下参数：</p>
+<ul>
+<li><p>数字（0-6）；</p>
+</li>
+<li><p>星期一到星期日（Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday）；</p>
+</li>
+<li><p>工作日（Working-day），包括从星期一到星期五五天；</p>
+</li>
+<li><p>休息日（Off-day），包括星期六和星期天；</p>
+</li>
+<li><p>所有日子（Daily)，包括一周七天。</p>
+</li>
+</ul>
+<p><strong>from</strong> <em>time1 date1</em>：为可选项，表示从某一天某一时间开始。<em>time1</em>的输入格式为hh:mm，hh的取值范围是0～23，mm的取值范围是0～59。<em>date1</em>的输入格式为YYYY/MM/DD。DD的取值范围是1～31之间的整数，MM的取值范围是1～12之间的整数，YYYY的取值范围是1970～2099之间的整数。</p>
+<p><strong>to</strong> <em>time2 date2</em>：为可选项，表示到某一天某一时间结束。其中<em>time2</em>和<em>date2</em>的输入格式与起始时间相同。结束时间必须晚于起始时间。如果不配置结束时间，则结束时间为系统可表示最大时间。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>时间段由下列任一部分构成：一是由<em>start-time</em>和<em>end-time</em>参数描述的以一周为间隔的周期性时间，同时可以依靠<em>days</em>参数指明在每周的星期几生效。一是由<strong>from</strong>和<strong>to</strong>指定的特定的时间范围，可以通过时间范围强调，周期时间段在什么时间范围生效。</p>
+<p>可以配置多条相同名字的时间段，共同来描述一个特殊时间，通过名字来引用一个时间段。</p>
+<p>最多可以配置256个<em>time-name</em>，每个<em>time-name</em>下最多可以配32条周期时间段和12条绝对时间段。所谓周期时间段，是指循环周为一周的时间段，循环出现的时间段。所谓绝对时间段，是指从设定的起始年月日到终止年月日之间的时间段，该时间段无法循环出现，也没有周期。</p>
+<p>在周期时间段和绝对时间段内，每一条时间段之间是&#8220;或&#8221;的关系，只要当前路由设备的时间匹配到一条，则对应类型的时间段就会生效。</p>
+<p>如果在同一个<em>time-name</em>下同时配置了周期时间段和绝对时间段，那么实际生效的时间段是二者&#8220;与&#8221;后的时间段。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="time-range__d123978e196"></a><a name="d123978e196"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置时间段，在2006年1月1日0:0生效，并永远有效。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>time-range test from 0:0 2006/1/1</strong></pre>
+<p># 配置时间段，在工作日（星期一到星期五）每天8:00到18:00生效。</p>
+<pre class="screen">[Quidway]<strong> time-range test 8:00 to 18:00 working-day</strong></pre>
+<p>#
+配置时间段，在休息日（星期六和星期日）下午14:00到18:00生效。</p>
+<pre class="screen">[Quidway] <strong>time-range test 14:00 to 18:00 off-day</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/acl_configuration_commands.html">ACL配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_time-range.html">display time-range</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

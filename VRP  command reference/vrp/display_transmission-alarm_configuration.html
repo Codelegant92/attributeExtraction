@@ -1,0 +1,206 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display transmission-alarm configuration">
+<meta name="DC.Relation" scheme="URI" content="../vrp/transmission_alarm_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_transmission-alarm_configuration">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display transmission-alarm configuration</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_transmission-alarm_configuration"></a><a name="display_transmission-alarm_configuration"></a>
+
+
+<h1 class="topictitle1">display transmission-alarm configuration</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display transmission-alarm configuration</strong>命令用来查看指定接口的告警定制与抑制配置。如果没有指定接口，则查看所有接口的告警配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display transmission-alarm configuration</strong> [ <em>interface-type interface-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type interface-number</em>：接口名和接口编号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display transmission-alarm configuration</strong>命令时若不指定接口，则查看所有接口的告警配置信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_transmission-alarm_configuration__d69967e46"></a><a name="d69967e46"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看POS1/2/0接口的告警配置信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display transmission-alarm configuration pos 1/2/0</strong></pre>
+<pre class="screen"> Interface: Pos1/2/0</pre>
+<pre class="screen">  Filter function: enabled (Holdtime is 55)</pre>
+<pre class="screen">  Damping function: enabled</pre>
+<pre class="screen">  Suppress value: 999</pre>
+<pre class="screen">  Ceiling value: 6000</pre>
+<pre class="screen">  Reuse value: 500</pre>
+<pre class="screen">  OK half decay value: 500</pre>
+<pre class="screen">  NG half decay value: 1000 </pre>
+
+<div class="tablenoborder"><a name="display_transmission-alarm_configuration__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_transmission-alarm_configuration__tb_01" frame="border" border="1" rules="all"><caption>表1 display transmission-alarm configuration命令显示说明</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.20547945205479%" id="d69967e82"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.794520547945204%" id="d69967e86"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="45.20547945205479%" headers="d69967e82 "><p>Interface:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.794520547945204%" headers="d69967e86 "><p>接口名称和接口编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.20547945205479%" headers="d69967e82 "><p>Filter function:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.794520547945204%" headers="d69967e86 "><div class="p">是否使能过滤功能。<ul>
+<li><p>enable：使能了过滤功能。此时会通过holdtime表示过滤时间间隔。</p>
+</li>
+<li><p>disable：没有使能过滤功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.20547945205479%" headers="d69967e82 "><p>Damping function:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.794520547945204%" headers="d69967e86 "><div class="p">是否使能抑制功能。<ul>
+<li><p>enable：使能了抑制功能。</p>
+</li>
+<li><p>disable：没有使能抑制功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.20547945205479%" headers="d69967e82 "><p>Suppress value:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.794520547945204%" headers="d69967e86 "><p>抑制门限。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.20547945205479%" headers="d69967e82 "><p>Ceiling value:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.794520547945204%" headers="d69967e86 "><p>最高门限。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.20547945205479%" headers="d69967e82 "><p>Reuse value:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.794520547945204%" headers="d69967e86 "><p>重用门限。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.20547945205479%" headers="d69967e82 "><p>OK half decay value:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.794520547945204%" headers="d69967e86 "><p>告警消除时的半衰期。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.20547945205479%" headers="d69967e82 "><p>NG half decay value:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.794520547945204%" headers="d69967e86 "><p>告警产生时的半衰期。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_transmission-alarm_configuration__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_transmission-alarm_configuration__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d69967e216"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d69967e220"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d69967e216 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d69967e220 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/transmission_alarm_configuration_commands.html">传输告警配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

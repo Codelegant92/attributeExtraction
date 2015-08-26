@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="vrrp vrid track interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vrrp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_convergence_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="vrrp_vrid_track_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>vrrp vrid track interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="vrrp_vrid_track_interface"></a><a name="vrrp_vrid_track_interface"></a>
+
+
+<h1 class="topictitle1">vrrp vrid track interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>vrrp vrid</strong> <strong>track</strong>命令用来配置VRRP通过监视接口的状态来实现主备快速切换的功能。</p>
+<p><strong>undo vrrp vrid</strong> <strong>track</strong>命令用来取消VRRP通过监视接口的状态来实现主备快速切换的功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>vrrp vrid </strong><em>virtual-router-id </em><strong>track</strong> <strong>interface </strong><em>interface-type interface-number</em> [ <strong>increased</strong> <em>value-increased</em> | <strong>reduced</strong> <em>value-reduced</em> ]</p>
+<p><strong>undo vrrp vrid</strong> <em>virtual-router-id</em> <strong>track interface</strong> [ <em>interface-type interface-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vrid</strong> <em>virtual-router-id</em>：VRRP备份组号。十进制整数形式，取值范围是1～255。</p>
+<p><strong>bfd-session</strong> <em>bfd-session-id</em>：被监视的BFD session的本地标识符。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：被监视接口的类型和编号。<span>目前不能监视的接口有Loopback、NULL、E1-Group(E1使用channel-set命令捆绑形成的串口)、Virtual-Template、BRI、DIALER、AUX和CPOS接口。</span></p>
+<p><strong>increased</strong> <em>value-increased</em>：设置当被监视的接口状态变为Down时，优先级增加的数值。取值范围是1～255。优先级最高可以达到254。只有VRRP备份组的状态为Backup时，才生效。</p>
+<p><strong>reduced</strong> <em>value-reduced</em>：设置当被监视的接口状态变为Down时，优先级降低的数值。取值范围1～255。优先级最低可以降至1。缺省情况下，当被监视的接口变为Down时，优先级的数值降低10。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet接口视图、Ethernet子接口视图、GE接口视图、GE子接口视图、Eth-Trunk接口视图、Eth-Trunk子接口视图、VE接口视图、VE子接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>VRRP可以对接口的状态进行监视。</p>
+<p>使用VRRP监视接口功能，不仅在<span class="keyword">路由器</span>出现故障时提供备份功能，而且在某网络接口DOWN掉时，也可以实现备份功能。配置后，如果被监视接口Down，则<span class="keyword">路由器</span>在该备份组中的优先级会根据配置降低或增加，从而重新选举新的MASTER，实现备份功能。</p>
+<p>当被监视的接口状态恢复时，<span class="keyword">路由器</span>在备份组中的优先级将恢复原来的值。</p>
+<p>如果VRRP同时监视BFD会话和监视接口，所监视的BFD会话和接口的总数最多为8个。如果配置监视BFD会话和监视接口时全部是增加优先级，只有监视的BFD会话或接口全部Down时，VRRP的优先级增加的总和可以超过Master端的优先级。如果一个或其中几个BFD会话或接口Down，VRRP优先级重新增加计算就已经超过对端，则其他BFD会话或接口Down时VRRP优先级增加就没有意义。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>当<span class="keyword">路由器</span>为IP地址拥有者时，不允许对其配置监视接口。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="vrrp_vrid_track_interface__d129187e138"></a><a name="d129187e138"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置监视接口POS1/0/0，如果POS1/0/0状态变为Down，则本<span class="keyword">路由器</span>在VRRP备份组1中的优先级降低50。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> <strong>vrrp vrid 1 track interface pos 1/0/0 reduced 50</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vrrp_configuration_commands.html">VRRP配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

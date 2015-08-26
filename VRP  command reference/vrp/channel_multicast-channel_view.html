@@ -1,0 +1,115 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="channel（multicast-channel视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4_multicast_cac_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="multicast-channel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="channel_multicast-channel_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>channel（multicast-channel视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="channel_multicast-channel_view"></a><a name="channel_multicast-channel_view"></a>
+
+
+<h1 class="topictitle1">channel（multicast-channel视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>channel</strong>命令用来进入channel-name视图。</p>
+<p><strong>channel type</strong>命令用来建立ASM或SSM模型的组播节目组。</p>
+<p><strong>undo channel</strong>命令用来删除指定节目组的所有信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>channel</strong> <em>channel-name</em> <strong>type</strong> { <strong>asm</strong> | <strong>ssm</strong> }</p>
+<p><strong>channel</strong> <em>channel-name</em></p>
+<p><strong>undo channel</strong> <em>channel-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>channel-name</em>：指定节目组的名称。字符串形式，不支持空格，只包括数字、字母及下划线，区分大小写，长度范围是1～15。</p>
+<p><strong>type</strong>：指定节目组的类型。</p>
+<p><strong>asm</strong>：指定该节目组是ASM模型。</p>
+<p><strong>ssm</strong>：指定该节目组是SSM模型。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>multicast-channel视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>创建一个节目组时必须指定节目组的类型。</p>
+<p>执行<strong>undo channel</strong>命令删除指定节目组时，必须先清除掉接口视图下所有关于该节目组的配置，否则不允许执行该命令。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>删除节目组时该节目组视图下的所有配置信息都被删除。</p>
+</div></div>
+<p>一个实例最多可以支持256个节目组。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="channel_multicast-channel_view__d6408e94"></a><a name="d6408e94"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建ASM模型的节目组SDTV。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>multicast routing-enable</strong>
+[Quidway] <strong>multicast-channel</strong>
+[Quidway-multicast-channel] <strong>channel SDTV type asm</strong>
+[Quidway-multicast-channel-SDTV]
+</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="channel_multicast-channel_view__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="channel_multicast-channel_view__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d6408e123"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d6408e127"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d6408e123 "><p>VRPV500R006C01B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d6408e127 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv4_multicast_cac_configuration_commands.html">IPv4组播CAC配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="multicast-channel.html">multicast-channel</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

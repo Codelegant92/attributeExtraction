@@ -1,0 +1,86 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="snmp-agent target-host inform">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_trap_enable.html">
+<meta name="DC.Relation" scheme="URI" content="display_snmp-agent_target-host.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="snmp-agent_target-host_inform">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>snmp-agent target-host inform</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="snmp-agent_target-host_inform"></a><a name="snmp-agent_target-host_inform"></a>
+
+
+<h1 class="topictitle1">snmp-agent target-host inform</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>snmp-agent target-host inform</strong>命令用来设置接收Inform消息的目的地。</p>
+<p><strong>undo snmp-agent target-host</strong>命令用来取消当前设置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>snmp-agent target-host inform address udp-domain</strong><em> ip-address </em>[ <strong>udp-port</strong> <em>port-number</em> ] [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>params securityname</strong> <em>security-string</em> [ <strong>v1</strong> | <strong>v2c</strong> | <strong>v3</strong> [ <strong>authentication</strong> | <strong>privacy</strong> ] ]</p>
+<p><strong>undo snmp-agent target-host</strong><em> ip-address </em><strong>securityname</strong><em> security-string</em> [ <strong>vpn-instance</strong><em> vpn-instance-name </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>address</strong>：指定SNMP消息传输的目标主机地址。<strong>address</strong>指定的IP地址和<strong>securityname</strong>指定的安全名字符串组成一个二元组，用来标识一个主机。</p>
+<p><strong>udp-domain</strong>：指定目标主机的传输域基于UDP。</p>
+<p><em>ip-address</em>：目标主机的IP地址。</p>
+<p><strong>udp-port</strong> <em>port-number</em>：指定接收Inform报文的端口号。取值范围0～65535。缺省情况下为162。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例名，字符串形式，不支持空格。长度范围是1～31。<strong>vpn-instance</strong>可选，如果在VPN中使用，需要<strong>vpn-instance</strong>指定的VPN实例、IP地址和安全名字符串组成一个三元组来标识一个主机。</p>
+<p><strong>params</strong>：指定产生SNMP消息的目标主机信息。</p>
+<p><strong>securityname</strong> <em>security-string</em>：指定在网管侧显示的用户安全名，字符串形式，不支持空格。长度范围1～32。</p>
+<p><strong>v1</strong> | <strong>v2c</strong> | <strong>v3</strong>：v1、v2c和v3分别代表SNMPv1、SNMPv2c和SNMPv3版本。</p>
+<p><strong>authentication</strong>：对报文进行认证但不加密。仅SNMPv3版本支持该参数。</p>
+<p><strong>privacy</strong>：对报文进行认证和加密。仅SNMPv3版本支持该参数。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>SNMPv1版本不支持Inform告警。当使用Inform方式配置了v1版本时，系统将提示：</p>
+<pre class="screen">Error: The inform notification does not support the version V1.</pre>
+<p>SNMPv1版本、SNMPv2c版本对报文不认证和不加密。SNMPv3版本通过authentication和privacy配置对报文认证和加密信息。SNMPv3版本默认对报文不认证和不加密。</p>
+<p><strong>snmp-agent target-host inform</strong>命令和<strong>snmp-agent trap enable</strong>命令结合在一起使用。<strong>snmp-agent trap enable</strong>命令用于使能SNMP Trap。若要一台<span class="keyword">路由器</span>可以发送Inform通知，至少需要在该<span class="keyword">路由器</span>上配置一条<strong>snmp-agent target-host inform</strong>命令和<strong>snmp-agent trap enable</strong>命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="snmp-agent_target-host_inform__d118482e183"></a><a name="d118482e183"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置告警发送方式为Inform方式、主机的安全名为123、协议版本是v3、对报文进行认证和加密，发送BGP模块的告警到告警主机192.168.0.1。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>snmp-agent trap enable bgp</strong></pre>
+<pre class="screen">[Quidway] <strong>snmp-agent target-host inform address udp-domain 192.168.0.1 params securityname 123 v3 privacy</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="snmp-agent_trap_enable.html">snmp-agent trap enable</a></div>
+<div><a href="display_snmp-agent_target-host.html">display snmp-agent target-host</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

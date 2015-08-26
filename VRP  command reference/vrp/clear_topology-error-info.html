@@ -1,0 +1,118 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="clear topology-error-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/hgmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_cluster-topology-info.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="clear_topology-error-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>clear topology-error-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="clear_topology-error-info"></a><a name="clear_topology-error-info"></a>
+
+
+<h1 class="topictitle1">clear topology-error-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>clear topology-error-info</strong>命令用来清除集群拓扑中的问题链路信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>clear topology-error-info</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>集群视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令只能在命令交换机上执行。</p>
+<p>解决集群中对应成员交换机的故障后，需要手工执行本命令，清除集群拓扑信息中的问题链路信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="clear_topology-error-info__d6825e39"></a><a name="d6825e39"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 清除问题链路及其子链路</p>
+<pre class="screen">&lt;HUAWEI_0.Quidway&gt; <strong>system-view</strong>
+[HUAWEI_0.Quidway] <strong>cluster</strong>
+[HUAWEI_0.Quidway-cluster] <strong>display cluster-topology-info</strong>
+The topology information about the cluster:
+&lt;--&gt;:normal device         &lt;++&gt;:candidate device         &lt;??&gt;:lost device
+-------------------------------------------------------------------------
+Total topology node number is 3.
+[Root-00e0-fcb8-d6b6]
+|-(GigabitEthernet1/0/2)&lt;??&gt;(GigabitEthernet1/0/0)[0018-8267-7f7d]
+|-(GigabitEthernet1/0/1)&lt;--&gt;(GigabitEthernet1/0/1)[00e0-0003-0003]
+[HUAWEI_0.Quidway-cluster] <strong>clear topology-error-info</strong>
+[HUAWEI_0.Quidway-cluster] <strong>display cluster-topology-info</strong>
+The topology information about the cluster:
+&lt;--&gt;:normal device         &lt;++&gt;:candidate device         &lt;??&gt;:lost device
+-------------------------------------------------------------------------
+Total topology node number is 2.
+[Root-00e0-fcb8-d6b6]
+|-(GigabitEthernet1/0/1)&lt;--&gt;(GigabitEthernet1/0/1)[00e0-0003-0003] 
+</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="clear_topology-error-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="clear_topology-error-info__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d6825e71"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d6825e75"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d6825e71 "><p>VRPV500R006C01B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d6825e75 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/hgmp_configuration_commands.html">HGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_cluster-topology-info.html">display cluster-topology-info</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

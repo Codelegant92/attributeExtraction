@@ -1,0 +1,267 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls route-state">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_route-state">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls route-state</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_route-state"></a><a name="display_mpls_route-state"></a>
+
+
+<h1 class="topictitle1">display mpls route-state</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls route-state</strong>命令用来查看LSP对应的路由信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls route-state</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] [ { <strong>exclude</strong> | <strong>include</strong> }
+{ <strong>idle</strong> | <strong>ready</strong> | <strong>settingup</strong> } * | <em>destination-address
+mask-length</em> ] [ <strong>verbose</strong> ]<span> [<strong> | count</strong> ]</span> [<strong> | </strong>{ <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong><em>vpn-instance-name</em>：VPN实例名称。字符串形式，不支持空格，区分大小写，长度范围是1～31。</p>
+<p><strong>exclude</strong>：输出不包含指定的路由状态信息。</p>
+<p><strong>include</strong>：输出包含指定的路由状态信息。</p>
+<p><strong>idle</strong>：空闲的路由状态，即路由还没有触发建立LSP。</p>
+<p><strong>ready</strong>：就绪的路由状态，即路由已经触发建立了LSP。</p>
+<p><strong>settingup</strong>：等待LSP建立的路由状态，即信令协议正在创建LSP。</p>
+<p><em>destination-address</em>：目的地址。</p>
+<p><em>mask-length</em>：目的地址的掩码长度。取值范围是0～32。</p>
+<p><strong>verbose</strong>：显示LSP对应路由的详细信息。</p>
+<p><strong> | </strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定VPN实例，将显示公网实例的路由信息；如果不指定目的地址和掩码，将显示所有路由信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_route-state__d45160e146"></a><a name="d45160e146"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有路由和LSP的对应情况。</p>
+<pre class="screen">&lt;Quidway&gt;<strong>display mpls route-state verbose</strong></pre>
+<pre class="screen">
+Codes: B(BGP), I(IGP), L(Public Label BGP), O(Original BGP), U(Unknow)
+--------------------------------------------------------------------------------
+Dest/Mask         Next-Hop       Out-Interface        State    LSP   VRF Type
+-------------------------------------------------------------------------------
+21.21.21.21/32    100.21.22.21   GigabitEthernet4/2/0   READY  2     0   I
+     LspIndex: 30720,    InLabel: -,        OutLabel: 3
+     LspIndex: 32728,    InLabel: 1024,     OutLabel: 3
+
+22.22.22.22/32    127.0.0.1       InLoop0               READY  1     0   I
+     LspIndex: 31521,    InLabel: 3,        OutLabel: -
+
+23.0.0.6/32       100.21.22.21    GigabitEthernet4/2/0  READY  1     0   I
+     LspIndex: 33053,    InLabel: -,        OutLabel: 3338
+
+23.0.0.6/32       100.22.23.23    Pos5/1/0              READY  1     0   I
+     LspIndex: 33101,    InLabel: -,        OutLabel: 3337
+</pre>
+
+<div class="tablenoborder"><a name="display_mpls_route-state__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_route-state__tb_01" frame="border" border="1" rules="all"><caption>表1 <strong>display mpls route-state verbose</strong>命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="28.50844041320232%" id="d45160e170"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="71.49155958679768%" id="d45160e174"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d45160e170 "><p>Dest/Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d45160e174 "><p>目的IP地址及掩码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d45160e170 "><p>Next-Hop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d45160e174 "><p>下一跳IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d45160e170 "><p>Out-Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d45160e174 "><p>出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d45160e170 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d45160e174 "><div class="p">MPLS控制平面路由状态：<ul>
+<li><p>IDLE:空闲的路由状态，即路由还没有触发建立LSP。</p>
+</li>
+<li><p>SETTINGUP:等待LSP建立的路由状态，即信令协议正在创建LSP。</p>
+</li>
+<li><p>READY：就绪的路由状态，即路由已经触发建立了LSP。静态LSP只有&#8220;READY&#8221;状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d45160e170 "><p>LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d45160e174 "><p>能到达该目的地址的LSP数目。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d45160e170 "><p>VRF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d45160e174 "><p>VPN索引号，&#8220;0&#8221;表示公网。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d45160e170 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d45160e174 "><div class="p">路由类型：<ul>
+<li><p>B：BGP路由。</p>
+</li>
+<li><p>I：IGP路由。</p>
+</li>
+<li><p>L：带标签的公网BGP路由。</p>
+</li>
+<li><p>O：Original BGP路由。</p>
+</li>
+<li><p>U：未知类型的路由（如组播路由）。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d45160e170 "><p>LspIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d45160e174 "><p>该路由触发建立的LSP的索引号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d45160e170 "><p>InLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d45160e174 "><p>该路由触发建立的LSP的入标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="28.50844041320232%" headers="d45160e170 "><p>OutLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="71.49155958679768%" headers="d45160e174 "><p>该路由触发建立的LSP的出标签。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_route-state__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_route-state__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d45160e342"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d45160e346"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d45160e342 "><p>VRPV500R005C02B151</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d45160e346 "><p>在显示信息中增加Type字段。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d45160e342 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d45160e346 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

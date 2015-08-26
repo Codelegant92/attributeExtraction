@@ -1,0 +1,692 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ospf error">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ospf_error">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ospf error</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ospf_error"></a><a name="display_ospf_error"></a>
+
+
+<h1 class="topictitle1">display ospf error</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ospf error</strong>命令用来查看OSPF的错误信息。如果不指定OSPF进程号，该命令将显示所有OSPF进程的错误信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ospf</strong> [ <em>process-id</em> ] <strong>error</strong> [ <strong>lsa</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ospf error</strong> [ <strong>packet</strong> ]<span> [ <em>number</em> ]</span><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：OSPF进程号。整数形式，取值范围是1～65535。</p>
+<p><strong>packet</strong>：查看最近一次接收的错误报文信息。只有当没有指定进程号时，该参数才可以配置。</p>
+<p><strong>lsa</strong>：查看LSA错误信息。</p>
+<p><em>number</em>：最近接收的错误报文的数目。整数形式，取值范围是1～10，缺省值是1。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在检查OSPF的故障原因时，可执行此命令获取错误相关信息。用户可以根据这些信息进行OSPF的故障诊断等。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ospf_error__d54960e154"></a><a name="d54960e154"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看OSPF的错误信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf error</strong></pre>
+
+<pre class="screen">          OSPF Process 1 with Router ID 20.1.1.1</pre>
+<pre class="screen">                  OSPF error statistics</pre>
+
+<pre class="screen">General packet errors:</pre>
+<pre class="screen"> 0     : IP: received my own packet     0     : Bad packet</pre>
+<pre class="screen"> 0     : Bad version                    0     : Bad checksum</pre>
+<pre class="screen"> 0     : Bad area id                    0     : Drop on unnumbered interface</pre>
+<pre class="screen"> 1     : Bad virtual link               0     : Bad authentication type</pre>
+<pre class="screen"> 0     : Bad authentication key         0     : Packet too small</pre>
+<pre class="screen"> 0     : Packet size &gt; ip length        0     : Transmit error</pre>
+<pre class="screen"> 0     : Interface down                 0     : Unknown neighbor</pre>
+
+<pre class="screen">HELLO packet errors:</pre>
+<pre class="screen"> 0     : Netmask mismatch               0     : Hello timer mismatch</pre>
+<pre class="screen"> 0     : Dead timer mismatch            0     : Extern option mismatch</pre>
+<pre class="screen"> 0     : Router id confusion            0     : Virtual neighbor unknown</pre>
+<pre class="screen"> 0     : NBMA neighbor unknown          0     : Invalid Source Address</pre>
+
+<pre class="screen">DD packet errors:</pre>
+<pre class="screen"> 0     : Neighbor state low             0     : Router id confusion</pre>
+<pre class="screen"> 0     : Extern option mismatch         0     : Unknown LSA type</pre>
+<pre class="screen"> 0     : MTU option mismatch</pre>
+<pre class="screen">LS ACK packet errors:</pre>
+<pre class="screen"> 0     : Neighbor state low             1     : Bad ack</pre>
+<pre class="screen"> 2     : Duplicate ack                  0     : Unknown LSA type</pre>
+
+<pre class="screen">LS REQ packet errors:</pre>
+<pre class="screen"> 0     : Neighbor state low             0     : Empty request</pre>
+<pre class="screen"> 0     : Bad request</pre>
+
+<pre class="screen">LS UPD packet errors:</pre>
+<pre class="screen"> 0     : Neighbor state low             0     : Newer self-generate LSA</pre>
+<pre class="screen"> 0     : LSA checksum bad               0     : Received less recent LSA</pre>
+<pre class="screen"> 0     : Unknown LSA type</pre>
+
+<pre class="screen">Opaque errors:</pre>
+<pre class="screen"> 0     : 9-out of flooding scope        0     : 10-out of flooding scope</pre>
+<pre class="screen"> 0     : 11-out of flooding scope<span>       0     : Unknown TLV type</span></pre>
+
+<pre class="screen">Retransmission for packet over Limitation errors:</pre>
+<pre class="screen"> 0     : Number for DD Packet           0     : Number for Update Packet</pre>
+<pre class="screen"> 0     : Number for Request Packet</pre>
+<pre class="screen">
+Receive Grace LSA errors:
+ 0     : Number of invalid LSAs         0     : Number of policy failed LSAs
+ 0     : Number of wrong period LSAs</pre>
+
+<pre class="screen">Configuration errors:</pre>
+<pre class="screen">0     : Tunnel cost mistake</pre>
+<pre class="screen"> 1     : The network type of the neighboring interface is not consistent.</pre>
+
+<div class="tablenoborder"><a name="display_ospf_error__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_error__tb_01" frame="border" border="1" rules="all"><caption>表1 display ospf error命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.65129755605946%" id="d54960e263"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.34870244394054%" id="d54960e267"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>General packet errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>普通报文错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>IP: received my own packet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>收到了自己接口发出的报文，不处理。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Bad packet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>解析的报文有错误，包括长度域的校验和等。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Bad version</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>OSPF版本号错误，即不是2。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Bad checksum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>OSPF校验和错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Bad area id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>收到的报文中的area id与本地不匹配（Vlink可以收到area0的报文，其他情况的area id不一致时都算错误）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Drop on unnumbered interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>接收报文的接口是unnumbered，但不是P2P类型（unnumbered接口必须是P2P类型）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Bad virtual link</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>Vlink收到非法报文。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Bad authentication type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>报文认证错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Packet size &gt; ip length</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>OSPF报文长度大于IP报文所允许的长度。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Packet too small</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>收到的报文长度与IP报文头长度加上报文长度之和不相等。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Transmit error</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>向Socket发送报文失败。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Interface down</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>OSPF接口Down的次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Unknown neighbor</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>对于NBMA、sham-link和Vlink网络而言，收到非OSPF邻居发来的OSPF报文。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>HELLO packet errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>Hello报文错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Netmask mismatch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>地址掩码与本地不匹配。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Hello timer mismatch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>Hello报文时间间隔不一致。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Dead timer mismatch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>Dead报文时间间隔不一致。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Extern option mismatch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>Hello报文的扩展属性不一致。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Router id confusion</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>Route ID重复。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Virtual neighbor unknown</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>报文的Router ID与Vlink配置的邻居Router ID不一致。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>NBMA neighbor unknown</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>NBMA邻居的状态不是active时报错。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>DD packet errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>DD报文错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Neighbor state low</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><div class="p">下面几种情况会报错：<ul>
+<li><p>收到DD报文但邻居状态低于2-way。</p>
+</li>
+<li><p>收到LSR报文但邻居状态低于Exchange。</p>
+</li>
+<li><p>收到LSU报文但邻居状态低于Exchange。</p>
+</li>
+<li><p>收到ACK报文但邻居状态低于Exchange。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Newer self-generate LSA</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>自己新产生的LSA的数量，该字段保留未用。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Extern option mismatch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>Hello报文的Option比特位错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>MTU option mismatch</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>使能了OSPF接口的MTU检查，并且收到的DD报文的MTU值大于接收接口的MTU值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Unknown LSA type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>未知的LSA类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>LSA checksum bad</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>LSA检验错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>LS ACK packet errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>LS ACK报文错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Bad ack</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>收到错误的ACK报文的次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Duplicate ack</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>收到重复ACK报文的次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>LS REQ packet errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>LS REQ报文错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Empty request</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>空的请求报文。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Bad request</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>协议中的BadRequest事件。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>LS UPD packet errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>LS UPD报文错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Received less recent LSA</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>收到了比本地更旧的LSA。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Opaque errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>Opaque错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>9-out of flooding scope</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>超出了洪泛范围的Type-9 LSA数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>10-out of flooding scope</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>超出了洪泛范围的Type-10 LSA数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>11-out of flooding scope</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>超出了洪泛范围的Type-11 LSA数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Unknown TLV type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>无法识别的TLV类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Retransmission for packet over Limitation errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>重传超限制报文所发生的次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Number for DD Packet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>DD报文重传超次发生次数统计。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Number for Update Packet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>Update报文重传超次发生次数统计。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Number for Request Packet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>Request报文重传超次发生次数统计。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Receive Grace LSA errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>收到的错误的Grace LSA数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Number of invalid LSAs</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>收到的无效LSA的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Number of policy failed LSAs</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>策略失败LSA的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Number of wrong period LSAs</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>GR过程中，收到的LSA不是max-age的LSA且其Age大于GR的重启时长，或GR的重启时长大于1800s的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Configuration errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>配置错误。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>Tunnel cost mistake</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>OSPF Tunnel接口的cost值小于1的次数统计。每计算一次OSPF Tunnel接口的cost值小于1时，该计数器加1，然后OSPF将此cost值计算为1。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d54960e263 "><p>The network type of the neighboring interface is not consistent.</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d54960e267 "><p>邻居接口的网络类型不一致。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ospf_error__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_error__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d54960e890"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d54960e894"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d54960e890 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d54960e894 "><p>增加了&#8220;Receive Grace LSA errors&#8221;的显示信息及其输出信息描述</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d54960e890 "><p>VRPV500R005C02B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d54960e894 "><p>显示信息中增加了&#8220;The network type of the neighboring interface is not consistent.&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d54960e890 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d54960e894 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d54960e890 "><p>VRPV500R006C02B220</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d54960e894 "><p>增加显示信息&#8220;Unknown TLV type&#8221;及其输出说明</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

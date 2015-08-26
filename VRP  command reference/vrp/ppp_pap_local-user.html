@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ppp pap local-user">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ppp_and_mp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ppp_authentication-mode.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ppp_pap_local-user">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ppp pap local-user</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ppp_pap_local-user"></a><a name="ppp_pap_local-user"></a>
+
+
+<h1 class="topictitle1">ppp pap local-user</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ppp pap local-user</strong>命令用来配置本地<span class="keyword">路由器</span>被对端<span class="keyword">路由器</span>采用PAP方式验证时发送的用户名和口令。</p>
+<p><strong>undo
+ppp pap local-user</strong>命令用来取消配置的发送的用户名和口令。</p>
+<p>缺省情况下，被对端以PAP方式验证时，本地<span class="keyword">路由器</span>发送的用户名和口令均为空。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ppp</strong> <strong>pap local-user</strong><em> user-name</em> <strong>password</strong> { <strong>cipher</strong> | <strong>simple</strong> } <em>password</em></p>
+<p><strong>undo</strong> <strong>ppp</strong> <strong>pap local-user</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>user-name</em>：PAP验证用户名，字符串形式，取值范围是1～64，大小写不敏感。字符中不能带有&#8220;@&#8221;。如果用户名中带&#8220;@&#8221;字符的域名，则必须在对应域中做相关AAA配置。</p>
+<p><strong>cipher</strong>：配置密文密码，密码将以加密的形式保存在配置文件中。</p>
+<p><strong>simple</strong>：配置明文密码，密码将以明文形式保存在配置文件中。</p>
+<p><em>password</em>：如果密码形式是<strong>simple</strong>，则<em>password</em>必须是明文密码。如果密码形式是<strong>cipher</strong>，则<em>password</em>可以是密文密码也可以是明文密码，结果视输入而定。明文密码可以是长度小于等于16的连续字符串，如：1234567。密文密码的长度必须是24，并且必须是密文形式，如：_(TT8F]Y\5SQ=^Q`MAF4&lt;1!!。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>如果使用simple选项，密码将以明文形式保存在配置文件中，以低级别登录的用户可以通过查看配置方式获取切换密码，造成安全问题。因此，一般情况下，应使用cipher选项，将密码加密保存。</p>
+</div></div>
+<p>当本地<span class="keyword">路由器</span>被对端以PAP方式验证时，本地<span class="keyword">路由器</span>发送的用户名<em>user-name</em>和口令<em>password</em>应与对端<span class="keyword">路由器</span>的AAA视图下配置的<em>user</em>和<em>password</em>一致。</p>
+<p>缺省情况下，如果不指定密码形式，缺省为明文密码形式。</p>
+<p>不论配置的是明文密码还是密文密码，验证时必须输入明文形式的密码。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ppp_pap_local-user__d107470e132"></a><a name="d107470e132"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置本地<span class="keyword">路由器</span>被对端以PAP方式验证时发送的用户名为Quidway，口令为Quidway。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0] <strong>ppp pap local-user</strong> <strong>Quidway password simple Quidway</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ppp_and_mp_configuration_commands.html">PPP和MP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ppp_authentication-mode.html">ppp authentication-mode</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

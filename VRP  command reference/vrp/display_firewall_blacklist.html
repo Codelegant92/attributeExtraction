@@ -1,0 +1,96 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display firewall blacklist">
+<meta name="DC.Relation" scheme="URI" content="../vrp/firewall_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_firewall_blacklist">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display firewall blacklist</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_firewall_blacklist"></a><a name="display_firewall_blacklist"></a>
+
+<h1 class="topictitle1">display firewall blacklist</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display firewall blacklist</strong>命令显示防火墙黑名单功能的运行状况和黑名单表项信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display firewall blacklist</strong> { <strong>item</strong> [ <em>source-address</em> ] <strong>slot</strong> <em>slot-id</em> | <strong>enable </strong>}</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>item</strong>：显示黑名单表项内容。</p>
+<p><em>source-address</em>：要显示的表项的IP地址。</p>
+<p><strong>enable</strong>：显示黑名单功能运行状况。</p>
+<p><em>slot-id</em>：为指定的接口板槽号。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>参数<strong>item</strong> [ <em>source-address</em> ] <strong>slot</strong> <em>slot-id</em>显示黑名单表项信息，如果不指定IP地址，显示当前全部黑名单表项的概要信息，如果指定了要显示的IP地址，显示特定黑名单表项的详细信息。由于各接口板上可能会动态产生黑名单，所以各接口板的黑名单不一定相同。</p>
+<p><strong>display firewall blacklist</strong>命令显示的信息包括：黑名单上自动、手工添加条目的信息。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_firewall_blacklist__d24576e74"></a><a name="d24576e74"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示全部黑名单表项概要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display firewall blacklist item</strong></pre>
+<pre class="screen">Firewall blacklist items : </pre>
+<pre class="screen">Current manual insert items : 2</pre>
+<pre class="screen">Current automatic insert items : 0</pre>
+<pre class="screen">Need aging items : 0</pre>
+
+<pre class="screen">IP                Reason         InsertTime            AgeTime</pre>
+<pre class="screen">----------------------------------------------------------------</pre>
+<pre class="screen">20.202.16.5       Manual         2004/01/28 15:42:18   0</pre>
+<pre class="screen">192.168.1.1       Manual         2004/01/28 15:42:01   0</pre>
+<p># 显示特定黑名单表项详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display firewall blacklist item 192.168.1.1</strong></pre>
+<pre class="screen">Firewall blacklist items : 192.168.1.1</pre>
+<pre class="screen"> Insert reason : Manual</pre>
+<pre class="screen"> Insert time : 2003/06/11 08:04:56</pre>
+<pre class="screen"> Age action : Aging</pre>
+<pre class="screen"> Age time : 100 minutes</pre>
+<p># 显示黑名单表项的运行状况。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display firewall blacklist enable</strong></pre>
+<pre class="screen">Blacklist is Disabled.</pre>
+
+<div class="tablenoborder"><a name="display_firewall_blacklist__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_firewall_blacklist__tb_01" frame="border" border="1" rules="all"><caption>表1 display firewall blacklist enable命令显示说明</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="27.966742252456537%" id="d24576e130"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="72.03325774754346%" id="d24576e133"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="27.966742252456537%" headers="d24576e130 "><p>InboundPolicy</p>
+</td>
+<td class="cellrowborder" valign="top" width="72.03325774754346%" headers="d24576e133 "><p>入方向的ASPF策略</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="27.966742252456537%" headers="d24576e130 "><p>OutboundPolicy</p>
+</td>
+<td class="cellrowborder" valign="top" width="72.03325774754346%" headers="d24576e133 "><p>出方向的ASPF策略</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/firewall_configuration_commands.html">防火墙配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

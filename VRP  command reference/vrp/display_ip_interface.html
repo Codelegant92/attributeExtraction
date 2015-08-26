@@ -1,0 +1,452 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ip interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/interface_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_performance_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ip_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ip interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ip_interface"></a><a name="display_ip_interface"></a>
+
+<h1 class="topictitle1">display ip interface</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ip interface</strong>命令用来查看接口与IP相关的配置和统计信息，包括接口接收和发送的报文数、字节数和组播报文数，以及接口接收、发送、转发和丢弃的广播报文数。</p>
+<p><strong>display ip interface brief</strong>命令用来查看接口与IP相关的简要信息，包括IP地址、子网掩码、物理链路和协议的Up/Down状态以及处于不同状态的接口数目。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ip interface</strong> [ <em>interface-type</em> <em>interface-number</em> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display ip interface brief</strong> [ <em>interface-type</em> [ <em>interface-number</em> ] | <em>interface-type</em> &amp;&lt;1-8&gt; | <strong>slot</strong> <em>slot-number</em> [ <strong>card</strong> <em>card-number</em> ] | <strong>ip-configured</strong> [ <strong>except</strong> <em>interface-type</em> ] ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em>：接口类型。如果不指定接口类型，将显示所有接口与IP相关的配置和统计信息。</p>
+<p><em>interface-number</em>：接口编号，与<em>interface-type</em>共同确定一个接口。如果不指定接口编号，将显示所有该类型接口与IP相关的配置和统计信息。</p>
+<p><em>interface-type</em> &amp;&lt;1-8&gt;：表示可以输入多种接口类型，最多可输入8种。</p>
+<p><strong>brief</strong>：表示显示接口与IP相关摘要信息，包括IP地址、子网掩码、物理链路和协议的Up/Down状态以及处于不同状态的数目。</p>
+<p><strong>slot</strong> <em>slot-number</em>：板号。如果不指定板号，将显示所有接口板和主控板的所有接口上的与IP地址相关的简要信息。</p>
+<p><strong>card</strong> <em>card-number</em>：卡号。如果不指定卡号，将显示指定板子上的所有卡上的所有接口的与IP地址相关的简要信息。</p>
+<p><strong>ip-configured</strong>：查看配置了IP地址的接口的IP相关信息。</p>
+<p><strong>except</strong> <em>interface-type</em>：查看除了指定接口类型的配置了IP地址的接口的IP相关信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="p">通过<strong>display ip interface brief</strong>命令可以查看：<ul><li>所有接口的IP相关信息</li><li>指定接口类型、指定接口、指定槽位号或指定槽位号和板号的接口的IP相关信息</li><li>配置了IP地址的接口的IP相关信息</li></ul>
+不能通过该命令查看二层接口，也不能查看Trunk（Eth-trunk或IP-trunk）的成员端口。</div>
+<p>如果接口下绑定了同种介质VLL或VSI，则执行该命令时不会显示该接口的任何信息。</p>
+<p>通过对显示信息中某些类型报文收发情况的分析，可以初步判断网络是否遭到攻击和攻击的可能来源。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul><li><p>接口的描述信息可以通过命令<a href="display_interface_description.html">display interface description</a>查看。</p>
+</li><li><p>接口的详细运行信息和统计信息可以通过命令<a href="display_interface.html">display interface</a>查看。</p>
+</li></ul>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ip_interface__d30687e212"></a><a name="d30687e212"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看接口GE1/0/0的特定信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ip interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">GigabitEthernet1/0/0 current state : UP</pre>
+<pre class="screen">Line protocol current state : UP</pre>
+<pre class="screen">The Maximum Transmit Unit : 1500 bytes</pre>
+<pre class="screen">input packets : 1431, bytes : 97912, multicasts : 1426</pre>
+<pre class="screen">output packets : 2716, bytes : 179760, multicasts : 2710</pre>
+<pre class="screen">Directed-broadcast packets:</pre>
+<pre class="screen"> received packets:            0, sent packets:            0</pre>
+<pre class="screen"> forwarded packets:           0, dropped packets:           0</pre>
+<pre class="screen">ARP packet input number:          11</pre>
+<pre class="screen">  Request packet:                 11</pre>
+<pre class="screen">  Reply packet:                    0</pre>
+<pre class="screen">  Unknown packet:                  0</pre>
+<pre class="screen">Internet Address is 202.5.40.1/24</pre>
+<pre class="screen">Broadcast address : 202.5.40.255</pre>
+<pre class="screen">TTL being 1 packet number:         0</pre>
+<pre class="screen">TTL invalid packet number:         0</pre>
+<pre class="screen">ICMP packet input number:          0</pre>
+<pre class="screen">  Echo reply:                      0</pre>
+<pre class="screen">  Unreachable:                     0</pre>
+<pre class="screen">  Source quench:                   0</pre>
+<pre class="screen">  Routing redirect:                0</pre>
+<pre class="screen">  Echo request:                    0</pre>
+<pre class="screen">  Router advert:                   0</pre>
+<pre class="screen">  Router solicit:                  0</pre>
+<pre class="screen">  Time exceed:                     0</pre>
+<pre class="screen">  IP header bad:                   0</pre>
+<pre class="screen">  Timestamp request:               0</pre>
+<pre class="screen">  Timestamp reply:                 0</pre>
+<pre class="screen">  Information request:             0</pre>
+<pre class="screen">  Information reply:               0</pre>
+<pre class="screen">  Netmask request:                 0</pre>
+<pre class="screen">  Netmask reply:                   0</pre>
+<pre class="screen">  Unknown type:                    0</pre>
+<pre class="screen">DHCP packet deal mode:  global</pre>
+
+<div class="tablenoborder"><a name="display_ip_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display ip interface gigabitethernet命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="41.8241370622323%" id="d30687e295"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="58.17586293776771%" id="d30687e298"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>GigabitEthernet1/0/0 current state :</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><div class="p">显示接口GigabitEthernet1/0/0的物理状态。<ul><li><p>UP：接口物理层处于正常启动的状态。</p>
+</li><li><p>DOWN：接口物理层出现故障。</p>
+</li><li><p>Administratively down：如果网络管理员在该接口执行<a href="shutdown_interface_view.html">shutdown（接口视图）</a>命令，将显示状态为Administratively down。</p>
+</li></ul>
+</div>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Line protocol current state : </p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><div class="p">显示该接口的链路协议状态。<ul><li><p>UP：接口的链路协议处于正常的启动状态。</p>
+</li><li><p>DOWN：接口的链路协议层出现故障，或者没有在此接口配置IP地址。</p>
+</li></ul>
+</div>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>The Maximum Transmit Unit :</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>接口的最大传输单元（MTU）。例如以太网接口<span>或串口</span>的缺省值是1500字节。长度大于MTU的报文，将会被分片后再发送。如果设置了不准分片，会被丢弃。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>input packets : 1431, bytes : 97912, multicasts : 1426</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>接口接收的总报文数、总字节数和组播数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>output packets : 2716, bytes : 179760, multicasts : 2710</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>接口发送的总报文数、总字节数和组播数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Directed-broadcast packets:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>接口直接广播的报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>received packets:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>接收到的报文总数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>sent packets:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>发送的报文总数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>forwarded packets:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>转发的报文总数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>dropped packets:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>丢弃的报文总数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>ARP packet input number:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>接收到的ARP报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Request packet:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>请求的报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Reply packet:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>应答的报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Unknown packet:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>未知的报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Internet Address is </p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>在接口上配置的IP地址和掩码长度。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Broadcast address :</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>接口的广播地址。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>TTL being 1 packet number:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>TTL值为1的报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>TTL invalid packet number:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>TTL无效报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>ICMP packet input number:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>接收到的ICMP报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Echo reply:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>回送应答报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Unreachable:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>目的不可达的报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Source quench:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>源站抑制报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Routing redirect:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>重定向报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Echo request:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>回送请求报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Router advert:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>路由器通告报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Router solicit:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>路由器请求报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Time exceed:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>超时报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>IP header bad:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>IP头损坏的报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Timestamp request:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>时间戳请求报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Timestamp reply:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>时间戳应答报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Information request:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>信息请求报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Information reply:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>信息应答报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Netmask request:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>地址掩码请求报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Netmask reply:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>地址掩码应答报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>Unknown type:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><p>未知类型的报文数。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="41.8241370622323%" headers="d30687e295 "><p>DHCP packet deal mode:</p>
+</td>
+<td class="cellrowborder" valign="top" width="58.17586293776771%" headers="d30687e298 "><div class="p">对DHCP报文的处理模式。主要的处理模式有：<ul><li><p>全局模式（global）</p>
+</li><li><p>中继模式（Relay）</p>
+</li><li><p>接口模式（interface）</p>
+</li></ul>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p># 查看<span class="keyword">路由器</span>上所有接口的与IP相关的简要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong>display ip interface brief</strong></pre>
+<pre class="screen">*down: administratively down</pre>
+<pre class="screen">!down: FIB overload down</pre>
+<pre class="screen">(l): loopback
+(s): spoofing
+The number of interfaces that is UP in Physical is 4
+The number of interfaces that is DOWN in Physical is 3
+The number of interfaces that is UP in Protocol is 4
+The number of interfaces that is DOWN in Protocol is 3
+Interface                IP Address/Mask     Physical   Protocol 
+Eth-Trunk3               40.40.40.229/24     up         up
+GigabitEthernet1/2/0     20.20.20.229/24     up         up
+GigabitEthernet2/2/0     50.50.50.229/24     !down      down
+GigabitEthernet3/2/0     18.18.18.229/24     *down      down
+LoopBack1                30.1.1.1/24         up         up(s)
+NULL0                    unassigned          up         up(s)
+Pos5/0/0                 unassigned          *down(l)   down(l)
+</pre>
+
+<div class="tablenoborder"><a name="display_ip_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_interface__tb_02" frame="border" border="1" rules="all"><caption>表2 display ip interface brief命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="26.691861929957167%" id="d30687e610"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="73.30813807004283%" id="d30687e613"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="26.691861929957167%" headers="d30687e610 "><p>*down:</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.30813807004283%" headers="d30687e613 "><p>显示接口GigabitEthernet3/2/0的物理状态位DOWN的原因。Administratively down：如果网络管理员在该接口执行<a href="shutdown_interface_view.html">shutdown（接口视图）</a>命令，将显示状态为Administratively down。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="26.691861929957167%" headers="d30687e610 "><p>!down</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.30813807004283%" headers="d30687e613 "><p>由于接口板的FIB路由前缀容量超限，接口处于Down状态。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="26.691861929957167%" headers="d30687e610 "><p>(l): loopback</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.30813807004283%" headers="d30687e613 "><p>l代表环回。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="26.691861929957167%" headers="d30687e610 "><p>(s): spoofing</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.30813807004283%" headers="d30687e613 "><p>s代表哄骗。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="26.691861929957167%" headers="d30687e610 "><p>The number of interface that is up/down in Physical is</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.30813807004283%" headers="d30687e613 "><p>物理链路的UP/DOWN状态以及处于不同状态的接口数目。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="26.691861929957167%" headers="d30687e610 "><p>The number of interface that is up/down in Protocol is</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.30813807004283%" headers="d30687e613 "><p>协议的UP/DOWN状态以及处于不同状态的接口数目。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="26.691861929957167%" headers="d30687e610 "><p>Interface</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.30813807004283%" headers="d30687e613 "><p>接口类型和接口编号。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="26.691861929957167%" headers="d30687e610 "><p>IP Address/Mask</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.30813807004283%" headers="d30687e613 "><p>接口的IP地址/子网掩码。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="26.691861929957167%" headers="d30687e610 "><p>Physical</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.30813807004283%" headers="d30687e613 "><p>接口的物理状态。可能出现的物理状态有：</p>
+<ul><li>Up：接口处于正常启动的状态。其中(l)表示在接口上设置了环回功能。</li><li>Down：接口在物理上出现故障。</li><li>*down：网络管理员在该接口执行了shutdown命令。其中(l)表示在接口上设置了环回功能。</li><li>!down：FIB模块超限挂起。此时接口的协议状态是Down。</li></ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="26.691861929957167%" headers="d30687e610 "><p>Protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="73.30813807004283%" headers="d30687e613 "><p>接口的链路协议状态。可能出现的协议状态有：</p>
+<ul><li>Up：接口的链路协议处于正常的启动状态。其中(s)表示接口创建时不用配置IP地址协议状态就显示为Up，是接口的固有属性，接口上配置了IP地址仍会被显示。</li><li>Down：接口的链路协议不正常，或者没有在此接口配置IP地址。</li></ul>
+<p>其中(l)表示在接口上设置了环回功能。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p># 查看<span class="keyword">路由器</span>上所有配置了IP地址的接口的IP相关信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ip interface brief ip-configured</strong>
+*down: administratively down
+!down: FIB overload down
+(l): loopback
+(s): spoofing
+The number of interface that is UP in Physical is 1
+The number of interface that is DOWN in Physical is 1
+The number of interface that is UP in Protocol is 1
+The number of interface that is DOWN in Protocol is 1
+
+Interface               IP Address/Mask     Physical    Protocol
+GigabitEthernet1/2/0        20.20.20.229/24     up          up
+GigabitEthernet3/2/0        18.18.18.229/24     *down       down
+LoopBack1                   30.1.1.1/24         up          up(s)
+GigabitEthernet8/0/0        10.1.1.1/24         up(l)       up(l)</pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ip_interface__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ip_interface__tb_03" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="27%" id="d30687e723"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="73%" id="d30687e726"><p>修订记录</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="27%" headers="d30687e723 "><p>VRPV500R003C07B270</p>
+</td>
+<td class="cellrowborder" valign="top" width="73%" headers="d30687e726 "><p>修改了使用<strong>brief</strong>参数时的输出信息：增加了接口IP地址掩码长度、处于不同物理状态和协议状态的接口数目；取消了接口描述信息的显示。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="27%" headers="d30687e723 "><p>VRPV500R005C02B121</p>
+</td>
+<td class="cellrowborder" valign="top" width="73%" headers="d30687e726 "><p>修改了使用<strong>brief</strong>参数时的输出信息：增加了二层接口和Trunk（包括Eth-Trunk和IP-Trunk）成员接口的显示信息。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="27%" headers="d30687e723 "><p>VRPV500R005C02B190</p>
+</td>
+<td class="cellrowborder" valign="top" width="73%" headers="d30687e726 "><p>增加了<strong>ip-configured</strong> [ <strong>except</strong> <em>interface-type</em> ]参数，取消了显示二层接口和Trunk（包括Eth-Trunk和IP-Trunk）成员接口的显示信息。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="27%" headers="d30687e723 "><p>VRPV500R005C02B191</p>
+</td>
+<td class="cellrowborder" valign="top" width="73%" headers="d30687e726 "><p>对该命令的显示信息进行了修改：如果接口下绑定了同种介质VLL或VSI，则执行该命令时不会显示该接口的任何信息。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="27%" headers="d30687e723 "><p>VRPV500R006C01B003</p>
+</td>
+<td class="cellrowborder" valign="top" width="73%" headers="d30687e726 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/interface_management_configuration_commands.html">接口基础配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_interface.html">display interface</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

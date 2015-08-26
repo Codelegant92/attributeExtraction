@@ -1,0 +1,73 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="acl ipv6">
+<meta name="DC.Relation" scheme="URI" content="../vrp/acl6_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="acl_ipv6">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>acl ipv6</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="acl_ipv6"></a><a name="acl_ipv6"></a>
+
+<h1 class="topictitle1">acl ipv6</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>acl ipv6</strong>命令用来创建基于IPv6的访问控制列表并进入ACL6视图。</p>
+<p>如果已存在ACL6，此命令只用来进入ACL6配置模式。</p>
+<p><strong>undo acl ipv6</strong>命令用来删除ACL6。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>acl ipv6</strong> [ <strong>number</strong> ] <em>acl6-number</em> [ <strong>match-order</strong> { <strong>auto</strong> | <strong>config</strong> } ]</p>
+<p><strong>undo acl ipv6</strong> { <strong>all</strong> | <strong>number</strong> <em>acl6-number</em> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>number</strong>：利用数字标识一个ACL6。</p>
+<p><em>acl6-number</em>：指定ACL6编号，整数形式，取值范围是1000～3999。其中2000～2999是基本ACL6，3000～3999是高级ACL6，1000～1999是基于接口的ACL6。</p>
+<p><strong>auto</strong>：表示ACL6规则是自动排序，也就是&#8220;深度优先&#8221;的顺序。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>若&#8220;深度优先&#8221;的顺序相同，则匹配该规则时按用户的配置顺序。</p>
+</div></div>
+<p><strong>config</strong>：表示ACL6规则按照配置顺序进行匹配。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>指定匹配该规则时按用户的配置顺序，是指在用户没有指定rule-id的前提下。若用户指定了rule-id，则匹配规则时，按rule-id由小到大的顺序。</p>
+</div></div>
+<p><strong>all</strong>：删除所有配置的ACL6。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>创建ACL6时需要明确定如下参数：</p>
+<ul><li><p>指定数字型ACL6</p>
+</li><li><p>指定ACL6的匹配顺序(可选)，缺省情况下，匹配顺序是配置顺序</p>
+</li></ul>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="acl_ipv6__d379e94"></a><a name="d379e94"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><div class="p"># 创建匹配顺序为config，序列号为1000的ACL6。<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> acl ipv6 number 1000 match-order config</strong></pre>
+<pre class="screen">[Quidway-acl6-if-1000]</pre>
+</div>
+<div class="p"># 创建一个序列号为1500的ACL6。<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>acl ipv6 number 1500</strong></strong></pre>
+<pre class="screen">[Quidway-acl6-if-1500]</pre>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/acl6_configuration_commands.html">ACL6配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

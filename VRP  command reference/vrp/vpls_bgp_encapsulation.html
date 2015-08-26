@@ -1,0 +1,86 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="vpls bgp encapsulation">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ignore-mtu-match_vsi_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="vpls_bgp_encapsulation">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>vpls bgp encapsulation</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="vpls_bgp_encapsulation"></a><a name="vpls_bgp_encapsulation"></a>
+
+
+<h1 class="topictitle1">vpls bgp encapsulation</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>vpls bgp encapsulation</strong>命令用于指定本端PE设备接收到封装类型是19的VPLS报文后，对该报文进行重新封装的方式。</p>
+<p>VPLS报文的封装方式分为Ethernet和VLAN两种类型。</p>
+<p>缺省情况下，系统对接收到的封装类型是19的VPLS报文使用VLAN方式进行重新封装。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>vpls bgp encapsulation</strong> { <strong>ethernet</strong> | <strong>vlan</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ethernet</strong>：指定对接收到的封装类型是19的VPLS报文使用以太方式进行重新封装。</p>
+<p><strong>vlan</strong>：指定对接收到的封装类型是19的VPLS报文使用VLAN方式进行重新封装。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>vpls bgp encapsulation</strong>命令只在设备互通的时候使用。</p>
+<p>对于Kompella方式的VPLS，最新的RFC上规定VPLS的封装类型是19。使用该命令后，当接收到封装类型是19的VPLS报文后，系统会根据用户的配置对VPLS报文进行重新封装的方式，以实现<span>使用VRP的华为数据通信设备</span>和友商设备的互通。</p>
+<p><strong>vpls bgp encapsulation</strong> { <strong>ethernet</strong> | <strong>vlan</strong> }命令需要和<a href="ignore-mtu-match_vsi_view.html">ignore-mtu-match</a>命令相互配合使用，才能实现和友商设备的互通。</p>
+<p>AC上的报文封装方式由用户接入方式决定，用户接入方式可以分为两种:VLAN接入和Ethernet接入。其含义如下：</p>
+<ul>
+<li><p>VLAN接入：CE发送到PE或PE发送到CE的以太网帧头带有一个VLAN TAG，该TAG是一个ISP为了区分用户而要求用户打上的&#8220;服务定界符&#8221;。我们把这个作为服务定界符的TAG称为P-TAG（Provider-TAG）。</p>
+</li>
+<li><p>Ethernet接入：CE发送到PE或PE发送到CE的以太网帧头中没有带服务定界符，如果此时帧头中有VLAN TAG，则说明它只是用户报文的内部VLAN TAG，对于PE设备没有意义。我们把这种用户内部VLAN的TAG称为U-TAG(User-TAG)。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="vpls_bgp_encapsulation__d128236e86"></a><a name="d128236e86"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置对接收到的封装类型是19的VPLS报文使用以太方式进行重新封装。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> mpls lsr-id 1.1.1.1</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>mpls</strong></strong></pre>
+<pre class="screen">[Quidway-mpls]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>mpls l2vpn</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>quit</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> vpls bgp encapsulation ethernet</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ignore-mtu-match_vsi_view.html">ignore-mtu-match（VSI视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

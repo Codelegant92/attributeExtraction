@@ -1,0 +1,65 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="lapb timer">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="link-protocol_lapb.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="lapb_timer">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>lapb timer</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="lapb_timer"></a><a name="lapb_timer"></a>
+
+<h1 class="topictitle1">lapb timer</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>lapb timer</strong>命令用来配置LAPB系统定时器T1、T2、T3。</p>
+<p><strong>undo lapb timer</strong>命令用来恢复T1、T2、T3的缺省值。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>lapb timer </strong>{ <strong>t1</strong> <em>t1-value</em> |<strong> t2 </strong><em>t2-value</em> | <strong>t3 </strong><em>t3-value</em> }</p>
+<p><strong>undo lapb timer</strong> { <strong>t1</strong> |<strong> t2 </strong>| <strong>t3 </strong>}</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>t1-value</em>：定时器T1值。整数形式，取值范围是1～64000，单位是毫秒。T1的缺省值是3000毫秒。</p>
+<p><em>t2-value</em>：定时器T2值。整数形式，取值范围是1～32000，单位是毫秒。T2的缺省值是1500毫秒。</p>
+<p><em>t3-value</em>：定时器T3值。整数形式，取值范围是0～255，单位是秒。T3的缺省值是0。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>T1为发送计时器，当T1计时器到时后，DTE或DCE就启动重发。T1的值应大于从发送方发送一个帧到接收方，由接收方对该帧作出应答，发出应答帧，并且发送方接收到该应答帧之间的最大时间。</p>
+<p>T2为接收计时器，当T2计时器到时后，DTE或DCE必须发送证实帧，使得对方DTE(DCE)的T1定时器超时之前能接收到证实帧（T2&lt;T1）。</p>
+<p>T3为空闲通道计时器，当T3计时器到时后，DCE向分组层报告链路出现了长时间的空闲通道状态，T3应当大于DCE中的计时器T1。T3为0表示定时器未起作用。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="lapb_timer__d89102e76"></a><a name="d89102e76"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置接口Serial1/0/0上LAPB的定时器T1为1000 ms。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> link-protocol lapb</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> lapb timer t1 1000</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="link-protocol_lapb.html">link-protocol lapb</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

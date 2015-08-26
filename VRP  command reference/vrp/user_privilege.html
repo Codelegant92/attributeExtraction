@@ -1,0 +1,90 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="user privilege">
+<meta name="DC.Relation" scheme="URI" content="../vrp/user_management_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_user-interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="user_privilege">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>user privilege</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="user_privilege"></a><a name="user_privilege"></a>
+
+
+<h1 class="topictitle1">user privilege</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>user privilege</strong>命令用来配置从当前用户界面登录的用户所能访问的命令级别。</p>
+<p><strong>undo user privilege</strong>命令用来取消当前设置。</p>
+<p>缺省情况下，Console口用户界面对应的默认命令访问级别是3，而其他用户界面对应的默认级别是0。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>user privilege level </strong><em>level</em></p>
+<p><strong>undo user privilege level</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>level</em>：指定命令级别。整数形式，取值范围是0～15。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户界面视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果用户界面下配置的命令级别访问权限与用户名本身对应的操作权限冲突，以用户名本身对应的级别为准。</p>
+<p>例如：用户001本身对应权限为能访问3级命令，而用户界面VTY 0配置的命令级别访问权限为2，则用户001从VTY0登录系统时，能访问3级及以下的命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="user_privilege__d127231e52"></a><a name="d127231e52"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置从vty 0登录的用户级别为2。</p>
+<pre class="screen">&lt;Quidway &gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>user-interface vty 0</strong></strong></pre>
+<pre class="screen">[Quidway-ui-vty0]<strong> <strong>user privilege level 2</strong></strong></pre>
+<p># 通过Telnet方式从vty 0登录进<span class="keyword">路由器</span>后，查看用户界的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display user-interface vty0</strong></pre>
+<pre class="screen">Idx  Type     Tx/Rx      Modem Privi ActualPrivi Auth  Int     
++ 34   VTY 0               -     3     3           N     -       
+
+  +    : Current user-interface is active.
+  F    : Current user-interface is active and work in async mode.
+  Idx  : Absolute index of user-interface.
+  Type : Type and relative index of user-interface.
+  Privi: The privilege of user-interface.
+  ActualPrivi: The actual privilege of user-interface.
+  Auth : The authentication mode of user-interface.
+      A: Authenticate use AAA.
+      N: Current user-interface need not authentication.
+      P: Authenticate use current UI's password.
+  Int  : The physical location of UIs.</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/user_management_commands.html">用户管理命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_user-interface.html">display user-interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

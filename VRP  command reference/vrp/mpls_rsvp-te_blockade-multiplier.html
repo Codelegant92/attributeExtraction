@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls rsvp-te blockade-multiplier">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_rsvp-te_timer_refresh.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_rsvp-te_blockade-multiplier">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls rsvp-te blockade-multiplier</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_rsvp-te_blockade-multiplier"></a><a name="mpls_rsvp-te_blockade-multiplier"></a>
+
+
+<h1 class="topictitle1">mpls rsvp-te blockade-multiplier</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls rsvp-te blockade-multiplier</strong>命令用来设置阻塞状态超时倍数。</p>
+<p><strong>undo
+mpls rsvp-te blockade-multiplier</strong>用来恢复缺省设置。</p>
+<p>缺省情况下，阻塞状态超时倍数为4。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls rsvp-te blockade-multiplier</strong> <em>number</em></p>
+<p><strong>undo
+mpls rsvp-te blockade-multiplier</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>number</em>：阻塞状态倍数，取值范围是3～255。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MPLS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>ResvErr消息在一个节点创建阻塞状态以解决&#8220;killer reservation&#8221;问题，以转发或创建更小的请求。</p>
+<div class="p">阻塞状态超时时间Blockade_Expired_Time＝Kb&times;refresh-time。其中：<ul>
+<li><p>&#8220;Kb&#8221;代表阻塞状态超时倍数</p>
+</li>
+<li><p>&#8220;refresh-time&#8221;代表节点的刷新周期</p>
+</li>
+</ul>
+</div>
+<p>假设有一个资源预留请求，在某些节点上没有通过准入控制。有时可能不希望立即删除这个请求，但这个请求也不应该阻止其他资源预留请求。这种情况下，节点将进入阻塞状态（Blockade
+State），在下游节点生成BSB（Blockade State Block）。如果在阻塞状态超时时间内该节点没有再收到资源预留请求，BSB中相应的状态被删除。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_rsvp-te_blockade-multiplier__d94936e65"></a><a name="d94936e65"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设定阻塞状态时间倍数为5。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> mpls</strong>
+[Quidway-mpls]<strong> mpls rsvp-te blockade-multiplier 5</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_rsvp-te_timer_refresh.html">mpls rsvp-te timer refresh</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

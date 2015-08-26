@@ -1,0 +1,65 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="x25 hunt-group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_x25_hunt-group-info.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="x25_hunt-group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>x25 hunt-group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="x25_hunt-group"></a><a name="x25_hunt-group"></a>
+
+<h1 class="topictitle1">x25 hunt-group</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>x25 hunt-group</strong>命令用来创建或进入一个X.25搜索群（hunt group）。</p>
+<p><strong>undo x25 hunt-group</strong>命令用来删除指定的X.25搜索群。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>x25 hunt-group </strong><em>hunt-group-name</em> { <strong>round-robin </strong>|<strong> vc-number </strong>}</p>
+<p><strong>undo x25 hunt-group</strong> <em>hunt-group-name</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>hunt-group-name</em>：搜索群名称，字符串形式，长度为1～24。</p>
+<p><strong>round-robin</strong>：采用循环选择策略选择呼叫通道。</p>
+<p><strong>vc-number</strong>：采用计算可用逻辑通道策略选择呼叫通道。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>X.25搜索群支持两种呼叫通道选择策略：<strong>round-robin</strong>方式和<strong>vc-number</strong>方式，但是一个搜索群只能使用一种通道选择策略。</p>
+<p><strong>round-robin</strong>方式对每一个呼叫请求采用循环选择的方法选择搜索群内的下一个接口或XOT通道。<strong>vc-number</strong>方式对每一个呼叫请求选择搜索群内拥有空闲逻辑通道最多的接口。</p>
+<p>一个搜索群最多可以拥有10个接口或者XOT通道，它可以无区别的在接口和XOT通道之间选择可用的通道。</p>
+<p>XOT通道不能加入到采用<strong>vc-number</strong>选择策略的搜索群之中。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="x25_hunt-group__d129562e77"></a><a name="d129562e77"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建搜索群hg1，采用循环选择策略。</p>
+<pre class="screen">&lt;Quidway&gt;<strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> x25 hunt-group hg1 round-robin</strong></pre>
+<pre class="screen">[Quidway-hg-hg1]</pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_x25_hunt-group-info.html">display x25 hunt-group-info</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

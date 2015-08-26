@@ -1,0 +1,117 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ping vc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pw-template.html">
+<meta name="DC.Relation" scheme="URI" content="control-word.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ping_vc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ping vc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ping_vc"></a><a name="ping_vc"></a>
+
+
+<h1 class="topictitle1">ping vc</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ping vc</strong>命令用来检测PW的状态，在PW为Up的情况下，大体定位PW的异常情况，如转发项异常丢失或者不正确。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ping vc</strong> <em>pw-type</em> <em>pw-id</em> [ <strong>-c</strong> <em>echo-number </em>| <strong>-m</strong> <em>time-value </em>| <strong>-s</strong> <em>data-bytes</em> | <strong>-t</strong> <em>timeout-value</em> | <strong>-exp</strong> <em>exp-value</em> | <strong>-r</strong> <em>reply-mode</em> | <strong>-v</strong> ] * <strong>control-word</strong> [ <strong>remote</strong> <em>peer-pw-id</em> ]</p>
+<p><strong>ping vc</strong> <em>pw-type</em> <em>pw-id</em> [ <strong>-c</strong> <em>echo-number </em>| <strong>-m</strong> <em>time-value </em>| <strong>-s</strong> <em>data-bytes</em> | <strong>-t</strong> <em>timeout-value</em> | <strong>-exp</strong> <em>exp-value</em> | <strong>-r</strong> <em>reply-mode</em> | <strong>-v</strong> ] * <strong>label-alert</strong> [ <strong>remote</strong> <em>remote-ip-address</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>pw-type</em>：本地PW的类型。目前支持<strong>ping
+vc</strong>的类型有<strong>atm-aal5</strong>、<strong>ethernet</strong>、<strong>fr</strong>、<strong>hdlc</strong>、<strong>ip-interworking</strong>、<strong>ppp</strong>、<strong>vlan</strong>。</p>
+<p><em>pw-id</em>：本端PW的ID。十进制整数形式，取值范围是1～4294967295。</p>
+<p><strong>-c</strong> <em>echo-number</em>：指定发送echo request报文的数量。十进制整数，取值范围是1～4294967295。缺省值是5。</p>
+<p><strong>-m</strong>：发送下一个报文的等待时间。单位为毫秒（ms）。十进制整数，取范围是1～10000。缺省值是2000。</p>
+<p><strong>-s</strong> <em>data-bytes</em>：指定发送echo request报文的字节数。十进制整数，取值范围是65～8100。缺省值是100。</p>
+<p><strong>-t</strong> <em>timeout-value</em>：指定发送echo request报文超时的时间值。十进制整数，取值范围是0～65535。缺省值是2000。</p>
+<p><strong>-v</strong>：显示简要的输出信息。</p>
+<p><strong>control-word</strong>：多跳的情况下，在switch节点，并不上送ping报文。使用Control
+Word方式，只能ping PW的终结点。使用控制字方式ping VC之前，需使能PW的控制字。</p>
+<p><strong>label-alert</strong>：多跳的情况下，在交换节点，强行上送Ping报文。使用MPLS Router Alert方式，可以Ping PW的任何一个交换节点。使用MPLS
+Router Alert方式之前，需在PW模板上配置<a href="vccv.html">vccv</a>，使能MPLS
+Router Alert通道。</p>
+<p><strong>remote</strong>：指定远端的PW信息。Remote指定的信息，会最终编码到ping报文中，在远端寻找相应的PW。缺省情况下，ping报文的信息源于本地的PW信息，这适合于单跳的情况。</p>
+<p><em>peer-pw-id</em>：指定远端PW的ID。默认情况下，远端PW ID使用本地的PW ID。</p>
+<p><em>remote-ip-address</em>：指定远端的IP地址。默认情况下，系统会根据本地的PW找到下一跳的IP地址。对于多跳PW，如果使用<strong>control-word</strong>选项，则必须指定终结点的IP地址。如果使用MPLS Router Alert方式，可以指定任何一个交换节点，或者终结点的IP地址，Echo
+Request报文会发送到对端，接着返回，不会再向前转发ping报文。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果是检测整个PW的情况，建议使用关键字<strong>control-word</strong>选项。虽然使用关键字<strong>label-alert</strong>也可以检测整个电路，但是只有使用关键字<strong>control-word</strong>才和真正的转发一致。</p>
+<p>如果要支持检测PW的连通性，建议在U-PE设备上都使用PW模板来建立PW，并使能VCCV，其中对于动态单跳PW、动态多跳PW，静态单跳PW只需在U-PE上使能VCCV；对于静态多跳PW，动静混合多跳PW，还需要在混合交换节点S-PE上使能VCCV。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ping_vc__d106380e246"></a><a name="d106380e246"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在U-PE设备上使用控制字方式的<strong>ping vc</strong>命令来检查Ethernet类型的PW连通性。</p>
+<pre class="screen">&lt;U-PE&gt;<strong> <strong>ping vc ethernet 100 control-word remote 100</strong></strong></pre>
+<pre class="screen">    Reply: bytes=100 Sequence=1 time = 11 ms</pre>
+<pre class="screen">    Reply: bytes=100 Sequence=2 time = 4 ms</pre>
+<pre class="screen">    Reply: bytes=100 Sequence=3 time = 4 ms</pre>
+<pre class="screen">    Reply: bytes=100 Sequence=4 time = 4 ms</pre>
+<pre class="screen">    Reply: bytes=100 Sequence=5 time = 4 ms</pre>
+<pre class="screen"> </pre>
+<pre class="screen">--- FEC: FEC 128 PSEUDOWIRE (NEW). Type = ethernet, ID = 100 ping statistics---</pre>
+<pre class="screen">     5 packet(s) transmitted</pre>
+<pre class="screen">    5 packet(s) received</pre>
+<pre class="screen">    0.00% packet loss</pre>
+<pre class="screen">    round-trip min/avg/max = 4/5/11 ms</pre>
+<p># 在U-PE设备上使用MPLS Router Alert方式的<strong>ping vc</strong>命令来检查PPP类型的PW连通性。</p>
+<pre class="screen">&lt;U-PE&gt;<strong> ping vc ppp 100 -c 10 -m 10 -s 65 -t 100 -v label-alert remote 2.2.2.2</strong></pre>
+<pre class="screen">    Reply: bytes=65 Sequence=1 time = 31 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply: bytes=65 Sequence=2 time = 15 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply: bytes=65 Sequence=3 time = 32 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply: bytes=65 Sequence=4 time = 15 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply: bytes=65 Sequence=5 time = 32 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply: bytes=65 Sequence=6 time = 15 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply: bytes=65 Sequence=7 time = 15 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply: bytes=65 Sequence=8 time = 16 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply: bytes=65 Sequence=9 time = 15 ms Return Code 3, Subcode 1</pre>
+<pre class="screen">    Reply: bytes=65 Sequence=10 time = 32 ms Return Code 3, Subcode 1</pre>
+<pre class="screen"> </pre>
+<pre class="screen">--- FEC: FEC 128 PSEUDOWIRE (NEW). Type = ppp, ID = 100 ping statistics </pre>
+<pre class="screen">    10 packet(s) transmitted</pre>
+<pre class="screen">    10 packet(s) received</pre>
+<pre class="screen">    0.00% packet loss</pre>
+<pre class="screen">    round-trip min/avg/max = 15/21/32 ms </pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pwe3_configuration_commands.html">PWE3配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pw-template.html">pw-template</a></div>
+<div><a href="control-word.html">control-word</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

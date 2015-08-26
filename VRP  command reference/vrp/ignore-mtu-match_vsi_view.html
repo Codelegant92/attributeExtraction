@@ -1,0 +1,70 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ignore-mtu-match（VSI视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mtu_vsi_view.html">
+<meta name="DC.Relation" scheme="URI" content="vpls_bgp_encapsulation.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ignore-mtu-match_vsi_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ignore-mtu-match（VSI视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ignore-mtu-match_vsi_view"></a><a name="ignore-mtu-match_vsi_view"></a>
+
+<h1 class="topictitle1">ignore-mtu-match（VSI视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ignore-mtu-match</strong>命令配置在PE设备上，使PE忽略对本端VSI实例和远端VSI实例的MTU值的匹配检查，并且使能对发出的VPLS报文进行重新封装的功能。</p>
+<p><strong>undo ignore-mtu-match</strong>命令用来使能PE设备对本端VSI实例和远端VSI实例的MTU值的匹配检查。并且取消对发出的VPLS报文进行重新封装功能。</p>
+<p>缺省情况下，系统使能PE设备对本端VSI实例和远端VSI实例的MTU值的匹配检查，并且未使能对发出的VPLS报文进行重新封装的功能。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ignore-mtu-match</strong></p>
+<p><strong>undo</strong> <strong>ignore-mtu-match</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VSI视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>缺省情况下，PE设备对VSI实例下的MTU值进行匹配检查。如果两端PE设备的VSI实例下的MTU值不同，VC链路无法UP。</p>
+<p>该命令只在Kompella方式的VPLS中有效，在Martini方式的VPLS中无效，并且必须保证两端设备VSI的MTU值一致。使用<strong>ignore-mtu-match</strong>命令前，需要先执行<a href="pwsignal.html">pwsignal</a>命令和<a href="route-distinguisher_vsi-bgp_view.html">route-distinguisher（VSI-BGP视图）</a>命令。</p>
+<p><strong>vpls bgp encapsulation</strong>命令只在设备互通的时候使用。</p>
+<p>当需要和其他厂商的设备进行Kompella方式互通时，如果其他厂商的设备不支持VSI实例的MTU值匹配的检查，使用<strong>ignore-mtu-match</strong>命令来忽略匹配检查。此外使用<strong>ignore-mtu-match</strong>命令后，设备发出的VLPS报文将采用标准的封装类型19。</p>
+<p><strong>ignore-mtu-match</strong>命令需要和<a href="vpls_bgp_encapsulation.html">vpls bgp encapsulation</a>命令相互配合使用，才能实现和友商设备的互通。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ignore-mtu-match_vsi_view__d81804e70"></a><a name="d81804e70"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设备上存在名为bgp1的VSI实例，配置忽略对该实例下的MTU值的匹配检查，并对发出的VLPS报文将采用标准的封装类型19，以实现设备的互通。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> vsi bgp1 auto</strong></pre>
+<pre class="screen">[Quidway-vsi-bgp1]<strong> pwsignal bgp</strong></pre>
+<pre class="screen">[Quidway-vsi-bgp1-bgp]<strong> route-distinguisher 100:1</strong></pre>
+<pre class="screen">[Quidway-vsi-bgp1-bgp]<strong> quit</strong></pre>
+<pre class="screen">[Quidway-vsi-bgp1]<strong> <strong>ignore-mtu-match</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mtu_vsi_view.html">mtu（VSI视图）</a></div>
+<div><a href="vpls_bgp_encapsulation.html">vpls bgp encapsulation</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

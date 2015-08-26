@@ -1,0 +1,186 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display multicast-domain vpn-instance switch-group send">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_vpn_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_multicast-domain_vpn-instance_switch-group_receive.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_multicast-domain_vpn-instance_switch-group_send">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display multicast-domain vpn-instance switch-group send</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_multicast-domain_vpn-instance_switch-group_send"></a><a name="display_multicast-domain_vpn-instance_switch-group_send"></a>
+
+
+<h1 class="topictitle1">display multicast-domain vpn-instance switch-group send</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display multicast-domain vpn-instance switch-group send</strong>命令用来查看MD中指定VPN实例发送的Switch-Group信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display multicast-domain vpn-instance</strong> <em>vpn-instance-name</em> <strong>switch-group
+send</strong> [ <strong>group</strong> <em>group-address</em> | <strong>reuse</strong> <em>interval</em> | <em>vpn-source-address</em> [ <strong>mask</strong> { <em>source-mask-length</em> | <em>source-mask</em> } ] | <em>vpn-group-address</em> [ <strong>mask</strong> { <em>group-mask-length</em> | <em>group-mask</em> } ] ] *<span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>group</strong> <em>group-address</em>：显示与某组播组G相关的Switch-Group信息。<em>group-address</em>表示组播组地址。点分十进制形式，取值范围是224.0.0.0～239.255.255.255。</p>
+<p><strong>reuse</strong> <em>interval</em>：显示MD在指定时间段发生重用的Switch-Group信息。<em>Interval</em>用来指定该时间段。整数形式，取值范围是1～2147483647，单位是s。</p>
+<p><em>vpn-source-address</em>：显示与指定VPN组播源S相关的Switch-Group信息。点分十进制形式。</p>
+<p><strong>mask</strong>：指定VPN组播组或源的地址掩码。</p>
+<p><em>source-mask-length</em>：表示VPN组播源地址的掩码长度。整数形式，取值范围是0～32。</p>
+<p><em>source-mask</em>：表示VPN组播源地址的掩码。点分十进制形式。</p>
+<p><em>vpn-group-address</em>：显示与指定VPN组播组G相关的Switch-Group信息。点分十进制形式，取值范围是224.0.1.0～239.255.255.255。</p>
+<p><em>group-mask-length</em>：表示VPN组播组地址的掩码长度。整数形式，取值范围是4～32。</p>
+<p><em>group-mask</em>：表示VPN组播组地址的掩码。点分十进制形式。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display multicast-domain vpn-instance switch-group send</strong>命令，显示本地<span class="keyword">路由器</span>发送的Switch-Group信息：</p>
+<ul>
+<li><p>VPN实例与MD一一对应，命令中<em>vpn-instance-name</em>指定了VPN实例，也就确定了MD。使用该命令仅显示指定MD的Switch-Group信息。</p>
+</li>
+<li><p>显示信息以私网（S，G）项从小到大顺序排列。</p>
+</li>
+<li><p>如果指定<strong>reuse</strong><em> interval</em>，则仅显示在指定时间段发生重用的组信息，以Switch-Group地址从小到大顺序显示。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_multicast-domain_vpn-instance_switch-group_send__d51307e222"></a><a name="d51307e222"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示MD中指定VPN实例发送Switch-Group的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display multicast-domain vpn-instance VPN1 switch-group send</strong></pre>
+<pre class="screen">MD switch-group information sent by VPN-Instance: VPN1</pre>
+<pre class="screen">  226.1.1.0 reference_count: 3</pre>
+<pre class="screen">    (192.6.1.5, 239.1.1.1)                  switch time: 00:00:21</pre>
+<pre class="screen">    (192.6.1.5, 239.1.1.158)                switch time: 00:00:21</pre>
+<pre class="screen">    (192.6.1.5, 239.1.2.50)                 switch time: 00:00:05</pre>
+<pre class="screen">  226.1.1.1 reference_count: 3</pre>
+<pre class="screen">    (192.6.1.2, 225.1.1.1)                  switch time: 00:00:21</pre>
+<pre class="screen">    (192.6.1.2, 225.1.2.50)                 switch time: 00:00:05</pre>
+<pre class="screen">    (192.6.1.5, 239.1.1.159)                switch time: 00:00:21</pre>
+<pre class="screen"> </pre>
+<pre class="screen">&lt;Quidway&gt;<strong> display multicast-domain vpn-instance VPN1 switch-group send reuse 30</strong></pre>
+<pre class="screen">MD switch-group information sent by VPN-Instance: VPN1</pre>
+<pre class="screen">  226.1.1.0 reuse_count: 1</pre>
+<pre class="screen">  226.1.1.1 reuse_count: 1</pre>
+<pre class="screen">  226.1.1.2 reuse_count: 1</pre>
+
+<div class="tablenoborder"><a name="display_multicast-domain_vpn-instance_switch-group_send__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_multicast-domain_vpn-instance_switch-group_send__tb_01" frame="border" border="1" rules="all"><caption>表1 display multicast-domain vpn-instance switch-group send命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="37.44016124968506%" id="d51307e274"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="62.559838750314945%" id="d51307e278"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d51307e274 "><p>226.1.1.0 reference_count: 3</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d51307e278 "><p>发送的Switch-Group引用的私网组播组计数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d51307e274 "><p>switch time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d51307e278 "><p>Switch-Group引用的私网组播(S,G)项的切换时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.44016124968506%" headers="d51307e274 "><p>226.1.1.0 reuse_count: 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.559838750314945%" headers="d51307e278 "><p>发送的Switch-Group在指定时间段的重用计数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_multicast-domain_vpn-instance_switch-group_send__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_multicast-domain_vpn-instance_switch-group_send__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="24.943310657596374%" id="d51307e333"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="75.05668934240363%" id="d51307e337"><p>修订记录</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d51307e333 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d51307e337 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_vpn_configuration_commands.html">IPv4组播VPN配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_multicast-domain_vpn-instance_switch-group_receive.html">display multicast-domain vpn-instance switch-group receive</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

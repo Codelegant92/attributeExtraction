@@ -1,0 +1,257 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls l2vpn forwarding-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_l2vc.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_l2vpn_connection.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_l2vpn_forwarding-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls l2vpn forwarding-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_l2vpn_forwarding-info"></a><a name="display_mpls_l2vpn_forwarding-info"></a>
+
+
+<h1 class="topictitle1">display mpls l2vpn forwarding-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls l2vpn forwarding-info</strong>命令用来查看MPLS L2VPN的转发信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls l2vpn forwarding-info</strong> [ <em>vc-label</em> ] <strong>interface</strong> <em>interface-type interface-number</em> [ | { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vc-label</em>：L2VPN的VC标签。十进制整数形式，取值范围是16～1048575。</p>
+<p><strong>interface</strong><em> interface-type interface-number</em>：接口类型和接口编号。</p>
+<p>|：使用正则表达式对输出信息进行匹配。</p>
+<p><strong>begin</strong>：从与正则表达式匹配的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含正则表达式指定内容的信息。</p>
+<p><strong>include</strong>：只输出包含正则表达式指定内容的信息。</p>
+<p><em>regular-expression</em>：正则表达式，用于匹配输出信息的指定字符串。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display mpls l2vpn forwarding-info</strong>命令可以用来查看携带指定标签的私网数据将从哪个隧道进行转发，是否使能连接性检测，该数据是否携带控制字。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_l2vpn_forwarding-info__d43069e87"></a><a name="d43069e87"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看MPLS L2VPN转发信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls l2vpn forwarding-info interface <span>pos 3/0/0</span></strong></pre>
+<pre class="screen">The Main PW Forward Information :</pre>
+<pre class="screen">VCLABEL TNLTYPE ENTRYTYPE PWSTATE  BFDSTATE ADMIN CTLWORD CC CV TNLID</pre>
+<pre class="screen">---------------------------------------------------------------------------</pre>
+<pre class="screen">21504   LSP       SEND       ACTIVE    UP        UP    TRUE     1  8  0x2002006</pre>
+<pre class="screen">   1   Record(s) Found.</pre>
+
+<pre class="screen"> The Second PW Forward Information :</pre>
+<pre class="screen">VCLABEL TNLTYPE ENTRYTYPE PWSTATE  BFDSTATE ADMIN CTLWORD CC CV TNLID</pre>
+<pre class="screen">---------------------------------------------------------------------------</pre>
+<pre class="screen">   0   Record(s) Found.</pre>
+
+<div class="tablenoborder"><a name="display_mpls_l2vpn_forwarding-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_l2vpn_forwarding-info__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls l2vpn forwarding-info interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="24.943310657596374%" id="d43069e128"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="75.05668934240363%" id="d43069e132"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>The Main PW Forward Information :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><p>主用PW的转发信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>VCLABEL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><p>该指定接口绑定的VC的标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>TUNNELTYPE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><p>该VC使用的公网隧道的类型，可以为LSP、GRE、CR-LSP等。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>ENTRYTYPE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><div class="p">ENTRYTYPE表示连接的类型，它有以下值：<ul>
+<li><p>SEND：除CCC之外的其他L2VPN类型的转发表项。</p>
+</li>
+<li><p>CCC_SEND：CCC远端连接。</p>
+</li>
+<li><p>LOCAL：本地连接转发表项。</p>
+</li>
+<li><p>INVALID：无效的转发表项。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>PWSTATE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><p>用于指导设备转发的PW状态，分为Active和Inactive两种。主备PW该状态互斥，同一时刻只能有一个是Active状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>BFDSTATE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><div class="p">用于指导设备转发的BFD状态。<ul>
+<li><p>如果设备没有配置BFD，此标志位默认显示为Up。</p>
+</li>
+<li><p>如果设备配置了BFD，且BFD会话状态是Down（不是Admin Down），此时此标志位显示为Down，转发不通。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>ADMIN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><div class="p">是否配置了手工设置主用或者备用PW故障。<ul>
+<li><p>Up：没有手工设置主用或者备用PW故障</p>
+</li>
+<li><p>Down：手工设置主用或者备用PW故障</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>CTLWORD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><p>表明本端是否使能控制字。FALSE表示未使能，TRUE表示支使能。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>CC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><p>VCCV的connection channel，连接通道，有两种方式，Control-Word和Label-alert。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>CV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><p>Connectivity Verification，连接性检测。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>TUNNELID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><p>该VC使用的公网隧道的标志号，十六进制整数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>Record(s) Found</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><p>本接口上的VC转发信息表项数目。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="24.943310657596374%" headers="d43069e128 "><p>The Second PW Forward Information :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="75.05668934240363%" headers="d43069e132 "><p>备用PW的转发信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls l2vpn forwarding-info 146432 interface gigabitethernet 1/0/1</strong></pre>
+<pre class="screen"> The Main PW Forward Information :
+VCLABEL TNLTYPE        ENTRYTYPE PWSTATE  BFDSTATE ADMIN CTLWORD CC CV TNLID
+------------------------------------------------------------------------------
+146432  LSP            SEND      ACTIVE   UP       UP    FALSE   0  0  0x1000800
+3
+   1   Record(s) Found.
+
+ The Second PW Forward Information :
+VCLABEL TNLTYPE        ENTRYTYPE PWSTATE  BFDSTATE ADMIN CTLWORD CC CV TNLID
+------------------------------------------------------------------------------
+   0   Record(s) Found. </pre>
+<p>显示信息的解释请参见上表。</p>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_l2vc.html">display mpls l2vc</a></div>
+<div><a href="display_mpls_l2vpn_connection.html">display mpls l2vpn connection</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

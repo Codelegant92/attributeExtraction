@@ -1,0 +1,159 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rmon history">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rmon_rmon2_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="rmon_history.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rmon_history">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rmon history</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rmon_history"></a><a name="display_rmon_history"></a>
+
+<h1 class="topictitle1">display rmon history</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>rmon</strong> <strong>history</strong>命令用来查看RMON控制表配置信息以及最近一次历史采样信息，包括以太网接口利用率、校验错误包数以及总包数等。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>rmon</strong> <strong>history</strong> [ <strong>ethernet</strong> <em>interface-number</em> |<strong> gigabitethernet</strong> <em>interface-number</em> ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ethernet</strong>：以太网接口。</p>
+<p><strong>gigabitethernet</strong>：千兆以太网接口。</p>
+<p><em>interface-number</em>：接口号。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rmon_history__d63950e63"></a><a name="d63950e63"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看RMON历史信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rmon history</strong>
+History control entry 1 owned by Creator is VALID,
+  Samples interface     : GigabitEthernet3/0/0&lt;ifEntry.402653698&gt;
+  Sampling interval     : 30(sec) with 10 buckets max.
+  Last Sampling time    : 0days 00h:09m:43s
+  Latest sampled values:
+  Dropevents        :0         , octets               :645
+  packets           :7         , broadcast packets    :7
+  multicast packets :0         , CRC alignment errors :0
+  undersize packets :6         , oversize packets     :0
+  fragments         :0         , jabbers              :0
+  collisions        :0         , utilization          :0</pre>
+
+<div class="tablenoborder"><a name="display_rmon_history__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rmon_history__tb_01" frame="border" border="1" rules="all"><caption>表1 display rmon history命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="46.560846560846564%" id="d63950e79"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="53.43915343915344%" id="d63950e82"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>History control entry</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>历史控制表中的索引号</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>VALID</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>索引对应的行状态为有效</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>Creator</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>所有者</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>buckets</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>采样存储容量</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>dropevents</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>丢包事件数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>octets</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>采样时间内接收的字节数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>packets</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>采样时间内接收的包数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>broadcastpackets</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>广播包数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>multicastpackets</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>组播包数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>CRC alignment errors</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>校验错误的包数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>undersized</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>长度过小的包数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>oversized packets</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>长度过大的包数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>fragments</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>过小且校验错误的包数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>jabbers</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>超大且校验错误的包数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>collisions</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>冲突的包数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="46.560846560846564%" headers="d63950e79 "><p>utilization</p>
+</td>
+<td class="cellrowborder" valign="top" width="53.43915343915344%" headers="d63950e82 "><p>接口利用率</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rmon_rmon2_configuration_commands.html">RMON和RMON2配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="rmon_history.html">rmon history</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

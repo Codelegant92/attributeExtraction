@@ -1,0 +1,87 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="authentication-mode（认证方案视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/aaa_and_user_management_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="authentication-mode_authentication_scheme_view_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>authentication-mode（认证方案视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="authentication-mode_authentication_scheme_view_view"></a><a name="authentication-mode_authentication_scheme_view_view"></a>
+
+
+<h1 class="topictitle1">authentication-mode（认证方案视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>authentication-mode</strong>命令用来配置当前认证方案使用的认证模式。</p>
+<p>缺省情况下，认证模式为<strong>local</strong>，即本地认证。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>authentication-mode</strong> { <strong>hwtacacs</strong> | <strong>radius</strong> | <strong>local</strong> }* [ <strong>none</strong> ]</p>
+<p><strong>authentication-mode</strong> <strong>none</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>hwtacacs</strong>：采用HWTACACS认证模式。</p>
+<p><strong>radius</strong>：采用RADIUS认证模式。</p>
+<p><strong>local</strong>：采用本地认证模式。</p>
+<p><strong>none</strong>：不进行认证，直接让用户通过。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>认证方案视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果在一个认证方案中采用多种认证模式，将按照配置的顺序进行认证。</p>
+<ul>
+<li><p>当配置的认证方式是先本地认证后远端认证时</p>
+<p>如果登录的帐号在本地没有创建，但是在远端服务器上是存在的，认证模式将由本地认证转入远端认证。</p>
+</li>
+<li><p>当配置的认证方式是先远端认证后本地认证时</p>
+<p>如果登录的帐号在远端服务器上没有创建，但是在本地是存在的，经过远端认证时，将被认为认证失败，不再转入本地认证。</p>
+<p>只有在远端认证服务器Down时，才会转入本地认证。</p>
+</li>
+</ul>
+<p>如果选用了不认证（<strong>none</strong>），它必须做为最后一种认证模式。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="authentication-mode_authentication_scheme_view_view__d3147e96"></a><a name="d3147e96"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置名为scheme1的认证方案采用本地认证。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> aaa</strong></pre>
+<pre class="screen">[Quidway-aaa] <strong>authentication-scheme scheme1</strong></pre>
+<pre class="screen">[Quidway-aaa-authen-scheme1] <strong>authentication-mode local</strong></pre>
+<p># 配置名为scheme2的认证方案首次采用RADIUS认证，二次认证为本地认证，然后是HWTACACS认证，若这三种认证都没有响应则让用户通过。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>aaa</strong></pre>
+<pre class="screen">[Quidway-aaa]<strong> authentication-scheme scheme2</strong></pre>
+<pre class="screen">[Quidway-aaa-authen-scheme2]<strong> authentication-mode radius local hwtacacs none</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/aaa_and_user_management_configuration_commands.html">AAA及用户管理配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

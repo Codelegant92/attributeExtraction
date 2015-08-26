@@ -1,0 +1,92 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="remote-mep">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_cfm_remote-mep.html">
+<meta name="DC.Relation" scheme="URI" content="remote-mep_ccm-receive_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="remote-mep">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>remote-mep</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="remote-mep"></a><a name="remote-mep"></a>
+
+
+<h1 class="topictitle1">remote-mep</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>remote-mep</strong>命令用来配置当前MA内的RMEP。</p>
+<p><strong>undo remote-mep</strong>命令用来删除当前MA内的RMEP。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>remote-mep mep-id</strong> <em>mep-id</em> [ <strong>mac</strong> <em>mac-address </em>]</p>
+<p><strong>undo remote-mep</strong> <strong>mep-id</strong> <em>mep-id</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>mep-id</strong><em> mep-id</em>：指定RMEP的ID。整数形式，取值范围是1～8191。</p>
+<p><strong>mac</strong> <em>mac-address</em>：指定RMEP所在设备的桥MAC地址。格式为H-H-H，其中H为1至4位的十六进制数。</p>
+<p><strong>all</strong>：表示删除当前MA内的所有RMEP。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在MA内，如果需要检测和某RMEP的CFM连通性故障，则：</p>
+<ul>
+<li><p>首先需要在该MA内使用本命令配置了RMEP；</p>
+</li>
+<li><p>然后再使用<strong>remote-mep ccm-receive</strong> <strong>enable</strong>命令使能接收该RMEP发送的CCM消息功能。</p>
+</li>
+</ul>
+<p>如果需要修改RMEP的桥MAC地址，那么必须先将该RMEP从MA中删除，然后再重新配置该RMEP。</p>
+<div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><ul>
+<li><p>如果一个MA内有多个MEP，则在配置RMEP时，存在一个RMEP对应多个MEP的关系。</p>
+</li>
+<li><p>如果一个MA内有一个MEP，则在配置一个或多个RMEP时，存在一个或多个RMEP对应一个MEP的关系。</p>
+</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="remote-mep__d111064e104"></a><a name="d111064e104"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在ma1中配置ID为10的RMEP，该RMEP所在设备的桥MAC地址为0001-0300-0204。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm md md1</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1]<strong> <strong>ma ma1</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1-ma-ma1]<strong> <strong>remote-mep mep-id 10 mac 0001-0300-0204</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_cfm_remote-mep.html">display cfm remote-mep</a></div>
+<div><a href="remote-mep_ccm-receive_enable.html">remote-mep ccm-receive enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

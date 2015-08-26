@@ -1,0 +1,94 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="x25 switch pvc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_x25_vc.html">
+<meta name="DC.Relation" scheme="URI" content="x25_switching.html">
+<meta name="DC.Relation" scheme="URI" content="x25_modulo.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="x25_switch_pvc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>x25 switch pvc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="x25_switch_pvc"></a><a name="x25_switch_pvc"></a>
+
+
+<h1 class="topictitle1">x25 switch pvc</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>x25 switch pvc</strong>（分组交换）命令用来配置一条PVC（永久虚电路）路由。</p>
+<p><strong>undo x25 switch pvc</strong>（分组交换）命令用来删除PVC路由。</p>
+<p>缺省情况下，系统为未定义PVC路由。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>x25 switch pvc</strong> <em>pvc-number1 </em><strong>interface</strong> <strong>serial</strong> <em>number </em><strong>pvc</strong><em> pvc-number2</em> [ <em>option</em> ]</p>
+<p><strong>undo x25 switch pvc</strong> <em>pvc-number1</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>pvc-number1</em>：输入接口上的虚电路号，取值范围1～4095。</p>
+<p><em>pvc-number2</em>：输出接口上的虚电路号，取值范围1～4095。</p>
+<p><em>number</em>：输出接口的编号。</p>
+<p><em>option</em>：虚电路属性。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过配置X.25交换，可以将基于<span class="keyword">VRP</span>的设备作为一个简单的X.25交换机使用。在配置PVC交换时，输入和输出接口的链路层协议必须为X.25，而且两个接口上指定的永久虚电路已经存在并有效。注意在X.25子接口下不能配置交换PVC。</p>
+<p>虚电路的属性选项及其意义详细解释如下：</p>
+<p><strong>packet-size</strong> <em>input-packet output-packet</em>：指定该虚电路的最大接收分组长度和最大发送分组长度，以字节为单位，这两个值必须在16到4096范围内（包括16和4096），并且必须是2的整数次幂。</p>
+<p><strong>window-size</strong> <em>input-window-size output-window-size</em>：指定该虚电路的接收窗口和发送窗口的尺寸，当窗口模数为8时，<em>input-window-size output-window-size</em>的取值范围是1～7；当窗口模数为128时，取值范围是1～127。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="x25_switch_pvc__d129954e104"></a><a name="d129954e104"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将接口Serial1/0/0的PVC1与接口Serial2/0/0的PVC1之间进行分组交换。</p>
+<pre class="screen">&lt;Quidway&gt;<strong>system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface serial 1/0/0</strong></strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> link-protocol x25 dce</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> x25 vc-range bi-channel 8 1024</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> shutdown</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> undo shutdown</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong>x25 switch pvc 1 interface serial 2/0/0 pvc 1</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong>quit</strong></pre>
+<pre class="screen">[Quidway]<strong>interface serial 2/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial2/0/0]<strong>link-protocol x25 dce</strong></pre>
+<pre class="screen">[Quidway-Serial2/0/0]<strong> x25 vc-range bi-channel 8 1024</strong></pre>
+<pre class="screen">[Quidway-Serial2/0/0]<strong> shutdown</strong></pre>
+<pre class="screen">[Quidway-Serial2/0/0]<strong> <strong>undo shutdown</strong></strong></pre>
+<pre class="screen">[Quidway-Serial2/0/0]<strong>x25 switch pvc 1 interface serial 1/0/0 pvc 1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_x25_vc.html">display x25 vc</a></div>
+<div><a href="x25_switching.html">x25 switching</a></div>
+<div><a href="x25_modulo.html">x25 modulo</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

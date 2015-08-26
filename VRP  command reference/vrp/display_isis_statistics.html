@@ -1,0 +1,453 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_statistics"></a><a name="display_isis_statistics"></a>
+
+
+<h1 class="topictitle1">display isis statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis statistics</strong>命令用来查看IS-IS进程的统计信息。包括从其他IS-IS路由器学到的路由数量、从其他协议引入的路由数量以及本地产生的LSP的数量。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis statistics</strong> [ <strong>level-1</strong> | <strong>level-2</strong> | <strong>level-1-2</strong> ] [ <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display isis statistics packet</strong> [ <strong>interface</strong> <em>interface-type interface-number</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display isis statistics smart-hello</strong> [ <strong>level-1</strong> | <strong>level-2</strong> | <strong>level-1-2</strong> ] [ <em>process-id</em> | <strong>vpn-instance</strong> <em>vpn-instance-name</em> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display isis</strong> <em>process-id</em> <strong>statistics</strong> [ <strong>level-1</strong> | <strong>level-2</strong> | <strong>level-1-2</strong> | <strong>packet</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>packet</strong>：IS-IS中各种报文的统计信息。</p>
+<p><strong>interface</strong> <em>interface-type</em> <em>interface-number</em>：设定需要统计报文的来源接口。</p>
+<p><strong>smart-hello：</strong>Smart-Hello功能的统计信息。</p>
+<p><strong>level-1</strong>：IS-IS Level-1的统计信息。</p>
+<p><strong>level-2</strong>：IS-IS Level-2的统计信息。</p>
+<p><strong>level-1-2</strong>：IS-IS Level-1-2的统计信息。</p>
+<p><em>process-id</em>：IS-IS进程号。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定IPv4 VPN的IS-IS多实例进程。<em>vpn-instance-name</em>为IPv4 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn-instance default</strong>：除IPv4 VPN实例外的所有IS-IS进程，即所有的IPv6
+VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：指定IPv6 VPN的IS-IS多实例进程。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn6-instance default</strong>：除IPv6 VPN实例外的所有IS-IS进程，即所有的IPv4 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display isis statistics packet</strong> [ <strong>interface</strong> <em>interface-type interface-number</em> ]命令用来查看指定接口下的IS-IS报文统计信息。</p>
+<p><strong>display isis</strong> <em>process-id</em> <strong>statistics packet</strong>命令用来查看指定进程下的IS-IS报文统计信息。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_statistics__d36853e326"></a><a name="d36853e326"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看IS-IS统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis statistics</strong></pre>
+
+<pre class="screen">                       Statistics information for ISIS(1)</pre>
+<pre class="screen">                       ----------------------------------</pre>
+<pre class="screen">                               Level-1 Statistics</pre>
+<pre class="screen">                               ------------------</pre>
+<pre class="screen">                                                   </pre>
+<pre class="screen">Forwarding routes information:</pre>
+<pre class="screen">         Total IPv4 Forwarding Routes: 1</pre>
+<pre class="screen">         Total IPv6 Forwarding Routes: 1</pre>
+<pre class="screen">                 </pre>
+<pre class="screen">Imported routes information:</pre>
+<pre class="screen">        IPv4 Imported Routes:</pre>
+<pre class="screen">                        Static: 0       Direct: 0</pre>
+<pre class="screen">                        ISIS:   0       BGP:    0</pre>
+<pre class="screen">                        RIP:    0       OSPF:   0</pre>
+<pre class="screen">        IPv6 Imported Routes:</pre>
+<pre class="screen">                        Static: 101     Direct: 0</pre>
+<pre class="screen">                        ISIS:   0       BGP:    0</pre>
+<pre class="screen">                        RIPng:  0       OSPFv3: 0</pre>
+<pre class="screen">                 </pre>
+<pre class="screen">Lsp information:</pre>
+<pre class="screen">                 LSP Source ID:          No. of used LSPs</pre>
+<pre class="screen">                 0000.0000.0022                  002</pre>
+<pre class="screen">                                                   </pre>
+<pre class="screen">                               Level-2 Statistics</pre>
+<pre class="screen">                               ------------------</pre>
+<pre class="screen">                                                   </pre>
+<pre class="screen">Forwarding routes information:</pre>
+<pre class="screen">         Total IPv4 Forwarding Routes: 1</pre>
+<pre class="screen">         Total IPv6 Forwarding Routes: 1</pre>
+<pre class="screen">                 </pre>
+<pre class="screen">Imported routes information:</pre>
+<pre class="screen">        IPv4 Imported Routes:</pre>
+<pre class="screen">                        Static: 0       Direct: 0</pre>
+<pre class="screen">                        ISIS:   0       BGP:    0</pre>
+<pre class="screen">                        RIP:    0       OSPF:   0</pre>
+<pre class="screen">        IPv6 Imported Routes:</pre>
+<pre class="screen">                        Static: 0       Direct: 0</pre>
+<pre class="screen">                        ISIS:   0       BGP:    0</pre>
+<pre class="screen">                        RIPng:  0       OSPFv3: 0  </pre>
+<pre class="screen">                 </pre>
+<pre class="screen">Lsp information:</pre>
+<pre class="screen">                 LSP Source ID:          No. of used LSPs</pre>
+<pre class="screen">                 0000.0000.0002                  001</pre>
+
+<div class="tablenoborder"><a name="display_isis_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.65129755605946%" id="d36853e433"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.34870244394054%" id="d36853e437"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>Total IPv4 Forwarding Routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>基于目的地址统计的IPv4路由数目。如果到达同一目的地的路由有多个下一跳，则按一条路由统计。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>Total IPv6 Forwarding Routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>基于目的地址统计的IPv6路由数目。如果到达同一目的地的路由有多个下一跳，则按一条路由统计。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>IPv4 Imported Routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>引入的IPv4路由信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>Static</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>引入的静态路由数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>Direct</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>引入的直连路由数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>ISIS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>引入的IS-IS路由数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>BGP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>引入的BGP路由数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>RIP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>引入的RIP路由数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>OSPF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>引入的OSPF路由数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>IPv6 Imported Routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>引入的IPv6路由信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>RIPng</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>引入的RIPng路由数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>LSP Source ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>生成该LSP的路由器的System-ID信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e433 "><p>No. of used LSPs</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e437 "><p>已使用的分片数量</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看IS-IS报文统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis statistics packet</strong>
+
+                          PDUs information for ISIS(1)
+                          ----------------------------
+          Sent packets:
+          PDU type                   amount(packets)
+          L1 IIH                        2516
+          L1 LSP                          84
+          L1 CSNP                          8
+          L1 PSNP                         44
+          L2 IIH                        5028
+          L2 LSP                          80
+          L2 CSNP                          8
+          L2 PSNP                         46
+
+          Received packets:
+          PDU type                   amount(packets)
+          L1 IIH                       12943
+          L1 LSP                         216
+          L1 CSNP                       3911
+          L1 PSNP                         40
+          L2 IIH                       14907
+          L2 LSP                         206
+          L2 CSNP                       3900
+          L2 PSNP                         41
+</pre>
+
+<div class="tablenoborder"><a name="display_isis_statistics__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_statistics__tb_02" frame="border" border="1" rules="all"><caption>表2 display isis statistics packet命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.65129755605946%" id="d36853e610"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.34870244394054%" id="d36853e614"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e610 "><p>PDU type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e614 "><p>报文类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e610 "><p>amount(packets)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e614 "><p>报文数量</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e610 "><p>L1 IIH</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e614 "><p>Level-1的Hello报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e610 "><p>L1 LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e614 "><p>Level-1的LSP报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e610 "><p>L1 CSNP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e614 "><p>Level-1的CSNP报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e610 "><p>L1 PSNP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e614 "><p>Level-1的PSNP报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e610 "><p>L2 IIH</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e614 "><p>Level-2的Hello报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e610 "><p>L2 LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e614 "><p>Level-2的LSP报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e610 "><p>L2 CSNP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e614 "><p>Level-2的CSNP报文</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.65129755605946%" headers="d36853e610 "><p>L2 PSNP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.34870244394054%" headers="d36853e614 "><p>Level-2的PSNP报文</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_statistics__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_statistics__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d36853e746"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d36853e750"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36853e746 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36853e750 "><p>增加参数<strong>vpn-instance default</strong>，<strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> }。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36853e746 "><p>VRPV500R005C02B101</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36853e750 "><p>增加参数<strong>packet</strong>和<strong>interface</strong> <em>interface-type</em> <em>interface-number</em>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36853e746 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36853e750 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

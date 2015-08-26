@@ -1,0 +1,122 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="patch load（多框）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/update_commands.html">
+<meta name="DC.Relation" scheme="URI" content="patch_active_chassis.html">
+<meta name="DC.Relation" scheme="URI" content="patch_run_chassis.html">
+<meta name="DC.Relation" scheme="URI" content="patch_deactive_chassis.html">
+<meta name="DC.Relation" scheme="URI" content="patch_delete_chassis.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="patch_load_chassis">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>patch load（多框）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="patch_load_chassis"></a><a name="patch_load_chassis"></a>
+
+
+<h1 class="topictitle1">patch load（多框）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>patch</strong> <strong>load</strong>命令用来按照设备方式加载补丁。所有在位单板，加载补丁包中的合适补丁。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>patch load</strong> <em>filename</em> [ <strong>all </strong> [ <strong>active</strong> | <strong>run</strong> ] | <strong>chassis</strong> <em>chassis-number</em> | <strong>slave</strong> | <strong>slot</strong> <em>slot-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>filename</em>：补丁包文件名。</p>
+<p><strong>all</strong>：所有单板（包括主控板和接口板）。</p>
+<p><strong>active</strong>：加载补丁后直接激活。</p>
+<p><strong>run</strong>：加载补丁后直接运行。</p>
+<p><strong>chassis</strong> <em>chassis-number</em>：转发框的框号。</p>
+<p><strong>slave</strong>：系统备用板。</p>
+<p><strong>slot</strong> <em>slot-id</em>：板号（输入的形式是框类型＋框号＋板号）。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果补丁包中没有适合某个单板类型的补丁，则不加载补丁。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="patch_load_chassis__d102693e100"></a><a name="d102693e100"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在所有的板上加载补丁。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>patch load cfcard:/ NE5000EV200R005SPH001.pat</strong></pre>
+<pre class="screen">Info: Succeeded in loading the patch on the master board....</pre>
+<pre class="screen">Info: Finished loading the patch.</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="patch_load_chassis__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="patch_load_chassis__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d102693e123"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d102693e127"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d102693e123 "><p>VRPV500R006C01B004</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d102693e127 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d102693e123 "><p>VRPV500R006C02B080</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d102693e127 "><p>命令中参数位置调整，只针对所有框进行一键式升级。命令行形式由<strong>patch load</strong> <em>filename</em> [ <strong>all</strong> | <strong>chassis</strong> <em>chassis-number</em> [ <strong>active</strong> | <strong>run</strong> ] | <strong>slave</strong> | <strong>slot</strong> <em>slot-id</em> ]变更为<strong>patch load</strong> <em>filename</em> [ <strong>all </strong> [ <strong>active</strong> | <strong>run</strong> ] | <strong>chassis</strong> <em>chassis-number</em> | <strong>slave</strong> | <strong>slot</strong> <em>slot-id</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/update_commands.html">升级命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="patch_active_chassis.html">patch active（多框）</a></div>
+<div><a href="patch_run_chassis.html">patch run（多框）</a></div>
+<div><a href="patch_deactive_chassis.html">patch deactive（多框）</a></div>
+<div><a href="patch_delete_chassis.html">patch delete（多框）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

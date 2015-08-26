@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer minimum-ttl">
+<meta name="DC.Relation" scheme="URI" content="../vrp/msdp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_msdp_peer-status.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_minimum-ttl">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer minimum-ttl</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_minimum-ttl"></a><a name="peer_minimum-ttl"></a>
+
+
+<h1 class="topictitle1">peer minimum-ttl</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer minimum-ttl</strong>命令用来配置向指定对等体转发封装了组播数据报文的SA消息TTL阈值。</p>
+<p><strong>undo peer minimum-ttl</strong>命令用来恢复参数缺省值。</p>
+<p>缺省情况下，TTL阈值是0。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> <em>peer-address</em> <strong>minimum-ttl</strong> <em>ttl</em></p>
+<p><strong>undo peer</strong> <em>peer-address</em> <strong>minimum-ttl</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>peer-address</em>：表示应用TTL限制的MSDP对等体地址。点分十进制形式。</p>
+<p><em>ttl</em>：表示TTL阈值。整数形式，取值范围是0～255。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例MSDP视图、VPN实例MSDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>MSDP Peer之间通过建立TCP连接来传输SA消息，<a href="peer_minimum-ttl.html">peer minimum-ttl</a>命令用来限制SA消息中封装的组播数据报文。</p>
+<p>配置了针对指定peer的TTL阈值后，<span class="keyword">路由器</span>在重新封装之前，会检查组播数据报文的TTL。当TTL大于阈值的组播数据报文才会被封装到SA消息中并转发给该peer。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_minimum-ttl__d103999e75"></a><a name="d103999e75"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中，配置TTL阈值为10，只有TTL大于10的组播数据报文才能被封裝到SA消息中，发送到MSDP对等体110.10.10.1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> msdp</strong></pre>
+<pre class="screen">[Quidway-msdp]<strong> peer 110.10.10.1 minimum-ttl 10</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/msdp_configuration_commands.html">MSDP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_msdp_peer-status.html">display msdp peer-status</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

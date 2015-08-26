@@ -1,0 +1,310 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="OSPF配置命令">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_routing_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/abr-summary_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/area_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/asbr-summary.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/authentication-mode_ospf_area_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bandwidth-reference_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_all-interfaces_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/default.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/default-cost_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/default-route-advertise_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/description_ospf_area.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/description_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_gtsm_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_abr-asbr.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_asbr-summary.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_brief.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_cumulative.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_error.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_graceful-restart.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_lsdb.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_migp-routing.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_nexthop.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_bfd_session.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_peer.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_request-queue.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_retrans-queue.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_routing.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_sham-link.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ospf_vlink.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_snmp-agent_trap_feature-name_ospf_all.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/domain-id.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/enable_log.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/filter_export.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/filter_import.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/filter-lsa-out_peer.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/filter-policy_export_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/filter-policy_import_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/flooding-control.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/graceful-restart_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/graceful-restart_helper-role.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/gtsm_default-action.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/gtsm_log_drop-packet.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/import-route_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-mt_enable_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/local-mt_filter-policy_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lsa-arrival-interval.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lsa-originate-interval.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lsdb-overflow-limit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/maximum_load-balancing_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/maximum-routes.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/network_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nexthop_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nssa.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/opaque-capability_enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_authentication-mode.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_bfd.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_bfd_block.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_cost.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_dr-priority.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_filter-lsa-out.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_mib-binding.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_mtu-enable.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_network-type.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_p2mp-mask-ignore.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_smart-discover.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_timer_dead.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_timer_hello.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_timer_poll.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_timer_retransmit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_trans-delay.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_valid-ttl-hop.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/peer_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/preference_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_gtsm_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/retransmission-limit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rfc1583_compatible.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/route-tag.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/sham-hello_enable_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/sham-link.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/silent-interface_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp-agent_trap_enable_feature-name_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/spf-schedule-interval.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/stub_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/stub-router_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vlink-peer_ospf.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn-instance-capability_simple.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ospf_configuration_commands">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>OSPF配置命令</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ospf_configuration_commands"></a><a name="ospf_configuration_commands"></a>
+
+
+<h1 class="topictitle1">OSPF配置命令</h1>
+
+<div>
+<div class="section"><h4 class="sectiontitle">功能描述</h4><p>主要介绍OSPF的配置命令。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>OSPF
+TE的相关命令请参看&#8220;MPLS命令&#8221;。</p>
+</div></div>
+</div>
+
+<div class="section"><h4 class="sectiontitle">相关链接</h4></div>
+
+</div>
+
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="../vrp/abr-summary_ospf.html">abr-summary (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/area_ospf.html">area (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/asbr-summary.html">asbr-summary</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/authentication-mode_ospf_area_view.html">authentication-mode（OSPF区域视图）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/bandwidth-reference_ospf.html">bandwidth-reference (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/bfd_all-interfaces_ospf.html">bfd all-interfaces(ospf)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/default.html">default</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/default-cost_ospf.html">default-cost (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/default-route-advertise_ospf.html">default-route-advertise(OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/description_ospf_area.html">description (OSPF Area)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/description_ospf.html">description (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_gtsm_statistics.html">display gtsm statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_abr-asbr.html">display ospf abr-asbr</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_asbr-summary.html">display ospf asbr-summary</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_brief.html">display ospf brief</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_cumulative.html">display ospf cumulative</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_error.html">display ospf error</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_graceful-restart.html">display ospf graceful-restart</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_interface.html">display ospf interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_lsdb.html">display ospf lsdb</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_migp-routing.html">display ospf migp-routing</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_nexthop.html">display ospf nexthop</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_bfd_session.html">display ospf bfd session</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_peer.html">display ospf peer</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_request-queue.html">display ospf request-queue</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_retrans-queue.html">display ospf retrans-queue</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_routing.html">display ospf routing</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_sham-link.html">display ospf sham-link</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ospf_vlink.html">display ospf vlink</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_snmp-agent_trap_feature-name_ospf_all.html">display snmp-agent trap feature-name ospf all</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/domain-id.html">domain-id</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/enable_log.html">enable log</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/filter_export.html">filter export</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/filter_import.html">filter import</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/filter-lsa-out_peer.html">filter-lsa-out peer</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/filter-policy_export_ospf.html">filter-policy export (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/filter-policy_import_ospf.html">filter-policy import (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/flooding-control.html">flooding-control</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/graceful-restart_ospf.html">graceful-restart（OSPF）</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/graceful-restart_helper-role.html">graceful-restart helper-role</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/gtsm_default-action.html">gtsm default-action</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/gtsm_log_drop-packet.html">gtsm log drop-packet</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/import-route_ospf.html">import-route (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-mt_enable_ospf.html">local-mt enable (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/local-mt_filter-policy_ospf.html">local-mt filter-policy (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/lsa-arrival-interval.html">lsa-arrival-interval</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/lsa-originate-interval.html">lsa-originate-interval</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/lsdb-overflow-limit.html">lsdb-overflow-limit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/maximum_load-balancing_ospf.html">maximum load-balancing (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/maximum-routes.html">maximum-routes</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/network_ospf.html">network (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nexthop_ospf.html">nexthop (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/nssa.html">nssa</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/opaque-capability_enable.html">opaque-capability enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf.html">ospf</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_authentication-mode.html">ospf authentication-mode</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_bfd.html">ospf bfd</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_bfd_block.html">ospf bfd block</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_cost.html">ospf cost</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_dr-priority.html">ospf dr-priority</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_filter-lsa-out.html">ospf filter-lsa-out</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_mib-binding.html">ospf mib-binding</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_mtu-enable.html">ospf mtu-enable</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_network-type.html">ospf network-type</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_p2mp-mask-ignore.html">ospf p2mp-mask-ignore</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_smart-discover.html">ospf smart-discover</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_timer_dead.html">ospf timer dead</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_timer_hello.html">ospf timer hello</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_timer_poll.html">ospf timer poll</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_timer_retransmit.html">ospf timer retransmit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_trans-delay.html">ospf trans-delay</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ospf_valid-ttl-hop.html">ospf valid-ttl-hop</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/peer_ospf.html">peer (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/preference_ospf.html">preference (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_gtsm_statistics.html">reset gtsm statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_ospf.html">reset ospf</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/retransmission-limit.html">retransmission-limit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/rfc1583_compatible.html">rfc1583 compatible</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/route-tag.html">route-tag</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/sham-hello_enable_ospf.html">sham-hello enable (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/sham-link.html">sham-link</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/silent-interface_ospf.html">silent-interface (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/snmp-agent_trap_enable_feature-name_ospf.html">snmp-agent trap enable feature-name ospf</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/spf-schedule-interval.html">spf-schedule-interval</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/stub_ospf.html">stub (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/stub-router_ospf.html">stub-router (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/vlink-peer_ospf.html">vlink-peer (OSPF)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/vpn-instance-capability_simple.html">vpn-instance-capability simple</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_routing_commands.html">IP路由命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

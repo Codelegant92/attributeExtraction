@@ -1,0 +1,253 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display user-interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/user_management_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_access-user.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_user-interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display user-interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_user-interface"></a><a name="display_user-interface"></a>
+
+
+<h1 class="topictitle1">display user-interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display user-interface</strong>命令用来查看用户界面信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display user-interface</strong> [ <em>ui-type ui-number1</em> ] [<em> ui-number</em> ] [ <strong>summary</strong> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ui-type</em>：用户界面的类型名。</p>
+<p><em>ui-number1</em>：用户界面相对编号。</p>
+<p><em>ui-number</em>：用户界面绝对编号。最小值为0，最大值是系统支持的用户界面总数-1。不同设备用户界面取值范围不同。</p>
+<p><strong>summary</strong>：用户界面的概要信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用此命令可查看用户界面的认证方式等信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_user-interface__d70838e107"></a><a name="d70838e107"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看绝对编号为0的用户界面的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display user-interface 0</strong></pre>
+<pre class="screen">  Idx  Type     Tx/Rx      Modem Privi ActualPrivi Auth  Int</pre>
+<pre class="screen">+ 0    CON 0    9600       -     3     3                 N     -</pre>
+<pre class="screen">  +    : Current user-interface is active.</pre>
+<pre class="screen">  F    : Current user-interface is active and work in async mode.</pre>
+<pre class="screen">  Idx  : Absolute index of user-interface.</pre>
+<pre class="screen">  Type : Type and relative index of user-interface.</pre>
+<pre class="screen">  Privi: The privilege of user-interface.</pre>
+<pre class="screen">  ActualPrivi: The actual privilege of user-interface.</pre>
+<pre class="screen">  Auth : The authentication mode of user-interface.</pre>
+<pre class="screen">  Int  : The physical location of UIs.</pre>
+<pre class="screen">      A: Authenticate use AAA.</pre>
+<pre class="screen">      N: Current user-interface need not authentication.</pre>
+<pre class="screen">      P: Authenticate use current UI's password.</pre>
+<p># 查看所有的用户界面的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display user-interface</strong></pre>
+<pre class="screen">  Idx  Type     Tx/Rx      Modem Privi ActualPrivi Auth  Int</pre>
+<pre class="screen">  0    CON 0    9600          -     3     -              N     -</pre>
+<pre class="screen">  257  AUX 0    9600          -     0     -              N     -</pre>
+<pre class="screen">+ 258  VTY 0                  -     3     3              A     -</pre>
+<pre class="screen">+ 259  VTY 1                  -     1     2              A     -</pre>
+<pre class="screen">+ 260  VTY 2                  -     3     2              A     -</pre>
+<pre class="screen">  261  VTY 3                  -     1     -              P     -</pre>
+<pre class="screen">  262  VTY 4                  -     1     -              A     -</pre>
+<pre class="screen">UI(s) not in async mode -or- with no hardware support:</pre>
+<pre class="screen">1-256</pre>
+<pre class="screen">  +    : Current UI is active.</pre>
+<pre class="screen">  F    : Current UI is active and work in async mode.</pre>
+<pre class="screen">  Idx  : Absolute index of UIs.</pre>
+<pre class="screen">  Type : Type and relative index of UIs.</pre>
+<pre class="screen">  Privi: The privilege of UIs.</pre>
+<pre class="screen">  ActualPrivi: The actual privilege of user-interface.</pre>
+<pre class="screen">  Auth : The authentication mode of UIs.</pre>
+<pre class="screen">  Int  : The physical location of UIs.</pre>
+<pre class="screen">      A: Authenticate use AAA.</pre>
+<pre class="screen">      N: Current UI need not authentication.</pre>
+<pre class="screen">      P: Authenticate use current UI's password.</pre>
+
+<div class="tablenoborder"><a name="display_user-interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_user-interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display user-interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="34.06399596875787%" id="d70838e201"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.93600403124212%" id="d70838e205"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d70838e201 "><p>+</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d70838e205 "><p>当前用户接口是激活状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d70838e201 "><p>F</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d70838e205 "><p>当前用户接口是激活状态并且工作在异步模式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d70838e201 "><p>Idx</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d70838e205 "><p>用户接口的绝对编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d70838e201 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d70838e205 "><p>用户接口的类型和相对编号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d70838e201 "><p>Privi</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d70838e205 "><p>配置的用户接口的权限</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d70838e201 "><p>ActualPrivi</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d70838e205 "><p>用户接口的实际权限（如果使用AAA方式验证，则实际权限的值为AAA配置信息中的本地用户优先级）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d70838e201 "><p>Auth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d70838e205 "><p>用户接口的认证模式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d70838e201 "><p>A</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d70838e205 "><p>使用AAA进行验证</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d70838e201 "><p>N</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d70838e205 "><p>当前用户接口不需要验证</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="34.06399596875787%" headers="d70838e201 "><p>P</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d70838e205 "><p>使用当前用户接口的密码进行验证</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_user-interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_user-interface__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d70838e337"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d70838e341"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d70838e337 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d70838e341 "><p>增加通配符<span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/user_management_commands.html">用户管理命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_access-user.html">display access-user</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

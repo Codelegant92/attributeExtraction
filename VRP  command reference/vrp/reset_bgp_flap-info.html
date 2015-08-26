@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset bgp flap-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="dampening_bgp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_bgp_flap-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset bgp flap-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_bgp_flap-info"></a><a name="reset_bgp_flap-info"></a>
+
+
+<h1 class="topictitle1">reset bgp flap-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset bgp flap-info</strong>命令用来清除路由的振荡统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset bgp</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>flap-info</strong> [ <strong>regexp</strong> <em>as-path-regexp</em> | <strong>as-path-filter</strong> <em>as-path-filter-number</em> | <em>ipv4-address</em> [ <em>mask</em> | <em>mask-length</em> ] ]</p>
+<p><strong>reset bgp</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <em>ipv4-address</em> <strong>flap-info</strong></p>
+<p><strong>reset bgp</strong> { <strong>ipv6</strong> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> } <em>ipv6-address</em> <strong>flap-info</strong></p>
+<p><strong>reset bgp</strong> { <strong>ipv6</strong> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> } <strong>flap-info</strong> [ <em>ipv6-address</em> | <strong>as-path-filter</strong> <em>as-path-filter-number</em> | <strong>regexp</strong> <em>as-path-regexp</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：清除指定VPN实例的振荡统计信息。</p>
+<p><strong>regexp</strong> <em>as-path-regexp</em>：复位匹配AS路径正则表达式的路由振荡统计信息。</p>
+<p><strong>as-path-filter</strong> <em>as-path-filter-number</em>：基于指定AS路径过滤器清除振荡统计信息。</p>
+<p><em>ipv4-address</em>：指定BGP的IPv4对等体网络地址。</p>
+<p><em>mask</em> | <em>mask-length</em>：指定网络掩码（点分十进制形式）或掩码长度。如果没有指定掩码，则按有类地址处理。</p>
+<p><strong>ipv6</strong>：指定复位所有IPv6对等体的振荡统计信息。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：清除指定IPv6 VPN实例的振荡统计信息。</p>
+<p><em>ipv6-address</em>：指定BGP的IPv6对等体网络地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_bgp_flap-info__d111557e177"></a><a name="d111557e177"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 清除所有匹配AS路径过滤器10的路由的振荡统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset bgp flap-info as-path-filter 10</strong></pre>
+<p># 清除所有VPNv6实例为1的路由振荡统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset bgp vpn6-instance 1 flap-info</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="dampening_bgp.html">dampening</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

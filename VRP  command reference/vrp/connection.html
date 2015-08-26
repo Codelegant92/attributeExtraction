@@ -1,0 +1,110 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="connection">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ce.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_l2vpn_connection.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="connection">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>connection</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="connection"></a><a name="connection"></a>
+
+
+<h1 class="topictitle1">connection</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>connection</strong>命令用来创建Kompella方式连接。</p>
+<p><strong>undo connection ce-offset</strong>命令用来删掉CE上的Kompella方式连接。</p>
+<p>缺省情况下，系统没有创建任何Kompella方式连接。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>connection</strong> [ <strong>ce-offset</strong> <em>id</em> ] <strong>interface</strong> <em>interface-type interface-number</em> [ <strong>tunnel-policy</strong><em> policy-name </em>] [ <strong>raw</strong> | <strong>tagged</strong> ] [ <strong>secondary</strong> ]</p>
+<p><strong>undo connection ce-offset </strong><em>id</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ce-offset</strong><em> id</em>：与L2VPN相连的对端CE的ID，十进制整数形式，取值范围是0～249。其值应不大于<em>ce-range</em>。有关<em>ce-range</em>的设置，请参见命令<a href="ce.html">ce</a>。对于远程连接，ce-offset必须与远端CE配置的CE ID相同；对于本地连接，建立连接的两个CE中，其中一个的ce-offset是另一个的CE ID。</p>
+<p><strong>interface</strong><em> interface-type interface-number</em>：与CE相连的接口，其封装格式必须与所属VPN一致。</p>
+<p><strong>tunnel-policy</strong><em> policy-name</em>：VC的隧道策略名称。字符串形式，不支持空格，区分大小写，长度范围是1～19。</p>
+<p><strong>raw</strong>：剥离VLAN标签。</p>
+<p><strong>tagged</strong>：附加VLAN标签。</p>
+<p><strong>secondary</strong>：指定该VC为备份VC。如果不指定该关键字，新创建的VC为主VC。只有本地存在主VC才能配置备份VC；如果本地没有主VC则不能配置备份VC。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MPLS-L2VPN-CE视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>同一个接口不能既作为L2VPN的AC（Attachment Circuit）接口又作为L3VPN的AC接口。当某个接口绑定L2VPN后，该接口上配置的IP地址、路由协议等三层特性会全部变为无效。如果一个接口同时绑定L2VPN和L3VPN，只有L2VPN可用。删除该L2VPN后，绑定的L3VPN会重新变得可用。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>对于NE40E、NE80E、NE5000E产品，与CE相连的接口不支持VLANIF接口。</p>
+</li>
+
+<li><p>当子接口配置了与VLL的绑定关系时，不允许改变主接口的封装协议类型。</p>
+</li>
+<li><p>当子接口配置了与VLL的绑定关系时，必须先删除子接口和VLL的绑定关系，才能删除子接口。</p>
+</li>
+</ul>
+</div></div>
+<p>在创建Kompella方式连接时，需要指定对端CE的ID和本地CE接口。</p>
+<p>如果用户没有指定参数<strong>ce-offset</strong> <em>id</em>：</p>
+<ul>
+<li><p>对于此CE的第一个连接，ce-offset默认为default-offset的取值（关于default-offset参数的描述请参见命令<a href="ce.html">ce</a>）；如果ce-offset等于当前CE ID，那么ce-offset的值再加1。</p>
+</li>
+<li><p>对于其他连接，ce-offset是前一个连接的ce-offset加1。如果前一个连接的ce-offset加1等于当前CE ID，则ce-offset为前一个连接的ce-offset加2。</p>
+</li>
+</ul>
+<p>在规划VPN时，建议CE ID编号从1顺序递增；然后在配置连接时按CE ID顺序配置，这样，大多数连接都可以省略<strong>ce-offset</strong>参数，使用缺省值，从而简化配置。</p>
+<p>如不指定隧道策略名，将采用缺省策略。缺省策略使用LSP，并指定负载分担条数为1。如果策略名已经指定，但未配置策略，也采用缺省策略。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="connection__d8153e157"></a><a name="d8153e157"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建Kompella方式连接。</p>
+<pre class="screen">&lt;Quidway1&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway1] <strong>mpls l2vpn vpn1 encapsulation ppp</strong></pre>
+<pre class="screen">[Quidway1-mpls-l2vpn-vpn1] <strong>route-distinguisher 100:1</strong></pre>
+<pre class="screen">[Quidway1-mpls-l2vpn-vpn1] <strong>vpn-target 1:1</strong></pre>
+<pre class="screen">[Quidway1-mpls-l2vpn-vpn1] <strong>ce ce1 id 1 range 10</strong></pre>
+<pre class="screen">[Quidway1-mpls-l2vpn-ce-vpn1-ce1] <strong>connection ce-offset 2 interface pos 1/0/0</strong></pre>
+
+<pre class="screen">&lt;Quidway2&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway2] <strong>mpls l2vpn vpn1 encapsulation ppp</strong></pre>
+<pre class="screen">[Quidway2-mpls-l2vpn-vpn1] <strong>route-distinguisher 100:1</strong></pre>
+<pre class="screen">[Quidway2-mpls-l2vpn-vpn1] <strong>vpn-target 1:1</strong></pre>
+<pre class="screen">[Quidway2-mpls-l2vpn-vpn1] <strong>ce ce2 id 2 range 10</strong></pre>
+<pre class="screen">[Quidway2-mpls-l2vpn-ce-vpn1-ce2] <strong>connection ce-offset 1 interface pos 2/0/0</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ce.html">ce</a></div>
+<div><a href="display_mpls_l2vpn_connection.html">display mpls l2vpn connection</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,135 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="fr map ip">
+<meta name="DC.Relation" scheme="URI" content="../vrp/frame_relay_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_fr_map-info.html">
+<meta name="DC.Relation" scheme="URI" content="fr_inarp.html">
+<meta name="DC.Relation" scheme="URI" content="fr_compression_frf9.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="fr_map_ip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>fr map ip</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="fr_map_ip"></a><a name="fr_map_ip"></a>
+
+
+<h1 class="topictitle1">fr map ip</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>fr map</strong> <strong>ip</strong>命令用来增加一条帧中继地址和一个DLCI的静态地址映射。</p>
+<p><strong>undo fr map ip</strong>命令用来删除一条帧中继的静态地址映射。</p>
+<p>缺省情况下，没有定义地址映射。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>fr</strong> <strong>map</strong> <strong>ip</strong> { <em>destination-address</em> [ <em>mask</em> ] | <strong>default </strong>} <em>dlci-number</em> [ <strong>broadcast</strong> [ <strong>ietf</strong> | <strong>nonstandard</strong> ] ] [ <strong>compression</strong> { <strong>frf9</strong> | <strong>iphc connections</strong> <em>number</em> }
+]</p>
+<p><strong>undo</strong> <strong>fr</strong> <strong>map ip</strong> { <em>destination-address</em> | <strong>default</strong> }<em> dlci-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>destination-address mask</em>：目的IP地址和子网掩码。子网掩码的输入格式必须是X.X.X.X，其中X是整数形式，取值范围是0～255。</p>
+<p><strong>default</strong>：创建一条缺省映射。</p>
+<p><em>dlci-number</em>：本地的虚电路号。取值范围是16～1007。</p>
+<p><strong>broadcast</strong>：广播方式，表示该映射上可以发送广播报文。</p>
+<p><strong>ietf</strong>：帧中继接口报文格式为IETF。</p>
+<p><strong>nonstandard</strong>：帧中继接口报文格式为非标准格式。</p>
+<p><strong>compression frf9</strong>：启用帧中继压缩功能，采用FRF.9标准及LZS stac算法对报文进行压缩。对于点到点接口，不能使用该参数。</p>
+<p><strong>connections</strong> <em>number</em>：RTP头压缩的连接数目。取值范围是3～2000。如果使用<strong>fr map ip</strong>命令配置了RTP connection数目，则映射中的PVC使用该配置值，如果未配置RTP connection的数目，则PVC使用所属帧中继接口（使用<strong>fr
+iphc</strong>命令配置IPHC）上配置的RTP connection的值，如果帧中继接口上也没配RTP connection值，则使用值256。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>帧中继接口视图、帧中继子接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只能在帧中继主接口或点到多点类型的帧中继子接口下配置该命令，且报文封装类型必须是IETF。如果报文封装类型是nonstandard，当执行该命令使能FRF.9压缩时，系统会提示nonstandard封装类型不支持FRF.9压缩。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>FRF.9压缩适用于低速链路。</p>
+</li>
+<li><p>MFR链路不使用FRF.9压缩功能。</p>
+</li>
+<li><p>FRF.9压缩有一个同步的过程。压缩时如果报文乱序，通常会压缩不成功。</p>
+</li>
+</ul>
+</div></div>
+<div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>如果DTE和DCE设备上相连的两个主接口满足下列两个条件：</p>
+<ul>
+<li>这两个主接口上都配置了FRF.9压缩</li>
+<li>DTE侧设备主接口的DLCI是通过动态地址映射学习到的</li>
+</ul>
+<p>则当在DTE侧设备的主接口下执行命令<strong>undo fr map ip</strong> { <em>ip-address</em> | <strong>default</strong> } <em>dlci-number</em>成功后，必须重启这两个主接口，才能使DTE和DCE正常通信。</p>
+</div></div>
+<p>对于点到点类型的帧中继接口，使用命令<a href="fr_compression_frf9.html">fr compression frf9</a>使能压缩功能。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="fr_map_ip__d77461e188"></a><a name="d77461e188"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 接口Serial1/0/0:0连接的对端<span class="keyword">路由器</span>IP地址为202.38.163.252，在本地Serial1/0/0:0上有一条DLCI＝50的虚电路连接到该<span class="keyword">路由器</span>，配置静态地址映射。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface Serial1/0/0:0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> link-protocol fr</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0:0]<strong> fr map ip 202.38.163.252 50</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="fr_map_ip__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="fr_map_ip__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.5%" id="d77461e225"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.5%" id="d77461e229"><p>修订记录</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.5%" headers="d77461e225 "><p>VRPV500R003C07B280</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.5%" headers="d77461e229 "><p>参数<strong>iphc connections</strong> <em>number</em>的取值范围由3～255变为3～2000</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/frame_relay_configuration_commands.html">帧中继配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_fr_map-info.html">display fr map-info</a></div>
+<div><a href="fr_inarp.html">fr inarp</a></div>
+<div><a href="fr_compression_frf9.html">fr compression frf9</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

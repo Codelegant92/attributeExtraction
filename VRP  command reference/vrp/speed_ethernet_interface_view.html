@@ -1,0 +1,86 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="speed（Ethernet接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_interface_ethernet_gigabitethernet.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="speed_ethernet_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>speed（Ethernet接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="speed_ethernet_interface_view"></a><a name="speed_ethernet_interface_view"></a>
+
+
+<h1 class="topictitle1">speed（Ethernet接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>speed</strong>命令用来设置快速以太网电接口或千兆以太网电接口的工作速率。</p>
+<p><strong>undo speed</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，接口采用自协商方式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>speed</strong> {<strong> 10</strong> | <strong>100</strong> | <strong>negotiation</strong> }</p>
+<p><strong>speed</strong> { <strong>10</strong> | <strong>100</strong> | <strong>auto</strong> }</p>
+<p><strong>undo speed</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>10</strong>：设置速率为10Mbit/s。</p>
+<p><strong>100</strong>：设置速率为100Mbit/s。</p>
+<p><strong>negotiation</strong>：设置速率为自协商方式。是否支持该参数与具体产品有关。</p>
+<p><strong>auto</strong>：设置速率为自协商方式。该速率值只在千兆以太网电口上提供。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>Ethernet接口视图、GE接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对于快速以太网的电接口，可以设置速率为10Mbit/s、100Mbit/s或自协商方式。</p>
+<p>对于千兆以太网的电接口，可以设置速率为10Mbit/s、100Mbit/s或自协商方式。</p>
+<p>快速以太网的光接口速率固定为100Mbit/s，千兆以太网的光接口速率固定为1000Mbit/s，都不能通过配置命令改变。</p>
+<p>改变了接口的速率模式后，一般要重启接口才可以使配置生效。</p>
+<p>对于两端处于自协商工作方式的设备，最终协商的结果是采用二者技术能力域中优先级低的网口提供的工作方式工作。</p>
+<p>自协商机制是建立在对接设备两端均工作在自协商状态下的。当一端处于协商状态，一端处于固定状态，自协商机制是不起作用的，协商一侧采用的是&#8220;并行检测&#8221;机制，但是只能检测到对端的工作速度，而检测不到对端的双工方式，为了与以前的只能工作在半双工方式的老设备兼容，所以这种情况下大多设备均默认为半双工方式。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>对于GE电接口，工作速率1000Mbit/s与半双工模式是互斥的，不能同时配置。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="speed_ethernet_interface_view__d119707e98"></a><a name="d119707e98"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置以太网接口1/0/0的工作速度是100Mbit/s。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> speed 100</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> shutdown</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> undo shutdown</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_interface_configuration_commands.html">以太网接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_interface_ethernet_gigabitethernet.html">display interface { ethernet | gigabitethernet }</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

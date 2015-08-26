@@ -1,0 +1,261 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display rpr ring-selection interface ring-if">
+<meta name="DC.Relation" scheme="URI" content="../vrp/rpr_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="rpr_ring-selection.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_rpr_ring-selection_interface_ring-if">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display rpr ring-selection interface ring-if</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_rpr_ring-selection_interface_ring-if"></a><a name="display_rpr_ring-selection_interface_ring-if"></a>
+
+
+<h1 class="topictitle1">display rpr ring-selection interface ring-if</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display rpr ring-selection interface ring-if</strong>命令用来查看指定接口指定板号的选环信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display rpr ring-selection interface ring-if </strong><em>interface-number</em> { <strong>protocol</strong> |<strong> rs-table</strong> | <strong>static</strong> } [ <strong>slot</strong> <em>slot-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-number</em>：接口编号。取值范围是0～31。</p>
+<p><strong>protocol</strong>：通过RPR环拓扑分析，获得的选环信息。</p>
+<p><strong>rs-table</strong>：实际使用的选环信息。</p>
+<p><strong>static</strong>：用户配置的静态选环信息。</p>
+<p><em>slot-number</em>：指定显示的板号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定可选参数，将显示协议所在板的板号选环信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_rpr_ring-selection_interface_ring-if__d64207e73"></a><a name="d64207e73"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示接口1板号4的选环信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display rpr ring-selection interface ring-if 1 rs-table slot 4</strong></pre>
+<pre class="screen">Ring selection table of interface ring-if1</pre>
+<pre class="screen"> Station total number = 0, Close Ring</pre>
+<pre class="screen"> Ring0 reachable station number = 2</pre>
+<pre class="screen"> Ring1 reachable station number = 2</pre>
+<pre class="screen"> WrapFlag = 0</pre>
+<pre class="screen"> Ring default select ringid = 0</pre>
+<pre class="screen"> Westringmask = 1</pre>
+<pre class="screen"> Eastringmask = 0</pre>
+<pre class="screen"> WestL3_Mcmask = 1</pre>
+<pre class="screen"> EastL3_Mcmask = 0</pre>
+<pre class="screen">Hops.  Mac or IPAddr                       Ring    R0TTL  R1TTL</pre>
+<pre class="screen">1      0802-0802-0802                      1/west  2      1</pre>
+<pre class="screen">1      0801-0801-0801                      0/east  1      2</pre>
+
+
+<div class="tablenoborder"><a name="display_rpr_ring-selection_interface_ring-if__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_rpr_ring-selection_interface_ring-if__tb_01" frame="border" border="1" rules="all"><caption>表1 display rpr ring-selection interface ring-if命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="48.1859410430839%" id="d64207e120"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="51.81405895691611%" id="d64207e124"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>selection table of interface ring-if1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>指定接口ring-if1上的RPR选环信息表。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>Station total Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>节点总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>Close Ring</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><div class="p">RPR环网的状态：<ul>
+<li><p>Close Ring：闭环。</p>
+</li>
+<li><p>Open Ring：开环。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>Ring0 reachable station number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>0环包含的节点总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>Ring1 reachable station number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>1环包含的节点总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>WrapFlag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><div class="p">Wrap操作标志：<ul>
+<li><p>0：未进行Wrap操作。</p>
+</li>
+<li><p>2：进行了Wrap操作。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>Ring default select ringid</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>默认选还的环ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>Westringmask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>西向环的掩码。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>Eastringmask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>东向环的掩码。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>WestL3_Mcmask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>西向环的三层MAC掩码。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>EastL3_Mcmask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>东向环的三层MAC掩码。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>Hops</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>到达目的节点的跳数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>Mac or IPAddr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>目的节点的MAC地址或IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>Ring</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>发送环，即从本节点到达目的节点的路径。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>R0TTL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>0环的TTL。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1859410430839%" headers="d64207e120 "><p>R1TTL</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.81405895691611%" headers="d64207e124 "><p>1环的TTL。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/rpr_configuration_commands.html">RPR配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="rpr_ring-selection.html">rpr ring-selection</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,71 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="service cbr">
+<meta name="DC.Relation" scheme="URI" content="../vrp/atm_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pvp_limit.html">
+<meta name="DC.Relation" scheme="URI" content="service_vbr-nrt.html">
+<meta name="DC.Relation" scheme="URI" content="service_vbr-rt.html">
+<meta name="DC.Relation" scheme="URI" content="service_ubr.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="service_cbr">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>service cbr</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="service_cbr"></a><a name="service_cbr"></a>
+
+<h1 class="topictitle1">service cbr</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>service</strong> <strong>cbr</strong>命令用来指定PVC的业务类型为确定速率（Constant Bit Rate，CBR）。</p>
+<p>缺省情况下，PVC创建后的业务类型为UBR。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>service</strong> <strong>cbr </strong><em>output-pcr </em>[ <strong>cdvt </strong><em>cdvt-value </em>]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>output-pcr</em>：输出ATM信元的峰值速率。取值范围是64～149760，单位是kbit/s。</p>
+<p><em>cdvt-value</em>：信元时延变化容限。取值范围是0～10000，单位是&#956;s。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>ATM-PVC视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果将PVC的业务类型设置为CBR，不指定<strong>cdvt</strong>的值时缺省为500&#956;s。</p>
+<p>可以使用本命令及<a href="service_ubr.html">service ubr</a>、<a href="service_vbr-nrt.html">service vbr-nrt</a>和<a href="service_vbr-rt.html">service vbr-rt</a>设置PVC的业务类型和业务参数。新指定的PVC业务类型将会覆盖已有的业务类型。建议在创建cbr带宽时先创建大带宽的PVC，再创建小带宽的PVC；若创建不成功，可将<em>cdvt-value</em>的值调大，再试着创建；此情况已在命令行中给出提示，如下：</p>
+<p>&#8220;fail to set service parameter，please adjust cdvt value&#8221;</p>
+<p>ATM E1接口、ATM T1接口、ATM E3接口和ATM T3接口不支持业务类型CBR。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="service_cbr__d117093e71"></a><a name="d117093e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建一条名为&#8220;huawei&#8221;、VPI/VCI为1/101的PVC。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface atm 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Atm1/0/0]<strong> pvc huawei 1/101</strong></pre>
+<p># 指定该PVC的业务类型为cbr，ATM信元峰值发送速率为50,000kbit/s。信元时延变化容限为1000&#956;s。</p>
+<pre class="screen">[Quidway-atm-pvc-Atm1/0/0-1/101-huawei]<strong> service cbr 50000 cdvt 1000</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/atm_configuration_commands.html">ATM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pvp_limit.html">pvp limit</a></div>
+<div><a href="service_vbr-nrt.html">service vbr-nrt</a></div>
+<div><a href="service_vbr-rt.html">service vbr-rt</a></div>
+<div><a href="service_ubr.html">service ubr</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

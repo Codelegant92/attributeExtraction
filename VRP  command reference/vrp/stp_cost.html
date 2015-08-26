@@ -1,0 +1,186 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="stp cost">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mstp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_stp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="stp_cost">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>stp cost</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="stp_cost"></a><a name="stp_cost"></a>
+
+
+<h1 class="topictitle1">stp cost</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>stp cost</strong>命令用来配置当前端口在指定生成树实例上的端口路径开销。</p>
+<p><strong>undo stp cost</strong>命令用来恢复当前端口在指定生成树实例上的端口路径开销为缺省值。</p>
+<p>缺省情况下，端口在各个生成树实例上的路径开销为端口速率对应的路径开销。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>stp</strong> [<strong> instance</strong> <em>instance-id </em>]<strong> cost </strong><em>cost</em></p>
+<p><strong>undo stp</strong> [ <strong>instance</strong> <em>instance-id </em>]<strong> cost</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>instance</strong><em> instance-id</em>：生成树实例ID。取值范围是0～48，取值为0表示的是CIST。</p>
+<p><em>cost</em>：端口路径开销。取值范围由路径开销计算方法决定：</p>
+<ul>
+<li><p>使用华为的私有计算方法时取值范围是1～200000</p>
+</li>
+<li><p>使用IEEE 802.1D标准方法时取值范围是1～65535</p>
+</li>
+<li><p>使用IEEE 802.1t标准方法时取值范围是1～200000000</p>
+</li>
+</ul>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>Ethernet接口视图、GE接口视图、Eth-Trunk接口视图、VE接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>以华为的私有计算方法为例，不同速率的端口路径开销的缺省值不同，具体参见下表。</p>
+
+<div class="tablenoborder"><a name="stp_cost__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="stp_cost__tb_01" frame="border" border="1" rules="all"><caption>表1 端口速率与cost值对应表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="25.006298815822625%" id="d121609e104"><p>链路速率</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="24.99370118417738%" id="d121609e108"><p>推荐值</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="24.99370118417738%" id="d121609e112"><p>推荐取值范围</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="25.006298815822625%" id="d121609e116"><p>值域</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="25.006298815822625%" headers="d121609e104 "><p>10Mbit/s</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.99370118417738%" headers="d121609e108 "><p>2,000</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.99370118417738%" headers="d121609e112 "><p>200-20000</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="25.006298815822625%" headers="d121609e116 "><p>1-200000</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.006298815822625%" headers="d121609e104 "><p>100Mbit/s</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.99370118417738%" headers="d121609e108 "><p>200</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.99370118417738%" headers="d121609e112 "><p>20-2000</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="25.006298815822625%" headers="d121609e116 "><p>1-200000</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.006298815822625%" headers="d121609e104 "><p>1Gbit/s</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.99370118417738%" headers="d121609e108 "><p>20</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.99370118417738%" headers="d121609e112 "><p>2-200</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="25.006298815822625%" headers="d121609e116 "><p>1-200000</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.006298815822625%" headers="d121609e104 "><p>10Gbit/s</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.99370118417738%" headers="d121609e108 "><p>2</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.99370118417738%" headers="d121609e112 "><p>2-20</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="25.006298815822625%" headers="d121609e116 "><p>1-200000</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.006298815822625%" headers="d121609e104 "><p>10Gbit/s以上</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.99370118417738%" headers="d121609e108 "><p>1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="24.99370118417738%" headers="d121609e112 "><p>1-2</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="25.006298815822625%" headers="d121609e116 "><p>1-200000</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p>在使用本命令时，如果参数<em>instance-id</em>取值为0或不指定<strong>instance</strong> <em>instance-id</em>参数，则表示配置的是端口在CIST上的路径开销。</p>
+<p>端口的路径开销是生成树计算的重要依据，在不同MSTI上为同一端口配置不同的路径开销值，可以使不同VLAN的流量沿不同的物理链路转发，实现按VLAN的负载分担功能。</p>
+<p>端口路径开销值改变时，MSTP会重新进行生成树计算。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="stp_cost__d121609e237"></a><a name="d121609e237"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置以太网接口GE1/0/0在生成树实例2上的路径开销为200。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> portswitch</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> stp instance 2 cost 200</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mstp_configuration_commands.html">MSTP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_stp.html">display stp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="path-vectors">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="loop-detect.html">
+<meta name="DC.Relation" scheme="URI" content="hops-count.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="path-vectors">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>path-vectors</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="path-vectors"></a><a name="path-vectors"></a>
+
+
+<h1 class="topictitle1">path-vectors</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>path-vectors</strong>命令用来设置路径向量最大值。</p>
+<p><strong>undo path-vectors</strong>命令用来恢复路径向量最大值。</p>
+<p>缺省情况下，路径向量最大值为32。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>path-vectors</strong><em> integer</em></p>
+<p><strong>undo path-vectors</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>integer</em>：指定路径向量。整数形式，取值范围是1～32。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MPLS-LDP-VPN实例视图、MPLS-LDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>此命令应该在所有接口LDP使能之前配置。只有在相应视图中使能了MPLS LDP后，该命令才会生效。</p>
+<p>在采用路径向量方式配置环路检测时，本地路由触发和非本地路由触发的Egress
+LSP的处理方式不同。假设配置的路径向量最大跳数为n，本地路由触发的Egress LSP需要经过n+1跳才会检测到环路，而非本地路由触发的Egress
+LSP（Proxy Egress）经过n跳就能检测到环路。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="path-vectors__d102804e52"></a><a name="d102804e52"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置路径向量最大值为3。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> mpls ldp</strong></pre>
+<pre class="screen">[Quidway-mpls-ldp]<strong> path-vectors 3</strong></pre>
+<pre class="screen">[Quidway]<strong> mpls ldp vpn-instance vpn1</strong></pre>
+<pre class="screen">[Quidway-mpls-ldp-vpn-instance-vpn1]<strong> path-vectors 3</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="loop-detect.html">loop-detect</a></div>
+<div><a href="hops-count.html">hops-count</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

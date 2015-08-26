@@ -1,0 +1,108 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="snmp-agent target-host trap ipv6">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="snmp-agent_target-host_trap_ipv6">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>snmp-agent target-host trap ipv6 </title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="snmp-agent_target-host_trap_ipv6"></a><a name="snmp-agent_target-host_trap_ipv6"></a>
+
+
+<h1 class="topictitle1">snmp-agent target-host trap ipv6 </h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>snmp-agent target-host trap ipv6 </strong>命令用来设置接收Trap消息的目的地。</p>
+<p><strong>undo snmp-agent target-host ipv6</strong>命令用来取消当前设置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>snmp-agent target-host trap  ipv6 address udp-domain</strong> <em>ip-address</em> [ <strong>udp-port</strong> <em>port-number</em> ] <strong>params securityname</strong> <em>security-string</em> [ <strong>v1</strong> | <strong>v2c</strong> | <strong>v3</strong> [ <strong>authentication</strong> | <strong>privacy</strong> ] ]</p>
+<p><strong>undo snmp-agent target-host ipv6 </strong> <em>ip-address </em><strong>securityname</strong><em> security-string </em>[ </p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>address</strong>：指定SNMP消息传输的目标主机地址。</p>
+<p><strong>udp-domain</strong>：指定目标主机的传输域基于UDP。</p>
+<p><em>ip-address</em>：目标主机IPv6的IP地址。</p>
+<p><strong>udp-port</strong> <em>port-number</em>：指定接收Trap报文的端口号，取值范围为0～65535，缺省情况下为162。</p>
+<p><strong>params</strong>：指定产生SNMP消息的日志主机信息。</p>
+<p><strong>securityname</strong> <em>security-string</em>：指定在网管侧显示的用户名，字符串形式，不支持空格，长度范围为1～32。</p>
+<p><strong>v1</strong> | <strong>v2c</strong> | <strong>v3</strong>：指定Trap消息的版本。缺省情况下为<strong>v1</strong>。</p>
+<p><strong>authentication</strong>：指明对报文进行认证但不加密。</p>
+<p><strong>privacy</strong>：指明对报文进行认证和加密。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>此命令用于配置IPv6网管主机，其作用是在产生Trap的时候，使Trap基于IPv6协议发送。</p>
+<p>目前IPv6协议下，<span class="keyword">VRP</span>不支持向VPN接口发送告警。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="snmp-agent_target-host_trap_ipv6__d118544e137"></a><a name="d118544e137"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p>#  配置一个IPv6网管，使用SNMP v3协议，安全名为Huawei，加密方式为鉴权且加密。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway]<strong> snmp-agent trap enable standard</strong>
+[Quidway]<strong> snmp-agent target-host trap ipv6 address udp-domain 1000::2 params securityname Huawei v3 authentication privacy</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="snmp-agent_target-host_trap_ipv6__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="snmp-agent_target-host_trap_ipv6__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.43854526148128%" id="d118544e162"><p>版本Release</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.56145473851871%" id="d118544e166"><p>修订内容Modification</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.43854526148128%" headers="d118544e162 "><p>VRPV500R006C02B170</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.56145473851871%" headers="d118544e166 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,89 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dir（用户视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/file_system_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="undelete.html">
+<meta name="DC.Relation" scheme="URI" content="reset_recycle-bin.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dir_user_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dir（用户视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dir_user_view"></a><a name="dir_user_view"></a>
+
+
+<h1 class="topictitle1">dir（用户视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dir</strong>命令用来显示<span class="keyword">路由器</span>存储设备中的指定文件或目录的信息。</p>
+<p>缺省情况下，显示当前路径下的文件信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dir</strong> [ <strong>/all</strong> ] [ <em>filename</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>/all</strong>：显示所有的文件（包括已删除的文件）。</p>
+<p><em>filename</em>：显示的文件或目录名，字符串形式，长度范围是1～64。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>支持使用通配符&#8220; * &#8221;匹配。</p>
+<p>使用<strong>dir </strong>/<strong>all</strong>命令显示所有文件信息，包括已经删除的文件信息，已经删除的文件的名字用&#8220;      [ ] &#8221;括起来表示，例如 [ text ] 。这种已删除文件可以使用<a href="undelete.html">undelete</a>命令恢复，若要从回收站中彻底删除该文件，使用<a href="reset_recycle-bin.html">reset recycle-bin</a>命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dir_user_view__d12122e71"></a><a name="d12122e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示文件flash:/test/test.txt的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> dir flash:/test/test.txt</strong></pre>
+<pre class="screen">Directory of flash:/test/</pre>
+<pre class="screen">Idx   Attr  Size(Byte)     Date      Time     FileName</pre>
+<pre class="screen">   0   -rw-        80  Mar 09 2004 09:47:36   test.txt</pre>
+<pre class="screen">2,540 KB total (394 KB free)</pre>
+<p># 显示目录flash:/test/的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> dir flash:/test/</strong></pre>
+<pre class="screen">Directory of flash:/test/</pre>
+<pre class="screen">Idx   Attr  Size(Byte)     Date      Time     FileName</pre>
+<pre class="screen">   0   -rw-         4  Mar 01 2004 21:19:27   sample.txt</pre>
+<pre class="screen">   1   -rw-        80  Mar 09 2004 09:47:36   test.txt</pre>
+<pre class="screen">2,540 KB total (394 KB free)</pre>
+<pre class="screen">&lt;Quidway&gt;<strong> dir flash:/test/t*</strong></pre>
+<pre class="screen">Directory of flash:/test/</pre>
+<pre class="screen">Idx   Attr  Size(Byte)     Date      Time     FileName</pre>
+<pre class="screen">   0   -rw-        80  Mar 09 2004 09:47:36   test.txt</pre>
+<pre class="screen">2,540 KB total (394 KB free)</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/file_system_configuration_commands.html">文件系统命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="undelete.html">undelete</a></div>
+<div><a href="reset_recycle-bin.html">reset recycle-bin</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

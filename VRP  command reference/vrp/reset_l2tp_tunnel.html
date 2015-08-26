@@ -1,0 +1,72 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset l2tp tunnel">
+<meta name="DC.Relation" scheme="URI" content="../vrp/l2tp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_l2tp_tunnel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_l2tp_tunnel">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset l2tp tunnel</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_l2tp_tunnel"></a><a name="reset_l2tp_tunnel"></a>
+
+
+<h1 class="topictitle1">reset l2tp tunnel</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset l2tp tunnel</strong>命令用来强制断开指定的隧道（Tunnel）连接，同时断开隧道内的所有会话（Session）连接。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset l2tp tunnel</strong> {<strong> peer-name</strong> <em>remote-name </em>| <strong>local-id</strong> <em>tunnel-id</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>peer-name</strong> <em>remote-name</em>：隧道对端的名称，字符串形式，长度范围是1～30。</p>
+<p><strong>local-id</strong> <em>tunnel-id</em>：隧道本端的标识号，整数形式，取值范围是1～8191。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当用户数为零、网络发生故障或需要主动要求挂断通道时，可以执行<strong>reset l2tp tunnel</strong>命令来强制断开指定的隧道（Tunnel）连接和隧道内的会话连接。</p>
+<p>在<strong>reset
+l2tp tunnel</strong>命令中指定隧道的对端名称时，如果没有符合条件的隧道连接存在，则对当前的隧道连接没有影响。如果有多个符合条件的隧道连接存在（同一个名称，不同IP地址），则断开所有符合条件的隧道连接（包括隧道中的会话连接）。指定<em>tunnel-id</em>时，只断开对应的隧道连接。</p>
+<p>对端用户再次呼入时，隧道可以重新建立。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_l2tp_tunnel__d112602e75"></a><a name="d112602e75"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 断开对端名称为AS8010的Tunnel连接。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset l2tp tunnel AS8010</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/l2tp_configuration_commands.html">L2TP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_l2tp_tunnel.html">display l2tp tunnel</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

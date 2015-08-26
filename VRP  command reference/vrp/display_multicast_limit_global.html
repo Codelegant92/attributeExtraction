@@ -1,0 +1,178 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display multicast limit global">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4_multicast_cac_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="multicast_limit_channel-name_view.html">
+<meta name="DC.Relation" scheme="URI" content="multicast_limit_multicast-channel_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_multicast_limit_global">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display multicast limit global</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_multicast_limit_global"></a><a name="display_multicast_limit_global"></a>
+
+
+<h1 class="topictitle1">display multicast limit global</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display multicast limit global</strong>命令用来查看实例下全局表项数量的限制值和统计值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display multicast</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>limit</strong> [ <strong>channel</strong> <em>channel-name</em> ] <strong>global</strong> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例名称。字符串形式，区分大小写。</p>
+<p><strong>channel</strong> <em>channel-name</em>：指定节目组名称。字符串形式，区分大小写。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>对于ASM模型的一个组播组G，(*,G)和所有的(S,G)计为一个表项；对于SSM模型的一个组播组G，每个(S,G)计为一个表项。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_multicast_limit_global__d52017e114"></a><a name="d52017e114"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看公网实例下节目组SDTV的全局表项统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display multicast limit channel SDTV global</strong>
+Multicast limitation information of instance: public net
+  -----------------------------------------------------------------------
+  Channel Program                  Mode  Entries  Threshold  Used-Entries
+  -----------------------------------------------------------------------
+  SDTV                             ASM   30       -          30
+  -----------------------------------------------------------------------
+</pre>
+
+<div class="tablenoborder"><a name="display_multicast_limit_global__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_multicast_limit_global__tb_01" frame="border" border="1" rules="all"><caption>表1 display multicast limit global命令显示信息说明</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="47.2411186696901%" id="d52017e135"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="52.758881330309904%" id="d52017e139"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d52017e135 "><p>Channel Program</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d52017e139 "><p>节目组名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d52017e135 "><p>Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d52017e139 "><p>节目组类型（ASM或SSM）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d52017e135 "><p>Entries</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d52017e139 "><p>表项数量限制值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d52017e135 "><p>Threshold</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d52017e139 "><p>预警值，当PIM路由表项计数超出该值时系统会在日志中输出预警信息。如果没有配置预警值则显示&#8220;-&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="47.2411186696901%" headers="d52017e135 "><p>Used-Entries</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="52.758881330309904%" headers="d52017e139 "><p>表项数量统计值</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_multicast_limit_global__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_multicast_limit_global__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d52017e216"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d52017e220"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d52017e216 "><p>VRPV500R006C01B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d52017e220 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv4_multicast_cac_configuration_commands.html">IPv4组播CAC配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="multicast_limit_channel-name_view.html">multicast limit（channel-name视图）</a></div>
+<div><a href="multicast_limit_multicast-channel_view.html">multicast limit（multicast-channel视图）</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

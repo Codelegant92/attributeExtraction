@@ -1,0 +1,107 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="gtsm peer valid-ttl-hops">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="gtsm_peer_valid-ttl-hops">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>gtsm peer valid-ttl-hops</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="gtsm_peer_valid-ttl-hops"></a><a name="gtsm_peer_valid-ttl-hops"></a>
+
+
+<h1 class="topictitle1">gtsm peer valid-ttl-hops</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>gtsm peer valid-ttl-hops</strong>命令用来在指定的LDP对等体上配置GTSM功能。</p>
+<p><strong>undo
+gtsm</strong> { <strong>all</strong> | <strong>peer</strong> <em>ip-address</em> }命令用来删除所有或指定的LDP对等体上配置的GTSM功能。</p>
+<p>缺省情况下，没有在任何LDP对等体上配置GTSM功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>gtsm peer</strong> <em>ip-address</em> <strong>valid-ttl-hops</strong> <em>hops</em></p>
+<p><strong>undo
+gtsm</strong> { <strong>all</strong> | <strong>peer</strong> <em>ip-address</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>peer</strong> <em>ip-address</em>：指定LDP对等体的LSR ID。</p>
+<p><strong>all</strong>：所有LDP对等体。</p>
+<p><strong>valid-ttl-hops</strong> <em>hops</em>：设置GTSM功能允许的最大有效跳数。整数形式，取值范围是1～255。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MPLS-LDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果将<em>hops</em>设置为GTSM功能允许的最大有效跳数，当LDP对等体发来报文的TTL值在[255&#8211;hops+1,
+255]范围内，则接收该报文，否则丢弃该报文。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>建议在LDP对等体两端同时配置GTSM功能。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="gtsm_peer_valid-ttl-hops__d79002e96"></a><a name="d79002e96"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在LSR上配置LSR ID为2.2.2.9的对等体发来的LDP报文的有效TTL范围是254～255。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> mpls ldp</strong></pre>
+<pre class="screen">[Quidway-mpls-ldp]<strong> gtsm peer 2.2.2.9 valid-ttl-hops 2</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="gtsm_peer_valid-ttl-hops__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="gtsm_peer_valid-ttl-hops__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d79002e123"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d79002e127"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d79002e123 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d79002e127 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

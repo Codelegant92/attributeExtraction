@@ -1,0 +1,428 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display igmp group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/igmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_igmp_group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_igmp_group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display igmp group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_igmp_group"></a><a name="display_igmp_group"></a>
+
+
+
+<h1 class="topictitle1">display igmp group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display igmp group</strong>命令用来查看IGMP组播组信息，显示信息包括通过成员报告动态加入的组播组和通过命令行静态加入的组播组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display igmp</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>all-instance</strong> ] <strong>group</strong> [ <em>group-address</em> | <strong>interface</strong> <em>interface-type interface-number</em> ] [ <strong>static</strong> | <strong>verbose</strong> ] <span>[<strong> | count</strong> ] </span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：显示指定VPN实例的IGMP组播组信息。<em>vpn-instance-name</em>指定VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>all-instance</strong>：显示所有实例的IGMP组播组信息。</p>
+<p><em>group-address</em>：组播组地址，用来指定一个组播组。点分十进制形式，取值范围是224.0.0.0～239.255.255.255。</p>
+<p><strong>interface</strong><em> interface-type interface-number</em>：显示指定接口的IGMP组播组信息。<em>interface-type interface-number</em>表示<span class="keyword">路由器</span>的接口类型和接口号，用来指定具体的接口。</p>
+<p><strong>static</strong>：显示静态加入的组播组信息。</p>
+<p><strong>verbose</strong>：显示动态加入的组播组的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display igmp group</strong>命令时：</p>
+<ul>
+<li>如果不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>参数则只显示公网实例的相关信息。</li>
+<li>若指定了<strong>static</strong>参数，则仅显示静态组播组信息，查看静态组信息必须指定<strong>static</strong>。 </li>
+<li>若指定了<strong>verbose</strong>参数，则显示组播组运行IGMP的各种状态参数。</li>
+<li>若指定了<strong>interface</strong>参数，则仅显示该接口下的组播组信息。</li>
+<li>若指定了<em>group-address</em>参数，则仅显示和该组相关的IGMP信息。</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_igmp_group__d26523e200"></a><a name="d26523e200"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看公网实例动态加入的IGMP组播组信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display igmp group</strong>
+Interface group report information of VPN-Instance: public net
+ GigabitEthernet6/0/1(10.1.6.2):
+  Total 1 IGMP Group reported
+   Group Address   Last Reporter   Uptime      Expires
+   225.1.1.2       10.1.6.10       00:02:04    00:01:17
+</pre>
+
+<div class="tablenoborder"><a name="display_igmp_group__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp_group__tb_01" frame="border" border="1" rules="all"><caption>表1 display igmp group命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.021667926429835%" id="d26523e221"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.97833207357018%" id="d26523e225"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e221 "><p>Interface group report information of VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e225 "><p>接口上IGMP组信息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e221 "><p>GigabitEthernet6/0/1(10.1.6.2)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e225 "><p>接口编号（IP地址）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e221 "><p>Total 1 IGMP Group reported</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e225 "><p>接口上动态加入的组播组个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e221 "><p>Group Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e225 "><p>组播组地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e221 "><p>Last Reporter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e225 "><p>最后发送Report消息的主机。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e221 "><p>Uptime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e225 "><div class="p">发现组播组的时间，时间格式是：<ul>
+<li><p>小于等于24小时：&#8220;时：分：秒&#8221;</p>
+</li>
+<li><p>大于24小时但小于等于一周：&#8220;天：时&#8221;</p>
+</li>
+<li><p>大于一周：&#8220;周：天&#8221;</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e221 "><p>Expires</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e225 "><div class="p">记录将从IGMP组表中删除的预定时间，时间格式是：<ul>
+<li><p>小于等于24小时：&#8220;时：分：秒&#8221;</p>
+</li>
+<li><p>大于24小时但小于等于一周：&#8220;天：时&#8221;</p>
+</li>
+<li><p>大于一周：&#8220;周：天&#8221;</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示公网实例详细的IGMP组播组信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display igmp group verbose</strong>
+Interface group report information of VPN-Instance: public net
+ Limited entry of this VPN-Instance: -
+ GigabitEthernet6/0/0(10.1.6.2):
+  Total entries on this interface: 2
+  Limited entries on this interface: 2
+  Total 2 IGMP Groups reported
+   Group: 224.0.1.60
+     Uptime: 01:28:32
+     Expires: 00:01:39
+     Last reporter: 10.111.15.8
+     Last-member-query-counter: 0
+     Last-member-query-timer-expiry: off
+     Version1-host-present-timer-expiry: 00:01:39
+     Version2-host-present-timer-expiry: off
+   Group: 239.255.255.250
+     Uptime: 01:34:55
+     Expires: 00:01:45
+     Last reporter: 10.111.12.232
+     Last-member-query-counter: 0
+     Last-member-query-timer-expiry: off
+     Version1-host-present-timer-expiry: off
+     Version2-host-present-timer-expiry: off
+</pre>
+
+<div class="tablenoborder"><a name="display_igmp_group__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp_group__tb_02" frame="border" border="1" rules="all"><caption>表2 display igmp group verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.021667926429835%" id="d26523e360"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.97833207357018%" id="d26523e364"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Interface group report information of VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>接口上IGMP组信息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Limited entry of this VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>通过<strong>igmp limit</strong>命令限制的当前VPN实例下IGMP表项的最大个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>GigabitEthernet6/0/1(10.1.6.2)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>接口编号（IP地址）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Total entries on this interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>当前接口上统计的IGMP表项个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Limited entries on this interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>通过<strong>igmp limit</strong>命令限制的当前接口上IGMP表项的最大个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Total 2 IGMP Groups reported</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>接口上动态加入的组播组个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>组播组地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Uptime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><div class="p">发现组播组的时间，时间格式是：<ul>
+<li><p>小于等于24小时：&#8220;时：分：秒&#8221;</p>
+</li>
+<li><p>大于24小时但小于等于一周：&#8220;天：时&#8221;</p>
+</li>
+<li><p>大于一周：&#8220;周：天&#8221;</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Expires</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><div class="p">记录将从IGMP组表中删除的预定时间，时间格式是：<ul>
+<li><p>小于等于24小时：&#8220;时：分：秒&#8221;</p>
+</li>
+<li><p>大于24小时但小于等于一周：&#8220;天：时&#8221;</p>
+</li>
+<li><p>大于一周：&#8220;周：天&#8221;</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Last Reporter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>最后发送Report消息的主机。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Last-member-query-counter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>LMQC，最后组成员查询报文的发送次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Last-member-query-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>LMQT，最后组成员查询报文的超时时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Version1-host-present-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>IGMP Version1主机的超时时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.021667926429835%" headers="d26523e360 "><p>Version2-host-present-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.97833207357018%" headers="d26523e364 "><p>IGMP Version2主机的超时时间。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_igmp_group__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp_group__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d26523e574"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d26523e578"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d26523e574 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d26523e578 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d26523e574 "><p>VRPV500R006C01B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d26523e578 "><p>显示信息中增加&#8220;Limited entries on this interface&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d26523e574 "><p>VRPV500R005C02B230</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d26523e578 "><p>显示信息中增加&#8220;Limited entries on this interface&#8221;。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/igmp_configuration_commands.html">IGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_igmp_group.html">reset igmp group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

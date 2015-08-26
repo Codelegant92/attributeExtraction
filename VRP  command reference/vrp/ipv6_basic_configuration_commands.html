@@ -1,0 +1,169 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="IPv6基础配置命令">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_service_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_icmpv6_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ipv6_fib.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ipv6_fibcache.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ipv6_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_this_ipv6_interface.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ipv6_neighbors.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ipv6_pathmtu.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ipv6_socket.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_ipv6_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_tcp_ipv6_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_tcp_ipv6_status.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/display_udp_ipv6_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_address.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_address_auto_link-local.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_address_eui-64.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_address_link-local.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_enable_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_fibcache.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_fib-loadbalance-type_hash-based.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_icmp-error.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_mtu.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_nd_autoconfig_managed-address-flag.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_nd_autoconfig_other-flag.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_nd_dad_attempts.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_nd_hop-limit.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_nd_ns_retrans-timer.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_nd_nud_reachable-time.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_nd_ra.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_nd_ra_halt.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_nd_ra_prefix.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_nd_ra_router-lifetime.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_neighbor.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_pathmtu.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_pathmtu_age.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_ipv6_fibcache.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_ipv6_neighbors.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_ipv6_pathmtu.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_ipv6_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_tcp_ipv6_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/reset_udp_ipv6_statistics.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/tcp_ipv6_timer_fin-timeout.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/tcp_ipv6_timer_syn-timeout.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/tcp_ipv6_window.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipv6_basic_configuration_commands">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>IPv6基础配置命令</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipv6_basic_configuration_commands"></a><a name="ipv6_basic_configuration_commands"></a>
+
+<h1 class="topictitle1">IPv6基础配置命令</h1>
+<div><div class="section"><h4 class="sectiontitle">功能描述</h4><p>主要介绍使能转发IPv6单播报文、手工配置接口的全球单播地址、为接口配置及删除自动生成的链路本地地址、设置路由设备发布消息的间隔时间、配置邻居发现缓存中的静态邻居信息、配置动态PMTU项的老化时间和设置TCP的FIN-Wait定时器值等配置命令。</p>
+</div>
+<div class="section"><h4 class="sectiontitle">相关链接</h4></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="../vrp/display_icmpv6_statistics.html">display icmpv6 statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ipv6_fib.html">display ipv6 fib</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ipv6_fibcache.html">display ipv6 fibcache</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ipv6_interface.html">display ipv6 interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_this_ipv6_interface.html">display this ipv6 interface</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ipv6_neighbors.html">display ipv6 neighbors</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ipv6_pathmtu.html">display ipv6 pathmtu</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ipv6_socket.html">display ipv6 socket</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_ipv6_statistics.html">display ipv6 statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_tcp_ipv6_statistics.html">display tcp ipv6 statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_tcp_ipv6_status.html">display tcp ipv6 status</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/display_udp_ipv6_statistics.html">display udp ipv6 statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6.html">ipv6</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_address.html">ipv6 address</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_address_auto_link-local.html">ipv6 address auto link-local</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_address_eui-64.html">ipv6 address eui-64</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_address_link-local.html">ipv6 address link-local</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_enable_interface_view.html">ipv6 enable (接口视图)</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_fibcache.html">ipv6 fibcache</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_fib-loadbalance-type_hash-based.html">ipv6 fib-loadbalance-type hash-based</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_icmp-error.html">ipv6 icmp-error</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_mtu.html">ipv6 mtu</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_nd_autoconfig_managed-address-flag.html">ipv6 nd autoconfig managed-address-flag</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_nd_autoconfig_other-flag.html">ipv6 nd autoconfig other-flag</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_nd_dad_attempts.html">ipv6 nd dad attempts</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_nd_hop-limit.html">ipv6 nd hop-limit</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_nd_ns_retrans-timer.html">ipv6 nd ns retrans-timer</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_nd_nud_reachable-time.html">ipv6 nd nud reachable-time</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_nd_ra.html">ipv6 nd ra</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_nd_ra_halt.html">ipv6 nd ra halt</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_nd_ra_prefix.html">ipv6 nd ra prefix</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_nd_ra_router-lifetime.html">ipv6 nd ra router-lifetime</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_neighbor.html">ipv6 neighbor</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_pathmtu.html">ipv6 pathmtu</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/ipv6_pathmtu_age.html">ipv6 pathmtu age</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_ipv6_fibcache.html">reset ipv6 fibcache</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_ipv6_neighbors.html">reset ipv6 neighbors</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_ipv6_pathmtu.html">reset ipv6 pathmtu</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_ipv6_statistics.html">reset ipv6 statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_tcp_ipv6_statistics.html">reset tcp ipv6 statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/reset_udp_ipv6_statistics.html">reset udp ipv6 statistics</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/tcp_ipv6_timer_fin-timeout.html">tcp ipv6 timer fin-timeout</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/tcp_ipv6_timer_syn-timeout.html">tcp ipv6 timer syn-timeout</a></strong><br>
+</li>
+<li class="ulchildlink"><strong><a href="../vrp/tcp_ipv6_window.html">tcp ipv6 window</a></strong><br>
+</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_service_commands.html">IP业务命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

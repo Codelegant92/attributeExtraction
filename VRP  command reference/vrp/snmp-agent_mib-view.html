@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="snmp-agent mib-view">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="snmp-agent_mib-view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>snmp-agent mib-view</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="snmp-agent_mib-view"></a><a name="snmp-agent_mib-view"></a>
+
+
+<h1 class="topictitle1">snmp-agent mib-view</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>snmp-agent mib-view</strong>命令用来创建或者更新视图的信息。</p>
+<p><strong>undo snmp-agent mib-view</strong>命令用来取消当前设置。</p>
+<p>缺省情况下，视图名为ViewDefault，OID为1.3.6.1。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>snmp-agent mib-view</strong> { <strong>excluded</strong> | <strong>included </strong>} <em>view-name oid-tree</em></p>
+<p><strong>undo snmp-agent mib-view</strong> <em>view-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>excluded</strong>：表示排除该MIB子树。</p>
+<p><strong>included</strong>：表示包括该MIB子树。</p>
+<p><em>view-name</em>：视图名。字符串形式，长度范围是1～32。</p>
+<p><em>oid-tree</em>：MIB对象子树的OID，可以是变量OID的字符串，也可以是变量名的字符串。例如：可以是像1.4.5.3.1或者system这样的字符串，还可以有&#8220; * &#8221;来做通配符，例如：1.4.5.*.*.1，取值1～255个字符。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>snmp-agent mib-view</strong>命令用来更新或创建视图，目前该命令不仅支持以变量OID的字符串作为参数输入，同时还支持以节点名作为参数输入。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="snmp-agent_mib-view__d118389e74"></a><a name="d118389e74"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建一个视图包含MIB-II的所有对象。</p>
+<pre class="screen">[Quidway]<strong> snmp-agent mib-view included mib2view 1.3.6.1.2.1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="snmp-agent_group.html">snmp-agent group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

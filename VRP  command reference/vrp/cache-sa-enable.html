@@ -1,0 +1,87 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="cache-sa-enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/msdp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cache-sa-enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>cache-sa-enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="cache-sa-enable"></a><a name="cache-sa-enable"></a>
+
+
+<h1 class="topictitle1">cache-sa-enable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>cache-sa-enable</strong>命令用来使能SA缓存功能，收到SA消息后缓存其中包含的（S，G）项。</p>
+<p><strong>undo cache-sa-enable</strong>命令用来关闭SA缓存功能。</p>
+<p>缺省情况下，<span class="keyword">路由器</span>使能SA缓存功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>cache-sa-enable</strong></p>
+<p><strong>undo cache-sa-enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例MSDP视图、VPN实例MSDP视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当RP收到一个新的组加入消息（*，G）时：</p>
+<ul>
+<li><div class="p">如果RP使能了SA缓存功能，则查找SA Cache。<ul>
+<li><p>如果SA Cache中有对应的（S，G），则RP直接加入以S为根的SPT。</p>
+</li>
+<li><p>如果SA Cache中没有对应的（S，G），则不予处理。</p>
+</li>
+</ul>
+</div>
+</li>
+<li><p>如果关闭了SA缓存功能：</p>
+<ul>
+<li><p>如果配置了SA请求，则RP主动向指定的MSDP peer发送SA请求消息，并等待回复。</p>
+</li>
+<li><p>如果没有配置SA请求，则等候其MSDP peer在下一个周期发来的SA消息。</p>
+</li>
+</ul>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="cache-sa-enable__d5686e79"></a><a name="d5686e79"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例下，关闭<span class="keyword">路由器</span>的SA缓存功能。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>msdp</strong></pre>
+<pre class="screen">[Quidway-msdp] <strong>undo cache-sa-enable</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/msdp_configuration_commands.html">MSDP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,62 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="firewall fragments-inspect">
+<meta name="DC.Relation" scheme="URI" content="../vrp/firewall_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="firewall_packet-filter.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="firewall_fragments-inspect">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>firewall fragments-inspect</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="firewall_fragments-inspect"></a><a name="firewall_fragments-inspect"></a>
+
+<h1 class="topictitle1">firewall fragments-inspect</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>firewall</strong> <strong>fragments-inspect</strong>命令用来打开分片报文检测开关，<strong>undo</strong> <strong>firewall</strong> <strong>fragments-inspect</strong>命令用来关闭分片报文检测开关。</p>
+<p>缺省情况下，分片检测开关为关闭。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>firewall</strong> <strong>fragments-inspect</strong> { <strong>all</strong> | <strong>slot</strong> <em>slot-id</em> }</p>
+<p><strong>undo</strong> <strong>firewall</strong> <strong>fragments-inspect</strong> { <strong>all</strong> | <strong>slot</strong> <em>slot-id</em> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：配置作用于所有接口板。</p>
+<p><em>slot-id</em>：为指定的接口板槽号。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>此命令用来实现包过滤防火墙的精确匹配功能。打开分片检测开关就可以进行分片报文的精确匹配，包过滤防火墙将记录分片报文的状态，根据高级ACL规则对三层（IP层）以外的信息进行精确匹配。</p>
+<p>包过滤防火墙对分片报文的状态记录需要消耗一定的系统资源，如果不使用精确匹配模式，则可以关闭此功能，以提高系统运行效率，减小系统开销。</p>
+<p>只有打开了此分片报文检测开关，才可以对分片报文进行精确匹配。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="firewall_fragments-inspect__d76556e84"></a><a name="d76556e84"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 打开所有接口板的分片检测开关。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> firewall fragments-inspect all</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/firewall_configuration_commands.html">防火墙配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="firewall_packet-filter.html">firewall packet-filter</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

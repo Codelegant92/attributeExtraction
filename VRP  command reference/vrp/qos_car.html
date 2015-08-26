@@ -1,0 +1,104 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qos car">
+<meta name="DC.Relation" scheme="URI" content="../vrp/traffic_policing_traffic_shaping_rate_limiting_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qos_car">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qos car</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qos_car"></a><a name="qos_car"></a>
+
+
+<h1 class="topictitle1">qos car</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qos</strong> <strong>car</strong>命令用来在某个接口实施CAR策略。</p>
+<p><strong>undo qos car</strong>命令用来删除接口上的某个CAR策略。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qos car </strong>{<strong> inbound </strong>|<strong> outbound</strong> } { <strong>any </strong>| <strong>acl </strong><em>acl-index</em> | <strong>carl</strong><em> carl-index</em> } <strong>cir</strong><em> cir </em><strong>cbs</strong><em> cbs </em><strong>ebs</strong><em> ebs </em><strong>green</strong><em> action </em><strong>red</strong><em> action</em></p>
+<p><strong>undo
+qos car </strong>{<strong> inbound </strong>|<strong> outbound</strong> } { <strong>any </strong>| <strong>acl</strong><em> acl-index</em> | <strong>carl</strong><em> carl-index</em> } <strong>cir</strong><em> cir </em><strong>cbs</strong><em> cbs </em><strong>ebs</strong><em> ebs</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>car</strong>：在接口上应用承诺访问速率策略进行流量监管。</p>
+<p><strong>inbound</strong>：对接口接收到的数据包进行限速。</p>
+<p><strong>outbound</strong>：对接口发送的数据包进行限速。</p>
+<p><strong>any</strong>：对所有的IP数据包进行限速。</p>
+<p><strong>acl</strong>：对匹配访问控制列表（ACL）的数据包进行限速。</p>
+<p><em>acl-index</em>：访问控制列表编号，取值范围2000～3999。</p>
+<p><strong>carl</strong>：对匹配CAR列表的数据包进行限速。</p>
+<p><em>carl-index</em>：承诺访问速率列表编号，取值范围1～199。</p>
+<p><strong>cir</strong>：承诺信息速率。</p>
+<p><em>committed-information-rate</em>：承诺信息速率的值，取值范围是8000bps~155000000bps。</p>
+<p><strong>cbs</strong>：承诺突发尺寸，实际平均速率在承诺速率以内时的突发流量。</p>
+<p><em>committed-burst-size</em>：承诺突发尺寸的值，取值范围是15000bit～155000000bit。cbs的取值应大于等于cir取值的1/2，当cir&gt;30000bit/s时，缺省取值是cir的1/2，当cir&lt;30000bit/s时，缺省取值是15000bit。</p>
+<p><strong>ebs</strong>：过度突发尺寸。</p>
+<p><em>excess-burst-size</em>：过度突发尺寸，取值范围是0bit～155000000bit。</p>
+<p><strong>green</strong>：数据流量符合承诺速率时对数据包采取的动作。</p>
+<p><strong>red</strong>：数据流量不符合承诺速率时对数据包采取的动作。</p>
+<p><em>action</em>：对数据包采取的动作，有以下几种：</p>
+<ul>
+<li><p><strong>continue</strong>：继续由下一个CAR策略处理。</p>
+</li>
+<li><p><strong>discard</strong>：丢弃数据包。</p>
+</li>
+<li><p><strong>pass</strong>：发送数据包。</p>
+</li>
+<li><p><strong>remark-prec-continue</strong>：设置新的IP优先级<em>new-precedence</em>，并继续由下一个CAR策略处理，取值范围0～7。</p>
+</li>
+<li><p><strong>remark-prec-pass</strong>：设置新的IP优先级<em>new-precedence</em>，并发送数据包到目的地址，取值范围0～7。</p>
+</li>
+<li><p><strong>remark-mpls-exp-continue</strong>：设置新的MPLS EXP值<em>new-mpls-exp</em>，并继续由下一个CAR策略处理，取值范围0～7。</p>
+</li>
+<li><p><strong>remark-mpls-exp-pass</strong>：设置新的MPLS EXP值<em>new-mpls-exp</em>，并发送数据包到目的地址，取值范围0～7。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令只对IP数据包进行处理，对其它的数据包不进行处理。</p>
+<p>使用<strong>acl</strong>配置将对符合某一ACL的流配置监管参数，使用不同的ACL或<strong>carl</strong>可以在接口上配置多个CAR策略，策略的执行顺序与配置的先后顺序一致。针对同一个<strong>acl</strong>或<strong>carl</strong>重复执行时，最先配置的策略生效，后面配置的策略不生效。</p>
+<p>使用<strong>any</strong>将对所有流设置监管参数，针对<strong>any</strong>重复执行该命令时，先配置的策略生效，后面配置的策略不生效。</p>
+<p><strong>any</strong>和<strong>acl</strong>同时配置时，如果<strong>any</strong>先配置，<strong>any</strong>的策略生效，<strong>acl</strong>的策略不生效；反之，<strong>acl</strong>的策略生效（与单独使用<strong>acl</strong>时策略的生效情况一致），<strong>any</strong>的策略不生效。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qos_car__d109246e288"></a><a name="d109246e288"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在接口GE6/0/0的出方向上对满足CARL规则1的报文进行流量监管。报文正常流量为38400bit，在第一时间可以有2倍于正常流量的突发流量通过，以后速率小于等于38400bit时正常发送，大于38400bit时，报文优先级改为0并发送。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface GigabitEthernet6/0/0</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet6/0/0]<strong> <strong>qos car outbound carl 1 cir 38400 cbs 76800 ebs 0 green pass red remark-prec-pass 0</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/traffic_policing_traffic_shaping_rate_limiting_configuration_commands.html">流量监管、流量整形和接口限速配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

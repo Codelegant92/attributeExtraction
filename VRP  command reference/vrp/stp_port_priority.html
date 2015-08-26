@@ -1,0 +1,72 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="stp port priority">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mstp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="stp_port_priority">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>stp port priority</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="stp_port_priority"></a><a name="stp_port_priority"></a>
+
+
+<h1 class="topictitle1">stp port priority</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>stp port priority</strong>命令用来配置当前端口在指定生成树实例上的优先级。</p>
+<p><strong>undo stp port priority</strong>命令用来恢复当前端口在指定生成树实例上的优先级的缺省值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>stp</strong> [ <strong>instance</strong> <em>instance-id </em>]<strong> port priority </strong><em>priority</em></p>
+<p><strong>undo stp</strong> [ <strong>instance</strong> <em>instance-id </em>]<strong> port priority</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>instance </strong><em>instance-id</em>：指定生成树实例。<em>instance-id</em>表示生成树实例的编号，取值范围是0～48，取值为0表示的是CIST。</p>
+<p><strong>priority </strong><em>priority</em>：端口的优先级。取值范围是0～240，步长为16，如0、16、32等。缺省值是128。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>Ethernet接口视图、GE接口视图、Eth-Trunk接口视图、VE接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在使用<strong>stp port priority</strong>命令或<strong>undo stp port priority</strong>命令时，如果参数<em>instance-id</em>取值为0或者不输入<strong>instance</strong> <em>instance-id</em>参数，表示配置的是当前端口在CIST上的优先级。</p>
+<p>端口优先级可以影响端口在指定生成树实例上的角色。用户可以在不同MSTI上对同一端口配置不同的优先级，从而使不同VLAN的流量沿不同的物理链路转发，完成按VLAN负载分担的功能。端口优先级的改变时，MSTP会重新计算端口的角色并进行状态迁移。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="stp_port_priority__d121920e96"></a><a name="d121920e96"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置以太网接口GE 1/0/0在生成树实例2上的优先级为16。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> portswitch</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> stp instance 2 port priority 16</strong></pre>
+</div></div></div>
+
+</div>
+
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mstp_configuration_commands.html">MSTP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

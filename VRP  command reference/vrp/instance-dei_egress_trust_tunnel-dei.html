@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="instance-dei egress trust tunnel-dei">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pbb-te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_service-instance.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="instance-dei_egress_trust_tunnel-dei">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>instance-dei egress trust tunnel-dei</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="instance-dei_egress_trust_tunnel-dei"></a><a name="instance-dei_egress_trust_tunnel-dei"></a>
+
+
+<h1 class="topictitle1">instance-dei egress trust tunnel-dei</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>instance-dei egress trust tunnel-dei</strong>命令用来配置宿端业务实例的DEI，使宿端业务实例的DEI信任隧道的DEI值。</p>
+<p><strong>undo instance-dei egress</strong>命令用来将宿端业务实例的DEI恢复为缺省值。</p>
+<p>缺省情况下，宿端业务实例的DEI不信任隧道的DEI值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>instance-dei egress trust tunnel-dei</strong></p>
+<p><strong>undo instance-dei egress</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>业务实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>报文入隧道前会增加两层TAG，即B-TAG和I-TAG，其中B-TAG用于标识隧道、I-TAG用于标识业务实例。DEI作为B-TAG、I-TAG中的一个字段，主要应用于QoS业务，其中：</p>
+<ul>
+<li><p>业务实例的DEI表示报文的I-TAG DEI。</p>
+</li>
+<li><p>隧道的DEI表示报文的B-TAG DEI。</p>
+</li>
+<li><p>用户的DEI表示报文的S-TAG DEI。</p>
+</li>
+</ul>
+<p>当宿端业务实例DEI信任隧道DEI时，报文出隧道后， I-TAG DEI直接复制B-TAG DEI。</p>
+<p>对于封装映射模式为S-Tagged的one-to-one模式的业务实例，出隧道解封装时，S-TAG DEI直接复制I-TAG DEI。如果I-TAG DEI直接复制B-TAG DEI，最终即表现为S-TAG DEI直接复制B-TAG DEI。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="instance-dei_egress_trust_tunnel-dei__d82849e64"></a><a name="d82849e64"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置当前业务实例宿端I-TAG的DEI为信任B-TAG的DEI。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> service-instance mysi</strong></pre>
+<pre class="screen">[Quidway-service-instance-mysi]<strong> instance-dei egress trust tunnel-dei</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pbb-te_configuration_commands.html">PBB-TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_service-instance.html">display service-instance</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,90 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mip create-type（MD视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_default_md.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_md.html">
+<meta name="DC.Relation" scheme="URI" content="display_cfm_mip.html">
+<meta name="DC.Relation" scheme="URI" content="display_mip_create-type.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mip_create-type_md_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mip create-type（MD视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mip_create-type_md_view"></a><a name="mip_create-type_md_view"></a>
+
+
+<h1 class="topictitle1">mip create-type（MD视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mip create-type</strong>命令用来配置MD或默认MD内的MIP生成规则。</p>
+<p><strong>undo mip create-type</strong>命令用来将MD或默认MD内的MIP生成规则恢复为缺省值。</p>
+<p>缺省情况下，MD或默认MD内的MIP生成规则为<strong>none</strong>，即不生成MIP。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mip create-type</strong> { <strong>default</strong> | <strong>explicit</strong> | <strong>none</strong> }</p>
+<p><strong>undo mip create-type </strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>default</strong>：如果端口不存在更高级别的MEP，并且不存在更低级别的MIP，则可以在该端口上创建MIP。在本类型下，接口上没有配置MEP也可创建MIP。</p>
+<p><strong>explicit</strong>：如果端口存在更低级的MEP但不存在更高级别的MEP，而且不存在更低级别的MIP，则可以创建MIP。在本类型下，接口上只有已配置了更低级别的MEP才可能创建MIP。</p>
+<p><strong>none</strong>：如果端口的MIP的生成规则为none类型，即不自动创建MIP。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MD视图、默认MD视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>现如今，802.1ag协议分为draft7草案版本和standard2007标准版本，本命令只支持standard2007标准版本使用。</p>
+<p>当MD中的设备都使能了CCM发送功能后，各个MEP定期发送CCM报文。当某个MEP连续3个CCM发送周期没有接收到另一个远端MEP发送的CCM报文，则认为和该MEP之间发生了连通性故障。为了确定故障的位置，需要用MIP节点来定位。</p>
+<p>在MD或默认MD内配置MIP生成规则后，所属MD或默认MD内的所有端口都使用所配置的MIP生成规则生成MIP节点。</p>
+<p>配置了MIP的生成规则为default类型或explicit类型后，设备会根据规则自动创建MIP。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>本命令仅支持所属MD或默认MD内的二层端口上配置MIP创建规则。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mip_create-type_md_view__d92978e78"></a><a name="d92978e78"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置一个名称为customer的MD内MIP生成规则为none。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm md customer level 1</strong></pre>
+<pre class="screen">[Quidway-md-customer]<strong> mip create-type none</strong></pre>
+<p># 配置默认级别MD内MIP生成规则为default。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> cfm default md</strong></pre>
+<pre class="screen">[Quidway-default-md]<strong> mip create-type default</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_default_md.html">cfm default md</a></div>
+<div><a href="cfm_md.html">cfm md</a></div>
+<div><a href="display_cfm_mip.html">display cfm mip</a></div>
+<div><a href="display_mip_create-type.html">display mip create-type</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

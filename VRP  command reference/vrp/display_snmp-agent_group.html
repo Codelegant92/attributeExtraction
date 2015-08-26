@@ -1,0 +1,158 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display snmp-agent group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_snmp-agent_group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display snmp-agent group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_snmp-agent_group"></a><a name="display_snmp-agent_group"></a>
+
+
+<h1 class="topictitle1">display snmp-agent group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display snmp-agent group</strong>命令用来显示基于USM的组信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display snmp-agent group </strong>[ <em>group-name</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>group-name</em>：指定要显示SNMP信息的组名，1～32字符。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在管理实体配置基于SNMPv3的组信息时，需要使用<strong>display snmp-agent group</strong>命令查询代理的组信息，不带参数的情况下显示所有的组信息，包括组名、安全模式、存储方式等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_snmp-agent_group__d66059e46"></a><a name="d66059e46"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示SNMP组名以及安全模式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display snmp-agent group</strong>
+
+Group name: gg
+       Security model: v3 noAuthnoPriv
+       Readview: ViewDefault
+       Writeview: &lt;no specified&gt;
+       Notifyview :&lt;no specified&gt;
+       Storage-type: nonVolatile
+       Acl:2000</pre>
+
+<div class="tablenoborder"><a name="display_snmp-agent_group__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_snmp-agent_group__tb_01" frame="border" border="1" rules="all"><caption>表1 display snmp-agent group命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d66059e67"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d66059e71"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d66059e67 "><p>Group name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d66059e71 "><p>SNMP组名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d66059e67 "><p>Security model</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d66059e71 "><p>组所用的安全模式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d66059e67 "><p>Readview</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d66059e71 "><p>该组对应的只读的MIB视图名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d66059e67 "><p>Writeview</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d66059e71 "><p>该组对应的可写的MIB视图名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d66059e67 "><p>Notifyview</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d66059e71 "><p>该组对应的通知的MIB视图名</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d66059e67 "><p>Storage-type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d66059e71 "><p>存储方式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d66059e67 "><p>Acl</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d66059e71 "><p>该组对应的访问控制列表号</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="snmp-agent_group.html">snmp-agent group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

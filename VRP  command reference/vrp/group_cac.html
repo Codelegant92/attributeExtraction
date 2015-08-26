@@ -1,0 +1,103 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="group（CAC）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv4_multicast_cac_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="group_cac">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>group（CAC）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="group_cac"></a><a name="group_cac"></a>
+
+
+<h1 class="topictitle1">group（CAC）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>group</strong>命令用来设置某全局节目组、某VLAN节目组或某VSI节目组内的组播组成员，并可以设置每个组播组成员的带宽，若未设置带宽的组播组，其带宽大小为0。</p>
+<p><strong>undo</strong> <strong>group</strong>命令用来取消对某全局节目组、某VLAN节目组或某VSI节目组内的组播组成员的设置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>group </strong><em>group-address</em> {<em> group-mask-length | group-mask</em> } [<strong> per-bandwidth </strong><em>bandwidth</em> ] </p>
+<p><strong>undo</strong> <strong>group </strong><em>group-address</em> { <em>group-mask-length | group-mask</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p> <em>group-address</em>{<em> group-mask-length | group-mask</em> }：组播组地址、地址掩码长度、地址掩码。用来指定所要删除的组播组地址，采用点分十进制表示。</p>
+<p><strong>per-bandwidth </strong><em>bandwidth</em>：每个组播组的带宽。整数形式。取值范围是1～4194304，单位是千比特/秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>某全局节目组视图、某VLAN节目组视图和某VSI节目组视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2 ：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>全局节目组的组播组的地址不能与全局的所有节目组内的其他组播组地址重叠，不能与VLAN节目组内的组播组地址重叠，不能与VSI节目组内组播组地址重叠。</p>
+<p>此命令为不可覆盖式命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="group_cac__d78845e81"></a><a name="d78845e81"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在VLAN10的节目组A1中设置节目组</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>l2-multicast-channel vlan 10</strong></strong></pre>
+<pre class="screen">[Quidway-l2-channel-vlan10]<strong> <strong>channel A1</strong></strong></pre>
+<pre class="screen">[Quidway-l2-channel-vlan10-A1]<strong> group 238.0.0.1 30 per-bandwidth 4</strong></pre>
+<pre class="screen">[Quidway-l2-channel-vlan10-A1]</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="group_cac__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="group_cac__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.43854526148128%" id="d78845e120"><p>版本Release</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.56145473851871%" id="d78845e124"><p>修订内容Modification</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.43854526148128%" headers="d78845e120 "><p>VRPV500R006C01B070</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.56145473851871%" headers="d78845e124 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv4_multicast_cac_configuration_commands.html">IPv4组播CAC配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,217 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display traffic-statistics vsi peer negotiation-vc-id">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_traffic-statistics_vsi_all.html">
+<meta name="DC.Relation" scheme="URI" content="reset_traffic-statistics_vsi_peer_negotiation-vc-id.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_traffic-statistics_vsi_peer_negotiation-vc-id">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display traffic-statistics vsi peer negotiation-vc-id</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_traffic-statistics_vsi_peer_negotiation-vc-id"></a><a name="display_traffic-statistics_vsi_peer_negotiation-vc-id"></a>
+
+
+<h1 class="topictitle1">display traffic-statistics vsi peer negotiation-vc-id</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display traffic-statistics vsi peer negotiation-vc-id</strong>命令用来显示指定VSI-Name中指定Martini方式VPLS
+PW的公网流量统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display traffic-statistics vsi</strong> <em>vsi-name</em> [ <strong>peer</strong> <em>peer-address</em> [ <strong>negotiation-vc-id</strong> <em>vc-id</em> ]
+]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vsi</strong> <em>vsi-name</em>：VSI实例的名称。字符串形式，不支持空格，区分大小写，长度范围是1～31。</p>
+<p><strong>peer</strong> <em>peer-addres</em>：PW的对端IP地址。</p>
+<p><strong>negotiation-vc-id</strong> <em>vc-id</em>：PW的ID。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在所有视图下显示指定Martini方式VPLS PW流量统计信息。Martini方式VPLS PW由用户指定的VSI-Name与指定的对端IP地址和PW
+ID唯一确定。</p>
+<p>5分钟以内，如果出现了PW down的情况，PW down之前统计的流量不被用来计算5分钟的流量速率。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_traffic-statistics_vsi_peer_negotiation-vc-id__d69250e74"></a><a name="d69250e74"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在系统视图下显示指定Martini方式VPLS PW的出流量统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display traffic-statistics vsi-name newvsi peer 100.22.33.20 negotiation-vc-id 2</strong></pre>
+<pre class="screen">vsi-name: newvsi
+ Peer-address: 100.22.33.20
+ Negotiation-vc-id: 2
+ Statistics last cleared: never
+ Last 300 seconds input rate : 0 bytes/sec, 0 packets/sec
+ Last 300 seconds output rate: 0 bytes/sec, 0 packets/sec
+ Input: 0 bytes, 0 packets
+ Output: 0 bytes, 0 packets</pre>
+
+<div class="tablenoborder"><a name="display_traffic-statistics_vsi_peer_negotiation-vc-id__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_traffic-statistics_vsi_peer_negotiation-vc-id__tb_01" frame="border" border="1" rules="all"><caption>表1 display traffic-statistics vsi peer negotiation-vc-id命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="39.67384380175819%" id="d69250e96"><p>主要字段</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="60.32615619824182%" id="d69250e100"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="39.67384380175819%" headers="d69250e96 "><p>Vsi-name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.32615619824182%" headers="d69250e100 "><p>VSI名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.67384380175819%" headers="d69250e96 "><p>Peer-address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.32615619824182%" headers="d69250e100 "><p>对端地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.67384380175819%" headers="d69250e96 "><p>Negotiation-vc-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.32615619824182%" headers="d69250e100 "><p>PW的vc id</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.67384380175819%" headers="d69250e96 "><p>Statistics last cleared</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.32615619824182%" headers="d69250e100 "><p>上次清除统计信息的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.67384380175819%" headers="d69250e96 "><p>Last 300 seconds input rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.32615619824182%" headers="d69250e100 "><p>300秒入流量统计速率</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.67384380175819%" headers="d69250e96 "><p>Last 300 seconds output rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.32615619824182%" headers="d69250e100 "><p>300秒出流量统计速率</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.67384380175819%" headers="d69250e96 "><p>Input</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.32615619824182%" headers="d69250e100 "><p>收到报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.67384380175819%" headers="d69250e96 "><p>Output</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.32615619824182%" headers="d69250e100 "><p>发送报文数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_traffic-statistics_vsi_peer_negotiation-vc-id__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_traffic-statistics_vsi_peer_negotiation-vc-id__tb_02" frame="border" border="1" rules="all">
+
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="39.58468851638729%" id="d69250e213"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="59.03427570678009%" id="d69250e217"><p>修订内容</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="0.6905178884163121%" id="d69250e221">&nbsp;</th>
+
+<th class="cellrowborder" valign="top" width="0.6905178884163121%" id="d69250e223">&nbsp;</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="39.58468851638729%" headers="d69250e213 "><p>VRPV500R005C02B210</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.03427570678009%" headers="d69250e217 "><p>增加基于VSI显示流量统计信息</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="0.6905178884163121%" headers="d69250e221 ">&nbsp;</td>
+
+<td class="cellrowborder" valign="top" width="0.6905178884163121%" headers="d69250e223 ">&nbsp;</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_traffic-statistics_vsi_all.html">reset traffic-statistics
+vsi all.xml</a></div>
+<div><a href="reset_traffic-statistics_vsi_peer_negotiation-vc-id.html">reset
+traffic-statistics vsi peer negotiation-vc-id</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

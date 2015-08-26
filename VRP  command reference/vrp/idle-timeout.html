@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="idle-timeout">
+<meta name="DC.Relation" scheme="URI" content="../vrp/user_management_commands.html">
+<meta name="DC.Relation" scheme="URI" content="free_user-interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="idle-timeout">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>idle-timeout</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="idle-timeout"></a><a name="idle-timeout"></a>
+
+
+<h1 class="topictitle1">idle-timeout</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>idle-timeout</strong>命令用来设置用户界面断连的超时时间，即用户没有输入命令的时间。</p>
+<p><strong>undo idle-timeout</strong>命令用来恢复用户界面断连的超时时间的缺省值。</p>
+<p>缺省情况下，超时时间为10分钟。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>idle-timeout</strong> <em>minutes</em> [ <em>seconds</em> ]</p>
+<p><strong>undo idle-timeout</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>minutes</em>：用户界面断连的超时时间的分钟数。整数形式，取值范围是0～35791，单位是分。</p>
+<p><em>seconds</em>：用户界面断连的超时时间的秒数。整数形式，取值范围是0～59，单位是秒。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户界面视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行命令<strong>idle-timeout</strong>后，还必须在AAA视图下再执行<strong>local-user user-name idle-cut</strong>命令来使能用户闲置切断功能，才能使得登录到该VTY界面的用户在超时时间到达后自动断开连接。设置执行命令<strong>idle-timeout 0 0</strong>即关闭VTY用户界面的超时断连功能。</p>
+<p>如果VTY用户界面没有设置闲置断连功能，则有可能导致其他用户无法获得空闲连接。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="idle-timeout__d80163e70"></a><a name="d80163e70"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置超时为1分钟30秒。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>user-interface console 0</strong></strong></pre>
+<pre class="screen">[Quidway-ui-console0]<strong> idle-timeout 1 30</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/user_management_commands.html">用户管理命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="free_user-interface.html">free user-interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

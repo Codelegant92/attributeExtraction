@@ -1,0 +1,128 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="patch load">
+<meta name="DC.Relation" scheme="URI" content="../vrp/update_and_maintenance.html">
+<meta name="DC.Relation" scheme="URI" content="patch_active.html">
+<meta name="DC.Relation" scheme="URI" content="patch_run.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="patch_load">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>patch load</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="patch_load"></a><a name="patch_load"></a>
+
+
+<h1 class="topictitle1">patch load</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>patch load</strong>命令用来在单板上加载补丁包中与单板匹配的补丁。</p>
+<p>缺省情况下，在主用主控板上加载补丁。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>patch load</strong> <em>file-name</em> [ <strong>all</strong> [ <strong>active</strong> | <strong>run</strong> ] | <strong>slave</strong> | <strong>slot</strong> <em>slot-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>file-name</em>：补丁包的存放路径及文件名。字符串形式，格式为[ <em>drive-name</em> ][ <em>file-name </em>]，长度范围是1～48。如果未指定<em>drive-name</em>，则此值为默认的设备名。</p>
+<p><strong>all</strong>：为所有单板加载补丁。</p>
+<p><strong>active</strong>：加载后直接激活补丁。</p>
+<p><strong>run</strong>：加载后直接运行补丁。</p>
+<p><strong>slave</strong>：为备用主控板加载补丁。</p>
+<p><strong>slot</strong> <em>slot-id</em>：为指定的单板加载补丁。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在加载补丁之前系统要对补丁包进行解析，检查补丁包中补丁文件的合法性，并获取补丁文件的属性(包括补丁类型、单板类型、版本信息)。</p>
+<p>为单板加载补丁时，系统会根据补丁文件的属性在补丁包中查找匹配的补丁文件，查找成功，则进行加载操作。如果补丁包中没有适合某类型单板的补丁，则不加载。</p>
+<p>执行<strong>patch load</strong> <strong>all</strong>命令，将补丁包里各种类型的补丁加载到相应的单板上(包括主用主控板、备用主控板和所有接口板)。如果指定参数，在补丁加载后将直接达到激活态或运行态，该操作将影响所有单板。</p>
+<p>补丁文件必须在主控板根目录下。</p>
+<p>当备用主控板正在注册中且尚未注册成功时，如果进行补丁加载操作，则系统会提示：是否确认继续执行补丁操作。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>目前此命令仅在NE40E、NE80E、NE5000E上可用。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="patch_load__d102633e112"></a><a name="d102633e112"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 加载补丁包文件。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>patch load pp031.pat all run</strong></strong></pre>
+<pre class="screen">Loading the patch，please wait a moment ...</pre>
+<pre class="screen">Info: Patch load successfully on slot 2.</pre>
+<pre class="screen">Info: Patch active successfully on slot 2.</pre>
+<pre class="screen">Info: Patch run successfully on slot 2.</pre>
+<pre class="screen">Info: Patch load successfully on slot 3.</pre>
+<pre class="screen">Info: Patch active successfully on slot 3.</pre>
+<pre class="screen">Info: Patch run successfully on slot 3.</pre>
+<pre class="screen">Info: Patch load successfully on master board.</pre>
+<pre class="screen">Info: Patch active successfully on master board.</pre>
+<pre class="screen">Info: Patch run successfully on master board.</pre>
+<pre class="screen">Info: Patch load successfully on slave board.</pre>
+<pre class="screen">Info: Patch active successfully on slave board.</pre>
+<pre class="screen">Info: Patch run successfully on slave board.</pre>
+<pre class="screen">Info: Run NP Patch successful .</pre>
+<pre class="screen">Info: NP Patch operation successfully.</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="patch_load__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="patch_load__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d102633e163"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d102633e167"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d102633e163 "><p>VRPV500R005C02B080</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d102633e167 "><p>将补丁文件名<em>file-name</em>的长度由4～64修改为1～64。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/update_and_maintenance.html">升级维护</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="patch_active.html">patch active</a></div>
+<div><a href="patch_run.html">patch run</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

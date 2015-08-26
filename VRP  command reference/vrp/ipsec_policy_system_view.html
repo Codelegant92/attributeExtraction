@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ipsec policy（系统视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="security_acl.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_local.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_remote.html">
+<meta name="DC.Relation" scheme="URI" content="sa_duration_security_policy_view.html">
+<meta name="DC.Relation" scheme="URI" content="proposal.html">
+<meta name="DC.Relation" scheme="URI" content="display_ipsec_policy.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy-template.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipsec_policy_system_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ipsec policy（系统视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipsec_policy_system_view"></a><a name="ipsec_policy_system_view"></a>
+
+<h1 class="topictitle1">ipsec policy（系统视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ipsec</strong> <strong>policy</strong>命令用来创建或修改一条安全策略，并进入安全策略（ipsec policy）视图。<strong> undo</strong> <strong>ipsec</strong> <strong>policy</strong>命令用来删除安全策略。</p>
+<p>缺省情况下，没有安全策略存在。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ipsec</strong> <strong>policy</strong> <em>policy-name</em> <em>seq-number</em> [ <strong>manual</strong> | <strong>isakmp</strong> [ <strong>template</strong> <em>template-name</em> ] ]</p>
+<p><strong>undo</strong> <strong>ipsec</strong> <strong>policy</strong> <em>policy-name</em> [ <em>seq-number </em>]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>policy-name</em>：为此安全策略的名字。命名规则为：长度范围是1～15个字符，不区分大小写，字符可以是英文字母或者数字，不能带减号&#8220;-&#8221;。</p>
+<p><em>seq-number</em>：为此安全策略的顺序号，取值范围1～10000，值越小优先级越高。</p>
+<p><strong>manual</strong>：指定用手工方式建立安全联盟。</p>
+<p><strong>isakmp</strong>：指定通过IKE协商建立安全联盟。</p>
+<p><strong>template</strong>：指定采用策略模板动态创建安全联盟。此<em>policy-name</em>将引用一个<em>template-name</em>。<em>template-name</em>是一个策略模板。在此之前，名为template-name的安全策略模板必须已经创建。</p>
+<p><em>template-name</em>：指定被引用的template的名字。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用此命令创建安全策略时，必须指定协商方式；在安全策略创建后，不能修改协商方式，如果要修改安全策略的协商方式，只能先删除这条安全策略，在重新创建安全策略时，指定新的协商方式。</p>
+<p>具有相同名字的安全策略一起组成一个安全策略组。由名字和顺序号一起确定一条唯一的安全策略，在一个安全策略组中最大可以设置100条安全策略（对于NE16E、NE08E、NE05产品，最大可以设置2048条安全策略）。在一个安全策略组中，顺序号<em>seq-number</em>越小的安全策略，优先级越高。在一个接口上应用一个安全策略组，实际上是同时应用了安全策略组中所有的安全策略，从而能够对不同的数据流采用不同的安全联盟进行保护。</p>
+<p><strong>ipsec</strong> <strong>policy</strong> <em>policy-name seq-number</em> <strong>isakmp</strong> <strong>template</strong> <em>template-name</em>命令创建一个安全策略，该策略由IKE协商建立安全联盟，而策略的参数根据<em>template-name</em>指定的策略模板来确定。在配置此命令前，必须已经使用命令<strong>ipsec</strong> <strong>policy-template</strong>创建策略模板。在协商过程中进行策略匹配时，策略模板中定义的参数必须相符，而策略模板中没有定义的参数由发起方来决定，响应方接受发起方的建议，对于发起方配置的acl匹配规则，要求必须指定源网段或源主机。策略模板中必须定义的参数是提议（proposal）和ike-peer参数，其它参数为可选配置。</p>
+<p>注意：IKE不会用带有<strong>template</strong>参数的策略去发起协商。但可以用带有<strong>template</strong>参数的策略响应对方发起的协商。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ipsec_policy_system_view__d85191e152"></a><a name="d85191e152"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置名字为policy1，顺序号为100，采用ISAKMP方式协商的安全策略。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ipsec policy policy1 100 isakmp</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipsec_policy_interface_view.html">ipsec policy（接口视图）</a></div>
+<div><a href="security_acl.html">security acl</a></div>
+<div><a href="tunnel_local.html">tunnel local</a></div>
+<div><a href="tunnel_remote.html">tunnel remote</a></div>
+<div><a href="sa_duration_security_policy_view.html">sa duration（安全策略视图）</a></div>
+<div><a href="proposal.html">proposal</a></div>
+<div><a href="display_ipsec_policy.html">display ipsec policy</a></div>
+<div><a href="ipsec_policy-template.html">ipsec policy-template</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

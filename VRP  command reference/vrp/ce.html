@@ -1,0 +1,71 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ce">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="connection.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ce">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ce</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ce"></a><a name="ce"></a>
+
+<h1 class="topictitle1">ce</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ce</strong>命令用来在VPN内创建一个CE，并进入MPLS-L2VPN-CE视图。</p>
+<p><strong>undo ce</strong>命令用来删除配置的CE。</p>
+<p>缺省情况下，系统在VPN内没有创建任何CE。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ce</strong> <em>ce-name</em> [ <strong>id</strong> <em>ce-id </em>[ <strong>range</strong> <em>ce-range</em> ] [ <strong>default-offset </strong><em>ce-offset </em>] ] </p>
+<p><strong>undo ce </strong><em>ce-name</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ce-name</em>：在当前PE的当前VPN上指定CE名称。字符串形式，不支持空格，区分大小写，长度范围是1～20。</p>
+<p><strong>id</strong><em> ce-id</em>：VPN内CE的ID值。十进制整数形式，取值范围是0～249。CE ID用于在一个VPN中唯一确定一个CE。为了方便配置，建议CE ID从1开始，采用连续自然数编号。</p>
+<p><strong>range</strong><em> ce-range</em>：当前PE上最多可连接的CE数量。十进制整数形式，取值范围是1～250。缺省值为10。</p>
+<p><strong>default-offset</strong><em> ce-offset</em>：缺省的初始ce-offset（ce-offset是指与本CE建立连接的本地其他CE或远端CE的CE ID）。十进制整数形式，取值为0或1。缺省值为0。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MPLS-L2VPN实例视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置此命令前，先要配置L2VPN实例的路由标志Router-Distinguisher。</p>
+<p>修改CE range只能把CE range变大，不能变小。一台设备为其所有Kompella方式L2 VPN实例和VPLS VSI实例的Range分配标签时共用一个标签块，因此Kompella方式L2 VPN实例和VPLS VSI实例的Range总和不能超过该标签块的大小，否则系统会提示分配的标签数量超过了系统允许的最大值，无法获得标签，创建CE或分配VSI实例的Site ID失败。</p>
+<p>系统允许使用的最大标签块大小与产品相关。</p>
+<p>此命令设置的default-offset、CE range与<a href="connection.html">connection</a>命令中的ce-offset之间约束关系如下：</p>
+<ul><li><p>如果default-offset为0，ce-offset的值必须小于CE rang。</p>
+</li><li><p>如果default-offset为1，ce-offset的值必须小于或等于CE rang，且不能为0。</p>
+</li></ul>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ce__d6002e96"></a><a name="d6002e96"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在VPN内创建一个CE。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>mpls l2vpn vpn1 encapsulation ethernet</strong></pre>
+<pre class="screen">[Quidway-mpls-l2vpn-vpn1] <strong>route-distinguisher 100:1</strong></pre>
+<pre class="screen">[Quidway-mpls-l2vpn-vpn1] <strong>ce ce1 id 1</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="connection.html">connection</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

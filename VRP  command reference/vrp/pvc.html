@@ -1,0 +1,85 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="pvc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/atm_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_atm_pvc-info.html">
+<meta name="DC.Relation" scheme="URI" content="pvc_max-number.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="pvc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>pvc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="pvc"></a><a name="pvc"></a>
+
+
+<h1 class="topictitle1">pvc</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>pvc</strong>命令用来创建一条指定VPI/VCI的PVC，并进入PVC视图。</p>
+<p><strong>undo
+pvc</strong>命令用来删除指定的PVC。</p>
+<p>缺省情况下，不创建任何PVC。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>pvc</strong> { <em>pvc-name</em> [<em> vpi</em>/<em>vci</em> ] | <em>vpi</em>/<em>vci</em> }</p>
+<p><strong>undo
+pvc</strong> { <em>pvc-name</em> [<em> vpi</em>/<em>vci</em> ] | <em>vpi</em>/<em>vci</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>pvc-name</em>：PVC名，最长为16个字符，在ATM接口上保持唯一，不区分大小写，并且不能是合法的VPI/VCI值对，例如不允许&#8220;1/20&#8221;作为PVC名。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>串口子接口和IMA子接口下创建的PVC不可配置<em>pvc-name</em>参数。</p>
+</div></div>
+<p><em>vpi</em>/<em>vci</em>：vpi为ATM网络虚路径标识（Virtual
+Path Identifier），在ATM接口上取值范围是0～255；vci为ATM网络虚通道标识（Virtual Channel Identifier），取值范围是0～2047。通常，vci取值0到31保留用于特定用途，建议用户不要使用。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>参数vpi与vci不能同时为0。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>ATM接口视图、ATM-PVC组视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果使用<em>pvc-name</em>创建PVC，必须同时指定<em>vpi</em>/<em>vci</em>。一旦为PVC指定了名称，就可以通过<strong>pvc</strong> <em>pvc-name</em>重新进入PVC视图；删除该PVC时，既可以通过指定<em>pvc-name</em>删除，也可以通过指定<em>vpi</em>/<em>vci</em>删除。</p>
+<p>每条PVC的VPI/VCI值对在一个ATM接口（包括主接口和子接口）范围内唯一。</p>
+<p>实际可以创建PVC的数量由<a href="pvc_max-number.html">pvc max-number</a>命令决定。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="pvc__d108737e127"></a><a name="d108737e127"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建一条名为&#8220;huawei&#8221;、VPI/VCI为1/101的PVC。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface atm 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Atm1/0/0] <strong>pvc huawei 1/101</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/atm_configuration_commands.html">ATM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_atm_pvc-info.html">display atm pvc-info</a></div>
+<div><a href="pvc_max-number.html">pvc max-number</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

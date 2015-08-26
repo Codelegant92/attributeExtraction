@@ -1,0 +1,361 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mc-trunk">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mc-trunk_eth-trunk_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="mc-trunk_mode.html">
+<meta name="DC.Relation" scheme="URI" content="mc-trunk_track_bfd-session.html">
+<meta name="DC.Relation" scheme="URI" content="mc-trunk_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="priority_mc-trunk_view.html">
+<meta name="DC.Relation" scheme="URI" content="peer-address_source-address.html">
+<meta name="DC.Relation" scheme="URI" content="timer_hold-on-failure_multiplier.html">
+<meta name="DC.Relation" scheme="URI" content="timer_hello_mc-trunk_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mc-trunk">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mc-trunk</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mc-trunk"></a><a name="display_mc-trunk"></a>
+
+
+<h1 class="topictitle1">display mc-trunk</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mc-trunk</strong>命令用来显示MC-Trunk的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mc-trunk </strong><em>mctrunk-id</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>mc-trunk </strong><em>mctrunk-id</em>：MC-Trunk的编号。整数形式，取值范围为1～16。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置MC-Trunk后，可以使用该命令查看MC-Trunk的相关信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mc-trunk__d40073e43"></a><a name="d40073e43"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示ID为1的MC-Trunk中的信息。</p>
+<p>&lt;Quidway&gt;<strong> display
+mc-trunk 1</strong></p>
+<pre class="screen">               The MC-Trunk information
+MC-TRUNK-ID            : 1
+Priority               : 10                System-ID         : 00e0-e213-9100
+Peer-IP                : 1.1.1.2           Source-IP         : 1.1.1.1
+State                  : Master            Causation         : TIMEOUT
+Send-Period (100ms)    : 9                 Fail-Time (100ms) : 27
+Receive                : 1                 Send              : 1006
+RecDrop                : 0                 SndDrop           : 0
+Peer-Priority          : -                 Peer-System-ID    : -
+Peer-Fail-Time (100ms) : -                 BFD-Session       : 1
+--------------------------------------------------------------------------------
+                The Member information
+Type        ID  LocalPhyState   Work-Mode      State    Causation
+Eth-Trunk   10  Up              auto           Master   MCTRUNK_MASTER </pre>
+
+<div class="tablenoborder"><a name="display_mc-trunk__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mc-trunk__tb_01" frame="border" border="1" rules="all"><caption>表1 display mc-trunk命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.122197026958936%" id="d40073e65"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.87780297304107%" id="d40073e69"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>MC-TRUNK-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>MC-Trunk的ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>MC-Trunk的优先级。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>System-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>MC-Trunk的系统ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Peer-IP/Source-IP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>MC-Trunk对端IP/源端IP。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><div class="p">MC-Trunk的主备状态。有以下取值：<ul>
+<li><p>1：Init</p>
+</li>
+<li><p>2：Backup</p>
+</li>
+<li><p>3：Master</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Causation</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><div class="p">MC-Trunk主备状态的原因。有以下取值：<ul>
+<li><p>PRI(1):根据优先级确定的主备状态。</p>
+</li>
+<li><p>TIMEOUT(2):本端在定时器超时后没有收到对端协议报文，从备用转为主用。</p>
+</li>
+<li><p>BFD_DOWN(3):本端的BFD检测到本端与对端间的链路Down。</p>
+</li>
+<li><p>PEER_TIMEOUT(4):对端在定时器超时后没有收到本端协议报文，从备用转为主用。</p>
+</li>
+<li><p>PEER_BFD_DOWN(5):对端的BFD检测到对端与本端间的链路Down。</p>
+</li>
+<li><p>ALL_MEMBER_DOWN(6):MC-Trunk中的所有成员Down。</p>
+</li>
+<li><p>INIT(7):MC-Trunk正在初始化。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Send-Period</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>MC-Trunk发送报文周期。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Fail-Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>MC-Trunk接收超时时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Receive/Send</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>MC-Trunk接收/发送的报文。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>RecDrop/SndDrop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>MC-Trunk接收/发送丢弃的报文。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Peer-Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>对端优先级。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Peer-System-ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>对端系统ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Peer-Fail-Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>对端超时时间。</p>
+</td>
+
+</tr>
+
+<tr>
+
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>BFD-Session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>MC-Trunk绑定的BFD会话。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>成员类型。取值为: Eth-Trunk。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><p>成员ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>LocalPhyState</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><div class="p">成员链路的物理状态。有以下取值：<ul>
+<li><p>1: Up</p>
+</li>
+<li><p>2: Down</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Work-Mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><div class="p">成员工作模式。有以下取值：<ul>
+<li><p>1: auto</p>
+</li>
+<li><p>2: force-backup</p>
+</li>
+<li><p>3: force-master</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><div class="p">成员主备状态。有以下取值：<ul>
+<li><p>1: Master</p>
+</li>
+<li><p>2: Backup</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.122197026958936%" headers="d40073e65 "><p>Causation</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.87780297304107%" headers="d40073e69 "><div class="p">成员主备状态的原因。有以下取值：<ul>
+<li><p>FORCE_BACKUP(1): 成员的工作模式为强制备用。</p>
+</li>
+<li><p>FORCE_MASTER(2): 成员的工作模式为强制主用。</p>
+</li>
+<li><p>MCTRUNK_INIT(3): 成员的工作模式为自动，但是MC-Trunk正在初始化。</p>
+</li>
+<li><p>MCTRUNK_BACKUP(4):成员的工作模式为自动,但是MC-Trunk的状态为备用。</p>
+</li>
+<li><p>MCTRUNK_MASTER(5):成员的工作模式为自动,但是MC-Trunk的状态为主用。</p>
+</li>
+<li><p>PEER_MEMBER_DOWN(6):MC-Trunk对端的成员状态为Down。</p>
+</li>
+<li><p>PEER_MEMBER_UP(7):MC-Trunk对端的成员状态为Up。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mc-trunk_eth-trunk_interface_view.html">mc-trunk
+(Eth-Trunk接口视图)</a></div>
+<div><a href="mc-trunk_mode.html">mc-trunk mode</a></div>
+<div><a href="mc-trunk_track_bfd-session.html">mc-trunk track
+bfd-session</a></div>
+<div><a href="mc-trunk_system_view.html">mc-trunk (系统视图)</a></div>
+<div><a href="priority_mc-trunk_view.html">priority (MC-Trunk视图)</a></div>
+<div><a href="peer-address_source-address.html">peer-address
+source-address</a></div>
+<div><a href="timer_hold-on-failure_multiplier.html">timer
+hold-on-failure multiplier</a></div>
+<div><a href="timer_hello_mc-trunk_view.html">timer hello (MC-Trunk视图)</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,87 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="arp-limit">
+<meta name="DC.Relation" scheme="URI" content="../vrp/arp_security_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_arp-limit.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="arp-limit">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>arp-limit</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="arp-limit"></a><a name="arp-limit"></a>
+
+
+<h1 class="topictitle1">arp-limit</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>arp-limit</strong>命令用来限制接口能够学习到的最大动态ARP表项数目。</p>
+<p><strong>undo arp-limit</strong>命令用来删除该配置。<span>对接口可以学习到的ARP表项数目不作限制（但是受产品最大规格限制）。</span></p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>arp-limit </strong>[<strong> vlan</strong> <em>vlan-id1</em> [ <strong>to</strong> <em>vlan-id2 </em>] ]<strong>maximum</strong> <em>maximum</em></p>
+<p><strong>undo arp-limit</strong> [<strong> vlan </strong><em>vlan-id1</em> [ <strong>to</strong> <em>vlan-id2 </em>] ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vlan</strong><em> vlan-id</em>：限制ARP学习的VLAN。VLAN ID，取值范围是1～4094。该参数必须且只能在二层端口和QinQ子接口（此命令中的QinQ子接口指的是QinQ终结子接口和dotlq终结子接口）视图下配置。在QinQ子接口视图下配置本参数时，<em>vlan-id</em>表示QinQ子接口的外层VLAN ID。在使用时，<em>vlan-id2</em>必须大于<em>vlan-id1</em>。</p>
+<p><em>maximum</em>：接口能够学习到的最大动态ARP表项数目。<span>最小值为1，最大值与具体产品相关。</span></p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet接口视图、Ethernet子接口视图、GE接口视图、GE子接口视图、Eth-Trunk接口视图、Eth-Trunk子接口视图、VE接口视图、VLANIF接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>Ethernet、GE、VE和Eth-Trunk既可以是三层接口也可以是二层端口。作为三层接口时，不能配置<em>vlan-id</em>。作为二层端口时，必须配置<em>vlan-id</em>。</p>
+<p>Ethernet子接口、GE子接口、Eth-Trunk子接口既可以是普通子接口，也可以是QinQ子接口。作为普通子接口时，不能配置<em>vlan-id</em>。作为QinQ子接口时，必须配置<em>vlan-id</em>，<em>vlan-id</em>表示QinQ子接口的外层VLAN ID。</p>
+<p>如果普通子接口上已经配置了ARP限制，再将该子接口配置为QinQ子接口，则原来子接口上的ARP限制配置被删除。</p>
+<p>如果QinQ子接口上已配置了ARP限制，再删除该子接口上的QinQ配置，则原来QinQ子接口上的ARP限制配置被删除。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>仅NE40E和NE80E支持在QinQ子接口上配置ARP limit，其他产品不支持。</p>
+</div></div>
+<p>当用户改变接口上的ARP表项限制数目时，如果接口已经学习到的ARP表项数目超过改变后的配置，系统不会清除已经学习到的ARP表项，但不再学习新的ARP表项，并提示用户删除超出的ARP表项。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="arp-limit__d2178e121"></a><a name="d2178e121"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置GE1/0/0接口最多可以学习到20个动态ARP表项。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> arp-limit maximum 20</strong></pre>
+<p># 配置VLAN10的二层接口Ethernet2/0/0接口最多可以学习到20个动态ARP表项。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface ethernet2/0/0</strong></pre>
+<pre class="screen">[Quidway-Ethernet2/0/0]<strong>arp-limit vlan 10 maximum 20</strong></pre>
+<p># 配置QinQ子接口Ethernet1/0/0.1在外层VLAN10上最多可以学习到20个动态ARP表项。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface ethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-Ethernet1/0/0] <strong>mode user-termination</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/arp_security_commands.html">ARP安全命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_arp-limit.html">display arp-limit</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

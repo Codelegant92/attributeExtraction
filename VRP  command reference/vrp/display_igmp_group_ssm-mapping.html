@@ -1,0 +1,287 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display igmp group ssm-mapping">
+<meta name="DC.Relation" scheme="URI" content="../vrp/igmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_igmp_group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_igmp_group_ssm-mapping">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display igmp group ssm-mapping</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_igmp_group_ssm-mapping"></a><a name="display_igmp_group_ssm-mapping"></a>
+
+
+<h1 class="topictitle1">display igmp group ssm-mapping</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display igmp group ssm-mapping</strong>命令用来查看通过<a href="ssm-mapping_igmp_view.html">ssm-mapping（IGMP视图）</a>命令配置了映射规则的的组播组信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display igmp</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>all-instance</strong> ] <strong>group</strong> [ <em>group-address</em> | <strong>interface</strong> <em>interface-type interface-number</em> ] * <strong>ssm-mapping</strong> [ <strong>verbose</strong> ]<span> [<strong> | count</strong> ]</span> [<strong> |</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>all-instance</strong>：指定所有实例。</p>
+<p><em>group-address</em>：表示组播组地址，用于指定一个组播组，显示该组播组的SSM映射信息。点分十进制形式。</p>
+<p><strong>interface</strong> <em>interface-type
+interface-number</em>：显示指定接口上有SSM映射关系的组播组信息。<em>interface-type interface-number</em>表示接口类型和编号。</p>
+<p><strong>verbose</strong>：表示有SSM映射关系的组播组的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display igmp group ssm-mapping</strong>命令时：</p>
+<ul>
+<li>如果不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>参数，则只显示公网实例的相关信息。</li>
+<li>若指定了<strong>interface</strong> <em>interface-type interface-number</em>参数，则仅显示该接口下有SSM映射关系的组信息。</li>
+<li> 若指定了<em>group-address</em>参数，则仅显示该组的SSM映射信息。</li>
+<li> 若指定了<strong>verbose</strong>参数，则显示组播组运行SSM映射的各种状态参数。</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_igmp_group_ssm-mapping__d26676e191"></a><a name="d26676e191"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示公网实例中有SSM映射关系的所有组播组的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display igmp group ssm-mapping</strong>
+IGMP SSM mapping interface group report information of VPN-Instance: public net 
+ GigabitEthernet1/0/0 (133.133.4.2):
+  Total 1 IGMP SSM-Mapping Group reported
+   Group Address   Last Reporter   Uptime      Expires
+   232.1.1.1       133.133.4.1     00:01:44    00:00:26
+</pre>
+<p># 显示公网实例中有SSM映射关系的所有组播组的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display igmp group ssm-mapping verbose</strong>
+Interface group report information of VPN-Instance: public net
+ Limited entry of this VPN-Instance: -
+ GigabitEthernet6/0/1(133.133.133.1):
+  Total entry on this interface: 1
+  Limited entries on this interface: -
+  Total 1 IGMP SSM-Mapping Group reported
+   Group: 232.0.0.1
+     Uptime: 00:00:15
+     Expires: 00:01:55
+     Last reporter: 192.167.27.62
+     Last-member-query-counter: 0
+     Last-member-query-timer-expiry: off
+     Group mode: exclude
+     Version1-host-present-timer-expiry: off
+     Version2-host-present-timer-expiry: 00:01:55 
+</pre>
+
+<div class="tablenoborder"><a name="display_igmp_group_ssm-mapping__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp_group_ssm-mapping__tb_01" frame="border" border="1" rules="all"><caption>表1 display igmp group ssm-mapping命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="48.1607457797934%" id="d26676e219"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="51.8392542202066%" id="d26676e223"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>IGMP SSM mapping interface group report information of VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>IGMP SSM-Mapping信息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>GigabitEthernet1/0/1(133.133.4.2)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>接口编号（IP地址）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Limited entry of this VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>通过<strong>igmp limit</strong>命令限制的当前实例的所有接口上IGMP表项的最大个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Limited entries on this interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>通过<strong>igmp limit</strong>命令限制的当前接口上IGMP表项的最大个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Total 1 IGMP SSM-Mapping Group reported</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>配置了SSM Mapping的IGMP组播组被报告的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>组地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Last reporter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>最后一个报告此信息的主机地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Uptime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>收到主机的report的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Expires</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>组超时时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Last-member-query-counter</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>LMQC，最后组成员查询报文的发送次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Last-member-query-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>LMQT，最后组成员查询报文的超时时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Group mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>组的模式（exclude还是include）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Version1-host-present-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>IGMP Version1主机的超时时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="48.1607457797934%" headers="d26676e219 "><p>Version2-host-present-timer-expiry</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="51.8392542202066%" headers="d26676e223 "><p>IGMP Version2主机的超时时间。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_igmp_group_ssm-mapping__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp_group_ssm-mapping__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d26676e405"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d26676e409"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d26676e405 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d26676e409 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/igmp_configuration_commands.html">IGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_igmp_group.html">reset igmp group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

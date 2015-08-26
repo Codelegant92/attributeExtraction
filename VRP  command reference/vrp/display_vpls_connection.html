@@ -1,0 +1,590 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display vpls connection">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_l2vpn_ccc-interface_vc-type.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_vpls_connection">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display vpls connection</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_vpls_connection"></a><a name="display_vpls_connection"></a>
+
+
+<h1 class="topictitle1">display vpls connection</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display vpls connection</strong>命令用于显示VPLS的连接信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display vpls connection</strong> [ <strong>ldp</strong> | <strong>bgp</strong> | <strong>vsi</strong> <em>vsi-name</em> ] [ <strong>down</strong> | <strong>up</strong> ] [ <strong>verbose </strong>]<span> [<strong> | count</strong> ]</span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ldp</strong>：用于显示LDP信令方式的各种连接信息。</p>
+<p><strong>bgp</strong>：用于显示BGP信令方式的各种连接信息。</p>
+<p><strong>vsi </strong><em>vsi-name</em>：用于显示指定VSI实例的各种连接信息。字符串形式，不支持空格，区分大小写，取值范围是1～31。</p>
+<p><strong>down</strong>：用于显示处于Down状态的各种连接信息。</p>
+<p><strong>up</strong>：用于显示处于Up状态的各种连接信息。</p>
+<p><strong>verbose</strong>：用于显示详细的连接信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行<strong>display vpls connection</strong>命令后，可以通过在命令行中指定不同的关键字或参数来显示所需要的连接信息。</p>
+<p>如果此命令不指定关键字或参数，将显示所有处于Up状态的连接信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_vpls_connection__d71603e134"></a><a name="d71603e134"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有VSI实例的连接信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vpls connection</strong></pre>
+<pre class="screen">2 total connections,</pre>
+<pre class="screen">connections: 2 up, 0 down, 1 ldp, 1 bgp</pre>
+
+<pre class="screen">VSI Name: a2                               Signaling: ldp</pre>
+<pre class="screen">VsiID   EncapType               PeerAddr          InLabel   OutLabel  VCState</pre>
+<pre class="screen">2       vlan                    1.1.1.1           17408     17409     up</pre>
+<pre class="screen">VSI Name: bgp1                             Signaling: bgp</pre>
+<pre class="screen">SiteID  RD                      PeerAddr          InLabel   OutLabel  VCState</pre>
+<pre class="screen">1       168.1.1.1:1             1.1.1.1           19457     19458     up  </pre>
+
+<div class="tablenoborder"><a name="display_vpls_connection__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vpls_connection__tb_01" frame="border" border="1" rules="all"><caption>表1 display vpls connection命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.793398841017893%" id="d71603e171"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.20660115898211%" id="d71603e175"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.793398841017893%" headers="d71603e171 "><p>VSI Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.20660115898211%" headers="d71603e175 "><p>虚拟交换实例VSI的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.793398841017893%" headers="d71603e171 "><p>Signaling</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.20660115898211%" headers="d71603e175 "><p>信令方式，为LDP或BGP。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.793398841017893%" headers="d71603e171 "><p>VsiID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.20660115898211%" headers="d71603e175 "><p>VSI的标志符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.793398841017893%" headers="d71603e171 "><p>EncapType</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.20660115898211%" headers="d71603e175 "><p>VSI的VPLS封装形式，即报文在VC上的封装形式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.793398841017893%" headers="d71603e171 "><p>PeerAddr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.20660115898211%" headers="d71603e175 "><p>对等体的IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.793398841017893%" headers="d71603e171 "><p>InLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.20660115898211%" headers="d71603e175 "><p>本地分发的VC标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.793398841017893%" headers="d71603e171 "><p>OutLabel</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.20660115898211%" headers="d71603e175 "><p>本地出标签，即对等体分发的VC标签。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.793398841017893%" headers="d71603e171 "><p>VCState</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.20660115898211%" headers="d71603e175 "><p>VC的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.793398841017893%" headers="d71603e171 "><p>SiteID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.20660115898211%" headers="d71603e175 "><p>远端VSI实例的Site编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.793398841017893%" headers="d71603e171 "><p>RD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.20660115898211%" headers="d71603e175 "><p>即Route Distinguisher，在以BGP为信令的VPLS中用来标识PE上的一个VSI实例。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示所有VSI实例的详细连接信息。</p>
+<pre class="screen">[Quidway]<strong> <strong>display vpls connection verbose</strong></strong></pre>
+<pre class="screen">VSI Name: a2                               Signaling: ldp</pre>
+<pre class="screen">  **Remote Vsi ID   : 2</pre>
+<pre class="screen">    VC State        : up</pre>
+<pre class="screen">    Encapsulation   : vlan</pre>
+<pre class="screen">    Group ID        : 0</pre>
+<pre class="screen">    MTU             : 1500</pre>
+<pre class="screen">    Peer Ip Address : 1.1.1.1</pre>
+<pre class="screen">    PW Type         : label</pre>
+<pre class="screen">    Local VC Label  : 17408</pre>
+<pre class="screen">    Remote VC Label : 17409</pre>
+<pre class="screen">    Tunnel Policy   : --</pre>
+<pre class="screen">    Tunnel ID       : 0x6002011,</pre>
+<pre class="screen">VSI Name: bgp1                             Signaling: bgp</pre>
+<pre class="screen">  **Remote Site ID     : 1</pre>
+<pre class="screen">    VC State           : up</pre>
+<pre class="screen">    RD                 : 168.1.1.1:1</pre>
+<pre class="screen">    Encapsulation      : vlan</pre>
+<pre class="screen">    MTU                : 1500</pre>
+<pre class="screen">    Peer Ip Address    : 1.1.1.1</pre>
+<pre class="screen">    PW Type            : label</pre>
+<pre class="screen">    Local VC Label     : 19457</pre>
+<pre class="screen">    Remote VC Label    : 19458</pre>
+<pre class="screen">    Tunnel Policy      : --</pre>
+<pre class="screen">    Tunnel ID          : 0x6002011,</pre>
+<pre class="screen">    Remote Label Block : 19456/5/0</pre>
+<pre class="screen">    Export vpn target  : 100:1, </pre>
+
+<div class="tablenoborder"><a name="display_vpls_connection__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vpls_connection__tb_02" frame="border" border="1" rules="all"><caption>表2 display vpls connection verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.86898463088939%" id="d71603e368"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.1310153691106%" id="d71603e372"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>VSI Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>虚拟交换实例VSI的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>Signaling</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>信令方式，可能为LDP或BGP</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>Remote Vsi ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>远端VSI ID，与本端VSI ID是一致的</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>VC State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>VC的状态，Up或Down</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>Encapsulation</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>VSI的VPLS封装形式，即报文在VC上的封装形式，为VLAN或Ethernet</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>Group ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>组的标志符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>最大传输单元</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>Peer Ip Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>对等体的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>PW Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>伪线的类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>Local VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>本端VC标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>Remote VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>远端VC标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>Tunnel Policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>L2VPN所应用的隧道策略</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>隧道ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>Remote Label Block</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>远端标签块</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e368 "><p>Export vpn target</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e372 "><p>到目的VPN的出方向扩展团体属性</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示名称为company1的VSI实例的LDP信令方式的详细连接信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display vpls connection vsi company1 verbose</strong></pre>
+<pre class="screen">VSI Name: company1                             Signaling: bgp</pre>
+<pre class="screen">  **Remote Site ID     : 1</pre>
+<pre class="screen">    VC State           : up</pre>
+<pre class="screen">    RD                 : 168.1.1.1:1</pre>
+<pre class="screen">    Encapsulation      : vlan</pre>
+<pre class="screen">    MTU                : 1500</pre>
+<pre class="screen">    Peer Ip Address    : 1.1.1.9</pre>
+<pre class="screen">    PW Type            : label</pre>
+<pre class="screen">    Local VC Label     : 19457</pre>
+<pre class="screen">    Remote VC Label    : 19458</pre>
+<pre class="screen">    Tunnel Policy      : --</pre>
+<pre class="screen">    Tunnel ID          : 0x6002000,</pre>
+<pre class="screen">    Remote Label Block : 19456/5/0</pre>
+<pre class="screen">    Export vpn target  : 100:1, </pre>
+
+<div class="tablenoborder"><a name="display_vpls_connection__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vpls_connection__tb_03" frame="border" border="1" rules="all"><caption>表3 display vpls connection vsi <em>vsi-name </em>verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.86898463088939%" id="d71603e597"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.1310153691106%" id="d71603e601"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>VSI Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>虚拟交换实例VSI的名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>Signaling</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>信令方式，可能为LDP或BGP。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>Remote Site ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>对等体分发的VC标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>VC State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>VC的状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>RD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>本端的路由器标志符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>Encapsulation</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>VSI的VPLS封装形式，即报文在VC上的封装形式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>最大传输单元</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>Peer Ip Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>对等体的IP地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>PW Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>伪线的类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>Local VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>本地分发的VC标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>Remote VC Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>对等体分发的VC标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>Tunnel Policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>隧道策略</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>隧道标志符</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>Remote Label Block</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>远端标签块</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.86898463088939%" headers="d71603e597 "><p>Export vpn target</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.1310153691106%" headers="d71603e601 "><p>到目的VPN的出方向扩展团体属性</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_vpls_connection__tb_04"></a><a name="tb_04"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vpls_connection__tb_04" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="49.0047871000252%" id="d71603e788"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50.99521289997481%" id="d71603e792"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d71603e788 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d71603e792 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="49.0047871000252%" headers="d71603e788 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50.99521289997481%" headers="d71603e792 "><p>增加使用正则表达式过滤输出信息的参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_l2vpn_ccc-interface_vc-type.html">display l2vpn ccc-interface vc-type</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

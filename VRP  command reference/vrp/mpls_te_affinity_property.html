@@ -1,0 +1,133 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te affinity property">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_link_administrative_group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_affinity_property">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te affinity property</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_affinity_property"></a><a name="mpls_te_affinity_property"></a>
+
+
+<h1 class="topictitle1">mpls te affinity property</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te affinity property</strong>命令用来配置MPLS TE隧道使用的链路的亲和属性。</p>
+<p><strong>undo mpls te affinity property</strong>命令用来恢复缺省设置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te affinity property</strong> <em>properties</em> [ <strong>mask</strong> <em>mask-value</em> ]<span> [ <strong>secondary</strong> | <strong>best-effort</strong> ]</span></p>
+<p><strong>undo mpls te affinity property</strong><span> [ <strong>secondary</strong> | <strong>best-effort</strong> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>properties</em>：承载隧道的链路的亲和属性值，32比特，取值范围是0x0～0xFFFFFFFF，每一位代表一种属性。缺省值是0x0。</p>
+<p><em>mask-value</em>：需要检查的链路属性位，32比特，取值范围是0x0～0xFFFFFFFF，每一位代表一种属性。缺省值是0x0。</p>
+<p><strong>secondary</strong>：配置备份CR-LSP的亲和属性。</p>
+<p><strong>best-effort</strong>：配置逃生路径的亲和属性。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>亲和属性的掩码决定了设备需要检查哪些链路属性。</p>
+<p>如果希望某条链路能够被隧道所用，那么在所有掩码为1的位中，管理组中至少有1位与亲和属性中的相应位都为1；且亲和属性为0的位，对应的管理组属性位不能为1。</p>
+<p>更改隧道的亲和属性配置，提交后会影响已建立的LSP，将为TE隧道重新计算路径。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_affinity_property__d95516e88"></a><a name="d95516e88"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置隧道Tunnel1/0/0的Affinity属性。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> tunnel-protocol mpls te</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>destination 2.2.2.2</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>mpls te tunnel-id 100</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te affinity property a04 mask e0c</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te commit</strong></pre>
+<p># 设置备份CR-LSP和逃生路径的亲和属性。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway] <strong>interface tunnel 1/0/0</strong>
+[Quidway-Tunnel1/0/0] <strong>tunnel-protocol mpls te</strong>
+[Quidway-Tunnel1/0/0] <strong>destination 2.2.2.2</strong>
+[Quidway-Tunnel1/0/0] <strong>mpls te tunnel-id 100</strong>
+[Quidway-Tunnel1/0/0] <strong>mpls te backup hot-standby</strong>
+[Quidway-Tunnel1/0/0] <strong>mpls te backup ordinary best-effort</strong>
+[Quidway-Tunnel1/0/0] <strong>mpls te affinity property a04 mask e0c secondary</strong>
+[Quidway-Tunnel1/0/0] <strong>mpls te affinity property a04 mask e0c best-effort</strong>
+[Quidway-Tunnel1/0/0] <strong>mpls te commit</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_te_affinity_property__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_te_affinity_property__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d95516e166"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d95516e170"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d95516e166 "><p>VRPV500R005C01B101</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d95516e170 "><p>增加<strong>secondary</strong>参数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d95516e166 "><p>VRPV500R005C02B071</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d95516e170 "><p>增加<strong>best-effort</strong>参数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_te_link_administrative_group.html">mpls
+te link administrative group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

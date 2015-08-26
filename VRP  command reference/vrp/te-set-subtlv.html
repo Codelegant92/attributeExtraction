@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="te-set-subtlv">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="te-set-subtlv">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>te-set-subtlv</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="te-set-subtlv"></a><a name="te-set-subtlv"></a>
+
+
+<h1 class="topictitle1">te-set-subtlv</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>te-set-subtlv</strong>命令用来设置携带DS-TE参数的各种子TLV的TLV类型。</p>
+<p><strong>undo te-set-subtlv</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，带宽约束子TLV为252；本地过预订倍数的子TLV为253；子池未预订带宽的子TLV为251。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>te-set-subtlv</strong> { <strong>bw-constraint</strong> <em>value</em> | <strong>lo-multiplier</strong> <em>value</em> | <strong>unreserve-bw-sub-pool</strong> <em>value</em> }<sup>*</sup></p>
+<p><strong>undo te-set-subtlv</strong> { <strong>bw-constraint</strong> | <strong>lo-multiplier</strong> | <strong>unreserve-bw-sub-pool</strong> }<sup>*</sup></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>bw-constraint</strong> <em>value</em>：指定带宽约束的子TLV值。<em>value</em>为整数形式，取值范围是19～254。</p>
+<p><strong>lo-multiplier</strong> <em>value</em>：指定本地过预订倍数LOM（Local
+Overbooking Multipliers）的子TLV值。<em>value</em>为整数形式，取值范围是19～254。</p>
+<p><strong>unreserve-bw-sub-pool</strong> <em>value</em>：指定子池未预订带宽的子TLV值。<em>value</em>为整数形式，取值范围是19～254。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>由于DS-TE参数的各种子TLV的类型尚未形成标准，当使用不同厂商提供的设备互联时，用户需要手工配置这些子TLV值。配置后，TEDB（Traffic
+Engineering DataBase）将重新生成，进而导致TE隧道重建。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="te-set-subtlv__d123478e107"></a><a name="d123478e107"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置IS-IS进程1的子TLV类型值。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> isis 1</strong></pre>
+<pre class="screen">[Quidway-isis-1]<strong> te-set-subtlv bw-constraint 200 lo-multiplier 201 unreserve-bw-sub-pool 202</strong></pre>
+</div></div></div>
+
+</div>
+
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

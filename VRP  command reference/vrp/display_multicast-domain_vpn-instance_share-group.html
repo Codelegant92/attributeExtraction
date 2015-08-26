@@ -1,0 +1,214 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display multicast-domain vpn-instance share-group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_vpn_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="multicast-domain_share-group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_multicast-domain_vpn-instance_share-group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display multicast-domain vpn-instance share-group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_multicast-domain_vpn-instance_share-group"></a><a name="display_multicast-domain_vpn-instance_share-group"></a>
+
+
+<h1 class="topictitle1">display multicast-domain vpn-instance share-group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display multicast-domain vpn-instance share-group</strong>命令用来查看组播域中指定VPN实例的Share-group组信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display
+multicast-domain vpn-instance</strong> <em>vpn-instance-name</em> <strong>share-group</strong> [ <strong>local</strong> | <strong>remote</strong> ]<span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>vpn-instance-name</em>：表示指定VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>local</strong>：本机配置的Share-group的组地址。</p>
+<p><strong>remote</strong>：从BGP的Update报文中学到的Share-group的组地址。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display multicast-domain vpn-instance share-group</strong>命令：</p>
+<ul>
+<li><p>如果指定<strong>local</strong>关键字，则显示本地配置的Share-group组信息。</p>
+</li>
+<li><p>如果指定<strong>remote</strong>关键字，则显示通过BGP的Update报文学到的Share-group组信息。</p>
+</li>
+<li><p>如果既没有指定<strong>local</strong>关键字，也没有指定<strong>remote</strong>关键字，则显示所有Share-group组信息。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+<p>显示通过BGP的Update报文学到的Share-group组信息时，以Share-group组从小到大的顺序进行排列。Share-group组相同时以下一跳地址从小到大的顺序进行排列。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_multicast-domain_vpn-instance_share-group__d51140e149"></a><a name="d51140e149"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示组播域中指定VPN实例的Share-group组信息。</p>
+<pre class="screen">&lt;Qudiway&gt;<strong> display multicast-domain vpn-instance MVPN share-group</strong>
+MD local share-group information for VPN-Instance: vpn1
+  Share-group: 229.0.0.1
+  MTunnel address: 1.1.1.2
+
+MD remote share-group information for VPN-Instance: vpn1
+  Route-distinguisher    Router-id        Share-group      Next-hop
+  11.11.11.11:12345      1.1.1.1           225.22.22.22    1.1.1.1
+</pre>
+
+<div class="tablenoborder"><a name="display_multicast-domain_vpn-instance_share-group__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_multicast-domain_vpn-instance_share-group__tb_01" frame="border" border="1" rules="all"><caption>表1 display multicast-domain vpn-instance share-group命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.12648022171832%" id="d51140e170"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.873519778281675%" id="d51140e174"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.12648022171832%" headers="d51140e170 "><p>MD local share-group information for VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.873519778281675%" headers="d51140e174 "><p>组播域中本地Share-group信息所属的VPN实例。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.12648022171832%" headers="d51140e170 "><p>Share-group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.873519778281675%" headers="d51140e174 "><p>本机配置的Share-MDT的组地址。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.12648022171832%" headers="d51140e170 "><p>MTunnel address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.873519778281675%" headers="d51140e174 "><p>本机配置的Share-group绑定的MTI接口地址。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.12648022171832%" headers="d51140e170 "><p>Route-distinguisher</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.873519778281675%" headers="d51140e174 "><p>路由标识符，区分VPN实例使用相同地址空间的IPv4前缀。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.12648022171832%" headers="d51140e170 "><p>Router-id</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.873519778281675%" headers="d51140e174 "><p>路由器标识符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.12648022171832%" headers="d51140e170 "><p>Share-group</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.873519778281675%" headers="d51140e174 "><p>远端配置的Share-group的组地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.12648022171832%" headers="d51140e170 "><p>Next-hop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.873519778281675%" headers="d51140e174 "><p>到远端PE的下一跳地址。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_multicast-domain_vpn-instance_share-group__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_multicast-domain_vpn-instance_share-group__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d51140e273"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d51140e277"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d51140e273 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d51140e277 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_vpn_configuration_commands.html">IPv4组播VPN配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="multicast-domain_share-group.html">multicast-domain
+share-group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

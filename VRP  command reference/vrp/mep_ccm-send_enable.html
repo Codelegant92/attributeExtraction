@@ -1,0 +1,89 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mep ccm-send enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ccm-interval.html">
+<meta name="DC.Relation" scheme="URI" content="display_cfm_mep.html">
+<meta name="DC.Relation" scheme="URI" content="remote-mep_ccm-receive_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mep_ccm-send_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mep ccm-send enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mep_ccm-send_enable"></a><a name="mep_ccm-send_enable"></a>
+
+
+<h1 class="topictitle1">mep ccm-send enable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mep ccm-send</strong> <strong>enable</strong>命令用来使能本设备上当前MA内MEP的CCM消息发送功能。</p>
+<p><strong>undo
+mep ccm-send</strong> <strong>enable</strong>命令用来禁止本设备上当前MA内MEP的CCM消息发送功能。</p>
+<p>缺省情况下，MEP的CCM消息发送功能处于禁止状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mep ccm-send</strong> [ <strong>mep-id</strong> <em>mep-id</em> ] <strong>enable</strong></p>
+<p><strong>undo
+mep ccm-send</strong> [ <strong>mep-id</strong> <em>mep-id</em> ] <strong>enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>mep-id</strong> <em>mep-id</em>：使能或禁止指定MEP的CCM消息发送功能。<em>mep-id</em>表示MEP的ID，整数形式，取值范围是1～8191。不配置本参数，则表示使能本设备上当前MA内所有MEP的CCM消息发送功能。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MA视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>mep</strong>命令配置完MEP后，要启用该MEP的CCM消息发送功能需使用本命令。</p>
+<p>一台设备可以配置多个MA，如果某MA内：</p>
+<ul>
+<li><p>已使用本命令使能了CCM消息发送功能</p>
+</li>
+<li><p>或已使用<a href="remote-mep_ccm-receive_enable.html">remote-mep ccm-receive enable</a>命令使能了CCM消息接收功能</p>
+</li>
+</ul>
+<p>则不允许修改该MA内发送或探测CCM消息的时间间隔。如要修改，需先使用对应的<strong>undo</strong>命令禁止以上功能。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mep_ccm-send_enable__d92632e101"></a><a name="d92632e101"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能ma1内MEP10的CCM消息发送功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm md md1</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1]<strong> <strong>ma ma1</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1-ma-ma1]<strong> <strong>mep ccm-send mep-id 10 enable</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ccm-interval.html">ccm-interval</a></div>
+<div><a href="display_cfm_mep.html">display cfm mep</a></div>
+<div><a href="remote-mep_ccm-receive_enable.html">remote-mep ccm-receive
+enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="isis timer csnp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="is-level.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="isis_timer_csnp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>isis timer csnp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="isis_timer_csnp"></a><a name="isis_timer_csnp"></a>
+
+
+<h1 class="topictitle1">isis timer csnp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>isis timer csnp</strong>命令用来指定在广播网络上发送CSNP报文的间隔时间。</p>
+<p><strong>undo isis timer csnp</strong>命令则用来恢复缺省值。</p>
+<p>缺省情况下，发送CSNP报文的间隔时间是10秒。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>isis timer csnp</strong> <em>csnp-interval</em> [ <strong>level-1</strong> | <strong>level-2</strong> ]</p>
+<p><strong>undo</strong> <strong>isis timer csnp</strong> [ <strong>level-1</strong> | <strong>level-2</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>csnp-interval</em>：CSNP报文在广播网络中发送的间隔时间。整数形式，取值范围是1～65535，单位是秒。缺省值是10秒。</p>
+<p><strong>level-1</strong>：Level-1的CSNP报文发送间隔。</p>
+<p><strong>level-2</strong>：Level-2的CSNP报文发送间隔。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果没有指定级别，默认为设置当前级别的IS-IS进程发送CSNP报文的间隔时间。</p>
+</div></div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有DIS才会周期性发送CSNP报文，所以这条命令仅对被选为DIS的路由器才有效。另外，DIS有Level-1和Level-2之分，各级发送CSNP报文的间隔时间需要分别设置。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果通过<strong>isis circuit-type</strong>命令将广播接口模拟为P2P接口，则<strong>isis timer csnp</strong>命令在该接口失效；如果通过<strong>undo isis circuit-type</strong>命令将该接口恢复为广播接口，则IS-IS发送CSNP报文的间隔时间恢复为缺省值。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="isis_timer_csnp__d87415e91"></a><a name="d87415e91"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置Level-2的CSNP报文在接口GigabitEthernet1/0/0上每15秒发送一次。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway- GigabitEthernet1/0/0] <strong>isis timer csnp 15 level-2</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="is-level.html">is-level</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,784 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis error">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_error">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis error</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_error"></a><a name="display_isis_error"></a>
+
+
+
+<h1 class="topictitle1">display isis error</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis error</strong>命令用来查看接口或进程收到的错误LSP报文和Hello报文的统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis error</strong> [ { <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] } [ <strong>interface</strong> ] ]</p>
+<p><strong>display isis error interface</strong> { <em>interface-name</em> | <em>interface-type interface-number</em> }</p>
+<p><strong>display isis error packet</strong> <em>process-id</em> [ <em>packet-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：IS-IS进程号。整数形式，取值范围是1～65535。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例名。<em>vpn-instance-name</em>为字符串形式，不支持空格，区分大小写，长度范围是1～31。</p>
+<p><strong>vpn-instance</strong> <strong>default</strong>：除IPv4 VPN实例外的所有IS-IS进程，即所有的IPv6 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：指定VPN6实例名。<em>vpn6-instance-name</em>为字符串形式，不支持空格，区分大小写，长度范围是1～31。</p>
+<p><strong>vpn6-instance</strong> <strong>default</strong>：除IPv6 VPN实例外的所有IS-IS进程，即所有的IPv4 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>interface</strong>：按接口显示错误报文的统计信息。</p>
+<p><em>interface-name</em>：接口名称。</p>
+<p><em>interface-type interface-number</em>：指定错误报文来源接口的类型和编号。</p>
+<p><strong>packet</strong>：显示进程收到的错误LSP报文信息。</p>
+<p><em>packet-number</em>：错误报文个数。整数类型，取值范围是1～10，缺省值为10。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当IS-IS出现异常时，使用该命令收集信息，查看各种错误类型的报文。</p>
+<p>当指定了IS-IS进程号或VPN<span>或者VPN6</span>实例名，使用参数<strong>interface</strong>时，显示IS-IS进程下所有接口收到的各种错误报文统计数量。</p>
+<p>使用命令<strong>display isis error interface</strong> <em>interface-type interface-number</em>可以查看指定接口收到的各种错误报文统计数量。</p>
+<p>使用参数<strong>packet</strong>时，必须指定进程号，显示一个进程收到的错误LSP报文相关信息和内容。目前支持最多显示10个LSP错误报文。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_error__d35391e159"></a><a name="d35391e159"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看IS-IS进程1下所有接口收到的错误报文统计数量。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis error 1</strong>
+
+                    Statistics of error packets for ISIS(1)
+                    ---------------------------------------
+LSP packet errors:
+Longer LSP              : 0           Smaller LSP             : 0
+Mismatched Level        : 0           Invalid Sysid           : 0
+Zero Sequence Number    : 0           Illegal IS Type         : 0
+Zero Checksum           : 0           Incorrect Checksum      : 0
+Bad Authentication      : 0           Bad Auth Count          : 0
+More Protocol TLV       : 0           Bad Protocol TLV        : 0
+Bad Nbr TLV             : 0           Bad Extended IS TLV     : 0
+Bad IF Addr TLV         : 0           Bad Reach TLV           : 0
+Bad Inter Domain TLV    : 0           Mismatched Area Id(L1)  : 0
+Bad TLV Length          : 0           Bad Alias TLV           : 0
+Bad Area TLV            : 0           Bad SRLG TLV            : 0
+Bad MT IS TLV           : 0           Bad MT ID TLV           : 0
+Bad MT IPv6 TLV         : 0           Bad IPv6 Reach TLV      : 0
+Bad Ext Reach TLV       : 0           Bad TE Router ID TLV    : 0
+Bad TE Sub TLV          : 0
+
+Hello packet errors:
+Bad Packet Length       : 0           Reserved CircType       : 0
+Repeated System ID      : 0           Bad Circuit Type        : 0
+Longer packet           : 0           More Area Addr          : 0
+Longer Area Addr        : 0           Bad Area Addr TLV       : 0
+More IF Addr            : 0           Bad Formatted IF TLV    : 0
+More Nbr SNPA(LAN)      : 0           Invalid Sysid           : 0
+Bad TLV Length          : 0           Zero HoldingTime        : 0
+Unusable IPv4 Addr      : 0           Repeated IPv4 Addr      : 0
+Mismatched Area Addr(L1): 0           Mismatched Proto        : 0
+SNPA Conflicted(LAN)    : 0           Mismatched Level        : 0
+Mismatched Max Area Addr: 0           Bad Authentication      : 0
+More Auth TLV           : 0           Invalid IPv6 Addr       : 0
+More IPv6 IF Addr       : 0           Duplicate IPv6 Addr     : 0
+--------------------------------------------------------------------
+
+</pre>
+<p># 查看IS-IS进程1接收到的一个错误LSP报文的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis error packet 1 1</strong>
+
+                 packets for ISIS(1)
+------------------------------------------------------------
+Packet information(Index 1):
+-----------------------------------------------------
+Received LSPID      :  3333.3333.3333.00-00
+Source Interface    :  GigabitEthernet1/0/0
+Time                :  2008-11-29 12:10:55
+LSP Length          :  68
+Error Type          :  wrong Auth TLV
+0010: 83 1b 01 06 14 01 00 03 00 44 04 af 33 33 33 33
+0020: 33 33 00 00 00 00 00 06 cc 7a 03 81 01 cc 01 02
+0030: 01 00 02 0c 00 0a 80 80 80 66 66 66 66 66 66 01
+0040: 84 04 16 16 16 03 80 0c 0a 80 80 80 16 16 16 00
+0050: ff ff ff 00
+-----------------------------------------------------    
+</pre>
+<p># 查看VPN实例1下所有IS-IS进程接收到的错误报文的统计信息。</p>
+<pre class="screen">[Quidway] <strong>display isis error vpn-instance 1</strong>
+
+                   Statistics of error packets for ISIS(1-2)
+                   -----------------------------------------
+LSP packet errors:
+Longer LSP              : 0           Smaller LSP             : 0
+Mismatched Level        : 0           Invalid Sysid           : 0
+Zero Sequence Number    : 0           Illegal IS Type         : 0
+Zero Checksum           : 0           Incorrect Checksum      : 0
+Bad Authentication      : 0           Bad Auth Count          : 0
+More Protocol TLV       : 0           Bad Protocol TLV        : 0
+Bad Nbr TLV             : 0           Bad Extended IS TLV     : 0
+Bad IF Addr TLV         : 0           Bad Reach TLV           : 0
+Bad Inter Domain TLV    : 0           Mismatched Area Id(L1)  : 0
+Bad TLV Length          : 0           Bad Alias TLV           : 0
+Bad Area TLV            : 0           Bad SRLG TLV            : 0
+Bad MT IS TLV           : 0           Bad MT ID TLV           : 0
+Bad MT IPv6 TLV         : 0           Bad IPv6 Reach TLV      : 0
+Bad Ext Reach TLV       : 0           Bad TE Router ID TLV    : 0
+Bad TE Sub TLV          : 0
+
+Hello packet errors:
+Bad Packet Length       : 0           Reserved CircType       : 0
+Repeated System ID      : 0           Bad Circuit Type        : 0
+Longer packet           : 0           More Area Addr          : 0
+Longer Area Addr        : 0           Bad Area Addr TLV       : 0
+More IF Addr            : 0           Bad Formatted IF TLV    : 0
+More Nbr SNPA(LAN)      : 0           Invalid Sysid           : 0
+Bad TLV Length          : 0           Zero HoldingTime        : 0
+Unusable IPv4 Addr      : 0           Repeated IPv4 Addr      : 0
+Mismatched Area Addr(L1): 0           Mismatched Proto        : 0
+SNPA Conflicted(LAN)    : 0           Mismatched Level        : 0
+Mismatched Max Area Addr: 0           Bad Authentication      : 0
+More Auth TLV           : 0           Invalid IPv6 Addr       : 0
+More IPv6 IF Addr       : 0           Duplicate IPv6 Addr     : 0
+--------------------------------------------------------------------
+
+</pre>
+
+<div class="tablenoborder"><a name="display_isis_error__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_error__tb_02" frame="border" border="1" rules="all"><caption>表1 display isis error命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="36.94744782499371%" id="d35391e194"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63.052552175006284%" id="d35391e198"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>LSP packet errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>LSP报文错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Longer LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>LSP长度大于<strong>lsp-length receive</strong>的值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Smaller LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>LSP头部长度小于固定头长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Mismatched Level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>收到的Hello和LSP报文的Level与本地IS-IS Level不匹配</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Invalid Sysid</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>LSP中的System ID无效</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Zero Sequence Number</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>序列号为0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Illegal IS Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>无效的IS类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Zero Checksum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>LSP的校验和为0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Incorrect Checksum</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>LSP的校验和错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Authentication</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>LSP认证错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Auth Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>LSP中携带认证字段数量错误（大于1）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>More Protocol TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>LSP携带的协议TLV个数大于1</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Protocol TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>协议TLV错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Nbr TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>邻居TLV错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Extended IS TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>扩展IS TLV错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad IF Addr TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>接口地址TLV错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Reach TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>可达TLV错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Inter Domain TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>域间TLV错误（正确的类型值是0x83）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Mismatched Area Id(L1)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>Level-1的区域ID不匹配</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad TLV Length</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>TLV长度错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Alias TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>错误的Alias TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Area TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>错误的Area TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad SRLG TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>错误的SRLG TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad MT IS TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>错误的MT IS TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad MT ID TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>错误的MT ID TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad MT IPv6 TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>错误的MT IPv6 TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad IPv6 Reach TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>错误的IPv6 Reach TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Ext Reach TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>错误的Ext Reach TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad TE Router ID TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>TE Router ID TLV错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad TE Sub TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>TE子TLV错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>More Protocol TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>LSP携带的协议TLV个数大于1</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad MT IS TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>错误的MT IS TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad MT ID TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>错误的MT ID TLV</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Smaller LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>LSP长度小于报文头长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Hello packet errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>Hello报文错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Packet Length</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>Hello报文长度错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Reserved CircType</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>链路类型保留字段值错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Repeated System ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>重复的System ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Circuit Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>链路类型错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Longer packet</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>Hello报文长度大于接口MTU和<strong>lsp-length originate</strong>两者间的较大值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>More Area Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>区域地址数量过多</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Longer Area Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>区域地址过长</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Area Addr TLV </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>区域地址TLV错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>More IF Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>接口地址数量过多</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Formatted IF TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>接口TLV格式错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>More Nbr SNPA(LAN)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>广播网中的邻居SNPA数量过多</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Invalid Sysid</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>报文的system ID length字段为非0或非6的值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad TLV Length</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>TLV长度错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Zero HoldingTime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>邻居保持时间为0</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Unusable IPv4 Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>IPv4地址与对端不在同一个网段</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Repeated IPv4 Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>重复的IPv4地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Mismatched Area Addr(L1)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>Level-1的区域地址不匹配</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Mismatched Proto</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>协议不匹配</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>SNPA Conflicted(LAN)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>广播网上的SNPA冲突</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Mismatched Level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>级别不匹配</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Mismatched Max Area Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>最大区域地址不匹配</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Bad Authentication</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>Hello报文认证错误</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>More Auth TLV</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>认证TLV数量过多</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Invalid IPv6 Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>无效的IPv6地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>More IPv6 IF Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>Hello报文携带的IPv6地址数量大于11</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.94744782499371%" headers="d35391e194 "><p>Duplicate IPv6 Addr</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.052552175006284%" headers="d35391e198 "><p>重复的IPv6地址</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_error__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_error__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d35391e897"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d35391e901"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d35391e897 "><p>VRPV500R003C07B330</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d35391e901 "><p>首次发布。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d35391e897 "><p>VRPV500R006C02B170</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d35391e901 "><p>增加参数<strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> }。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

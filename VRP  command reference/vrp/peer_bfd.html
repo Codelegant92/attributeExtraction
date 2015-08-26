@@ -1,0 +1,85 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer bfd">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="peer_bfd_enable.html">
+<meta name="DC.Relation" scheme="URI" content="display_bgp_bfd_session.html">
+<meta name="DC.Relation" scheme="URI" content="display_bgp_peer.html">
+<meta name="DC.Relation" scheme="URI" content="display_bgp_group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_bfd">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer bfd</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_bfd"></a><a name="peer_bfd"></a>
+
+
+<h1 class="topictitle1">peer bfd</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer bfd</strong>命令用来为对等体/组配置指定的BFD检测参数。</p>
+<p><strong>undo peer bfd</strong>命令用来恢复BFD检测参数的缺省值。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> { <em>group-name</em> | <em>ipv4-address</em> } <strong>bfd</strong> { <strong>min-tx-interval</strong> <em>min-tx-interval</em> | <strong>min-rx-interval</strong> <em>min-rx-interval</em> | <strong>detect-multiplier</strong> <em>multiplier</em> } *</p>
+<p><strong>undo peer</strong> { <em>group-name</em> | <em>ipv4-address</em> } <strong>bfd</strong> { <strong>min-tx-interval</strong> | <strong>min-rx-interval</strong> | <strong>detect-multiplier</strong> } *</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>group-name</em>：对等体组的名称。</p>
+<p><em>ipv4-address</em>：对等体的IPv4地址。</p>
+<p><strong>min-tx-interval</strong> <em>min-tx-interval</em>：BFD发送检测报文的间隔。整数形式，取值范围是10～1000，单位是毫秒。缺省值是100毫秒。</p>
+<p><strong>min-rx-interval</strong> <em>min-rx-interval</em>：BFD接收检测报文的间隔。整数形式，取值范围是10～1000，单位是毫秒。缺省值是300毫秒。</p>
+<p><strong>detect-multiplier</strong> <em>multiplier</em>：指定本地检测时间倍数。整数形式，取值范围是3～50。缺省值是3。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP视图、BGP-VPN实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>BGP对等体的状态是Established时，BFD会话才能被创建。</p>
+<p>Peer级和Group级的BFD配置遵从个体优先的原则，即Peer上的配置优先级要高于Group上的配置。如果Peer上没有配置BFD，且Peer所在的Group使能了BFD功能，则Peer会从从其加入的Group中继承BFD配置。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>检测参数的缺省值是动态的从BFD模块获得的，不同产品的缺省值可能不同。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_bfd__d103218e123"></a><a name="d103218e123"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 为对等体2.2.2.9配置BFD功能及检测参数。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100</strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> peer 2.2.2.9 bfd min-tx-interval 100 min-rx-interval 100 detect-multiplier 5</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="peer_bfd_enable.html">peer bfd enable</a></div>
+<div><a href="display_bgp_bfd_session.html">display bgp bfd session</a></div>
+<div><a href="display_bgp_peer.html">display bgp peer</a></div>
+<div><a href="display_bgp_group.html">display bgp group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

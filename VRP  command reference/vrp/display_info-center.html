@@ -1,0 +1,480 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display info-center">
+<meta name="DC.Relation" scheme="URI" content="../vrp/information_center.html">
+<meta name="DC.Relation" scheme="URI" content="info-center_enable.html">
+<meta name="DC.Relation" scheme="URI" content="info-center_loghost.html">
+<meta name="DC.Relation" scheme="URI" content="info-center_logbuffer.html">
+<meta name="DC.Relation" scheme="URI" content="info-center_trapbuffer.html">
+<meta name="DC.Relation" scheme="URI" content="info-center_console_channel.html">
+<meta name="DC.Relation" scheme="URI" content="info-center_monitor_channel.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_info-center">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display info-center</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_info-center"></a><a name="display_info-center"></a>
+
+
+<h1 class="topictitle1">display info-center</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display info-center</strong>命令用来显示信息中心记录的各项信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display info-center</strong></p>
+<p><strong>display info-center statistics</strong> <span>[ <strong>|</strong> <strong>count</strong> ]</span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>statistics</strong>：显示信息中心的统计信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display info-center</strong>命令显示信息中心记录的各项信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_info-center__d27373e95"></a><a name="d27373e95"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示信息中心记录各项信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display info-center</strong>
+Information Center:enabled
+Log host:
+Console:
+         channel number : 0, channel name : console
+Monitor:
+         channel number : 1, channel name : monitor
+SNMP Agent:
+         channel number : 5, channel name : snmpagent
+Log buffer:
+         enabled,max buffer size 1024, current buffer size 512,
+current messages 512, channel number : 4, channel name : logbuffer
+dropped messages 0, overwritten messages 724
+Trap buffer:
+         enabled,max buffer size 1024, current buffer size 256,
+current messages 10, channel number:3, channel name:trapbuffer
+dropped messages 0, overwritten messages 0
+logfile:
+         channel number : 9, channel name : channel9, language : english
+Information timestamp setting:
+         log - date, trap - date, debug - boot
+ Sent messages = 1213, Received messages = 1249
+ IO Reg messages = 100 IO Sent messages = 37</pre>
+
+<div class="tablenoborder"><a name="display_info-center__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_info-center__tb_01" frame="border" border="1" rules="all"><caption>表1 display info-center命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="26.71201814058957%" id="d27373e116"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="73.28798185941044%" id="d27373e120"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="26.71201814058957%" headers="d27373e116 "><p>Information Center</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.28798185941044%" headers="d27373e120 "><p>信息中心的使能状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.71201814058957%" headers="d27373e116 "><p>Log host</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.28798185941044%" headers="d27373e120 "><p>日志主机的状态，包括日志主机的IP地址，所使用的通道号、通道名，语言及日志主机的级别。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.71201814058957%" headers="d27373e116 "><p>Console</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.28798185941044%" headers="d27373e120 "><p>控制口的使用状态，包括控制口所使用的通道名，通道号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.71201814058957%" headers="d27373e116 "><p>Monitor</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.28798185941044%" headers="d27373e120 "><p>监视口的使用状态，包括监视口所使用的通道号、通道名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.71201814058957%" headers="d27373e116 "><p>SNMP Agent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.28798185941044%" headers="d27373e120 "><p>网管代理的使用状态，包括通道号、通道名。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.71201814058957%" headers="d27373e116 "><p>Log buffer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.28798185941044%" headers="d27373e120 "><p>日志缓冲区的使用状态，包括使能态，最大尺寸，当前尺寸，当前信息数，通道名，通道号，已丢弃的信息数，被覆盖的信息数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.71201814058957%" headers="d27373e116 "><p>Trap buffer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.28798185941044%" headers="d27373e120 "><p>告警缓冲区的使用状态，包括使能态，最大尺寸，当前尺寸，当前信息数，通道名，通道号，已丢弃的信息数，被覆盖的信息数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.71201814058957%" headers="d27373e116 "><p>Logfile</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.28798185941044%" headers="d27373e120 "><p>日志文件的使用状态，包括向日志文件输出信息的通道号、通道名、语言。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.71201814058957%" headers="d27373e116 "><p>Information timestamp setting</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.28798185941044%" headers="d27373e120 "><div class="p">日志、告警、调试信息的时间戳格式：<ul>
+<li>boot</li>
+<li>date</li>
+<li>short-date</li>
+<li>format-date</li>
+<li>none</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.71201814058957%" headers="d27373e116 "><p>Sent messages</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.28798185941044%" headers="d27373e120 "><p>已发送的信息数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="26.71201814058957%" headers="d27373e116 "><p>Received messages</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="73.28798185941044%" headers="d27373e120 "><p>已收到的信息数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示信息中心的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display info-center statistics</strong>
+Information statistics data:
+ModuleID   ModuleName   LogNumber  TrapNumber  DebugNumber
+417d0000   6OVER4       0          0           0
+41470000   AAA          0          0           0
+406c0000   ACL          0          0           0
+40ef0000   ACL6         0          0           0
+41440000   ACM          0          0           0
+40e70000   ADDR         0          0           0
+41980000   APS          0          0           0
+416e0000   ARP          0          0           0
+41860000   ARP-PING     0          0           0
+419d0000   ARPLINK      0          0           0
+40cf0000   ATM          0          0           0
+416c0000   BFD          0          0           0
+70180000   BGP          0          0           0
+418b0000   BULKSTAT     1          0           0
+40530000   CFM          0          0           0
+40580000   CHAT         0          0           0
+40480000   CMD          0          0           0
+419b0000   CSBR         0          0           0
+70040000   CSPF         0          0           0
+40b10000   DDR          0          0           0
+400d0000   DHCPR        0          0           0
+400f0000   DHCPS        0          0           0
+413f0000   DLSW         0          0           0
+40060000   DNS          0          0           0
+418d0000   EFM          0          0           0
+418f0000   EOAM1AG      0          0           0
+416d0000   ETH          0          0           0
+40010000   FIB          0          0           0
+40200000   FIBSPT       0          0           0
+406d0000   FILTER       0          0           0
+40910000   FR           0          0           0
+40610000   FTPS         0          0           0
+40b60000   GRE          0          0           0
+418a0000   GTSM         0          0           0
+40030000   HA           0          0           0
+40a40000   HDLC         0          0           0
+40550000   HWCM         1          0           0
+40090000   HWPING       0          0           0
+40e80000   ICMPV6       0          0           0
+500000     IFNET        0          0           0
+70190000   IGMP         0          0           0
+40680000   IKE          0          0           0
+40560000   INFO         0          0           0
+416a0000   IP           0          0           0
+40f40000   IP6TOKEN     0          0           0
+e0000      IPC          0          0           0
+404d0000   IPHC         0          0           0
+40690000   IPSEC        0          0           0
+417e0000   IPV4-IPV6    0          0           0
+40e00000   IPV6FIBAGENT 0          0           0
+40e10000   IPV6FIBCONTAINER 0          0           0
+40ea0000   IPV6PMTU     0          0           0
+40e20000   IPV6PP       0          0           0
+70260000   IPV6TCP      0          0           0
+70240000   IPV6UDP      0          0           0
+70110000   ISIS         0          0           0
+411c0000   L2IF         1          0           0
+406a0000   L2TP         0          0           0
+412f0000   L2V          0          0           0
+70290000   L3VPN        0          0           0
+70320000   L3VPN6       0          0           0
+41490000   LAM          0          0           0
+40510000   LAPB         0          0           0
+705f0000   LDP          0          0           0
+40380000   LINE         0          0           0
+41400000   LLC2         0          0           0
+70620000   LSPAGENT     0          0           0
+40670000   LSPC         0          0           0
+70010000   LSPM         0          0           0
+40000      MBUF         0          0           0
+70200000   MD           0          0           0
+d0000      MEM          0          0           0
+40210000   MFIB         0          0           0
+40b80000   MFW          0          0           0
+41920000   MINM         0          0           0
+706e0000   MLD          0          0           0
+40570000   MODEM        0          0           0
+41880000   MPING        0          0           0
+70640000   MPLSIF       0          0           0
+701e0000   MRM          4          0           0
+702d0000   MSDP         0          0           0
+411e0000   MSTP         0          0           0
+41680000   MTI          0          0           0
+41870000   MTRACE       0          0           0
+40f10000   NATPT        0          0           0
+40e90000   ND           0          0           0
+404c0000   NETSTREAM    0          0           0
+41730000   NQA          0          0           0
+40590000   NTP          0          0           0
+41710000   OAM          0          0           0
+418e0000   OAMMGR       0          0           0
+70170000   OSPF         12         0           0
+701d0000   OSPFV3       4          0           0
+120000     PAF          0          0           0
+40020000   PBR          0          0           0
+41240000   PDF          3          0           0
+b0000      PHY          0          0           0
+701b0000   PIM          0          0           0
+404a0000   PPP          0          0           0
+40070000   PPPOE        0          0           0
+41770000   QINQ         2          0           0
+408d0000   QOS          0          0           0
+41460000   RDS          0          0           0
+70140000   RIP          0          0           0
+70150000   RIPNG        0          0           0
+70120000   RM           4          0           0
+411f0000   RMON         0          0           0
+41200000   RMON2        0          0           0
+41270000   RPR          0          0           0
+417a0000   RRPP         0          0           0
+405c0000   RSA          0          0           0
+70230000   RSVP         0          0           0
+41410000   SDLC         0          0           0
+40770000   SEC          0          0           0
+40390000   SHELL        2          0           0
+41890000   SINDEX       0          0           0
+40500000   SLIP         0          0           0
+40810000   SNMP         1          0           0
+41760000   SNOOPING     0          0           0
+41820000   SNPG         0          0           0
+70740000   SOCKET       0          0           0
+405b0000   SSH          0          0           0
+412b0000   STANDBY      0          0           0
+110000     SYSMIB       0          0           0
+41480000   TAC          0          0           0
+417f0000   TAD          0          0           0
+417c0000   TE_TUNNEL    0          0           0
+405f0000   TELNET       0          0           0
+40a30000   TEQOS        0          0           0
+702b0000   TNLM         0          0           0
+41950000   TRAFSTAT     0          0           0
+41590000   TRUNK        0          0           0
+416b0000   TUNN_PS      0          0           0
+40b70000   TUNNEL       0          0           0
+41430000   UCM          0          0           0
+40050000   URPF         0          0           0
+40490000   USERLOG      0          0           0
+a0000      VFS          0          0           0
+40800000   VGMP         0          0           0
+41220000   VLAN         0          0           0
+90000      VOS          0          0           0
+40730000   VOSCPU       0          0           0
+40720000   VOSMEM       0          0           0
+40340000   VRRP         0          0           0
+405a0000   VTY          0          0           0
+41450000   WEB          0          0           0
+411b0000   WVRP         0          0           0
+40d10000   X25          0          0           0
+41230000   XM           0          0           0</pre>
+
+<div class="tablenoborder"><a name="display_info-center__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_info-center__tb_02" frame="border" border="1" rules="all"><caption>表2 display info-center statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="22.348198538674733%" id="d27373e288"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="77.65180146132528%" id="d27373e292"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="22.348198538674733%" headers="d27373e288 "><p>ModuleID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.65180146132528%" headers="d27373e292 "><p>模块在信息中心中注册的ID号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.348198538674733%" headers="d27373e288 "><p>ModuleName</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.65180146132528%" headers="d27373e292 "><p>产生日志信息的模块名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.348198538674733%" headers="d27373e288 "><p>LogNumber</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.65180146132528%" headers="d27373e292 "><p>已经产生的日志信息的条数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.348198538674733%" headers="d27373e288 "><p>TrapNumber</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.65180146132528%" headers="d27373e292 "><p>已经产生的告警信息的条数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.348198538674733%" headers="d27373e288 "><p>DebugNumber</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.65180146132528%" headers="d27373e292 "><p>已经产生的调试信息的条数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_info-center__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_info-center__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d27373e369"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d27373e373"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d27373e369 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d27373e373 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/information_center.html">信息中心命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="info-center_enable.html">info-center enable</a></div>
+<div><a href="info-center_loghost.html">info-center loghost</a></div>
+<div><a href="info-center_logbuffer.html">info-center logbuffer</a></div>
+<div><a href="info-center_trapbuffer.html">info-center trapbuffer</a></div>
+<div><a href="info-center_console_channel.html">info-center console channel</a></div>
+<div><a href="info-center_monitor_channel.html">info-center monitor channel</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

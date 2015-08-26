@@ -1,0 +1,129 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="save">
+<meta name="DC.Relation" scheme="URI" content="../vrp/file_system_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_saved-configuration.html">
+<meta name="DC.Relation" scheme="URI" content="display_current-configuration.html">
+<meta name="DC.Relation" scheme="URI" content="display_saved-configuration.html">
+<meta name="DC.Relation" scheme="URI" content="startup_saved-configuration.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="save">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>save</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="save"></a><a name="save"></a>
+
+
+<h1 class="topictitle1">save</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>save</strong>命令用来保存当前配置信息到系统默认的存储路径中。</p>
+<p><strong>save</strong> <em>configuration-file </em>命令用来保存当前配置信息到存储设备中的指定文件中。该命令通常情况下不影响系统当前的启动配置文件；除非当<em>configuration-file</em>与系统默认的存储路径及配置文件名完全相同时，则此命令的作用等同于<strong>save</strong>命令。</p>
+<p><strong>save all</strong>命令用来保存当前所有的配置，包括不在位的板卡的配置，至系统默认的存储路径中。</p>
+<p><strong>save</strong> <strong>all</strong> <em>configuration-file</em> 命令用来保存当前配置信息到存储设备中的指定文件中。该命令通常情况下不影响系统当前的启动配置文件；除非当<em>configuration-file</em>与系统默认的存储路径及配置文件名完全相同时，则此命令的作用等同于<strong>save all</strong>命令。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>save</strong> [ <strong>all</strong> ] [ <em>configuration-file</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：保存所有的配置，包括不在位的板卡的配置。</p>
+<p><em>configuration-file</em>：配置文件的文件名。字符串形式，绝对路径的长度范围是5～48。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当完成一组配置，并且已经达到预定功能，则应将当前配置文件保存到存储设备中。</p>
+<p>配置文件必须以&#8220;.cfg&#8221; 或&#8220;.zip&#8221;作为扩展名，而且系统启动配置文件必须存放在存储设备的根目录下。存储设备包括硬盘（Hard disk）和Flash，如果您选择缺省路径，系统配置文件将存储在Flash的根目录下。在第一次保存配置文件时，如果不指定可选参数<em>configuration-file</em>，则系统将提示是否将文件名保存为&#8220;vrpcfg.cfg&#8221;。</p>
+<p>当在主用主控板上执行保存当前配置文件的操作时，系统在主用主控板上的配置文件保存完毕之后，将会提示用户确认备用主控板上是否需要保存同样名称的配置文件。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>如果配置数据恢复失败，则系统会记录日志，并且在终端有显示信息提示用户。用户必须选择Y/N来确认&#8220;是否准备保存当前配置，并且停止每次用户登录时显示这条信息&#8221;，如果用户选择了N，则后续每次登录系统时都会出现此提示信息。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="save__d116445e95"></a><a name="d116445e95"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 保存当前配置文件到默认存储设备中。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> save</strong></pre>
+<pre class="screen">The current configurations will be written to the device.</pre>
+<pre class="screen">Are you sure?[Y/N]<strong> y</strong></pre>
+<pre class="screen">Now saving the current configuration to the device.</pre>
+<pre class="screen">..................</pre>
+<pre class="screen">Info:The current configuration was saved to the masterboard divice successfully</pre>
+<pre class="screen">Info:The current configuration was saved to the slaveboard divice successfully</pre>
+<pre class="screen">Info: The current configuration was saved to the device successfully.</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="save__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="save__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d116445e130"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d116445e134"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d116445e130 "><p>VRPV500R005C02B331</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d116445e134 "><p>将配置文件大小的取值范围从5～64修改为5～48。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d116445e130 "><p>VRPV500R006C02B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d116445e134 "><p>增加参数<strong>all</strong>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/file_system_configuration_commands.html">文件系统命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_saved-configuration.html">reset saved-configuration</a></div>
+<div><a href="display_current-configuration.html">display current-configuration</a></div>
+<div><a href="display_saved-configuration.html">display saved-configuration</a></div>
+<div><a href="startup_saved-configuration.html">startup saved-configuration</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

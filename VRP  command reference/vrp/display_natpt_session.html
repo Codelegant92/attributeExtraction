@@ -1,0 +1,194 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display natpt session">
+<meta name="DC.Relation" scheme="URI" content="../vrp/nat-pt_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_natpt_session">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display natpt session</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_natpt_session"></a><a name="display_natpt_session"></a>
+
+
+<h1 class="topictitle1">display natpt session</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display natpt session</strong>命令用来查看NAT-PT动态会话信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display natpt session</strong> { <strong>all</strong> | <strong>icmp </strong>| <strong>tcp</strong> | <strong>udp</strong> } <strong>slot </strong><em>slot-id</em><span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>all</strong>：显示所有会话信息。</p>
+<p><strong>icmp</strong>：显示ICMP会话信息。</p>
+<p><strong>tcp</strong>：显示TCP会话信息。</p>
+<p><strong>udp</strong>：显示UDP会话信息。</p>
+<p><strong>slot </strong><em>slot-id: </em>接口板的插槽号，在分布式环境中有效。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_natpt_session__d52807e120"></a><a name="d52807e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有的NAT-PT动态会话信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display natpt session all slot 1</strong></pre>
+<pre class="screen"> NATPT Session Info:</pre>
+<pre class="screen"> No                      IPV6Source              IPV4Source              Pro</pre>
+<pre class="screen">                         IPV6Destination         IPV4Destination</pre>
+<pre class="screen">     1                     2001::0002^54955             8.0.0.19^12288   ICMP</pre>
+<pre class="screen">                      3001::0800:0002^    0              8.0.0.2^    0</pre>
+<pre class="screen">     2                     2001::0002^55467             8.0.0.19^12289   ICMP</pre>
+<pre class="screen">                      3001::0800:0002^    0              8.0.0.2^    0        </pre>
+
+<div class="tablenoborder"><a name="display_natpt_session__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_natpt_session__tb_01" frame="border" border="1" rules="all"><caption>表1 display natpt session命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d52807e154"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d52807e158"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d52807e154 "><p>NATPT Session Info</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d52807e158 "><p>NAT-PT会话信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d52807e154 "><p>No</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d52807e158 "><p>会话项的序号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d52807e154 "><p>IPV6Source</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d52807e158 "><p>会话中的IPv6源地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d52807e154 "><p>IPV6Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d52807e158 "><p>会话中的IPv6目的地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d52807e154 "><p>IPV4Source</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d52807e158 "><p>会话中的IPv4源地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d52807e154 "><p>IPV4Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d52807e158 "><p>会话中的IPv4目的地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d52807e154 "><p>Pro</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d52807e158 "><p>会话中的IP报文封装的协议类型</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_natpt_session__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_natpt_session__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d52807e257"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d52807e261"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d52807e257 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d52807e261 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/nat-pt_configuration_commands.html">NAT-PT配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="modify hop">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="add_hop.html">
+<meta name="DC.Relation" scheme="URI" content="delete_hop.html">
+<meta name="DC.Relation" scheme="URI" content="list_hop.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_path_explicit-path.html">
+<meta name="DC.Relation" scheme="URI" content="next_hop.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="modify_hop">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>modify hop</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="modify_hop"></a><a name="modify_hop"></a>
+
+
+<h1 class="topictitle1">modify hop</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>modify hop</strong>命令用来修改显式路径中的IP地址。</p>
+<p>缺省情况下，修改后的指定节点为<strong>include</strong>，是严格下一跳<strong>strict</strong>。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>modify hop</strong> <em>ip-address1</em> <em>ip-address2</em> [ <strong>exclude</strong> | <strong>include</strong> [ <strong>loose</strong> | <strong>strict</strong> ]
+]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address1</em> <em>ip-address2</em>：将显式路径中的IP地址<em>ip-address1</em>修改为<em>ip-address2</em>。</p>
+<p><strong>exclude</strong>：显式路径中建立的LSP不能经过修改后的链路或节点。</p>
+<p><strong>include</strong>：显式路径中建立的LSP必须经过修改后的链路或节点。</p>
+<p><strong>loose</strong>：松散显式路径，即，修改后的指定节点与上一节点可以不是直连的。</p>
+<p><strong>strict</strong>：严格显式路径，即，修改后的指定节点与上一节点必须是直连的。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>显式路径视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行此命令修改显式路径中的IP地址时，不能使用该显式路径中已经存在的下一跳IP地址，且需保证本设备上没有任何Tunnel接口在使用该显式路径。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="modify_hop__d93664e91"></a><a name="d93664e91"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将MPLS TE显式路径中的IP地址10.0.0.125修改为10.0.0.200。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> explicit-path p1</strong></pre>
+<pre class="screen">[Quidway-explicit-path-p1]<strong> modify hop 10.0.0.125 10.0.0.200 exclude</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="add_hop.html">add hop</a></div>
+<div><a href="delete_hop.html">delete hop</a></div>
+<div><a href="list_hop.html">list hop</a></div>
+<div><a href="mpls_te_path_explicit-path.html">mpls te path explicit-path</a></div>
+<div><a href="next_hop.html">next hop</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

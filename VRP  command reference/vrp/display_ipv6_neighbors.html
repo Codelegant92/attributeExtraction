@@ -1,0 +1,231 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ipv6 neighbors">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipv6_basic_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ipv6_neighbors">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ipv6 neighbors</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ipv6_neighbors"></a><a name="display_ipv6_neighbors"></a>
+
+
+<h1 class="topictitle1">display ipv6 neighbors</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ipv6 neighbors</strong>命令用来查看邻居表项。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ipv6 neighbors</strong> [ <em>ipv6-address</em> ]</p>
+<p><strong>display ipv6 neighbors</strong> [ [ <strong>vid</strong> <em>vlan-id</em> ] <em>interface-type interface-number</em> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> ]<span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vid </strong><em>vlan-id</em>：查看指定VLAN上的邻居表项。</p>
+<p><em>interface-type interface-number</em>：查看指定接口上的邻居表项。</p>
+<p><em>ipv6-address</em>：查看指定IPv6地址的邻居表项。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：IPv6 VPN实例的名称，用来查看指定IPv6 VPN实例的邻居表项。字符串形式，区分大小写，长度范围是1～31。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ipv6_neighbors__d34087e125"></a><a name="d34087e125"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定接口上的邻居表项。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ipv6 neighbors gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">--------------------------------------------------------
+IPv6 Address : 3003::2
+Link-layer   : 00e0-fc89-fe6e            State : STALE
+Interface    : GE1/0/0                   Age   : 7
+VPN name     : vpn1                      VLAN  : -
+
+IPv6 Address : FE80::2E0:FCFF:FE89:FE6E
+Link-layer   : 00e0-fc89-fe6e            State : STALE
+Interface    : GE1/0/0                   Age   : 7
+VPN name     : vpn1                      VLAN  : -
+---------------------------------------------------------
+Total: 2       Dynamic: 2       Static: 0
+</pre>
+<p># 查看指定IPv6地址的邻居表项。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display ipv6 neighbors 3003::2</strong></pre>
+<pre class="screen">-----------------------------------------------------------------------------
+IPv6 Address : 3003::2
+Link-layer   : 00e0-fc89-fe6e            State : STALE
+Interface    : GE1/0/0                   Age   : 7
+VPN name     : vpn1                      VLAN  : -
+-----------------------------------------------------------------------------
+Total: 1       Dynamic: 1       Static: 0
+</pre>
+
+<div class="tablenoborder"><a name="display_ipv6_neighbors__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_neighbors__tb_01" frame="border" border="1" rules="all"><caption>表1 display ipv6 neighbors命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="25.43461829176115%" id="d34087e155"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="74.56538170823886%" id="d34087e159"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="25.43461829176115%" headers="d34087e155 "><p>IPv6 Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.56538170823886%" headers="d34087e159 "><p>邻居的IPv6地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.43461829176115%" headers="d34087e155 "><p>Link-layer address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.56538170823886%" headers="d34087e159 "><p>邻居的链路层地址（邻居地址的MAC地址）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.43461829176115%" headers="d34087e155 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.56538170823886%" headers="d34087e159 "><p>邻居项的状态，有以下5种状态：</p>
+<ul>
+<li>INCMP：邻居不可达。正在进行地址解析，邻居的链路层地址未探测到，如果解析成功，则进入REACH状态。</li>
+<li>REACH：邻居可达。在规定时间内认为邻居可达，如果超过规定时间，则进入STALE状态。</li>
+<li>STALE：邻居是否可达未知。此时除非有发送到邻居的报文，否则不对邻居是否可达进行探测</li>
+<li>DELAY：邻居是否可达未知。已向邻居发送报文，如果在指定时间内没有收到响应，则进入PROBE状态。</li>
+<li>PROBE：邻居是否可达未知。已向邻居发送邻居请求报文，探测邻居是否可达。在规定时间内收到回复，则进入REACH状态；没有收到回复，则进入INCMP状态。</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.43461829176115%" headers="d34087e155 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.56538170823886%" headers="d34087e159 "><p>邻居项所属的接口名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.43461829176115%" headers="d34087e155 "><p>Age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.56538170823886%" headers="d34087e159 "><p>邻居项的建立时间，分为静态和动态两种情况：</p>
+<ul>
+<li>静态项显示&#8220;&#8211;&#8221;。</li>
+<li>动态项显示上次可达以来经过的时间（单位是分钟），如果始终不可达则显示&#8220;#&#8221;（只适用于动态项）。</li>
+</ul>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.43461829176115%" headers="d34087e155 "><p>VLAN</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.56538170823886%" headers="d34087e159 "><p>邻居所属的VLAN号。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="25.43461829176115%" headers="d34087e155 "><p>VPN name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="74.56538170823886%" headers="d34087e159 "><p>邻居所属的VPN实例名称。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="37.5%" id="d34087e283"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="62.5%" id="d34087e287"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="37.5%" headers="d34087e283 "><p>VRPV500R006C01B050</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.5%" headers="d34087e287 "><p>修改了输出信息的格式，且修改字段名&#8220;VPN&#8221;为&#8220;VPN name&#8221;。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="37.5%" headers="d34087e283 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="62.5%" headers="d34087e287 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipv6_basic_configuration_commands.html">IPv6基础配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

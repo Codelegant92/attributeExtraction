@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="user-interface maximum-vty">
+<meta name="DC.Relation" scheme="URI" content="../vrp/user_management_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_user-interface_maximum-vty.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="user-interface_maximum-vty">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>user-interface maximum-vty</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="user-interface_maximum-vty"></a><a name="user-interface_maximum-vty"></a>
+
+
+<h1 class="topictitle1">user-interface maximum-vty</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>user-interface maximum-vty</strong>命令用来设置登录用户的最大数目。</p>
+<p><strong>undo user-interface maximum-vty</strong>命令用来恢复登录用户最大数目为缺省值。</p>
+<p>缺省情况下，telnet、SSH用户最大数目为5个。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>user-interface maximum-vty</strong> <em>number</em></p>
+<p><strong>undo user-interface maximum-vty</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>number</em>：用来设置Telnet、SSH用户最大数目。整数形式，取值范围0～15。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果所有登录用户对应的VTY节点索引都小于用户的配置数值，则该配置被接受；否则，报告配置失败。</p>
+<p>网管用户除可以通过预留通道登录路由器外，还可以通过没有被占用的VTY登录到路由器。网管专用通道不支持RSA认证方式，只支持密码认证方式。</p>
+<p>如果配置的登录用户最大数目为零，则<span class="keyword">路由器</span>不再接受任何用户通过Telnet、SSH登录<span class="keyword">路由器</span>。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="user-interface_maximum-vty__d127107e61"></a><a name="d127107e61"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置VTY用户界面最大数目为7个。</p>
+<pre class="screen">&lt;Quidway &gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> user-interface maximum-vty 7</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/user_management_commands.html">用户管理命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_user-interface_maximum-vty.html">display user-interface maximum-vty</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

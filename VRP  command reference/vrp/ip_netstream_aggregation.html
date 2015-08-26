@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ip netstream aggregation">
+<meta name="DC.Relation" scheme="URI" content="../vrp/netstream_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ip_netstream_aggregation">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ip netstream aggregation</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ip_netstream_aggregation"></a><a name="ip_netstream_aggregation"></a>
+
+
+<h1 class="topictitle1">ip netstream aggregation</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ip netstream aggregation</strong>命令用来进入NetStream聚合配置模式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ip netstream aggregation </strong>{ <strong>as </strong>|<strong> as-tos </strong>|<strong> destination-prefix </strong>|<strong> destination-prefix-tos </strong><strong>mpls-label</strong>|<strong> prefix </strong>|<strong> prefix-tos </strong>|<strong> protocol-port </strong>|<strong> protocol-port-tos </strong>|<strong> source-prefix </strong>|<strong> source-prefix-tos </strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>as</strong>：自治系统聚合。根据NetStream 流的源、目的自治系统号、入接口索引、出接口索引，4个关键值进行分类。</p>
+<p><strong>as-tos</strong>：自治系统-ToS聚合。根据NetStream 流的源、目的自治系统号、入接口索引、出接口索引、ToS，5个关键值进行分类。</p>
+<p><strong>destination-prefix</strong>：目的前缀聚合。根据NetStream 流的目的自治系统号、目的掩码长度、目的前缀、输出接口索引，4个关键值进行分类。</p>
+<p><strong>destination-prefix-tos</strong>：目的前缀-ToS聚合。根据NetStream 流的目的自治系统号、目的掩码长度、目的前缀、ToS、输出接口索引，5个关键值进行分类。</p>
+<p><strong>mpls-label</strong>标签聚合。根据NetStream流的标签号进行聚合分类。</p>
+<p><strong>prefix</strong>：前缀聚合。根据NetStream 流的源、目的自治系统号，源、目的掩码长度、源前缀、目的前缀、输入接口索引、输出接口索引，8个关键值进行分类。</p>
+<p><strong>prefix-tos</strong>：前缀-ToS聚合。根据NetStream 流的源、目的自治系统号、源、目的掩码长度、源、目的前缀、ToS、输入接口索引、输出接口索引，9个关键值进行分类。</p>
+<p><strong>protocol-port</strong>：协议-端口聚合。根据NetStream 流的协议号、源端口、目的端口，3个关键值进行分类。</p>
+<p><strong>protocol-port-tos</strong>：协议-端口-ToS聚合。根据NetStream 流的协议号、源端口、目的端口、ToS、输入接口索引、输出接口索引，6个关键值进行分类。</p>
+<p><strong>source-prefix</strong>：源前缀聚合。根据NetStream 流的源自治系统号、源掩码长度、源前缀、输入接口索引，4个关键值进行分类。</p>
+<p><strong>source-prefix-tos</strong>：源前缀-ToS聚合。根据NetStream 流的源自治系统号、源掩码长度、源前缀、ToS、输入接口索引，5个关键值进行分类。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当需要对采集到的流量进行分类时，使用此命令进入对应的聚合模式，进行聚合配置。对流量聚合后不仅可以对流量进行分类，还可以减少发送到网管的统计信息的数量，减轻网络的负担。</p>
+<p>进入聚合视图后，只有执行命令<a href="enable.html">enable</a>后，采集到的流统计信息才能按照配置的聚合模式进行输出。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ip_netstream_aggregation__d83921e117"></a><a name="d83921e117"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 进入AS聚合模式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ip netstream aggregation as</strong></pre>
+<p># 进入MPLS聚合模式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> ip netstream aggregation mpls-label</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/netstream_configuration_commands.html">NetStream配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

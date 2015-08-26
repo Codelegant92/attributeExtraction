@@ -1,0 +1,136 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls te auto-bandwidth">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_te_timer_auto-bandwidth.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_te_auto-bandwidth">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls te auto-bandwidth</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_te_auto-bandwidth"></a><a name="mpls_te_auto-bandwidth"></a>
+
+
+<h1 class="topictitle1">mpls te auto-bandwidth</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls te auto-bandwidth</strong>命令用来配置隧道的自动带宽调整。</p>
+<p><strong>undo mpls
+te auto-bandwidth</strong>命令用来禁止隧道的这一功能。</p>
+<p>缺省情况下，自动带宽调整特性被禁止。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls te auto-bandwidth</strong> { <strong>adjustment</strong> | <strong>collect-bw</strong> }
+[ <strong>frequency</strong> <em>interval</em> ] [ <strong>max-bw</strong> <em>max-bandwidth</em> <strong>min-bw</strong> <em>min-bandwidth</em> ]</p>
+<p><strong>undo
+mpls te auto-bandwidth</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>adjustment</strong>：隧道自动带宽调整。</p>
+<p><strong>collect-bw</strong>：收集隧道的出口速率信息，不调整带宽。</p>
+<p><em>interval</em>：隧道自动带宽调整间隔，单位为秒，取值范围是300～604800。这个值不能小于<strong>mpls te timer auto-bandwidth</strong>配置的出口速率采样间隔。</p>
+<p><strong>max-bw</strong> <em>max-bandwidth</em>：允许调整到的最大带宽值。整数形式，取值范围是1～32000000，单位是kbit/s。</p>
+<p><strong>min-bw</strong> <em>min-bandwidth</em>：允许调整到的最小带宽值。整数形式，取值范围1～32000000，单位是kbit/s。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Tunnel接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果使能了自动带宽调整特性，缺省情况下，每24小时进行一次带宽调整，没有带宽最大值和最小值的限制。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><div class="p">同一个TE隧道接口下，<strong>mpls
+te auto-bandwidth</strong>命令与如下命令互斥：<ul>
+<li><a href="mpls_te_reoptimization_tunnel_interface_view.html">mpls te
+reoptimization（Tunnel接口视图）</a>命令；</li>
+<li><a href="mpls_te_route-pinning.html">mpls te route-pinning</a>命令；</li>
+<li><a href="mpls_te_backup.html">mpls te backup</a>命令；</li>
+<li><a href="mpls_te_resv-style.html">mpls te resv-style ff</a>命令；</li>
+<li>指定了多个CT的<a href="mpls_te_bandwidth_tunnel_interface_view.html">mpls
+te bandwidth（Tunnel接口视图）</a>命令。</li>
+</ul>
+</div>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_te_auto-bandwidth__d95557e132"></a><a name="d95557e132"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置自动带宽调整间隔为1小时一次。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface tunnel 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> tunnel-protocol mpls te</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> destination 2.2.2.2</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te tunnel-id 100</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0]<strong> mpls te auto-bandwidth adjustment frequency 3600</strong></pre>
+<pre class="screen">[Quidway-Tunnel1/0/0] <strong>mpls te commit</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_te_auto-bandwidth__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_te_auto-bandwidth__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d95557e175"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d95557e179"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d95557e175 "><p>VRPV500R005C02B080</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d95557e179 "><p>参数<em>max-bandwidth</em>和<em>min-bandwidth</em>的最大取值由4294967295改为32000000。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d95557e175 "><p>VRPV500R006C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d95557e179 "><p>增加命令输入限制：该命令与多CT互斥。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_te_timer_auto-bandwidth.html">mpls te timer auto-bandwidth</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

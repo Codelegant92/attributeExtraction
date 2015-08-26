@@ -1,0 +1,97 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="sham-link">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="sham-link">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>sham-link</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="sham-link"></a><a name="sham-link"></a>
+
+<h1 class="topictitle1">sham-link</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>sham link</strong>命令用来配置伪连接。</p>
+<p><strong>undo sham link</strong>命令如果不使用可选参数，则删除伪连接；如果使用可选参数，则恢复参数的缺省值。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>sham-link</strong> <em>source-ip-address</em> <em>destination-ip-address</em> [ <strong>smart-discover</strong> ] [ <strong>simple</strong> [ [ <strong>plain</strong> ] <em>plain-text</em> | <strong>cipher</strong><em> cipher-text</em> ] | { <strong>md5</strong> | <strong>hmac-md5</strong> } <em>key-id</em> [ <strong>plain</strong> <em>plain-text</em> | [ <strong>cipher</strong> ] <em>cipher-text</em> ] | <strong>authentication-null</strong> ] [ <strong>cost</strong> <em>cost</em> ] [ <strong>dead</strong> <em>dead-interval</em> | <strong>hello</strong> <em>hello-interval</em> | <strong>retransmit</strong> <em>retransmit-interval</em> | <strong>trans-delay</strong> <em>trans-delay-interval</em> ] <sup>*</sup></p>
+<p><strong>undo sham-link</strong> <em>source-ip-address</em> <em>destination-ip-address</em> [ <strong>smart-discover</strong> ] [ <strong>simple</strong> | <strong>md5</strong> | <strong>hmac-md5</strong> | <strong>authentication-null</strong> ] [ <strong>cost</strong> ] [ <strong>dead</strong> | <strong>hello</strong> | <strong>retransmit</strong> | <strong>trans-delay</strong> ] <sup>*</sup></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>source-ip-address</em>：源IP地址。</p>
+<p><em>destination-ip-address</em>：目的IP地址。</p>
+<p><strong>smart-discover</strong>：主动立即地发送Hello报文。</p>
+<p><strong>cost</strong><em> cost</em>：指定伪连接开销。整数形式，取值范围是1～65535，缺省值是1。</p>
+<p><strong>dead</strong><em> dead-interval</em>：指定失效间隔。整数形式，取值范围是1～235926000，单位是秒。该值必须与其建立虚连接路由器的dead-<em>interval</em>值相等并至少为<em>hello-interval</em>值的4倍。</p>
+<p><strong>hello</strong><em> hello-interval</em>：指定接口上发送Hello报文的间隔。整数形式，取值范围是1～65535，单位是秒。该值必须与本路由器建立虚连接的路由器上的<em>hello-interval</em>值相等。</p>
+<p><strong>retransmit</strong><em> retransmit-interval</em>：指定接口上重传LSA报文的时间间隔。整数形式，取值范围是1～3600，单位是秒。</p>
+<p><strong>trans-delay</strong><em> trans-delay-interval</em>：指定接口上延迟发送LSA报文的时间间隔。整数形式，取值范围是1～3600，单位是秒。</p>
+<p><strong>simple</strong>：采用简单验证模式。</p>
+<p><strong>md5</strong>：采用MD5验证模式。</p>
+<p><strong>hmac-md5</strong>：采用HMAC-MD5验证模式。</p>
+<p><em>key-id</em>：接口密文验证的验证字标识符。整数形式，取值范围是1～255，必须与对端的验证字标识符一致。</p>
+<p><strong>plain</strong>：输入及显示的口令为明文。</p>
+<p><em>plain-text</em>：指定明文验证字。<strong>simple</strong>模式下是1～8字节字符串，不支持空格；<strong>md5、hmac-md5</strong>模式是1～16字节字符串。</p>
+<p><strong>cipher</strong>：输入及显示的口令为密文。</p>
+<p><em>cipher-text</em>：指定密文验证字。<strong>simple</strong>模式下，1～8字节字符串对应明文，24字节对应密文；<strong>md5、hmac-md5</strong>模式下1～16字节字符串对应明文，24字节对应密文。</p>
+<p><strong>authentication-null</strong>：无验证模式。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>OSPF区域视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果两台PE路由器属于同一区域，并有后门链路连接，为了避免VPN流量总是优先考虑穿越这条后门路由，可在PE路由器之间创建伪连接，使VPN流量优先经过VPN骨干的路由。</p>
+<p>通过Smart-discover功能，使得伪连接的邻居更快达到邻接关系。</p>
+<p>当采用明文验证时（<strong>simple</strong>），验证字类型缺省为明文（<strong>plain</strong>）；当采用MD5算法或HMAC-MD5算法进行验证时（<strong>md5</strong> | <strong>hmac-md5</strong>），验证字类型缺省为密文（<strong>cipher</strong>）。</p>
+<p>验证字中不允许包含空格。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>配置伪连接时，伪连接端点地址的路由不能通过私网的OSPF进程发布到对端PE上。如果伪连接端点地址的路由通过私网的OSPF进程发布到对端PE上，则对端PE将同时存在两条到该伪连接端点地址的路由。其中一条是通过私网OSPF学习到的，另一条是通过MP-BGP学习到的。OSPF路由比BGP路由优先级高，对端PE错误地选择了OSPF路由，所以伪连接无法建立成功。</p>
+</div></div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="sham-link__d117611e277"></a><a name="d117611e277"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建一条伪连接，源地址为1.1.1.1，目的地址为2.2.2.2。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ospf 1</strong></pre>
+<pre class="screen">[Quidway-ospf-1]<strong> area 1</strong></pre>
+<pre class="screen">[Quidway-ospf-1-area-0.0.0.1]<strong> sham-link 1.1.1.1 2.2.2.2</strong></pre>
+</div></div></div>
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="sham-link__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="sham-link__tb_01" frame="border" border="1" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.34895439657345%" id="d117611e303"><p>版本</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d117611e306"><p>修订内容</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d117611e303 "><p>VRPV500R006C02B220</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d117611e306 "><div class="p">当选择<strong>simple</strong>、<strong>md5</strong>或<strong>hmac-md5</strong>验证模式时，密码由必选修改为可选，且：<ul><li><strong>simple</strong>模式下，<strong>plain</strong>关键字可省略</li><li><strong>md5</strong>和<strong>hmac-md5</strong>证模式时，<strong>cipher</strong>关键字可省略</li></ul>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

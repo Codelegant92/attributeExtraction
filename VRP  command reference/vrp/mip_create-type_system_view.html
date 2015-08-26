@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mip create-type（系统视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_enable_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="display_cfm_mip.html">
+<meta name="DC.Relation" scheme="URI" content="display_mip_create-type.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mip_create-type_system_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mip create-type（系统视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mip_create-type_system_view"></a><a name="mip_create-type_system_view"></a>
+
+
+<h1 class="topictitle1">mip create-type（系统视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mip create-type</strong>命令用来配置全局或指定接口的MIP生成规则。</p>
+<p><strong>undo mip create-type</strong>命令用来将指定接口的MIP生成规则恢复为缺省值。</p>
+<p>缺省情况下，全局的MIP生成规则为<strong>none</strong>，接口按全局MIP生成规则生成MIP。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mip create-type</strong> { <strong>default</strong> | <strong>explicit</strong> | <strong>none</strong> } [ <strong>interface</strong> <em>interface-type interface-number </em>]</p>
+<p><strong>undo mip create-type interface </strong><em>interface-type interface-number</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>default</strong>：指定MIP的生成规则为default类型，即如果指定接口不存在更高级别的MEP，并且不存在更低级别的MIP，则可以在该接口上创建MIP。在本类型下，接口上没有配置MEP也可创建MIP。</p>
+<p><strong>explicit</strong>：指定MIP的生成规则为explicit类型，即如果在指定接口下存在更低级的MEP但不存在更高级别的MEP，而且不存在更低级别的MIP，则可以创建MIP。在本类型下，接口上只有已配置了更低级别的MEP才可能创建MIP。</p>
+<p><strong>none</strong>：指定MIP的生成规则为none类型，即不自动创建MIP。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：表示配置指定接口的MIP生成规则。<em>interface-type</em>表示接口类型，取值包括：ethernet、eth-trunk和gigabitethernet<em>。interface-number</em>表示接口编号。不指定本参数时，表示配置全局的MIP生成规则。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="p"><div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody">本命令只适用于draft7草案版本中。</div></div>
+</div>
+<p>配置了MIP的生成规则为default类型或explicit类型后，设备会根据规则自动创建MIP。</p>
+<p>在使用<a href="cfm_enable_system_view.html">cfm enable（系统视图）</a>命令全局使能CFM功能后才能成功使用本命令。</p>
+<p>一般情况下，在对MA内的非MEP节点进行802.1ag MAC Ping/Trace操作时，才需要配置MIP节点。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mip_create-type_system_view__d93008e100"></a><a name="d93008e100"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置以太网接口GigabitEthernet1/0/1的MIP生成规则为default。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>mip create-type default interface gigabitethernet1/0/1</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_enable_system_view.html">cfm enable</a></div>
+<div><a href="display_cfm_mip.html">display cfm mip</a></div>
+<div><a href="display_mip_create-type.html">display mip create-type</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

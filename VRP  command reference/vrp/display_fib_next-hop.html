@@ -1,0 +1,140 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display fib next-hop">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_performance_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_fib_next-hop">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display fib next-hop</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_fib_next-hop"></a><a name="display_fib_next-hop"></a>
+
+
+<h1 class="topictitle1">display fib next-hop</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display fib next-hop</strong>命令用来过滤显示FIB信息，根据所指定的下一跳的IP地址，把匹配的FIB表项显示出来。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>fib</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> ] <strong>next-hop</strong><em> ip-address</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例的名称。字符串形式，区分大小写，长度范围是1～31。</p>
+<p><em>ip-address</em>：指定下一跳地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_fib_next-hop__d24421e60"></a><a name="d24421e60"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示通过到下一跳的IP地址过滤的FIB表项。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display fib next-hop 100.1.1.1</strong></pre>
+<pre class="screen">Destination/Mask   Nexthop         Flag TimeStamp     Interface      TunnelID</pre>
+<pre class="screen">100.1.1.1/32       100.1.1.1       HU   t[115]        GE1/0/0         0x0</pre>
+
+<div class="tablenoborder"><a name="display_fib_next-hop__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fib_next-hop__tb_01" frame="border" border="1" rules="all"><caption>表1 display fib next-hop命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.06349206349206%" id="d24421e84"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.936507936507944%" id="d24421e88"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.06349206349206%" headers="d24421e84 "><p>Destination/Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.936507936507944%" headers="d24421e88 "><p>目的地址/掩码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.06349206349206%" headers="d24421e84 "><p>Nexthop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.936507936507944%" headers="d24421e88 "><p>下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.06349206349206%" headers="d24421e84 "><p>Flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.936507936507944%" headers="d24421e88 "><p>当前标志，G、H、U、S、D的组合。G表示Gateway（网关路由）H表示Host（主机路由）U表示Up（可用路由）S表示Static（静态路由）D表示Dynamic（动态路由）</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.06349206349206%" headers="d24421e84 "><p>TimeStamp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.936507936507944%" headers="d24421e88 "><p>时间戳，表示该表项存在的时间，单位是秒。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.06349206349206%" headers="d24421e84 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.936507936507944%" headers="d24421e88 "><p>到目的地址的出接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.06349206349206%" headers="d24421e84 "><p>TunnelID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.936507936507944%" headers="d24421e88 "><p>表示转发表项索引。用于连接上行板和下行板之间的转发表项。该值不为0时，表示匹配该项的报文通过MPLS隧道转发。该值为0时，表示报文不通过MPLS隧道转发。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_performance_configuration_commands.html">IP性能配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

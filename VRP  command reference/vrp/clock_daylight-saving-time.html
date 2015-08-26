@@ -1,0 +1,160 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="clock daylight-saving-time">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="clock_timezone.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="clock_daylight-saving-time">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>clock daylight-saving-time</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="clock_daylight-saving-time"></a><a name="clock_daylight-saving-time"></a>
+
+
+<h1 class="topictitle1">clock daylight-saving-time</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>clock daylight-saving-time</strong>命令用来设置夏令时的名称和起始、终止时间。</p>
+<p><strong>undo clock daylight-saving-time</strong>命令用来取消当前设置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>clock daylight-saving-time</strong> <em>time-zone-name</em> <strong>one-year </strong><em>start-time start-date end-time end-date offset</em></p>
+<p><strong>clock daylight-saving-time</strong><em> time-zone-name </em><strong>repeating </strong><em>start-time</em> { {<strong> first </strong>| <strong>second </strong>|<strong> third</strong> |<strong> fourth</strong> |<strong> last </strong>} <em>weekday month </em> | <em>start-date</em> } <em>end-time </em>{ { <strong>first</strong> |<strong> second </strong>|<strong> third </strong>|<strong> fourth </strong>|<strong> last </strong>} <em>weekday month </em> |<em> end-date</em> } <em>offset</em> [ <em>start-year</em> [ <em>end-year</em> ] ]</p>
+<p><strong>undo clock daylight-saving-time</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>time-zone-name</em>：指定夏令时区名称。字符串形式，取值范围是1～32。</p>
+<p><strong>one-year</strong>：仅对某一年的夏令时时间进行设置。</p>
+<p><strong>repeating</strong>：对从某一年开始的以后每年的夏令时时间的设置。</p>
+<p><em>start-time</em>：指定起始时间。格式是<em>HH:MM</em>，24小时制，<em>HH</em>表示小时，取值范围是0～23，<em>MM</em>表示分钟，取值范围是0～59。其中，可以不输入<em>MM</em>，表示0分0秒。但至少需要输入一位数的<em>HH</em>的值，例如输入0，则表示0小时0分0秒。</p>
+<p><em>start-date：</em>指定起始日期。格式是<em>MM-DD</em>，<em>MM</em>取值范围是1～12，<em>DD</em>取值范围是1～31。</p>
+<p><em>end-time</em>：指定结束时间。格式是<em>HH:MM</em>，24小时制，<em>HH</em>表示小时，取值范围是0～23，<em>MM</em>表示分钟，取值范围是0～59。其中，可以不输入<em>MM</em>，表示0分0秒。但至少需要输入一位数的<em>HH</em>的值，例如输入0，则表示0小时0分0秒。</p>
+<p><em>end-date</em>：指定结束日期。格式是<em>MM-DD</em>，<em>MM</em>取值范围是1～12，<em>DD</em>取值范围是1～31。</p>
+<p><em>offset</em>：指定采用夏令时的时差。格式是<em>HH:MM</em>，24小时制，<em>HH</em>表示小时，取值范围是0～23，<em>MM</em>表示分钟，取值范围是0～59。其中，可以不输入<em>MM</em>，表示0分0秒。但至少需要输入一位数的<em>HH</em>的值。</p>
+<p><strong>first</strong>：指定月份中起始的第一个工作日。</p>
+<p><strong>second</strong>：指定月份中起始的第二个工作日。</p>
+<p><strong>third</strong>：指定月份中起始的第三个工作日。</p>
+<p><strong>fourth</strong>：指定月份中起始的第四个工作日。</p>
+<p><strong>last</strong>：指定月份中起始的最后一个工作日。</p>
+<p><em>weekday</em>：指定工作日。取值：Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday，分别表示从星期一到星期日。</p>
+<p><em>month</em>：指定月份。取值：January、February、March、April、May、June、July、August、September、October、November、December，分别表示从一月份到12月份。</p>
+<p><em>start-year</em>：指定起始年份。格式是<em>YYYY</em>，取值范围是2000～2099。</p>
+<p><em>end-year</em>：指定结束年份。格式是<em>YYYY</em>，取值范围是2000～2099。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>系统默认情况下，无夏令时。此时使用<a href="display_clock.html">display clock</a>命令并不显示夏令时相关信息。当需要使用夏令时时，用该命令配置。</p>
+<p>结束时间一定要比开始时间大于一天且不大于一年，才能使得设置生效。</p>
+<p>设置生效后，可以用<a href="display_clock.html">display clock</a>命令进行查看。另外，日志、诊断等信息的时间采用经过时区和夏令时调整过的本地时间。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="clock_daylight-saving-time__d6986e261"></a><a name="d6986e261"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 按周期设置夏令时。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> clock daylight-saving-time test repeating 0 first Sun Jan 0 first Sun Apr 4 2009 2009</strong></pre>
+<pre class="screen">&lt;Quidway&gt;<strong> display clock</strong></pre>
+<pre class="screen">2009-03-03 17:58:36  DST
+Tuesday
+Time Zone : test add 00:00:00
+Daylight saving time :
+         Name        : test
+         Repeat mode : repeat
+         Start year  : 2009
+         End year    : 2009
+         Start time  : first Sunday January 00:00:00
+         End time    : first Sunday April 00:00:00
+         Saving time : 04:00:00 </pre>
+<p># 按日期设置周期夏令时。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> clock daylight-saving-time test repeating 12:11 1-1 1:0 3-4 1</strong></pre>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display clock</strong></strong></pre>
+<pre class="screen">2009-03-03 15:01:34  DST
+Tuesday
+Time Zone : test add 00:00:00
+Daylight saving time :
+         Name        : test
+         Repeat mode : repeat
+         Start year  : 2000
+         End year    : 2099
+         Start time  : 01-01 12:11:00
+         End time    : 03-04 01:00:00
+         Saving time : 01:00:00</pre>
+<p># 设置绝对夏令时。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> clock daylight-saving-time test one-year  12:11 2010-10-2 1:00 2010-11-4 1</strong></pre>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display clock</strong></strong></pre>
+<pre class="screen">2009-03-03 14:03:03
+Tuesday
+Time Zone : ultZoneName add 00:00:00
+Daylight saving time :
+         Name        : test
+         Repeat mode : one-year
+         Start year  : 2010
+         End year    : 2010
+         Start time  : 10-02 12:11:00
+         End time    : 11-04 01:00:00
+         Saving time : 01:00:00 </pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="clock_daylight-saving-time__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="clock_daylight-saving-time__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d6986e315"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d6986e319"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d6986e315 "><p>VRPV500R003C07B340</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d6986e319 "><p>优化命令关键字；优化回显信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_configuration_commands.html">基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="clock_timezone.html">clock timezone</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

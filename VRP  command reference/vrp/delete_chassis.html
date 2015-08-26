@@ -1,0 +1,109 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="delete（多框）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/file_system_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_recycle-bin_chassis.html">
+<meta name="DC.Relation" scheme="URI" content="undelete_chassis.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="delete_chassis">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>delete（多框）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="delete_chassis"></a><a name="delete_chassis"></a>
+
+
+<h1 class="topictitle1">delete（多框）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>delete</strong>命令用来删除路由器存储设备中的指定文件。支持&#8220; * &#8221;通配符。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>delete</strong> [ /<strong>unreserved</strong> ] [ <em>drive</em> ] [ <em>path</em> ] <em>filename</em> [ <strong>all</strong> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>/<strong>unreserved</strong>：表示彻底删除指定文件，删除的文件将不可恢复。</p>
+<p><em>drive</em>：设备名。</p>
+<p><em>path</em>：路径名。</p>
+<p><em>filename</em>：要删除的文件名。字符串形式，长度范围是1～64。</p>
+<p><strong>all</strong>：批量删除所有中央交换框和转发框上的主用主控板和备用主控板上对应路径下的文件。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>3：管理级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>删除文件是将文件放在回收站目录中，<strong>dir</strong>命令不显示已经删除的文件信息，使用<strong>dir /all</strong>命令显示所有文件信息，包括已经删除的文件信息。</p>
+<p>使用不带参数的<strong>delete</strong>命令删除的文件可以使用<strong>undelete</strong>命令恢复，若要从回收站中删除该文件，使用<strong>reset recycle-bin </strong>命令。对于加入参数<strong>all</strong>的<strong>delete</strong>此部分描述不适用。</p>
+<p>如果在不同目录下，删除两个相同名字的文件，回收站中只保留最后一次删除的文件。只在系统主控板上可用，对于多框集群系统，</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="delete_chassis__d9777e97"></a><a name="d9777e97"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 删除中央交换框中的文件cfcard:/test/test.txt。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>delete cfcard:/test/test.txt</strong></pre>
+<pre class="screen">Delete cfcard:/test/test.txt?[Y/N] <strong>Y</strong></pre>
+<pre class="screen">%Deleting file cfcard:/test/test.txt...Done!</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="delete_chassis__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="delete_chassis__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d9777e122"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d9777e126"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d9777e122 "><p>VRPV500R006C01B004</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d9777e126 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/file_system_commands.html">文件系统命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_recycle-bin_chassis.html">reset recycle-bin（多框）</a></div>
+<div><a href="undelete_chassis.html">undelete（多框）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

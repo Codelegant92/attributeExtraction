@@ -1,0 +1,258 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ipsec sa">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_ipsec_sa.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_sa_global-duration.html">
+<meta name="DC.Relation" scheme="URI" content="display_ipsec_policy.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ipsec_sa">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ipsec sa</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ipsec_sa"></a><a name="display_ipsec_sa"></a>
+
+<h1 class="topictitle1">display ipsec sa</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ipsec sa</strong>命令用来查看安全联盟的相关信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>ipsec</strong> <strong>sa</strong> [ <strong>brief</strong> | <strong>remote</strong><em> ip-address</em> | <strong>policy</strong> <em>policy-name</em> [<em> seq-number </em>] | <strong>duration</strong> ] </p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>brief</strong>：表示显示所有的安全联盟的简要信息。</p>
+<p><strong>remote</strong><em> ip-address</em>：表示显示对端地址为<em>ip-address</em>的安全联盟的信息。</p>
+<p><strong>policy</strong>：表示显示由指定安全策略创建的安全联盟的信息。</p>
+<p><em>policy-name</em>：指定安全策略的名字。</p>
+<p><em>seq-number</em>：指定安全策略的顺序号。</p>
+<p><strong>duration</strong>：表示显示全局的安全联盟生存周期。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display</strong> <strong>ipsec</strong> <strong>sa brief</strong>命令可以快速查看所有已经建立的安全联盟参数，显示所有的安全联盟的简要信息，显示格式为简要格式，简要信息包括：</p>
+<ul><li><p>源地址</p>
+</li><li><p>目的地址</p>
+</li><li><p>安全参数索引</p>
+</li><li><p>VPN实例名称</p>
+</li><li><p>IPSec采用的安全协议</p>
+</li><li><p>安全协议采用的认证算法和加密算法</p>
+</li></ul>
+<p>使用<strong>remote</strong>和<strong>policy</strong>参数均显示安全联盟的详细信息，显示格式是先显示安全策略的部分信息，再显示此安全策略中的安全联盟的详细信息。</p>
+<p>使用<strong>duration</strong>参数显示全局的安全联盟的生存时间，包括&#8220;基于时间&#8221;和&#8220;基于流量&#8221;两种类型。</p>
+<p>当未指定任何参数时显示所有的安全联盟的信息。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ipsec_sa__d33322e124"></a><a name="d33322e124"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 下面是display ipsec sa brief命令的输出：</p>
+<pre class="screen">[Quidway]<strong> display ipsec sa brief</strong></pre>
+<pre class="screen">Src Address  Dst Address  SPI   vpn  Protocol     Algorithm</pre>
+<pre class="screen">--------------------------------------------------------------------</pre>
+<pre class="screen">10.1.1.1     10.1.1.2     300   ss    ESP         E:DES; A:HMAC-MD5-96</pre>
+<pre class="screen">10.1.1.2     10.1.1.1     400   ss    ESP         E:DES; A:HMAC-MD5-96</pre>
+
+<div class="tablenoborder"><a name="display_ipsec_sa__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipsec_sa__tb_01" frame="border" border="1" rules="all"><caption>表1 display ipsec sa brief命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="24.615772234819854%" id="d33322e147"><p>主要字段</p>
+</th>
+<th class="cellrowborder" valign="top" width="75.38422776518014%" id="d33322e150"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="24.615772234819854%" headers="d33322e147 "><p>Src Address</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.38422776518014%" headers="d33322e150 "><p>本端的IP地址</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.615772234819854%" headers="d33322e147 "><p>Dst Address</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.38422776518014%" headers="d33322e150 "><p>对端的IP地址</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.615772234819854%" headers="d33322e147 "><p>SPI</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.38422776518014%" headers="d33322e150 "><p>安全参数索引</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.615772234819854%" headers="d33322e147 "><p>VPN</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.38422776518014%" headers="d33322e150 "><p>VPN实例名称</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.615772234819854%" headers="d33322e147 "><p>Protocol</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.38422776518014%" headers="d33322e150 "><p>IPSec采用的安全协议</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="24.615772234819854%" headers="d33322e147 "><p>Algorithm</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.38422776518014%" headers="d33322e150 "><p>安全协议采用的认证算法和加密算法，其中，以&#8220;E:&#8221;开头表示加密算法；以&#8220;A:&#8221;开头表示认证算法</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p># 显示安全联盟的全局生存时间。</p>
+<pre class="screen">[Quidway]<strong> display ipsec sa duration</strong></pre>
+<pre class="screen">    IPsec sa global duration(traffic based): 1843200 kilobytes</pre>
+<pre class="screen">    IPsec sa global duration(time based): 3600 seconds</pre>
+<p># 显示对端地址为162.105.10.2的安全联盟的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipsec sa remote 162.105.10.2</strong></pre>
+<pre class="screen">  IPsec policy name: "policy1"</pre>
+<pre class="screen">  sequence number: 10</pre>
+<pre class="screen">  mode: isakmp</pre>
+<pre class="screen">  -----------------------------</pre>
+<pre class="screen">    connection id: 26</pre>
+<pre class="screen">    encapsulation mode: tunnel</pre>
+<pre class="screen">    tunnel local : 162.105.10.1    tunnel remote: 162.105.10.2</pre>
+
+<pre class="screen">    [inbound ESP SAs]</pre>
+<pre class="screen">      spi: 2937148797 (0xaf11557d)</pre>
+<pre class="screen">      proposal: ESP-ENCRYPT-DES ESP-AUTH-SHA1</pre>
+<pre class="screen">      sa remaining key duration (bytes/sec): 1887435916/2894</pre>
+<pre class="screen">      max received sequence-number: 13</pre>
+
+<pre class="screen">    [outbound ESP SAs]</pre>
+<pre class="screen">      spi: 753872231 (0x2cef2d67)</pre>
+<pre class="screen">      proposal: ESP-ENCRYPT-DES ESP-AUTH-SHA1</pre>
+<pre class="screen">      sa remaining key duration (bytes/sec): 1887435708/2894</pre>
+<pre class="screen">      max sent sequence-number: 14</pre>
+<p># 下面是<strong>display</strong> <strong>ipsec</strong> <strong>sa</strong>命令的输出：</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipsec sa</strong></pre>
+<pre class="screen">===============================</pre>
+<pre class="screen">Interface: Gigabitethernet 1/0/0</pre>
+<pre class="screen">    path MTU: 1500</pre>
+<pre class="screen">===============================</pre>
+
+<pre class="screen">  ----------------------------------</pre>
+<pre class="screen">  IPsec policy name: "policy_isakmp"</pre>
+<pre class="screen">  sequence number: 10</pre>
+<pre class="screen">  mode: isakmp</pre>
+<pre class="screen">  ----------------------------------</pre>
+<pre class="screen">    connection id: 4</pre>
+<pre class="screen">     encapsulation mode: tunnel</pre>
+<pre class="screen">    tunnel local : 162.105.10.1    tunnel remote : 162.105.10.2</pre>
+
+<pre class="screen">    [inbound ah SAs]</pre>
+<pre class="screen">      spi: 3752719292 (0xdfadf3bc)</pre>
+<pre class="screen">      proposal: AH-SHA1HMAC96</pre>
+<pre class="screen">      sa remaining key duration (bytes/sec): (1887436384/3594)</pre>
+<pre class="screen">      max received sequence-number: 4</pre>
+
+<pre class="screen">    [inbound ESP SAs]</pre>
+<pre class="screen">      spi: 74180629 (0x46be815)</pre>
+<pre class="screen">      proposal: ESP-ENCRYPT-3DES ESP-AUTH-MD5</pre>
+<pre class="screen">      sa remaining key duration (bytes/sec): (1887436528/3594)</pre>
+<pre class="screen">      max received sequence-number: 4</pre>
+
+<pre class="screen">    [outbound ESP SAs]</pre>
+<pre class="screen">      spi: 1394075637 (0x5317e7f5)</pre>
+<pre class="screen">      proposal: ESP-ENCRYPT-3DES ESP-AUTH-MD5</pre>
+<pre class="screen">      sa remaining key duration (bytes/sec): (1887436464/3594)</pre>
+<pre class="screen">      max sent sequence-number: 5</pre>
+
+<pre class="screen">    [outbound ah SAs]</pre>
+<pre class="screen">      spi: 2132905296 (0x7f218d50)</pre>
+<pre class="screen">      proposal: AH-SHA1HMAC96</pre>
+<pre class="screen">      sa remaining key duration (bytes/sec): (1887436336/3594)</pre>
+<pre class="screen">      max sent sequence-number: 5</pre>
+
+<div class="tablenoborder"><a name="display_ipsec_sa__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipsec_sa__tb_02" frame="border" border="1" rules="all"><caption>表2 display ipsec sa命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="35.31116150163769%" id="d33322e340"><p>主要字段</p>
+</th>
+<th class="cellrowborder" valign="top" width="64.68883849836232%" id="d33322e343"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>Interface</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>应用了安全策略的接口</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>path MTU</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>从该接口发送出去的最大IP数据报文长度</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>ipsec policy </p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>采用的安全策略，包括策略名、顺序号和协商方式</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>connection id</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>安全通道标识符</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>in use settings</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>IPSec采用的模式，有两种：传输（transport）和隧道（tunnel）模式</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>tunnel local</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>本端的IP地址</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>tunnel remote</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>对端的IP地址</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>inbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>输入端SA的信息</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>proposal</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>安全策略所引用的提议</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>sa remaining key duration</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>安全联盟剩余的存活时间</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>max received sequence-number</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>接收的报文最大序列号</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>outbound</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>输出端SA的信息</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="35.31116150163769%" headers="d33322e340 "><p>max sent sequence-number</p>
+</td>
+<td class="cellrowborder" valign="top" width="64.68883849836232%" headers="d33322e343 "><p>发送的报文最大序列号</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_ipsec_sa.html">reset ipsec sa</a></div>
+<div><a href="ipsec_sa_global-duration.html">ipsec sa global-duration</a></div>
+<div><a href="display_ipsec_policy.html">display ipsec policy</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

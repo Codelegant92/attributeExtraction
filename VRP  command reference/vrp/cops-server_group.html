@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="cops-server group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cops_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_cops-server_configuration.html">
+<meta name="DC.Relation" scheme="URI" content="cops-group_iptn-binding.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cops-server_group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>cops-server group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="cops-server_group"></a><a name="cops-server_group"></a>
+
+
+<h1 class="topictitle1">cops-server group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>cops-server</strong> <strong>group</strong>命令用于创建COPS服务器组，并进入到该COPS服务器组视图。</p>
+<p><strong>undo</strong> <strong>cops-server</strong> <strong>group</strong>命令用于删除COPS服务器组。</p>
+<p>缺省情况下，未配置COPS服务器组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>cops-server</strong> <strong>group</strong> <em>group-name</em> [ <strong>client-type</strong> <strong>ssg</strong> ]</p>
+<p><strong>undo cops-server group </strong><em>group-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>group-name</em>：COPS服务器组名。字符串形式，长度范围是为1～32。</p>
+<p><strong>client-type</strong>：指定COPS服务器组的客户端类型。</p>
+<p><strong>ssg</strong>：指定COPS服务器组的客户端类型为SSG（Service
+Select Gateway）。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>在首次创建COPS服务器组时，必须使用参数<strong>client-type</strong>指定COPS服务器组的客户端类型，即指定客户端是为开展何种业务而连接COPS服务器的。这里需要配置COPS服务器组的客户端类型为SSG。</p>
+</div></div>
+<p>要使COPS客户端能够向相应的COPS服务器发送用户上下线信息，需要执行命令<strong>cops-group iptn-binding</strong>，将COPS服务器组绑定到IPTN业务上。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="cops-server_group__d8525e89"></a><a name="d8525e89"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 添加名为huawei的COPS服务器组，客户端类型为SSG。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>cops-server group huawei client-type ssg</strong></pre>
+<pre class="screen">[Quidway-cops-huawei]</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/cops_configuration_commands.html">COPS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_cops-server_configuration.html">display
+cops-server configuration</a></div>
+<div><a href="cops-group_iptn-binding.html">cops-group iptn-binding</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

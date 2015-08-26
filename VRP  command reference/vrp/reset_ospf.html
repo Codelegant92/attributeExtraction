@@ -1,0 +1,125 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset ospf">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_ospf">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset ospf</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_ospf"></a><a name="reset_ospf"></a>
+
+
+<h1 class="topictitle1">reset ospf</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset ospf counters</strong>命令用来将OSPF计数器清零。</p>
+<p><strong>reset ospf process</strong>命令用来重启OSPF进程。</p>
+<p><strong>reset ospf redistribution</strong>命令用来重新引入路由，生成Type 5或Type 7类型的LSA。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset ospf</strong> [ <em>process-id</em> ] <strong>counters </strong>[ <strong>neighbor</strong> [ <em>interface-type interface-number</em> ] [ <em>router-id </em>] ]</p>
+<p><strong>reset ospf</strong> [ <em>process-id</em> ] <strong>process</strong> [ <strong>flush-waiting-timer</strong> <em>time</em> | <strong>graceful-restart</strong> ] </p>
+<p><strong>reset ospf</strong> [ <em>process-id</em> ] <strong>redistribution</strong> </p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>counters</strong>：用来将OSPF计数器清零。</p>
+<p><strong>neighbor</strong>：指定接口上邻居的信息。</p>
+<p><em>interface-type interface-number</em>：接口类型及接口号。</p>
+<p><em>router-id</em>：邻居的Router ID。</p>
+<p><em>process-id</em>：OSPF进程号。如果没有指定该参数，则重启所有OSPF进程。</p>
+<p><strong>flush-waiting-timer</strong> <em>time</em>：指定产生LSA的时间。整数形式，取值范围是1～40，单位是秒。此配置仅一次有效。</p>
+<p><strong>graceful-restart</strong>：进行Graceful Restart。</p>
+<p><strong>redistribution</strong>：用来重新引入路由。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>reset ospf process</strong>命令重启OSPF，可以获得如下结果：</p>
+<ul>
+<li><p>如果改变了Router ID，该命令的执行会导致新的Router ID生效。</p>
+</li>
+<li><p>方便地重新选举DR、BDR。</p>
+</li>
+<li><p>重启前的OSPF配置不会丢失。</p>
+</li>
+</ul>
+<p>使用<strong>reset ospf</strong> [ <em>process-id</em> ] <strong>process</strong> <strong>flush-waiting-timer</strong> <em>time</em>命令重启OSPF，可以在设定的时间内，可以立即清除无效的LSA，而不必等到LSA超时。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>能否清除掉其他路由器上所有的无效LSA，和设定时间的长短有关。</p>
+</div></div>
+<p>可通过参数来选择进行普通重启还是Graceful Restart。</p>
+<p>路由器重启OSPF进程后，邻居路由器会一直保留着其产生的已无效的LSA，占用了系统内存，只有这些LSA超时（即LSA中的age字段达到3600秒）才会被删除。使用<strong>reset ospf</strong> [ <em>process-id</em> ] <strong>flush-waiting-timer</strong> <em>time</em>命令重启OSPF进程后，当且仅当Router ID发生了改变，路由器会在设定的时间内再次产生自己的LSA，并将其age字段置为3600。其他路由器收到age字段为3600的LSA后，会立刻删除保留在本机的此条LSA。若本机没有在设定的时间发送完所有的LSA，则其他邻居路由器仍会继续保留着一部分已无效的LSA。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>当LSA头部中LS字段（老化时间）达到3600秒时，这条LSA会被删除。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_ospf__d113243e179"></a><a name="d113243e179"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 将OSPF计数器清零。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset ospf counters</strong></pre>
+<p># 重启所有OSPF进程。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset ospf process</strong></pre>
+<p># OSPF重新引入路由。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset ospf redistribution </strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="reset_ospf__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="reset_ospf__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d113243e211"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d113243e215"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d113243e211 "><p>VRPV500R005C02B060</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d113243e215 "><p>命令行中新增关键字&#8220;<strong>flush-waiting-timer</strong>&#8221;。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

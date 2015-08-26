@@ -1,0 +1,70 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ppp mp user">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ppp_and_mp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ppp_mp.html">
+<meta name="DC.Relation" scheme="URI" content="ppp_mp_max-bind.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ppp_mp_user">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ppp mp user</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ppp_mp_user"></a><a name="ppp_mp_user"></a>
+
+<h1 class="topictitle1">ppp mp user</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ppp mp user</strong>命令用来根据用户名进行MP捆绑。</p>
+<p><strong>undo</strong> <strong>ppp mp user</strong>命令用来去掉MP捆绑。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ppp mp user</strong><em> user-name</em><strong> bind virtual-template</strong><em> number</em></p>
+<p><strong>undo ppp mp user </strong><em>user-name</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>user-name</em>：MP用户名，字符串形式，长度范围是1～64。</p>
+<p><em>number</em>：为虚拟接口模板号，范围0～1023。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在PPP建立连接的过程中，当PPP验证通过后，如果指定了虚拟接口模板，则将按照虚拟接口模板的参数进行MP捆绑，并形成一个新的虚拟接口进行数据传输。</p>
+<p>当采用通过验证方式绑定物理接口时，接口下必须执行命令<a href="ppp_mp.html">ppp mp</a>。</p>
+<p>在同一台<span class="keyword">路由器</span>上，<strong>ppp mp user</strong><em> username</em><strong> bind virtual-template</strong> <em>number</em>命令最多可以配置200条。</p>
+<p>在虚拟接口模板上可以配置的工作参数包括：</p>
+<ul><li><p>本地IP地址和为PPP对端分配的IP地址（或IP地址池）</p>
+</li><li><p>PPP工作参数</p>
+</li></ul>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ppp_mp_user__d107376e81"></a><a name="d107376e81"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定用户名Quidway的对应虚接口模板为1，并配置该虚拟接口模板的IP地址是202.38.60.1。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-veiw</strong></pre>
+<pre class="screen">[Quidway]<strong> ppp mp user Quidway bind virtual-template 1</strong></pre>
+<pre class="screen">[Quidway]<strong> interface virtual-template 1</strong></pre>
+<pre class="screen">[Quidway-virtual-template1]<strong> ip address 202.38.60.1 255.255.255.0</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ppp_and_mp_configuration_commands.html">PPP和MP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ppp_mp.html">ppp mp</a></div>
+<div><a href="ppp_mp_max-bind.html">ppp mp max-bind</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

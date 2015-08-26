@@ -1,0 +1,152 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="auto-cost enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="bandwidth-reference_is-is.html">
+<meta name="DC.Relation" scheme="URI" content="circuit-cost.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="auto-cost_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>auto-cost enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="auto-cost_enable"></a><a name="auto-cost_enable"></a>
+
+
+<h1 class="topictitle1">auto-cost enable</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>auto-cost enable</strong>命令用来使能IS-IS根据带宽自动计算接口开销的功能。</p>
+<p><strong>undo auto-cost enable</strong>命令用来禁止此功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>auto-cost enable </strong></p>
+<p><strong>undo auto-cost enable</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当使能此功能后，对于某个IS-IS接口来说，如果在接口视图下没有配置其开销值，而且在IS-IS视图下也没有配置全局开销值，则此接口的开销由系统自动计算。</p>
+<p>当开销类型为wide或wide-compatible时，每个接口的开销值通过下面的公式计算：接口的开销值= (bandwidth-reference/接口带宽值)&times;10。</p>
+<p>当开销类型为narrow、narrow-compatible或compatible时，各个接口的开销值根据下表来确定。</p>
+
+<div class="tablenoborder"><a name="auto-cost_enable__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="auto-cost_enable__tb_01" frame="border" border="1" rules="all"><caption>表1 IS-IS接口开销和带宽对应关系表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d3517e60"><p>开销值</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d3517e64"><p>接口带宽范围</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d3517e60 "><p>60</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d3517e64 "><p>接口带宽&#8804;10Mbit/s</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d3517e60 "><p>50</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d3517e64 "><p>10Mbit/s&lt;接口带宽&#8804;100Mbit/s</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d3517e60 "><p>40</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d3517e64 "><p>100Mbit/s&lt;接口带宽&#8804;155Mbit/s</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d3517e60 "><p>30</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d3517e64 "><p>155Mbit/s&lt;接口带宽&#8804;622Mbit/s</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d3517e60 "><p>20</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d3517e64 "><p>622Mbit/s&lt;接口带宽&#8804;2.5Gbit/s</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d3517e60 "><p>10</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d3517e64 "><p>2.5Gbit/s&lt;接口带宽</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>此命令不能改变Loopback接口的开销值。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="auto-cost_enable__d3517e144"></a><a name="d3517e144"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使能IS-IS接口开销自动计算功能。 </p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>isis 1</strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>auto-cost enable</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="bandwidth-reference_is-is.html">bandwidth-reference
+(IS-IS)</a></div>
+<div><a href="circuit-cost.html">circuit-cost</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

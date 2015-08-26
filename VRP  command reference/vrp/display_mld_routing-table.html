@@ -1,0 +1,208 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mld routing-table">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mld_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mld_routing-table">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mld routing-table</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mld_routing-table"></a><a name="display_mld_routing-table"></a>
+
+
+<h1 class="topictitle1">display mld routing-table</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mld routing-table</strong>命令用来查看MLD路由表信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mld routing-table </strong>[ <em>ipv6-source-address</em> [ <em>ipv6-source-mask-length</em> ] | <em>ipv6-group-address</em> [ <em>ipv6-group-mask</em>-<em>length</em> ] | <strong>static </strong>] <span>[<strong> | count</strong> ] </span>[ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ipv6-source-address</em>：指定组播源的IPv6地址。</p>
+<p><em>ipv6-source-mask-length</em>：指定组播源IPv6地址的掩码长度。整数形式，取值范围是0～128。</p>
+<p><em>ipv6-group-address</em>：指定组播组地址，显示相应的路由表信息。十六进制形式，取值范围是FF00::～FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF。</p>
+<p><em>ipv6-group-mask-length</em>：指定IPv6组播组的掩码长度。整数形式，取值范围是8～128。</p>
+<p><strong>static</strong>：显示接口静态加入组播组的MLD路由表信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>MLD路由表中的(S,G)或(*,G)转发项，即（组播源，组播组）作为表中的独立项，每一项都有一个出接口列表，表示哪些接口需要进行组播数据转发。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mld_routing-table__d41429e119"></a><a name="d41429e119"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示MLD路由表中组播组的路由项信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mld routing-table</strong></pre>
+<pre class="screen">Routing table</pre>
+<pre class="screen"> Total 2 entries</pre>
+
+<pre class="screen"> 00001. (2001:AA::123, FF44::)</pre>
+<pre class="screen">       List of 1 downstream interface in include mode</pre>
+<pre class="screen">        GigabitEthernet4/2/0 (FE80::EE:53),</pre>
+<pre class="screen">                   Protocol: STATIC</pre>
+
+<pre class="screen"> 00002. (*, FF55::)</pre>
+<pre class="screen">       List of 1 downstream interface</pre>
+<pre class="screen">        GigabitEthernet4/2/0 (FE80::EE:53),</pre>
+<pre class="screen">                   Protocol: MLD</pre>
+
+<div class="tablenoborder"><a name="display_mld_routing-table__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mld_routing-table__tb_01" frame="border" border="1" rules="all"><caption>表1 display mld routing-table命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50.82977118430978%" id="d41429e161"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="49.170228815690216%" id="d41429e165"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50.82977118430978%" headers="d41429e161 "><p>Routing table</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.170228815690216%" headers="d41429e165 "><p>MLD路由表。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.82977118430978%" headers="d41429e161 "><p>Total 2 entries</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.170228815690216%" headers="d41429e165 "><p>共有两条路由信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.82977118430978%" headers="d41429e161 "><p>00001</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.170228815690216%" headers="d41429e165 "><p>路由信息编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.82977118430978%" headers="d41429e161 "><p>(2001:AA::123, FF44::)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.170228815690216%" headers="d41429e165 "><p>(S,G)表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.82977118430978%" headers="d41429e161 "><p>List of 1 downstream interface in include mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.170228815690216%" headers="d41429e165 "><p>以Include模式加入组播组的下游接口列表。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.82977118430978%" headers="d41429e161 "><p>GigabitEthernet4/2/0 (FE80::EE:53)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.170228815690216%" headers="d41429e165 "><p>接口名称和IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.82977118430978%" headers="d41429e161 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.170228815690216%" headers="d41429e165 "><p>协议类型，有STATIC和MLD。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.82977118430978%" headers="d41429e161 "><p>List of 1 downstream interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.170228815690216%" headers="d41429e165 "><p>下游接口列表。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mld_routing-table__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mld_routing-table__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d41429e275"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d41429e279"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d41429e275 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d41429e279 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mld_configuration_commands.html">MLD配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

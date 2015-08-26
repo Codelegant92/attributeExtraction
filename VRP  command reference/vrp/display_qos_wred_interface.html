@@ -1,0 +1,194 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display qos wred interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/weighted_random_early_detection_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_qos_wred_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display qos wred interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_qos_wred_interface"></a><a name="display_qos_wred_interface"></a>
+
+
+<h1 class="topictitle1">display qos wred interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display qos wred interface</strong>命令用来显示接口的WRED配置情况和统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display qos wred interface</strong> [ <em>interface-type interface-number </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display qos wred interface</strong>命令可以观察到的信息包括：</p>
+<ul>
+<li><p>队列优先级</p>
+</li>
+<li><p>丢弃低限</p>
+</li>
+<li><p>丢弃高限</p>
+</li>
+<li><p>丢弃概率分母</p>
+</li>
+<li><p>随机丢弃</p>
+</li>
+<li><p>尾丢弃</p>
+</li>
+</ul>
+<p>如果不指定接口，将显示所有接口的WRED配置情况和统计信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_qos_wred_interface__d62043e77"></a><a name="d62043e77"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示指定接口的WRED配置情况和统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display qos wred interface GigabitEthernet 6/0/0</strong></strong></pre>
+<pre class="screen">Interface: GigabitEthernet6/0/0</pre>
+<pre class="screen"> Current WRED configuration:</pre>
+<pre class="screen"> Exponent: 10 (1/1024)</pre>
+<pre class="screen">Precedence Low     High    Discard      Random      Tail</pre>
+<pre class="screen">            Limit   Limit   Probability  Discard     Discard</pre>
+<pre class="screen"> -----------------------------------------------------------</pre>
+<pre class="screen"> 0          10      30      10           0           0</pre>
+<pre class="screen"> 1          10      30      10           0           0</pre>
+<pre class="screen"> 2          10      180     15          12338        0</pre>
+<pre class="screen"> 3          10      30      10          12327        0</pre>
+<pre class="screen"> 4          10      200     12          11912        0</pre>
+<pre class="screen"> 5          10      250     10          10753        0</pre>
+<pre class="screen"> 6          10      30      10           0           0</pre>
+<pre class="screen"> 7          10      30      10           0           0</pre>
+
+<div class="tablenoborder"><a name="display_qos_wred_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_qos_wred_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display qos wred interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="39.1660367850844%" id="d62043e127"><p>主要字段</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="60.8339632149156%" id="d62043e131"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="39.1660367850844%" headers="d62043e127 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.8339632149156%" headers="d62043e131 "><p>配置队列的接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.1660367850844%" headers="d62043e127 "><p>Current WRED configuration</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.8339632149156%" headers="d62043e131 "><p>WRED的配置信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.1660367850844%" headers="d62043e127 "><p>Exponent: 10 (1/1024)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.8339632149156%" headers="d62043e131 "><p>平均队长指数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.1660367850844%" headers="d62043e127 "><p>Precedence</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.8339632149156%" headers="d62043e131 "><p>队列优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.1660367850844%" headers="d62043e127 "><p>low-limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.8339632149156%" headers="d62043e131 "><p>丢弃低限</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.1660367850844%" headers="d62043e127 "><p>high-limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.8339632149156%" headers="d62043e131 "><p>丢弃高限</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.1660367850844%" headers="d62043e127 "><p>discard-probability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.8339632149156%" headers="d62043e131 "><p>丢弃概率分母</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.1660367850844%" headers="d62043e127 "><p>Random discard</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.8339632149156%" headers="d62043e131 "><p>随机丢弃</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="39.1660367850844%" headers="d62043e127 "><p>Tail discard</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="60.8339632149156%" headers="d62043e131 "><p>尾丢弃</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/weighted_random_early_detection_configuration_commands.html">WRED配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,125 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset dhcp snooping statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_snooping_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_dhcp_snooping.html">
+<meta name="DC.Relation" scheme="URI" content="display_dhcp_snooping_global.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_dhcp_snooping_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset dhcp snooping statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_dhcp_snooping_statistics"></a><a name="reset_dhcp_snooping_statistics"></a>
+
+
+<h1 class="topictitle1">reset dhcp snooping statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset dhcp snooping statistics</strong>命令用于清除全局下、VLAN下或者接口下的报文丢弃统计计数。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset dhcp snooping statistics </strong>[ [ <strong>vlan</strong> <em>vlanid</em> ] <strong>interface</strong> <em>interface-type</em> <em>interface-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vlan</strong><em> vlan-id</em>：虚拟局域网标识，取值范围1～4094。</p>
+<p><em>interface-type</em>：清除接口报文丢弃统计计数的接口类型。</p>
+<p><em>interface-number</em>：清除接口报文丢弃统计计数的接口号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>丢弃的报文的种类包括ARP、IP、DHCP Requst、DHCP CHADDR、DHCP Reply。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_dhcp_snooping_statistics__d111975e65"></a><a name="d111975e65"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示Ethernet4/0/0接口相关的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display dhcp snooping interface ethernet 4/0/0</strong></pre>
+<pre class="screen">dhcp snooping enable</pre>
+<pre class="screen">dhcp snooping trusted</pre>
+<pre class="screen">dhcp snooping check arp enable</pre>
+<pre class="screen">dhcp snooping alarm arp enable</pre>
+<pre class="screen">dhcp snooping alarm arp threshold 50</pre>
+<pre class="screen">dhcp snooping nomatch-packet arp action discard</pre>
+<pre class="screen">dhcp snooping check ip enable</pre>
+<pre class="screen">dhcp snooping alarm ip enable</pre>
+<pre class="screen">dhcp snooping alarm ip threshold 50</pre>
+<pre class="screen">dhcp snooping nomatch-packet ip action discard</pre>
+<pre class="screen">dhcp snooping alarm dhcp-reply enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-reply threshold 10</pre>
+<pre class="screen">dhcp snooping check dhcp-chaddr enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-chaddr enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-chaddr threshold 50</pre>
+<pre class="screen">dhcp snooping check dhcp-request enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-request enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-request threshold 50</pre>
+<pre class="screen">rp total                145</pre>
+<pre class="screen">ip   total               120</pre>
+<pre class="screen">dhcp-request total       115</pre>
+<pre class="screen">chaddr&amp;src mac total     108</pre>
+<pre class="screen">dhcp-reply total         78</pre>
+<pre class="screen">dhcp-ratelimit total     98</pre>
+<p># 删除接口Ethernet 4/0/0的报文丢弃统计计数</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> reset dhcp snooping statistics interface ehernet 4/0/0</strong></pre>
+<p># 显示Ethernet4/0/0接口相关的信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display dhcp snooping interface ethernet 4/0/0</strong></pre>
+<pre class="screen">dhcp snooping enable</pre>
+<pre class="screen">dhcp snooping trusted</pre>
+<pre class="screen">dhcp snooping check arp enable</pre>
+<pre class="screen">dhcp snooping alarm arp enable</pre>
+<pre class="screen">dhcp snooping alarm arp threshold 50</pre>
+<pre class="screen">dhcp snooping nomatch-packet arp action discard</pre>
+<pre class="screen">dhcp snooping check ip enable</pre>
+<pre class="screen">dhcp snooping alarm ip enable</pre>
+<pre class="screen">dhcp snooping alarm ip threshold 50</pre>
+<pre class="screen">dhcp snooping nomatch-packet ip action discard</pre>
+<pre class="screen">dhcp snooping alarm dhcp-reply enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-reply threshold 10</pre>
+<pre class="screen">dhcp snooping check dhcp-chaddr enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-chaddr enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp-chaddr threshold 50</pre>
+<pre class="screen">dhcp snooping check dhcp-request enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp- request enable</pre>
+<pre class="screen">dhcp snooping alarm dhcp- request threshold 50 </pre>
+<pre class="screen">arp total                  0</pre>
+<pre class="screen">ip   total                 0</pre>
+<pre class="screen">dhcp-request total       0</pre>
+<pre class="screen">chaddr&amp;src mac total     0</pre>
+<pre class="screen">dhcp-reply total          0</pre>
+<pre class="screen">dhcp-ratelimit total     0</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_snooping_configuration_commands.html">DHCP Snooping命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_dhcp_snooping.html">display dhcp snooping</a></div>
+<div><a href="display_dhcp_snooping_global.html">display dhcp snooping global</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

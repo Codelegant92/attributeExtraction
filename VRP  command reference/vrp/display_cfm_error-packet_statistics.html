@@ -1,0 +1,124 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display cfm error-packet statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_cfm_error-packet_receive_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_cfm_error-packet_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display cfm error-packet statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_cfm_error-packet_statistics"></a><a name="display_cfm_error-packet_statistics"></a>
+
+<h1 class="topictitle1">display cfm error-packet statistics</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display cfm error-packet statistics</strong>命令用来查看本设备接收错误CCM消息的统计信息，包括：</p>
+<ul><li><p>CCM消息中携带的MA ID与本端配置不匹配的CCM消息的数量。</p>
+</li><li><p>CCM消息中携带的CC检测时间间隔与本端配置不匹配的CCM消息的数量。</p>
+</li><li><p>CCM消息中携带的源MAC地址与本端配置的RMEP的MAC地址不匹配的CCM消息的数量。</p>
+</li></ul>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display cfm error-packet statistics</strong> [ <strong>md</strong> <em>md-name </em>[ <strong>ma</strong> <em>ma-name </em>[ <strong>remote-mep mep-id</strong> <em>mep-id </em>] ] ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>md</strong> <em>md-name</em>：表示查看指定MD内接收错误CCM消息的统计信息。<em>md-name</em>表示MD的名称，字符串形式，不支持空格、&#8220;-&#8221;和&#8220;?&#8221;，长度范围是1～43。</p>
+<p><strong>ma</strong> <em>ma-name</em>：表示查看指定MA内接收错误CCM消息的统计信息。<em>ma-name</em>表示MA的名称，字符串形式，不支持空格、&#8220;-&#8221;和&#8220;?&#8221;，长度范围是1～43。</p>
+<p><strong>remote-mep</strong> <strong>mep-id</strong> <em>mep-id</em>：表示查看本设备从指定RMEP接收到的错误CCM消息的统计信息。<em>mep-id</em>表示RMEP的ID，整数形式，取值范围是1～8191。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当网络或设备的CFM功能出现问题时，可使用本命令查看错误CCM消息的统计信息。得到的统计信息可作为定位问题的依据之一。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_cfm_error-packet_statistics__d18641e88"></a><a name="d18641e88"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看md1内接收错误CCM消息的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display cfm error-packet statistics md md1</strong></pre>
+<pre class="screen"> MD Name               : md1</pre>
+<pre class="screen"> MA Name               : ma1</pre>
+<pre class="screen"> RMEP ID               : --</pre>
+<pre class="screen"> MAID Error           : 300</pre>
+<pre class="screen"> CCM-Interval Error : 1000</pre>
+<pre class="screen"> MAC Error            : 0</pre>
+<p># 查看md1中ma2内接收错误CCM消息的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display cfm error-packet statistics md md1 ma ma2</strong></pre>
+<pre class="screen"> MD Name               : md1</pre>
+<pre class="screen"> MA Name               : ma2</pre>
+<pre class="screen"> RMEP ID               : --</pre>
+<pre class="screen"> MAID Error           : 270</pre>
+<pre class="screen"> CCM-Interval Error : 12</pre>
+<pre class="screen"> MAC Error            : 0</pre>
+<p># 查看本设备从md1内ma2中ID为3的RMEP接收的错误报文的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display cfm error-packet statistics md md1 ma ma2 remote-mep mep-id 3</strong></pre>
+<pre class="screen"> MD Name               : md1</pre>
+<pre class="screen"> MA Name               : ma2</pre>
+<pre class="screen"> RMEP ID               : 3</pre>
+<pre class="screen"> MAID Error           : 0</pre>
+<pre class="screen"> CCM-Interval Error : 0</pre>
+<pre class="screen"> MAC Error            : 0</pre>
+
+<div class="tablenoborder"><a name="display_cfm_error-packet_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cfm_error-packet_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display cfm error-packet statistics命令输出信息描述表</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="33.93801965230537%" id="d18641e151"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="66.06198034769464%" id="d18641e154"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18641e151 "><p>MD Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18641e154 "><p>MD的名称。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18641e151 "><p>MA Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18641e154 "><p>MA的名称。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18641e151 "><p>RMEP ID</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18641e154 "><p>RMEP的标识。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18641e151 "><p>MAID Error</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18641e154 "><p>CCM消息中携带的MA ID与本端配置不匹配的CCM消息的数量。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18641e151 "><p>CCM-interval Error</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18641e154 "><p>CCM消息中携带的CC检测时间间隔与本端配置不匹配的CCM消息的数量。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18641e151 "><p>MAC Error</p>
+</td>
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18641e154 "><p>CCM消息中携带的源MAC地址与本端配置的RMEP的MAC地址不匹配的CCM消息的数量。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_cfm_error-packet_receive_statistics.html">reset cfm error-packet receive statistics</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

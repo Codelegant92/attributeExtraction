@@ -1,0 +1,382 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display msdp peer-status">
+<meta name="DC.Relation" scheme="URI" content="../vrp/msdp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_msdp_brief.html">
+<meta name="DC.Relation" scheme="URI" content="peer_connect-interface_msdp.html">
+<meta name="DC.Relation" scheme="URI" content="peer_description_msdp.html">
+<meta name="DC.Relation" scheme="URI" content="peer_mesh-group.html">
+<meta name="DC.Relation" scheme="URI" content="peer_minimum-ttl.html">
+<meta name="DC.Relation" scheme="URI" content="peer_request-sa-enable.html">
+<meta name="DC.Relation" scheme="URI" content="peer_sa-cache-maximum.html">
+<meta name="DC.Relation" scheme="URI" content="peer_sa-policy.html">
+<meta name="DC.Relation" scheme="URI" content="peer_sa-request-policy.html">
+<meta name="DC.Relation" scheme="URI" content="reset_msdp_peer.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_msdp_peer-status">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display msdp peer-status</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_msdp_peer-status"></a><a name="display_msdp_peer-status"></a>
+
+
+<h1 class="topictitle1">display msdp peer-status</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display msdp peer-status</strong>命令用来查看MSDP对等体状态的详细信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display msdp</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>all-instance</strong> ] <strong>peer-status</strong> [ <em>peer-address</em> ]<span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>all-instance</strong>：指定所有实例。</p>
+<p><em>peer-address</em>：表示远端MSDP对等体的地址。点分十进制形式。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display msdp peer-status</strong>命令时：</p>
+<ul>
+<li><p>如果不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>，则只显示公网实例的相关信息。</p>
+</li>
+<li><p>如果指定<em>peer-address</em>，则显示与指定<em>peer-address</em>建立MSDP对等体关系的详细状态信息。</p>
+</li>
+<li><p>如果不指定<em>peer-address</em>，则列举<span class="keyword">路由器</span>上建立的所有MSDP对等体关系的详细状态信息。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_msdp_peer-status__d50802e162"></a><a name="d50802e162"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看公网实例的MSDP对等体10.110.11.11的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display msdp peer-status 10.110.11.11</strong>
+MSDP Peer Information of VPN-Instance: public net
+MSDP Peer 20.20.20.20, AS 100
+  Description:
+  Information about connection status:
+    State: Up
+    Up/down time: 14:41:08
+    Resets: 0
+    Connection interface: LoopBack0 (20.20.20.30)
+    Number of sent/received messages: 867/947
+    Number of discarded output messages: 0
+    Elapsed time since last connection or counters clear: 14:42:40
+  Information about (Source, Group)-based SA filtering policy:
+    Import policy: none
+    Export policy: none
+  Information about SA-Requests:
+    Policy to accept SA-Request messages: none
+    Sending SA-Requests status: disable
+  Minimum TTL to forward SA with encapsulated data: 0
+  SAs learned from this peer: 0, SA-cache maximum for the peer: none
+  Input queue size: 0, Output queue size: 0
+  Counters for MSDP message:
+    Count of RPF check failure: 0
+    Incoming/outgoing SA messages: 0/0
+    Incoming/outgoing SA requests: 0/0
+    Incoming/outgoing SA responses: 0/0
+    Incoming/outgoing data packets: 0/0</pre>
+
+<div class="tablenoborder"><a name="display_msdp_peer-status__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_msdp_peer-status__tb_01" frame="border" border="1" rules="all"><caption>表1 display msdp peer-status命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="42.7941546989166%" id="d50802e183"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="57.2058453010834%" id="d50802e187"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>MSDP Peer Information of VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p>MSDP Peer信息所属的VPN实例</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>MSDP Peer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p>对等体地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>AS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p>MSDP peer的自治号，"?" 表示无法获得自治域号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><div class="p">MSDP会话的状态：<ul>
+<li><p>Up：连接建立。</p>
+</li>
+<li><p>Listen：本地作为Server，处于监听状态，连接建立。</p>
+</li>
+<li><p>Connect：本地作为Client，处于连接状态，连接未建立。</p>
+</li>
+<li><p>Shutdown：MSDP对等体处于Shutdown状态。</p>
+</li>
+<li><p>Down：连接失败。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>Up/Down time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><div class="p">连接建立或失败发生的时间，时间格式是：<ul>
+<li><p>小于等于24小时：&#8220;时：分：秒&#8221;</p>
+</li>
+<li><p>大于24小时但小于等于一周：&#8220;天：时&#8221;</p>
+</li>
+<li><p>大于一周：&#8220;周：天&#8221;</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>Connection interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p>connect-interface接口地址用于与对端peer地址建立TCP连接。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>Number of sent/received messages</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p>MSDP通过该连接发送或接收消息的数目计数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>Number of discarded output messages</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p>丢弃的待发送信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>Elapsed time since last connection or counters clear</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p>最近一次清除该MSDP对等体的统计信息、重置信息和输入输出信息的时刻距离当前时刻的间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>Information about (Source, Group)-based SA filtering policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><div class="p"><ul>
+<li><p>Import policy：用来接收指定MSDP对等体的SA消息的过滤列表，可通过<strong>peer sa-policy import</strong>进行配置，通过<strong>undo peer sa-policy import</strong>取消配置。</p>
+</li>
+<li><p>Export policy：用来转发指定MSDP对等体的SA消息的过滤列表，可通过<strong>peer sa-policy export</strong>进行配置，通过<strong>undo peer sa-policy export</strong>取消配置。</p>
+</li>
+</ul>
+缺省情况下，对接收或转发的消息不作过滤，从MSDP对等体接收或转发所有的SA消息，用none表示。</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>Information about SA-Requests</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><div class="p"><ul>
+<li><p>Policy to accept SA-Request messages：用来限制<span class="keyword">路由器</span>从该MSDP对等体接收的SA请求消息，可通过<strong>peer sa-request-policy</strong>进行配置，通过<strong>undo peer sa-request-policy</strong>用来取消该限制。</p>
+<p>缺省情况下，<span class="keyword">路由器</span>接收来自该MSDP对等体的所有SA请求消息，用none表示。</p>
+</li>
+<li><p>Sending SA-Requests status：是否使能<span class="keyword">路由器</span>在接收到一个新的组加入消息时，向其指定的MSDP对等体发送SA请求消息。enable表示使能；disable表示未使能。可通过<strong>peer request-sa-enable</strong>进行配置，通过<strong>undo peer request-sa-enable</strong>取消该配置。</p>
+<p>缺省情况下，<span class="keyword">路由器</span>在收到新的组加入消息时，不向其MSDP对等体发送SA请求消息，而是等待下一个SA消息的到来，状态是disable。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>Minimum TTL to forward SA with encapsulated data</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p>对于接收到的SA消息，如果封装了组播数据报文，只有该数据报文的TTL大于或等于配置的最小TTL值的情况下，才向其他对等体转发该SA消息。可通过<strong>peer minimum-ttl</strong>进行配置，通过<strong>undo peer minimum-ttl</strong>用来取消该配置。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>SAs learned from this peer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p>通过该MSDP对等体的SA消息，<span class="keyword">路由器</span>产生缓存的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>SA-cache maximum for the peer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p><span class="keyword">路由器</span>在接收到该MSDP对等体的SA消息时可产生缓存的最大数量。可通过<strong>peer sa-cache-maximum</strong>进行配置，通过<strong>undo peer sa-cache-maximum</strong>用来取消该配置。缺省情况下，SA-cache最多缓存8192个（S，G）表项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>Input queue size</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p>输入缓存中所缓存的数据长度。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>Output queue size</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><p>输出缓存中所缓存的数据长度。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="42.7941546989166%" headers="d50802e183 "><p>Counters for MSDP message</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="57.2058453010834%" headers="d50802e187 "><div class="p"><ul>
+<li><p>Count of RPF check failure：未通过RPF检查而被丢弃的SA报文统计数。</p>
+</li>
+<li><p>Incoming/outgoing SA messages：接收或发送的SA报文的统计数。</p>
+</li>
+<li><p>Incoming/outgoing SA requests：接收或发送的SA-Request报文的统计数。</p>
+</li>
+<li><p>Incoming/outgoing SA responses：接收或发送的SA-Response报文的统计数。</p>
+</li>
+<li><p>Incoming/outgoing data packets：接收或发送的携带封装数据的SA报文的统计数。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_msdp_peer-status__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_msdp_peer-status__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d50802e529"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d50802e533"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d50802e529 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d50802e533 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/msdp_configuration_commands.html">MSDP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_msdp_brief.html">display msdp brief</a></div>
+<div><a href="peer_connect-interface_msdp.html">peer connect-interface</a></div>
+<div><a href="peer_description_msdp.html">peer description</a></div>
+<div><a href="peer_mesh-group.html">peer mesh-group</a></div>
+<div><a href="peer_minimum-ttl.html">peer minimum-ttl</a></div>
+<div><a href="peer_request-sa-enable.html">peer request-sa-enable</a></div>
+<div><a href="peer_sa-cache-maximum.html">peer sa-cache-maximum</a></div>
+<div><a href="peer_sa-policy.html">peer sa-policy</a></div>
+<div><a href="peer_sa-request-policy.html">peer sa-request-policy</a></div>
+<div><a href="reset_msdp_peer.html">reset msdp peer</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

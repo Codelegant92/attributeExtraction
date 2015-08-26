@@ -1,0 +1,90 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="info-center loghost">
+<meta name="DC.Relation" scheme="URI" content="../vrp/information_center.html">
+<meta name="DC.Relation" scheme="URI" content="info-center_logfile.html">
+<meta name="DC.Relation" scheme="URI" content="info-center_logbuffer.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="info-center_loghost">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>info-center loghost</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="info-center_loghost"></a><a name="info-center_loghost"></a>
+
+
+<h1 class="topictitle1">info-center loghost</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>info-center loghost</strong>命令用来设置向日志主机输出信息。</p>
+<p><strong>undo info-center loghost</strong>命令用来取消当前设置。</p>
+<p>缺省情况下，不向日志主机输出信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>info-center loghost</strong> <em>ip-address</em> [ <strong>channel </strong>{<em> channel-number</em> | <em>channel-name</em> } | <strong>facility </strong><em>local-number</em> | { <strong>language </strong>{ <strong>chinese</strong> | <strong>english</strong> } | [ <strong>binary</strong> | <em>port</em> ] } ] *</p>
+<p><strong>undo info-center loghost </strong><em>ip-address</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：日志主机的IP地址。</p>
+<p><strong>channel</strong>：设置日志主机的信息通道。</p>
+<p><em>channel-number</em>：通道号，取值为0～9，即系统有10个通道。</p>
+<p><em>channel-name</em>：通道名。</p>
+<p><strong>facility</strong>：设置日志主机记录工具。</p>
+<p><em>local-number</em>：日志主机的记录工具，范围在local0～local7。</p>
+<p><strong>language</strong>：日志记录语言设置。</p>
+<p><strong>chinese</strong>：日志记录语言为中文。</p>
+<p><strong>english</strong>：日志记录语言为英文。</p>
+<p><strong>binary</strong>：向日志主机发送二进制形式的日志。</p>
+<p><em>port</em>：发送时对应的端口号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指明，日志主机的信息通道缺省使用2号信息通道，通道名为loghost，日志主机记录工具<em>local-number</em>缺省使用local7，语言缺省为<strong>english</strong>。</p>
+<p>只有启动了信息中心，该命令才会生效。</p>
+<p>通过设置日志主机的IP地址，可使信息在该方向输出。最多可以配置8个日志主机，实现日志主机间相互备份的功能。</p>
+<p>在配置二进制发送日志时，不区分中文或英文的发送形式。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="info-center_loghost__d82590e136"></a><a name="d82590e136"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置<span class="keyword">路由器</span>向IP地址为202.38.160.1的日志主机发送信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway]<strong> info-center loghost 202.38.160.1</strong></pre>
+<p># 配置向IP地址为10.1.1.1的日志主机发送二进制日志。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>info-center loghost 10.1.1.1 binary 3000</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/information_center.html">信息中心命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="info-center_logfile.html">info-center logfile</a></div>
+<div><a href="info-center_logbuffer.html">info-center logbuffer</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

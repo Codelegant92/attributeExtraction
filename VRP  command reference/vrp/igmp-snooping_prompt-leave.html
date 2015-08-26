@@ -1,0 +1,82 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="igmp-snooping prompt-leave">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="igmp-snooping_prompt-leave">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>igmp-snooping prompt-leave</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="igmp-snooping_prompt-leave"></a><a name="igmp-snooping_prompt-leave"></a>
+
+
+<h1 class="topictitle1">igmp-snooping prompt-leave</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>igmp-snooping prompt-leave</strong>命令用来配置允许当前VLAN/VSI内的端口快速离开组播组。</p>
+<p><strong>undo igmp-snooping prompt-leave</strong>命令用来恢复该配置的缺省值。</p>
+<p>缺省状况下，不允许端口快速离开组播组。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>igmp-snooping prompt-leave</strong> [ <strong>group-policy</strong> <em>basic-acl-number </em>]</p>
+<p><strong>undo igmp-snooping prompt-leave</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>group-policy</strong> <em>basic-acl-number</em>：指定快速离开组播组策略，即只允许端口快速离开某些组播组。<em>basic-acl-number</em>表示基本访问控制列表编号，取值范围是2000～2999。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VLAN视图、VSI视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>端口快速离开是指当<span class="keyword">路由器</span>某端口收到主机发送的离开指定组播组的IGMP Leave消息时，就将该端口从指定组播组的出端口信息中删除。当端口下只连接一个用户主机时，快速离开机制可以及时释放带宽资源。</p>
+<p>只有当VLAN/VSI内的每个组播成员端口都只连接一台接收者主机时，才能在该VLAN/VSI内配置允许端口快速离开。否则，当端口下有多个接收者主机时，一个主机离开，可能会造成同一组播组中的其它接收者主机组播中断。</p>
+<p>只有当VLAN/VSI内可以处理IGMPv2报文时，本配置才有意义。</p>
+<p>当从配置了此命令的端口上收到来自主机的Leave报文后，直接从组播组中删除该端口。一方面减小了响应延迟，另一方面节省了因各种消息而占用的网络带宽。</p>
+<div class="p">使用此命令时，如果未使用<strong>group-policy</strong> <em>basic-acl-number</em>参数，则所有的组都将执行立即离开。使用<em>basic-acl-number</em>参数之前，需要配置待引用的ACL，VLAN/VSI将按照该ACL过滤收到的Leave报文。<ul>
+<li><p>如果从某端口收到Leave报文，并且离开的组在ACL允许的范围之中，则立刻删除该端口，并向上游通告离开。</p>
+</li>
+<li><p>如果从某端口收到Leave报文，并且离开的组在ACL允许的范围之外，则发送消息向上游报告，由上游发送查询消息。</p>
+</li>
+</ul>
+</div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="igmp-snooping_prompt-leave__d80846e91"></a><a name="d80846e91"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置允许VLAN 2内的端口快速离开组播组225.1.1.123。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> acl number 2008</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2008]<strong> rule permit source 225.1.1.123 0</strong></pre>
+<pre class="screen">[Quidway-acl-basic-2008]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 2</strong></pre>
+<pre class="screen">[Quidway-vlan2]<strong> igmp-snooping prompt-leave group-policy 2008</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

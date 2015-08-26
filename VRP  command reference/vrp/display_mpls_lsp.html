@@ -1,0 +1,668 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls lsp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_static-lsp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_lsp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls lsp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_lsp"></a><a name="display_mpls_lsp"></a>
+
+
+<h1 class="topictitle1">display mpls lsp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls lsp</strong>命令用来查看LSP信息。</p>
+<p><strong>display mpls lsp lsp-id</strong>命令只能用来查看CR-LSP的信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls lsp</strong><span><span> [<strong> | count</strong> ]</span> [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display mpls lsp lsp-id</strong> <em>ingress-lsr-id</em> <em>session-id</em> <em>lsp-id</em> [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display mpls lsp attribute</strong> { <strong>bypass-inuse</strong> { <strong>inuse</strong> | <strong>not-exists</strong> | <strong>exists-not-used</strong> } | <strong>bypass-tunnel</strong> <em>tunnel-name</em> }<span><span> [<strong> | count</strong> ]</span> [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display mpls lsp</strong> [ [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> ] [ <strong>protocol</strong> { <strong>bgp</strong> | <strong>bgp-ipv6</strong> | <strong>rsvp-te</strong> | <strong>static</strong> | <strong>static-cr</strong> } ] | <strong>asbr</strong> ] [ { <strong>exclude</strong> | <strong>include</strong> } <em>ip-address mask-length</em> ] [ <strong>incoming-interface</strong> <em>interface-type1 interface-number1</em> ] [ <strong>outgoing-interface</strong> <em>interface-type2 interface-number2 </em>] [ <strong>in-label</strong> <em>in-label-value</em> ] [ <strong>out-label</strong> <em>out-lable-value</em> ] [ <strong>lsr-role </strong>{<strong> egress</strong> | <strong>ingress</strong> | <strong>transit</strong> } ] [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display mpls lsp</strong> [ [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>vpn6-instance</strong> <em>vpn6-instance-name</em> ] [ <strong>protocol ldp</strong> ] | <strong>asbr</strong> ] [ { <strong>exclude</strong> | <strong>include</strong> } <em>ip-address mask-length</em> ] [ <strong>outgoing-interface</strong> <em>interface-type interface-number </em>] [ <strong>in-label</strong> <em>in-label-value</em> ] [ <strong>out-label</strong> <em>out-lable-value</em> ] [ <strong>lsr-role </strong>{<strong> egress</strong> | <strong>ingress</strong> | <strong>transit</strong> } ] [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+<p><strong>display mpls lsp</strong> { <strong>stale-incoming-interface</strong> | <strong>stale-outgoing-interface </strong>} <em>interface-index</em>[ <strong>in-label</strong> <em>in-label-value</em> ] [ <strong>out-label</strong> <em>out-lable-value</em> ] [ <strong>lsr-role </strong>{<strong> egress</strong> | <strong>ingress</strong> | <strong>transit</strong> } ] [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [<strong> | </strong>{ <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+<p><em>ingress-lsr-id</em>：入节点的LSR ID，点分十进制格式。</p>
+<p><em>session-id</em>：会话标识。整数形式，取值范围是<span>0</span>～<span>65535</span>。</p>
+<p><em>lsp-id</em>：LSP的标识号。整数形式，取值范围是0～65535。</p>
+<p><strong>attribute</strong>：查看本地LSP属性。</p>
+<p><strong>bypass-inuse</strong>：查看使用中的旁路LSP属性。</p>
+<p><strong>inuse</strong>：查看使用中的旁路LSP属性。</p>
+<p><strong>not-exists</strong>：没有使用旁路隧道的属性。</p>
+<p><strong>exists-not-used</strong>：查看存在但未使用的旁路LSP属性。</p>
+<p><strong>bypass-tunnel</strong>：查看旁路隧道的属性。</p>
+<p><em>tunnel-name</em>：隧道的名称，字符串形式，区分大小写，不支持空格，长度为1～63。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例名称，字符串形式，区分大小写，不支持空格，长度范围是1～31，用于查看指定VPN实例的LSP详细配置信息。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：IPv6 VPN实例名称，字符串形式，区分大小写，不支持空格，长度范围是1～31，用于查看指定IPv6 VPN实例的LSP详细配置信息。</p>
+<p><strong>protocol</strong>：根据建立LSP的协议类型查看LSP信息。</p>
+<p><strong>asbr</strong>：根据ASBR查看LSP信息。</p>
+<p><strong>exclude</strong>：输出不包含指定FEC的LSP信息。</p>
+<p><strong>include</strong>：输出包含指定FEC的LSP信息。</p>
+<p><em>ip-address</em>：显示指定IPv4或者IPv6地址的LSP信息。</p>
+<p><em>mask-length</em>：IPv4地址的掩码长度。整数形式，取值范围是0～32。或者IPv6地址的掩码长度。整数形式，取值范围是0～128。</p>
+<p><strong>incoming-interface</strong>：根据入接口查看LSP。</p>
+<p><em>interface-type interface-number</em>：接口类型和编号。使用此参数查看指定接口上LSP的配置信息。</p>
+<p><strong>outgoing-interface </strong>：根据出接口查看LSP。</p>
+<p><strong>in-label</strong> <em>in-label-value</em>：显示指定入标签值的LSP信息。整数形式，取值范围是0～1048575。</p>
+<p><strong>out-label</strong> <em>out-lable-value</em>：显示指定出标签值的LSP信息。整数形式，取值范围是0～1048575。</p>
+<p><strong>egress</strong>：显示LSR作为Egress节点的LSP信息。</p>
+<p><strong>ingress</strong>：显示LSR作为Ingress节点的LSP信息。</p>
+<p><strong>transit</strong>：显示LSR作为Transit节点的LSP信息。</p>
+<p><strong>verbose</strong>：显示LSP的详细信息。</p>
+<p><strong>stale-incoming-interface</strong>：显示处于stale状态的LSP入接口信息。</p>
+<p><strong>stale-outgoing-interface</strong>：显示处于stale状态的LSP出接口信息。</p>
+<p><em>interface-index</em>：指定stale接口的索引号。十六进制整数形式，取值范围是0～FFFFFFFF。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不使用任何可选参数，将显示所有LSP的信息。</p>
+<p>stale接口的接口索引号可通过执行不带参数的<strong>display mpls stale-interface</strong>命令查看。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_lsp__d44371e565"></a><a name="d44371e565"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有类型的LSP信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls lsp</strong></pre>
+<pre class="screen">-------------------------------------------------------------------------------
+                 LSP Information: RSVP LSP
+-------------------------------------------------------------------------------
+FEC                In/Out Label  In/Out IF                      Vrf Name
+2.2.2.9/32         NULL/11264    -/Pos1/0/1
+-------------------------------------------------------------------------------
+                 LSP Information: LDP LSP
+-------------------------------------------------------------------------------
+FEC                In/Out Label  In/Out IF                      Vrf Name
+1.1.1.9/32         3/NULL        -/-
+2.2.2.9/32         NULL/3        -/Pos1/0/0
+2.2.2.9/32         1024/3        -/Pos1/0/0
+3.3.3.9/32         NULL/3        -/Pos1/0/1
+3.3.3.9/32         1025/3        -/Pos1/0/1</pre>
+
+<div class="tablenoborder"><a name="display_mpls_lsp__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_lsp__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls lsp命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="22.15923406399597%" id="d44371e587"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="77.84076593600403%" id="d44371e591"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e587 "><p>LSP Information:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e591 "><div class="p">LSP信息：<ul>
+<li><p>STATIC LSP：此类LSP是手工配置的</p>
+</li>
+<li><p>LDP LSP：此类LSP是通过LDP建立</p>
+</li>
+<li><p>STATIC CR-LSP：此类LSP是手工配置的静态MPLS TE隧道</p>
+</li>
+<li><p>RSVP LSP：此类LSP是通过信令协议RSVP-TE建立的MPLS TE隧道</p>
+</li>
+<li><p>BGP LSP：此类LSP是通过BGP建立</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e587 "><p>FEC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e591 "><p>转发等价类，取值通常为LSP的目的地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e587 "><p>In/Out Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e591 "><p>入标签/出标签的值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e587 "><p>In/Out IF</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e591 "><p>入接口/出接口的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e587 "><p>Vrf Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e591 "><p>VPN实例的名称。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看入节点为1.1.1.9、LSP ID为300、Session ID为1的CR-LSP信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls lsp lsp-id 1.1.1.9 300 1</strong></pre>
+<pre class="screen">-------------------------------------------------------------------------------
+                 LSP Information: RSVP LSP
+-------------------------------------------------------------------------------
+FEC                In/Out Label  In/Out IF                      Vrf Name
+2.2.2.9/32         NULL/11264    -/Pos1/0/1
+</pre>
+<p># 查看所有类型的LSP详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls lsp verbose</strong></pre>
+<pre class="screen">-------------------------------------------------------------------------------
+                 LSP Information: RSVP LSP
+-------------------------------------------------------------------------------
+
+  No                  :  1
+  SessionID           :  101
+  IngressLsrID        :  1.1.1.1
+  LocalLspID          :  1
+  Tunnel-Interface    :  Tunnel1/0/1
+  Fec                 :  2.2.2.2/32
+  TunnelTableIndex    :  0x1
+  Nexthop             :  100.2.1.2
+  In-Label            :  NULL
+  Out-Label           :  3
+  In-Interface        :  ----------
+  Out-Interface       :  Pos1/0/1
+  LspIndex            :  2049
+  Token               :  0x802003
+  LsrType             :  Ingress
+  Mpls-Mtu            :  ------
+  TimeStamp           :  21600sec
+  Bfd-State           :  ---
+
+  No                  :  2
+  SessionID           :  100
+  IngressLsrID        :  1.1.1.1
+  LocalLspID          :  1
+  Tunnel-Interface    :  Tunnel1/0/0
+  Fec                 :  2.2.2.2/32
+  TunnelTableIndex    :  0x2
+  Nexthop             :  100.2.1.2
+  In-Label            :  NULL
+  Out-Label           :  3
+  In-Interface        :  ----------
+  Out-Interface       :  Pos1/0/1
+  LspIndex            :  2050
+  Token               :  0x802006
+  LsrType             :  Ingress
+  Mpls-Mtu            :  ------
+  TimeStamp           :  21498sec
+  Bfd-State           :  ---
+
+  No                  :  3
+  SessionID           :  1025
+  IngressLsrID        :  1.1.1.1
+  LocalLspID          :  1
+  Tunnel-Interface    :  Tunnel0/0/2048
+  Fec                 :  2.2.2.2/32
+  TunnelTableIndex    :  0x3
+  Nexthop             :  100.1.1.2
+  In-Label            :  NULL
+  Out-Label           :  3
+  In-Interface        :  ----------
+  Out-Interface       :  Pos1/0/0
+  LspIndex            :  2051
+  Token               :  0x80200c
+  LsrType             :  Ingress
+  Mpls-Mtu            :  ------
+  TimeStamp           :  1815sec
+  Bfd-State           :  ---
+-------------------------------------------------------------------------------
+                 LSP Information: LDP LSP
+-------------------------------------------------------------------------------
+  No                  :  4
+  VrfIndex            :
+  Fec                 :  2.2.2.2/32
+  Nexthop             :  100.1.1.2
+  In-Label            :  NULL
+  Out-Label           :  3
+  In-Interface        :  ----------
+  Out-Interface       :  Pos1/0/0
+  LspIndex            :  9217
+  Token               :  0x802009
+  FrrToken            :  0x0
+  LsrType             :  Ingress
+  Outgoing token      :  0x0
+  Label Operation     :  PUSH
+  Mpls-Mtu            :  ------
+  TimeStamp           :  21086sec
+  Bfd-State           :  ---
+
+  No                  :  5
+  VrfIndex            :
+  Fec                 :  2.2.2.2/32
+  Nexthop             :  100.2.1.2
+  In-Label            :  NULL
+  Out-Label           :  3
+  In-Interface        :  ----------
+  Out-Interface       :  Pos1/0/1
+  LspIndex            :  9218
+  Token               :  0x80200a
+  FrrToken            :  0x0
+  LsrType             :  Ingress
+  Outgoing token      :  0x0
+  Label Operation     :  PUSH
+  Mpls-Mtu            :  ------
+  TimeStamp           :  19569sec
+  Bfd-State           :  ---   </pre>
+
+<div class="tablenoborder"><a name="display_mpls_lsp__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_lsp__tb_02" frame="border" border="1" rules="all"><caption>表2 display mpls lsp verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="22.15923406399597%" id="d44371e707"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="77.84076593600403%" id="d44371e711"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>No</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>LSP的编号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>SessionID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>CR-LSP的会话ID值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>IngressLsrID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>CR-LSP入节点的LSR ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>LocalLspID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>CR-LSP的LSP ID值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>Tunnel-Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>隧道接口名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>FEC</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>转发等价类，取值通常为LSP的目的地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>TunnelTableIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>隧道表项索引。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>Nexthop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>LSP的下一跳IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>In-Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>入标签的值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>Out-Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>出标签的值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>In-Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>入接口的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>Out-Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>出接口的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>LspIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>LSP的索引号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>Token</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>LSP的Token值，主要用于指导转发。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>LsrType</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>当前LSR在LSP中所担当的角色：</p>
+<ul>
+<li><p>Ingress</p>
+</li>
+<li><p>Transit</p>
+</li>
+<li><p>Egress</p>
+</li>
+</ul>
+</td>
+
+</tr>
+
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>Mpls-Mtu</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>LSP接口的最大传输单元。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>TimeStamp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>时间戳，表示LSP建立至今的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>Bfd-State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>BFD的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>VrfIndex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>VPN实例索引值，该字段仅适用于非CR-LSP。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>FrrToken</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>备份LDP LSP的Token值，该字段仅适用于非CR-LSP。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>Outgoing token</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>出方向的Token值，主要用于指导转发，该字段仅适用于非CR-LSP。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="22.15923406399597%" headers="d44371e707 "><p>Label Operation</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="77.84076593600403%" headers="d44371e711 "><p>标签操作类型：</p>
+<ul>
+<li><p>PUSH</p>
+</li>
+<li><p>SWAP</p>
+</li>
+<li><p>POP</p>
+</li>
+</ul>
+<p>该字段仅适用于非CR-LSP。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看入节点为1.1.1.9、LSP ID为300、Session ID为1的CR-LSP详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls lsp lsp-id 1.1.1.9 300 1 verbose</strong></pre>
+<pre class="screen">-------------------------------------------------------------------------------
+                 LSP Information: RSVP LSP
+-------------------------------------------------------------------------------
+
+  No                  :  1
+  SessionID           :  300
+  IngressLsrID        :  1.1.1.9
+  LocalLspID          :  1
+  Tunnel-Interface    :  Tunnel1/0/1
+  Fec                 :  2.2.2.9/32
+  TunnelTableIndex    :  0x1
+  Nexthop             :  10.5.1.2
+  In-Label            :  NULL
+  Out-Label           :  11264
+  In-Interface        :  ----------
+  Out-Interface       :  Pos1/0/1
+  LspIndex            :  3072
+  Token               :  0x8002008
+  LsrType             :  Ingress
+  Mpls-Mtu            :  1500
+  TimeStamp           :  1171sec
+  Bfd-State           :  ---                            </pre>
+<p># 查看以stale接口18000106为出接口的LSP信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls lsp stale-outgoing-interface 18000106</strong></pre>
+<pre class="screen">----------------------------------------------------------------------
+                 LSP Information: RSVP LSP
+----------------------------------------------------------------------
+FEC                In/Out Label  In/Out IF                      Vrf Name
+111.1.1.1/32       NULL/3        -/0x18000106
+</pre>
+<p># 查看以stale接口18000106为出接口的LSP详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls lsp stale-outgoing-interface 18000106 verbose</strong></pre>
+<pre class="screen">----------------------------------------------------------------------
+                 LSP Information: RSVP LSP
+----------------------------------------------------------------------
+  No                  :  1
+  SessionID           :  1
+  IngressLsrID        :  1.1.1.1
+  LocalLspID          :  3000
+  Tunnel-Interface    :  Tunnel0/0/1
+  Fec                 :  4.4.4.4/32
+  TunnelTableIndex    :  0x1
+  Nexthop             :  10.1.2.2
+  In-Label            :  NULL
+  Out-Label           :  105475
+  In-Interface        :  ----------
+  Out-Interface       :  0x18000106
+  LspIndex            :  6167
+  Token               :  0x82010014
+  LsrType             :  Ingress
+  Mpls-Mtu            :  1500
+  TimeStamp           :  2126sec
+  Bfd-State           :  ---
+</pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mpls_lsp__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_lsp__tb_03" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d44371e1029"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d44371e1033"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d44371e1029 "><p>VRPV500R005C02B020</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d44371e1033 "><p>删除关键字<strong>crldp</strong></p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d44371e1029 "><p>VRPV500R005C02B140</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d44371e1033 "><p>删除LDP LSP的关键字<strong>incoming-interface</strong></p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d44371e1029 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d44371e1033 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d44371e1029 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d44371e1033 "><p>将参数<em>session-id</em>的最小值由1改为0。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d44371e1029 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d44371e1033 "><p>将参数<em>session-id</em>的最大值由65534改为65535。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_static-lsp.html">display mpls static-lsp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

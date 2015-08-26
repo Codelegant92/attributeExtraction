@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="lacp mc-trunk priority">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_eth-trunk.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="lacp_mc-trunk_priority">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>lacp mc-trunk priority</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="lacp_mc-trunk_priority"></a><a name="lacp_mc-trunk_priority"></a>
+
+
+<h1 class="topictitle1">lacp mc-trunk priority</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>lacp mc-trunk priority</strong>命令用来配置MC-Trunk的LACP优先级。</p>
+<p><strong>undo lacp mc-trunk priority</strong>命令用来删除MC-Trunk的LACP优先级。</p>
+<p>缺省情况下，MC-Trunk的LACP优先级是32768。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>lacp mc-trunk priority </strong><em>priority</em></p>
+<p><strong>undo lacp mc-trunk priority</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>priority </strong><em>priority</em>：MC-Trunk的LACP优先级。整数形式，取值范围是0～65535。缺省值是32768。取值越小LACP优先级越高。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图、Eth-Trunk接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令用于配置MC-Trunk的LACP优先级。如果配置了LACP优先级，MC-Trunk中的成员Eth-Trunk端口发送LACP报文时，采用配置的优先级。否则，使用MC-Trunk的LACP优先级缺省值32768。</p>
+<p>MC-Trunk中主备两台设备的LACP优先级需要保持一致。</p>
+<p>当设备上配置多个MC-Trunk时，不同聚合组的LACP优先级可以不同，此时需要在Eth-Trunk接口视图下配置LACP优先级。</p>
+<p>在系统视图下配置的LACP优先级对所有Eth-Trunk接口有效。在Eth-Trunk接口视图下配置的LACP优先级仅对该Eth-Trunk接口有效。对于指定的Eth-Trunk接口，如果已经在系统视图下执行了本命令，又在指定的Eth-Trunk接口视图下执行本命令，则以Eth-Trunk接口视图下配置的值为准。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="lacp_mc-trunk_priority__d88807e58"></a><a name="d88807e58"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置MC-Trunk的LACP优先级为1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> lacp mc-trunk priority 1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_eth-trunk.html">display eth-trunk</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

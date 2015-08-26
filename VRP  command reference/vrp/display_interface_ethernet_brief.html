@@ -1,0 +1,211 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface ethernet brief">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_interface.html">
+<meta name="DC.Relation" scheme="URI" content="reset_counters_interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface_ethernet_brief">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface ethernet brief</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface_ethernet_brief"></a><a name="display_interface_ethernet_brief"></a>
+
+
+<h1 class="topictitle1">display interface ethernet brief</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display interface ethernet brief</strong>命令用来显示以太网接口的简要信息，包括接口的物理状态、自协商方式、双工模式、接口速率、接口接收方向和发送方向最近一段时间的平均带宽利用率。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display interface ethernet brief</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>可以使用命令<strong>reset counter interface</strong>命令清除接口的统计信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface_ethernet_brief__d28625e40"></a><a name="d28625e40"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示Ethernet接口的简要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display interface ethernet brief</strong></pre>
+<pre class="screen">*down: administratively down</pre>
+<pre class="screen">^down: standby</pre>
+<pre class="screen">(l)：loopback</pre>
+<pre class="screen">(b): BFD down</pre>
+<pre class="screen">InUti/OutUti: input utility/output utility</pre>
+<pre class="screen">Interface                   Physical   Auto-Neg    Duplex   Bandwidth   InUti   OutUti   Trunk</pre>
+<pre class="screen">GigabitEthernet1/0/0        up         enable      full     100M        50%     40%      --  </pre>
+<pre class="screen">GigabitEthernet1/0/1        *down      disable     half     100M        0%      0%       --  </pre>
+<pre class="screen">GigabitEthernet1/0/1.1      *down      disable     half     100M        0%      0%       --  </pre>
+<pre class="screen">GigabitEthernet1/0/2        up         enable      full     1000M       0%      0%       10  </pre>
+
+<div class="tablenoborder"><a name="display_interface_ethernet_brief__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_ethernet_brief__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface ethernet brief命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="14.34514055212404%" id="d28625e80"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="85.65485944787596%" id="d28625e84"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="14.34514055212404%" headers="d28625e80 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.65485944787596%" headers="d28625e84 "><div class="p">接口名称和接口编号。所有接口按字典序显示。可显示的接口类型包括：<ul>
+<li><p>Ethernet</p>
+</li>
+
+<li><p>GigabitEthernet</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.34514055212404%" headers="d28625e80 "><p>Physical</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.65485944787596%" headers="d28625e84 "><div class="p">接口的物理状态。可能的物理状态有：<ul>
+<li><p>up：表示该接口处于正常启动的状态。</p>
+</li>
+<li><p>down：表示该接口物理层出现故障。</p>
+</li>
+<li><p>*down：Administratively down，管理员在该接口执行了<a href="shutdown_interface_view.html">shutdown（接口视图）</a>命令。</p>
+</li>
+<li><p>^down：standby，表示该接口是备份接口。</p>
+</li>
+<li><p>(l)：loopback，表示该接口启用环回功能。</p>
+</li>
+<li><p>(b)：BFD down，表示该接口的物理层处于BFD Down状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.34514055212404%" headers="d28625e80 "><p>Auto-Neg</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.65485944787596%" headers="d28625e84 "><div class="p">接口是否使能自协商功能。可能的情况有：<ul>
+<li><p>enable：表示该接口使能了自协商功能。</p>
+</li>
+<li><p>disable：表示该接口没有使能自协商功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.34514055212404%" headers="d28625e80 "><p>Duplex</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.65485944787596%" headers="d28625e84 "><div class="p">接口的双工模式。可能的情况有：<ul>
+<li><p>full：表示该接口处于全双工模式。</p>
+</li>
+<li><p>half：表示该接口处于半双工模式。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.34514055212404%" headers="d28625e80 "><p>Bandwidth</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.65485944787596%" headers="d28625e84 "><div class="p">接口的带宽。可能的值有：<ul>
+<li><p>快速以太网的速率有10Mbit/s或100Mbit/s。</p>
+</li>
+
+<li><p>千兆以太网的速率有10Mbit/s、100Mbit/s或1000Mbit/s。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.34514055212404%" headers="d28625e80 "><p>InUti</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.65485944787596%" headers="d28625e84 "><p>接口接收方向最近5分钟内的平均带宽利用率。接口接收方向最近5分钟内的平均带宽利用率=接口接收方向最近5分钟内平均速率/接口带宽。不足0.01%且有流量时显示0.01%。当接口带宽变小后（例如以太网接口通过<strong>speed</strong>命令调整接口带宽，或Eth-Trunk的成员接口状态变为Down或退出Eth-Trunk接口），由于通信流量没有及时调整，可能会出现带宽利用率为100％。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.34514055212404%" headers="d28625e80 "><p>OutUti</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.65485944787596%" headers="d28625e84 "><p>接口发送方向最近5分钟内的平均带宽利用率。接口发送方向最近5分钟内的平均带宽利用率=接口发送方向最近5分钟内平均速率/接口带宽。不足0.01%且有流量时显示0.01%。当接口带宽变小后（例如以太网接口通过<strong>speed</strong>命令调整接口带宽，或Eth-Trunk的成员接口状态变为Down或退出Eth-Trunk接口），由于通信流量没有及时调整，可能会出现带宽利用率为100％。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="14.34514055212404%" headers="d28625e80 "><p>Trunk</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="85.65485944787596%" headers="d28625e84 "><p>接口所属的Trunk ID。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_interface_configuration_commands.html">以太网接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_interface.html">display interface</a></div>
+<div><a href="reset_counters_interface.html">reset counters interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

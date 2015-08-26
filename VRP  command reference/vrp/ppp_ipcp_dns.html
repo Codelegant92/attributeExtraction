@@ -1,0 +1,77 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ppp ipcp dns">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ppp_and_mp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ppp_authentication-mode.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ppp_ipcp_dns">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ppp ipcp dns</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ppp_ipcp_dns"></a><a name="ppp_ipcp_dns"></a>
+
+
+<h1 class="topictitle1">ppp ipcp dns</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ppp ipcp dns</strong>命令用来使能<span class="keyword">路由器</span>为对端提供DNS服务器地址。</p>
+<p><strong>undo ppp ipcp dns</strong>命令用来禁止<span class="keyword">路由器</span>为对端提供DNS服务器地址。</p>
+<p>缺省情况下，<span class="keyword">路由器</span>不为对端提供DNS服务器地址。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ppp ipcp dns</strong> { <em>primary-dns-address</em> [ <em>secondary-dns-address</em> ] | <strong>admit-any</strong> }</p>
+<p><strong>undo ppp ipcp dns</strong> { <em>primary-dns-address</em> [ <em>secondary-dns-address</em> ] | <strong>admit-any</strong> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>primary-dns-address</em>：主DNS服务器地址。</p>
+<p><em>secondary-dns-address</em>：从DNS服务器地址。</p>
+<p><strong>admit-any</strong>：接受对端提出的任何DNS地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当其他设备与<span class="keyword">路由器</span>通过PPP协议相连时（通常为PC机拨号连接<span class="keyword">路由器</span>），通过协商，<span class="keyword">路由器</span>可以为对端设备分配DNS服务器地址。这样，对端设备就可以通过域名直接访问网络。</p>
+<p>如果用户通过PC机连接<span class="keyword">路由器</span>，用户可以在PC机上使用命令winipcfg（windows98）或ipconfig /all（windows 2000/XP）来查看<span class="keyword">路由器</span>为其提供的DNS服务器地址。</p>
+<p><span class="keyword">VRP</span>可以为对端设备提供主DNS服务器和从DNS服务器两个服务器地址。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ppp_ipcp_dns__d107129e106"></a><a name="d107129e106"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置本地<span class="keyword">路由器</span>的Primary DNS Server地址为100.1.1.1，Secondary DNS Server地址为100.1.1.2。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0]<strong> ppp ipcp dns 100.1.1.1 100.1.1.2</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ppp_and_mp_configuration_commands.html">PPP和MP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ppp_authentication-mode.html">ppp authentication-mode</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

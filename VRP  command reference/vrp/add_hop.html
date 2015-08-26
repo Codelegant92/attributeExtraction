@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="add hop">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="list_hop.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="add_hop">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>add hop</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="add_hop"></a><a name="add_hop"></a>
+
+
+<h1 class="topictitle1">add hop</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>add hop</strong>命令用来在显式路径中插入指定节点。</p>
+<p>缺省情况下，显式路径采用<strong>include
+strict</strong>模式。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>add hop</strong> <em>ip-address1</em> [ <strong>exclude</strong> | <strong>include</strong> [ <strong>loose</strong> | <strong>strict</strong> ] ] { <strong>after</strong> | <strong>before</strong> } <em>ip-address2</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address1</em>：新增节点上接口的IP地址，点分十进制形式。</p>
+<p><strong>exclude</strong>：显式路径不能经过<em>ip-address1</em>指定的链路。</p>
+<p><strong>include</strong>：显式路径必须经过<em>ip-address1</em>指定的链路。</p>
+<p><strong>loose</strong>：松散显式路径，<em>ip-address1</em>指定的新节点与<em>ip-address2</em>指定的节点可以不是直连的。</p>
+<p><strong>strict</strong>：严格显式路径，<em>ip-address1</em>指定的新节点与<em>ip-address2</em>指定的节点必须是直连的。</p>
+<p><strong>after</strong>：表示在<em>ip-address2</em>后插入<em>ip-address1</em>指定的节点。</p>
+<p><strong>before</strong>：表示在<em>ip-address2</em>前插入<em>ip-address1</em>指定的节点。</p>
+<p><em>ip-address2</em>：显式路径中节点接口的IP地址或节点Router ID，点分十进制形式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>显式路径视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>add hop</strong>命令在显式路径中插入节点的时候，必须保证<em>ip-address2</em>存在于该显式路径中，且保证本设备上没有任何Tunnel接口在使用该显式路径。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="add_hop__d582e132"></a><a name="d582e132"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置显式路径p1在经过3.3.10.5后，不能经过3.3.29.3。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>explicit-path p1</strong></pre>
+<pre class="screen">[Quidway-explicit-path-p1] <strong>add hop 3.3.29.3 exclude after 3.3.10.5</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="list_hop.html">list hop</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

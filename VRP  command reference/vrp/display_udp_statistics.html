@@ -1,0 +1,223 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display udp statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ip_performance_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_udp_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_udp_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display udp statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_udp_statistics"></a><a name="display_udp_statistics"></a>
+
+
+<h1 class="topictitle1">display udp statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display udp statistics</strong>命令用来查看UDP流量统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display udp statistics</strong><span> [<strong> | count</strong> ] </span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>显示系统当前所有UDP连接的流量统计信息。统计信息主要分为发送和接收两大部分，每部分再细分为不同类型报文，如校验和错误报文等等。最后还有一些与连接密切相关的统计信息，如：广播包的报文的个数等。以上信息都是以包为单位。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_udp_statistics__d70770e81"></a><a name="d70770e81"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><div class="p"># 显示UDP流量统计信息。<pre class="screen">&lt;Quidway&gt; <strong>display udp statistics</strong></pre>
+<pre class="screen">Received packets:
+Total: 0
+Total(64bit high-capacity counter): 0
+checksum error: 0
+shorter than header: 0, data length larger than packet: 0
+unicast(no socket on port): 0
+broadcast/multicast(no socket on port): 0
+not delivered, input socket full: 0
+input packets missing pcb cache: 0
+
+Sent packets:
+Total: 0
+Total(64bit high-capacity counter): 0</pre>
+</div>
+
+<div class="tablenoborder"><a name="display_udp_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_udp_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display udp statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.3562610229277%" id="d70770e103"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.64373897707231%" id="d70770e107"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d70770e103 "><p>Received packet:</p>
+<p>Total：</p>
+<p>Total(64bit high-capacity counter)：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d70770e107 "><p>总计收到的UDP报文的数量。</p>
+<p>总计收到的UDP报文的数量（64位大容量计数器）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d70770e103 "><p>checksum error：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d70770e107 "><p>校验和出错的报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d70770e103 "><p>shorter than header：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d70770e107 "><p>报文长度比报文头短的报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d70770e103 "><p>data length larger than packet：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d70770e107 "><p>报文数据长度超过了报文长的报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d70770e103 "><p>unicast（no socket on port）：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d70770e107 "><p>单播报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d70770e103 "><p>broadcast/multicast（no socket on port）：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d70770e107 "><p>广播/组播报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d70770e103 "><p>not delivered, input socket full：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d70770e107 "><p>因为SOCKET缓冲已经满而没有发送出去的报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d70770e103 "><p>input packets missing pcb cache：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d70770e107 "><p>没有找到PCB的报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.3562610229277%" headers="d70770e103 "><p>Sent packet:</p>
+<p>Total：</p>
+<p>Total(64bit high-capacity counter)：</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.64373897707231%" headers="d70770e107 "><p>总计发送的UDP报文的数量。</p>
+<p>总计发送的UDP报文的数量（64位大容量计数器）。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_udp_statistics__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_udp_statistics__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d70770e240"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d70770e244"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d70770e240 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d70770e244 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ip_performance_configuration_commands.html">IP性能配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_udp_statistics.html">reset udp statistics</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

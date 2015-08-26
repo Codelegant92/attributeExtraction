@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="tracert lsp">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ping_lsp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="tracert_lsp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>tracert lsp</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="tracert_lsp"></a><a name="tracert_lsp"></a>
+
+
+<h1 class="topictitle1">tracert lsp</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>tracert lsp</strong>命令用来在LSP上使用tracert功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>tracert lsp</strong> [ <strong>-a</strong> <em>source-ip </em> | <strong>-exp</strong><em> exp-value </em> | <strong>-h</strong> <em>ttl-value</em> | <strong>-r</strong> <em>reply-mode</em> | <strong>-t</strong> <em>time-out </em> ] * { <strong>ip</strong> <em>destination-address mask-length</em> [ <em>ip-address</em> ] | <strong>te tunnel</strong> <em>tunnel-number</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>-a</strong> <em>source-ip</em>：发送echo请求报文的源IP地址。</p>
+<p><strong>-exp</strong> <em>exp-value</em>：发送的echo请求报文的EXP值，取值范围是0～7。</p>
+<p><strong>-h</strong> <em>ttl-value</em>：发送的echo请求报文的TTL值，取值范围是1～255。</p>
+<p><strong>-r</strong> <em>reply-mode</em>：应答模式。整数形式，缺省值为2。</p>
+<p><strong>-t</strong> <em>time-out</em>：等待echo应答的超时时间，单位为毫秒，取值范围是0～65535。</p>
+<p><strong>ip</strong> <em>destination-address mask-length</em>：LDP LSP的目的IPv4地址和掩码长度。</p>
+<p><em>ip-address</em>：MPLS Ping报文IP头中的目的地址，前缀为127.0.0.0/8。</p>
+<p><em>tunnel-number</em>：TE Tunnel的接口编号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>0：参观级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令与普通tracert类似，区别仅在于此命令是在LSP上进行。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="tracert_lsp__d125079e130"></a><a name="d125079e130"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 对目的地址4.4.4.9/32进行MPLS Tracert。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>tracert lsp ip 4.4.4.9 32</strong></pre>
+<pre class="screen">  LSP Trace Route FEC: LDP IPV4 PREFIX 4.4.4.9/32 , press CTRL_C to break.</pre>
+<pre class="screen">  TTL   Replier            Time    Type      Downstream</pre>
+<pre class="screen">  0                                Ingress   10.1.2.2/[1028 ]</pre>
+<pre class="screen">  1     10.1.2.2           94 ms   Transit   10.1.5.2/[3 ]</pre>
+<pre class="screen">  2     10.1.5.2           94 ms   Egress</pre>
+<div class="p"># 对TE隧道进行MPLS Tracert。<pre class="screen">&lt;Quidway&gt; <strong>tracert lsp te tunnel 1/0/0</strong></pre>
+</div>
+<pre class="screen">  LSP Trace Route FEC: TE TUNNEL IPV4 SESSION QUERY Tunnel1/0/0 , press CTRL_C to break.</pre>
+<pre class="screen">  TTL   Replier            Time    Type      Downstream</pre>
+<pre class="screen">  0                                Ingress   10.1.2.2/[13312 ]</pre>
+<pre class="screen">  1     10.1.2.2           63 ms   Transit</pre>
+<pre class="screen">  2     6.6.6.6            93 ms   Egress</pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ping_lsp.html">ping lsp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

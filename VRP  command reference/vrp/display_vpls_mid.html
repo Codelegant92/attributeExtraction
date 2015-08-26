@@ -1,0 +1,133 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display vpls mid">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_vpls_fib.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_vpls_mid">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display vpls mid</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_vpls_mid"></a><a name="display_vpls_mid"></a>
+
+<h1 class="topictitle1">display vpls mid</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display vpls mid</strong>命令用于显示MID（Multicast Information Description）信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display vpls mid token vsi</strong> <em>vsi-name</em></p>
+<p><strong>display vpls mid interface vsi</strong> <em>vsi-name</em> [ <strong>vlan</strong> <em>vlan-id </em>]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>token</strong>：用于显示Token的MID（Multicast Information Description），即公网侧的广播表信息。</p>
+<p><strong>interface</strong>：用于显示Interface的MID信息，即AC侧的广播表信息。</p>
+<p><strong>vsi</strong> <em>vsi-name</em>：用于显示指定VSI实例的MID信息。字符串形式，不支持空格，区分大小写，取值范围是1～31。</p>
+<p><strong>vlan</strong> <em>vlan-id</em>：用于显示指定VLAN ID的AC侧的MID信息。十进制整数形式，取值范围是1～4094。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>MID信息包括Token信息和Interface信息。可以通过在命令行中指定不同的关键字或参数来显示所需要的MID信息。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_vpls_mid__d71941e64"></a><a name="d71941e64"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示名称为company1的VSI实例MID公网侧的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display vpls mid token vsi company1</strong></pre>
+<pre class="screen">VSI Name : company1, Total PW Number : 1</pre>
+<pre class="screen"> SLOT ID   LspToken(s)</pre>
+<pre class="screen">3          0x7d3</pre>
+
+<div class="tablenoborder"><a name="display_vpls_mid__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vpls_mid__tb_01" frame="border" border="1" rules="all"><caption>表1 display vpls mid token vsi命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="29.81859410430839%" id="d71941e85"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="70.18140589569161%" id="d71941e88"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d71941e85 "><p>VSI Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d71941e88 "><p>VSI名称。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d71941e85 "><p>Total PW Number</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d71941e88 "><p>属于该VSI的PW的总数，包括处于up状态和处于down状态的。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d71941e85 "><p>SLOT ID</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d71941e88 "><p>公网侧发送该VSI用户数据的接口所在的槽位号。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="29.81859410430839%" headers="d71941e85 "><p>LspToken</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.18140589569161%" headers="d71941e88 "><p>MID表项对应的PW的Token值，系统用其唯一确定一条PW。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p># 显示名称为company1的VSI实例的VLAN ID为100的MID中AC侧的信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display vpls mid interface vsi company1</strong></pre>
+<pre class="screen">VSI Name : company1, Total AC Number : 1</pre>
+<pre class="screen"> VLAN ID   SLOT ID    Interface(s)</pre>
+<pre class="screen"> 100       2        Ethernet2/0/1.1</pre>
+
+<div class="tablenoborder"><a name="display_vpls_mid__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_vpls_mid__tb_02" frame="border" border="1" rules="all"><caption>表2 display vpls mid interface vsi命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="29.831191735953645%" id="d71941e140"><p>项目</p>
+</th>
+<th class="cellrowborder" valign="top" width="70.16880826404636%" id="d71941e143"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d71941e140 "><p>VSI Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d71941e143 "><p>VSI名称</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d71941e140 "><p>Total AC Number</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d71941e143 "><p>属于该VSI的AC的总数</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d71941e140 "><p>VLAN ID</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d71941e143 "><p>属于该VSI的AC所在的VLAN。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d71941e140 "><p>SLOT ID</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d71941e143 "><p>公网侧发送该VSI用户数据的接口所在的槽位号</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="29.831191735953645%" headers="d71941e140 "><p>Interface(s)</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.16880826404636%" headers="d71941e143 "><p>属于该VSI的AC接口</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpls_configuration_commands.html">VPLS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_vpls_fib.html">display vpls fib</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

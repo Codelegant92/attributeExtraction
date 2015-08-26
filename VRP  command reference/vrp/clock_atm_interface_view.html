@@ -1,0 +1,87 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="clock（ATM接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/atm_oc-3c_stm-1_and_atm_oc-12_stm-4_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/atm_e3_t3_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/atm_e1_t1_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_interface_atm_atm_oc_stm.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="clock_atm_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>clock（ATM接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="clock_atm_interface_view"></a><a name="clock_atm_interface_view"></a>
+
+
+<h1 class="topictitle1">clock（ATM接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>clock</strong>命令用来设置ATM接口时钟模式。</p>
+<p><strong>undo clock</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，ATM接口的时钟模式为从时钟（slave）。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>clock</strong> { <strong>master</strong> | <strong>slave</strong> }</p>
+<p><strong>undo</strong> <strong>clock</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>master</strong>：设置ATM接口作为主时钟。</p>
+<p><strong>slave</strong>：设置ATM接口作为从时钟。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>ATM接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>本命令虽然同时作用于ATM主接口和子接口，但只能在ATM主接口视图下使用此命令，ATM子接口视图下无此命令。</p>
+</div></div>
+<p>当作为DCE设备使用时，应配置ATM接口使用主时钟模式；作为DTE设备使用时，应配置ATM接口使用从时钟模式。</p>
+<p>当两台<span class="keyword">路由器</span>的ATM接口通过光纤直连或通过WDM（Wavelength Division Multiplexing）连接时，应该将一端的时钟设置为主时钟模式，另一端为从时钟模式。</p>
+<p>当与SONET/SDH设备连接时，<span class="keyword">路由器</span>应配置为从时钟。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="clock_atm_interface_view__d6847e75"></a><a name="d6847e75"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置ATM接口4/0/0上的时钟为主时钟模式。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface atm 4/0/0</strong></pre>
+<pre class="screen">[Quidway-Atm4/0/0]<strong> clock master</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/atm_oc-3c_stm-1_and_atm_oc-12_stm-4_interface_configuration_commands.html">ATM OC-3c/STM-1和ATM OC-12/STM-4接口配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_interface_atm_atm_oc_stm.html">display
+interface atm（ATM OC/STM）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

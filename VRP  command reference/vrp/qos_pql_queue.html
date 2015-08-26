@@ -1,0 +1,70 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qos pql queue">
+<meta name="DC.Relation" scheme="URI" content="../vrp/congestion_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_qos_pq_interface.html">
+<meta name="DC.Relation" scheme="URI" content="display_qos_pql.html">
+<meta name="DC.Relation" scheme="URI" content="qos_pq.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qos_pql_queue">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qos pql queue</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qos_pql_queue"></a><a name="qos_pql_queue"></a>
+
+<h1 class="topictitle1">qos pql queue</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qos pql</strong> <strong>queue</strong>命令用来设置PQ各队列的长度（所能容纳的数据包个数）。</p>
+<p><strong>undo qos pql</strong> <strong>queue</strong>命令用来恢复各队列长度的缺省值。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qos pql</strong> <em>pql-index</em><strong> queue</strong> {<strong> top </strong>|<strong> middle </strong>|<strong> normal</strong> | <strong>bottom</strong> } <strong>queue-length </strong><em>queue-length</em></p>
+<p><strong>undo qos pql</strong> <em>pql-index</em><strong> queue</strong> {<strong> top </strong>|<strong> middle </strong>|<strong> normal</strong> | <strong>bottom</strong> } <strong>queue-length</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>pql-index</em>：优先列表的组号，取值范围是1～16<em>。</em></p>
+<p><em>queue-length</em>：为不同级别优先级队列组的长度值，取值范围是1～1024个报文。</p>
+<p>各优先级队列组长度的缺省值如下：</p>
+<ul><li><p>顶层队列的缺省长度值为20；</p>
+</li><li><p>中间队列的缺省长度值为40；</p>
+</li><li><p>一般队列的缺省长度值为60；</p>
+</li><li><p>底层队列的缺省长度值为80。</p>
+</li></ul>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果队列中的数据包的数量已经达到队列长度的最大值，新来的数据包就会被丢弃。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qos_pql_queue__d109756e106"></a><a name="d109756e106"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定优先列表第10组top队列的长度为10。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>qos pql 10 queue top queue-length 10</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/congestion_management_configuration_commands.html">拥塞管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_qos_pq_interface.html">display qos pq interface</a></div>
+<div><a href="display_qos_pql.html">display qos pql</a></div>
+<div><a href="qos_pq.html">qos pq</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

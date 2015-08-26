@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qinq 8021p-mode">
+<meta name="DC.Relation" scheme="URI" content="../vrp/qinq_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="control-vid.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qinq_8021p-mode">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qinq 8021p-mode</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qinq_8021p-mode"></a><a name="qinq_8021p-mode"></a>
+
+
+<h1 class="topictitle1">qinq 8021p-mode</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qinq 8021p-mode</strong>命令用来在子接口终结时配置802.1p的映射方式。</p>
+<p><strong>undo qinq 8021p-mode</strong>命令用在子接口终结时来取消802.1p的映射方式。</p>
+<p>缺省情况下，QinQ子接口信任外层Tag的优先级。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qinq 8021p-mode</strong> { <strong>trust</strong> { <strong>ce-vid-8021p</strong> | <strong>pe-vid-8021p</strong> } | <em>precedence-value</em> }</p>
+<p><strong>undo qinq 8021p-mode</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>ce-vid-8021p</strong>：配置内层VLAN的802.1p值映射到DSCP或者映射到MPLS报文中exp字段。</p>
+<p><strong>pe-vid-8021p</strong>：配置外层VLAN的802.1p值映射到或者映射到MPLS报文中exp字段DSCP。</p>
+<p><em>precedence-value</em>：手工指定的优先级的映射值，十进制整数形式，取值范围为0～7。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet子接口视图、GE子接口视图、Eth-Trunk子接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在以太网子接口上使用<strong>qinq 8021p-mode</strong>命令前，应先在该子接口下配置<strong>control-vid</strong> <em>vid</em> <strong>qinq-termination</strong>命令，否则无法看到<strong>qinq 8021p-mode</strong>命令。</p>
+<p>配置外层VLAN的802.1p值映射到DSCP仅在子接口终结时可选。子接口Stacking时不可选。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qinq_8021p-mode__d108972e86"></a><a name="d108972e86"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在子接口GE1/0/0.1上配置终结功能后，在该子接口配置8021p映射方式，使用外层VLAN的802.1p值映射到DSCP。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> mode user-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0.1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> control-vid 1 qinq-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> qinq termination pe-vid 100 ce-vid 500 to 600</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> qinq 8021p-mode trust pe-vid-8021p</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/qinq_configuration_commands.html">QinQ配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="control-vid.html">control-vid</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

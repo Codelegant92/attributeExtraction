@@ -1,0 +1,95 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="peer connect-interface (BGP)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="peer_ebgp-max-hop.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="peer_connect-interface_bgp">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>peer connect-interface (BGP)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="peer_connect-interface_bgp"></a><a name="peer_connect-interface_bgp"></a>
+
+
+<h1 class="topictitle1">peer connect-interface (BGP)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>peer connect-interface</strong>命令用来指定发送BGP报文的源接口，并可指定发起连接时使用的源地址。</p>
+<p><strong>undo peer connect-interface</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下，BGP使用报文的出接口作为BGP报文的源接口。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>peer</strong> { <em>group-name</em> | <em>ipv4-address</em> | <em>ipv6-address</em> } <strong>connect-interface</strong> <em>interface-type</em> <em>interface-number</em> [ <em>ipv4-source-address</em> | <em>ipv6-source-address</em> ]</p>
+<p><strong>undo peer</strong> { <em>group-name</em> | <em>ipv4-address</em> | <em>ipv6-address</em> } <strong>connect-interface</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>group-name</em>：对等体组的名称。</p>
+<p><em>ipv4-address</em>：对等体的IPv4地址。</p>
+<p><em>ipv6-address</em>：对等体的IPv6地址。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p><em>ipv4-address</em>参数仅在BGP视图和BGP-VPN实例视图下生效。</p>
+</li>
+<li><p><em>ipv6-address</em>参数仅在BGP视图和BGP-VPN6实例视图下生效。</p>
+</li>
+</ul>
+</div></div>
+<p><em>interface-type interface-number</em>：接口类型和接口号。</p>
+<p><em>ipv4-source-address</em>：建立连接时的IPv4源地址。</p>
+<p><em>ipv6-source-address</em>：建立连接时的IPv6源地址。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>BGP视图、BGP-VPN实例视图、BGP-VPN6实例视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>建议在两台路由器通过多链路建立多个对等体时，使用<strong>peer connect-interface</strong>命令。</p>
+<p>为了使物理接口在出现问题时，路由器仍能发送BGP报文，可将发送BGP报文的源接口配置成Loopback接口。在使用Loopback接口作为BGP报文的源接口时，必须注意以下事项：</p>
+<ul>
+<li><p>确认BGP对等体的Loopback接口的地址是可达的。</p>
+</li>
+<li><p>如果是EBGP连接，还要配置<a href="peer_ebgp-max-hop.html">peer ebgp-max-hop</a>命令，允许EBGP通过非直连方式建立邻居关系。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>因为一台路由器上各地址族下的BGP共用一条TCP连接，所以在BGP视图下配置的connect-interface信息既能在IPv4单播地址族下被继承，又能在VPNv4地址族下被继承。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="peer_connect-interface_bgp__d103310e141"></a><a name="d103310e141"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定BGP报文的源接口和源地址。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> bgp 100 </strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> peer 10.16.2.3 as-number 1100 </strong></pre>
+<pre class="screen">[Quidway-bgp]<strong> peer 10.16.2.3 connect-interface Ethernet6/0/0 10.16.2.4 </strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_configuration_commands.html">BGP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="peer_ebgp-max-hop.html">peer ebgp-max-hop</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

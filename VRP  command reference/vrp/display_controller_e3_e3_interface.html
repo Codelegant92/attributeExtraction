@@ -1,0 +1,238 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display controller e3（E3接口）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/e3_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="controller_e3_e3_interface.html">
+<meta name="DC.Relation" scheme="URI" content="using_e3_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="default_interface-description_enable.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_controller_e3_e3_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display controller e3（E3接口）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_controller_e3_e3_interface"></a><a name="display_controller_e3_e3_interface"></a>
+
+
+<h1 class="topictitle1">display controller e3（E3接口）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display controller e3</strong>命令用来查看E3接口的配置和状态信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display controller e3 </strong>[ <em>controller-number</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>controller-number</em>：E3接口的编号，包括槽号、卡号、端口号三部分。如果不指定编号，将显示所有E3接口的配置和状态信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_controller_e3_e3_interface__d20863e43"></a><a name="d20863e43"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看E3接口6/0/0的配置情况和状态信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display controller e3 6/0/0</strong></pre>
+<pre class="screen">E3 6/0/0 current state : UP</pre>
+<pre class="screen">  Frame-format G751, line code HDB3, clock slave, national-bit 1</pre>
+<pre class="screen">  Current mode is E3, loopback not set</pre>
+<pre class="screen">  Alarm: none</pre>
+<pre class="screen">  ERROR: 0 BPV, 0 EXZ, 0 FrmErr, 0 FEBE</pre>
+
+<div class="tablenoborder"><a name="display_controller_e3_e3_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_controller_e3_e3_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display controller e3命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="29.239103048626852%" id="d20863e73"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="70.76089695137314%" id="d20863e77"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20863e73 "><p>E3 6/0/0 current state :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20863e77 "><div class="p">E3接口当前的物理状态：<ul>
+<li><p>UP：物理状态正常启动。</p>
+</li>
+<li><p>DOWN：物理连接不正常。</p>
+</li>
+<li><p>Administratively down：如果网络管理员在该接口执行<strong>shutdown</strong>命令，将显示状态为Administratively down。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20863e73 "><p>Frame-format </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20863e77 "><p>E3接口的帧格式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20863e73 "><p>line code </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20863e77 "><p>E3接口的线路编解码格式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20863e73 "><p>clock</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20863e77 "><div class="p">时钟模式：<ul>
+<li><p>slave：从时钟模式。</p>
+</li>
+<li><p>master：主时钟模式。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20863e73 "><p>national-bit 1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20863e77 "><p>国际位为1。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20863e73 "><p>Current mode is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20863e77 "><div class="p">接口当前的工作模式：<ul>
+<li><p>CE3：接口工作在CE3模式下，表示通道化工作模式。</p>
+</li>
+<li><p>E3：接口工作在E3模式下，表示净通道化工作模式。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20863e73 "><p>loopback not set</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20863e77 "><p>没有使能E3接口环回功能。只有在进行某些特殊功能测试时，才将E3接口设为环回。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="29.239103048626852%" headers="d20863e73 "><p>Alarm: ERROR:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="70.76089695137314%" headers="d20863e77 "><div class="p">告警信息和错误信息。可能出现的错误类型有以下几类。<ul>
+<li><p>LOS：Loss of Signal，帧同步丢失。</p>
+</li>
+<li><p>LOF：Loss of Frame，帧丢失。</p>
+</li>
+<li><p>CERR：CRC Error，循环冗余校验错。</p>
+</li>
+<li><p>LCV：Line Code Violation，线路码错误。</p>
+</li>
+<li><p>FEBE：Far End Block Error，远端块错。这种错误只有在E1通道采用CRC4的帧格式时才可能出现。</p>
+</li>
+<li><p>BPV：Bipolar Violation，线路码极性错误。</p>
+</li>
+<li><p>EXZ：Excessive Zeros，连续多0错误。</p>
+</li>
+<li><p>FrmErr：FRAME ERROR，帧错误。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_controller_e3_e3_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_controller_e3_e3_interface__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d20863e258"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d20863e262"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d20863e258 "><p>VRPV500R005C05B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d20863e262 "><p>缺省情况下，系统不显示接口默认描述信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/e3_interface_configuration_commands.html">E3接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="controller_e3_e3_interface.html">controller e3（E3接口）</a></div>
+<div><a href="using_e3_interface_view.html">using（E3接口视图）</a></div>
+<div><a href="default_interface-description_enable.html">default interface-description enable</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,71 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="efm enable">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_efm.html">
+<meta name="DC.Relation" scheme="URI" content="efm_mode.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="efm_enable">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>efm enable</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="efm_enable"></a><a name="efm_enable"></a>
+
+<h1 class="topictitle1">efm enable</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>efm enable</strong>命令用来全局使能EFM OAM功能或使能接口的EFM OAM功能。</p>
+<p><strong>undo efm enable</strong>命令用来全局禁止EFM OAM功能或禁止接口的EFM OAM功能。</p>
+<p>缺省情况下，EFM OAM功能处于全局禁止状态，各接口的EFM OAM功能处于禁止状态。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>efm enable</strong></p>
+<p><strong>undo efm enable</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p>无</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图、Ethernet接口视图、GE接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在系统视图下使用<strong>undo efm enable</strong>命令全局禁止EFM OAM功能时，设备自动删除所有EFM相关配置。如果在本设备进行远端环回并发送大量测试报文时使用此<strong>undo</strong>命令，可能会导致大量测试报文被转发。</p>
+<p>使用本命令全局使能EFM OAM功能是使用所有EFM OAM功能的前提条件。</p>
+<p>当使能接口的EFM OAM功能后，接口开始发送OAMPDU，开始点到点的EFM链路检测。只有当对端端口也使能了EFM OAM功能，才能进入EFM链路检测阶段。</p>
+<p>只能在EFM OAM功能全局使能后，接口的EFM OAM功能使能前，才能使用<a href="efm_mode.html">efm mode</a>命令配置接口的EFM OAM工作模式。</p>
+<p>如果遇到提示GTL资源不足时，用户需要释放已经使用的GTL资源或者到公司买新的资源。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="efm_enable__d74878e54"></a><a name="d74878e54"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 全局使能EFM OAM功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> efm enable</strong></pre>
+<p># 使能接口GigabitEthernet1/0/0的EFM OAM功能。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>efm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>interface gigabitethernet1/0/0</strong></strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> <strong>efm enable</strong></strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_efm.html">display efm</a></div>
+<div><a href="efm_mode.html">efm mode</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

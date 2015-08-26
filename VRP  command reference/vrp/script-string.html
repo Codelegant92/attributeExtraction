@@ -1,0 +1,152 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="script-string">
+<meta name="DC.Relation" scheme="URI" content="../vrp/modem_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="start-script.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="script-string">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>script-string</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="script-string"></a><a name="script-string"></a>
+
+<h1 class="topictitle1">script-string</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>script-string</strong>命令用来定义Modem脚本。</p>
+<p><strong>undo script-string</strong>命令用来删除Modem脚本。</p>
+<p>系统缺省没有Modem脚本。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>script-string</strong><em> script-name script-content</em></p>
+<p><strong>undo script-string</strong><em> script-name</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>script-name</em>：脚本集中的脚本名称，字符串形式，长度为1～50。</p>
+<p><em>script-content</em>：脚本内容。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>VRP提供了Modem脚本，其主要用途包括：</p>
+<ul><li><p>使用Modem脚本可以灵活地控制不同型号的Modem，如使用不同的初始化串，使不同厂家和型号的<span class="keyword">路由器</span>可以和<span class="keyword">路由器</span>更好地协调工作。</p>
+</li><li><p>使用Modem脚本可以进行远端系统的交互登录，可以通过脚本的交互协商转入不同的连接状态。如双方<span class="keyword">路由器</span>的异步串口通过Modem建立连接之后，在该物理链路上封装何种协议，以及该协议的各种工作参数等都可以互相协商确定。</p>
+</li></ul>
+<p>Modem脚本常见格式如下：</p>
+<p><em>send-string1</em> <em>receive-string1</em> <em>send-string2</em> <em>receive-string2</em> ......</p>
+<p>其中：</p>
+<ul><li><p>send-string 表示发送字符串</p>
+</li><li><p>receive-string表示接收字符串</p>
+</li><li><p><em>send-string </em>和<em> receive-string </em>一般成对出现，而且脚本必须以发送字符串为开始，如<em>send-string1 receive-string1</em> ...... 表示的执行流程为：向Modem发送字符串<em>send-string1</em>，希望接收到字符串<em>receive-string1</em>，如果在超时之前，接收到字符串与<em>receive-string1 </em>匹配成功，则继续执行以下脚本，否则终止脚本的执行。</p>
+</li><li><p>如果最后一个字符串为发送字符串，则表明发送该字符串后，即可结束脚本的执行，不需再等待接收字符串。</p>
+</li><li><p>如果脚本的开始不需发送字符串，而直接等待接收字符串，这时可以将第一个发送字符串置为""，关于双引号的意义后面有详细介绍。</p>
+</li><li><p>对于发送字符串，除以\c结束之外，发送时均会在字符串结尾自动附加一个回车符。</p>
+</li><li><p>对于接收字符串的匹配，采用与位置无关的匹配方法，即只要接收的内容中含有希望接收的串，就认为匹配成功。</p>
+</li><li><p>接收字符串的匹配，希望接收的字符串可以有多个，它们之间用-连接，只要与其中之一匹配，即认为匹配成功。</p>
+</li><li><p>等待接收字符串的缺省超时的时间为5秒，在脚本中可随时插入<strong>timeout</strong> <em>seconds</em> 来调整等待接收字符串的超时的时间，并在同一个脚本的下一次<strong>timeout</strong>设置前一直有效。其含义参见下表。</p>
+</li></ul>
+
+<div class="tablenoborder"><a name="script-string__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="script-string__tb_01" frame="border" border="1" rules="all"><caption>表1 脚本关键字列表</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="23.154446963970777%" id="d116652e142"><p>关键字</p>
+</th>
+<th class="cellrowborder" valign="top" width="76.84555303602923%" id="d116652e145"><p>说明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d116652e142 "><p>ABORT receive-string</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d116652e145 "><p>ABORT后跟一个字符串，用于和Modem或对端的DTE设备传送来的字符串进行匹配，匹配的方式是完全匹配，一个脚本中可以有多个ABORT指定，每一个都在脚本的整个执行期有效。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d116652e142 "><p>TIMEOUT seconds</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d116652e145 "><p>TIMEOUT后跟一数字，用于设置接收字符串的超时等待时间，在等待的时间内如果没有收到希望的字符串，则脚本执行失败。此设置在设置以后有效，一直作用到下一次进行TIMEOUT设置。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul><li><p>脚本中所有字符串和关键字都是大小写敏感的。</p>
+</li><li><p>各字符串或关键字之间用空格进行分割，如果一个字符串内部包含空格，则需要用双引号（" "）括起来，如果双引号内没有任何内容（即为"")，则该字符串可能有两种意义，如果""位于脚本的开始，表明不需发送任何字符串，而直接等待接收字符串，而在其它位置则认为字符串内容为""。</p>
+</li><li><p>在脚本中可随时插入<strong>ABORT</strong> <em>receive-string</em>来改变脚本的执行流程，表示如果接收字符串与<em>receive-string</em>完全匹配，则终止脚本的执行。在脚本中<strong>ABORT</strong> <em>receive-string</em>可以出现多次，它们将会共同起作用，只要与其中之一匹配，即终止脚本的执行，而且无论<strong>ABORT</strong> <em>receive-string</em>在何处出现，它在整个脚本执行过程中均起作用。</p>
+</li><li><p>在脚本中可以插入转义字符，用于更好的对于脚本进行控制并增加脚本的灵活性，另外所有的转义字符同时也是字符串的分隔符。具体请参见下表。</p>
+</li></ul>
+
+<div class="tablenoborder"><a name="script-string__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="script-string__tb_02" frame="border" border="1" rules="all"><caption>表2 脚本转义字符列表</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="23.154446963970777%" id="d116652e205"><p>转义字符</p>
+</th>
+<th class="cellrowborder" valign="top" width="76.84555303602923%" id="d116652e208"><p>说明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d116652e205 "><p>\c</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d116652e208 "><p>表示只发送所指定的字符串，不自动附加回车符。\c位置只能在发送字符串的末尾，其他的位置无效。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d116652e205 "><p>\d</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d116652e208 "><p>表示暂停2秒。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d116652e205 "><p>\n</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d116652e208 "><p>表示换行字符。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d116652e205 "><p>\r</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d116652e208 "><p>表示回车字符。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d116652e205 "><p>\s</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d116652e208 "><p>表示空格字符。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d116652e205 "><p>\t</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d116652e208 "><p>表示制表字符。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d116652e205 "><p>\\</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d116652e208 "><p>表示反斜杠字符。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.154446963970777%" headers="d116652e205 "><p>\T</p>
+</td>
+<td class="cellrowborder" valign="top" width="76.84555303602923%" headers="d116652e208 "><p>表示电话号码。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="script-string__d116652e268"></a><a name="d116652e268"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 定义Modem脚本。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>script-string example "" AT OK ATS0=1 OK</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/modem_configuration_commands.html">Modem管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="start-script.html">start-script</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

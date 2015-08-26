@@ -1,0 +1,197 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mpls te cspf destination">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mpls_te_cspf_destination">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mpls te cspf destination</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mpls_te_cspf_destination"></a><a name="display_mpls_te_cspf_destination"></a>
+
+
+<h1 class="topictitle1">display mpls te cspf destination</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mpls te cspf destination</strong>命令用来检查是否存在满足指定约束条件的路径。这里的约束条件由该命令的参数指定。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mpls te cspf destination</strong> <em>ip-address</em> [ <strong>affinity</strong> <em>properties</em> [ <strong>mask</strong> <em>mask-value</em> ] | <strong>bandwidth</strong> { <span><strong>ct0</strong> <em>ct0-bandwidth</em> | <strong>ct1</strong> <em>ct1-bandwidth</em> | <strong>ct2</strong> <em>ct2-bandwidth</em> | <strong>ct3</strong> <em>ct3-bandwidth</em> | <strong>ct4</strong> <em>ct4-bandwidth</em> | <strong>ct5</strong> <em>ct5-bandwidth</em> | <strong>ct6</strong> <em>ct6-bandwidth</em> | <strong>ct7</strong> <em>ct7-bandwidth</em> }<sup>*</sup></span> | <strong>explicit-path</strong> <em>path-name</em> | <strong>hop-limit</strong> <em>hop-limit-number</em> | <strong>metric-type</strong> { <strong>igp</strong> | <strong>te</strong> } | <strong>priority</strong> <em>setup-priority</em><span> | <strong>srlg-strict</strong> <em>exclude-path-name</em></span> | <strong>tie-breaking</strong> { <strong>random</strong> | <strong>most-fill</strong> | <strong>least-fill</strong> } ]<sup>*</sup></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>destination</strong> <em>ip-address</em>：指定TE隧道的目的IP地址。</p>
+<p><strong>affinity</strong> <em>properties</em>：指定TE隧道的亲和属性。</p>
+<p><strong>mask</strong> <em>mask-value</em>：指定亲和属性的掩码。</p>
+<p><strong>bandwidth</strong>：指定TE隧道的带宽。</p>
+<p><strong>ct0</strong> <em>ct0-bandwidth</em>～<strong>ct7</strong> <em>ct7-bandwidth</em>：指定CT0～CT7的带宽值。</p>
+<p><strong>explicit-path</strong> <em>path-name</em>：指定TE隧道的显式路径。</p>
+<p><strong>hop-limit</strong> <em>hop-limit-number</em>：指定TE隧道的最大跳数限制值。</p>
+<p><strong>metric-type</strong>：指定CSPF计算时使用的度量类型。</p>
+<p><strong>igp</strong>：指定度量类型为内部网关协议。</p>
+<p><strong>te</strong>：指定度量类型为流量工程。</p>
+<p><strong>priority</strong> <em>setup-priority</em>：指定TE隧道的建立优先级。</p>
+<p><strong>srlg-strict</strong> <em>exclude-path-name</em>：指定SRLG排除路径（SRLG disjoint path）。SRLG排除路径是指配置了排除地址（exclude address）的严格显式路径，并且严格显式路径包含了一个或多个配置了SRLG的接口。如果指定SRLG排除路径，则CSPF检查是否存在这样的路径，该路径没有包含排除路径的任何SRLG属性。</p>
+<p><strong>tie-breaking</strong>：指定CSPF计算的仲裁策略。</p>
+<p><strong>random</strong>：指定仲裁策略为随机选择路径。</p>
+<p><strong>most-fill</strong>：指定仲裁策略为选择已用带宽和最大可预留带宽的比值最大的链路。</p>
+<p><strong>least-fill</strong>：指定仲裁策略为选择已用带宽和最大可预留带宽的比值最小的链路。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>执行该命令时，设备使用CSPF算法进行计算，检查是否存在满足指定约束条件的路径。如果有，则显示该TE隧道的路径，否则显示结果为空。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mpls_te_cspf_destination__d48102e248"></a><a name="d48102e248"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看通过CSPF算法得到的，满足命令约束条件的路径。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls te cspf destination 2.2.2.9</strong></pre>
+<pre class="screen">Path for the given constraints is:
+192.168.23.2                    Include
+192.168.23.3                    Include
+192.168.36.3                    Include
+192.168.36.6                    Include
+The total metrics of the calculated path is :        11
+</pre>
+<pre class="screen">&lt;Quidway&gt; <strong>display mpls te cspf destination 6.6.6.6 explicit-path path1</strong>
+Path for the given constraints is:
+
+192.168.23.2                    Include
+192.168.23.3                    Include
+192.168.34.3                    Include
+192.168.34.4                    Include
+4.4.4.4                         Include
+192.168.46.6                    Include
+6.6.6.6                         Include
+The total metrics of the calculated path is :        2
+</pre>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te cspf destination 2.2.2.19 explicit-path path1</strong></pre>
+<pre class="screen">System is busy try it later.</pre>
+<pre class="screen">&lt;Quidway&gt;<strong> display mpls te cspf destination 2.2.2.19 explicit-path path1</strong></pre>
+<pre class="screen">CSPF compute time out.</pre>
+
+<div class="tablenoborder"><a name="display_mpls_te_cspf_destination__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mpls_te_cspf_destination__tb_01" frame="border" border="1" rules="all"><caption>表1 display mpls te cspf destination命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50.88183421516755%" id="d48102e287"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="49.11816578483245%" id="d48102e291"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48102e287 "><p>Path for the given constraints is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48102e291 "><p>计算得到的路径。后面有*表示指定的显式路径中，通过CSPF计算不能到达的节点；后面没有*表示通过CSPF计算得到的路径</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48102e287 "><p>The total metrics for the calculated path is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48102e291 "><p>计算得到的路径的度量值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48102e287 "><p>System is busy try it later</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48102e291 "><p>系统忙稍后再试。表示CSPF接收了大量的计算请求，任务队列满，无法接收当前的计算请求</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50.88183421516755%" headers="d48102e287 "><p>CSPF compute time out</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.11816578483245%" headers="d48102e291 "><p>CSPF计算超时。表示CSPF计算的时间太长，超过了定时器的值</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="bottom" width="35%" id="d48102e357"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="bottom" width="65%" id="d48102e361"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35%" headers="d48102e357 "><p>VRPV500R005C02B210</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65%" headers="d48102e361 "><p>删除参数&#8220;<em>hold-priority</em>&#8221;</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35%" headers="d48102e357 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65%" headers="d48102e361 "><p>将参数BC0和BC1改为CT0～CT7，并增加可选参数SRLG属性</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

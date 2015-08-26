@@ -1,0 +1,85 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="static-rp（IPv4）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_pim_rp-info.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="static-rp_ipv4">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>static-rp（IPv4）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="static-rp_ipv4"></a><a name="static-rp_ipv4"></a>
+
+
+<h1 class="topictitle1">static-rp（IPv4）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>static-rp</strong>命令用来配置静态RP。</p>
+<p><strong>undo static-rp</strong>命令用来恢复缺省配置。</p>
+<p>缺省情况下，未配置静态RP。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>static-rp</strong> <em> rp-address</em> [ <em>basic-acl-number</em> ] [ <strong>preferred</strong> ]</p>
+<p><strong>undo static-rp</strong> <em>rp-address</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>rp-address</em>：表示静态RP地址。点分十进制形式。该地址必须是合法的单播IP地址，不能配置为127.0.0.0/8网段的地址。</p>
+<p><em>basic-acl-number</em>：表示基本访问控制列表，用来控制静态RP所服务的组播组范围。整数形式，取值范围是2000～2999。</p>
+<p><strong>preferred</strong>：表示静态RP优先。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>公网实例PIM视图、VPN实例PIM视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>通过重复执行该命令可以配置最多50个静态RP，但同一个ACL不能对应到多个静态RP。如果不引用ACL，则只能配置一个静态RP。</p>
+</div></div>
+<p>当网络内仅有一个RP时，可以手工配置静态RP而不使用动态RP，这样可以避免C-RP和BSR之间频繁的信息交互占用带宽。为了让静态RP功能正常发挥作用，PIM-SM域内所有<span class="keyword">路由器</span>都必须配置完全相同的<strong>static-rp</strong>命令。</p>
+<p>如果配置的静态RP地址是本机某个状态为UP的接口地址，本机就作为静态RP。作为静态RP的接口不必使能PIM协议。</p>
+<p>如果没有指定ACL访问控制列表，则配置的静态RP为所有组播组224.0.0.0/4服务；如果指定了访问控制列表，但访问控制列表没有配置规则，则所配置的静态RP为所有组224.0.0.0/4服务，否则配置的静态RP只为能够通过该列表过滤的组播组服务。</p>
+<p>如果配置静态RP的命令中未携带<strong>preferred</strong>关键字，则<span class="keyword">路由器</span>优先选择BSR机制选出的动态RP。如果网络中未配置动态RP或动态RP失效，静态RP才能生效。如果配置静态RP的命令中携带<strong>preferred</strong>关键字，则<span class="keyword">路由器</span>优先选择静态RP。</p>
+<p>重复执行此命令，会配置多个静态RP，如果存在多个静态RP为某个组服务的情况，则选择IP地址最大的RP为该组服务。当静态RP引用的ACL规则发生变化时，需要重新为所有组选择静态RP。对于具有相同<em>rp-address</em>地址的配置，新配置将覆盖旧配置。</p>
+<p><strong>static-rp</strong>命令与<strong>acl</strong>命令配合使用。在ACL视图下，通过<strong>rule</strong>命令的<strong>source</strong>参数定义静态RP所服务的组播组范围。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="static-rp_ipv4__d121066e114"></a><a name="d121066e114"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在公网实例中，配置地址为11.110.0.6的<span class="keyword">路由器</span>为静态RP，为ACL2001定义的组提供服务，并且启用静态RP优先。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong>
+[Quidway]<strong> acl number 2001</strong>
+[Quidway-acl-basic-2001]<strong> rule permit source 225.1.0.0 0.0.255.255</strong>
+[Quidway-acl-basic-2001]<strong> quit</strong>
+[Quidway]<strong> pim</strong>
+[Quidway-pim]<strong> static-rp 11.110.0.6 2001 preferred</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_pim_rp-info.html">display pim rp-info</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

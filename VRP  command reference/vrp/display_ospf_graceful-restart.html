@@ -1,0 +1,532 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ospf graceful-restart">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ospf_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="graceful-restart_ospf.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ospf_graceful-restart">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ospf graceful-restart</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ospf_graceful-restart"></a><a name="display_ospf_graceful-restart"></a>
+
+
+<h1 class="topictitle1">display ospf graceful-restart</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ospf graceful-restart</strong>用来命令用来查看OSPF GR的状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ospf </strong>[ <em>process-id</em> ]<strong> graceful-restart </strong>[ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：OSPF进程号，取值范围是1～65535。</p>
+<p><strong>verbose</strong>：显示详细的OSPF GR信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ospf_graceful-restart__d55228e108"></a><a name="d55228e108"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示OSPF的GR信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ospf graceful-restart</strong></pre>
+
+<pre class="screen">          OSPF Process 1 with Router ID 1.1.1.1</pre>
+<pre class="screen"> Graceful-restart capability     : enabled</pre>
+<pre class="screen"> Graceful-restart support        : planned and un-planned, totally</pre>
+<pre class="screen"> Helper-policy support           : planned and un-planned, strict lsa check</pre>
+<pre class="screen"> Current GR state                : normal</pre>
+<pre class="screen"> Graceful-restart period         : 120 seconds</pre>
+
+<pre class="screen"> Number of neighbors under helper:</pre>
+<pre class="screen">  Normal neighbors    : 0</pre>
+<pre class="screen">  Virtual neighbors   : 0</pre>
+<pre class="screen">  Sham-link neighbors : 0</pre>
+<pre class="screen">  Total neighbors     : 0</pre>
+
+<pre class="screen"> Number of restarting neighbors : 0</pre>
+
+<pre class="screen"> Last exit reason:</pre>
+<pre class="screen">  On graceful restart : successful exit</pre>
+<pre class="screen">  On Helper           : none</pre>
+<p># 查看OSPF GR的详细信息。</p>
+<pre class="screen">&lt;Quidway &gt;<strong> display ospf graceful-restart verbose</strong></pre>
+
+<pre class="screen">          OSPF Process 1 with Router ID 1.1.1.1</pre>
+<pre class="screen"> Graceful-restart capability     : enabled</pre>
+<pre class="screen"> Graceful-restart support        : planned and un-planned, totally</pre>
+<pre class="screen"> Helper-policy support           : planned and un-planned, strict lsa check</pre>
+<pre class="screen"> Current GR state                : normal</pre>
+<pre class="screen"> Graceful-restart period         : 120 seconds</pre>
+
+<pre class="screen"> Number of neighbors under helper:</pre>
+<pre class="screen">  Normal neighbors    : 0</pre>
+<pre class="screen">  Virtual neighbors   : 0</pre>
+<pre class="screen">  Sham-link neighbors : 0</pre>
+<pre class="screen">  Total neighbors     : 0</pre>
+<pre class="screen"> Number of restarting neighbors : 0</pre>
+
+<pre class="screen"> Last exit reason:</pre>
+<pre class="screen">  On graceful restart : successful exit</pre>
+<pre class="screen">  On Helper           : none</pre>
+
+<pre class="screen"> All area count      : 1</pre>
+
+<pre class="screen">                 Area ID    : 0.0.0.0</pre>
+
+<pre class="screen"> Authtype       : None     Area flag : Normal</pre>
+
+<pre class="screen"> Normal interface count: 1</pre>
+
+<pre class="screen"> Interface: 1.1.1.1 (Pos1/0/0)</pre>
+<pre class="screen"> GR state : normal                  State: PTP          Type: P-2-P</pre>
+<pre class="screen"> Last Helper Exit reason: none</pre>
+<pre class="screen"> Neighbor count of this interface : 1</pre>
+
+<pre class="screen"> Neighbor          IP address        GR state    Last Helper Exit reason</pre>
+<pre class="screen"> 2.2.2.2           1.1.1.2           Normal      none</pre>
+
+<div class="tablenoborder"><a name="display_ospf_graceful-restart__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_graceful-restart__tb_01" frame="border" border="1" rules="all"><caption>表1 display ospf graceful-restart命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d55228e227"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d55228e231"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Graceful-restart capability</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">是否使能IETF GR的特性：<ul>
+<li>enabled</li>
+<li>disabled</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Graceful-restart support</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">显示支持当前IETF GR的模式：<ul>
+<li>planned：只支持计划GR重启模式</li>
+<li>planned and un-planned：同时支持计划GR重启和非计划GR重启两种模式</li>
+<li>totally：支持完全GR模式</li>
+<li>partial：支持部分GR模式</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Helper-policy support</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">显示支持Helper的策略：<ul>
+<li>planned：Helper端只支持有计划GR重启</li>
+<li>planned and un-planned：Helper端同时支持有计划GR重启和非计划GR重启</li>
+<li>strict lsa check：Helper端支持严格的外部LSA检查</li>
+<li>ignore external lsa check：Helper端对外部LSA不做检查</li>
+<li>never：路由器不支持Helper模式</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Current GR state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">当前GR的状态：<ul>
+<li>Normal：处于正常状态</li>
+<li>Under GR：处于重启状态</li>
+<li>Under Helper：处于Helper状态</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Graceful-restart period</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><p>GR周期。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Number of neighbors under helper</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">处于Helper状态的邻居数量：<ul>
+<li>Normal neighbors：普通邻居的数量</li>
+<li>Virtual neighbors：虚邻居的数量</li>
+<li>Sham-link neighbors：shamlink邻居的数量</li>
+<li>Total neighbors：全部邻居的数量</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Number of restarting neighbors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><p>Helper端显示的处于重启路由器的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Last exit reason</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">上次GR退出的原因：<ul>
+<li>On graceful restart：Restarter退出GR的原因</li>
+<li>On Helper：Helper退出GR的原因</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>On graceful restart</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">Restarter退出GR的原因：<ul>
+<li>1-way hello received：收到1-way Hello报文</li>
+<li>back-link check failed：back-link检查失败</li>
+<li>DR election fail：选举DR失败</li>
+<li>grace period expired：GR周期超时</li>
+<li>interface state change：接口状态机变化</li>
+<li>none：路由器启动以来没有执行过GR</li>
+<li>successful exit：成功退出</li>
+<li>two Grace-LSAs received：收到两个Grace-LSA</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>On Helper</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">Helper退出GR的原因：<ul>
+<li>flooding change LSA：收到变化的LSA</li>
+<li>grace period expired：GR周期超时</li>
+<li>graceful restart unconfigured at process level：OSPF进程的GR功能被去使能</li>
+<li>interface state change：接口状态机变化</li>
+<li>policy check failed for received grace LSA：不匹配Helper的策略</li>
+<li>received 1-way hello packet：收到1-way Hello报文</li>
+<li>received flushed grace LSA：收到Flushed的Grace-LSA</li>
+<li>received multiple grace LSA：收到多个Grace-LSA</li>
+<li>neighbor reset：邻居处于Helper模式时去使能GR功能</li>
+<li>none：路由器启动以来没有进入过Helper模式</li>
+<li>successful exit：成功退出</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>All area count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><p>该进程下区域的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Area ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><p>区域ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Authtype</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><p>认证类型。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Area flag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">区域的属性：<ul>
+<li><p>Normal；</p>
+</li>
+<li><p>NSSA；</p>
+</li>
+<li><p>Stub。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Normal interface count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><p>该区域下接口的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><p>接口的IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>GR state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">接口GR的状态：<ul>
+<li><p>Normal：处于正常状态；</p>
+</li>
+<li><p>Restarter：处于GR状态；</p>
+</li>
+<li><p>Helper：处于Helper状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">接口状态：<ul>
+<li><p>Point to Point；</p>
+</li>
+<li><p>DR；</p>
+</li>
+<li><p>BDR；</p>
+</li>
+<li><p>DROther；</p>
+</li>
+<li><p>Waitting；</p>
+</li>
+<li><p>Down。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">接口类型：<ul>
+<li><p>P2P；</p>
+</li>
+<li><p>P2MP；</p>
+</li>
+<li><p>NBMA；</p>
+</li>
+<li><p>Broadcast。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Last Helper Exit reason</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">该邻居上次退出Helper的原因：<ul>
+<li><p>none：路由器启动以来没有进入过Helper模式；</p>
+</li>
+<li><p>successful exit：成功退出；</p>
+</li>
+<li><p>grace period expired：GR周期超时；</p>
+</li>
+<li><p>received flushed grace LSA：收到Flushed的Grace-LSA；</p>
+</li>
+<li><p>flooding change LSA：收到变化的LSA；</p>
+</li>
+<li><p>received multiple grace LSA：收到多个Grace-LSA；</p>
+</li>
+<li><p>received 1-way hello packet：收到1-way Hello报文；</p>
+</li>
+<li><p>policy check failed for received grace LSA：不匹配Helper的策略；</p>
+</li>
+<li><p>neighbor reset：Helper的邻居执行了reset命令导致拓扑变化；</p>
+</li>
+<li><p>interface state change：接口状态机变化；</p>
+</li>
+<li><p>graceful restart unconfigured at process level：邻居没有配置GR功能。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Neighbor count of this interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><p>该接口下的邻居总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>Neighbor</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><p>邻居的Router ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>IP address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><p>邻居接口的IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d55228e227 "><p>GR state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d55228e231 "><div class="p">邻居GR的状态：<ul>
+<li><p>Normal：处于正常状态；</p>
+</li>
+<li><p>Restarter：邻居处于GR状态；</p>
+</li>
+<li><p>Helper：处于Helper状态。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ospf_graceful-restart__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ospf_graceful-restart__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d55228e782"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d55228e786"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d55228e782 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d55228e786 "><p>在&#8220;输出信息描述&#8221;中对以下信息的描述进行了修改：On HelperLast Helper Exit reason</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d55228e782 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d55228e786 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ospf_configuration_commands.html">OSPF配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="graceful-restart_ospf.html">graceful-restart(OSPF)</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

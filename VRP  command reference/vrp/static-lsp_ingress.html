@@ -1,0 +1,132 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="static-lsp ingress">
+<meta name="DC.Relation" scheme="URI" content="../vrp/basic_mpls_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_mpls_static-lsp.html">
+<meta name="DC.Relation" scheme="URI" content="static-lsp_egress.html">
+<meta name="DC.Relation" scheme="URI" content="static-lsp_transit.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="static-lsp_ingress">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>static-lsp ingress</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="static-lsp_ingress"></a><a name="static-lsp_ingress"></a>
+
+
+<h1 class="topictitle1">static-lsp ingress</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>static-lsp ingress</strong>命令用来为入口LSR配置静态LSP。</p>
+<p><strong>undo static-lsp
+ingress</strong>命令用来为入口LSR删除一条LSP。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>本地IP地址不能被指定为下一跳。</p>
+</div></div>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>static-lsp ingress</strong><em> lsp-name </em><strong>destination </strong><em>ip-address
+mask-length </em> { <strong>nexthop </strong><em>next-hop-address</em> | <strong>outgoing-interface</strong><em> interface-type
+interface-number </em> } <strong>out-label </strong><em>out-label</em></p>
+<p><strong>undo static-lsp
+ingress</strong> <em>lsp-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>lsp-name</em>：LSP名称。字符串形式，区分大小写，不支持空格，长度范围是1～19个字符。</p>
+<p><strong>destination </strong><em>ip-address</em>：目的IP地址。</p>
+<p><em>mask-length</em>：目的IP地址掩码长度。可以是整数形式，取值范围是0～32；也可以是点分十进制形式。</p>
+<p><em>next-hop-address</em>：下一跳地址。</p>
+<p><em>interface-type
+interface-number</em>：接口类型和编号。</p>
+<p><em>out-label</em>：出标签值。整数形式，取值范围16～1023。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置完静态LSP后，可以执行<a href="display_mpls_static-lsp.html">display
+mpls static-lsp</a>命令查看该静态LSP是否建立成功。</p>
+<p>配置静态LSP和静态CR-LSP时，需要注意以下约束条件：</p>
+<ul>
+<li><p>如果在配置静态LSP时指定了下一跳，则在配置IP静态路由时也必须指定下一跳，否则不能建立静态LSP。</p>
+</li>
+</ul>
+<pre class="screen">[Quidway]<strong> ip route-static 20.1.0.0 16 10.1.1.2</strong></pre>
+<pre class="screen">[Quidway]<strong> static-lsp ingress staticlsp1 destination 20.1.0.0 16 nexthop 10.1.1.2 out-label 100</strong></pre>
+<ul>
+<li><p>如果在配置静态LSP时指定了出接口，则在配置IP静态路由时也必须指定出接口，否则不能建立静态LSP。因此，本地IP地址不能配置为下一跳。例如：</p>
+</li>
+</ul>
+<pre class="screen">[Quidway]<strong> ip route-static 20.1.0.0 16 pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway]<strong> static-lsp ingress staticlsp1 destination 20.1.0.0 16 outgoing-interface pos 1/0/0 out-label 100</strong></pre>
+<ul>
+<li><p>如果LSR之间使用动态路由协议互通，则LSP的下一跳IP地址必须与路由表中的下一跳IP地址一致。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="static-lsp_ingress__d120976e134"></a><a name="d120976e134"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置本LSR作为目的地址202.25.38.1的静态LSP的Ingress节点。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> static-lsp ingress bj-sh destination 202.25.38.1 24 nexthop 202.55.25.33 out-label 237</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d120976e157">版本</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d120976e160">修订内容</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d120976e157 ">VRPV500R006C01B010</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d120976e160 ">将参数<em>lsp-name</em>的最大长度改为19个字符。</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/basic_mpls_configuration_commands.html">MPLS基本配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_mpls_static-lsp.html">display mpls static-lsp</a></div>
+<div><a href="static-lsp_egress.html">static-lsp egress</a></div>
+<div><a href="static-lsp_transit.html">static-lsp transit</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

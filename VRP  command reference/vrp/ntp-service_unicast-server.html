@@ -1,0 +1,75 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ntp-service unicast-server">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ntp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ntp-service_unicast-server">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ntp-service unicast-server</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ntp-service_unicast-server"></a><a name="ntp-service_unicast-server"></a>
+
+
+<h1 class="topictitle1">ntp-service unicast-server</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ntp-service</strong> <strong>unicast-server</strong>命令用来配置NTP服务器模式。</p>
+<p><strong>undo ntp-service</strong> <strong>unicast-server</strong>命令用来取消NTP服务器模式。</p>
+<p>缺省情况下，版本号<em>number</em>缺省为3、启用身份验证、不是优先选择的服务器。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ntp-service unicast-server </strong><em>ip-address</em> [ <strong>version </strong><em>number</em> | <strong>authentication-keyid </strong><em>key-id</em> | <strong>source-interface </strong><em>interface-type</em><strong> </strong><em>interface-number </em>|<strong> vpn-instance </strong><em>vpn-instance-nam </em>|<strong> preference </strong>] <strong>*</strong></p>
+<p><strong>undo</strong><em> </em><strong>ntp-service</strong><em> </em><strong>unicast-server</strong><em> ip-address</em> [<em> </em><strong>vpn-instance</strong><em> vpn-instance-name </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：远程服务器IP地址。<em>ip-address</em>是一个主机地址，不能为广播、组播地址或参考时钟的IP地址。</p>
+<p><strong>version </strong><em>number</em>：NTP版本号。取值范围是1～3。缺省值是3。</p>
+<p><strong>authentication-keyid</strong>：定义身份验证密钥。</p>
+<p><em>key-id</em>：向该远程服务器发送消息使用的密钥ID号，范围1～4294967295。</p>
+<p><strong>source-interface </strong><em>interface-type interface-number</em>：单播客户端向服务器发送NTP消息时使用的源接口，消息包中的源IP地址从该接口获取。</p>
+<p><strong>vpn-instance </strong><em>vpn-instance-name</em>：设置VPN实例名称。字符串形式，不支持空格，长度范围是1～31。</p>
+<p><strong>preference</strong>：指定该服务器为优先选择的远程服务器。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>以<em>ip-address</em>所指定的远程服务器作为本地时间服务器。本地设备工作在client模式，在这种工作模式下，只能是本地客户机同步到远程服务器，而远程服务器从来不会同步到本地客户机。</p>
+<p>如果客户端使能了认证，并配置了相应的认证密钥，则服务器端在接收到客户端发送的同步请求后，会给客户端发送带认证的NTP报文，客户端对接收的报文进行认证，认证通过后，进行时钟同步；如果客户端没有使能认证，则服务器端在接收到客户端发送的同步请求后，会发送没有认证的NTP报文给客户端，客户端接收到此报文后，进行时钟同步。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ntp-service_unicast-server__d100817e145"></a><a name="d100817e145"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 本地设备被配置成由服务器10.10.1.1提供同步时间，版本号为3。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway]<strong> ntp-service unicast-server 10.10.1.1 version 3</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ntp_configuration_commands.html">NTP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

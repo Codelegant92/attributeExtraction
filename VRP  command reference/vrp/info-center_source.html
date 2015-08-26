@@ -1,0 +1,202 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="info-center source">
+<meta name="DC.Relation" scheme="URI" content="../vrp/information_center.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="info-center_source">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>info-center source</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="info-center_source"></a><a name="info-center_source"></a>
+
+
+<h1 class="topictitle1">info-center source</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>info-center source</strong>命令用来向信息通道中添加记录。</p>
+<p><strong>undo info-center source</strong>命令用来删除信息通道中的记录。</p>
+<p>缺省情况下，对于指定的具体模块：</p>
+<p>日志类信息，状态为<strong>on</strong>，允许的信息级别为<strong>warning</strong>。</p>
+<p>告警类信息，状态为<strong>on</strong>，允许的信息级别为<strong>debugging</strong>。</p>
+<p>调试类信息，状态为<strong>off</strong>。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>info-center source</strong> { <em>module-name </em>| <strong>default</strong> } <strong>channel</strong> { <em>channel-number</em> | <em>channel-name </em>} [ <strong>log</strong> { <strong>state</strong> { <strong>off</strong> | <strong>on</strong> } | <strong>level </strong><em>severity</em> } * | <strong>trap</strong> { <strong>state</strong> { <strong>off</strong> | <strong>on</strong> } | <strong>level</strong> <em>severity</em> } * | <strong>debug</strong> { <strong>state</strong> { <strong>off</strong> | <strong>on</strong> } | <strong>level</strong> <em>severity</em> } * ] *</p>
+<p><strong>undo info-center source</strong> { <em>module-name</em> | <strong>default</strong> } <strong>channel</strong> { <em>channel-number</em> | <em>channel-name</em> }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>module-name</em>：模块名。</p>
+<p><strong>default</strong>：设置缺省的信息记录。</p>
+<p><em>channel-number</em>：要设置的信息通道号，取值范围是0～9。</p>
+<p><em>channel-name</em>：要设置的信息通道名。</p>
+<p><strong>log</strong>：日志信息。</p>
+<p><strong>state</strong>：信息。</p>
+<p><strong>off</strong>：关闭信息。</p>
+<p><strong>on</strong>：开启信息。</p>
+<p><strong>trap</strong>：告警信息。</p>
+<p><strong>debug</strong>：调试信息。</p>
+<p><strong>level</strong>：设置信息级别，禁止信息级别大于所设置的<em>severity</em>的信息输出。</p>
+<p><em>severity</em>：信息级别，信息中心按信息的严重等级或紧急程度划分为8个级别，如下表所示，越紧急其信息级别越小，<strong>emergencies</strong>表示的等级为0，<strong>debugging</strong>为7。</p>
+
+<div class="tablenoborder"><a name="info-center_source__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="info-center_source__tb_01" frame="border" border="1" rules="all"><caption>表1 信息级别的定义</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="15.507684555303602%" id="d82676e208"><p>显示值</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="18.556311413454274%" id="d82676e212"><p>严重等级</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="65.93600403124212%" id="d82676e216"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="15.507684555303602%" headers="d82676e208 "><p>0</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="18.556311413454274%" headers="d82676e212 "><p>emergencies</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d82676e216 "><p>设备致命的异常，系统已经无法恢复正常，必须重启设备。如程序异常导致设备重启，内存的使用被检测出错误等。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="15.507684555303602%" headers="d82676e208 "><p>1</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="18.556311413454274%" headers="d82676e212 "><p>alerts</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d82676e216 "><p>设备重大的异常，需要立即采取措施。如设备内存占用率达到极限等。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="15.507684555303602%" headers="d82676e208 "><p>2</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="18.556311413454274%" headers="d82676e212 "><p>critical</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d82676e216 "><p>设备重大的异常，需要采取措施进行处理或原因分析。如设备内存占用率超过低界线，温度超过低温告警线，BFD探测出设备不可达，检测出错误的消息（消息是由本设备内部生成）等。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="15.507684555303602%" headers="d82676e208 "><p>3</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="18.556311413454274%" headers="d82676e212 "><p>errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d82676e216 "><p>错误的操作或设备的异常流程，不会影响后续业务，但是需要关注和原因分析。如用户的错误指令，用户密码错误，检测出错误协议报文（报文是由其他设备获得）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="15.507684555303602%" headers="d82676e208 "><p>4</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="18.556311413454274%" headers="d82676e212 "><p>warnings</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d82676e216 "><p>设备的异常运转的异常点，可能引起业务故障的流程，需要引起注意。如用户对关闭路由进程，BFD探测的一次报文丢失，检测出错误协议报文等。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="15.507684555303602%" headers="d82676e208 "><p>5</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="18.556311413454274%" headers="d82676e212 "><p>notifications</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d82676e216 "><p>用于设备正常运转的关键操作信息。如用户对接口执行的<strong>shutdown</strong>命令，邻居发现，协议状态机的正常跳转等。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="15.507684555303602%" headers="d82676e208 "><p>6</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="18.556311413454274%" headers="d82676e212 "><p>informational</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d82676e216 "><p>用于设备正常运转的一般性操作信息。如用户使用<strong>display</strong>命令等。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="15.507684555303602%" headers="d82676e208 "><p>7</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="18.556311413454274%" headers="d82676e212 "><p>debugging</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="65.93600403124212%" headers="d82676e216 "><p>设备正常运转的一般性信息，用户无需关注。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>每个信息通道设有一条缺省记录，模块名为default，模块号为0xffff0000。对于不同信息通道，此记录对日志、告警、调试类信息的缺省设置值可能不同。当某一个模块在此通道中没有明确的配置记录时，使用这条缺省的配置记录。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="info-center_source__d82676e365"></a><a name="d82676e365"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置将snmp通道中的console模块的日志类信息打开，且允许输出信息的最低级别为emergencies。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway] <strong>info-center source console channel snmp log level emergence</strong></pre>
+<p># 将snmp通道中exec模块的设置删除。</p>
+<pre class="screen">[Quidway]<strong> undo info-center source exec channel snmp</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/information_center.html">信息中心命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

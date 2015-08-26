@@ -1,0 +1,84 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="cops-server">
+<meta name="DC.Relation" scheme="URI" content="../vrp/cops_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_cops-server_configuration.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="cops-server">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>cops-server</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="cops-server"></a><a name="cops-server"></a>
+
+
+<h1 class="topictitle1">cops-server</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>cops-server</strong>命令用于配置COPS服务器，包括IP地址、服务器端口号、客户端端口号、VPN实例、权重等参数。</p>
+<p><strong>undo</strong> <strong>cops-server</strong>命令用于删除COPS服务器或者COPS服务器的VPN实例。</p>
+<p>缺省情况下，COPS服务器组中未配置COPS服务器。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>cops-server</strong> <em>ip-address</em> [ <em>server-port</em> | <strong>client-port</strong> <em>client-port</em> | <strong>vpn-instance</strong> <em>instance-name</em> | <strong>weight</strong> <em>value</em> ] <sup>*</sup></p>
+<p><strong>undo cops-server </strong><em>ip-address</em> [ <strong>vpn-instance </strong><em>instance-name </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>:：COPS服务器的IP地址。</p>
+<p><em>server-port</em>:：COPS服务器的端口号。整数形式，取值范围是1～49151，缺省值是3288。</p>
+<p><strong>client-port</strong> <em>server-port</em>:：COPS客户端的端口号。整数形式，取值范围是0～49151，缺省值是7374。0代表任意端口。</p>
+<p><strong>vpn-instance</strong> <em>instance-name</em>:：指定COPS服务器的VPN实例名。字符串形式，长度范围是1～31。必须是已配置的VPN实例。</p>
+<p><strong>weight</strong> <em>value</em>:：COPS服务器的权重。取值范围是0～100，缺省值是0。value值越大，权重越大。当一个服务器组中配置多台COPS服务器时，可使用权重来控制服务器之间的负荷分担。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>COPS服务器组视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有当COPS服务器组绑定到IPTN业务后，设备才能上报IPTN业务的用户信息给指定的COPS服务器组。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li>建议用户不要另行指定COPS服务器的端口号，因为如果指定的端口号已被占用，将影响设备和COPS服务器之间建立TCP连接。</li>
+<li>设备与COPS服务器之间应保证至少有一条可达路由存在。</li>
+</ul>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="cops-server__d8482e120"></a><a name="d8482e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 为名字为<strong>huawei</strong>的COPS服务器组添加一个COPS服务器。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> cops-server group huawei client-type ssg</strong></pre>
+<pre class="screen">Create a new cops-server group</pre>
+<pre class="screen">[Quidway-cops-huawei]<strong> cops-server 10.10.10.2</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/cops_configuration_commands.html">COPS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_cops-server_configuration.html">display
+cops-server configuration</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

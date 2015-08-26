@@ -1,0 +1,82 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="port">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vlan_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_vlan.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="port">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>port</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="port"></a><a name="port"></a>
+
+
+<h1 class="topictitle1">port</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>port</strong>命令用来向VLAN中添加一个或一组端口。</p>
+<p><strong>undo port</strong>用来从VLAN中删除一个或一组端口。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>port</strong> <em>interface-type </em>{ <em>interface-number1</em> [ <strong>to</strong><em> interface-number2 </em>] } &amp;&lt;1-10&gt;</p>
+<p><strong>undo</strong> <strong>port</strong> <em>interface-type </em>{ <em>interface-number1 </em>[ <strong>to</strong><em> interface-number2</em> ] }
+&amp;&lt;1-10&gt;</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口序号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VLAN视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有交换式接口才能加入到VLAN中。</p>
+<p>Trunk类型的端口不能通过<strong>port</strong>命令加入VLAN。</p>
+<p>输入端口范围时，应保证输入的端口格式正确，关键字<strong>to</strong>之后的端口号要大于<strong>to</strong>之前的端口号，并要保证采用<strong>to</strong>形式输入的端口类型相同，且两者之间包含的端口都存在。</p>
+<p>一条<strong>port</strong>命令中，最多可以使用10次<strong>to</strong>形式输入10个端口范围。</p>
+<p>使用<strong>port</strong>命令时，必须保证加入到VLAN的接口类型相同，FE和GE不能混合加入同一个VLAN。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="port__d106615e106"></a><a name="d106615e106"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 向VLAN3中加入端口GE 6/0/0～6/0/3。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 3</strong></pre>
+<pre class="screen">[Quidway-vlan3]<strong> port gigabitethernet 6/0/0 to 6/0/3</strong></pre>
+<p># 从VLAN3中删除端口GE 6/0/1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 3</strong></pre>
+<pre class="screen">[Quidway-vlan3]<strong> undo port gigabitethernet 6/0/1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vlan_configuration_commands.html">VLAN配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_vlan.html">display vlan</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

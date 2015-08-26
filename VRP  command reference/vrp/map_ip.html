@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="map ip">
+<meta name="DC.Relation" scheme="URI" content="../vrp/atm_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="map_bridge.html">
+<meta name="DC.Relation" scheme="URI" content="map_ppp.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="map_ip">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>map ip</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="map_ip"></a><a name="map_ip"></a>
+
+
+<h1 class="topictitle1">map ip</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>map ip</strong>命令用来为PVC创建IPoA映射。</p>
+<p><strong>undo map ip</strong>命令用来删除该映射。</p>
+<p>缺省情况下，不配置任何映射。如果配置，缺省不支持伪广播。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>map ip</strong> { <em>ip-address</em> [<em> mask</em> ] | <strong>default</strong> | <strong>inarp</strong> [<em> minutes</em> ] } [<strong> broadcast </strong>]</p>
+<p><strong>undo map ip</strong> [ <em>ip-address</em> | <strong>default</strong> | <strong>inarp </strong>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：映射到PVC的对端IP地址。当指定为网段地址或组播地址时，必须选择broadcast参数。</p>
+<p><em>mask</em>：IP地址掩码，可选参数。若某个报文在接口上找不到一个和下一跳地址相同的映射，但下一跳地址属于<em>ip-address</em>和<em>mask</em>指定的网段，则可以在该PVC上发送。</p>
+<p><strong>default</strong>：配置一个具有缺省路由属性的映射。若某个报文在接口上找不到一个和下一跳地址相同的映射，但某条PVC配置了default 映射，则报文将从该PVC上发送。</p>
+<p><strong>inarp</strong>：在PVC上使能反向地址解析InARP。</p>
+<p><em>minutes</em>：发送InARP报文的间隔时间，可选参数。取值范围是1^600，单位是分钟。缺省值是1。</p>
+<p><strong>broadcast</strong>：伪广播，可选参数。如果PVC上配置了一条具有此属性的映射，则该PVC所属接口上的广播报文都要在该PVC上发送一份。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>ATM-PVC视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="caution"><span class="cautiontitle"><img src="../public_sys-resources/icon-caution.gif"> 注意： </span><div class="cautionbody"><p>通过该命令指定的IP地址，一定要是对端接口的IP地址。否则可能导致数据不能正确转发。</p>
+</div></div>
+<p>在配置<em>ip-address</em>时，如果指定的是网段地址或组播地址，则必须选择关键字<strong>broadcast</strong>。</p>
+<p>在配置InARP时，必须保证PVC的AAL5封装类型是aal5snap。PVC的AAL5封装类型缺省为aal5snap。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="map_ip__d91991e114"></a><a name="d91991e114"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p>下面是两个为PVC创建IPoA映射的案例。</p>
+<p># 在PVC 1/32上创建一个静态映射，指定对端IP地址为61.123.30.169，并支持伪广播。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface atm 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Atm1/0/0] <strong>pvc 1/32</strong></pre>
+<pre class="screen">[Quidway-atm-pvc-Atm1/0/0-1/32]<strong> map ip 61.123.30.169 broadcast</strong></pre>
+<p>#
+在PVC 1/33上使能InARP，由接口自动获取对端地址，每10分钟发送一次InARP报文。</p>
+<pre class="screen">[Quidway-atm-pvc-Atm1/0/0.1-1/33]<strong> map ip inarp 10</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/atm_configuration_commands.html">ATM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="map_bridge.html">map bridge</a></div>
+<div><a href="map_ppp.html">map ppp</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

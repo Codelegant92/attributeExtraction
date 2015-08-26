@@ -1,0 +1,97 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="preference (IS-IS)">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="preference_is-is">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>preference (IS-IS)</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="preference_is-is"></a><a name="preference_is-is"></a>
+
+
+<h1 class="topictitle1">preference (IS-IS)</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>preference</strong>命令用来配置IS-IS协议的优先级。</p>
+<p><strong>undo preference</strong>命令用来恢复IS-IS协议的缺省优先级。</p>
+<p>缺省情况下，IS-IS协议的优先级为15。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>preference</strong> <em>preference</em></p>
+<p><strong>preference</strong> <em>preference</em> <strong>route-policy</strong> <em>route-policy-name</em></p>
+<p><strong>preference route-policy</strong> <em>route-policy-name</em></p>
+<p><strong>undo preference</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>preference</em>：IS-IS协议优先级。整数类型，取值范围是1～255。数值越低，优先级越高。</p>
+<p><strong>route-policy</strong> <em>route-policy-name</em>：指定路由策略名称。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IS-IS视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>preference</strong>命令用来配置IS-IS协议的优先级。分为以下三种情况：</p>
+<ul>
+<li><p><strong>preference </strong><em>preference</em>可为所有IS-IS协议的路由设定优先级。</p>
+</li>
+<li><p><strong>preference </strong><em>preference</em><strong> route-policy </strong><em>route-policy-name</em>可为通过匹配的路由和没有通过匹配的路由设定不同的优先级。</p>
+</li>
+<li><p><strong>preference route-policy </strong><em>route-policy-name</em>可为通过匹配的路由设定优先级，不影响其他IS-IS路由的优先级。</p>
+</li>
+</ul>
+<p>使用路由策略为特定的路由设定优先级。如果<strong>route-policy</strong>中配置了子句<strong>apply preference</strong>，则路由的优先级为：</p>
+<ul>
+<li><p>通过匹配的路由：<strong>apply</strong>子句设定的优先级。</p>
+</li>
+<li><p>未通过匹配的路由：命令<strong>preference</strong>设定的优先级。</p>
+</li>
+</ul>
+<p>如下面的例子，通过策略abc的路由优先级被设定为50，未通过策略abc的路由优先级被设定为30。</p>
+<pre class="screen">#</pre>
+<pre class="screen">route-policy abc permit node 1</pre>
+<pre class="screen"> if-match cost 20</pre>
+<pre class="screen"> apply preference 50</pre>
+<pre class="screen">#</pre>
+<pre class="screen">isis 1</pre>
+<pre class="screen"> preference 30 route-policy abc</pre>
+<p>如果策略abc中没有配置子句<strong>apply preference 50</strong>，则所有路由的优先级被设定为30。</p>
+<p>由于在一台路由器上可能同时运行多种动态路由协议，就存在各个路由协议之间路由信息共享和选择的问题。系统为每一种路由协议设置一个优先级，当不同协议都发现了到同一目的地的路由时，优先级高的协议将起决定作用。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="preference_is-is__d107945e155"></a><a name="d107945e155"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置IPv4的IS-IS路由协议的优先级为25。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>isis</strong></pre>
+<pre class="screen">[Quidway-isis-1] <strong>preference 25</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

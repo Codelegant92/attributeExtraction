@@ -1,0 +1,78 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ntp-service max-dynamic-sessions">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ntp_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ntp-service_max-dynamic-sessions">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ntp-service max-dynamic-sessions</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ntp-service_max-dynamic-sessions"></a><a name="ntp-service_max-dynamic-sessions"></a>
+
+
+<h1 class="topictitle1">ntp-service max-dynamic-sessions</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ntp-service max-dynamic-sessions</strong>命令用来设置本地允许建立的最大NTP动态连接数目。</p>
+<p><strong>undo ntp-service max-dynamic-sessions</strong>命令用来恢复缺省值。</p>
+<p>缺省情况下，最多允许建立100个NTP动态会话。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ntp-service max-dynamic-sessions </strong><em>number</em></p>
+<p><strong>undo ntp-service max-dynamic-sessions</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>number</em>：本地允许建立动态sessions的数目。取值范围是0～100。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在使用<strong>ntp-service max-dynamic-sessions</strong>命令时，需要注意以下几点：</p>
+<ul>
+<li><p>该命令只限制动态会话的数目，对静态会话无效。</p>
+</li>
+<li><p>该命令不影响已经建立的NTP会话。当会话数达到或超过允许的最大数目时，不能再建立新的会话。</p>
+</li>
+<li><p>该命令应配置在客户端，服务器端并不纪录建立的NTP会话数目。</p>
+</li>
+</ul>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>单播服务器/客户端模式和对等体模式都是通过命令行建立连接，属于静态会话。广播模式和组播模式建立的是动态会话。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ntp-service_max-dynamic-sessions__d100691e70"></a><a name="d100691e70"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置本地最多允许建立50个NTP动态会话。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong>
+[Quidway]<strong> ntp-service max-dynamic-sessions 50</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ntp_configuration_commands.html">NTP配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

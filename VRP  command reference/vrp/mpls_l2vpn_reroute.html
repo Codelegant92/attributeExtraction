@@ -1,0 +1,137 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="mpls l2vpn reroute">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vll_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="mpls_l2vc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="mpls_l2vpn_reroute">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>mpls l2vpn reroute</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="mpls_l2vpn_reroute"></a><a name="mpls_l2vpn_reroute"></a>
+
+
+<h1 class="topictitle1">mpls l2vpn reroute</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>mpls l2vc reroute</strong>命令用来配置PW回切策略。</p>
+<p><strong>undo mpls l2vc reroute</strong>命令用来删除已配置的PW回切策略。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>mpls l2vpn reroute</strong> { { <strong>delay</strong> <em>delay-time</em> | <strong>immediately</strong> } [ <strong>resume</strong> <em>resume-time</em> ] | <strong>never</strong> }</p>
+<p><strong>undo</strong> <strong>mpls</strong> <strong>l2vpn</strong> <strong>reroute</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>delay</strong>：表示延迟一定时间后回切。</p>
+<p><em>delay-time</em>：指定的回切时间。十进制整数形式，单位为秒，取值范围是10～600。缺省值为30。</p>
+<p><strong>immediately</strong>：表示立即回切。</p>
+<p><strong>resume</strong> <em>resume-time</em>：指定的延迟通告的时间。十进制整数形式，单位为秒，取值范围是0～600。缺省值是10。</p>
+<p><strong>never</strong>：表示主PW故障恢复后，不再回切到主PW，直到备份PW出现故障才回切。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>只有配置了主备PW后，才能使用<strong>mpls l2vpn reroute</strong>命令配置回切策略。</p>
+<p>回切策略有三种：</p>
+<ul>
+<li><p>立即回切：立即将流量切换到主用PW上，并向备份PW的对端PE通告故障。延迟<em>resume-time</em>时间后再向备份PW的对端PE通告故障恢复。</p>
+</li>
+<li><p>延迟回切：经过<em>delay-time</em>时间后再将流量切换到主用PW上。切换后立即向备份PW的对端PE通告故障。并延迟<em>resume-time</em>时间后再向备份PW的对端PE通告故障恢复。</p>
+</li>
+<li><p>不回切：流量不切换到主用PW上，直到备份PW出现故障才回切。</p>
+</li>
+</ul>
+<p>缺省的回切策略是延迟回切。</p>
+<p>对于PW FRR的非对称组网，并且AC为以太类型的链路：</p>
+<ul>
+<li><p>如果在PE连接CE的接口上配置了Remote shutdown功能，为了防止网络振荡和流量丢失，建议不要使用立即回切策略（immediately），而是建议使用延迟回切策略，并且配置<em>delay-time</em>不少于30秒。</p>
+</li>
+<li><p>如果在PE连接CE的接口上配置了以太OAM功能，此时如果配置了回切策略，那么不能将<em>resume-time</em>时间设置为0秒，而必须大于或者等于1秒。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="mpls_l2vpn_reroute__d94133e141"></a><a name="d94133e141"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置主备PW切换策略，在主PW发生故障35秒时进行回切，并在主PW发生故障200秒时通告该故障。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface pos 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Pos1/0/0] <strong>mpls l2vpn reroute delay 35 resume 200</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="mpls_l2vpn_reroute__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="mpls_l2vpn_reroute__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d94133e168"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d94133e172"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d94133e168 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d94133e172 "><p>首次发布</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d94133e168 "><p>VRPV500R005C02B211</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d94133e172 "><p>修改<strong>resume</strong>的缺省值为10</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vll_configuration_commands.html">VLL配置命令</a></div>
+</div>
+
+<div class="familylinks">
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="mpls_l2vc.html">mpls l2vc</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

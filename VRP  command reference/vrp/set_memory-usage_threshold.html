@@ -1,0 +1,116 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="set memory-usage threshold">
+<meta name="DC.Relation" scheme="URI" content="../vrp/update_and_maintenance.html">
+<meta name="DC.Relation" scheme="URI" content="display_memory-usage_threshold.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="set_memory-usage_threshold">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>set memory-usage threshold</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="set_memory-usage_threshold"></a><a name="set_memory-usage_threshold"></a>
+
+
+<h1 class="topictitle1">set memory-usage threshold</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>set memory-usage threshold</strong> <em>threshold-value</em>命令用来设置主控板的内存占用率阈值；</p>
+<p><strong>set memory-usage threshold</strong> <em>threshold-value</em> [ <strong>slot</strong> <em>slot-id </em>]命令用来设置接口板内存占用率阈值。</p>
+<p><strong>undo set memory-usage threshold</strong>命令用来恢复缺省设置。</p>
+<p>缺省情况下：</p>
+<ul>
+<li><p>接口板的内存容量在小于128MB时，内存占用率的阈值是80%；</p>
+</li>
+<li><p>接口板的内存容量在128MB～256MB时，内存占用率的阈值是85%；</p>
+</li>
+<li><p>接口的内存容量在256MB～512MB时，内存占用率的阈值是90%；</p>
+</li>
+<li><p>接口的内存容量大于512MB时，内存的占用率的阈值是95%。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>set memory-usage threshold </strong><em>threshold</em> [ <strong>slot</strong> <em>slot-id </em>]</p>
+<p><strong>undo set memory-usage threshold</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>threshold</strong><em> threshold-value</em>：内存占用率阈值。整数形式，取值范围是75～100。</p>
+<p><em>slot-id</em>：指定的接口板所在的槽位。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当内存占用率接近阈值时，终端界面自动输出提示信息，告知用户内存空间已不充裕。</p>
+<p>当内存占用率超过阈值时，写日志。通过查看日志信息，方便用户掌握内存的使用情况。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="set_memory-usage_threshold__d117420e99"></a><a name="d117420e99"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置内存占用率阈值为80%。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> set memory-usage threshold 80</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="set_memory-usage_threshold__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="set_memory-usage_threshold__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d117420e122"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d117420e126"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d117420e122 "><p>VRPV500R005C01B050</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d117420e126 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/update_and_maintenance.html">升级维护</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_memory-usage_threshold.html">display memory-usage threshold</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

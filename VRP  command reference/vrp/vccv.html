@@ -1,0 +1,88 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="vccv">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="pw-template.html">
+<meta name="DC.Relation" scheme="URI" content="control-word.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="vccv">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>vccv</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="vccv"></a><a name="vccv"></a>
+
+
+<h1 class="topictitle1">vccv</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>vccv</strong> <strong>cc</strong>命令用来使能VC的连接性检测。</p>
+<p><strong>undo vccv</strong>命令用来去使能VC的连接性检测。</p>
+<p>缺省情况下，系统没有使能VC的连接性检测。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>vccv</strong> <strong>cc</strong> { <strong>alert</strong> | <strong>cw</strong> } * <strong>cv</strong> { <strong>bfd</strong> | <strong>lsp-ping</strong> } *</p>
+<p><strong>undo vccv</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>cc</strong>：控制字通道（Control Channel）。</p>
+<p><strong>alert</strong>：使能MPLS Router Alert通道。</p>
+<p><strong>cw</strong>：使能控制字通道。</p>
+<p><strong>cv</strong>：连接性检测（Connectivity Verification）。</p>
+<p><strong>bfd</strong>：采用BFD方式对VC进行连接性检测。</p>
+<p><strong>lsp-ping</strong>：采用LSP-PING方式对VC进行连接性检测。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>PW模板视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>VCCV属性支持控制字功能。配置通过控制字方式来进行VC的连接性检测前，需要先使用命令<a href="control-word.html">control-word</a>，使能控制字功能。</p>
+<p>VC的连接性检测有自动方式和手工方式。自动方式包括BFD和OAM，手工方式包括LSP-PING和TraceRoute。检测使用的通道包括控制字通道和MPLS Router Alert通道。</p>
+<p>动态PW和静态PW支持VC的连接性检测。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="vccv__d127688e97"></a><a name="d127688e97"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 使pwt模板通过LSP-PING方式对VC进行连接性检测，并使能控制字通道。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>pw-template pwt</strong></pre>
+<pre class="screen">[Quidway-pw-template-pwt] <strong>vccv</strong> <strong>cc cw cv lsp-ping</strong></pre>
+
+<p># 使pwt模板通过BFD方式对VC进行连接性检测，并使能控制字通道。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>pw-template pwt</strong></pre>
+<pre class="screen">[Quidway-pw-template-pwt] <strong>vccv</strong> <strong>cc cw cv bfd</strong></pre>
+</div></div></div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pwe3_configuration_commands.html">PWE3配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="pw-template.html">pw-template</a></div>
+<div><a href="control-word.html">control-word</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

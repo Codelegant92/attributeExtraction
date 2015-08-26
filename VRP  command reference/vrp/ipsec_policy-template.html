@@ -1,0 +1,72 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ipsec policy-template">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="security_acl.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_local.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_remote.html">
+<meta name="DC.Relation" scheme="URI" content="proposal.html">
+<meta name="DC.Relation" scheme="URI" content="display_ipsec_policy.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ipsec_policy-template">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ipsec policy-template</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ipsec_policy-template"></a><a name="ipsec_policy-template"></a>
+
+<h1 class="topictitle1">ipsec policy-template</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ipsec</strong> <strong>policy-template</strong>命令用来创建或修改一个安全策略模板，并进入安全策略模板（ipsec policy template）视图。</p>
+<p><strong>undo</strong> <strong>ipsec</strong> <strong>policy-template</strong>命令用来删除一个安全策略模板组或者安全策略模板组中的一个安全策略模板。</p>
+<p>缺省情况下，没有安全策略模板存在。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ipsec</strong> <strong>policy-template</strong> <em>template-name</em> <em>seq-number</em></p>
+<p><strong>undo</strong> <strong>ipsec</strong> <strong>policy-template</strong> <em>template-name</em> [ <em>seq-number</em> ]</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>template-name</em>：为安全策略模板的名字。命名规则为：长度范围是1～15个字符，不区分大小写，字符可以是英文字母或者数字，不能带减号&#8220;-&#8221;。</p>
+<p><em>seq-number</em>：为此安全策略模板的顺序号，取值范围1～10000。在一个安全策略模板中，顺序号越小的安全策略，优先级越高。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>创建一个策略模板以后，在使用<strong>ipsec</strong> <strong>policy</strong> <em>policy-name seq-number</em> <strong>isakmp</strong> <strong>template</strong> <em>template-name</em>命令创建一个安全策略时通过<em>template-name</em>参数引用此模板。</p>
+<p>IPSec安全策略模板的参数与IPSec ISAKMP协商方式的安全策略的参数是一样的。包括所引用的IPSec proposal、保护的数据流、PFS特性、生存周期、隧道对端地址。但需要注意的是，proposal参数和ike-peer参数是必须配置的，而其它参数是可选的。在IKE协商时，如果使用IPSec策略模板进行策略匹配，则配置的参数必须匹配，而没有配置的参数采用发起方的。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ipsec_policy-template__d85134e97"></a><a name="d85134e97"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建一个模板名字为template1，顺序号为100的安全策略模板。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ipsec policy-template template1 100</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipsec_policy_system_view.html">ipsec policy（系统视图）</a></div>
+<div><a href="security_acl.html">security acl</a></div>
+<div><a href="tunnel_local.html">tunnel local</a></div>
+<div><a href="tunnel_remote.html">tunnel remote</a></div>
+<div><a href="proposal.html">proposal</a></div>
+<div><a href="display_ipsec_policy.html">display ipsec policy</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

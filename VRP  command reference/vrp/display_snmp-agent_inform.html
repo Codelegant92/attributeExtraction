@@ -1,0 +1,245 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display snmp-agent inform">
+<meta name="DC.Relation" scheme="URI" content="../vrp/snmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_inform.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_inform_address.html">
+<meta name="DC.Relation" scheme="URI" content="snmp-agent_target-host_inform.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_snmp-agent_inform">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display snmp-agent inform</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_snmp-agent_inform"></a><a name="display_snmp-agent_inform"></a>
+
+
+<h1 class="topictitle1">display snmp-agent inform</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display snmp-agent inform</strong>命令用于显示全局Inform参数和指定目标主机的Inform参数。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display snmp-agent inform</strong> [ <strong>address udp-domain</strong><em> ip-address </em>[ <strong>vpn-instance</strong><em> vpn-instance-name</em> ] <strong>params securityname</strong><em> security-string </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>address</strong>：指定SNMP消息传输的目标主机地址。<strong>address</strong>指定的IP地址和<strong>securityname</strong>指定的安全名字符串组成一个二元组，用来标识一个主机。</p>
+<p><strong>udp-domain</strong>：指定目标主机的传输域基于UDP。</p>
+<p><em>ip-address</em>：目标主机的IP地址。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：VPN实例名，字符串形式，不支持空格，长度范围是1～31。<strong>vpn-instance</strong>可选，如果在VPN中使用，需要<strong>vpn-instance</strong>指定的VPN实例、IP地址和安全名字符串组成一个三元组来标识一个主机。</p>
+<p><strong>params</strong>：指定产生SNMP消息的目标主机信息。</p>
+<p><strong>securityname</strong> <em>security-string</em>：指定在网管侧显示的安全名，字符串形式，不支持空格，长度范围1～32。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过Inform方式发送告警的配置信息，包括：</p>
+<ul>
+<li>全局配置的重传次数</li>
+<li>超时时间</li>
+<li>待确认告警队列配置的最大告警条数</li>
+<li>待确认告警队列当前告警条数</li>
+</ul>
+<p>或是显示指定目标主机的Inform配置信息和报文统计信息。包括：</p>
+<ul>
+<li>该目标主机配置的重传次数</li>
+<li>超时时间</li>
+<li>已重传次数</li>
+<li>待确认的告警数</li>
+<li>已发送告警数目</li>
+<li>dropped（由于待确认队列满而删除的报文数目）</li>
+<li>failed（由于没有收到确认消息而删除的报文数目）</li>
+<li>confirmed（收到目的主机响应的报文数目）</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_snmp-agent_inform__d66098e135"></a><a name="d66098e135"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示配置的全局Inform参数和指定目标主机的Inform参数。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display snmp-agent inform</strong>
+Global config: resend-times 3, timeout 15s, pending 39
+Global status: current notification count 0
+Target-host ID: VPN instance/IP-Address/Security name
+a/1.1.1.1/public:
+    Config: resend-times 3, timeout 15s
+    Status: retries 0, pending 0, sent 0, dropped 0, failed 0, confirmed 0</pre>
+
+<div class="tablenoborder"><a name="display_snmp-agent_inform__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_snmp-agent_inform__tb_01" frame="border" border="1" rules="all"><caption>表1 display snmp-agent inform命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.82766439909297%" id="d66098e156"><p>参数</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.17233560090703%" id="d66098e160"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>Global config</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>全局参数信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>Global status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>全局报文统计信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>current notification count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>当前待确认的告警条数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>resend-times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>配置的重传次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>timeout</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>配置的超时时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>Target-host ID: VPN instance/IP-Address/Security name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>目标主机的标识，由VPN名/主机IP地址/安全名组成</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>Config</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>针对主机的配置信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>针对该主机的告警报文统计信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>retries</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>向该主机重发告警的总次数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>pendings</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>配置的待确认队列中等待响应的最大告警数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>sent</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>成功发送告警条数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>dropped</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>由于告警队列满而删除告警数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>failed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>重传次数内没有收到响应告警数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.82766439909297%" headers="d66098e156 "><p>confirmed</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.17233560090703%" headers="d66098e160 "><p>收到目标主机响应的报文数目</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/snmp_configuration_commands.html">SNMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="snmp-agent_inform.html">snmp-agent inform</a></div>
+<div><a href="snmp-agent_inform_address.html">snmp-agent inform address</a></div>
+<div><a href="snmp-agent_target-host_inform.html">snmp-agent target-host inform</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

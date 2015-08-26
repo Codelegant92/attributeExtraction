@@ -1,0 +1,132 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="bfd bind peer-ip source-ip auto">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bfd_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="bfd.html">
+<meta name="DC.Relation" scheme="URI" content="detect-multiplier.html">
+<meta name="DC.Relation" scheme="URI" content="min-rx-interval.html">
+<meta name="DC.Relation" scheme="URI" content="min-tx-interval.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="bfd_bind_peer-ip_source-ip_auto">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>bfd bind peer-ip source-ip auto</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="bfd_bind_peer-ip_source-ip_auto"></a><a name="bfd_bind_peer-ip_source-ip_auto"></a>
+
+
+<h1 class="topictitle1">bfd bind peer-ip source-ip auto</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>bfd bind peer-ip source-ip auto</strong>命令用来创建静态标识符自协商BFD。</p>
+<p><strong>undo bfd</strong><em> cfg-name</em>用来删除指定的BFD会话。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>bfd</strong><em> cfg-name </em><strong>bind</strong><em> </em><strong>peer-ip</strong><em> ip-address</em> [ <strong>vpn-instance</strong><em> vpn-name</em> ] [ <strong>interface </strong><em>interface-type interface-number</em> ] <strong>source-ip</strong><em> ip-address </em><strong>auto</strong></p>
+<p><strong>undo bfd</strong> <em>cfg-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>cfg-name</em>：BFD配置名。字符串形式，不支持空格，长度范围是1～15。</p>
+<p><strong>peer-ip</strong> <em>ip-address</em>：BFD会话绑定的对端IP地址。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：BFD会话绑定的VPN实例名称。VPN实例是字符串形式，长度范围是1～31。如果不指定VPN实例，则认为对端地址是公网地址，即VrfIndex为0。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：BFD绑定的出接口。</p>
+<p><strong>source-ip</strong> <em>ip-address</em>：BFD报文携带的源IP地址。</p>
+<p><strong>auto</strong>：使能标识符自协商功能。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在创建BFD绑定时：</p>
+<ul>
+<li><p>如果只指定对端IP，表示检测多跳路由。</p>
+</li>
+<li><p>如果同时指定了对端IP和本端接口，表示检测单跳链路，即检测以该接口为出接口、以<strong>peer-ip</strong>为下一跳地址的一条固定路由。</p>
+</li>
+</ul>
+<p>源地址的配置：</p>
+<ul>
+<li><p><strong>source-ip</strong>该参数的正确性需要用户保证，系统只检查该参数是否是合法的源IP（例如，不能是组播或广播地址），不进行正确性检查。</p>
+</li>
+<li><p>如果在BFD会话配置成功后，再修改出接口的IP地址，BFD报文中的源IP地址不会更新。</p>
+</li>
+<li><p>配置本端标识符自协商功能，必须配置源地址。</p>
+</li>
+</ul>
+<p>当配置静态会话标识符自协商时不能配置本、远端标识符；当配置了本端、远端标识符后不能配置标识符自协商功能。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="bfd_bind_peer-ip_source-ip_auto__d4308e143"></a><a name="d4308e143"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置本端标识符自协商功能的BFD。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>bfd</strong></strong></pre>
+<pre class="screen">[Quidway-bfd]<strong> <strong>quit</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>bfd single bind peer 10.0.0.2 interface gigabitethernet1/0/0 source-ip 10.0.0.1 auto</strong></strong></pre>
+<pre class="screen">[Quidway-bfd-single]<strong> commit</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="bfd_bind_peer-ip_source-ip_auto__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="bfd_bind_peer-ip_source-ip_auto__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50.5406084988685%" id="d4308e186"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="49.459391501131506%" id="d4308e190"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50.5406084988685%" headers="d4308e186 "><p>VRPV500R003C07B240</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="49.459391501131506%" headers="d4308e190 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bfd_configuration_commands.html">BFD配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="bfd.html">bfd</a></div>
+<div><a href="detect-multiplier.html">detect-multiplier</a></div>
+<div><a href="min-rx-interval.html">min-rx-interval</a></div>
+<div><a href="min-tx-interval.html">min-tx-interval</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

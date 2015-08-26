@@ -1,0 +1,70 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dialer-rule">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dcc_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="dialer-group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dialer-rule">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dialer-rule</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dialer-rule"></a><a name="dialer-rule"></a>
+
+<h1 class="topictitle1">dialer-rule</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dialer-rule</strong>命令用来设定控制DCC呼叫发生的数据报文的条件。</p>
+<p><strong>undo dialer-rule</strong>命令用来取消该设置。</p>
+<p>缺省不设定控制DCC呼叫发生的数据报文的条件。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dialer-rule </strong><em>dialer-number</em> { <em>protocol-name</em> { <strong>deny</strong> | <strong>permit</strong> } | <strong>acl </strong><em>acl-number</em> }</p>
+<p><strong>undo dialer-rule</strong> <em>dialer-number</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>dialer-number</em>：拨号访问组（dialer access group）的序号。整数形式，取值范围是1～255。与DCC接口配置中的<strong>dialer-group</strong> <em>group-number</em>相对应。</p>
+<p><em>protocol-name</em>：网络协议名，为IP等。</p>
+<p><strong>deny</strong>：表示禁止相应协议的数据报文。</p>
+<p><strong>permit</strong>：表示允许相应协议的数据报文。</p>
+<p><strong>acl</strong><em> acl-number</em>：拨号访问组对应的<strong>acl</strong>序号，取值范围是2000～3999。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过此命令设定一个拨号访问组对应的发送控制，通过<a href="dialer-group.html">dialer-group</a>命令将Dialer接口置于一个拨号访问组中，从而完成对一个DCC接口的报文发送控制。</p>
+<p>若一个<a href="dialer-group.html">dialer-group</a>找不到对应的<strong>dialer-rule</strong>，DCC将报文作为Uninteresting报文。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dialer-rule__d11515e97"></a><a name="d11515e97"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置dialer-rule。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>acl number 3001</strong></pre>
+<pre class="screen">[Quidway-acl-adv-3001] <strong>rule permit ip source 0.0.0.0 255.255.255.255 destination 0.0.0.0 255.255.255.255</strong></pre>
+<pre class="screen">[Quidway-acl-adv-3001] <strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> dialer-rule 1 acl 3001</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> dialer-group 1</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dcc_configuration_commands.html">DCC配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="dialer-group.html">dialer-group</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

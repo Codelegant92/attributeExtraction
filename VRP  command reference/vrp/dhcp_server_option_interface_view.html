@@ -1,0 +1,80 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="dhcp server option（接口视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/dhcp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="option.html">
+<meta name="DC.Relation" scheme="URI" content="dhcp_server_option_system_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="dhcp_server_option_interface_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>dhcp server option（接口视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="dhcp_server_option_interface_view"></a><a name="dhcp_server_option_interface_view"></a>
+
+
+<h1 class="topictitle1">dhcp server option（接口视图）</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>dhcp server option</strong>命令用来配置当前接口的DHCP地址池的自定义选项。</p>
+<p><strong>undo dhcp server option</strong>命令用来删除配置。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>dhcp server option </strong><em>code</em> { <strong>ascii</strong> <em>ascii-string</em> | <strong>hex</strong> <em>hex-string</em> | <strong>ip-address </strong><em>ip-address</em> &amp;&lt;1-8&gt; }</p>
+<p><strong>undo dhcp server option</strong> <em>code</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>code</em>：指定用户定义的选项Option的数值。整数形式，取值范围是2～254。</p>
+<p><strong>ascii</strong><em> ascii-string</em>：ASCII字符串。<em>ascii-string</em>是字符串形式，长度范围是1～63。</p>
+<p><strong>hex</strong> <em>hex-string</em>：2位或4位长度的16进制数字串（如hh或hhhh）。</p>
+<p><strong>ip-address </strong><em>ip-address</em> &amp;&lt;1-8&gt;：执行指定option功能的IP地址，可以输入1～8个。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>DHCP报文中的Option字段可以用来存放某些普通协议中没有定义的控制信息和参数。如果用户在DHCP服务器端配置了Option，DHCP客户端在申请IP地址的时候，会通过服务器端回应的DHCP报文获得Option字段中的配置信息。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><p>DHCP自定义选项是可选的，只在需要时才配置。常用的功能，如配置客户端的DNS服务、NetBIOS服务、租期等，不能用Option命令进行配置，只能通过相关命令来实现。</p>
+</div></div>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="dhcp_server_option_interface_view__d10875e94"></a><a name="d10875e94"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 为GE 1/0/0的DHCP地址池定义code为23的16进制数字为0x11和0x22。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet 1/0/0] <strong>dhcp server option 23 hex 11 22</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/dhcp_configuration_commands.html">DHCP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="option.html">option</a></div>
+<div><a href="dhcp_server_option_system_view.html">dhcp server
+option（系统视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

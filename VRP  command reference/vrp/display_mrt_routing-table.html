@@ -1,0 +1,475 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display mrt routing-table">
+<meta name="DC.Relation" scheme="URI" content="../vrp/multicast_policy_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_mrt_routing-table">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display mrt routing-table</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_mrt_routing-table"></a><a name="display_mrt_routing-table"></a>
+
+
+<h1 class="topictitle1">display mrt routing-table</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display mrt routing-table</strong>命令用来查看MRT路由表的概要信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display mrt routing-table</strong> [ <em>ipv4&#8211;address</em> [ <em>mask</em> | <em>mask-length</em> ] ] [ <strong>verbose</strong> ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ipv4&#8211;address</em>：IPv4形式的网络地址。</p>
+<p><em>mask</em> | <em>mask-length</em>：点分十进制掩码/掩码长度。</p>
+<p><strong>verbose</strong>：显示激活和未激活路由的详细信息。不指定该参数，则只显示激活路由的概要信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>通过指定参数可以只查看特定的路由信息。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_mrt_routing-table__d50404e120"></a><a name="d50404e120"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看MRT的所有路由信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mrt routing-table</strong>
+Route Flags: R - relay, D - download to ib
+------------------------------------------------------------------------------
+Routing Tables: MSR
+         Destinations : 1        Routes : 1
+ 
+Destination/Mask  Proto  Pre  Cost  Flags  NextHop  Interface
+ 
+  5.5.5.1/32     MSR  255     0     R    1.1.1.1   GigabitEthernet1/0/0</pre>
+
+<div class="tablenoborder"><a name="display_mrt_routing-table__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mrt_routing-table__tb_01" frame="border" border="1" rules="all"><caption>表1 display mrt routing-table命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.19160170983154%" id="d50404e141"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.80839829016847%" id="d50404e145"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d50404e141 "><p>Route Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d50404e145 "><div class="p">路由标记<ul>
+<li><p>R：表示该路由是迭代路由</p>
+</li>
+<li><p>D：表示该路由下发到FIB表</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d50404e141 "><p>Routing Tables: MSR</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d50404e145 "><p>此路由表是MRT路由表。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d50404e141 "><p>Destinations</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d50404e145 "><p>目的网络/主机的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d50404e141 "><p>Routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d50404e145 "><p>路由的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d50404e141 "><p>Destination/Mask</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d50404e145 "><p>目的网络/主机的地址和掩码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d50404e141 "><p>Proto</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d50404e145 "><p>用来学习路由的协议</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d50404e141 "><p>Pre</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d50404e145 "><p>优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d50404e141 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d50404e145 "><p>路由开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d50404e141 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d50404e145 "><p>路由标记，即路由表头的Route Flags</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d50404e141 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d50404e145 "><p>下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19160170983154%" headers="d50404e141 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.80839829016847%" headers="d50404e145 "><p>下一跳可达的出接口</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示指定路由的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display mbgp routing-table 5.5.5.1 verbose</strong>
+Routing Table : MSR
+Summary Count : 1
+
+  Destination: 5.5.5.1/32
+     Protocol: MSR            Process ID: 0
+   Preference: 255                     Cost: 0
+      NextHop: 1.1.1.1            Neighbour: 0.0.0.0
+        State: Active Adv GotQ          Age: 00h43m25s
+          Tag: 0                   Priority: 0
+        Label: NULL                 QoSInfo: 0x0
+ RelayNextHop: 0.0.0.0            Interface: GigabitEthernet2/0/0
+     TunnelID: 0x0                    Flags: R</pre>
+
+<div class="tablenoborder"><a name="display_mrt_routing-table__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mrt_routing-table__tb_02" frame="border" border="1" rules="all"><caption>表2 display mrt routing-table verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.21768707482994%" id="d50404e306"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.782312925170075%" id="d50404e310"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Route Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><div class="p">路由标记<ul>
+<li><p>R：表示该路由是迭代路由</p>
+</li>
+<li><p>D：表示该路由下发到FIB表</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Destinations</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>目的网络/主机的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Routes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>激活路由和非激活路由的总数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>目的网络/主机的地址和掩码长度</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>路由协议</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Process ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>路由协议的进程号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Preference</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>路由的优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>路由开销</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>NextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Neighbour</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>邻居</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><div class="p">路由的状态<ul>
+<li><p>Active：激活路由</p>
+</li>
+<li><p>Invalid：无效路由</p>
+</li>
+<li><p>Inactive：非激活路由</p>
+</li>
+<li><p>NoAdv：不允许发布的路由</p>
+</li>
+<li><p>Adv：可以发布的路由</p>
+</li>
+<li><p>Del：即将被删除的路由</p>
+</li>
+<li><p>GotQ：迭代到下一跳及出接口的路由，或者迭代到隧道的路由</p>
+</li>
+<li><p>WaitQ：没有迭代到下一跳及出接口的路由，或者迭代到隧道的路由</p>
+</li>
+<li><p>Stale.：带Stale标记的路由，在GR中使用</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Age</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>路由的存活时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Tag</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>路由管理标识</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Label</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>MPLS分配的标签</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>QoSInfo</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>QoS信息</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>RelayNextHop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>迭代下一跳</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>迭代出接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>隧道ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.21768707482994%" headers="d50404e306 "><p>Flags</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.782312925170075%" headers="d50404e310 "><p>路由标记，即路由表头的Route Flags</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_mrt_routing-table__tb_05"></a><a name="tb_05"></a><table cellpadding="4" cellspacing="0" summary="" id="display_mrt_routing-table__tb_05" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.34895439657345%" id="d50404e600"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.65104560342655%" id="d50404e604"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.34895439657345%" headers="d50404e600 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.65104560342655%" headers="d50404e604 "><p>增加过滤输出信息的参数[ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/multicast_policy_configuration_commands.html">IPv4组播路由管理命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,276 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display fr fragment-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/fr_qos_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="fragment.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_fr_fragment-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display fr fragment-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_fr_fragment-info"></a><a name="display_fr_fragment-info"></a>
+
+
+<h1 class="topictitle1">display fr fragment-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display fr fragment-info</strong>命令用来查看帧中继分片信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display fr fragment-info</strong> [ <strong>interface</strong> <em>interface-type</em> <em>interface-number </em>]
+[ <span><strong>dlci</strong></span><em>dlci-number </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em>：接口类型，包括MFR、POS、Serial等。</p>
+<p><em>interface-number</em>：接口编号，三维形式：槽号/卡号/接口号。</p>
+<p><span><strong>dlci </strong></span><em>dlci-number</em>：DLCI编号，取值范围是16～1007。指定该参数将显示详细信息。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display fr fragment-info</strong>命令可以观察到的信息包括：</p>
+<ul>
+<li><p>DLCI号</p>
+</li>
+<li><p>分片类型</p>
+</li>
+<li><p>分片大小</p>
+</li>
+<li><p>接收/发送/丢弃的分片报文数</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_fr_fragment-info__d24869e86"></a><a name="d24869e86"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看所有接口上的帧中继分片信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display fr fragment-info</strong></strong></pre>
+<pre class="screen">interface Serial1/1/1:</pre>
+<pre class="screen">dlci    type     size        in/out/drop</pre>
+<pre class="screen">200  FRF12(ETE)   80           0/0/0</pre>
+
+<div class="tablenoborder"><a name="display_fr_fragment-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fr_fragment-info__tb_01" frame="border" border="1" rules="all"><caption>表1 display fr fragment-info命令显示信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="43.75157470395566%" id="d24869e114"><p>主要字段</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="56.248425296044346%" id="d24869e118"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="43.75157470395566%" headers="d24869e114 "><p>interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.248425296044346%" headers="d24869e118 "><p>所在接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.75157470395566%" headers="d24869e114 "><p>dlci</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.248425296044346%" headers="d24869e118 "><p>DLCI号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.75157470395566%" headers="d24869e114 "><p>type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.248425296044346%" headers="d24869e118 "><p>分片类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.75157470395566%" headers="d24869e114 "><p>size</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.248425296044346%" headers="d24869e118 "><p>分片大小</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="43.75157470395566%" headers="d24869e114 "><p>in/out/drop</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="56.248425296044346%" headers="d24869e118 "><p>接收/发送/丢弃的分片报文数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看指定接口上的帧中继分片信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>display fr fragment-info interface serial 1/1/1 200</strong></strong></pre>
+<pre class="screen">Type : FRF12(ETE)</pre>
+<pre class="screen"> Size : 80</pre>
+<pre class="screen"> Pre-fragment:</pre>
+<pre class="screen">    out pkts: 0            out bytes: 0</pre>
+<pre class="screen"> Fragmented:</pre>
+<pre class="screen">    in pkts : 0            out pkts : 0</pre>
+<pre class="screen">    in bytes: 0            out bytes: 0</pre>
+<pre class="screen"> Assembled :</pre>
+<pre class="screen">    in pkts : 0            in bytes : 0</pre>
+<pre class="screen"> Dropped   :</pre>
+<pre class="screen">    in pkts : 0            out pkts : 0</pre>
+<pre class="screen">    in bytes: 0            out bytes: 0</pre>
+<pre class="screen"> Out-of-sequence pkts: 0   </pre>
+
+<div class="tablenoborder"><a name="display_fr_fragment-info__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fr_fragment-info__tb_02" frame="border" border="1" rules="all"><caption>表2 display fr fragment-info interface命令显示信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.19249181153943%" id="d24869e230"><p>主要字段</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.807508188460574%" id="d24869e234"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d24869e230 "><p>type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d24869e234 "><p>分片类型</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d24869e230 "><p>size</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d24869e234 "><p>分片大小</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d24869e230 "><p>pre-fragment</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d24869e234 "><p>需要分片的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d24869e230 "><p>fragmented</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d24869e234 "><p>分片的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d24869e230 "><p>assembled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d24869e234 "><p>重组的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d24869e230 "><p>Dropped</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d24869e234 "><p>丢弃的分片报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.19249181153943%" headers="d24869e230 "><p>Out-of-sequeue</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.807508188460574%" headers="d24869e234 "><p>分片后的报文序列号乱序报文数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="display_fr_fragment-info__tb_02_1"></a><a name="tb_02_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_fr_fragment-info__tb_02_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.962967628164755%" id="d24869e334"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.037032371835245%" id="d24869e338"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="45.962967628164755%" headers="d24869e334 "><p>VRPV500R006C01B070</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.037032371835245%" headers="d24869e338 "><p>在命令行中增加<strong>dlci</strong>关键字。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/fr_qos_configuration_commands.html">帧中继QoS命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="fragment.html">fragment</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

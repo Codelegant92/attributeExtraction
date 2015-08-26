@@ -1,0 +1,81 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ma">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_cfm_ma.html">
+<meta name="DC.Relation" scheme="URI" content="map.html">
+<meta name="DC.Relation" scheme="URI" content="packet-priority.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ma">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ma</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ma"></a><a name="ma"></a>
+
+
+<h1 class="topictitle1">ma</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ma</strong>命令用来在MD内创建MA，并进入MA视图。如果该MA已存在，本命令用来进入MA视图。</p>
+<p><strong>undo
+ma</strong>命令用来删除MA。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ma </strong><em>ma-name</em></p>
+<p><strong>undo ma</strong> { <strong>all</strong> | <strong>name</strong> <em>ma-name </em>}</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ma-name</em>：指定MA的名称。字符串形式，不支持空格、&#8220;-&#8221;和&#8220;?&#8221;，MA名称长度和MD名称长度之和不超过44个字符。同一MD内，MA的名称不能重复。</p>
+<p><strong>all</strong>：表示删除当前MD内的所有MA。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>MD视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>同一个MD内，最多可创建4K个MA。一台<span class="keyword">VRP</span>设备上最多可创建4K个MA。</p>
+<p>删除一个MA时，设备自动删除该MA内的所有MEP、RMEP，并停止CC检测、清除该MA相关的告警。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ma__d91025e67"></a><a name="d91025e67"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 创建名称为ma1的MA。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm enable</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>cfm md md1</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1]<strong> <strong>ma ma1</strong></strong></pre>
+<pre class="screen">[Quidway-md-md1-ma-ma1]</pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_cfm_ma.html">display cfm ma</a></div>
+<div><a href="map.html">map</a></div>
+<div><a href="packet-priority.html">packet-priority</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

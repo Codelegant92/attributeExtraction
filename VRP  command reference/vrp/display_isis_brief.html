@@ -1,0 +1,352 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis brief">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_brief">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis brief</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_brief"></a><a name="display_isis_brief"></a>
+
+
+<h1 class="topictitle1">display isis brief</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis brief</strong>命令用来显示IS-IS的概要信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis brief</strong> [ <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] * ]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：IS-IS进程号。整数形式，取值范围是1～65535。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：显示指定IPv4 VPN的IS-IS多实例进程的概要信息。<em>vpn-instance-name</em>为IPv4 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn-instance default</strong>：显示除IPv4 VPN实例外的所有IS-IS进程的概要信息，即所有的IPv6
+VPN的IS-IS实例进程和公网IS-IS进程的概要信息。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：显示指定IPv6 VPN的IS-IS多实例进程的概要信息。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，区分大小写。</p>
+<p><strong>vpn6-instance default</strong>：显示除IPv6 VPN实例外的所有IS-IS进程的概要信息，即所有的IPv4 VPN的IS-IS实例进程和公网IS-IS进程的概要信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display isis brief</strong>和<strong>display isis brief vpn-instance default vpn6-instance default</strong>命令的作用相同，都可以显示所有公网IS-IS进程的概要信息。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_brief__d35252e151"></a><a name="d35252e151"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有公网VPN实例的IS-IS进程的概要信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis brief</strong>
+
+                     ISIS Protocol Information for ISIS(1)
+                     -------------------------------------
+SystemId: 0000.0000.0002      System Level: L12
+Area-Authentication-mode: NULL
+Domain-Authentication-mode: NULL
+Ipv6 is not enabled
+ISIS is in starting status
+ISIS is in protocol hot standby state: Real-Time Backup
+
+Interface: 10.1.1.2(Pos1/0/0)
+Cost: L1 10        L2 10                Ipv6 Cost: L1 10   L2 10
+State: IPV4 Up                          IPV6 Down
+Type: P2P                               MTU: 1500
+Priority: L1 64   L2 64
+Timers:     Csnp: L12 10       , Retransmit: L12 5   , Hello: 10  ,
+Hello Multiplier: 3            , LSP-Throttle Timer: L12 50
+</pre>
+
+<div class="tablenoborder"><a name="display_isis_brief__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_brief__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis brief命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d35252e172"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d35252e176"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>ISIS Protocol Information for ISIS(3)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>3：IS-IS进程号</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>SystemId</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>当前IS-IS路由器的主机系统ID</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>System Level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><div class="p">接口的Level级别：<ul>
+<li><p>L1</p>
+</li>
+<li><p>L2</p>
+</li>
+<li><p>L12</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Area-Authentication-mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>区域的认证模式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Domain-Authentication-mode</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>域的认证模式</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Ipv6 is not enabled</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>本IS-IS进程没有使能IPv6</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>ISIS is in starting status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>IS-IS正处于运行状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>ISIS is in protocol hot standby state: Real-Time Backup</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>IS-IS热备份状态是实时备份</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>使能了IS-IS的接口类型、接口号和接口地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>接口IPv4的开销值 </p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Ipv6 Cost</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>接口IPv6的开销值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>State</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>使能了IS-IS的接口状态</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>接口的类型，可以是P2P、Broadcast、NBMA、PTMP、Vlink</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>MTU</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>使能了IS-IS的接口的MTU值</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><div class="p">使能了IS-IS的接口的协议优先级<div class="note"><span class="notetitle"> 说明： </span><div class="notebody"><p>当前接口为虚链路的接口时，不显示优先级字段</p>
+</div></div>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Timers</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>IS-IS定时器</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Csnp</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>CSNP报文定时器的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Retransmit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>LSP在点到点链路上的重传间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Hello</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>Hello定时器的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>Hello Multiplier</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>用于判断邻居是否失效的Hello报文的数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d35252e172 "><p>LSP-Throttle Timer</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d35252e176 "><p>发送LSP的最小间隔时间</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_brief__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_brief__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d35252e446"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d35252e450"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d35252e446 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d35252e450 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d35252e446 "><p>VRPV500R006C02B190</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d35252e450 "><p><strong>display isis brief</strong>命令的显示信息由&#8220;Timers:     Csnp: L1 10 L2 10  ,&#8221;改为&#8220;Timers:     Csnp: L12 10       ,&#8221;。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,93 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ipsec policy-template">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy-template.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ipsec_policy-template">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ipsec policy-template</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ipsec_policy-template"></a><a name="display_ipsec_policy-template"></a>
+
+<h1 class="topictitle1">display ipsec policy-template</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display</strong> <strong>ipsec</strong> <strong>policy-template</strong>命令用来查看安全策略模板的信息。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>ipsec</strong> <strong>policy-template</strong> [ <strong>brief</strong> | <strong>name</strong> <em>template-name </em>[<em> seq-number</em> ] ] </p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>brief</strong>：表示显示所有安全策略模板的简要信息。</p>
+<p><strong>name</strong>：表示显示名字为<em>template-name</em>，顺序号为<em>seq-number</em>的安全策略模板的信息。</p>
+<p><em>template-name</em>：指定安全策略模板的名字，取值范围是1～15。</p>
+<p><em>seq-number</em>：指定安全策略模板的顺序号，取值范围是1～10000。</p>
+<p>如果不指定任何参数，则表示要显示所有安全策略模板的详细信息。如果指定了<strong>name</strong> <em>template-name</em>，而没有指定<em>seq-number</em>，则表示要显示指定的安全策略模板组的信息。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p><strong>display</strong> <strong>ipsec</strong> <strong>policy-template brief</strong>命令显示所有安全策略模板的简要信息，如下：</p>
+<ul><li><p>安全策略模板名及顺序号</p>
+</li><li><p>访问控制列表号</p>
+</li><li><p>对端地址</p>
+</li></ul>
+<p>在指定安全策略模板的名字时，命令显示安全策略模板的详细信息。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ipsec_policy-template__d33090e104"></a><a name="d33090e104"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有安全策略模板的简要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipsec policy-template brief</strong></pre>
+<pre class="screen">Policy-template-Name     acl            remote-address</pre>
+<pre class="screen">------------------------------------------------------</pre>
+<pre class="screen">test-tplt300             3120           192.168.0.1</pre>
+
+<div class="tablenoborder"><a name="display_ipsec_policy-template__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipsec_policy-template__tb_01" frame="border" border="1" rules="all"><caption>表1 display ipsec policy-template brief命令输出信息描述</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="30.62484252960443%" id="d33090e125"><p>主要字段</p>
+</th>
+<th class="cellrowborder" valign="top" width="69.37515747039556%" id="d33090e128"><p>描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d33090e125 "><p>Policy-template-Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d33090e128 "><p>安全策略模板的名字和顺序号</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d33090e125 "><p>acl</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d33090e128 "><p>安全策略模板引用的访问控制列表</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="30.62484252960443%" headers="d33090e125 "><p>Remote Address</p>
+</td>
+<td class="cellrowborder" valign="top" width="69.37515747039556%" headers="d33090e128 "><p>对端的IP地址</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipsec_policy-template.html">ipsec policy-template</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

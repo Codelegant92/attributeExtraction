@@ -1,0 +1,103 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="bfd-detect">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pwe3_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="bfd-detect">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>bfd-detect</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="bfd-detect"></a><a name="bfd-detect"></a>
+
+
+<h1 class="topictitle1">bfd-detect</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>bfd-detect</strong>命令用来在PW模板上设置PW支持动态BFD检测功能，并可以用来调整BFD检测报文的发送间隔、接收间隔以及本地检测倍数。</p>
+<p><strong>undo bfd-detect</strong>命令用来恢复为缺省配置。</p>
+<p>缺省情况下，PW模板不支持动态BFD会话功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>bfd-detect</strong> [ <strong>detect-multiplier</strong> <em>multiplier</em> | <strong>min-rx-interval</strong><em> rx-</em><em>interval </em>| <strong>min-tx-interval</strong> <em>tx-</em><em>interval </em>] *</p>
+<p><strong>undo bfd-detect</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>detect-multiplier</strong><em> multiplier：</em>BFD本地检测时间倍数。取值范围是3～50，缺省值是3。</p>
+<p><strong>min-rx-interval</strong><em> rx-interval</em>：BFD期望的最小接收时间间隔。单位是毫秒。取值范围是10～1000，缺省值是1000ms。</p>
+<p><strong>min-tx-interval</strong><em> tx-interval</em>：BFD期望的最小发送时间间隔。单位是毫秒。取值范围是10～1000，缺省值是1000ms。</p>
+<p>BFD检测参数的取值范围在不同产品上会有差异，请以实际显示为准。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>PW模板视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>为降低对系统资源的占用，一旦检测到BFD会话Down，系统自动将本端的接收间隔和发送间隔调整为1000ms～3000ms之间的一个随机值，当BFD会话的状态重新变为Up后，再恢复成用户配置的时间间隔。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="bfd-detect__d4011e86"></a><a name="d4011e86"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在PW模板11上使能动态BFD检测功能，设置最小发送间隔为100ms、最小接收间隔为100ms、检测时间倍数为4。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> <strong>pw-template pwt</strong></strong></pre>
+<pre class="screen">[Quidway-pw-template-pwt]<strong> bfd-detect min-rx-interval 100 min-tx-interval 100 detect-multiplier 4</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="bfd-detect__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="bfd-detect__tb_01" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d4011e117"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d4011e121"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d4011e117 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d4011e121 "><p>首次发布</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pwe3_configuration_commands.html">PWE3配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

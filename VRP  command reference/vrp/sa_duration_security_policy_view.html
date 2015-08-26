@@ -1,0 +1,83 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="sa duration（安全策略视图）">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ipsec_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_sa_global-duration.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy_system_view.html">
+<meta name="DC.Relation" scheme="URI" content="ipsec_policy_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="security_acl.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_local.html">
+<meta name="DC.Relation" scheme="URI" content="tunnel_remote.html">
+<meta name="DC.Relation" scheme="URI" content="proposal.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="sa_duration_security_policy_view">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>sa duration（安全策略视图）</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="sa_duration_security_policy_view"></a><a name="sa_duration_security_policy_view"></a>
+
+<h1 class="topictitle1">sa duration（安全策略视图）</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>sa</strong> <strong>duration</strong>命令用来设置安全联盟的生存周期。</p>
+<p><strong>undo sa duration</strong>命令用来取消设置的生存周期，即恢复使用设定的全局生存周期。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>sa</strong> <strong>duration</strong> { <strong>traffic-based</strong><em> kilobytes</em> | <strong>time-based</strong><em> seconds </em>}</p>
+<p><strong>undo</strong> <strong>sa</strong> <strong>duration</strong> { <strong>traffic-based</strong> | <strong>time-based</strong> }</p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>time-based</strong> <em>seconds</em>：指定以时间为基准的生存周期，<em>seconds</em>的取值范围是30～604800，单位是秒，缺省值是3600秒。</p>
+<p><strong>traffic-based</strong> <em>kilobytes</em>：指定以流量为基准的生存周期，<em>kilobytes</em>的取值范围是256～4194303，单位是千字节，缺省值是1843200千字节。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>IPSec策略视图、安全策略模板视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当IKE协商安全联盟时，如果采用的安全策略没有配置自己的生存周期，将采用全局生存周期与对端协商。如果安全策略配置了自己的生存周期，则系统使用安全策略自己的生存周期与对端协商。IKE为IPSec协商建立安全联盟时，采用本地设置的生存周期和对端提议的生存周期中较小的一个。</p>
+<p>衡量生存周期有两种方式：&#8220;基于时间&#8221;的生存周期和&#8220;基于流量&#8221;的生存周期。</p>
+<ul><li><p>基于时间的生存周期是从安全联盟建立开始，此安全联盟存活的时间；</p>
+</li><li><p>基于流量的生存周期是此安全联盟允许处理的最大流量。</p>
+</li></ul>
+<p>如果生存周期到达指定的时间或指定的流量，则安全联盟就会失效。安全联盟快要失效前，IKE将为IPSec协商建立新的安全联盟，这样在旧的安全联盟失效前新的安全联盟就已经准备好。在新的安全联盟开始协商而没有协商好之前，继续使用旧的安全联盟保护通信。在新的安全联盟协商好之后，则立即采用新的安全联盟保护通信。</p>
+<p>指定安全联盟的生存周期只对通过IKE协商的安全联盟起作用，对通过手工方式建立的安全联盟不起作用。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="sa_duration_security_policy_view__d116296e96"></a><a name="d116296e96"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 设置安全策略的安全联盟生存时间为两个小时，即7200秒。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ipsec policy shenzhen 100 isakmp</strong></pre>
+<pre class="screen">[Quidway-ipsec-policy-isakmp-shenzhen-100]<strong> sa duration time-based 7200</strong></pre>
+<p># 设置安全策略的安全联盟生存时间为20M字节，即20000千字节。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ipsec policy shenzhen 100 isakmp</strong></pre>
+<pre class="screen">[Quidway-ipsec-policy-isakmp-shenzhen-100]<strong> sa duration traffic-based 20000</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ipsec_configuration_commands.html">IPSec配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipsec_sa_global-duration.html">ipsec sa global-duration</a></div>
+<div><a href="ipsec_policy_system_view.html">ipsec policy（系统视图）</a></div>
+<div><a href="ipsec_policy_interface_view.html">ipsec policy（接口视图）</a></div>
+<div><a href="security_acl.html">security acl</a></div>
+<div><a href="tunnel_local.html">tunnel local</a></div>
+<div><a href="tunnel_remote.html">tunnel remote</a></div>
+<div><a href="proposal.html">proposal</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,442 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface eth-trunk">
+<meta name="DC.Relation" scheme="URI" content="../vrp/eth-trunk_interface_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_counters_interface_eth-trunk.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface_eth-trunk">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface eth-trunk</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface_eth-trunk"></a><a name="display_interface_eth-trunk"></a>
+
+
+<h1 class="topictitle1">display interface eth-trunk</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display interface eth-trunk</strong>命令用来查看Eth-Trunk接口的状态信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display interface</strong> <strong>eth-trunk</strong> [ <em>trunk-id</em> [ .<em>subnumber</em> ] ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>trunk-id</em>：端口聚合的Trunk ID。取值范围是0～63。</p>
+<p><em>subnumber</em>：Eth-Trunk的子接口编号，在<span class="keyword">VRP</span>上的取值范围是1～4094。但每个Eth-Trunk主接口下最大的子接口数量为4094个。<span>不同产品上实现的Eth-Trunk子接口取值范围不同，请以产品实现的规格为准。</span></p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>查看Eth-Trunk接口的信息时，可以查看到该接口下捆绑的成员端口的状态和权重信息。</p>
+<p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface_eth-trunk__d28479e62"></a><a name="d28479e62"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看捆绑口Eth-Trunk 1的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display interface Eth-Trunk 1</strong></pre>
+<pre class="screen">Eth-Trunk1 current state : UP</pre>
+<pre class="screen">Line protocol current state : UP</pre>
+<pre class="screen">Last line protocol up time: 2008-04-02, 11:00:19</pre>
+<pre class="screen">Description : HUAWEI, Quidway Series, Eth-Trunk1 Interface</pre>
+<pre class="screen">Route Port, Hash arithmetic: According to flow, Maximal BW: 200M, Current BW: 200M, The Maximum Transmit Unit is 1500</pre>
+
+<pre class="screen">Internet Address is 100.1.1.1/24</pre>
+<pre class="screen">IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 00e0-fc09-9722</pre>
+<pre class="screen">Physical is ETH_TRUNK</pre>
+<pre class="screen">Statistics last cleared: 2007-09-17 11:21:50</pre>
+<pre class="screen">    Last 300 seconds input rate 4664 bits/sec, 0 packets/sec
+    Last 300 seconds output rate 2016 bits/sec, 1 packets/sec
+    Input: 271941 packets,121426735 bytes,
+           179197 unicast,50 broadcast,92694 multicast
+           0 errors,0 drops,0 unknownprotocol
+    Output:409270 packets,59871716 bytes,
+           186159 unicast,18824 broadcast,204287 multicast
+           0 errors,0 drops
+-----------------------------------------------------
+PortName                Status              Weight
+-----------------------------------------------------
+GigabitEthernet1/0/1    UP                  1
+GigabitEthernet1/0/2    UP                  1
+-----------------------------------------------------
+The Number of Ports in Trunk : 2
+The Number of UP Ports in Trunk : 2
+</pre>
+<p># 查看接口Eth-Trunk 1.1的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display</strong> <strong>interface</strong> <strong>Eth-Trunk 1.1</strong></pre>
+<pre class="screen">Eth-Trunk1.1 current state : UP
+Line protocol current state : UP
+<span>Last line protocol up time: 2008-03-31, 14:45:13</span>
+Route Port,Hash arithmetic : According to flow,The Maximum Transmit Unit is 1500
+Internet Address is 102.102.2.2/24
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 00e0-fc8b-8ace
+Encapsulation dot1q Virtual LAN, The number of Vlan is 1, Vlan ID 1
+Statistics last cleared: 2008-08-02 15:32:27
+    Last 300 seconds input rate 0 bits/sec, 0 packets/sec
+    Last 300 seconds output rate 560 bits/sec, 1 packets/sec
+    Input: 0 packets,104960 bytes,
+           1 unicast,13 broadcast,1626 multicast
+           0 errors,0 drops,0 unknownprotocol
+    Output:201602 packets,12903542 bytes,
+           170 unicast,18735 broadcast,182697 multicast
+           0 errors,0 drops
+-----------------------------------------------------
+PortName                Status              Weight
+-----------------------------------------------------
+GigabitEthernet1/0/1    UP                  1
+GigabitEthernet1/0/2    UP                  1
+-----------------------------------------------------
+The Number of Ports in Trunk : 2
+The Number of UP Ports in Trunk : 2
+</pre>
+
+<div class="tablenoborder"><a name="display_interface_eth-trunk__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface_eth-trunk__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface eth-trunk命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="44.89040060468632%" id="d28479e120"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="55.10959939531368%" id="d28479e124"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Eth-Trunk1 current state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><div class="p">捆绑接口Eth-Trunk1的当前状态。<ul>
+<li><p>UP：接口处于正常启动的状态。</p>
+</li>
+<li><p>DOWN：接口在物理上出现故障。</p>
+</li>
+<li><p>Administratively down：如果网络管理员在该接口执行<strong>shutdown</strong>命令，将显示状态为<strong>Administratively down</strong>。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Line protocol current state</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口当前的链路状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Last line protocol up tim</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口的协议状态最近一次变为Up的时间。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Route Port</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>路由式端口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Hash arithmatic</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><div class="p">散列算法的依据。<ul>
+<li>According to flow：Eth-Trunk接口根据流进行散列。</li>
+<li>According to packet all：Eth-Trunk接口根据所有包进行散列。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Maximal BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>Eth-Trunk接口的最大带宽。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Current BW</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>Eth-Trunk接口的当前带宽。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>The Maximum Transmit Unit is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口的最大传输单元。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Internet Address is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口的IP地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>IP Sending Frames' Format is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口发送的Ethernet帧的格式。</p>
+<div class="p">Ethernet_II为默认的帧格式。 Ethernet在接收帧时，可以识别如下几种帧格式。<ul>
+<li>Ethernet_II</li>
+<li>Ethernet_SNAP</li>
+<li>802.2</li>
+<li>802.3</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Hardware address is 00e0-fc09-9722</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>捆绑口的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Encapsulation</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>子接口的封装方式。该字段只有在子接口时才显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>The number of Vlan is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>子接口的VLAN数量。该字段只有在子接口时才显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Vlan ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>子接口上封装的最小VLAN ID。该字段只有在子接口时才显示。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Physical is ETH_TRUNK</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>捆绑口的类型为Eth-Trunk。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Statistics last cleared</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>上次清除本接口统计信息的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Last 300 seconds input/output rate</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>这一字段显示了在前300秒内通过接口发送和接收的字节速率和报文速率。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Input/Output</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口收到或发送报文的方向。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>packets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口接收或发送总报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口接收或发送总字节数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>unicast</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口接收或发送的单播报文的数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>broadcast</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口接收或发送的广播报文的数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>multicast</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口接收或发送的组播报文的数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>errors</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接口在物理层检测时发现的错误报文数目。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>drops</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>在物理层丢弃的报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>unknown protocol</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>接收报文时，在物理层检测时发现的不能识别的协议报文数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>PortName</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>Eth-Trunk接口中的成员端口名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Status</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>当前成员端口的状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>Weight</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>成员端口负载分担的权重值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>The Number of Ports in Trunk</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>Eth-Trunk接口中成员端口的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="44.89040060468632%" headers="d28479e120 "><p>The Number of UP Ports in Trunk</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="55.10959939531368%" headers="d28479e124 "><p>Eth-Trunk接口中成员端口状态是Up的端口数量。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/eth-trunk_interface_configuration_commands.html">Eth-Trunk接口配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_counters_interface_eth-trunk.html">reset counters interface（Eth-trunk）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

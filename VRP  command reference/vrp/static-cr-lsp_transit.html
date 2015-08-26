@@ -1,0 +1,112 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="static-cr-lsp transit">
+<meta name="DC.Relation" scheme="URI" content="../vrp/mpls_te_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="static-cr-lsp_transit">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>static-cr-lsp transit</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="static-cr-lsp_transit"></a><a name="static-cr-lsp_transit"></a>
+
+
+<h1 class="topictitle1">static-cr-lsp transit</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>static-cr-lsp transit</strong>命令用来在转发节点配置静态CR-LSP。</p>
+<p><strong>undo static-cr-lsp transit</strong>命令用来在转发节点删除配置的静态CR-LSP。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>static-cr-lsp</strong> <strong>transit</strong> <em>lsp-name</em> <strong>incoming-interface</strong> <em>interface-type interface-number</em> <strong>in-label</strong> <em>in-label</em> { <strong>nexthop</strong> <em>next-hop-address</em> | <strong>outgoing-interface</strong> <em>interface-type interface-number</em> } <strong>out-label</strong> <em>out-label</em> [ <strong>bandwidth</strong> <span>[ <strong>ct0</strong> | <strong>ct1</strong> | <strong>ct2</strong> | <strong>ct3</strong> | <strong>ct4</strong> | <strong>ct5</strong> | <strong>ct6</strong> | <strong>ct17</strong> ]</span> <em>bandwidth</em> ]</p>
+<p><strong>undo static-cr-lsp</strong> <strong>transit</strong> <em>lsp-name</em></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>lsp-name</em>：CR-LSP隧道的名字，字符串形式，区分大小写，不支持空格，长度为1～<span>19</span>。</p>
+<p><em>next-hop-addr</em>：下一跳地址。</p>
+<p><em>interface-type</em>：接口类型。</p>
+<p><em>interface-number</em>：接口编号。</p>
+<p><em>in-label-value</em>：入标签，取值范围是16～1023。</p>
+<p><em>out-label-value</em>：出标签的值，整数形式，取值范围是16～1023。</p>
+<p><strong>ct0</strong>～<strong>ct7</strong>：设置CT0～CT7的带宽值。</p>
+<p><em>bandwidth</em>：带宽值，单位为kbit/s。取值范围是0～32000000，缺省值为0。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>无</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="static-cr-lsp_transit__d120912e156"></a><a name="d120912e156"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在转发节点配置静态CR-LSP，名字为tunnel34，入接口为Pos3/0/0，入口标签为123，出接口为Pos6/0/0，出口标签为253，CR-LSP所需<span>CT1 </span>带宽为20kbit/s。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> static-cr-lsp transit tunnel34 incoming-interface pos 3/0/0 in-label 123 outgoing-interface pos 6/0/0 out-label 253 bandwidth <span>ct1 </span>20</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d120912e185">版本</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d120912e188">修订内容</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d120912e185 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d120912e188 "><p>将参数<em>lsp-name</em>的最大长度改为19个字符。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d120912e185 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d120912e188 "><p>删除参数BC0～BC1，改为CT0～CT7。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/mpls_te_configuration_commands.html">MPLS TE配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

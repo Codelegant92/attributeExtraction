@@ -1,0 +1,299 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display qinq statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/qinq_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="statistic_enable.html">
+<meta name="DC.Relation" scheme="URI" content="reset_qinq_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_qinq_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display qinq statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_qinq_statistics"></a><a name="display_qinq_statistics"></a>
+
+
+<h1 class="topictitle1">display qinq statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display qinq statistics</strong>用来显示指定接口下用户组的QinQ的统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display qinq statistics</strong> [ <strong>interface</strong> <em>interface-type interface-number </em>[<em> .subinterface-number </em>] [ <strong>vlan-group</strong> <em>group-id</em> ] ] [ <strong>verbose</strong> ]<span> [<strong> | count</strong> ]</span><span> [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface</strong><em> interface-type interface-number</em>：需要查看QinQ的统计信息的用户组所在的接口类型和编号。</p>
+<p><strong>vlan-group</strong><em> group-id</em>：用户组号，十进制整数形式，取值范围是1～16。</p>
+<p><strong>verbose</strong>：显示用户组详细的QinQ统计信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><strong> exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display qinq statistics</strong>命令来查看QinQ的统计信息前，应该先进行如下配置：</p>
+<ul>
+<li><p>在VLAN-Group接口视图下通过命令<a href="statistic_enable.html">statistic enable</a>使能QinQ报文的统计功能。</p>
+</li>
+<li><p>使用命令<a href="dot1q_termination_vid.html">dot1q termination vid</a>或<a href="qinq_termination_pe-vid_ce-vid.html">qinq termination pe-vid ce-vid</a>或<a href="qinq_stacking_vid.html">qinq stacking vid</a>，将子接口终结或者Stacking的Tag范围与用户VLAN组绑定。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_qinq_statistics__d61163e141"></a><a name="d61163e141"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定接口GE1/0/0.1下用户组1的QinQ的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display qinq statistics interface gigabitethernet 1/0/0.1 vlan-group  1 verbose</strong></pre>
+<pre class="screen">GigabitEthernet1/0/0.1 vlan-group[1]:Single</pre>
+<pre class="screen">    Stacking tag:1-4000</pre>
+<pre class="screen">      Statistics on VRP:</pre>
+<pre class="screen">      0 Packets received, 0 bytes</pre>
+<pre class="screen">      0 Erro Packets received</pre>
+<pre class="screen">      0 Packets transmitted, 0 bytes</pre>
+<pre class="screen">      0 Erro Packets transmitted,</pre>
+<pre class="screen">    Stacking tag:4002</pre>
+<pre class="screen">      Statistics on VRP:</pre>
+<pre class="screen">      0 Packets received, 0 bytes</pre>
+<pre class="screen">      0 Erro Packets received</pre>
+<pre class="screen">      0 Packets transmitted, 0 bytes</pre>
+<pre class="screen">      0 Erro Packets transmitted,</pre>
+<pre class="screen">    Stacking tag:0</pre>
+<pre class="screen">      Statistics on VRP:</pre>
+<pre class="screen">      0 Packets received, 0 bytes</pre>
+<pre class="screen">      0 Erro Packets received</pre>
+<pre class="screen">      0 Packets transmitted, 0 bytes</pre>
+<pre class="screen">      0 Erro Packets transmitted,</pre>
+<pre class="screen">    Stacking tag:0</pre>
+<pre class="screen">      Statistics on VRP:</pre>
+<pre class="screen">      0 Packets received, 0 bytes</pre>
+<pre class="screen">      0 Erro Packets received</pre>
+<pre class="screen">      0 Packets transmitted, 0 bytes</pre>
+<pre class="screen">      0 Erro Packets transmitted,</pre>
+<p># 查看所有子接口下用户组的QinQ的统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display qinq statistics verbose</strong></pre>
+<pre class="screen">GigabitEthernet1/0/0.1 vlan-group[1]:Single</pre>
+<pre class="screen">    QinQ termination tag:10/100-200</pre>
+<pre class="screen">      Statistics on VRP:</pre>
+<pre class="screen">      0 Packets received, 0 bytes</pre>
+<pre class="screen">      0 Error Packets received</pre>
+<pre class="screen">      0 Packets transmitted, 0 bytes</pre>
+<pre class="screen">      0 Error Packets transmitted,</pre>
+<pre class="screen">    Total statistics for QinQ on VRP:</pre>
+<pre class="screen">      0 Packets received, 0 bytes</pre>
+<pre class="screen">      0 Packets transmitted, 0 bytes</pre>
+<pre class="screen">GigabitEthernet1/0/0.2 vlan-group[2]:Single</pre>
+<pre class="screen">    Stacking tag:20-50</pre>
+<pre class="screen">      Statistics on VRP:</pre>
+<pre class="screen">      0 Packets received, 0 bytes</pre>
+<pre class="screen">      0 Error Packets received</pre>
+<pre class="screen">      0 Packets transmitted, 0 bytes</pre>
+<pre class="screen">      0 Error Packets transmitted,</pre>
+<pre class="screen">    Total statistics for QinQ on VRP:</pre>
+<pre class="screen">      0 Packets received, 0 bytes</pre>
+<pre class="screen">      0 Packets transmitted, 0 bytes</pre>
+<pre class="screen">GigabitEthernet1/0/0.3 vlan-group[3]:Single</pre>
+<pre class="screen">    Dot1q termination tag:80-90</pre>
+<pre class="screen">      Statistics on VRP:</pre>
+<pre class="screen">      0 Packets received, 0 bytes</pre>
+<pre class="screen">      0 Error Packets received</pre>
+<pre class="screen">      0 Packets transmitted, 0 bytes</pre>
+<pre class="screen">      0 Error Packets transmitted,</pre>
+<pre class="screen">    Total statistics for QinQ on VRP:</pre>
+<pre class="screen">      0 Packets received, 0 bytes</pre>
+<pre class="screen">      0 Packets transmitted, 0 bytes</pre>
+
+<div class="tablenoborder"><a name="display_qinq_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_qinq_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display qinq statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.31556449585114%" id="d61163e277"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.68443550414887%" id="d61163e281"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>GigabitEthernet1/0/0.1 vlan-group[1]:Single</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>子接口的名称和子接口下用户VLAN组的名称及模式。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>QinQ termination tag:10/100-200</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>QinQ终结子接口终结的Tag范围。&#8220;/&#8221;左侧是外层Tag（pe-vid）；&#8220;/&#8221;右侧是内层Tag（ce-vid）。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>Dot1q termination tag:80-90</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>Dot1q终结子接口终结的Tag范围。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>Stacking tag:20-50</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>Stacking子接口进行Stacking操作的Tag范围。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>Statistics on VRP:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>VRP平台的统计信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>0 Packets received, 0 bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>收到报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>0 Error Packets received</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>收到错误报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>0 Packets transmitted, 0 bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>发送报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>0 Error Packets transmitted</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>发送错误报文的数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>Total statistics for QinQ on VRP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>VRP平台对QinQ报文的所有统计信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>0 Packets received, 0 bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>接收的报文总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.31556449585114%" headers="d61163e277 "><p>0 Packets transmitted, 0 bytes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.68443550414887%" headers="d61163e281 "><p>发送的报文总数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_qinq_statistics__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_qinq_statistics__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d61163e435"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d61163e439"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d61163e435 "><p>VRPV500R006C01B003</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d61163e439 "><p>命令增加通配符： [ <strong>|</strong> { <strong>begin</strong> | <strong>include</strong> | <strong>exclude</strong> } <em>regular-expression</em> ]</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/qinq_configuration_commands.html">QinQ配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="statistic_enable.html">statistic enable</a></div>
+<div><a href="reset_qinq_statistics.html">reset qinq statistics</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

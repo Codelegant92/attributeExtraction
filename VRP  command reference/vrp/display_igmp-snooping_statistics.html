@@ -1,0 +1,318 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display igmp-snooping statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="reset_igmp-snooping_statistics.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_igmp-snooping_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display igmp-snooping statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_igmp-snooping_statistics"></a><a name="display_igmp-snooping_statistics"></a>
+
+
+<h1 class="topictitle1">display igmp-snooping statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display igmp-snooping statistics</strong>命令用来显示IGMP Snooping的统计信息。显示的内容包括各VLAN/VSI接收的IGMP报文和PIM Hello报文个数，和主动发送的查询报文的个数，以及所有VLAN/VSI内发生的二层事件次数统计。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display igmp-snooping statistics</strong> { <strong>vlan </strong>[ <em>vlan-id </em>] | <strong>vsi</strong> [ <em>vsi-name</em> ] }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vlan </strong><em>vlan-id</em>：显示指定VLAN的IGMP Snooping统计信息。<em>vlan-id</em>表示VLAN编号，取值范围是1～4094。</p>
+<p><strong>vsi </strong><em>vsi-name</em>：VSI实例的名称。字符串形式，不支持空格，区分大小写，长度范围是1～31。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>当指定<em>vlan-id </em>时，仅显示指定的vlan的统计信息，并且不显示VLAN内发生的二层事件次数统计。</p>
+<p>当指定<em>vsi-name</em>时，仅显示指定的vsi的统计信息，并且不显示VSI内发生的二层事件次数统计。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_igmp-snooping_statistics__d26439e71"></a><a name="d26439e71"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示所有VLAN的IGMP Snooping统计信息</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display igmp-snooping statistics vlan</strong>
+IGMP Snooping Events Counter
+     Recv VLAN Up Event Times      1027
+     Recv VLAN Down Event Times    5
+     Recv VLAN Del Event Times     0
+     Recv Port Up Event Times      12
+     Recv Port Down Event Times    12
+     Recv Port Del Event Times     0
+     Recv Port Inc Event Times     3069
+     Recv Port Exc Event Times     1023
+     Recv MSTP Block Event Times   7
+     Recv MSTP Forward Event Times 7
+     Recv LINK Change Event Times  0
+ IGMP Snooping Packets Counter
+   Statistics for Vlan 1
+     Recv V1 Report  16
+     Recv V2 Report  8768
+     Recv V3 Report  0
+     Recv V1 Query   0
+     Recv V2 Query   2243
+     Recv V3 Query   0
+     Recv Leave      215
+     Recv Pim Hello  0
+     Send Query(S=0) 0
+     Send Query(S!=0)529
+</pre>
+<p># 显示VLAN 10的IGMP Snooping统计信息</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display igmp-snooping statistics vlan 10</strong>
+IGMP Snooping Packets Counter
+     Statistics for Vlan 1
+     Recv V1 Report  16
+     Recv V2 Report  8768
+     Recv V3 Report  0
+     Recv V1 Query   0
+     Recv V2 Query   2243
+     Recv V3 Query   0
+     Recv Leave      215
+     Recv Pim Hello  0
+     Send Query(S=0) 0
+     Send Query(S!=0)529
+</pre>
+
+<div class="tablenoborder"><a name="display_igmp-snooping_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_igmp-snooping_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display igmp-snooping statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="40.27462836986647%" id="d26439e99"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="59.72537163013354%" id="d26439e103"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv VLAN Up Event Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>VLAN Up事件次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv VLAN Down Event Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>VLAN Down事件次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv VLAN Del Event Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>VLAN Delete事件次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv Port Up Event Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>端口Up事件次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv Port Down Event Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>端口Down事件次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv Port Del Event Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>端口Delete事件次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv Port Inc Event Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>端口加入到VLAN的事件次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv Port Exc Event Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>端口退出VLAN的事件次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv MSTP Block Event Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>MSTP Block事件次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv MSTP Forward Event Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>MSTP Forward事件次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv LINK Change Event Times</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>收到链路改变事件的次数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv V1 Report</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>收到IGMPv1成员报告消息的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv V2 Report</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>收到IGMPv2成员报告消息的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv V3 Report</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>收到IGMPv3成员报告消息的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv V1 Query</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>收到IGMPv1查询消息的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv V2 Query</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>收到IGMPv2查询消息的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv V3 Query</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>收到IGMPv3查询消息的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv Leave</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>收到IGMP离开组播组消息的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Recv Pim Hello</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>收到PIM Hello报文的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Send Query(S=0)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>发送源地址为0的IGMP查询消息的个数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.27462836986647%" headers="d26439e99 "><p>Send Query(S!=0)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.72537163013354%" headers="d26439e103 "><p>发送源地址不为0的IGMP查询消息的个数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="reset_igmp-snooping_statistics.html">reset igmp-snooping statistics</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

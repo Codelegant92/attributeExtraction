@@ -1,0 +1,562 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display tunnel-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/vpn_tunnel_management_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_tunnel-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display tunnel-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_tunnel-info"></a><a name="display_tunnel-info"></a>
+
+
+<h1 class="topictitle1">display tunnel-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display tunnel-info</strong>命令用来查看隧道信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display</strong> <strong>tunnel-info</strong> { <em>tunnel-id</em> | <strong>all</strong> | <strong>statistics</strong> [ <strong>slots</strong> ] }<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>tunnel-id</em>：隧道ID。如果指定的隧道ID不存在，将提示命令执行错误。</p>
+<p><strong>all</strong>：显示所有隧道的信息。</p>
+<p><strong>statistics</strong>：显示所有隧道的统计信息。</p>
+<p><strong>slots</strong>：按接口板顺序显示隧道信息的统计信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><div class="p"><strong>display tunnel-info all</strong>命令可以用来<ul>
+<li><p>查看本设备上存在哪些建立成功的隧道，及这些隧道的Tunnel ID、隧道类型、目的IP地址、Token信息。</p>
+</li>
+<li><p>用来判断某隧道是否建立成功，因为如果隧道建立不成功，其Tunnel ID为0x0。</p>
+</li>
+</ul>
+</div>
+<p><strong>display tunnel-info all</strong>命令的显示信息中只包含建立成功的隧道的信息，而不包含Tunnel
+ID为0x0的隧道的信息。</p>
+<p>如果只知道隧道的Tunnel ID，但想了解该隧道的详细信息，可以使用<strong>display</strong> <strong>tunnel-info</strong> <em>tunnel-id</em>命令查看。</p>
+<p><strong>display</strong> <strong>tunnel-info</strong> <strong>statistics</strong>命令可以用来查看本设备上成功建立了几条各类型的隧道。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_tunnel-info__d70435e163"></a><a name="d70435e163"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看隧道信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display tunnel-info 1100200a</strong></pre>
+<pre class="screen">Tunnel ID:                    0x1100200a</pre>
+<pre class="screen">Tunnel Token:                 115712</pre>
+<pre class="screen">Type:                         cr lsp</pre>
+<pre class="screen">Destination:                  3.3.3.3</pre>
+<pre class="screen">Out Slot:                     1</pre>
+<pre class="screen">Instance ID:                  0</pre>
+<pre class="screen">Interface:                    Tunnel1/0/1</pre>
+<pre class="screen">Sub Tunnel ID:                0x0</pre>
+
+<div class="tablenoborder"><a name="display_tunnel-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_tunnel-info__tb_01" frame="border" border="1" rules="all"><caption>表1 display tunnel-info命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.08616780045352%" id="d70435e199"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.91383219954649%" id="d70435e203"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d70435e199 "><p>Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d70435e203 "><p>隧道ID，十六进制形式，是系统自动分配的。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d70435e199 "><p>Tunnel Token</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d70435e203 "><p>用于MPLS转发的Token值，是Tunnel ID的一部分，系统自动分配的。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d70435e199 "><p>Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d70435e203 "><p>隧道类型，例如GRE、MPLS LSP、CR-LSP等。不同类型隧道的显示信息也有所区别。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d70435e199 "><p>Destination</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d70435e203 "><p>隧道的目的IP地址。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d70435e199 "><p>Out Slot</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d70435e203 "><p>实际发出报文时使用的槽位号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d70435e199 "><p>Instance ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d70435e203 "><p>VPN实例ID，值为0表示该隧道为公网隧道。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d70435e199 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d70435e203 "><p>隧道所对应的本端Tunnel接口。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.08616780045352%" headers="d70435e199 "><p>Sub Tunnel ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.91383219954649%" headers="d70435e203 "><p>资源隔离VPN中的子隧道ID，十六进制形式，是系统自动分配的。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 查看所有隧道信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display tunnel-info all</strong></pre>
+<pre class="screen">* -&gt; Allocated VC Token</pre>
+<pre class="screen">Tunnel ID           Type                 Destination           Token</pre>
+<pre class="screen">----------------------------------------------------------------------</pre>
+<pre class="screen">0x1800800           lsp                   3.3.3.3                0</pre>
+<pre class="screen">0x1800801           lsp                   2.2.2.2                1</pre>
+<pre class="screen">0x41804bb8          lsp                   192.168.2.0            3000</pre>
+<p># 查看隧道统计信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display tunnel-info statistics</strong></pre>
+<pre class="screen">
+Tunnel Allocation Method:               MIXED-2GLOBAL
+Global-3    Avail Tunnel-ID Num:        113664
+Per-Board   Avail Tunnel-ID Num:        32768
+Global-2    Avail Tunnel-ID Num:        32768
+Global-1    Avail Tunnel-ID Num:        16384
+
+Separation point b/w product and Global3:   115712
+Separation point b/w Global2 and Per-Board: 65536
+Separation point b/w Global1 and Global2:   16384
+
+Total      Allocated Tunnel-ID Num:     5
+Global-3   Allocated Tunnel-ID Num:     0
+Per-Board  Allocated Tunnel-ID Num:     1
+Global-2   Allocated Tunnel-ID Num:     2
+Global-1   Allocated Tunnel-ID Num:     2
+
+LSP/32bit LSP :                              3/3
+GRE :                                        0
+CRLSP :                                      2
+LOCAL IFNET :                                0
+MPLS LOCAL IFNET :                           0
+VPN QOS LSP :                                0
+Reserved :                                   0 
+</pre>
+
+<div class="tablenoborder"><a name="display_tunnel-info__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_tunnel-info__tb_02" frame="border" border="1" rules="all"><caption>表2 display tunnel-info statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.5127236079617%" id="d70435e340"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.4872763920383%" id="d70435e344"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Tunnel Allocation Method </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><div class="p">隧道Token的分配方法。有8种：<ul>
+<li>Global</li>
+<li>Global with Reserved</li>
+<li>Per Slot</li>
+<li>Per Slot with Reserved Token</li>
+<li>Per Slot with Different Avail Value</li>
+<li>Mixed</li>
+<li>Mixed with Global Space 2</li>
+<li>Global Space 2</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Global-3    Avail Tunnel-ID Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>隧道Token全局空间3能分配的token数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Per-Board Avail Tunnel-ID Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>隧道Token每板空间能分配的token数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Global-2   Avail Tunnel-ID Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>隧道Token全局空间2能分配的token数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Global-1    Avail Tunnel-ID Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>隧道Token全局空间1能分配的token数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Separation point b/w product and Global3</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>隧道Token全局空间3与产品空间分界点的Token值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Separation point b/w Global2 and Per-Board</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>隧道Token全局空间2与每板空间分界点的Token值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Separation point b/w Global1 and Global2</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>隧道Token全局空间1与全局空间2分界点的Token值。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Total Allocated Tunnel-ID Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>表示已分配的Tunnel ID总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Globa3     Allocated Tunnel-ID Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>表示全局空间3已分配的Tunnel ID总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Per-Board Allocated Tunnel-ID Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>表示每板空间已分配的Tunnel ID总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Globa2     Allocated Tunnel-ID Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>表示全局空间2已分配的Tunnel ID总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Globa1     Allocated Tunnel-ID Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>表示全局空间1已分配的Tunnel ID总数。</p>
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>LSP/32bit LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>分配给LSP类型隧道的Tunnel ID数/32位地址的主机IP路由触发建立的LSP数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>GRE </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>分配给GRE类型隧道的Tunnel ID数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>CRLSP </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>分配给CR-LSP类型隧道的Tunnel ID数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>LOCAL IFNET </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>被VPN内部模块使用的隧道数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>MPLS LOCAL IFNET </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>被MPLS内部模块使用的隧道数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>VPN QOS LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>分配给应用于VPN QoS中的LSP的Tunnel ID数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.5127236079617%" headers="d70435e340 "><p>Reserved</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.4872763920383%" headers="d70435e344 "><p>分配给产品的TunnelID数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 按接口板的顺序查看隧道统计信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display tunnel-info statistics slots</strong></pre>
+<pre class="screen">------------------------------------------------------------------
+Slot              LSP     CR      GRE     LCL     MPLS-L  VPN
+Num                       LSP             IFNET   IFNET   QOS
+------------------------------------------------------------------
+0                 0       0       0       0       0       0
+Logic Slot: 0                     Total:  0
+2                 0       1       0       0       0       0
+Logic Slot: 2                     Total:  1
+6                 0       0       0       0       0       0
+Logic Slot: 6                     Total:  0
+------------------------------------------------------------------
+TOTAL             0       1       0       0       0       0
+                                  Total:  1
+------------------------------------------------------------------
+</pre>
+
+<div class="tablenoborder"><a name="display_tunnel-info__tb_03"></a><a name="tb_03"></a><table cellpadding="4" cellspacing="0" summary="" id="display_tunnel-info__tb_03" frame="border" border="1" rules="all"><caption>表3 display tunnel-info statistics slots命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="36.13000755857899%" id="d70435e621"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="63.86999244142102%" id="d70435e625"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d70435e621 "><p>Slot Num</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d70435e625 "><p>实际发出报文时使用的槽位号。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d70435e621 "><p>LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d70435e625 "><p>本设备建立的LSP类型的隧道总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d70435e621 "><p>CR LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d70435e625 "><p>本设备建立的CR LSP类型的隧道总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d70435e621 "><p>GRE</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d70435e625 "><p>本设备建立的GRE类型的隧道总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d70435e621 "><p>LCL IFNET</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d70435e625 "><p>其中被VPN模块使用的隧道数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d70435e621 "><p>MPLS-L IFNET</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d70435e625 "><p>其中被MPLS模块使用的隧道数量。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="36.13000755857899%" headers="d70435e621 "><p>VPN QOS</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="63.86999244142102%" headers="d70435e625 "><p>应用于VPN QoS中的LSP数量。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_tunnel-info__tb_02_1"></a><a name="tb_02_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_tunnel-info__tb_02_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d70435e724"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d70435e728"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d70435e724 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d70435e728 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/vpn_tunnel_management_configuration_commands.html">VPN隧道管理配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

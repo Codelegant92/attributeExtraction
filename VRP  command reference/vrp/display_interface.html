@@ -1,0 +1,409 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display interface">
+<meta name="DC.Relation" scheme="URI" content="../vrp/interface_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_interface_brief.html">
+<meta name="DC.Relation" scheme="URI" content="reset_counters_interface.html">
+<meta name="DC.Relation" scheme="URI" content="description_interface_view.html">
+<meta name="DC.Relation" scheme="URI" content="display_ip_interface.html">
+<meta name="DC.Relation" scheme="URI" content="display_this_interface.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_interface">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display interface</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_interface"></a><a name="display_interface"></a>
+
+
+
+<h1 class="topictitle1">display interface</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display interface</strong>命令用来查看接口当前运行状态和接口统计信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display interface</strong> [ <em>interface-type</em> [ <em>interface-number</em> ] | <strong>slot</strong> <em>slot-number </em>] [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>interface-type</em> <em>interface-number</em>：接口类型和接口编号。如果不指定接口类型，将显示所有接口的运行状态和统计信息。如果不指定接口编号，将显示所有该类型接口的运行状态和统计信息。</p>
+<p><strong>slot</strong> <em>slot-number</em>：槽位编号。显示指定接口板上所有接口的运行状态和统计信息。</p>
+<p><strong>|</strong>：使用正则表达式过滤输出的显示信息。</p>
+<p><strong>begin</strong>：显示以包含指定正则表达式的行开始的配置信息。</p>
+<p><strong>exclude</strong>：显示不包含指定正则表达式的行的配置信息。</p>
+<p><strong>include</strong>：显示包含指定正则表达式的行的配置信息。</p>
+<p><em>regular-expression</em>：正则表达式。字符串形式，支持空格，区分大小写。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"> <p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"> <p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在监控接口的状态或检查接口的故障原因时，可执行此命令获取接口的状态信息和统计信息。用户可以根据这些信息进行流量统计和接口的故障诊断等。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_interface__d27603e99"></a><a name="d27603e99"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看<span class="keyword">路由器</span>接口的状态信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display interface gigabitethernet 6/2/0</strong></pre>
+<pre class="screen">GigabitEthernet6/2/0 current state : UP</pre>
+<pre class="screen">Line protocol current state : UP</pre>
+<pre class="screen">Last line protocol up time: 2008-08-30 10:56:22</pre>
+<pre class="screen">Description:HUAWEI, Quidway Series, GigabitEthernet6/2/0 Interface</pre>
+<pre class="screen"><span>Route Port,The Maximum Transmit Unit is 1500</span>, Hold timer is 10(sec)</pre>
+<pre class="screen">Internet Address is 1.1.1.1/24</pre>
+<pre class="screen">IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 0000-0a14-0100</pre>
+<pre class="screen">QoS max-bandwidth : 100000 Kbps</pre>
+<pre class="screen">Output queue : (Urgent queue : Size/Length/Discards)  0/50/0</pre>
+<pre class="screen">Output queue : (Protocol queue : Size/Length/Discards) 0/1000/0</pre>
+<pre class="screen">Output queue : (FIFO queue : Size/Length/Discards)  0/256/0</pre>
+<pre class="screen">Last physical up time   : 2008-08-30 10:56:22</pre>
+<pre class="screen">Last physical down time : 2008-08-30 10:56:21</pre>
+<pre class="screen">Hardware address is 0000-0a14-0100
+Input: 98847 Bytes, 728 Packets
+      Unicast: 0, Multicast: 0, Broadcast: 728
+Ouput: 0 Bytes, 0 Packets
+      Unicast: 0, Multicast: 0, Broadcast: 0
+</pre>
+
+<div class="tablenoborder"><a name="display_interface__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface__tb_01" frame="border" border="1" rules="all"><caption>表1 display interface命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.74124464600655%" id="d27603e152"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.25875535399345%" id="d27603e156"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>GigabitEthernet6/2/0 current state :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><div class="p">显示接口GigabitEthernet6/2/0的物理状态。<ul>
+<li><p>UP：接口物理层处于正常启动的状态。</p>
+</li>
+<li><p>DOWN：接口物理层出现故障。</p>
+</li>
+<li><p>Administratively down：如果网络管理员在该接口执行<a href="shutdown_interface_view.html">shutdown（接口视图）</a>命令，将显示状态为Administratively down。</p>
+</li>
+<li><p>Flow Down：接口的流量状态为Down。该状态与绑定的管理VRRP状态一致。如果绑定的管理VRRP状态为Backup或者Initialize，则业务接口的流量状态为Down。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>Line protocol current state : </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><div class="p">显示该接口的链路协议状态。<ul>
+<li><p>UP：接口的链路协议处于正常的启动状态。</p>
+</li>
+<li><p>UP（BFD status down）：与该接口绑定的BFD会话状态变为down。</p>
+</li>
+<li><p>UP（Main BFD status down）：与主接口联动的BFD会话状态down，并且联动子接口状态。只能在子接口显示该状态。</p>
+</li>
+<li><p>DOWN：接口的链路协议层出现故障，或者没有在此接口配置IP地址。</p>
+</li>
+<li><p>UP (spoofing)：表示该接口的链路协议状态spoofing特性，也就是该接口的链路协议状态永远是Up。</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>Last line protocol up time:</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><p>接口的协议状态最近一次变为Up的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>Description : </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><p>对接口的说明，支持空格，区分大小写，最多可输入242个字符。该说明信息便于用户了解该接口的作用。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>The Maximum Transmit Unit is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><p>接口的最大传输单元（MTU）。例如以太网接口或串口的缺省值是1500字节。长度大于MTU的报文，将会被分片后再发送。如果设置了不准分片，会被丢弃。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>Hold timer is</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><p>报文的生命周期。报文如果在生命周期内没有被发送出去，则将丢弃。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>Internet Address is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><p>接口的IP地址和子网掩码。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>IP Sending Frames' Format is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><div class="p">接口发送的Ethernet帧的格式。Ethernet_2为缺省的帧格式。Ethernet在接收帧时，可以识别如下几种帧格式：<ul>
+<li><p>Ethernet_2</p>
+</li>
+<li><p>Ethernet_SNAP</p>
+</li>
+<li><p>802.2</p>
+</li>
+<li><p>802.3</p>
+</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>Hardware address is </p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><p>接口的MAC地址。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>QoS max-bandwidth :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><p>QoS最大带宽。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>Output queue : (Urgent queue : Size/Length/Discards) Output queue : (Protocol queue : Size/Length/Discards)Output queue : (FIFO queuing : Size/Length/Discards)</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><div class="p">接口输出队列的当前状态，通常包括三类输出队列（Output queue）：<ul>
+<li><p>紧急队列（Urgent queue），链路层的协议报文，比如PPP的协商报文和Keepalive报文等将进入这个队列。</p>
+</li>
+<li><p>协议队列（Protocol queue），IP优先级为6的报文将进入协议队列。</p>
+</li>
+<li><p>普通的报文队列（FIFO queue），根据接口上应用的队列类型，可能是FIFO（First In First Out Queue）、PQ（Priority Queue）、CQ（Custom Queue）或CBQ（Class-based Queue）等。</p>
+</li>
+</ul>
+当发生拥塞时，接口首先发送紧急队列中的报文，然后是协议队列中的报文，最后发送普通队列中的报文。对于各种发送队列，显示为Size/Length/Discards形式的数字，这里各字段含义如下。<ul>
+<li><p>Size ：队列中的分组数。</p>
+</li>
+<li><p>Length：用分组表示的最大队列的长度。</p>
+</li>
+<li><p>Discards：由于队列已满而丢失的分组数。</p>
+</li>
+</ul>
+通过检查Discards在一段时间内与Size和Length的关系，可以考察该接口的性能是否满足要求。例如：当Discards的值较大时可能表示<span class="keyword">路由器</span>正忙于进行其他工作，而无法及时处理进入的分组，如果这种情况持续很长的时间，则通常表示需要一个更强大的<span class="keyword">路由器</span>以满足工作的要求。</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>Last physical up time   :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><p>接口上次物理Up的时刻，&#8220;-&#8221;表示接口的此物理状态没有发生过变化。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="32.74124464600655%" headers="d27603e152 "><p>Last physical down time :</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.25875535399345%" headers="d27603e156 "><p>接口上次物理Down的时刻，&#8220;-&#8221;表示接口的此物理状态没有发生过变化。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<p># 显示指定槽位号的接口信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display interface slot 1</strong></pre>
+<pre class="screen">GigabitEthernet1/0/0 current state : Administratively DOWN                      
+Line protocol current state : DOWN                                              
+Description:HUAWEI, Quidway Series, GigabitEthernet1/0/0 Interface              
+Route Port,The Maximum Transmit Unit is 1500                                    
+Internet protocol processing : disabled                                         
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 0018-820a-40fcM
+edia type: twisted-pair ,Link type: auto negotiation                            
+Loopback:none, Maximal BW:1G, Current BW:1G,full-duplex mode, negotiation: enabl
+e, Pause Flowcontrol:Receive Enable and Send Enable                             
+                                                                                
+Last physical up time   : -                                                     
+Last physical down time : 2008-12-23 19:07:13Statistics last cleared:never      
+    Last 300 seconds input rate: 0 bits/sec, 0 packets/sec                      
+    Last 300 seconds output rate: 0 bits/sec, 0 packets/sec                     
+    Input: 0 bytes, 0 packets                                                   
+    Output: 0 bytes, 0 packets                                                  
+    Input:                                                                      
+      Unicast: 0 packets, Multicast: 0 packets                                  
+      Broadcast: 0 packets, JumboOctets: 0 packets                              
+      CRC: 0 packets, Symbol: 0 packets                                         
+      Overrun: 0 packets, InRangeLength: 0 packets                              
+      LongPacket: 0 packets, Jabber: 0 packets, Alignment: 0 packets            
+      Fragment: 0 packets, Undersized Frame: 0 packets                          
+      RxPause: 0 packets                                                        
+    Output:                                                                     
+      Unicast: 0 packets, Multicast: 0 packets                                  
+      Broadcast: 0 packets, JumboOctets: 0 packets                              
+      Lost: 0 packets, Overflow: 0 packets, Underrun: 0 packets                 
+      System: 0 packets, Overruns: 0 packets                                    
+      TxPause: 0 packets                                                        
+      Unknown Vlan: 0 packets                                                   
+GigabitEthernet1/0/1 current state : Administratively DOWN                      
+Line protocol current state : DOWN                                              
+Description:HUAWEI, Quidway Series, GigabitEthernet1/0/1 Interface              
+Route Port,The Maximum Transmit Unit is 1500                                    
+Internet protocol processing : disabled                                         
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 0018-820a-40fdM
+edia type: twisted-pair ,Link type: auto negotiation                            
+Loopback:none, Maximal BW:1G, Current BW:1G,full-duplex mode, negotiation: enabl
+e, Pause Flowcontrol:Receive Enable and Send Enable                             
+                                                                                
+Last physical up time   : -                                                     
+Last physical down time : 2008-12-23 19:07:13Statistics last cleared:never      
+    Last 300 seconds input rate: 0 bits/sec, 0 packets/sec                      
+    Last 300 seconds output rate: 0 bits/sec, 0 packets/sec                     
+    Input: 0 bytes, 0 packets                                                   
+    Output: 0 bytes, 0 packets                                                  
+    Input:                                                                      
+      Unicast: 0 packets, Multicast: 0 packets                                  
+      Broadcast: 0 packets, JumboOctets: 0 packets                              
+      CRC: 0 packets, Symbol: 0 packets                                         
+      Overrun: 0 packets, InRangeLength: 0 packets                              
+      LongPacket: 0 packets, Jabber: 0 packets, Alignment: 0 packets            
+      Fragment: 0 packets, Undersized Frame: 0 packets                          
+      RxPause: 0 packets                                                        
+    Output:                                                                     
+      Unicast: 0 packets, Multicast: 0 packets                                  
+      Broadcast: 0 packets, JumboOctets: 0 packets                              
+      Lost: 0 packets, Overflow: 0 packets, Underrun: 0 packets                 
+      System: 0 packets, Overruns: 0 packets                                    
+      TxPause: 0 packets                                                        
+      Unknown Vlan: 0 packets                                                   </pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody"> 
+<div class="tablenoborder"><a name="display_interface__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_interface__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d27603e427"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d27603e431"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d27603e427 "><p>VRPV500R003C07B250</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d27603e431 "><p>增加显示上次清除本接口统计信息的时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d27603e427 "><p>VRPV500R005C02B020</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d27603e431 "><p>物理状态显示信息增加Flow Down状态。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d27603e427 "><p>VRPV500R005C02B090</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d27603e431 "><p>除在链路协议状态处显示具有spoofing特性的接口和Trunk成员接口外，所有协议是Up状态的三层接口都增加显示接口的协议状态最近一次变为Up的时间。</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d27603e427 "><p>VRPV500R006C02B131</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d27603e431 "><p>增加<strong>slot</strong>参数，查看指定接口板上所有接口的信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/interface_management_configuration_commands.html">接口基础配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_interface_brief.html">display interface brief</a></div>
+<div><a href="reset_counters_interface.html">reset counters interface</a></div>
+<div><a href="description_interface_view.html">description（接口视图）</a></div>
+<div><a href="display_ip_interface.html">display ip interface</a></div>
+<div><a href="display_this_interface.html">display this interface</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

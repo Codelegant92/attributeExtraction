@@ -1,0 +1,293 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display pim neighbor">
+<meta name="DC.Relation" scheme="URI" content="../vrp/pim_ipv4_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_pim_neighbor">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display pim neighbor</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_pim_neighbor"></a><a name="display_pim_neighbor"></a>
+
+
+<h1 class="topictitle1">display pim neighbor</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display pim neighbor</strong>命令用来查看PIM邻居信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display pim</strong> [<strong> vpn-instance</strong> <em>vpn-instance-name</em> | <strong>all-instance</strong> ] <strong>neighbor</strong> [ <em>neighbor-address</em> | <strong>interface</strong> <em>interface-type</em> <em>interface-number</em> | <strong>verbose</strong> ] <sup>*</sup><span> [<strong> | count</strong> ]</span> [<strong> |</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称。字符串形式，长度范围是1～31。</p>
+<p><strong>all-instance</strong>：指定所有实例。</p>
+<p><strong>interface</strong> <em>interface-type interface-number</em>：表示接口类型和接口号。</p>
+<p><em>neighbor-address</em>：表示PIM邻居的IP地址。点分十进制形式。</p>
+<p><strong>verbose</strong>：表示PIM邻居的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用<strong>display pim neighbor</strong>命令时：</p>
+<ul>
+<li><p>如果不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>，则只显示公网实例的相关信息。</p>
+</li>
+<li><p>如果指定<strong>interface</strong><em> interface-type</em> <em>interface-number</em>，则仅显示该接口下的PIM邻居信息。</p>
+</li>
+<li><p>如果不指定<strong>interface </strong><em>interface-type</em> <em>interface-number</em>，则列举当前<span class="keyword">路由器</span>上的所有PIM邻居信息。</p>
+</li>
+<li><p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_pim_neighbor__d60059e194"></a><a name="d60059e194"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看公网实例所有PIM邻居信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display pim neighbor</strong>
+ VPN-Instance: public net
+ Total Number of Neighbors = 2
+Neighbor        Interface           Uptime   Expires  Dr-Priority  BFD-Session 
+ 10.1.1.2        GE1/3/0       02:50:49     00:01:31     1           Y
+ 20.1.1.2        GE1/3/2       02:49:39     00:01:42     1           Y
+</pre>
+<p># 查看公网实例下IP地址为10.1.1.2的PIM邻居的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display pim neighbor 10.1.1.2 verbose</strong>
+ VPN-Instance: public net
+ Neighbor: 10.1.1.2
+     Interface: GigabitEthernet1/3/0
+     Uptime: 02:53:50
+     Expiry time: 00:01:30
+     DR Priority: 1
+     Generation ID: 0X90B0360B
+     Holdtime: 105 s
+     LAN delay: 500 ms
+     Override interval: 2500 ms
+     Neighbor tracking: Disabled
+     PIM BFD-Session: Y
+     PIM BFD-Session min-tx-interval: 1000 ms
+     PIM BFD-Session min-rx-interval: 1000 ms
+     PIM BFD-Session detect-multiplier: 3
+</pre>
+
+<div class="tablenoborder"><a name="display_pim_neighbor__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_neighbor__tb_01" frame="border" border="1" rules="all"><caption>表1 display pim neighbor命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.81279919375158%" id="d60059e222"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.18720080624843%" id="d60059e226"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>VPN-Instance</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>公网实例</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>Neighbor</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>PIM邻居的地址</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>PIM邻居所在的接口</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>Uptime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>PIM邻居已经存在的时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>Expiry time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>PIM邻居还有多少时间就要超时</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>DR Priority</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>DR优先级</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>Generation ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>PIM邻居状态随机数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>Holdtime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>PIM邻居生存时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>LAN delay</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>传递Prune剪枝消息的延迟时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>Override interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>否决Prune剪枝的时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>Neighbor tracking</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>是否使能邻居跟踪功能</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>PIM BFD-session</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>是否建立BFD session</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>PIM BFD-Session min-tx-interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>PIM BFD检测消息最小发送时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>PIM BFD-session min-rx-interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>PIM BFD检测消息最小接收时间间隔</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.81279919375158%" headers="d60059e222 "><p>PIM BFD-session detect-multiple</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.18720080624843%" headers="d60059e226 "><p>PIM BFD检测倍数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_pim_neighbor__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_pim_neighbor__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d60059e413"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d60059e417"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d60059e413 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d60059e417 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/pim_ipv4_commands.html">IPv4 PIM命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

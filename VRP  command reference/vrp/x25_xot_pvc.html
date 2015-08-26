@@ -1,0 +1,103 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="x25 xot pvc">
+<meta name="DC.Relation" scheme="URI" content="../vrp/lapb_and_x25_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_x25_vc.html">
+<meta name="DC.Relation" scheme="URI" content="x25_switching.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="x25_xot_pvc">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>x25 xot pvc</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="x25_xot_pvc"></a><a name="x25_xot_pvc"></a>
+
+<h1 class="topictitle1">x25 xot pvc</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>x25 xot pvc</strong>命令用来增加一条XOT的PVC路由。</p>
+<p><strong>undo x25 pvc</strong>命令用来删除指定XOT的PVC路由。</p>
+<p>缺省情况下，系统没有PVC路由。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>x25 xot pvc</strong><em> pvc-number1</em><strong> </strong><em>ip-address</em><strong> interface serial</strong><em> interface-number</em><strong> pvc </strong><em>pvc-number2</em> [ <em>xot-option</em> ] </p>
+<p><strong>undo x25</strong><em> </em><strong>pvc</strong><em> pvc-number1</em></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>pvc-number1</em>：本端接口上的永久虚电路号，取值范围是1～4095，并且应在实际永久虚电路范围内，永久虚电路的范围是1～（Lic－1）。</p>
+<p><em>ip-address</em>：XOT连接的对端目的IP地址。</p>
+<p><em>interface-number</em>：接口编号。</p>
+<p><em>pvc-number2</em>：对端接口上的永久虚电路号，取值范围是1～4095，并且应在实际永久虚电路范围内，永久虚电路的范围是1～（Lic－1）。</p>
+<p><em>xot-option</em>：XOT通道参数选项，具体配置请参照以下参数及下表。</p>
+<p><strong>packet-size</strong> <em>input-packet output-packet</em>：指定该虚电路的最大接收分组长度和最大发送分组长度，以字节为单位，这两个值必须在16到4096范围内（包括16和4096），并且必须是2的整数次幂。</p>
+<p><strong>window-size</strong> <em>input-window-size output-window-size</em>：指定该虚电路的接收窗口和发送窗口的尺寸，当X.25的窗口模数为8时，<em>input-window-size</em>和<em>output-window-size</em>的取值范围是1～7；当X.25的窗口模数为128时，取值范围是1～127。缺省情况下，接收窗口和发送窗口的值都为2。</p>
+
+<div class="tablenoborder"><a name="x25_xot_pvc__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="x25_xot_pvc__tb_01" frame="border" border="1" rules="all"><caption>表1 XOT通道参数选项</caption><thead align="left"><tr><th class="cellrowborder" valign="top" width="33.87503149407911%" id="d130366e98"><p>选项</p>
+</th>
+<th class="cellrowborder" valign="top" width="66.12496850592089%" id="d130366e101"><p>意义</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d130366e98 "><p><strong>timer </strong><em>seconds</em></p>
+</td>
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d130366e101 "><p>XOT连接的keepalive定时器的延时，定时器超时发送keepalive报文，以探测连接的可用性，取值范围是1～3600秒。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d130366e98 "><p><strong>retry</strong><em> times</em></p>
+</td>
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d130366e101 "><p>发送keepalive的最大失败次数，失败次数超过<em>times</em>时，断开XOT连接。取值范围是3～3600次。</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="33.87503149407911%" headers="d130366e98 "><p><strong>source</strong> <em>interface-type interface-number</em></p>
+</td>
+<td class="cellrowborder" valign="top" width="66.12496850592089%" headers="d130366e101 "><p>发起XOT连接的接口。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>用户配置X25 PVC的XOT交换命令后，可以从本端的X.25网跨越IP网实现和远端X.25网的互联。配置keepalive属性后，可支持XOT的链路检测。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="x25_xot_pvc__d130366e148"></a><a name="d130366e148"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在X.25虚电路范围配置好的情况下，将<span class="keyword">路由器</span>RTA接口Serial1/0/0（10.1.1.1）的PVC1与对端<span class="keyword">路由器</span>RTB接口Serial1/0/0（10.1.1.2）的PVC2通过XOT隧道互连，进行分组交换。</p>
+<p># 在<span class="keyword">路由器</span>RTA上进行配置</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> ip address 10.1.1.1 255.255.255.0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong>link-protocol x25 dte ietf</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong>x25 xot pvc 1 10.1.1.2 interface serial1/0/0 pvc 2</strong></pre>
+<p># 在<span class="keyword">路由器</span>RTB上进行配置</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface serial 1/0/0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong> ip address 10.1.1.2 255.255.255.0</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong>link-protocol x25 dce ietf</strong></pre>
+<pre class="screen">[Quidway-Serial1/0/0]<strong>x25 xot pvc 2 10.1.1.1 interface serial1/0/0 pvc 1</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/lapb_and_x25_configuration_commands.html">LAPB和X.25配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_x25_vc.html">display x25 vc</a></div>
+<div><a href="x25_switching.html">x25 switching</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

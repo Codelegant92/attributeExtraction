@@ -1,0 +1,95 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="l2-multicast protection switch">
+<meta name="DC.Relation" scheme="URI" content="../vrp/layer_2_multicast_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="l2-multicast_protection_protect-vlan.html">
+<meta name="DC.Relation" scheme="URI" content="display_l2-multicast_protection.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="l2-multicast_protection_switch">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>l2-multicast protection switch</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="l2-multicast_protection_switch"></a><a name="l2-multicast_protection_switch"></a>
+
+
+<h1 class="topictitle1">l2-multicast protection switch</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>l2-multicast protection switch</strong>命令用来控制工作VLAN所在保护组的倒换状态。</p>
+<p>缺省情况下，组播保护处于auto状态。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>l2-multicast protection switch </strong>{<strong> clear</strong> |<strong> lock</strong> |<strong> force </strong>| <strong>manual </strong>}</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>clear</strong>：表示清除当前的倒换状态。</p>
+<p><strong>lock</strong>：表示强制设备选收工作VLAN的组播数据流。</p>
+<p><strong>force</strong>：表示在保护VLAN数据流没有故障的情况下，强制设备选收保护VLAN的组播数据流。</p>
+<p><strong>manual</strong>：表示在保护VLAN和工作VLAN的数据流没有故障的情况下，强制设备选收保护VLAN的组播数据流。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>VLAN视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>该命令必须在自动倒换协议和APS协议使能的时候配置。只有工作VLAN才可以配置此命令，否则提示错误配置不成功。</p>
+<p>如果保护VLAN异常，<strong>force</strong>和<strong>manual</strong>命令就不起作用；如果保护VLAN或工作VLAN异常，<strong>manual</strong>命令就不起作用。</p>
+<p>命令<strong>clear</strong>、<strong>lock</strong>、<strong>force</strong>、<strong>manual</strong>的优先级依次降低，在配置了高优先级的倒换命令后，就不能再配置低优先级的倒换命令了。</p>
+<p>此命令需按优先级处理：</p>
+<ol>
+<li><p>在任何情况下，都可以执行<strong>clear</strong>命令，清除所有的倒换控制，进入自动倒换。</p>
+</li>
+<li><p>在非倒换锁定的情况下，可以执行<strong>lock</strong>命令，进入倒换锁定。</p>
+</li>
+<li><p>在自动倒换或人工倒换的情况下，可以执行<strong>force</strong>命令，进入强制倒换。</p>
+</li>
+<li><p>在自动倒换的情况下，可以执行<strong>manual</strong>命令，如果主用VLAN和保护VLAN都好，进入人工倒换，如果有一个VLAN出现故障，进入自动倒换。</p>
+</li>
+</ol>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="l2-multicast_protection_switch__d88448e123"></a><a name="d88448e123"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定VLAN 10和VLAN 20构成保护组，并强制倒换锁定。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> igmp-snooping enable </strong></pre>
+<pre class="screen">[Quidway]<strong> vlan 10</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> igmp-snooping enable </strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> multicast-vlan enable</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> l2-multicast protection protect-vlan 20</strong></pre>
+<pre class="screen">[Quidway-vlan10]<strong> l2-multicast protection switch lock</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/layer_2_multicast_configuration_commands.html">二层组播配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="l2-multicast_protection_protect-vlan.html">l2-multicast
+protection protect-vlan</a></div>
+<div><a href="display_l2-multicast_protection.html">display l2-multicast
+protection</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

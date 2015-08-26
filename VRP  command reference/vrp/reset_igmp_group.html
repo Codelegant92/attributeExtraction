@@ -1,0 +1,101 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="reset igmp group">
+<meta name="DC.Relation" scheme="URI" content="../vrp/igmp_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_igmp_group.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="reset_igmp_group">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>reset igmp group</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="reset_igmp_group"></a><a name="reset_igmp_group"></a>
+
+
+<h1 class="topictitle1">reset igmp group</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>reset igmp group</strong>命令用来删除公网实例或VPN实例或所有实例的接口上动态加入的IGMP组记录。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>reset igmp</strong> [ <strong>vpn-instance</strong> <em>vpn-instance-name</em> | <strong>all-instance</strong> ] <strong>group</strong> { <strong>all</strong> | <strong>interface</strong> <em>interface-type interface-number</em> { <strong>all</strong> | <em>group-address</em> [ <strong>mask</strong> { <em>group-mask</em> | <em>group-mask-length</em> } ]
+[ <em>source-address</em> [ <strong>mask</strong> { <em>source-mask</em> | <em>source-mask-length</em> } ] ] } }</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例，<em>vpn-instance-name</em>表示VPN实例的名称，字符串形式，长度范围是1～31。</p>
+<p><strong>all-instance</strong>：指定所有实例。</p>
+<p><strong>all</strong>：表示所有IGMP组。</p>
+<p><strong>interface</strong> <em>interface-type
+interface-numbe</em>：表示<span class="keyword">路由器</span>的接口类型和接口号，用来指定具体的接口。</p>
+<p><em>group-address</em>：表示组播组地址，用来指定一个组播组。点分十进制形式，取值范围是224.0.0.0～239.255.255.255。</p>
+<p><strong>mask</strong>：指定组播组或源的地址掩码。</p>
+<p><em>group-mask</em>：表示组播组地址掩码。点分十进制形式。</p>
+<p><em>group-mask-length</em>：表示组播组地址掩码长度。整数形式，取值范围是4～32。</p>
+<p><em>source-address</em>：表示组播源地址，用来指定一个组播源。点分十进制形式。</p>
+<p><em>source-mask</em>：表示组播源地址掩码。点分十进制形式。</p>
+<p><em>source-mask-length</em>：表示组播源地址掩码长度。整数形式，取值范围是0～32。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>用户视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>本命令仅对动态加入的IGMP组有效，对静态IGMP组无效。</p>
+<p>使用<strong>reset igmp group</strong>命令时：</p>
+<ul>
+<li><p>若不指定<strong>vpn-instance</strong>或<strong>all-instance</strong>，则只删除公网实例的所有已动态加入的IGMP组记录。</p>
+</li>
+<li><p>若使用<strong>reset igmp group all</strong>命令，则删除<span class="keyword">路由器</span>所有接口上的所有已动态加入的IGMP组记录。</p>
+</li>
+<li><p>若指定<strong>interface</strong> <em>interface-type interface-number</em> <strong>all</strong>，则删除特定接口上所有已动态加入的IGMP组记录。</p>
+</li>
+<li><p>若指定<em>group-address</em>参数，则删除指定组地址对应的IGMP组记录。</p>
+</li>
+<li><p>若指定<em>source-address</em>参数，则删除指定源地址对应的IGMP组记录。</p>
+</li>
+<li><p>删除IGMP组记录后，不影响该组的再次加入。</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="reset_igmp_group__d112193e198"></a><a name="d112193e198"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 删除公网实例所有接口上的所有IGMP组记录。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset igmp group all</strong></pre>
+<p># 删除公网实例接口GE1/0/0上的所有IGMP组记录。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset igmp group interface gigabitethernet1/0/0 all</strong></pre>
+<p># 删除公网实例接口GE1/0/0上的组地址225.0.0.1对应的IGMP组记录。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> reset igmp group interface gigabitethernet1/0/0 225.0.0.1</strong></pre>
+<p># 删除公网实例接口GE1/0/0上组地址范围在225.1.1.0到225.1.1.255网段之间的IGMP组记录。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>reset igmp group interface gigabitethernet1/0/0 225.1.1.0 mask 255.255.255.0</strong></strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/igmp_configuration_commands.html">IGMP配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_igmp_group.html">display igmp group</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

@@ -1,0 +1,86 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qinq stacking vid">
+<meta name="DC.Relation" scheme="URI" content="../vrp/qinq_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_qinq_information.html">
+<meta name="DC.Relation" scheme="URI" content="mode_user-termination.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qinq_stacking_vid">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qinq stacking vid</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qinq_stacking_vid"></a><a name="qinq_stacking_vid"></a>
+
+
+<h1 class="topictitle1">qinq stacking vid</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qinq stacking vid</strong>命令用来对进入以太网子接口的用户VLAN Tag上再打上一层Tag，即VLAN Stacking。</p>
+<p><strong>undo qinq stacking vid</strong>命令用来取消对指定接入的用户VLAN Tag进行stacking处理。</p>
+<p>缺省情况下，子接口没有配置Stacking功能。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qinq stacking vid</strong> <em>low-ce-vid</em> [ <strong>to</strong> <em>high-ce-vid</em> ] [ <strong>vlan-group</strong> <em>group-id </em>]</p>
+<p><strong>undo qinq stacking vid</strong> <em>low-ce-vid</em> [ <strong>to</strong> <em>high-ce-vid</em> ] [ <strong>vlan-group</strong> <em>group-id </em>]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>low-ce-vid</em>：CE的VLAN ID（内层Tag的值）取值范围的下限，十进制整数形式，取值范围是1～4094。</p>
+<p><em>high-ce-vid</em>：CE的VLAN ID（内层Tag的值）取值范围的上限，十进制整数形式，取值范围是1～4094。</p>
+<p><strong>vlan-group</strong><em> group-id</em>：用户组号，十进制整数形式，取值范围是1～16。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>Ethernet子接口视图、GE子接口视图、Eth-Trunk子接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>在子接口上使用<strong>qinq stacking vid</strong>命令前，应先在该子接口对应的主接口下配置<a href="mode_user-termination.html">mode user-termination</a>命令，否则系统会提示配置错误。</p>
+<p><strong>qinq stacking vid</strong>命令与<a href="control-vid.html">control-vid</a>命令不能同时存在，因此使用<strong>qinq stacking
+vid</strong>命令前请不要配置<a href="control-vid.html">control-vid</a>命令。</p>
+<p>如果以太网子接口收到的用户报文不带tag，那么该子接口会丢弃该用户报文。</p>
+<p>在同一主接口上，不同的以太网子接口下使用<strong>qinq stacking vid</strong>命令，配置的<strong>ce-vid</strong>的范围不能重叠。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qinq_stacking_vid__d109044e119"></a><a name="d109044e119"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 在GE1/0/0.1子接口上配置VLAN Stacking功能，<em>ce-vid</em>的取值范围是100～200，用户组号为1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet]<strong> mode user-termination</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0.1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1] <strong>vlan-group 1</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1-vlan-group 1] <strong>quit</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0.1]<strong> qinq stacking vid 100 to 200 vlan-group 1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/qinq_configuration_commands.html">QinQ配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_qinq_information.html">display qinq information</a></div>
+<div><a href="mode_user-termination.html">mode user-termination</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

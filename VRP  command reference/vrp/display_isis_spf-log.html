@@ -1,0 +1,230 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display isis spf-log">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_isis_spf-log">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display isis spf-log</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_isis_spf-log"></a><a name="display_isis_spf-log"></a>
+
+
+<h1 class="topictitle1">display isis spf-log</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display isis spf-log</strong>命令用来显示IS-IS的SPF计算日志记录。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display isis spf-log</strong> [ <em>process-id</em> | [ <strong>vpn-instance</strong> { <em>vpn-instance-name</em> | <strong>default</strong> } | <strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> } ] <sup>*</sup> ] [ <strong>ipv6</strong> | [ <strong>level-1</strong> | <strong>level-2</strong> ] | <strong>verbose</strong> ] <sup>*</sup><span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>process-id</em>：IS-IS进程号。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定IPv4 VPN的IS-IS多实例进程。<em>vpn-instance-name</em>为IPv4 VPN实例的名称，字符串形式，区分大小写。</p>
+<p><strong>vpn-instance default</strong>：除IPv4 VPN实例外的所有IS-IS进程，即所有的IPv6
+VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>vpn6-instance</strong> <em>vpn6-instance-name</em>：指定IPv6 VPN的IS-IS多实例进程。<em>vpn6-instance-name</em>为IPv6 VPN实例的名称，字符串形式，区分大小写。</p>
+<p><strong>vpn6-instance default</strong>：除IPv6 VPN实例外的所有IS-IS进程，即所有的IPv4 VPN的IS-IS实例进程和公网IS-IS进程。</p>
+<p><strong>ipv6</strong>：IPv6拓扑的SPF日志。</p>
+<p><strong>level-1</strong>：Level-1的SPF日志。</p>
+<p><strong>level-2</strong>：Level-2的SPF日志。</p>
+<p><strong>verbose</strong>：SPF日志的详细信息。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图 </p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>使用此命令可以查看SPF计算的开始和持续时间，节点数，触发事件等信息。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_isis_spf-log__d36623e179"></a><a name="d36623e179"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 显示SPF计算日志记录信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display isis spf-log</strong></pre>
+<pre class="screen">                        SPF Log information for ISIS(1)
+                        -------------------------------
+                            ISIS(1) Level-1 SPF Log
+                            -----------------------
+ StartTime  Duration  Nodes  Count  Last Trigger LSP      Trigger Event
+--------------------------------------------------------------------------------
+ 15:11:28   0         0      1      NULL                  ISPF_ADJ_STATE_CHG
+ 15:11:6    0         2      2      NULL                  ISPF_CIRC_DR_CHANGE
+ 15:9:30    0         0      4      1111.1111.1111.00-00  TUNNEL_ADJ_UP
+ 15:9:20    0         2      3      NULL                  ISPF_LINK_ADD
+ 15:3:36    0         0      1      NULL                  ISPF_ADJ_STATE_CHG
+ 15:3:15    0         2      2      NULL                  ISPF_CIRC_DR_CHANGE
+ 15:2:30    0         2      3      NULL                  ISPF_LINK_ADD
+ 15:1:40    0         0      1      NULL                  ISPF_ADJ_STATE_CHG
+ 15:1:30    0         2      2      NULL                  ISPF_CIRC_DR_CHANGE
+ 14:2:39    0         1      5      1111.1111.1111.00-00  ISPF_LINK_DEL
+ 13:5:49    0         1      2      NULL                  ISPF_LINK_ADD
+ 13:5:39    0         2      5      NULL                  ISPF_ADJ_PROT_CHG
+ 13:5:17    0         2      2      NULL                  ISPF_CIRC_DR_CHANGE
+ 11:12:19   0         0      3      NULL                  ISPF_2WAY_CHECK
+ 10:27:32   0         0      3      NULL                  ISPF_2WAY_CHECK
+ 9:54:12    0         2      8      NULL                  ISPF_LINK_ADD
+ 9:54:2     0         2      2      NULL                  ISPF_CIRC_DR_CHANGE
+ 9:38:33    0         0      4      1111.1111.1111.00-00  TUNNEL_ADJ_UP
+ 9:38:12    0         0      1      NULL                  ISPF_ADJ_NEXTHOP_CHG
+ 9:38:2     0         2      3      NULL                  ADJDOWN
+</pre>
+
+<div class="tablenoborder"><a name="display_isis_spf-log__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_spf-log__tb_01" frame="border" border="1" rules="all"><caption>表1 display isis spf-log命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="46.170319979843796%" id="d36623e201"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="53.82968002015621%" id="d36623e205"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36623e201 "><p>StartTime</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36623e205 "><p>SPF计算的开始时间</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36623e201 "><p>Duration</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36623e205 "><p>SPF计算时长</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36623e201 "><p>Nodes</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36623e205 "><p>SPF计算的节点数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36623e201 "><p>Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36623e205 "><p>SPF计算触发事件的计数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36623e201 "><p>Last Trigger LSP</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36623e205 "><p>最后一次触发计算的LSP</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="46.170319979843796%" headers="d36623e201 "><p>Trigger Event</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="53.82968002015621%" headers="d36623e205 "><p>最后一次触发SPF计算的事件</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_isis_spf-log__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_isis_spf-log__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.386747291509195%" id="d36623e293"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.6132527084908%" id="d36623e297"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36623e293 "><p>VRPV500R005C01B120</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36623e297 "><p>增加参数<strong>vpn-instance default</strong>，<strong>vpn6-instance</strong> { <em>vpn6-instance-name</em> | <strong>default</strong> }。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36623e293 "><p>VRPV500R005C02B101</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36623e297 "><p>增加了4个参数：<strong>ipv6</strong>，<strong>level-1</strong>，<strong>level-2</strong>和<strong>verbose</strong>。 </p>
+<p>修改了命令显示信息。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="35.386747291509195%" headers="d36623e293 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.6132527084908%" headers="d36623e297 "><p>增加使用正则表达式过滤输出信息的参数。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

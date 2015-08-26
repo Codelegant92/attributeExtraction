@@ -1,0 +1,79 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="isis circuit-level">
+<meta name="DC.Relation" scheme="URI" content="../vrp/is-is_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="is-level.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="isis_circuit-level">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>isis circuit-level</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="isis_circuit-level"></a><a name="isis_circuit-level"></a>
+
+
+<h1 class="topictitle1">isis circuit-level</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>isis circuit-level</strong>命令用来设置接口链路类型。</p>
+<p><strong>undo isis
+circuit-level</strong>命令用来恢复接口链路类型的缺省设置。</p>
+<p>缺省情况下，接口链路类型为Level-1-2，可以同时建立Level-1和Level-2的邻接关系。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>isis circuit-level</strong> [ <strong>level-1</strong> | <strong>level-1-2</strong> | <strong>level-2</strong> ]</p>
+<p><strong>undo</strong> <strong>isis circuit-level</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>level-1</strong>：设置接口链路类型为Level-1，即在本接口只能建立Level-1的邻接关系，不能建立Level-2的邻接关系。</p>
+<p><strong>level-1-2</strong>：设置接口链路类型为Level-1-2，即在本接口可以同时建立Level-1和Level-2邻接关系。</p>
+<p><strong>level-2</strong>：设置接口链路类型为Level-2，即在本接口只能建立Level-2邻接关系。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>接口视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果本机是Level-1-2路由器，需要和对端路由器建立某个层次（Level-1或Level-2）的关联关系，那么这个命令就可以规定本接口只发送和接收该层次的Hello报文。当然，在点到点链路上只能发送和接收一种类型的Hello报文。通过这种方式，可以避免过多的处理过程，节省带宽。</p>
+<p>只有在IS-IS系统类型为Level-1-2时，接口下的circuit level才起作用，否则以<strong>is-level</strong>命令规定的级别为准。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="isis_circuit-level__d86926e74"></a><a name="d86926e74"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 当接口GigabitEthernet1/0/0和同一区域内的非骨干路由器相连时，设置这个接口为Level-1属性，同时禁止发送和接收Level-2
+Hello报文。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>system-view</strong></pre>
+<pre class="screen">[Quidway] <strong>interface gigabitethernet 1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>isis enable</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0] <strong>isis circuit-level level-1</strong></pre>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/is-is_configuration_commands.html">IS-IS配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="is-level.html">is-level</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

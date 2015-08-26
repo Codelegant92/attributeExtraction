@@ -1,0 +1,207 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display cfm error-info">
+<meta name="DC.Relation" scheme="URI" content="../vrp/ethernet_oam_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="cfm_enable_system_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_cfm_error-info">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display cfm error-info</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_cfm_error-info"></a><a name="display_cfm_error-info"></a>
+
+
+<h1 class="topictitle1">display cfm error-info</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display cfm error-info </strong>命令用来查看符合指定条件的配置错误信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display cfm error-info </strong>[ <strong>ingterface </strong><em> interface-type
+interface-number </em>] [<strong> vlan </strong><em>vlanid </em>| <strong> vsi </strong><em>vsi-name </em>]
+[<strong> error-type </strong>{<strong> ccm-interval-error </strong>|<strong> maid-error </strong>|<strong> mac-error </strong>|<strong> cfm-leak </strong>}
+]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>interface </strong><em> interface-type interface-number</em>：显示指定接口名称、接口类型和接口编号的详细信息。接口类型包括：Ethernet接口、Eth-Trunk接口和GE接口。</p>
+<p><strong>vlan</strong><em> vlanid</em>：指定VLAN的ID。整数形式，取值范围是1～4094。</p>
+<p><strong>vsi</strong><em>vsi-name</em>：指定VSI名称。字符串形式，不支持空格，区分大小写，取值范围是1～31。</p>
+<p><strong>ccm-interval-error</strong>：CCM报文发送间隔时间不匹配。</p>
+<p><strong>maid-error</strong>：MA ID不匹配。</p>
+<p><strong>mac-error</strong>：源MAC地址不匹配。</p>
+<p><strong>cfm-leak</strong>：CCM报文泄漏。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>现如今，802.1ag协议分为draft7草案版本和standard2007标准版本，本命令只支持standard2007标准版本使用。</p>
+<p>当网络或设备的CFM功能出现问题时，可使用本命令查看错误的配置信息。得到的错误信息可作为定位问题的依据之一。</p>
+<p>使用<a href="cfm_enable_system_view.html">cfm enable（系统视图）</a>命令全局使能CFM功能后才能使用本命令。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_cfm_error-info__d18578e107"></a><a name="d18578e107"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看指定接口上，指定错误类型的错误信息。</p>
+<pre class="screen">&lt;Quidway&gt; <strong>display cfm error-info interface gigabitethernet1/0/2 error-type cfm-leak</strong></pre>
+<pre class="screen"> The total number of Errors is : 1
+ ----------------------------------------
+ Interface           : gigabitethernet1/0/2
+ VLAN ID             : 100
+ VSI Name            : --
+ Error Type          : ccm-interval-error cfm-leak
+ MD Name             : md1
+ MA Name             : ma1
+ Level               : 3
+ MEP ID              : 10
+ CCM-Interval        : 20
+ MAC Address         : 0018-8247-b977
+</pre>
+
+<div class="tablenoborder"><a name="display_cfm_error-info__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_cfm_error-info__tb_01" frame="border" border="1" rules="all"><caption>表1 display cfm ma命令输出信息描述表</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="33.93801965230537%" id="d18578e129"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="66.06198034769464%" id="d18578e133"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18578e129 "><p>Interface</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18578e133 "><p>接口名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18578e129 "><p>VLAN ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18578e133 "><p>指定的VLAN ID。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18578e129 "><p>VSI Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18578e133 "><p>指定的VSI名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18578e129 "><p>Error Type</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18578e133 "><div class="p">错误信息类型，取值可能是以下类型中的一个或多个：<ul>
+<li>ccm-interval-error</li>
+<li>maid-error</li>
+<li>mac-error</li>
+<li>cfm-leak</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18578e129 "><p>MD Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18578e133 "><p>报文中的MD名称</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18578e129 "><p>MA Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18578e133 "><p>报文中的MA名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18578e129 "><p>Level</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18578e133 "><p>报文的级别。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18578e129 "><p>MEP ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18578e133 "><p>报文的MEP节点标识。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18578e129 "><p>CCM-Interval</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18578e133 "><p>CCM报文发送间隔。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="33.93801965230537%" headers="d18578e129 "><p>MAC Address</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="66.06198034769464%" headers="d18578e133 "><p>报文中的MAC地址。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/ethernet_oam_configuration_commands.html">以太网OAM配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="cfm_enable_system_view.html">cfm enable（系统视图）</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

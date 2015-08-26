@@ -1,0 +1,69 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="qos cql queue serving">
+<meta name="DC.Relation" scheme="URI" content="../vrp/congestion_management_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="qos_cql_default-queue.html">
+<meta name="DC.Relation" scheme="URI" content="qos_cql_inbound-interface.html">
+<meta name="DC.Relation" scheme="URI" content="qos_cql_protocol.html">
+<meta name="DC.Relation" scheme="URI" content="qos_cql_queue.html">
+<meta name="DC.Relation" scheme="URI" content="qos_cq.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="qos_cql_queue_serving">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>qos cql queue serving</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="qos_cql_queue_serving"></a><a name="qos_cql_queue_serving"></a>
+
+<h1 class="topictitle1">qos cql queue serving</h1>
+<div><div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>qos cql queue serving</strong>命令用来设置各队列每次轮询所发送数据包的字节数。</p>
+<p><strong>undo qos cql queue serving</strong>命令用来恢复发送数据包数的缺省值。</p>
+</div></div>
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>qos cql </strong><em>cql-index</em><strong> queue</strong><em> queue-number </em><strong>serving</strong> <em>byte-count</em></p>
+<p><strong>undo</strong> <strong>qos cql </strong><em>cql-index</em><strong> queue</strong><em> queue-number </em><strong>serving</strong></p>
+</div></div>
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>cql-index</em>：定制列表的组号，取值范围是1～16。</p>
+<p><em>queue-number</em>：队列号，取值范围是1～16。</p>
+<p><em>byte-count</em>：队列每次轮询所发送数据包的字节数，取值范围是1～16777215，缺省值为1500字节。</p>
+</div></div>
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>系统根据用户定义的字节数决定各队列调度时占用的带宽比例。如果有队列为空，剩余队列就按照带宽比例将该队列带宽分配。</p>
+</div></div>
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="qos_cql_queue_serving__d109497e67"></a><a name="d109497e67"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 指定定制列表中的第5组队列2，每次轮询所发送得字节数为1400。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> <strong>system-view</strong></strong></pre>
+<pre class="screen">[Quidway]<strong> qos cql 5 queue 2 serving 1400</strong></pre>
+</div></div></div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/congestion_management_configuration_commands.html">拥塞管理配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="qos_cql_default-queue.html">qos cql default-queue</a></div>
+<div><a href="qos_cql_inbound-interface.html">qos cql inbound-interface</a></div>
+<div><a href="qos_cql_protocol.html">qos cql protocol</a></div>
+<div><a href="qos_cql_queue.html">qos cql queue</a></div>
+<div><a href="qos_cq.html">qos cq</a></div>
+</div>
+</div>
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

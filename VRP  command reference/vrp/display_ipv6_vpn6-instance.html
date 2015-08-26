@@ -1,0 +1,364 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display ipv6 vpn6-instance">
+<meta name="DC.Relation" scheme="URI" content="../vrp/bgp_mpls_ipv6_vpn_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="ipv6_vpn6-instance.html">
+<meta name="DC.Relation" scheme="URI" content="apply-label_per-instance_ipv6_vpn_instance_view.html">
+<meta name="DC.Relation" scheme="URI" content="description_ipv6_vpn_instance_view.html">
+<meta name="DC.Relation" scheme="URI" content="export_route-policy_ipv6_vpn_instance_view.html">
+<meta name="DC.Relation" scheme="URI" content="import_route-policy_ipv6_vpn_instance_view.html">
+<meta name="DC.Relation" scheme="URI" content="route-distinguisher_ipv6_vpn_instance_view.html">
+<meta name="DC.Relation" scheme="URI" content="routing-table_limit_ipv6_vpn_instance_view.html">
+<meta name="DC.Relation" scheme="URI" content="tnl-policy_ipv6_vpn_instance_view.html">
+<meta name="DC.Relation" scheme="URI" content="vpn-target_ipv6_vpn_instance_view.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_ipv6_vpn6-instance">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display ipv6 vpn6-instance</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_ipv6_vpn6-instance"></a><a name="display_ipv6_vpn6-instance"></a>
+
+
+<h1 class="topictitle1">display ipv6 vpn6-instance</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display ipv6 vpn6-instance</strong>命令用来查看VPN实例信息。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display ipv6 vpn6-instance</strong> [ <strong>brief</strong> | <strong>verbose</strong> ] [ <em>vpn6-instance-name </em>]<span><span> [<strong> | count</strong> ]</span> [ <strong>|</strong> { <strong>begin</strong> | <strong>exclude</strong> | <strong>include</strong> } <em>regular-expression</em> ]</span></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>brief</strong>：显示IPv6 VPN实例的简要信息。</p>
+<p><strong>verbose</strong>：显示IPv6
+VPN实例和关联接口的详细信息。</p>
+<p><em>vpn6-instance-name</em>：IPv6 VPN实例的名称，字符串形式，区分大小写，长度范围是1～31。</p>
+<p><strong>|</strong>：使用正则表达式对输出信息进行过滤。</p>
+<p><strong>count</strong>：统计符合输出条件的信息行数。</p>
+<p><strong>begin</strong>：从包含匹配字符串的行开始输出。</p>
+<p><strong>exclude</strong>：只输出不包含匹配字符串的行。</p>
+<p><strong>include</strong>：只输出包含匹配字符串的行。</p>
+<p><em>regular-expression</em>：对输出信息进行匹配的正则表达式。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>完成IPv6 VPN实例的配置时，可用<strong>display ipv6 vpn6-instance</strong>命令检查IPv6
+VPN实例的配置情况。还可以用此命令查看本设备上配置了哪些IPv6 VPN实例。</p>
+<p>如果不指定可选参数，此命令将显示本设备所有IPv6
+VPN实例的简要信息。</p>
+<p>当显示信息太多不方便查看时，可以选择<strong>begin</strong>、<strong>exclude</strong>或<strong>include</strong>参数指定匹配条件来过滤显示信息。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_ipv6_vpn6-instance__d34956e119"></a><a name="d34956e119"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查看本<span class="keyword">路由器</span>上所有IPv6 VPN实例的简要信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipv6 vpn6-instance</strong></pre>
+<pre class="screen">  Total VPN6-Instances configured : 2</pre>
+
+<pre class="screen">  VPN6-Instance Name               RD                   Creation Time</pre>
+<pre class="screen">  vpn6                            100:1                2006/08/24 10:04:48</pre>
+<pre class="screen">  vpn1                            100:2                2006/08/24 11:42:46</pre>
+
+<div class="tablenoborder"><a name="display_ipv6_vpn6-instance__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_vpn6-instance__tb_01" frame="border" border="1" rules="all"><caption>表1 display ipv6 vpn6-instance命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="40.15669692824276%" id="d34956e151"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="59.84330307175725%" id="d34956e155"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e151 "><p>Total VPN-Instances configured</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e155 "><p>表示本端配置的IPv6 VPN实例总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e151 "><p>VPN6-Instance Name</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e155 "><p>表示VPN实例的名称。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e151 "><p>RD</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e155 "><p>表示该VPN实例的路由标志符，具体请参见命令<a href="route-distinguisher_ipv6_vpn_instance_view.html">route-distinguisher(IPv6
+VPN实例视图)</a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e151 "><p>Creation Time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e155 "><p>显示创建该IPv6 VPN实例的具体时间。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipv6 vpn6-instance brief</strong></pre>
+<pre class="screen">  Total VPN-Instances configured : 1</pre>
+<pre class="screen">  VPN-Instance Name               RD                Creation Time</pre>
+<pre class="screen">  vpna                            200:1             2006/11/20 14:41:28</pre>
+<p># 查看所有VPN实例的详细信息。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display ipv6 vpn6-instance verbose</strong></pre>
+<pre class="screen">  VPN6-Instance Name and ID : vpn1, 1</pre>
+<pre class="screen">  Create date : 2006/11/20 14:41:28</pre>
+<pre class="screen">  Up time : 0 days, 00 hours, 11 minutes and 00 seconds</pre>
+<pre class="screen">  Route Distinguisher : 1:1</pre>
+<pre class="screen">  Export VPN Targets :  1:1</pre>
+<pre class="screen">  Import VPN Targets :  1:1</pre>
+<pre class="screen">  Label policy : label per route</pre>
+<pre class="screen">  Import Route Policy : p1</pre>
+<pre class="screen">  Export Route Policy : p2</pre>
+<pre class="screen">  Tunnel Policy : tnlpolicy1</pre>
+<pre class="screen">  Description : This is a VPN for company1.</pre>
+<pre class="screen">  Maximum Routes Limit : 100</pre>
+<pre class="screen">  Interfaces : GigabitEthernet1/0/0</pre>
+
+<div class="tablenoborder"><a name="display_ipv6_vpn6-instance__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_vpn6-instance__tb_02" frame="border" border="1" rules="all"><caption>表2 display ipv6 vpn6-instance verbose命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="40.15669692824276%" id="d34956e267"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="59.84330307175725%" id="d34956e271"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Total VPN-Instances configured</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>表示本端配置的IPv6 VPN实例总数。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>VPN-Instance Name and ID</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>表示IPv6 VPN实例的名称和标识号。标识号是系统分配的，便于查找。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Create date</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>显示创建该IPv6 VPN实例的具体时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Up time</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>该IPv6 VPN实例处于可用状态的持续时间。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Route Distinguisher</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>表示该IPv6 VPN实例的路由标志符，具体请参见命令<a href="route-distinguisher_ipv6_vpn_instance_view.html">route-distinguisher(IPv6
+VPN实例视图)</a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Export VPN Targets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>表示该IPv6 VPN实例发出的路由扩展团体列表，具体请参见命令<a href="vpn-target_ipv6_vpn_instance_view.html">vpn-target</a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Import VPN Targets</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>表示该IPv6 VPN实例收到的路由扩展团体列表，具体请参见命令<a href="vpn-target_ipv6_vpn_instance_view.html">vpn-target</a>。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Label policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><div class="p">标签策略：<ul>
+<li><p>label per route表示给每一条路由都分配一个标签</p>
+；</li>
+<li><p>label per instance表示同一个VPN实例的所有路由共用一个标签</p>
+。</li>
+</ul>
+</div>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Import Route Policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>应用于该IPv6 VPN实例的入方向路由策略。只有配置了<a href="import_route-policy_ipv6_vpn_instance_view.html">import route-policy(IPv6
+VPN实例视图)</a>命令才有该显示项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Export Route Policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>应用于该IPv6 VPN实例的出方向路由策略。只有配置了<a href="export_route-policy_ipv6_vpn_instance_view.html">export route-policy(IPv6
+VPN实例视图)</a>命令才有该显示项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Tunnel Policy</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>应用于该IPv6 VPN实例的隧道策略。只有配置了<a href="tnl-policy_ipv6_vpn_instance_view.html">tnl-policy</a>命令才有该显示项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Description</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>IPv6 VPN实例的描述信息。只有配置了<a href="description_ipv6_vpn_instance_view.html">description</a>命令才有该显示项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Maximum Routes Limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>IPv6 VPN实例支持的最大路由数。只有配置了<a href="routing-table_limit_ipv6_vpn_instance_view.html">routing-table
+limit</a>命令才有该显示项。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="40.15669692824276%" headers="d34956e267 "><p>Interfaces</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="59.84330307175725%" headers="d34956e271 "><p>表示绑定了该IPv6 VPN实例的接口。只有配置了<a href="ipv6_binding_vpn6-instance.html">ipv6 binding vpn6-instance</a>命令才有该显示项。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_ipv6_vpn6-instance__tb_02_1"></a><a name="tb_02_1"></a><table cellpadding="4" cellspacing="0" summary="" id="display_ipv6_vpn6-instance__tb_02_1" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="35.338345864661655%" id="d34956e486"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="64.66165413533834%" id="d34956e490"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="35.338345864661655%" headers="d34956e486 "><p>VRPV500R006C01B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="64.66165413533834%" headers="d34956e490 "><p>增加<strong>begin</strong>、<strong>exclude</strong>和<strong>include</strong>来过滤显示信息。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/bgp_mpls_ipv6_vpn_configuration_commands.html">BGP/MPLS IPv6 VPN配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="ipv6_vpn6-instance.html">ipv6 vpn6-instance</a></div>
+<div><a href="apply-label_per-instance_ipv6_vpn_instance_view.html">apply-label per-instance</a></div>
+<div><a href="description_ipv6_vpn_instance_view.html">description(IPv6
+VPN实例视图)</a></div>
+<div><a href="export_route-policy_ipv6_vpn_instance_view.html">export route-policy(IPv6 VPN实例视图)</a></div>
+<div><a href="import_route-policy_ipv6_vpn_instance_view.html">import route-policy(IPv6 VPN实例视图)</a></div>
+<div><a href="route-distinguisher_ipv6_vpn_instance_view.html">route-distinguisher(IPv6 VPN实例视图)</a></div>
+<div><a href="routing-table_limit_ipv6_vpn_instance_view.html">routing-table limit(IPv6 VPN实例视图)</a></div>
+<div><a href="tnl-policy_ipv6_vpn_instance_view.html">tnl-policy</a></div>
+<div><a href="vpn-target_ipv6_vpn_instance_view.html">vpn-target</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

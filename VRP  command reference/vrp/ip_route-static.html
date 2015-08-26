@@ -1,0 +1,150 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="ip route-static">
+<meta name="DC.Relation" scheme="URI" content="../vrp/static_route_configuration_commands.html">
+<meta name="DC.Relation" scheme="URI" content="display_ip_routing-table.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ip_route-static">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>ip route-static</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ip_route-static"></a><a name="ip_route-static"></a>
+
+
+<h1 class="topictitle1">ip route-static</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>ip route-static</strong>命令用来配置单播静态路由。</p>
+<p><strong>undo ip route-static</strong>命令用来删除配置的单播静态路由。</p>
+<p>缺省情况下，系统没有配置IPv4单播静态路由。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>ip route-static</strong> <em>ip-address</em> { <em>mask</em> | <em>mask-length</em> } { <em>nexthop-address</em> | <em>interface-type interface-number</em> [ <em>nexthop-address</em> ] } [<strong> preference</strong> <em>preference</em> ] [ <strong>tag</strong> <em>tag</em> ] <span> [ <strong>track</strong> { <strong>bfd-session</strong> <em>cfg-name</em> | <strong>efm-state</strong> <em>interface-type</em> <em>interface-number</em> } ]</span> [<strong> description</strong> <em>text</em> ]</p>
+<p><strong>ip route-static</strong> <em>ip-address</em> { <em>mask</em> | <em>mask-length</em> } <strong>vpn-instance</strong> <em>vpn-instance-name nexthop-address</em> [<strong> preference</strong> <em>preference</em> ] [ <strong>tag</strong> <em>tag</em> ] <span> [ <strong>track</strong> { <strong>bfd-session</strong> <em>cfg-name</em> | <strong>efm-state</strong> <em>interface-type</em> <em>interface-number</em> } ]</span> [<strong> description</strong> <em>text</em> ]</p>
+<p><strong>undo ip route-static</strong> <em>ip-address</em> { <em>mask</em> | <em>mask-length</em> } [ <em>nexthop-address</em> | <em>interface-type interface-number</em> [ <em>nexthop-address</em> ] ] [ <strong>preference</strong> <em>preference</em> ] [ <strong>tag</strong> <em>tag</em> ] <span> [ <strong>track</strong> { <strong>bfd-session</strong> | <strong>efm-state</strong> } ]</span></p>
+<p><strong>undo ip route-static</strong> <em>ip-address</em> { <em>mask</em> | <em>mask-length</em> } <strong>vpn-instance</strong> <em>vpn-instance-name</em> <em>nexthop-address</em> [ <strong>preference</strong> <em>preference</em> ] [ <strong>tag</strong> <em>tag</em> ] <span> [ <strong>track</strong> { <strong>bfd-session</strong> | <strong>efm-state</strong> } ]</span></p>
+<p><strong>undo ip route-static</strong> [ <strong>track bfd-session</strong> ] <strong>all</strong></p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><em>ip-address</em>：目的IP地址，点分十进制格式。</p>
+<p><em>mask</em>：IP地址的掩码，点分十进制格式。</p>
+<p><em>mask-length</em>：掩码长度。因为32位的掩码要求&#8220;1&#8221;是连续的，点分十进制格式的掩码可以用掩码长度代替。</p>
+<p><em>interface-type interface-number</em>：指定路由转发报文的接口类型和接口号。</p>
+<p><em>nexthop-address</em>：指定路由的下一跳的IP地址，点分十进制格式。</p>
+<p><strong>vpn-instance</strong> <em>vpn-instance-name</em>：指定VPN实例的名称。如果指定了VPN实例的名称，静态路由将根据配置的<em>nexthop-address</em>在VPN实例路由表中查找出接口。</p>
+<p><strong>preference</strong> <em>preference</em>：指定静态路由协议的优先级。整数形式，取值范围是1～255。缺省值是60。</p>
+<p><strong>tag</strong> <em>tag</em>：指定静态路由的tag属性值。整数形式，取值范围是1～4294967295。缺省值是0。配置不同的tag属性值，可对静态路由进行分类，以实现不同的路由管理策略。例如，其它协议引入静态路由时，可通过路由策略引入具有特定tag属性值的路由。</p>
+<p><strong>efm-state</strong> <em>interface-type</em> <em>interface-number</em>：检测指定接口的EFM OAM状态。</p>
+<p><strong>track</strong> <strong>bfd-session</strong> <em>cfg-name</em>：为静态路由绑定BFD会话。<em>cfg-name</em>：字符串形式，不支持空格，长度范围是1～15。</p>
+<p><strong>description</strong> <em>text</em>：静态路由的描述信息。字符串形式，支持空格，取值范围是1～19。</p>
+<p><strong>all</strong>：删除所有IPv4单播静态路由。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>系统视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>2：配置级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>配置单播静态路由时应注意以下几点：</p>
+<ul>
+<li><p>如果目的IP地址和掩码都为0.0.0.0，配置的路由为缺省路由。</p>
+</li>
+<li><p>配置不同的优先级，可实现不同的路由管理策略。例如，为同一目的地配置多条路由，如果指定相同的优先级，则实现路由负载分担；如果指定不同的优先级，则实现路由备份。</p>
+</li>
+<li><p>配置静态路由时，可根据实际需要指定出接口或下一跳地址。对于支持从网络地址到链路层地址的解析的接口或点到点接口，可指定出接口或下一跳地址。然而，不包括支持点到多点的NBMA接口，如用X.25或帧中继封装的接口或拨号接口。在链路层除了要配置IP路由，还要配置从路由，即从IP地址到链路层地址的映射（如<strong>dialer map ip</strong>、<strong>x.25 map ip</strong>或<strong>frame-relay map ip</strong>）。在这种情况下，配置静态路由时，不能指定出接口只能设置下一跳地址。</p>
+</li>
+
+<li><p>如果出接口类型为广播类型，则必须指定下一跳地址。</p>
+</li>
+</ul>
+<p>在某些情况下，如链路层被PPP封装，即使不知道对端地址，也可以在路由器配置时指定出接口。这样，即使对端地址发生了改变也无须改变该路由器的配置。</p>
+<p>配置<strong>description</strong> <em>text</em>参数，可为静态路由增加描述信息，方便管理员查看和维护静态路由。该描述信息可通过命令<strong>display this</strong>（系统视图）和命令<strong>display current-configuration</strong>查看。</p>
+<p>配置<strong>track</strong> <strong>bfd-session</strong> <em>cfg-name</em>参数可配置BFD for静态路由特性，为静态路由绑定BFD会话。通过BFD会话检测链路状态，为静态路由提供检测机制。</p>
+<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><ul>
+<li><p>产品NE40E、NE80E、NE5000E支持BFD for静态路由特性。</p>
+</li>
+<li><p>静态路由不支持重复绑定BFD会话，如果需要绑定其他会话时，需要先解除静态路由与当前BFD会话的绑定关系，才能再次绑定另一个会话。</p>
+</li>
+</ul>
+</div></div>
+<p>配置<strong>track</strong> <strong>efm-state</strong>后，系统响应指定接口的EFM主/备、UP/DOWN事件，决定是否激活静态路由，由此控制路由的发布并引导远端的流量。此命令仅用于IPv4网络，IPv6网络不提供对应的联动功能。</p>
+<div class="p">该命令所要检测的接口必须是ETH或GE类型，并且同一个接口的EFM状态关联的静态路数目最多为4096条。<div class="note"><img src="../public_sys-resources/icon-note.gif"><span class="notetitle"> 说明： </span><div class="notebody"><strong>track bfd-session</strong>与<strong>track efm-state</strong>互斥，即静态路由不能同时与BFD、EFM联动。</div></div>
+</div>
+<p>静态路由一旦与BFD会话或某接口的EFM状态相关联，则不允许对该路由的BFD会话或EFM接口状态关联进行修改，除非先解除与BFD会话或EFM接口状态的关联。</p>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="ip_route-static__d84540e418"></a><a name="d84540e418"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 配置缺省路由，指定下一跳为172.16.0.1。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> ip route-static 0.0.0.0 0.0.0.0 172.16.0.1</strong></pre>
+<p># 配置静态路由与EFM OAM联动。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> system-view</strong></pre>
+<pre class="screen">[Quidway]<strong> efm enable</strong></pre>
+<pre class="screen">[Quidway]<strong> interface gigabitethernet1/0/0</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> efm enable</strong></pre>
+<pre class="screen">[Quidway-GigabitEthernet1/0/0]<strong> quit</strong></pre>
+<pre class="screen">[Quidway]<strong> ip route-static 1.1.1.1 32 track efm-state gigabitethernet1/0/0</strong></pre>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="50%" id="d84540e467"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="50%" id="d84540e471"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="50%" headers="d84540e467 "><p>VRPV500R006C02B010</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="50%" headers="d84540e471 "><p>新增<strong>efm-state</strong>参数</p>
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/static_route_configuration_commands.html">静态路由配置命令</a></div>
+</div>
+<div class="relinfo"><strong>相关主题</strong><br>
+<div><a href="display_ip_routing-table.html">display ip routing-table</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>

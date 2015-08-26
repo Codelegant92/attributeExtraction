@@ -1,0 +1,203 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="cliref">
+<meta name="DC.Title" content="display arp packet statistics">
+<meta name="DC.Relation" scheme="URI" content="../vrp/arp_security_commands.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="display_arp_packet_statistics">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<script language="javascript" type="text/javascript" src="../public_sys-resources/ExpandCollapse.js"></script><title>display arp packet statistics</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="display_arp_packet_statistics"></a><a name="display_arp_packet_statistics"></a>
+
+
+<h1 class="topictitle1">display arp packet statistics</h1>
+
+<div>
+<div class="clifunc"><h2 class="sectiontitle">命令功能</h2>
+<div class="clifuncbody"><p><strong>display arp packet statistics</strong>命令用来查询ARP报文的统计数据。</p>
+</div></div>
+
+<div class="cliformat"><h2 class="sectiontitle">命令格式</h2>
+<div class="cliformatbody"><p><strong>display arp packet statistics</strong> [ <strong>slot</strong> <em>slot-id</em> ]</p>
+</div></div>
+
+<div class="cliparam"><h2 class="sectiontitle">参数说明</h2>
+<div class="cliparambody"><p><strong>slot</strong> <em>slot-id</em>：当前在位的接口板的槽位号。</p>
+</div></div>
+
+<div class="cliview"><h2 class="sectiontitle">视图</h2>
+<div class="cliviewbody"><p>所有视图</p>
+</div></div>
+
+<div class="clidefaultlevel"><h2 class="sectiontitle">缺省级别</h2>
+<div class="clidefaultlevelbody"><p>1：监控级</p>
+</div></div>
+
+<div class="clidesc"><h2 class="sectiontitle">使用指南</h2>
+<div class="clidescbody"><p>如果不指定接口板槽号，则显示各接口板上ARP报文的统计信息。如果指定接口板槽号，则显示指定接口板上ARP报文的统计信息。</p>
+<p>ARP报文的统计信息包括：</p>
+<ul>
+<li><p>收到的ARP报文数目</p>
+</li>
+<li><p>丢弃的ARP报文数目(包括时间戳抑制导致的ARP报文，时间戳抑制包括对ARP报文和ARP Miss消息的时间戳抑制)</p>
+</li>
+<li><p>学习ARP的次数</p>
+</li>
+</ul>
+</div></div>
+
+<div class="dropdowncollapse"><div class="dropdowntitle" onclick="ExpandorCollapseNode(this)"><a name="display_arp_packet_statistics__d12961e65"></a><a name="d12961e65"></a><h2 class="sectiontitle">使用实例</h2></div>
+<div class="dropdowncontext"><div class="cliexamplebody"><p># 查询所有ARP统计情况。</p>
+<pre class="screen">&lt;Quidway&gt;<strong> display arp packet statistics</strong></pre>
+<pre class="screen">ARP Pkt Received                       :   sum     23</pre>
+<pre class="screen">ARP-Miss Msg Received                  :   sum      0</pre>
+<pre class="screen">ARP Learnned Count                     :   sum      8</pre>
+<pre class="screen">ARP Pkt Discard For Limit              :   sum      5</pre>
+<pre class="screen">ARP Pkt Discard For SpeedLimit         :   sum      0</pre>
+<pre class="screen">ARP Pkt Discard For Other              :   sum     10</pre>
+<pre class="screen">ARP-Miss Msg Discard For SpeedLimit    :   sum      0</pre>
+<pre class="screen">ARP-Miss Msg Discard For Other         :   sum      0      </pre>
+
+<div class="tablenoborder"><a name="display_arp_packet_statistics__tb_01"></a><a name="tb_01"></a><table cellpadding="4" cellspacing="0" summary="" id="display_arp_packet_statistics__tb_01" frame="border" border="1" rules="all"><caption>表1 display arp packet statistics命令输出信息描述</caption>
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="45.52426452099572%" id="d12961e101"><p>项目</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="54.47573547900427%" id="d12961e105"><p>描述</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12961e101 "><p>ARP Pkt Received</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12961e105 "><p>收到的ARP报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12961e101 "><p>ARP-Miss Msg Received</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12961e105 "><p>收到的ARP Miss报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12961e101 "><p>ARP Learnned Count</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12961e105 "><p>学习到的ARP表项数目</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12961e101 "><p>ARP Pkt Discard For Limit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12961e105 "><p>ARP限制丢弃的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12961e101 "><p>ARP Pkt Discard For SpeedLimit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12961e105 "><p>时间戳抑制丢弃的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12961e101 "><p>ARP Pkt Discard For Other</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12961e105 "><p>其他原因丢弃的报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12961e101 "><p>ARP-Miss Msg Discard For SpeedLimit</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12961e105 "><p>时间戳抑制丢弃的ARP Miss报文数</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="45.52426452099572%" headers="d12961e101 "><p>ARP-Miss Msg Discard For Other</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="54.47573547900427%" headers="d12961e105 "><p>其他原因丢弃的ARP Miss报文数</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div></div>
+
+<div class="clihistory"><h2 class="sectiontitle">历史记录</h2>
+<div class="clihistorybody">
+<div class="tablenoborder"><a name="display_arp_packet_statistics__tb_02"></a><a name="tb_02"></a><table cellpadding="4" cellspacing="0" summary="" id="display_arp_packet_statistics__tb_02" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="32.675383454865475%" id="d12961e215"><p>版本</p>
+</th>
+
+<th class="cellrowborder" valign="top" width="67.32461654513453%" id="d12961e219"><p>修订内容</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="32.675383454865475%" headers="d12961e215 "><p>VRPV500R005C02B160</p>
+</td>
+
+<td class="cellrowborder" valign="top" width="67.32461654513453%" headers="d12961e219 "><p>命令行关键字变更：<strong>statistic</strong>改为<strong>statistics</strong>。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div></div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../vrp/arp_security_commands.html">ARP安全命令</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为所有和机密</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div></body>
+</html>
