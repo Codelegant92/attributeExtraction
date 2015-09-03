@@ -1,4 +1,5 @@
 __author__ = 'yangchen'
+import re
 def wordSegment(filePath):
     f = open(filePath)
     lineList = []
@@ -18,23 +19,65 @@ def readLibrary(path):
     f = open(path)
     commandList = []
     for lines in f:
-        commandList.append(lines.strip('\n'))
+        commandList.append(lines.strip())
     return(commandList)
+
+def findAllIndex(longStr, subStr):
+    i = 0
+    l = len(longStr)
+    s = len(subStr)
+    offsetList = []
+    while(i < l and longStr[i:].find(subStr) != -1):
+        offsetList.append(i + longStr[i:].find(subStr))
+        i = offsetList[-1]+s
+    return(offsetList)
 
 def commandsMatch(filePath):
     commandList = readLibrary('AllCommandersOutput.txt')
     occurredCommand = []
     f = open(filePath)
+    count=0
     for lines in f:
+        count += 1
+        commandDict1 = dict()
+        commandDict2 = dict()
         for command in commandList:
-            if(lines.find(command+' ') != -1):
-                occurredCommand.append(command)
-                break
-    occurredCommand = set(occurredCommand)
-    print(list(occurredCommand))
+            offsetList = findAllIndex(lines, command)
+            length = len(command)
+            if(len(offsetList) > 0):
+                for offset in offsetList:
+                    if(offset == 0 and (lines[length] == ' ' or lines[length] == '\n')):
+                        if(offset in commandDict1.keys()):
+                            commandDict1[offset].append(command)
+                        else:
+                            commandDict1[offset] = []
+                            commandDict1[offset].append(command)
 
-filePath = './atla'
+                    elif(offset > 0 and lines[offset-1] == ' ' and (lines[offset + length] == ' ' or lines[offset + length] == '\n')):
+                        if(len(commandDict2) == 0):
+                            commandDict2[offset] = []
+                            commandDict2[offset].append(command)
+                        else:
+                            if(offset in commandDict2.keys()):
+                                commandDict2[offset].append(command)
+                            else:
+                                commandDict2[offset] = []
+                                commandDict2[offset].append(command)
+
+        print(count, commandDict1, commandDict2)
+        for keys in commandDict1:
+            occurredCommand.append(commandDict1[keys][-1])
+        for keys in commandDict2:
+            occurredCommand.append(commandDict2[keys][-1])
+    return(list(set(occurredCommand)))
+
+filePath = 'sample0(1).cfg'
+filePath1 = 'atla'
 #expressionList, attribute = wordSegment(filePath)
 #print(expressionList)
 #print(attribute)
-commandsMatch(filePath)
+result = commandsMatch(filePath1)
+
+sorted(result)
+print(len(result))
+print(result)

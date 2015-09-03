@@ -11,10 +11,11 @@ filefolder="VRP  command reference/vrp"
 Output=[]
 filelist=os.listdir(filefolder)
 filelist.remove(".DS_Store")
+filelist.remove("images")
 
 for eachfile in filelist:
 
-    inputhtml=open(os.path.join(os.getcwd(),filefolder)+"/"+eachfile,"rb").readlines()
+    inputhtml=open(filefolder + "/"+eachfile, "rb").readlines()
 
 
     for eachline in inputhtml:
