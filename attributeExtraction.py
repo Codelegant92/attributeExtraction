@@ -64,20 +64,10 @@ def commandsMatch(filePath):
                                 commandDict2[offset] = []
                                 commandDict2[offset].append(command)
 
-        print(count, commandDict1, commandDict2)
+        #print(count, commandDict1, commandDict2)
         for keys in commandDict1:
             occurredCommand.append(commandDict1[keys][-1])
         for keys in commandDict2:
             occurredCommand.append(commandDict2[keys][-1])
     return(list(set(occurredCommand)))
 
-filePath = 'sample0(1).cfg'
-filePath1 = 'atla'
-#expressionList, attribute = wordSegment(filePath)
-#print(expressionList)
-#print(attribute)
-result = commandsMatch(filePath1)
-
-sorted(result)
-print(len(result))
-print(result)
